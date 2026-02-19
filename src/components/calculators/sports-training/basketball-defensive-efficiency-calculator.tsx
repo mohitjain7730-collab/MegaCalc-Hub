@@ -60,11 +60,11 @@ export default function BasketballDefensiveEfficiencyCalculator() {
                             <ul className="space-y-2">
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                                    <span><strong>Opponent ORB:</strong> Giving up an offensive rebound extends the opponent's possession.</span>
+                                    <span><strong>Opponent ORB:</strong> Giving up an offensive rebound extends the opponent&apos;s possession.</span>
                                 </li>
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                                    <span><strong>Forced Turnovers:</strong> Ending an opponent's possession with 0 points.</span>
+                                    <span><strong>Forced Turnovers:</strong> Ending an opponent&apos;s possession with 0 points.</span>
                                 </li>
                             </ul>
                         </div>
@@ -90,7 +90,7 @@ export default function BasketballDefensiveEfficiencyCalculator() {
                         </p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                        This formula normalizes defensive performance to a "per 100 possessions" basis. This allows you to compare the defense of a slow-paced team (few possessions) with a fast-paced team (many possessions) fairly.
+                        This formula normalizes defensive performance to a &quot;per 100 possessions&quot; basis. This allows you to compare the defense of a slow-paced team (few possessions) with a fast-paced team (many possessions) fairly.
                     </p>
                 </CardContent>
             </Card>
@@ -200,13 +200,13 @@ export default function BasketballDefensiveEfficiencyCalculator() {
                 <meta itemProp="datePublished" content="2026-02-15" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Defensive Efficiency: The Championship Metric</h2>
-                <p className="text-lg italic text-muted-foreground">"Defense wins championships" is a cliché, but Defensive Efficiency is the metric that proves it. By measuring stops per possession rather than just raw points, coaches can evaluate their system's true integrity.</p>
+                <p className="text-lg italic text-muted-foreground">&quot;Defense wins championships&quot; is a cliché, but Defensive Efficiency is the metric that proves it. By measuring stops per possession rather than just raw points, coaches can evaluate their system&apos;s true integrity.</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is Defensive Efficiency (DRtg)?</a></li>
-                    <li><a href="#why-it-matters" className="hover:underline">Why Use DRtg Over "Points Allowed"?</a></li>
+                    <li><a href="#why-it-matters" className="hover:underline">Why Use DRtg Over &quot;Points Allowed&quot;?</a></li>
                     <li><a href="#formula" className="hover:underline">The Formula Explained</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks: What Makes a Good Defense?</a></li>
                     <li><a href="#four-factors" className="hover:underline">The Four Factors of Defense</a></li>
@@ -216,17 +216,17 @@ export default function BasketballDefensiveEfficiencyCalculator() {
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Defensive Efficiency (DRtg)?</h2>
-                <p><strong>Defensive Efficiency</strong>, or <strong>Defensive Rating (DRtg)</strong>, estimates the number of points a team allows per 100 possessions. Unlike raw "Opponent Points Per Game," which can be skew, this metric accounts for pace.</p>
+                <p><strong>Defensive Efficiency</strong>, or <strong>Defensive Rating (DRtg)</strong>, estimates the number of points a team allows per 100 possessions. Unlike raw &quot;Opponent Points Per Game,&quot; which can be skew, this metric accounts for pace.</p>
 
-                <p className="mt-4">It asks the question: <em>"When the opponent has the ball 100 times, how many points do they score?"</em></p>
+                <p className="mt-4">It asks the question: <em>&quot;When the opponent has the ball 100 times, how many points do they score?&quot;</em></p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Individual vs. Team DRtg</h3>
-                <p>While this calculator primarily computes absolute efficiency (best used for teams), analysts also calculate "Individual Defensive Rating." Individual DRtg estimates how many points the player's matchup scores while they are on the court. It is notoriously difficult to calculate accurately without play-by-play data, whereas <strong>Team Defensive Rating</strong> is extremely reliable and easy to compute with box score data.</p>
+                <p>While this calculator primarily computes absolute efficiency (best used for teams), analysts also calculate &quot;Individual Defensive Rating.&quot; Individual DRtg estimates how many points the player&apos;s matchup scores while they are on the court. It is notoriously difficult to calculate accurately without play-by-play data, whereas <strong>Team Defensive Rating</strong> is extremely reliable and easy to compute with box score data.</p>
 
                 <hr />
 
                 {/* WHY IT MATTERS */}
-                <h2 id="why-it-matters" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Use DRtg Over "Points Allowed"?</h2>
+                <h2 id="why-it-matters" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Use DRtg Over &quot;Points Allowed&quot;?</h2>
                 <p>Consider two defensive scenarios:</p>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Team A (Slow Pace):</strong> Allows 90 points per game, but opponents only have 80 possessions.</li>
@@ -240,7 +240,7 @@ export default function BasketballDefensiveEfficiencyCalculator() {
 
                 {/* FORMULA */}
                 <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Formula Explained</h2>
-                <p>The core of the calculation is estimating <strong>Possessions</strong>. We use the opponent's offensive stats:</p>
+                <p>The core of the calculation is estimating <strong>Possessions</strong>. We use the opponent&apos;s offensive stats:</p>
 
                 <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
                     <p className="font-mono text-lg text-primary font-bold">
@@ -260,7 +260,7 @@ export default function BasketballDefensiveEfficiencyCalculator() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                     <div className="bg-primary/5 p-4 rounded-lg">
                         <h4 className="font-bold text-lg mb-2">Elite (Below 108)</h4>
-                        <p className="text-sm">A "lockdown" defense. Teams in this range usually have a Defensive Player of the Year candidate and disciplined rotations.</p>
+                        <p className="text-sm">A &quot;lockdown&quot; defense. Teams in this range usually have a Defensive Player of the Year candidate and disciplined rotations.</p>
                     </div>
                     <div className="bg-primary/5 p-4 rounded-lg">
                         <h4 className="font-bold text-lg mb-2">Detailed (108 - 112)</h4>
@@ -280,16 +280,16 @@ export default function BasketballDefensiveEfficiencyCalculator() {
 
                 {/* FOUR FACTORS */}
                 <h2 id="four-factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Four Factors of Defense</h2>
-                <p>To improve your DRtg, focus on Dean Oliver's "Four Factors" applied defensively:</p>
+                <p>To improve your DRtg, focus on Dean Oliver&apos;s &quot;Four Factors&quot; applied defensively:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Opponent eFG% (Stop the Shot)</h3>
                 <p>Force tough, contested shots. Eliminate open corner 3s and layups.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Defensive Rebounding (End the Possession)</h3>
-                <p>Forcing a miss means nothing if you don't get the rebound. Limiting opponent offensive rebounds (ORB%) is critical to ending possessions.</p>
+                <p>Forcing a miss means nothing if you don&apos;t get the rebound. Limiting opponent offensive rebounds (ORB%) is critical to ending possessions.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Forced Turnovers (Create Chaos)</h3>
-                <p>Turnovers are the best defensive outcome. They yield 0 points resulting in a "stop," and often lead to easy transition buckets for you.</p>
+                <p>Turnovers are the best defensive outcome. They yield 0 points resulting in a &quot;stop,&quot; and often lead to easy transition buckets for you.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">4. Free Throw Prevention (Discipline)</h3>
                 <p>Don't bail out bad offense with a foul. Free throws are the most efficient shot in the game. Defend without fouling.</p>
@@ -328,14 +328,14 @@ export default function BasketballDefensiveEfficiencyCalculator() {
                         <div>
                             <h4 className="font-semibold text-lg mb-3">Is a higher or lower Defensive Rating better?</h4>
                             <p className="text-muted-foreground">
-                                <strong>Lower is better.</strong> Since it measures "Points Allowed," you want this number to be as small as possible. This is the opposite of Offensive Rating, where higher is better.
+                                <strong>Lower is better.</strong> Since it measures &quot;Points Allowed,&quot; you want this number to be as small as possible. This is the opposite of Offensive Rating, where higher is better.
                             </p>
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">How does this differ from "Adjusted Defensive Rating"?</h4>
+                            <h4 className="font-semibold text-lg mb-3">How does this differ from &quot;Adjusted Defensive Rating&quot;?</h4>
                             <p className="text-muted-foreground">
-                                This calculator computes raw Defensive Rating based on box score stats. "Adjusted" ratings (often found on sites like KenPom or Basketball Reference) further adjust this number based on the <em>quality of the opponent</em>. A good defensive game against an elite offense is worth more than a good game against a bad offense.
+                                This calculator computes raw Defensive Rating based on box score stats. &quot;Adjusted&quot; ratings (often found on sites like KenPom or Basketball Reference) further adjust this number based on the <em>quality of the opponent</em>. A good defensive game against an elite offense is worth more than a good game against a bad offense.
                             </p>
                         </div>
 
@@ -375,9 +375,9 @@ export default function BasketballDefensiveEfficiencyCalculator() {
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What is a "Stop"?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is a &quot;Stop&quot;?</h4>
                             <p className="text-muted-foreground">
-                                A "Stop" is a possession where the opponent scores 0 points. Estimates suggest roughly 50% of possessions end in scores. Elite defenses aim to increase their "Stop Rate" by stringing together consecutive stops (often called "Turkeys" or "Kills" in coaching lingo).
+                                A &quot;Stop&quot; is a possession where the opponent scores 0 points. Estimates suggest roughly 50% of possessions end in scores. Elite defenses aim to increase their &quot;Stop Rate&quot; by stringing together consecutive stops (often called &quot;Turkeys&quot; or &quot;Kills&quot; in coaching lingo).
                             </p>
                         </div>
                     </div>

@@ -209,24 +209,24 @@ export default function BasketballFreeThrowPercentageCalculator() {
                     <li><a href="#benchmarks" className="hover:underline">Industry Benchmarks: From High School to the NBA</a></li>
                     <li><a href="#psychology" className="hover:underline">The Psychology of the Free Throw</a></li>
                     <li><a href="#mechanics" className="hover:underline">Mechanics: The Anatomy of a Perfect Shot</a></li>
-                    <li><a href="#hack-a-shaq" className="hover:underline">The "Hack-a-Player" Strategy and FT%</a></li>
+                    <li><a href="#hack-a-shaq" className="hover:underline">The &quot;Hack-a-Player&quot; Strategy and FT%</a></li>
                 </ul>
                 <hr />
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Free Throw Percentage?</h2>
-                <p><strong>Free Throw Percentage (FT%)</strong> is a basketball statistic that measures the ratio of successful free throws made to free throws attempted. It is the purest measure of a player's shooting mechanic because it is the only shot in the game that is taken from a static position, at a fixed distance (15 feet), without defense, and with a paused game clock.</p>
-                <p>Unlike field goal percentage (FG%) or three-point percentage (3P%), where shot difficulty varies wildly based on defense, distance, and movement, the free throw is a controlled variable. This makes FT% an excellent indicator of a player's raw shooting touch and mental consistency.</p>
+                <p><strong>Free Throw Percentage (FT%)</strong> is a basketball statistic that measures the ratio of successful free throws made to free throws attempted. It is the purest measure of a player&apos;s shooting mechanic because it is the only shot in the game that is taken from a static position, at a fixed distance (15 feet), without defense, and with a paused game clock.</p>
+                <p>Unlike field goal percentage (FG%) or three-point percentage (3P%), where shot difficulty varies wildly based on defense, distance, and movement, the free throw is a controlled variable. This makes FT% an excellent indicator of a player&apos;s raw shooting touch and mental consistency.</p>
 
                 {/* WHY IT MATTERS */}
                 <h2 id="why-it-matters" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why FT% is the Most Critical Efficiency Metric</h2>
                 <p>While dunks and deep threes make highlight reels, free throws win games. Here is why consistent free throw shooting is invaluable:</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">1. The "Free" Points</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. The &quot;Free&quot; Points</h3>
                 <p>Free throws are the most efficient shot in basketball. A 90% free throw shooter generates 1.8 points per possession (on a 2-shot foul), which is significantly higher than the average points per possession for even the best offenses (typically around 1.1 - 1.2 PPP).</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Closing Games</h3>
-                <p>In the final minutes of a close game, the trailing team will often foul to stop the clock. If a team has reliable free throw shooters (&gt;80%), they can "ice" the game by converting these opportunities. Conversely, poor FT% allows the opponent to stay in the game.</p>
+                <p>In the final minutes of a close game, the trailing team will often foul to stop the clock. If a team has reliable free throw shooters (&gt;80%), they can &quot;ice&quot; the game by converting these opportunities. Conversely, poor FT% allows the opponent to stay in the game.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Deterring Physical Play</h3>
                 <p>Players who shoot well from the line discourage defenders from fouling them. If a slasher like James Harden or Jimmy Butler shoots 85%+, defenders must play cleaner defense, often conceding easier layups to avoid the foul.</p>
@@ -253,7 +253,7 @@ export default function BasketballFreeThrowPercentageCalculator() {
                 <hr />
 
                 {/* BENCHMARKS */}
-                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Industry Benchmarks: What is a "Good" FT%?</h2>
+                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Industry Benchmarks: What is a &quot;Good&quot; FT%?</h2>
                 <p>Expectations for free throw percentage vary by position and level of play. Generally, guards are expected to shoot higher percentages than centers due to the nature of their skill sets.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">NBA / WNBA / Professional Standards</h3>
@@ -279,7 +279,7 @@ export default function BasketballFreeThrowPercentageCalculator() {
                 <p>Consistency is key. Every successful free throw shooter follows a strict routine that minimizes variables.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. The Routine</h3>
-                <p>Whether it's three dribbles and a spin (Rip Hamilton) or blowing a kiss (Jason Kidd), the routine triggers muscle memory. It calms the heart rate and focuses the mind. The specific actions matter less than the <em>consistency</em> of the actions.</p>
+                <p>Whether it&apos;s three dribbles and a spin (Rip Hamilton) or blowing a kiss (Jason Kidd), the routine triggers muscle memory. It calms the heart rate and focuses the mind. The specific actions matter less than the <em>consistency</em> of the actions.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Stance and Alignment</h3>
                 <p>Feet should be shoulder-width apart. Most shooters slightly stagger their feet, with the shooting foot forward. Hips and shoulders should be square to the basket.</p>
@@ -289,14 +289,14 @@ export default function BasketballFreeThrowPercentageCalculator() {
                     <li><strong>B (Balance):</strong> Stable base.</li>
                     <li><strong>E (Elbow):</strong> Elbow tucked in, aligned with the rim.</li>
                     <li><strong>E (Eyes):</strong> Locked on the target (front of the rim, back of the rim, or over the rim).</li>
-                    <li><strong>F (Follow-through):</strong> Snap the wrist, hold the "gooseneck" until the ball hits the target.</li>
+                    <li><strong>F (Follow-through):</strong> Snap the wrist, hold the &quot;gooseneck&quot; until the ball hits the target.</li>
                 </ul>
 
                 <hr />
 
                 {/* HACK A SHAQ */}
-                <h2 id="hack-a-shaq" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Hack-a-Player" Strategy and FT%</h2>
-                <p>The "Hack-a-Shaq" strategy involves intentionally fouling an opponent's worst free throw shooter to send them to the line, preventing the offense from attempting a 2 or 3-point field goal. In statistical terms, this strategy works if the player's expected points per possession (PPP) from free throws is lower than the team's average PPP.</p>
+                <h2 id="hack-a-shaq" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The &quot;Hack-a-Player&quot; Strategy and FT%</h2>
+                <p>The &quot;Hack-a-Shaq&quot; strategy involves intentionally fouling an opponent&apos;s worst free throw shooter to send them to the line, preventing the offense from attempting a 2 or 3-point field goal. In statistical terms, this strategy works if the player&apos;s expected points per possession (PPP) from free throws is lower than the team&apos;s average PPP.</p>
 
                 <p>For example, if a team averages 1.1 PPP:</p>
                 <ul className="list-disc ml-6 space-y-2">
@@ -339,7 +339,7 @@ export default function BasketballFreeThrowPercentageCalculator() {
                         <div>
                             <h4 className="font-semibold text-lg mb-3">Does the backboard count as a made free throw?</h4>
                             <p className="text-muted-foreground">
-                                Yes, if the ball enters the basket, it counts, regardless of whether it hit the backboard (bank shot) or rim first. However, almost all elite shooters aim for a "swish" without using the glass.
+                                Yes, if the ball enters the basket, it counts, regardless of whether it hit the backboard (bank shot) or rim first. However, almost all elite shooters aim for a &quot;swish&quot; without using the glass.
                             </p>
                         </div>
                         <div>
@@ -361,9 +361,9 @@ export default function BasketballFreeThrowPercentageCalculator() {
                             </p>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What is a "Lane Violation"?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is a &quot;Lane Violation&quot;?</h4>
                             <p className="text-muted-foreground">
-                                A lane violation occurs if a player enters the paint before the ball leaves the shooter's hands (for the shooter) or hits the rim (for rebounders). If the defense violates, the shooter gets another attempt (if missed). If the offense violates, the shot is voided.
+                                A lane violation occurs if a player enters the paint before the ball leaves the shooter&apos;s hands (for the shooter) or hits the rim (for rebounders). If the defense violates, the shooter gets another attempt (if missed). If the offense violates, the shot is voided.
                             </p>
                         </div>
                         <div>

@@ -40,18 +40,18 @@ export default function DscrCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="noi" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Net Operating Income (NOI)</FormLabel>
-                  <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                  <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Net Operating Income (NOI)</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
             <FormField control={form.control} name="debtService" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Total Debt Service</FormLabel>
-                  <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                  <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Total Debt Service</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
           </div>
           <Button type="submit">Calculate DSCR</Button>
@@ -71,7 +71,7 @@ export default function DscrCalculator() {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">The DSCR is a measure of a company's ability to service its debt. It's calculated by dividing the Net Operating Income (the cash flow available to pay debt) by the Total Debt Service (the required principal and interest payments). Lenders use this ratio to assess risk before approving a loan.</AccordionContent>
+          <AccordionContent className="text-muted-foreground">The DSCR is a measure of a company&apos;s ability to service its debt. It&apos;s calculated by dividing the Net Operating Income (the cash flow available to pay debt) by the Total Debt Service (the required principal and interest payments). Lenders use this ratio to assess risk before approving a loan.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

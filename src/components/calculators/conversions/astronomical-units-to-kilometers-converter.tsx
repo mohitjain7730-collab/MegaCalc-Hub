@@ -112,7 +112,7 @@ export default function AstronomicalUnitsToKilometersConverter() {
           <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is an Astronomical Unit (AU)?</h4>
-              <p>An Astronomical Unit is a unit of length, roughly the distance from Earth to the Sun. It's used for measuring distances within our solar system because the vast numbers involved in kilometers or miles become unwieldy.</p>
+              <p>An Astronomical Unit is a unit of length, roughly the distance from Earth to the Sun. It&apos;s used for measuring distances within our solar system because the vast numbers involved in kilometers or miles become unwieldy.</p>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-1">Why is this unit used instead of light-years?</h4>

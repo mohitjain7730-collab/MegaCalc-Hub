@@ -44,7 +44,7 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                                 </li>
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                                    <span><strong>FGA & FTA:</strong> Used to estimate how many possessions were "used" to get those points.</span>
+                                    <span><strong>FGA &amp; FTA:</strong> Used to estimate how many possessions were &quot;used&quot; to get those points.</span>
                                 </li>
                             </ul>
                         </div>
@@ -206,10 +206,10 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is Offensive Efficiency?</a></li>
-                    <li><a href="#why-pace-matters" className="hover:underline">Why "Per 100 Possessions"? (The Pace Problem)</a></li>
+                    <li><a href="#why-pace-matters" className="hover:underline">Why &quot;Per 100 Possessions&quot;? (The Pace Problem)</a></li>
                     <li><a href="#formula-breakdown" className="hover:underline">Breaking Down the Formula</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a Good Rating?</a></li>
-                    <li><a href="#four-factors" className="hover:underline">Dean Oliver's Four Factors</a></li>
+                    <li><a href="#four-factors" className="hover:underline">Dean Oliver&apos;s Four Factors</a></li>
                     <li><a href="#strategies" className="hover:underline">How to Improve Efficiency</a></li>
                 </ul>
                 <hr />
@@ -218,37 +218,37 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Offensive Efficiency?</h2>
                 <p><strong>Offensive Efficiency</strong>, often referred to as <strong>Offensive Rating (ORtg)</strong>, is a statistic that estimates the number of points a player or team produces per 100 possessions. </p>
 
-                <p className="mt-4">It essentially asks: <em>"If we gave the ball to this team (or player) 100 times, how many points would they score?"</em></p>
+                <p className="mt-4">It essentially asks: <em>&quot;If we gave the ball to this team (or player) 100 times, how many points would they score?&quot;</em></p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Individual vs. Team Efficiency</h3>
                 <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>Team Offensive Rating:</strong> Measures the team's total points scored per 100 possessions. This is the primary metric for continuous team evaluation.</li>
+                    <li><strong>Team Offensive Rating:</strong> Measures the team&apos;s total points scored per 100 possessions. This is the primary metric for continuous team evaluation.</li>
                     <li><strong>Individual Offensive Rating:</strong> Measures how efficiently an individual player produces points when they use a possession (shoot, get to the line, or turnover). This calculator focuses on this individual aspect.</li>
                 </ul>
 
                 <hr />
 
                 {/* PACE PROBLEM */}
-                <h2 id="why-pace-matters" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why "Per 100 Possessions"? (The Pace Problem)</h2>
+                <h2 id="why-pace-matters" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why &quot;Per 100 Possessions&quot;? (The Pace Problem)</h2>
                 <p>Imagine two teams:</p>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Team A:</strong> Scores 100 points in a fast-paced game with 110 possessions.</li>
                     <li><strong>Team B:</strong> Scores 90 points in a slow, defensive grind with 85 possessions.</li>
                 </ul>
-                <p className="mt-4">If you only look at "Points Per Game," Team A looks better (100 vs 90). However, Team A wasted many possessions. Calculated efficiently:</p>
+                <p className="mt-4">If you only look at &quot;Points Per Game,&quot; Team A looks better (100 vs 90). However, Team A wasted many possessions. Calculated efficiently:</p>
 
                 <div className="my-4 bg-muted p-4 rounded-lg font-mono text-sm">
                     Team A Efficiency: (100 / 110) * 100 = <strong>90.9 points per 100</strong> (Poor)<br />
                     Team B Efficiency: (90 / 85) * 100 = <strong>105.8 points per 100</strong> (Good)
                 </div>
 
-                <p>Team B is actually the more dangerous offensive team—they just play slower. Normalizing to 100 possessions strips away the "pace" bias and reveals the true quality of execution.</p>
+                <p>Team B is actually the more dangerous offensive team—they just play slower. Normalizing to 100 possessions strips away the &quot;pace&quot; bias and reveals the true quality of execution.</p>
 
                 <hr />
 
                 {/* FORMULA */}
                 <h2 id="formula-breakdown" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Breaking Down the Formula</h2>
-                <p>The core calculation relies on estimating <strong>Possessions</strong>. Since official possession counts (from play-by-play data) aren't always available at amateur levels, we use a statistical estimate:</p>
+                <p>The core calculation relies on estimating <strong>Possessions</strong>. Since official possession counts (from play-by-play data) aren&apos;t always available at amateur levels, we use a statistical estimate:</p>
 
                 <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
                     <p className="font-mono text-lg text-primary font-bold">
@@ -281,7 +281,7 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                     </div>
                     <div className="bg-primary/5 p-4 rounded-lg">
                         <h4 className="font-bold text-lg mb-2">Average (100-107)</h4>
-                        <p className="text-sm"> League average fluctuates, but 100-105 is typically "average." You win games with defense if your offense is here.</p>
+                        <p className="text-sm"> League average fluctuates, but 100-105 is typically &quot;average.&quot; You win games with defense if your offense is here.</p>
                     </div>
                     <div className="bg-primary/5 p-4 rounded-lg">
                         <h4 className="font-bold text-lg mb-2">Poor (Below 100)</h4>
@@ -292,17 +292,17 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                 <hr />
 
                 {/* FOUR FACTORS */}
-                <h2 id="four-factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dean Oliver's Four Factors</h2>
-                <p>Basketball pioneer Dean Oliver identified the "Four Factors" that contribute to winning offensive efficiency. If you want to improve your ORtg, focus on these (in order of importance):</p>
+                <h2 id="four-factors" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dean Oliver&apos;s Four Factors</h2>
+                <p>Basketball pioneer Dean Oliver identified the &quot;Four Factors&quot; that contribute to winning offensive efficiency. If you want to improve your ORtg, focus on these (in order of importance):</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Effective Field Goal Percentage (eFG%) (40% Weight)</h3>
                 <p>Shooting the ball into the hoop is the most important thing. eFG% accounts for the extra value of 3-pointers.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Turnover Percentage (TOV%) (25% Weight)</h3>
-                <p>You can't score if you don't shoot. Turnovers are the deadliest efficiency killer because they produce 0 points and often lead to easy fast-break points for the opponent.</p>
+                <p>You can&apos;t score if you don&apos;t shoot. Turnovers are the deadliest efficiency killer because they produce 0 points and often lead to easy fast-break points for the opponent.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Offensive Rebounding Rate (ORB%) (20% Weight)</h3>
-                <p>An offensive rebound gives you a "free" second chance. It's like resetting the possession without the opponent getting a turn.</p>
+                <p>An offensive rebound gives you a &quot;free&quot; second chance. It&apos;s like resetting the possession without the opponent getting a turn.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">4. Free Throw Rate (FTR) (15% Weight)</h3>
                 <p>Getting to the line implies aggressive offense. Free throws are the most efficient shot in basketball (avg ~1.5 points per possession).</p>
@@ -313,10 +313,10 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                 <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Improve Efficiency</h2>
                 <p>Based on the factors above, here are concrete steps for players to improve their rating:</p>
                 <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>Eliminate the "Long 2":</strong> It is statistically the worst shot in basketball. Step back for a 3, or drive for a layup/foul.</li>
+                    <li><strong>Eliminate the &quot;Long 2&quot;:</strong> It is statistically the worst shot in basketball. Step back for a 3, or drive for a layup/foul.</li>
                     <li><strong>Value the Ball:</strong> A fancy pass that leads to a turnover is worse than a simple pass that maintains possession.</li>
                     <li><strong>Crash the Glass:</strong> Even guards can secure long rebounds. An extra possession is statistically as valuable as a steal.</li>
-                    <li><strong>Hunt Free Throws:</strong> Drive into contact. Force the defense to foul you. It slows the game down and provides "easy" points.</li>
+                    <li><strong>Hunt Free Throws:</strong> Drive into contact. Force the defense to foul you. It slows the game down and provides &quot;easy&quot; points.</li>
                 </ul>
 
                 <hr />
@@ -349,7 +349,7 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                         <div>
                             <h4 className="font-semibold text-lg mb-3">Why is Offensive Rating usually around 100?</h4>
                             <p className="text-muted-foreground">
-                                It represents points per 100 possessions. Since a "good" possession yields about 1 point on average (e.g., 50% shooting on 2-pointers), the rating naturally hovers near 100. Ratings of 115+ are considered phenomenal because they imply scoring 1.15 points every time you touch the ball.
+                                It represents points per 100 possessions. Since a &quot;good&quot; possession yields about 1 point on average (e.g., 50% shooting on 2-pointers), the rating naturally hovers near 100. Ratings of 115+ are considered phenomenal because they imply scoring 1.15 points every time you touch the ball.
                             </p>
                         </div>
 
@@ -382,7 +382,7 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">Can a player have a high ORtg but be a "bad" offensive player?</h4>
+                            <h4 className="font-semibold text-lg mb-3">Can a player have a high ORtg but be a &quot;bad&quot; offensive player?</h4>
                             <p className="text-muted-foreground">
                                 Yes, if their volume is very low. A player who only dunks the ball twice (4 points) in a game with no misses or turnovers has a massive ORtg but minimal impact. Context (Usage Rate) is always required to evaluate volume scorers vs. efficient specialists.
                             </p>
@@ -424,7 +424,7 @@ export default function BasketballOffensiveEfficiencyCalculator() {
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Recruiters</strong>
-                                    <span className="text-sm text-muted-foreground">Identify undervalued players who don't score 20 PPG but are hyper-efficient with their touches.</span>
+                                    <span className="text-sm text-muted-foreground">Identify undervalued players who don&apos;t score 20 PPG but are hyper-efficient with their touches.</span>
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Point Guards</strong>

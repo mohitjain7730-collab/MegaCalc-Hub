@@ -28,7 +28,7 @@ const pssQuestions: Array<{ id: string; text: string; positive?: boolean }> = [
 const questionSchema = z.string().nonempty("Please select an answer.");
 const formSchemaObject: Record<string, z.ZodString> = {};
 pssQuestions.forEach(q => {
-    formSchemaObject[q.id] = questionSchema;
+  formSchemaObject[q.id] = questionSchema;
 });
 
 const formSchema = z.object(formSchemaObject);
@@ -59,7 +59,7 @@ export default function StressLevelIndexCalculator() {
 
     setResult({ score: totalScore, level });
   };
-  
+
   const options = ["Never", "Almost Never", "Sometimes", "Fairly Often", "Very Often"];
 
   return (
@@ -82,9 +82,9 @@ export default function StressLevelIndexCalculator() {
                       className="flex flex-col sm:flex-row sm:flex-wrap sm:space-x-4 space-y-2 sm:space-y-0"
                     >
                       {options.map((option, i) => (
-                         <FormItem key={i} className="flex items-center space-x-2 space-y-0">
-                            <FormControl><RadioGroupItem value={String(i)} /></FormControl>
-                            <FormLabel className="font-normal">{option}</FormLabel>
+                        <FormItem key={i} className="flex items-center space-x-2 space-y-0">
+                          <FormControl><RadioGroupItem value={String(i)} /></FormControl>
+                          <FormLabel className="font-normal">{option}</FormLabel>
                         </FormItem>
                       ))}
                     </RadioGroup>
@@ -99,31 +99,30 @@ export default function StressLevelIndexCalculator() {
       </Form>
       {result !== null && (
         <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Activity className="h-8 w-8 text-primary" /><CardTitle>Perceived Stress Score</CardTitle></div></CardHeader>
-            <CardContent>
-                <div className="text-center">
-                    <p className="text-4xl font-bold">{result.score}</p>
-                    <p className="text-xl font-semibold mt-2">{result.level}</p>
-                    <CardDescription className='mt-4'>Score range: 0-13 (Low), 14-26 (Moderate), 27-40 (High). This is not a diagnostic tool. If you are concerned about your stress levels, please consult a healthcare professional.</CardDescription>
-                </div>
-            </CardContent>
+          <CardHeader><div className='flex items-center gap-4'><Activity className="h-8 w-8 text-primary" /><CardTitle>Perceived Stress Score</CardTitle></div></CardHeader>
+          <CardContent>
+            <div className="text-center">
+              <p className="text-4xl font-bold">{result.score}</p>
+              <p className="text-xl font-semibold mt-2">{result.level}</p>
+              <CardDescription className='mt-4'>Score range: 0-13 (Low), 14-26 (Moderate), 27-40 (High). This is not a diagnostic tool. If you are concerned about your stress levels, please consult a healthcare professional.</CardDescription>
+            </div>
+          </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
+      <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>About the Perceived Stress Scale (PSS)</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>The Perceived Stress Scale is the most widely used psychological instrument for measuring the perception of stress. It is a measure of the degree to which situations in one's life are appraised as stressful.</p>
-                <ol className="list-decimal list-inside space-y-1">
-                    <li>Scores are calculated by summing up the responses.</li>
-                    <li>For the positively worded questions (4, 5, 7, 8), the scores are reversed (e.g., 0=4, 1=3, 2=2, 3=1, 4=0).</li>
-                    <li>The total score provides a global measure of perceived stress over the past month.</li>
-                </ol>
-            </AccordionContent>
+          <AccordionTrigger>About the Perceived Stress Scale (PSS)</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>The Perceived Stress Scale is the most widely used psychological instrument for measuring the perception of stress. It is a measure of the degree to which situations in one&apos;s life are appraised as stressful.</p>
+            <ol className="list-decimal list-inside space-y-1">
+              <li>Scores are calculated by summing up the responses.</li>
+              <li>For the positively worded questions (4, 5, 7, 8), the scores are reversed (e.g., 0=4, 1=3, 2=2, 3=1, 4=0).</li>
+              <li>The total score provides a global measure of perceived stress over the past month.</li>
+            </ol>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
   );
 }
 
-    

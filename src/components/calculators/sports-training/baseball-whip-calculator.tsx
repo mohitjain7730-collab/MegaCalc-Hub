@@ -216,7 +216,7 @@ export default function BaseballWhipCalculator() {
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is WHIP?</a></li>
                     <li><a href="#calculation" className="hover:underline">How WHIP is Calculated</a></li>
-                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a "Good" WHIP?</a></li>
+                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a &quot;Good&quot; WHIP?</a></li>
                     <li><a href="#strategies" className="hover:underline">Strategies to Lower Your WHIP</a></li>
                     <li><a href="#whip-vs-era" className="hover:underline">WHIP vs. ERA</a></li>
                     <li><a href="#limitations" className="hover:underline">Limitations of WHIP</a></li>
@@ -226,7 +226,7 @@ export default function BaseballWhipCalculator() {
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is WHIP?</h2>
                 <p><strong>WHIP (Walks Plus Hits per Inning Pitched)</strong> is a sabermetric statistic that measures the number of base runners a pitcher allows per inning.</p>
-                <p>It answers a simple question: "How hard is it to get on base against this pitcher?"</p>
+                <p>It answers a simple question: &quot;How hard is it to get on base against this pitcher?&quot;</p>
 
                 <hr />
 
@@ -246,7 +246,7 @@ export default function BaseballWhipCalculator() {
                 <hr />
 
                 {/* BENCHMARKS */}
-                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a "Good" WHIP?</h2>
+                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a &quot;Good&quot; WHIP?</h2>
                 <p>Because there are typically 3 outs in an inning, any number below 1.00 is exceptional.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Major League Baseball (MLB)</h3>
@@ -267,10 +267,10 @@ export default function BaseballWhipCalculator() {
                 <p>Walks are the biggest enemy of WHIP. A walk counts the same as a home run in this formula. Adopt an aggressive mindset: make them earn their way on base by swinging the bat.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Review Your BABIP</h3>
-                <p>If you feel like you are pitching well but your WHIP is high, check your "Batting Average on Balls In Play." Sometimes, high WHIP is just bad luck (soft ground balls finding holes). Other times, it means you are getting hit too hard.</p>
+                <p>If you feel like you are pitching well but your WHIP is high, check your &quot;Batting Average on Balls In Play.&quot; Sometimes, high WHIP is just bad luck (soft ground balls finding holes). Other times, it means you are getting hit too hard.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">3. Develop a "Strikeout Pitch"</h3>
-                <p>Pitchers with high strikeout rates often have lower WHIPs because balls aren't put in play, removing the chance for "cheap hits."</p>
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Develop a &quot;Strikeout Pitch&quot;</h3>
+                <p>Pitchers with high strikeout rates often have lower WHIPs because balls aren&apos;t put in play, removing the chance for &quot;cheap hits.&quot;</p>
 
                 <hr />
 
@@ -350,7 +350,7 @@ export default function BaseballWhipCalculator() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Fantasy Managers</strong>
-                                    <span className="text-sm text-muted-foreground">Identify "sleeper" pitchers who have high ERAs but excellent WHIPs (buy low candidates).</span>
+                                    <span className="text-sm text-muted-foreground">Identify &quot;sleeper&quot; pitchers who have high ERAs but excellent WHIPs (buy low candidates).</span>
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Coaches</strong>

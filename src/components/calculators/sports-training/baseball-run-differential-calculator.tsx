@@ -180,7 +180,7 @@ export default function BaseballRunDifferentialCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Truth Teller: Why Run Differential Matters More Than Record</h2>
-                <p className="text-lg italic text-muted-foreground">"You are what your record says you are." — Bill Parcells.</p>
+                <p className="text-lg italic text-muted-foreground">&quot;You are what your record says you are.&quot; &mdash; Bill Parcells.</p>
                 <p>In football, that might be true. But in baseball, your record can be a liar. Run Differential is the polygraph test.</p>
 
                 {/* TABLE OF CONTENTS */}
@@ -198,14 +198,14 @@ export default function BaseballRunDifferentialCalculator() {
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Run Differential?</h2>
                 <p><strong>Run Differential</strong> is the simplest yet most telling formula in baseball analytics: <em>Runs Scored minus Runs Allowed</em>.</p>
-                <p>If your team scores 5 runs and allows 3, your differential for that game is +2. Over the course of a 162-game season, this number paints a vivid picture of a team's dominance or incompetence.</p>
-                <p>Why does it matter? Because individual game outcomes can be fluky. A team might win a game 1-0 on a lucky bounce, but lose the next day 10-0 because their pitching is terrible. Their record is 1-1 (.500), but their run differential is -9. The differential correctly identifies them as a "bad" team despite the even record.</p>
+                <p>If your team scores 5 runs and allows 3, your differential for that game is +2. Over the course of a 162-game season, this number paints a vivid picture of a team&apos;s dominance or incompetence.</p>
+                <p>Why does it matter? Because individual game outcomes can be fluky. A team might win a game 1-0 on a lucky bounce, but lose the next day 10-0 because their pitching is terrible. Their record is 1-1 (.500), but their run differential is -9. The differential correctly identifies them as a &quot;bad&quot; team despite the even record.</p>
 
                 <hr />
 
                 {/* PYTHAGOREAN THEOREM */}
                 <h2 id="pythag-theorem" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Pythagorean Theorem of Baseball</h2>
-                <p>Developed by the godfather of sabermetrics, Bill James, the Pythagorean Expectation formula relates runs scoted to win percentage. It is called "Pythagorean" because the formula resembles the geometry theorem (a² + b² = c²).</p>
+                <p>Developed by the godfather of sabermetrics, Bill James, the Pythagorean Expectation formula relates runs scoted to win percentage. It is called &quot;Pythagorean&quot; because the formula resembles the geometry theorem (a² + b² = c²).</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
                 <p>The standard formula is:</p>
@@ -220,19 +220,19 @@ export default function BaseballRunDifferentialCalculator() {
                 <h2 id="lucky-unlucky" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Are You Lucky or Good?</h2>
                 <p>This is the most powerful application of the calculator. By comparing a team's <strong>Actual Win %</strong> with their <strong>Pythagorean Win %</strong>, we can quantify luck.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">The "Lucky" Team</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-6">The &quot;Lucky&quot; Team</h3>
                 <p>Imagine a team with a record of 50-40 (.555) but a Run Differential of -10. Their Pythagorean expectation might be .490 (roughly 44-46).
                     <br />
-                    This team is "outperforming their pythag." This usually happens because they are winning an unsustainable number of 1-run games (often due to bullpen luck or sequencing luck). Analytics departments would predict this team to regress and lose more often in the second half of the season.</p>
+                    This team is &quot;outperforming their pythag.&quot; This usually happens because they are winning an unsustainable number of 1-run games (often due to bullpen luck or sequencing luck). Analytics departments would predict this team to regress and lose more often in the second half of the season.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">The "Unlucky" Team</h3>
-                <p>Conversely, a team might be 40-50 (.444) but have a +50 Run Differential. They are likely losing many close games but blowing opponents out when they win. We would call this team "better than their record" and expect them to improve as luck evens out.</p>
+                <h3 className="text-xl font-semibold text-foreground mt-6">The &quot;Unlucky&quot; Team</h3>
+                <p>Conversely, a team might be 40-50 (.444) but have a +50 Run Differential. They are likely losing many close games but blowing opponents out when they win. We would call this team &quot;better than their record&quot; and expect them to improve as luck evens out.</p>
 
                 <hr />
 
                 {/* BENCHMARKS */}
                 <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Historical Benchmarks</h2>
-                <p>What does a "good" differential look like over 162 games?</p>
+                <p>What does a &quot;good&quot; differential look like over 162 games?</p>
                 <ul className="list-disc ml-6 space-y-4 mt-2">
                     <li><strong>+200 or more:</strong> A Juggernaut. These teams typically win 100+ games. Example: 1998 Yankees (+309), 2001 Mariners (+300).</li>
                     <li><strong>+100 to +199:</strong> Division Champion. Likely 92-98 wins. A very strong postseason contender.</li>
@@ -254,9 +254,9 @@ export default function BaseballRunDifferentialCalculator() {
 
                 {/* LIMITATIONS */}
                 <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">When Differential Fails</h2>
-                <p>While highly predictive, Run Differential isn't perfect. It treats all runs as equal, but they aren't always equal in terms of game impact.</p>
+                <p>While highly predictive, Run Differential isn&apos;t perfect. It treats all runs as equal, but they aren&apos;t always equal in terms of game impact.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">The "Blowout" Distortion</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-6">The &quot;Blowout&quot; Distortion</h3>
                 <p>If a team loses five games by a score of 2-1 and then wins one game 20-0, their record is 1-5.
                     <br />
                     Their Runs Scored is 25. Their Runs Allowed is 10.

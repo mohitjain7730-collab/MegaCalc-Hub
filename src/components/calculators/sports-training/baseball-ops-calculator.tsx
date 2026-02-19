@@ -97,7 +97,7 @@ export default function BaseballOpsCalculator() {
                         </p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                        OPS is simply the sum of a player's On-base Percentage and Slugging Percentage. It solves the issue of Batting Average ignoring walks and Slugging Percentage ignoring walks (and OBP ignoring power).
+                        OPS is simply the sum of a player&apos;s On-base Percentage and Slugging Percentage. It solves the issue of Batting Average ignoring walks and Slugging Percentage ignoring walks (and OBP ignoring power).
                     </p>
                 </CardContent>
             </Card>
@@ -207,14 +207,14 @@ export default function BaseballOpsCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The King of Stats: Why OPS Rules Modern Baseball</h2>
-                <p className="text-lg italic text-muted-foreground">For decades, Batting Average was King. Then, the "Moneyball" revolution showed us On-Base Percentage. Now, OPS (On-Base Plus Slugging) stands as the single most comprehensive quick metric for offensive value.</p>
+                <p className="text-lg italic text-muted-foreground">For decades, Batting Average was King. Then, the &quot;Moneyball&quot; revolution showed us On-Base Percentage. Now, OPS (On-Base Plus Slugging) stands as the single most comprehensive quick metric for offensive value.</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is OPS?</a></li>
                     <li><a href="#why-it-works" className="hover:underline">Why OPS Works So Well</a></li>
-                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a "Good" OPS?</a></li>
+                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a &quot;Good&quot; OPS?</a></li>
                     <li><a href="#strategies" className="hover:underline">How to Improve Your OPS</a></li>
                     <li><a href="#limitations" className="hover:underline">Limitations of OPS</a></li>
                 </ul>
@@ -222,11 +222,11 @@ export default function BaseballOpsCalculator() {
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is OPS?</h2>
-                <p><strong>OPS (On-base Plus Slugging)</strong> is exactly what it sounds like: the sum of a player's On-Base Percentage (OBP) and Slugging Percentage (SLG).</p>
+                <p><strong>OPS (On-base Plus Slugging)</strong> is exactly what it sounds like: the sum of a player&apos;s On-Base Percentage (OBP) and Slugging Percentage (SLG).</p>
                 <div className="p-4 bg-muted border-l-4 border-primary my-4">
                     <p className="font-bold">OPS = OBP + SLG</p>
                 </div>
-                <p>It was designed to answer a simple question: "How well does this player get on base, and how much power do they have when they hit?" By combining these two metrics, OPS gives a complete picture of a hitter's ability to create runs.</p>
+                <p>It was designed to answer a simple question: &quot;How well does this player get on base, and how much power do they have when they hit?&quot; By combining these two metrics, OPS gives a complete picture of a hitter&apos;s ability to create runs.</p>
 
                 <hr />
 
@@ -243,7 +243,7 @@ export default function BaseballOpsCalculator() {
                 <hr />
 
                 {/* BENCHMARKS */}
-                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a "Good" OPS?</h2>
+                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a &quot;Good&quot; OPS?</h2>
                 <p>OPS scales differently than average. Here is the general hierarchy for MLB players:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Major League Baseball (MLB)</h3>
@@ -267,10 +267,10 @@ export default function BaseballOpsCalculator() {
                 <p>Increasing your slugging percentage usually requires mechanical changes or strength training. Increasing OBP can often be done by improving plate discipline—swinging at fewer bad pitches and taking more walks.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Drive the Ball (SLG)</h3>
-                <p>To boost the "S" in OPS, you need extra-base hits. This means looking for pitches you can drive, rather than just deflect. It implies an aggressive mindset on strikes (counts like 2-0 or 3-1).</p>
+                <p>To boost the &quot;S&quot; in OPS, you need extra-base hits. This means looking for pitches you can drive, rather than just deflect. It implies an aggressive mindset on strikes (counts like 2-0 or 3-1).</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Balance</h3>
-                <p>Don't sacrifice one for the other. Swinging for the fences might raise SLG but tank your OBP if you strike out too much. Taking too many strikes might raise OBP but leave your SLG low. finding the balance is key.</p>
+                <p>Don&apos;t sacrifice one for the other. Swinging for the fences might raise SLG but tank your OBP if you strike out too much. Taking too many strikes might raise OBP but leave your SLG low. finding the balance is key.</p>
 
                 <hr />
 

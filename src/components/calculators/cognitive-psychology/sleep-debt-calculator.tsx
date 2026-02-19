@@ -51,29 +51,29 @@ export default function SleepDebtCalculator() {
           <div className="space-y-4">
             <FormLabel>Enter your actual hours of sleep for each night of the past week.</FormLabel>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-4'>
-                {fields.map((field, index) => (
-                    <FormField
-                        key={field.id}
-                        control={form.control}
-                        name={`nights.${index}.hours`}
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel>{dayNames[index]}</FormLabel>
-                                <FormControl>
-                                    <Input type="number" placeholder="e.g., 7" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
-                                </FormControl>
-                                <FormMessage />
-                            </FormItem>
-                        )}
-                    />
-                ))}
+              {fields.map((field, index) => (
+                <FormField
+                  key={field.id}
+                  control={form.control}
+                  name={`nights.${index}.hours`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>{dayNames[index]}</FormLabel>
+                      <FormControl>
+                        <Input type="number" placeholder="e.g., 7" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value))} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              ))}
             </div>
             <FormField control={form.control} name="recommendedHours" render={({ field }) => (
-                <FormItem>
-                    <FormLabel>Your Recommended Nightly Sleep (hours)</FormLabel>
-                    <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                    <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Your Recommended Nightly Sleep (hours)</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Sleep Debt</Button>
@@ -81,38 +81,37 @@ export default function SleepDebtCalculator() {
       </Form>
       {result !== null && (
         <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Bed className="h-8 w-8 text-primary" /><CardTitle>Weekly Sleep Debt</CardTitle></div></CardHeader>
-            <CardContent>
-                {result > 0 ? (
-                    <>
-                        <p className="text-3xl font-bold text-center">{result.toFixed(1)} hours</p>
-                        <CardDescription className='mt-4 text-center'>You have accumulated {result.toFixed(1)} hours of sleep debt this week. This can negatively impact cognitive performance, mood, and reaction time.</CardDescription>
-                    </>
-                ) : (
-                    <>
-                        <p className="text-3xl font-bold text-center">Sleep Surplus of {Math.abs(result).toFixed(1)} hours</p>
-                        <CardDescription className='mt-4 text-center'>Congratulations! You are getting more than your recommended sleep.</CardDescription>
-                    </>
-                )}
-            </CardContent>
+          <CardHeader><div className='flex items-center gap-4'><Bed className="h-8 w-8 text-primary" /><CardTitle>Weekly Sleep Debt</CardTitle></div></CardHeader>
+          <CardContent>
+            {result > 0 ? (
+              <>
+                <p className="text-3xl font-bold text-center">{result.toFixed(1)} hours</p>
+                <CardDescription className='mt-4 text-center'>You have accumulated {result.toFixed(1)} hours of sleep debt this week. This can negatively impact cognitive performance, mood, and reaction time.</CardDescription>
+              </>
+            ) : (
+              <>
+                <p className="text-3xl font-bold text-center">Sleep Surplus of {Math.abs(result).toFixed(1)} hours</p>
+                <CardDescription className='mt-4 text-center'>Congratulations! You are getting more than your recommended sleep.</CardDescription>
+              </>
+            )}
+          </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
+      <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>This calculator quantifies the difference between the amount of sleep you should be getting and the amount you actually get.</p>
-                <ol className="list-decimal list-inside space-y-1">
-                    <li>It calculates your total recommended sleep for the week by multiplying your recommended nightly hours by 7.</li>
-                    <li>It sums the actual sleep hours you entered for all seven nights.</li>
-                    <li>It subtracts your total actual sleep from your total recommended sleep to determine your weekly sleep debt. A positive number indicates a deficit.</li>
-                </ol>
-                <p className="mt-2">While you can't truly "catch up" on lost sleep, addressing a sleep debt is crucial for long-term health.</p>
-            </AccordionContent>
+          <AccordionTrigger>How It Works</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>This calculator quantifies the difference between the amount of sleep you should be getting and the amount you actually get.</p>
+            <ol className="list-decimal list-inside space-y-1">
+              <li>It calculates your total recommended sleep for the week by multiplying your recommended nightly hours by 7.</li>
+              <li>It sums the actual sleep hours you entered for all seven nights.</li>
+              <li>It subtracts your total actual sleep from your total recommended sleep to determine your weekly sleep debt. A positive number indicates a deficit.</li>
+            </ol>
+            <p className="mt-2">While you can&apos;t truly &quot;catch up&quot; on lost sleep, addressing a sleep debt is crucial for long-term health.</p>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>
   );
 }
 
-    

@@ -35,7 +35,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                                 Strikeouts (K)
                             </h4>
                             <p className="text-sm text-muted-foreground mb-3">
-                                The number of batters retired by a third strike. This measures "stuff" and the ability to miss bats. Includes both swinging and looking strikeouts.
+                                The number of batters retired by a third strike. This measures &quot;stuff&quot; and the ability to miss bats. Includes both swinging and looking strikeouts.
                             </p>
                         </div>
                         <div className="p-4 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
@@ -49,7 +49,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                         </div>
                     </div>
                     <div className="text-sm text-muted-foreground bg-primary/5 p-3 rounded border border-primary/10 mt-4">
-                        <strong>Intentional Walks (IBB):</strong> Most standard K/BB calculations <em>include</em> Intentional Walks. However, for a "pure" measure of control, some advanced analysts prefer to subtract IBBs from the Walk total. This calculator uses the standard input, so subtract IBB yourself if you prefer the advanced version.
+                        <strong>Intentional Walks (IBB):</strong> Most standard K/BB calculations <em>include</em> Intentional Walks. However, for a &quot;pure&quot; measure of control, some advanced analysts prefer to subtract IBBs from the Walk total. This calculator uses the standard input, so subtract IBB yourself if you prefer the advanced version.
                     </div>
                 </CardContent>
             </Card>
@@ -69,7 +69,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                         </p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                        For example, a pitcher with 200 strikeouts and 50 walks has a K/BB ratio of 4.00. This is generally considered "Ace" material.
+                        For example, a pitcher with 200 strikeouts and 50 walks has a K/BB ratio of 4.00. This is generally considered &quot;Ace&quot; material.
                     </p>
                 </CardContent>
             </Card>
@@ -179,7 +179,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Command vs. Stuff: Why K/BB Is The King of Ratio Stats</h2>
-                <p className="text-lg italic text-muted-foreground">"ERA lies. Wins are lucky. But Strikeout-to-Walk Ratio tells the truth about a pitcher's soul."</p>
+                <p className="text-lg italic text-muted-foreground">&quot;ERA lies. Wins are lucky. But Strikeout-to-Walk Ratio tells the truth about a pitcher&apos;s soul.&quot;</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -200,7 +200,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                     <li>Can you get outs without the defense? (Strikeouts)</li>
                     <li>Can you avoid giving away free bases? (Walks)</li>
                 </ol>
-                <p>Because it removes the random variables of defense (fielding errors, range) and luck (balls in play finding holes), K/BB is often considered a better predictor of future pitching success than ERA. A pitcher with a high ERA but a great K/BB ratio is often just "unlucky" and will improve. Conversely, a pitcher with a low ERA but a terrible K/BB ratio is a "ticking time bomb."</p>
+                <p>Because it removes the random variables of defense (fielding errors, range) and luck (balls in play finding holes), K/BB is often considered a better predictor of future pitching success than ERA. A pitcher with a high ERA but a great K/BB ratio is often just &quot;unlucky&quot; and will improve. Conversely, a pitcher with a low ERA but a terrible K/BB ratio is a &quot;ticking time bomb.&quot;</p>
 
                 <hr />
 
@@ -238,7 +238,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                 <h3 className="text-xl font-semibold text-foreground mt-6">The Power Pitcher (High K, Medium BB)</h3>
                 <p><strong>Examples:</strong> Randy Johnson, Nolan Ryan.
                     <br />
-                    These pitchers strike out so many batters (300+) that they can afford a moderate number of walks. Their ratio is high because the numerator (K) is massive. They rely on "Stuff" to overcome mistakes.</p>
+                    These pitchers strike out so many batters (300+) that they can afford a moderate number of walks. Their ratio is high because the numerator (K) is massive. They rely on &quot;Stuff&quot; to overcome mistakes.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">The Control Artist (Medium K, Low BB)</h3>
                 <p><strong>Examples:</strong> Greg Maddux, Cliff Lee.
@@ -261,7 +261,7 @@ export default function BaseballStrikeoutToWalkRatioCalculator() {
                 {/* IMPROVEMENT */}
                 <h2 id="improvement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Improve Your Ratio</h2>
                 <p>Coaches usually advise working on the denominator (Walks) first.</p>
-                <p>Increasing strikeouts requires increasing velocity or developing a new "out pitch," which takes years. Decreasing walks can often be improved quickly by changing approach: attacking the zone early (aiming for 0-1 and 1-2 counts), trusting your defense, and not "nibbling" on the corners when ahead in the count.</p>
+                <p>Increasing strikeouts requires increasing velocity or developing a new &quot;out pitch,&quot; which takes years. Decreasing walks can often be improved quickly by changing approach: attacking the zone early (aiming for 0-1 and 1-2 counts), trusting your defense, and not &quot;nibbling&quot; on the corners when ahead in the count.</p>
             </section>
 
             {/* FAQ Section */}

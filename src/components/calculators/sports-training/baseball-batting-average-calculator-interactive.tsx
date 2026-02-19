@@ -280,7 +280,7 @@ export default function BaseballBattingAverageCalculatorInteractive() {
                                     <AlertCircle className="h-6 w-6" />
                                     Context & Limitations
                                 </CardTitle>
-                                <CardDescription>Why AVG isn't everything</CardDescription>
+                                <CardDescription>Why AVG isn&apos;t everything</CardDescription>
                             </CardHeader>
                             <CardContent className="space-y-4">
                                 {result.considerations.map((consideration, index) => (

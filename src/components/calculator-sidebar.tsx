@@ -20,11 +20,15 @@ interface CalculatorSidebarProps {
   currentCategorySlug?: string;
 }
 
-export function CalculatorSidebar({ currentCategorySlug }: CalculatorSidebarProps) {
-  const pathname = usePathname();
-  const [mobileOpen, setMobileOpen] = useState(false);
 
-  const SidebarContent = () => (
+interface SidebarContentProps {
+  currentCategorySlug?: string;
+  pathname: string;
+  onMobileClose?: () => void;
+}
+
+function SidebarContent({ currentCategorySlug, pathname, onMobileClose }: SidebarContentProps) {
+  return (
     <div className="flex flex-col h-full">
       {/* Calculator Categories */}
       <div className="flex-1 overflow-y-auto min-h-0">
@@ -41,7 +45,7 @@ export function CalculatorSidebar({ currentCategorySlug }: CalculatorSidebarProp
               <Link
                 key={category.slug}
                 href={`/category/${category.slug}`}
-                onClick={() => setMobileOpen(false)}
+                onClick={onMobileClose}
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
                   isActive
@@ -62,12 +66,17 @@ export function CalculatorSidebar({ currentCategorySlug }: CalculatorSidebarProp
       </div>
     </div>
   );
+}
+
+export function CalculatorSidebar({ currentCategorySlug }: CalculatorSidebarProps) {
+  const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <>
       {/* Desktop Sidebar */}
       <aside className="hidden lg:flex fixed left-0 top-14 bottom-0 w-64 bg-background border-r z-30 overflow-hidden">
-        <SidebarContent />
+        <SidebarContent currentCategorySlug={currentCategorySlug} pathname={pathname} />
       </aside>
 
       {/* Mobile Dropdown */}
@@ -88,7 +97,11 @@ export function CalculatorSidebar({ currentCategorySlug }: CalculatorSidebarProp
               <SheetTitle>Navigation</SheetTitle>
             </SheetHeader>
             <div className="overflow-y-auto">
-              <SidebarContent />
+              <SidebarContent
+                currentCategorySlug={currentCategorySlug}
+                pathname={pathname}
+                onMobileClose={() => setMobileOpen(false)}
+              />
             </div>
           </SheetContent>
         </Sheet>

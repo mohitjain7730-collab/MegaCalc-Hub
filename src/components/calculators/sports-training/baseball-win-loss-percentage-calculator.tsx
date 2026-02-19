@@ -10,7 +10,7 @@ export default function BaseballWinLossCalculator() {
             <div className="space-y-3">
                 <h1 className="text-3xl md:text-4xl font-bold">Baseball/ Softball Win–Loss Percentage Calculator</h1>
                 <p className="text-lg text-muted-foreground">
-                    Calculate your team's official winning percentage, games above .500, and projected win totals instantly.
+                    Calculate your team&apos;s official winning percentage, games above .500, and projected win totals instantly.
                 </p>
             </div>
 
@@ -53,7 +53,7 @@ export default function BaseballWinLossCalculator() {
                                 Ties (T)
                             </h4>
                             <p className="text-sm text-muted-foreground mb-3">
-                                (Optional) Rare in pro baseball but common in tournaments/softball. Ties generally lower win percentage as they are "games played" without a "win."
+                                (Optional) Rare in pro baseball but common in tournaments/softball. Ties generally lower win percentage as they are &quot;games played&quot; without a &quot;win.&quot;
                             </p>
                         </div>
                     </div>
@@ -81,7 +81,7 @@ export default function BaseballWinLossCalculator() {
                         Official standings typically display Winning Percentage to three decimal places (e.g., .500). If two teams have the same number of wins but different numbers of games played, the team with the higher percentage ranks higher.
                     </p>
                     <div className="text-sm text-muted-foreground bg-primary/5 p-3 rounded border border-primary/10">
-                        <strong>Note on Tie Games:</strong> In some youth leagues, a tie counts as 0.5 wins. This calculator uses the strict "Win Percentage" definition (Wins / Total Games), which treats a tie as "not a win." This is the standard for most competitive standings.
+                        <strong>Note on Tie Games:</strong> In some youth leagues, a tie counts as 0.5 wins. This calculator uses the strict &quot;Win Percentage&quot; definition (Wins / Total Games), which treats a tie as &quot;not a win.&quot; This is the standard for most competitive standings.
                     </div>
                 </CardContent>
             </Card>
@@ -190,14 +190,14 @@ export default function BaseballWinLossCalculator() {
                 <meta itemProp="author" content="MegaCalc Sports Analytics Team" />
                 <meta itemProp="datePublished" content="2026-02-19" />
 
-                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Winning Isn't Everything, It's the Only Thing</h2>
-                <p className="text-lg italic text-muted-foreground">Of all the complex metrics in sports—WAR, OPS+, ERA, FIP—only one truly determines who lifts the trophy: Wins. The Win-Loss percentage is the ultimate ledger of a team's season.</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Winning Isn&apos;t Everything, It&apos;s the Only Thing</h2>
+                <p className="text-lg italic text-muted-foreground">Of all the complex metrics in sports—WAR, OPS+, ERA, FIP—only one truly determines who lifts the trophy: Wins. The Win-Loss percentage is the ultimate ledger of a team&apos;s season.</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is Win-Loss Percentage?</a></li>
-                    <li><a href="#magic-500" className="hover:underline">The "Magic .500": Why Average Matters</a></li>
+                    <li><a href="#magic-500" className="hover:underline">The &quot;Magic .500&quot;: Why Average Matters</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks: From Tanking to Dynasty</a></li>
                     <li><a href="#advanced-standings" className="hover:underline">Advanced Standings: GB & Magic Runmber</a></li>
                     <li><a href="#pythag-luck" className="hover:underline">Luck vs. Skill: The Pythagorean Theorem</a></li>
@@ -207,7 +207,7 @@ export default function BaseballWinLossCalculator() {
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Win-Loss Percentage?</h2>
-                <p><strong>Win-Loss Percentage (Pct)</strong> is the standard method for ranking teams in a league. Unlike soccer or hockey which often use "Points" (3 for a win, 1 for a draw), Baseball and Softball almost exclusively use strict percentage.</p>
+                <p><strong>Win-Loss Percentage (Pct)</strong> is the standard method for ranking teams in a league. Unlike soccer or hockey which often use &quot;Points&quot; (3 for a win, 1 for a draw), Baseball and Softball almost exclusively use strict percentage.</p>
                 <p>It represents the proportion of games a team has won out of the total games played. It is calculated using the formula:</p>
                 <div className="p-4 bg-muted rounded my-4 font-mono text-center">
                     Win % = Wins / Total Games
@@ -218,7 +218,7 @@ export default function BaseballWinLossCalculator() {
                 <hr />
 
                 {/* MAGIC 500 */}
-                <h2 id="magic-500" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Magic .500": Why Average Matters</h2>
+                <h2 id="magic-500" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The &quot;Magic .500&quot;: Why Average Matters</h2>
                 <p>The concept of <strong>.500</strong> is central to baseball vernacular. If a team is "at .500," they have won exactly as many games as they have lost (e.g., 81-81 in MLB). This is the definition of an average season.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Games Above .500</h3>
@@ -243,7 +243,7 @@ export default function BaseballWinLossCalculator() {
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Softball / Youth Tournaments</h3>
-                <p>In shorter tournament formats, percentages are more volatile. Top travel teams often strive for .800+ winning percentages due to the disparity in talent levels between elite and recreational teams. In pool play, a single loss can sometimes eliminate a team from "Gold Bracket" contention.</p>
+                <p>In shorter tournament formats, percentages are more volatile. Top travel teams often strive for .800+ winning percentages due to the disparity in talent levels between elite and recreational teams. In pool play, a single loss can sometimes eliminate a team from &quot;Gold Bracket&quot; contention.</p>
 
                 <hr />
 
@@ -253,21 +253,21 @@ export default function BaseballWinLossCalculator() {
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Games Back (GB)</h3>
                 <p>This measures the gap between a trailing team and the division leader. The formula is:</p>
-                <p className="font-mono ml-6 mt-2">((Leader's Wins - Team's Wins) + (Team's Losses - Leader's Losses)) / 2</p>
-                <p>"Games Back" tells you how many games you need to "make up." Making up ground is hard because you need to win <em>and</em> the leader needs to lose.</p>
+                <p className="font-mono ml-6 mt-2">((Leader&apos;s Wins - Team&apos;s Wins) + (Team&apos;s Losses - Leader&apos;s Losses)) / 2</p>
+                <p>&quot;Games Back&quot; tells you how many games you need to &quot;make up.&quot; Making up ground is hard because you need to win <em>and</em> the leader needs to lose.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">The Magic Number</h3>
-                <p>The "Magic Number" represents the combination of wins by the leader and losses by the trailing team needed to mathematically clinch the division. Every time the leader wins OR the trailer loses, the magic number drops by 1. When it reaches 0, the race is over.</p>
+                <p>The &quot;Magic Number&quot; represents the combination of wins by the leader and losses by the trailing team needed to mathematically clinch the division. Every time the leader wins OR the trailer loses, the magic number drops by 1. When it reaches 0, the race is over.</p>
 
                 <hr />
 
                 {/* PYTHAGOREAN LUCK */}
                 <h2 id="pythag-luck" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Luck vs. Skill: The Pythagorean Theorem</h2>
-                <p>Is your 50-30 record "real"? Or are you just lucky?</p>
-                <p>Bill James developed the <Link href="/category/sports-training/baseball-run-differential-calculator" className="text-primary hover:underline">Pythagorean Expectation</Link> to answer this. It uses Run Differential to predict what a team's winning percentage <em>should</em> be.</p>
+                <p>Is your 50-30 record &quot;real&quot;? Or are you just lucky?</p>
+                <p>Bill James developed the <Link href="/category/sports-training/baseball-run-differential-calculator" className="text-primary hover:underline">Pythagorean Expectation</Link> to answer this. It uses Run Differential to predict what a team&apos;s winning percentage <em>should</em> be.</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
-                    <li>If your <strong>Actual Win %</strong> is significantly higher than your Pythagorean projection, you are considered "lucky" (winning many close games) and likely to regress.</li>
-                    <li>If your Actual Win % is lower, you are "unlucky" and likely to improve.</li>
+                    <li>If your <strong>Actual Win %</strong> is significantly higher than your Pythagorean projection, you are considered &quot;lucky&quot; (winning many close games) and likely to regress.</li>
+                    <li>If your Actual Win % is lower, you are &quot;unlucky&quot; and likely to improve.</li>
                 </ul>
                 <p>Smart general managers use this discrepancy to decide whether to buy or sell players at the trade deadline.</p>
 
@@ -276,14 +276,14 @@ export default function BaseballWinLossCalculator() {
                 {/* STRATEGIES */}
                 <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategies to Improve Win %</h2>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">1. Win the Close Ones (Bullpen & Defense)</h3>
-                <p>Over a long season, blowout wins and blowout losses often cancel out. The difference between a .500 team and a .600 team is usually performance in 1-run games. This requires a strong bullpen and clutch defensive execution to "lock down" narrow leads.</p>
+                <h3 className="text-xl font-semibold text-foreground mt-6">1. Win the Close Ones (Bullpen &amp; Defense)</h3>
+                <p>Over a long season, blowout wins and blowout losses often cancel out. The difference between a .500 team and a .600 team is usually performance in 1-run games. This requires a strong bullpen and clutch defensive execution to &quot;lock down&quot; narrow leads.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Beat the Teams You Should Beat</h3>
-                <p>Consistent teams dominate the bottom of the league. If you play a team with a .350 record, you must sweep them. Losing games to inferior opponents is the fastest way to ruin a winning percentage. This is often called "taking care of business."</p>
+                <p>Consistent teams dominate the bottom of the league. If you play a team with a .350 record, you must sweep them. Losing games to inferior opponents is the fastest way to ruin a winning percentage. This is often called &quot;taking care of business.&quot;</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Home Field Advantage</h3>
-                <p>Most teams play .500 ball on the road. Elite teams turn their home stadium into a fortress, aiming for a .650+ winning percentage at home to buffer against road struggles. Factors like crowd noise, familiarity with field dimensions, and "last at-bat" advantage all contribute.</p>
+                <p>Most teams play .500 ball on the road. Elite teams turn their home stadium into a fortress, aiming for a .650+ winning percentage at home to buffer against road struggles. Factors like crowd noise, familiarity with field dimensions, and &quot;last at-bat&quot; advantage all contribute.</p>
             </section>
 
             {/* FAQ Section */}
@@ -321,9 +321,9 @@ export default function BaseballWinLossCalculator() {
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What is "Strength of Schedule" (SOS)?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is &quot;Strength of Schedule&quot; (SOS)?</h4>
                             <p className="text-muted-foreground">
-                                SOS measures the combined winning percentage of a team's opponents. A team with a high Win % but a low SOS might be considered a "paper tiger" (unproven). College RPI (Rating Percentage Index) heavily weights SOS alongside winning percentage to determine rankings.
+                                SOS measures the combined winning percentage of a team&apos;s opponents. A team with a high Win % but a low SOS might be considered a &quot;paper tiger&quot; (unproven). College RPI (Rating Percentage Index) heavily weights SOS alongside winning percentage to determine rankings.
                             </p>
                         </div>
 
@@ -417,6 +417,6 @@ export default function BaseballWinLossCalculator() {
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </div >
     );
 }

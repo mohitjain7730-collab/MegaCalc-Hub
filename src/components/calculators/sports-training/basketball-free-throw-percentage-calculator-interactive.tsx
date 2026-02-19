@@ -239,7 +239,7 @@ export default function BasketballFreeThrowPercentageCalculatorInteractive() {
                             <Alert>
                                 <Info className="h-4 w-4" />
                                 <AlertDescription>
-                                    <strong>Coach's Note:</strong> {result.recommendation}
+                                    <strong>Coach&apos;s Note:</strong> {result.recommendation}
                                 </AlertDescription>
                             </Alert>
                         </CardContent>

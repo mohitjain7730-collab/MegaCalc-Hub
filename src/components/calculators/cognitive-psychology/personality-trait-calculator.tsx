@@ -23,45 +23,45 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const traitDescriptions = {
-    openness: "Openness to Experience: How inventive and curious are you?",
-    conscientiousness: "Conscientiousness: How organized and efficient are you?",
-    extraversion: "Extraversion: How outgoing and energetic are you?",
-    agreeableness: "Agreeableness: How friendly and compassionate are you?",
-    neuroticism: "Neuroticism: How sensitive and nervous are you?",
+  openness: "Openness to Experience: How inventive and curious are you?",
+  conscientiousness: "Conscientiousness: How organized and efficient are you?",
+  extraversion: "Extraversion: How outgoing and energetic are you?",
+  agreeableness: "Agreeableness: How friendly and compassionate are you?",
+  neuroticism: "Neuroticism: How sensitive and nervous are you?",
 }
 
 const interpretation = {
-    openness: {
-        Low: "Prefers routine, practical, and conventional.",
-        Moderate: "Balanced between a love for novelty and a need for routine.",
-        High: "Imaginative, curious, and open to new experiences."
-    },
-    conscientiousness: {
-        Low: "Easy-going, spontaneous, and sometimes disorganized.",
-        Moderate: "A blend of being reliable and flexible when needed.",
-        High: "Organized, disciplined, and dependable."
-    },
-    extraversion: {
-        Low: "Reserved, thoughtful, and enjoys solitude.",
-        Moderate: "Comfortable in social situations but also values alone time.",
-        High: "Outgoing, energetic, and thrives in social settings."
-    },
-    agreeableness: {
-        Low: "Analytical, detached, and can be seen as competitive.",
-        Moderate: "Cooperates but is not afraid to challenge others' perspectives.",
-        High: "Compassionate, cooperative, and friendly."
-    },
-    neuroticism: {
-        Low: "Calm, emotionally stable, and resilient.",
-        Moderate: "Generally stable but can experience occasional stress or worry.",
-        High: "Sensitive, and may experience emotions like anxiety or sadness more intensely."
-    },
+  openness: {
+    Low: "Prefers routine, practical, and conventional.",
+    Moderate: "Balanced between a love for novelty and a need for routine.",
+    High: "Imaginative, curious, and open to new experiences."
+  },
+  conscientiousness: {
+    Low: "Easy-going, spontaneous, and sometimes disorganized.",
+    Moderate: "A blend of being reliable and flexible when needed.",
+    High: "Organized, disciplined, and dependable."
+  },
+  extraversion: {
+    Low: "Reserved, thoughtful, and enjoys solitude.",
+    Moderate: "Comfortable in social situations but also values alone time.",
+    High: "Outgoing, energetic, and thrives in social settings."
+  },
+  agreeableness: {
+    Low: "Analytical, detached, and can be seen as competitive.",
+    Moderate: "Cooperates but is not afraid to challenge others' perspectives.",
+    High: "Compassionate, cooperative, and friendly."
+  },
+  neuroticism: {
+    Low: "Calm, emotionally stable, and resilient.",
+    Moderate: "Generally stable but can experience occasional stress or worry.",
+    High: "Sensitive, and may experience emotions like anxiety or sadness more intensely."
+  },
 };
 
 const getScoreLevel = (score: number): 'Low' | 'Moderate' | 'High' => {
-    if (score <= 2) return 'Low';
-    if (score === 3) return 'Moderate';
-    return 'High';
+  if (score <= 2) return 'Low';
+  if (score === 3) return 'Moderate';
+  return 'High';
 }
 
 export default function PersonalityTraitCalculator() {
@@ -81,7 +81,7 @@ export default function PersonalityTraitCalculator() {
   const onSubmit = (values: FormValues) => {
     setResult(values);
   };
-  
+
   const values = form.watch();
 
   return (
@@ -91,12 +91,12 @@ export default function PersonalityTraitCalculator() {
           <CardDescription>For each trait, rate yourself on a scale of 1 (Not at all) to 5 (Very much).</CardDescription>
           <div className="space-y-8">
             {Object.keys(traitDescriptions).map((trait) => (
-                <FormField key={trait} control={form.control} name={trait as keyof FormValues} render={({ field }) => (
-                    <FormItem>
-                        <FormLabel>{traitDescriptions[trait as keyof typeof traitDescriptions]} (Score: {values[trait as keyof FormValues]})</FormLabel>
-                        <FormControl><Slider defaultValue={[3]} min={1} max={5} step={1} onValueChange={(vals) => field.onChange(vals[0])} /></FormControl>
-                    </FormItem>
-                )} />
+              <FormField key={trait} control={form.control} name={trait as keyof FormValues} render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{traitDescriptions[trait as keyof typeof traitDescriptions]} (Score: {values[trait as keyof FormValues]})</FormLabel>
+                  <FormControl><Slider defaultValue={[3]} min={1} max={5} step={1} onValueChange={(vals) => field.onChange(vals[0])} /></FormControl>
+                </FormItem>
+              )} />
             ))}
           </div>
           <Button type="submit">Show My Profile</Button>
@@ -104,43 +104,43 @@ export default function PersonalityTraitCalculator() {
       </Form>
       {result && (
         <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><User className="h-8 w-8 text-primary" /><CardTitle>Simplified Personality Profile</CardTitle></div></CardHeader>
-            <CardContent>
-                <div className="space-y-6">
-                    {Object.entries(result).map(([trait, score]) => {
-                        const level = getScoreLevel(score);
-                        const traitKey = trait as keyof typeof interpretation;
-                        return (
-                            <div key={trait}>
-                                <div className='flex justify-between items-baseline mb-1'>
-                                    <p className='font-bold text-lg'>{trait.charAt(0).toUpperCase() + trait.slice(1)}</p>
-                                    <p className='text-sm font-semibold text-primary'>{level}</p>
-                                </div>
-                                <div className="w-full bg-muted rounded-full h-2.5 mb-2">
-                                    <div className="bg-primary h-2.5 rounded-full" style={{ width: `${(score/5) * 100}%` }}></div>
-                                </div>
-                                <p className='text-sm text-muted-foreground'>{interpretation[traitKey][level]}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-                 <CardDescription className='mt-6 text-center'>This is a simplified, non-clinical tool for self-exploration based on the Big Five model. Scores represent tendencies, not definitive labels.</CardDescription>
-            </CardContent>
+          <CardHeader><div className='flex items-center gap-4'><User className="h-8 w-8 text-primary" /><CardTitle>Simplified Personality Profile</CardTitle></div></CardHeader>
+          <CardContent>
+            <div className="space-y-6">
+              {Object.entries(result).map(([trait, score]) => {
+                const level = getScoreLevel(score);
+                const traitKey = trait as keyof typeof interpretation;
+                return (
+                  <div key={trait}>
+                    <div className='flex justify-between items-baseline mb-1'>
+                      <p className='font-bold text-lg'>{trait.charAt(0).toUpperCase() + trait.slice(1)}</p>
+                      <p className='text-sm font-semibold text-primary'>{level}</p>
+                    </div>
+                    <div className="w-full bg-muted rounded-full h-2.5 mb-2">
+                      <div className="bg-primary h-2.5 rounded-full" style={{ width: `${(score / 5) * 100}%` }}></div>
+                    </div>
+                    <p className='text-sm text-muted-foreground'>{interpretation[traitKey][level]}</p>
+                  </div>
+                )
+              })}
+            </div>
+            <CardDescription className='mt-6 text-center'>This is a simplified, non-clinical tool for self-exploration based on the Big Five model. Scores represent tendencies, not definitive labels.</CardDescription>
+          </CardContent>
         </Card>
       )}
-       <Accordion type="single" collapsible className="w-full">
+      <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>About the Big Five</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground space-y-2">
-                <p>The "Big Five" or OCEAN model is a widely accepted framework in psychology for describing personality. This calculator provides a very basic self-assessment.</p>
-                <ul className="list-disc list-inside space-y-1">
-                    <li><strong>Openness:</strong> Appreciation for art, emotion, adventure, unusual ideas, curiosity, and variety of experience.</li>
-                    <li><strong>Conscientiousness:</strong> A tendency to be organized and dependable, show self-discipline, act dutifully, and aim for achievement.</li>
-                    <li><strong>Extraversion:</strong> Energy, positive emotions, surgency, assertiveness, sociability and the tendency to seek stimulation in the company of others.</li>
-                    <li><strong>Agreeableness:</strong> A tendency to be compassionate and cooperative rather than suspicious and antagonistic towards others.</li>
-                    <li><strong>Neuroticism:</strong> The tendency to experience unpleasant emotions easily, such as anger, anxiety, depression, and vulnerability.</li>
-                </ul>
-            </AccordionContent>
+          <AccordionTrigger>About the Big Five</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground space-y-2">
+            <p>The &quot;Big Five&quot; or OCEAN model is a widely accepted framework in psychology for describing personality. This calculator provides a very basic self-assessment.</p>
+            <ul className="list-disc list-inside space-y-1">
+              <li><strong>Openness:</strong> Appreciation for art, emotion, adventure, unusual ideas, curiosity, and variety of experience.</li>
+              <li><strong>Conscientiousness:</strong> A tendency to be organized and dependable, show self-discipline, act dutifully, and aim for achievement.</li>
+              <li><strong>Extraversion:</strong> Energy, positive emotions, surgency, assertiveness, sociability and the tendency to seek stimulation in the company of others.</li>
+              <li><strong>Agreeableness:</strong> A tendency to be compassionate and cooperative rather than suspicious and antagonistic towards others.</li>
+              <li><strong>Neuroticism:</strong> The tendency to experience unpleasant emotions easily, such as anger, anxiety, depression, and vulnerability.</li>
+            </ul>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

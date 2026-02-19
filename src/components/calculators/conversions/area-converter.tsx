@@ -52,7 +52,7 @@ export default function AreaConverter() {
 
     setValue('fromUnit', to);
     setValue('toUnit', from);
-    
+
     if (currentValue !== undefined) {
       const newResult = convertArea(currentValue, to, from);
       setValue('value', result ?? undefined);
@@ -180,11 +180,11 @@ export default function AreaConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/miles-per-hour-to-kilometers-per-hour-converter" className="hover:underline">Miles Per Hour To Kilometers Per Hour Converter</Link></li>
-                <li><Link href="/category/conversions/watts-to-megawatts-converter" className="hover:underline">Watts To Megawatts Converter</Link></li>
-                <li><Link href="/category/conversions/fathoms-to-meters-converter" className="hover:underline">Fathoms To Meters Converter</Link></li>
-                <li><Link href="/category/conversions/belt-size-converter" className="hover:underline">Belt Size Converter</Link></li>
-                <li><Link href="/category/conversions/square-feet-to-square-yards-converter" className="hover:underline">Square Feet To Square Yards Converter</Link></li>
+              <li><Link href="/category/conversions/miles-per-hour-to-kilometers-per-hour-converter" className="hover:underline">Miles Per Hour To Kilometers Per Hour Converter</Link></li>
+              <li><Link href="/category/conversions/watts-to-megawatts-converter" className="hover:underline">Watts To Megawatts Converter</Link></li>
+              <li><Link href="/category/conversions/fathoms-to-meters-converter" className="hover:underline">Fathoms To Meters Converter</Link></li>
+              <li><Link href="/category/conversions/belt-size-converter" className="hover:underline">Belt Size Converter</Link></li>
+              <li><Link href="/category/conversions/square-feet-to-square-yards-converter" className="hover:underline">Square Feet To Square Yards Converter</Link></li>
             </ul>
           </CardContent>
         </Card>
@@ -224,27 +224,27 @@ export default function AreaConverter() {
           </div>
 
           <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Common Conversions at a Glance</h2>
-            <div className="overflow-x-auto mt-4">
-                <table className="w-full text-left border-collapse">
-                    <thead>
-                        <tr className="bg-muted">
-                            <th className="p-4 border">From</th>
-                            <th className="p-4 border">To</th>
-                            <th className="p-4 border">Equivalent Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td className="p-4 border">1 Square Foot</td><td className="p-4 border">Square Inches</td><td className="p-4 border">144 in²</td></tr>
-                        <tr><td className="p-4 border">1 Square Meter</td><td className="p-4 border">Square Feet</td><td className="p-4 border">~10.764 ft²</td></tr>
-                        <tr><td className="p-4 border">1 Square Yard</td><td className="p-4 border">Square Feet</td><td className="p-4 border">9 ft²</td></tr>
-                        <tr><td className="p-4 border">1 Acre</td><td className="p-4 border">Square Feet</td><td className="p-4 border">43,560 ft²</td></tr>
-                        <tr><td className="p-4 border">1 Acre</td><td className="p-4 border">Hectares</td><td className="p-4 border">~0.4047 ha</td></tr>
-                        <tr><td className="p-4 border">1 Hectare</td><td className="p-4 border">Acres</td><td className="p-4 border">~2.471 ac</td></tr>
-                        <tr><td className="p-4 border">1 Square Mile</td><td className="p-4 border">Acres</td><td className="p-4 border">640 ac</td></tr>
-                        <tr><td className="p-4 border">1 Square Kilometer</td><td className="p-4 border">Hectares</td><td className="p-4 border">100 ha</td></tr>
-                    </tbody>
-                </table>
-            </div>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-muted">
+                  <th className="p-4 border">From</th>
+                  <th className="p-4 border">To</th>
+                  <th className="p-4 border">Equivalent Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td className="p-4 border">1 Square Foot</td><td className="p-4 border">Square Inches</td><td className="p-4 border">144 in²</td></tr>
+                <tr><td className="p-4 border">1 Square Meter</td><td className="p-4 border">Square Feet</td><td className="p-4 border">~10.764 ft²</td></tr>
+                <tr><td className="p-4 border">1 Square Yard</td><td className="p-4 border">Square Feet</td><td className="p-4 border">9 ft²</td></tr>
+                <tr><td className="p-4 border">1 Acre</td><td className="p-4 border">Square Feet</td><td className="p-4 border">43,560 ft²</td></tr>
+                <tr><td className="p-4 border">1 Acre</td><td className="p-4 border">Hectares</td><td className="p-4 border">~0.4047 ha</td></tr>
+                <tr><td className="p-4 border">1 Hectare</td><td className="p-4 border">Acres</td><td className="p-4 border">~2.471 ac</td></tr>
+                <tr><td className="p-4 border">1 Square Mile</td><td className="p-4 border">Acres</td><td className="p-4 border">640 ac</td></tr>
+                <tr><td className="p-4 border">1 Square Kilometer</td><td className="p-4 border">Hectares</td><td className="p-4 border">100 ha</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <Card>
@@ -259,12 +259,12 @@ export default function AreaConverter() {
               <p className="text-muted-foreground">An acre is an imperial unit of land area equal to 43,560 square feet. It's often visualized as being roughly the size of an American football field without the end zones.</p>
             </div>
             <div className="p-4 border rounded-lg">
-                <h4 className="font-semibold mb-2">Is "square foot" the same as "foot square"?</h4>
-                <p className="text-muted-foreground">No, they are different. A "square foot" is a unit of area (1 foot by 1 foot). A "foot square" describes a shape, meaning a square that is 1 foot on each side. While a 1-foot square has an area of 1 square foot, a 2-foot square has an area of 4 square feet.</p>
+              <h4 className="font-semibold mb-2">Is &quot;square foot&quot; the same as &quot;foot square&quot;?</h4>
+              <p className="text-muted-foreground">No, they are different. A &quot;square foot&quot; is a unit of area (1 foot by 1 foot). A &quot;foot square&quot; describes a shape, meaning a square that is 1 foot on each side. While a 1-foot square has an area of 1 square foot, a 2-foot square has an area of 4 square feet.</p>
             </div>
             <div className="p-4 border rounded-lg">
-                <h4 className="font-semibold mb-2">Why is the SI unit for area the square meter?</h4>
-                <p className="text-muted-foreground">The square meter (m²) is a derived SI unit. Since the base SI unit for length is the meter, the unit for area is naturally derived from it by squaring it. This maintains consistency within the metric system.</p>
+              <h4 className="font-semibold mb-2">Why is the SI unit for area the square meter?</h4>
+              <p className="text-muted-foreground">The square meter (m²) is a derived SI unit. Since the base SI unit for length is the meter, the unit for area is naturally derived from it by squaring it. This maintains consistency within the metric system.</p>
             </div>
           </CardContent>
         </Card>

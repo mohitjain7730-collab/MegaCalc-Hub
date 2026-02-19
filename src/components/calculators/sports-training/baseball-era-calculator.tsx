@@ -197,14 +197,14 @@ export default function BaseballEraCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Gold Standard of Pitching: Understanding ERA</h2>
-                <p className="text-lg italic text-muted-foreground">For over a century, Earned Run Average (ERA) has been the primary measuring stick for pitchers. It answers the most fundamental question: "How many runs does this pitcher give up?"</p>
+                <p className="text-lg italic text-muted-foreground">For over a century, Earned Run Average (ERA) has been the primary measuring stick for pitchers. It answers the most fundamental question: &quot;How many runs does this pitcher give up?&quot;</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is ERA?</a></li>
                     <li><a href="#calculation" className="hover:underline">How ERA is Calculated</a></li>
-                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a "Good" ERA?</a></li>
+                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a &quot;Good&quot; ERA?</a></li>
                     <li><a href="#strategies" className="hover:underline">Strategies to Lower Your ERA</a></li>
                     <li><a href="#earned-vs-unearned" className="hover:underline">Earned vs. Unearned Runs</a></li>
                     <li><a href="#limitations" className="hover:underline">Limitations of ERA</a></li>
@@ -234,13 +234,13 @@ export default function BaseballEraCalculator() {
                 <hr />
 
                 {/* BENCHMARKS */}
-                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a "Good" ERA?</h2>
+                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a &quot;Good&quot; ERA?</h2>
                 <p>Context is king (era, ballpark, league), but generally:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Major League Baseball (MLB)</h3>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Under 2.00:</strong> Historic. A serious Cy Young contender.</li>
-                    <li><strong>2.00 - 3.00:</strong> Elite. An "Ace" or #1 starter.</li>
+                    <li><strong>2.00 - 3.00:</strong> Elite. An &quot;Ace&quot; or #1 starter.</li>
                     <li><strong>3.00 - 3.75:</strong> Very Good. A reliable #2 or #3 starter.</li>
                     <li><strong>3.75 - 4.25:</strong> League Average. Keeps the team in the game.</li>
                     <li><strong>Over 4.50:</strong> Below Average. At risk of losing a rotation spot.</li>
@@ -259,7 +259,7 @@ export default function BaseballEraCalculator() {
                 <p>The most important pitch in baseball is strike one. Hitters bat significantly worse when falling behind 0-1. Getting ahead allows you to expand the zone and force weak contact.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Limit Walks (BB)</h3>
-                <p>Walks are "free passes." Unlike hits, the defense cannot help you. Walks often turn into runs. A high walk rate almost always correlates with a high ERA.</p>
+                <p>Walks are &quot;free passes.&quot; Unlike hits, the defense cannot help you. Walks often turn into runs. A high walk rate almost always correlates with a high ERA.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Manage Movement, Not Just Velocity</h3>
                 <p>At higher levels, velocity helps, but movement kills. A 90mph fastball that is straight is easier to hit than an 85mph fastball with late sink or run.</p>
@@ -270,13 +270,13 @@ export default function BaseballEraCalculator() {
                 <h2 id="earned-vs-unearned" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Earned vs. Unearned Runs</h2>
                 <p>This is the most common confusion point.</p>
                 <p><strong>Earned Run:</strong> A run for which the pitcher is held accountable. (Hits, walks, home runs).</p>
-                <p><strong>Unearned Run:</strong> A run that scored ONLY because of a fielding error or passed ball. If an inning "should have been over" (e.g., 2 outs and a ground ball is booted), subsequent runs are typically unearned. These do NOT count against your ERA.</p>
+                <p><strong>Unearned Run:</strong> A run that scored ONLY because of a fielding error or passed ball. If an inning &quot;should have been over&quot; (e.g., 2 outs and a ground ball is booted), subsequent runs are typically unearned. These do NOT count against your ERA.</p>
 
                 <hr />
 
                 {/* LIMITATIONS */}
                 <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations of ERA</h2>
-                <p>While ERA is the "headline" stat, it has flaws:</p>
+                <p>While ERA is the &quot;headline&quot; stat, it has flaws:</p>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Defense Dependent:</strong> A pitcher with a gold-glove shortstop will have a lower ERA than the same pitcher with a poor defense efficiently fielding ground balls.</li>
                     <li><strong>Timing Luck:</strong> Giving up 3 hits in a row scores runs. Giving up 3 hits spread over 9 innings scores zero. Sequencing luck plays a huge role.</li>

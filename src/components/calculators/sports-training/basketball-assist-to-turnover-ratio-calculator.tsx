@@ -87,7 +87,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                         </p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                        The calculation is straightforward division. A higher ratio indicates a player who creates scoring opportunities while minimizing mistakes. A ratio of 3.0 (3 assists for every 1 turnover) is considered the "Gold Standard" for elite point guards.
+                        The calculation is straightforward division. A higher ratio indicates a player who creates scoring opportunities while minimizing mistakes. A ratio of 3.0 (3 assists for every 1 turnover) is considered the &quot;Gold Standard&quot; for elite point guards.
                     </p>
                 </CardContent>
             </Card>
@@ -203,7 +203,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                     <li><a href="#why-it-matters" className="hover:underline">Why Scouts Obsess Over It</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a Good Ratio?</a></li>
                     <li><a href="#historical-greats" className="hover:underline">Historical Leaders (The CP3 Standard)</a></li>
-                    <li><a href="#limitations" className="hover:underline">Limitations: The "Safe Passer" Trap</a></li>
+                    <li><a href="#limitations" className="hover:underline">Limitations: The &quot;Safe Passer&quot; Trap</a></li>
                     <li><a href="#how-to-improve" className="hover:underline">Strategies to Improve Your Ratio</a></li>
                 </ul>
                 <hr />
@@ -211,7 +211,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                 {/* WHAT IS IT */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Assist-to-Turnover Ratio?</h2>
                 <p><strong>Assist-to-Turnover Ratio (AST/TO)</strong> is a basketball statistic used to evaluate the ball-handling and decision-making efficiency of a player, typically a point guard.</p>
-                <p>It answers a simple but critical question: <em>"For every mistake this player makes with the ball, how many scoring opportunities do they create?"</em></p>
+                <p>It answers a simple but critical question: <em>&quot;For every mistake this player makes with the ball, how many scoring opportunities do they create?&quot;</em></p>
                 <p>The calculation is simple: Divide total assists by total turnovers. A higher number is always better.</p>
 
                 <hr />
@@ -250,7 +250,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                             <tr className="border-t">
                                 <td className="px-4 py-2 font-bold text-green-600">3.0 - 4.0</td>
                                 <td className="px-4 py-2 font-bold">Excellent</td>
-                                <td className="px-4 py-2">The "Gold Standard" for elite NBA point guards.</td>
+                                <td className="px-4 py-2">The &quot;Gold Standard&quot; for elite NBA point guards.</td>
                             </tr>
                             <tr className="border-t">
                                 <td className="px-4 py-2 font-bold text-blue-600">2.5 - 3.0</td>
@@ -281,11 +281,11 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                 {/* HISTORICAL GREATS */}
                 <h2 id="historical-greats" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Historical Leaders (The CP3 Standard)</h2>
                 <p>When talking about AST/TO ratio, one name stands above all others: <strong>Chris Paul (CP3)</strong>.</p>
-                <p>Chris Paul is famous for maintaining a career ratio around 4.0, which is virtually unheard of for a player with his usage rate. His ability to manipulate defenses without losing the ball is why he is considered one of the greatest "Point Gods" in history.</p>
+                <p>Chris Paul is famous for maintaining a career ratio around 4.0, which is virtually unheard of for a player with his usage rate. His ability to manipulate defenses without losing the ball is why he is considered one of the greatest &quot;Point Gods&quot; in history.</p>
 
                 <p>Other notables:</p>
                 <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>Muggsy Bogues:</strong> The 5'3" legend holds the NBA career record with an astounding 4.69 ratio.</li>
+                    <li><strong>Muggsy Bogues:</strong> The 5&apos;3&quot; legend holds the NBA career record with an astounding 4.69 ratio.</li>
                     <li><strong>Tyrese Haliburton:</strong> A modern example who frequently posts seasons above 4.0.</li>
                     <li><strong>John Stockton:</strong> The all-time assist leader maintained a very healthy ratio despite incredible volume.</li>
                 </ul>
@@ -293,7 +293,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                 <hr />
 
                 {/* LIMITATIONS */}
-                <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations: The "Safe Passer" Trap</h2>
+                <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations: The &quot;Safe Passer&quot; Trap</h2>
                 <p>While a high ratio is generally good, context matters. A ratio can be artificially inflated by:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Being too Passive</h3>
@@ -310,7 +310,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
 
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Simplify Your Handle:</strong> Most turnovers happen from over-dribbling. Make your move and go.</li>
-                    <li><strong>The "Simple" Pass:</strong> Home run passes (full court heaves, tight windows) look cool but often lead to turnovers. Hitting the open man simply is often better.</li>
+                    <li><strong>The &quot;Simple&quot; Pass:</strong> Home run passes (full court heaves, tight windows) look cool but often lead to turnovers. Hitting the open man simply is often better.</li>
                     <li><strong>Jump Stops:</strong> Avoiding leaving your feet before passing drastically reduces "bail out" turnovers.</li>
                     <li><strong>Study Angles:</strong> Understanding passing lanes reduces deflections and steals.</li>
                 </ul>
@@ -380,7 +380,7 @@ export default function BasketballAssistToTurnoverRatioCalculator() {
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Coaches</strong>
-                                    <span className="text-sm text-muted-foreground">Set team goals (e.g., "Team Ratio of 2.0") to enforce ball movement.</span>
+                                    <span className="text-sm text-muted-foreground">Set team goals (e.g., &quot;Team Ratio of 2.0&quot;) to enforce ball movement.</span>
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Fantasy Managers</strong>

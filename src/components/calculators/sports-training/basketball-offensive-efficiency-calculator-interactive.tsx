@@ -199,7 +199,7 @@ export default function BasketballOffensiveEfficiencyCalculatorInteractive() {
                                             <FormControl>
                                                 <Input type="number" step="1" placeholder="e.g. 2" {...field} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                                             </FormControl>
-                                            <FormDescription className="text-xs">Required to credit "extra" possessions.</FormDescription>
+                                            <FormDescription className="text-xs">Required to credit &quot;extra&quot; possessions.</FormDescription>
                                             <FormMessage />
                                         </FormItem>
                                     )}

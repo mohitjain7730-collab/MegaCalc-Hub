@@ -214,12 +214,12 @@ export default function BasketballPlayerEfficiencyRatingCalculator() {
 
                 {/* WHAT IS PER */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Player Efficiency Rating (PER)?</h2>
-                <p><strong>Player Efficiency Rating (PER)</strong> is a single-number basketball statistic developed to measure a player's per-minute productivity. It attempts to boil down all of a player's contributions—points, rebounds, assists, steals, blocks, and more—into one unified rating.</p>
+                <p><strong>Player Efficiency Rating (PER)</strong> is a single-number basketball statistic developed to measure a player&apos;s per-minute productivity. It attempts to boil down all of a player&apos;s contributions—points, rebounds, assists, steals, blocks, and more—into one unified rating.</p>
 
                 <p>The beauty of PER is its standardization. It is pace-adjusted (accounting for the speed of the game) and per-minute (levelling the playing field between starters and reserves). This allows analysts to compare a player who plays 30 minutes in a slow-paced game with one who plays 15 minutes in a fast-paced game on equal footing.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">The "Per-Minute" Philosophy</h3>
-                <p>Standard box score stats like "Points Per Game" (PPG) are flawed comparisons because they favor players who play more minutes. PER asks a different question: <em>"How productive are you when you are actually on the court?"</em></p>
+                <h3 className="text-xl font-semibold text-foreground mt-6">The &quot;Per-Minute&quot; Philosophy</h3>
+                <p>Standard box score stats like &quot;Points Per Game&quot; (PPG) are flawed comparisons because they favor players who play more minutes. PER asks a different question: <em>&quot;How productive are you when you are actually on the court?&quot;</em></p>
 
                 <p>Typical PER values run from 0 to 35+. The league average is always set to 15.00 every season, making it easy to see if a player is above or below average.</p>
 
@@ -228,8 +228,8 @@ export default function BasketballPlayerEfficiencyRatingCalculator() {
                 {/* HISTORY */}
                 <h2 id="history" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The History of PER</h2>
                 <p>PER was developed by <strong>John Hollinger</strong>, a former NBA analyst and Vice President of Basketball Operations for the Memphis Grizzlies. Before PER, basketball analysis heavily relied on raw counting stats.</p>
-                <p>Hollinger introduced the metric in the early 2000s while writing for ESPN. His goal was to create a rating that summarized a player's statistical accomplishments without the noise of playing time or team pace variables.</p>
-                <p>It revolutionized NBA front offices, shifting focus toward efficiency. Teams began undervaluing high-volume, low-efficiency scorers and overvaluing efficient per-minute producers who just needed more playing time (the "hidden gems").</p>
+                <p>Hollinger introduced the metric in the early 2000s while writing for ESPN. His goal was to create a rating that summarized a player&apos;s statistical accomplishments without the noise of playing time or team pace variables.</p>
+                <p>It revolutionized NBA front offices, shifting focus toward efficiency. Teams began undervaluing high-volume, low-efficiency scorers and overvaluing efficient per-minute producers who just needed more playing time (the &quot;hidden gems&quot;).</p>
 
                 <hr />
 
@@ -324,13 +324,13 @@ export default function BasketballPlayerEfficiencyRatingCalculator() {
                 <p>While powerful, PER is not perfect. Critics point out several flaws that users must be aware of:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Defense is Undervalued</h3>
-                <p>PER relies on box score stats (Steals and Blocks) to measure defense. However, good defense is often about positioning, contesting shots, and preventing passes—things that don't show up in the box score. An elite defender like Bruce Bowen or Shane Battier often had low PERs despite high value.</p>
+                <p>PER relies on box score stats (Steals and Blocks) to measure defense. However, good defense is often about positioning, contesting shots, and preventing passes—things that don&apos;t show up in the box score. An elite defender like Bruce Bowen or Shane Battier often had low PERs despite high value.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Volume Scoring Bias</h3>
-                <p>The formula weights Field Goals Made heavily. A player who shoots frequently with slightly below-average efficiency can still have a high PER because the value of a made shot outweighs the penalty of a missed shot in the formula (to a point). This rewards high-usage "gunners."</p>
+                <p>The formula weights Field Goals Made heavily. A player who shoots frequently with slightly below-average efficiency can still have a high PER because the value of a made shot outweighs the penalty of a missed shot in the formula (to a point). This rewards high-usage &quot;gunners.&quot;</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Pace Adjustment Complexity</h3>
-                <p>True PER requires league-wide pace data. The calculator above provides an "Unadjusted PER" (uPER) estimate. Without the league context, it's a great approximation relative to itself, but comparing it directly to official NBA historical PERs requires caution.</p>
+                <p>True PER requires league-wide pace data. The calculator above provides an &quot;Unadjusted PER&quot; (uPER) estimate. Without the league context, it&apos;s a great approximation relative to itself, but comparing it directly to official NBA historical PERs requires caution.</p>
 
                 <hr />
 
@@ -355,7 +355,7 @@ export default function BasketballPlayerEfficiencyRatingCalculator() {
                 <p>Nikola Jokic consistently records the highest PERs in history (30+). Why? He scores with high efficiency (high FG%), gets massive rebounds, and dishes elite assists, all while having relatively low turnovers for his usage rate. He fills every positive column.</p>
 
                 <p><strong>Case Study B: The Volume Scorer</strong></p>
-                <p>Consider a player who scores 25 PPG but shoots 40% from the field and has 5 turnovers. Their PER might hover around 18-20 (Good/Star territory) but will never reach MVP levels (25+) because the missed shots and turnovers drag down the "efficiency" part of the equation, despite the high point total.</p>
+                <p>Consider a player who scores 25 PPG but shoots 40% from the field and has 5 turnovers. Their PER might hover around 18-20 (Good/Star territory) but will never reach MVP levels (25+) because the missed shots and turnovers drag down the &quot;efficiency&quot; part of the equation, despite the high point total.</p>
             </section>
 
             {/* FAQ Section */}
@@ -426,7 +426,7 @@ export default function BasketballPlayerEfficiencyRatingCalculator() {
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Fantasy Basketball Managers</strong>
-                                    <span className="text-sm text-muted-foreground">Identity undervalued players who produce well in limited minutes ("sleepers").</span>
+                                    <span className="text-sm text-muted-foreground">Identify undervalued players who produce well in limited minutes (&quot;sleepers&quot;).</span>
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Coaches & Scouts</strong>
@@ -434,7 +434,7 @@ export default function BasketballPlayerEfficiencyRatingCalculator() {
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Players</strong>
-                                    <span className="text-sm text-muted-foreground">Track your own "efficiency rating" game-by-game to focus on reducing mistakes.</span>
+                                    <span className="text-sm text-muted-foreground">Track your own &quot;efficiency rating&quot; game-by-game to focus on reducing mistakes.</span>
                                 </div>
                                 <div className="p-4 bg-primary/5 rounded-lg border border-primary/10">
                                     <strong className="block text-primary mb-1">Analysts</strong>

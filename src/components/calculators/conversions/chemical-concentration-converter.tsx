@@ -52,7 +52,7 @@ export default function ConcentrationConverter() {
 
     setValue('fromUnit', to);
     setValue('toUnit', from);
-    
+
     if (currentValue !== undefined) {
       setValue('value', result ?? undefined);
     }
@@ -158,7 +158,7 @@ export default function ConcentrationConverter() {
             <p>All conversions use moles per liter (mol/L), also known as Molarity (M), as the base unit for accuracy.</p>
           </CardContent>
         </Card>
-        
+
         <Card>
           <CardHeader><CardTitle className="flex items-center gap-2"><TrendingUp className="h-5 w-5" />Formula Used</CardTitle></CardHeader>
           <CardContent className="space-y-4 text-sm text-muted-foreground">
@@ -181,64 +181,64 @@ export default function ConcentrationConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/short-tons-us-to-metric-tons-converter" className="hover:underline">Short Tons Us To Metric Tons Converter</Link></li>
-                <li><Link href="/category/conversions/seconds-to-days-converter" className="hover:underline">Seconds To Days Converter</Link></li>
-                <li><Link href="/category/conversions/miles-per-hour-to-knots-converter" className="hover:underline">Miles Per Hour To Knots Converter</Link></li>
-                <li><Link href="/category/conversions/construction-converter" className="hover:underline">Construction Converter</Link></li>
-                <li><Link href="/category/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
+              <li><Link href="/category/conversions/short-tons-us-to-metric-tons-converter" className="hover:underline">Short Tons Us To Metric Tons Converter</Link></li>
+              <li><Link href="/category/conversions/seconds-to-days-converter" className="hover:underline">Seconds To Days Converter</Link></li>
+              <li><Link href="/category/conversions/miles-per-hour-to-knots-converter" className="hover:underline">Miles Per Hour To Knots Converter</Link></li>
+              <li><Link href="/category/conversions/construction-converter" className="hover:underline">Construction Converter</Link></li>
+              <li><Link href="/category/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
             </ul>
           </CardContent>
         </Card>
-        
-        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
-            <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">A Guide to Chemical Concentration</h1>
-            <p className="text-lg italic">Molarity is a cornerstone of chemistry, essential for stoichiometry, solution preparation, and reaction kinetics.</p>
-            
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Common Concentration Units</h2>
-            <div className="overflow-x-auto mt-4">
-                <table className="w-full text-left border-collapse">
-                    <thead><tr className="bg-muted"><th className="p-4 border">Unit</th><th className="p-4 border">Definition</th></tr></thead>
-                    <tbody>
-                        <tr><td className="p-4 border font-semibold">Molarity (M)</td><td className="p-4 border">Moles of solute per liter of solution. The standard unit for concentration in chemistry.</td></tr>
-                        <tr><td className="p-4 border font-semibold">Millimolarity (mM)</td><td className="p-4 border">One-thousandth of a mole per liter. Used for more dilute solutions.</td></tr>
-                        <tr><td className="p-4 border font-semibold">Micromolarity (µM)</td><td className="p-4 border">One-millionth of a mole per liter. Used in biochemistry and for trace amounts.</td></tr>
-                    </tbody>
-                </table>
-            </div>
 
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Common Conversions at a Glance</h2>
-            <div className="overflow-x-auto mt-4">
-                <table className="w-full text-left border-collapse">
-                    <thead>
-                        <tr className="bg-muted">
-                            <th className="p-4 border">From</th>
-                            <th className="p-4 border">To</th>
-                            <th className="p-4 border">Equivalent Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td className="p-4 border">1 Molar (M)</td><td className="p-4 border">Millimolar (mM)</td><td className="p-4 border">1,000 mM</td></tr>
-                        <tr><td className="p-4 border">1 Millimolar (mM)</td><td className="p-4 border">Micromolar (µM)</td><td className="p-4 border">1,000 µM</td></tr>
-                        <tr><td className="p-4 border">1 Molar (M)</td><td className="p-4 border">Micromolar (µM)</td><td className="p-4 border">1,000,000 µM</td></tr>
-                    </tbody>
-                </table>
-            </div>
+        <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg">
+          <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4">A Guide to Chemical Concentration</h1>
+          <p className="text-lg italic">Molarity is a cornerstone of chemistry, essential for stoichiometry, solution preparation, and reaction kinetics.</p>
+
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Common Concentration Units</h2>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-collapse">
+              <thead><tr className="bg-muted"><th className="p-4 border">Unit</th><th className="p-4 border">Definition</th></tr></thead>
+              <tbody>
+                <tr><td className="p-4 border font-semibold">Molarity (M)</td><td className="p-4 border">Moles of solute per liter of solution. The standard unit for concentration in chemistry.</td></tr>
+                <tr><td className="p-4 border font-semibold">Millimolarity (mM)</td><td className="p-4 border">One-thousandth of a mole per liter. Used for more dilute solutions.</td></tr>
+                <tr><td className="p-4 border font-semibold">Micromolarity (µM)</td><td className="p-4 border">One-millionth of a mole per liter. Used in biochemistry and for trace amounts.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Common Conversions at a Glance</h2>
+          <div className="overflow-x-auto mt-4">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr className="bg-muted">
+                  <th className="p-4 border">From</th>
+                  <th className="p-4 border">To</th>
+                  <th className="p-4 border">Equivalent Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td className="p-4 border">1 Molar (M)</td><td className="p-4 border">Millimolar (mM)</td><td className="p-4 border">1,000 mM</td></tr>
+                <tr><td className="p-4 border">1 Millimolar (mM)</td><td className="p-4 border">Micromolar (µM)</td><td className="p-4 border">1,000 µM</td></tr>
+                <tr><td className="p-4 border">1 Molar (M)</td><td className="p-4 border">Micromolar (µM)</td><td className="p-4 border">1,000,000 µM</td></tr>
+              </tbody>
+            </table>
+          </div>
         </section>
 
         <Card>
           <CardHeader><CardTitle className="flex items-center gap-2"><Info className="h-5 w-5" />Frequently Asked Questions</CardTitle></CardHeader>
           <CardContent className="space-y-4">
             <div className="p-4 border rounded-lg">
-                <h4 className="font-semibold mb-2">What is a mole?</h4>
-                <p className="text-muted-foreground">A mole is a specific number of particles (atoms, molecules), defined as Avogadro's number, approximately 6.022 x 10²³. It's a convenient way for chemists to count atoms and molecules by weighing them.</p>
+              <h4 className="font-semibold mb-2">What is a mole?</h4>
+              <p className="text-muted-foreground">A mole is a specific number of particles (atoms, molecules), defined as Avogadro&apos;s number, approximately 6.022 x 10²³. It&apos;s a convenient way for chemists to count atoms and molecules by weighing them.</p>
             </div>
             <div className="p-4 border rounded-lg">
-                <h4 className="font-semibold mb-2">What is molarity?</h4>
-                <p className="text-muted-foreground">Molarity (M) is the most common unit of concentration. It is the number of moles of a substance (solute) dissolved in one liter of a solution.</p>
+              <h4 className="font-semibold mb-2">What is molarity?</h4>
+              <p className="text-muted-foreground">Molarity (M) is the most common unit of concentration. It is the number of moles of a substance (solute) dissolved in one liter of a solution.</p>
             </div>
             <div className="p-4 border rounded-lg">
-                <h4 className="font-semibold mb-2">Why is temperature important for concentration?</h4>
-                <p className="text-muted-foreground">Molarity is based on the volume of the solution, which can change with temperature (most liquids expand when heated). For highly precise work, chemists may use molality (moles of solute per kg of solvent), which is independent of temperature.</p>
+              <h4 className="font-semibold mb-2">Why is temperature important for concentration?</h4>
+              <p className="text-muted-foreground">Molarity is based on the volume of the solution, which can change with temperature (most liquids expand when heated). For highly precise work, chemists may use molality (moles of solute per kg of solvent), which is independent of temperature.</p>
             </div>
           </CardContent>
         </Card>

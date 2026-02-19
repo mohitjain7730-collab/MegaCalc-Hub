@@ -117,7 +117,7 @@ export default function CaloriesToJoulesConverter() {
           <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is the difference between calories and kilocalories?</h4>
-              <p>One kilocalorie (kcal) is equal to 1,000 calories (cal). In nutrition, the term "Calorie" (with a capital C) is often used to mean a kilocalorie.</p>
+              <p>One kilocalorie (kcal) is equal to 1,000 calories (cal). In nutrition, the term &quot;Calorie&quot; (with a capital C) is often used to mean a kilocalorie.</p>
             </div>
           </div>
         </div>

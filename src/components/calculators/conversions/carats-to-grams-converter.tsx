@@ -112,7 +112,7 @@ export default function CaratsToGramsConverter() {
           <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is a carat?</h4>
-              <p>The carat is a unit of mass used for measuring gemstones and pearls. It's important not to confuse it with "karat," which is a measure of gold purity.</p>
+              <p>The carat is a unit of mass used for measuring gemstones and pearls. It&apos;s important not to confuse it with &quot;karat,&quot; which is a measure of gold purity.</p>
             </div>
           </div>
         </div>

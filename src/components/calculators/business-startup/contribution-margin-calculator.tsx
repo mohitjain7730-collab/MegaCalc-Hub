@@ -16,8 +16,8 @@ const formSchema = z.object({
   pricePerUnit: z.number().positive(),
   variableCost: z.number().nonnegative(),
 }).refine(data => data.pricePerUnit > data.variableCost, {
-    message: "Price must be greater than variable cost.",
-    path: ["pricePerUnit"],
+  message: "Price must be greater than variable cost.",
+  path: ["pricePerUnit"],
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -43,18 +43,18 @@ export default function ContributionMarginCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="pricePerUnit" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Selling Price per Unit ($)</FormLabel>
-                  <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                  <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Selling Price per Unit ($)</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
             <FormField control={form.control} name="variableCost" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Variable Cost per Unit ($)</FormLabel>
-                  <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                  <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Variable Cost per Unit ($)</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
           </div>
           <Button type="submit">Calculate Contribution Margin</Button>
@@ -74,7 +74,7 @@ export default function ContributionMarginCalculator() {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">The contribution margin is the revenue left over to cover fixed costs after considering variable costs. It's a foundational concept in cost-volume-profit analysis and helps businesses make decisions about pricing and which products to sell.</AccordionContent>
+          <AccordionContent className="text-muted-foreground">The contribution margin is the revenue left over to cover fixed costs after considering variable costs. It&apos;s a foundational concept in cost-volume-profit analysis and helps businesses make decisions about pricing and which products to sell.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

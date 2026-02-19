@@ -52,7 +52,7 @@ export default function ContactPage() {
                 Welcome to Mycalculating.com, your comprehensive destination for free online calculators and tools. We are dedicated to providing accurate, easy-to-use calculators across a wide range of categories including finance, health, fitness, engineering, conversions, and more.
               </p>
               <p>
-                Our mission is to make complex calculations simple and accessible to everyone. Whether you're planning your finances, tracking your health metrics, converting units, or solving engineering problems, we provide the tools you need—all completely free and accessible from any device.
+                Our mission is to make complex calculations simple and accessible to everyone. Whether you&apos;re planning your finances, tracking your health metrics, converting units, or solving engineering problems, we provide the tools you need—all completely free and accessible from any device.
               </p>
               <div className="mt-6 p-4 bg-muted rounded-lg">
                 <h3 className="text-lg font-semibold text-foreground mb-2">About the Founder / Team</h3>
@@ -81,7 +81,7 @@ export default function ContactPage() {
           <section className="prose dark:prose-invert max-w-none">
             <h2 className="text-3xl font-bold text-foreground mb-4">Contact Us</h2>
             <p className="text-base leading-relaxed mb-6">
-              We'd love to hear from you! Whether you have questions, feedback, suggestions for new calculators, or need support, please don't hesitate to reach out.
+              We&apos;d love to hear from you! Whether you have questions, feedback, suggestions for new calculators, or need support, please don&apos;t hesitate to reach out.
             </p>
 
             <div className="grid gap-6 md:grid-cols-2">
@@ -164,7 +164,7 @@ export default function ContactPage() {
                   Can I suggest a new calculator?
                 </h3>
                 <p className="text-base text-muted-foreground">
-                  Absolutely! We're always looking to expand our calculator collection. Please email us with your suggestion, and we'll consider adding it to our website.
+                  Absolutely! We&apos;re always looking to expand our calculator collection. Please email us with your suggestion, and we&apos;ll consider adding it to our website.
                 </p>
               </div>
 

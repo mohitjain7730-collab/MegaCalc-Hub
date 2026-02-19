@@ -53,7 +53,7 @@ export default function BaseballFieldingPercentageCalculator() {
                                 Errors (E)
                             </h4>
                             <p className="text-sm text-muted-foreground mb-3">
-                                Charged for a mistake that allows a batter/runner to reach base or advance, which should have resulted in an out with "ordinary effort."
+                                Charged for a mistake that allows a batter/runner to reach base or advance, which should have resulted in an out with &quot;ordinary effort.&quot;
                             </p>
                         </div>
                     </div>
@@ -75,7 +75,7 @@ export default function BaseballFieldingPercentageCalculator() {
                         </p>
                     </div>
                     <p className="text-sm text-muted-foreground mt-2">
-                        The sum of Putouts, Assists, and Errors is often referred to as "Total Chances." Fielding percentage represents the proportion of chances handled successfully. It is typically calculated to three decimal places (e.g., .985).
+                        The sum of Putouts, Assists, and Errors is often referred to as &quot;Total Chances.&quot; Fielding percentage represents the proportion of chances handled successfully. It is typically calculated to three decimal places (e.g., .985).
                     </p>
                 </CardContent>
             </Card>
@@ -185,7 +185,7 @@ export default function BaseballFieldingPercentageCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Defense Wins Championships: The Truth About Fielding Percentage</h2>
-                <p className="text-lg italic text-muted-foreground">"Pitching and defense." It's the oldest cliché in baseball because it's true. While home runs make headlines, fielding percentage keeps you in the game.</p>
+                <p className="text-lg italic text-muted-foreground">&quot;Pitching and defense.&quot; It&apos;s the oldest cliché in baseball because it&apos;s true. While home runs make headlines, fielding percentage keeps you in the game.</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -194,14 +194,14 @@ export default function BaseballFieldingPercentageCalculator() {
                     <li><a href="#components" className="hover:underline">The Components: PO, A, E</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks by Position</a></li>
                     <li><a href="#strategies" className="hover:underline">Tactics for Flawless Defense</a></li>
-                    <li><a href="#limitations" className="hover:underline">The "Range Factor" Flaw</a></li>
+                    <li><a href="#limitations" className="hover:underline">The &quot;Range Factor&quot; Flaw</a></li>
                     <li><a href="#mental-game" className="hover:underline">The Mental Side of Fielding</a></li>
                 </ul>
                 <hr />
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Fielding Percentage?</h2>
-                <p><strong>Fielding Percentage (FPCT)</strong> is the standard statistic used to quantify defensive reliability in baseball and softball. It answers a simple question: "When the ball is hit to you, how often do you make the play?"</p>
+                <p><strong>Fielding Percentage (FPCT)</strong> is the standard statistic used to quantify defensive reliability in baseball and softball. It answers a simple question: &quot;When the ball is hit to you, how often do you make the play?&quot;</p>
                 <p>Mathematically, it represents the ratio of successful defensive plays (putouts and assists) to total defensive opportunities (including errors). A perfect fielding percentage is 1.000, meaning the player has made zero errors.</p>
                 <p>However, unlike batting average where .300 is elite, a fielding percentage of .900 (90%) is often considered disastrously poor for a professional infielder. The margins for error in defense are razor-thin.</p>
 
@@ -228,7 +228,7 @@ export default function BaseballFieldingPercentageCalculator() {
                 </ul>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Errors (E)</h3>
-                <p>An error is a judgment call by the official scorer. It is charged when a fielder fails to convert an out on a play that could have been made with "ordinary effort." This includes dropping a popup, bobbling a grounder, or making a wild throw.</p>
+                <p>An error is a judgment call by the official scorer. It is charged when a fielder fails to convert an out on a play that could have been made with &quot;ordinary effort.&quot; This includes dropping a popup, bobbling a grounder, or making a wild throw.</p>
 
                 <hr />
 
@@ -237,7 +237,7 @@ export default function BaseballFieldingPercentageCalculator() {
                 <p>Not all positions are created equal. A "good" fielding percentage depends heavily on where you play on the diamond.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">First Base (1B) & Catcher (C)</h3>
-                <p><strong>Standard: > .990</strong></p>
+                <p><strong>Standard: &gt; .990</strong></p>
                 <p>These positions accumulate massive numbers of "easy" putouts (catching routine throws or strikeouts). An error here is rare and costly. If a first baseman drops a throw, it's a disaster.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Middle Infield (SS, 2B) & Third Base (3B)</h3>
@@ -245,7 +245,7 @@ export default function BaseballFieldingPercentageCalculator() {
                 <p>These are the "hot corners" and active zones. Shortstops face the toughest plays—ranging into the hole or behind second base to make long throws. Consequently, their fielding percentages are naturally lower than first basemen. A shortstop fielding .980 is elite (Gold Glove caliber).</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Outfield (LF, CF, RF)</h3>
-                <p><strong>Standard: > .985</strong></p>
+                <p><strong>Standard: &gt; .985</strong></p>
                 <p>Outfielders have fewer chances per game than infielders. Most of their opportunities are fly balls, which should be caught 99% of the time. Errors usually come from missed ground balls or wild throws to bases.</p>
 
                 <hr />

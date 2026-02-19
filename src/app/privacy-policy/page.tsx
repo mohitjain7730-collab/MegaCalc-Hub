@@ -46,7 +46,7 @@ export default function PrivacyPolicyPage() {
         <div className="prose dark:prose-invert max-w-none space-y-6">
           <section>
             <p className="text-base leading-relaxed">
-              Welcome to Mycalculating.com ("we," "our," or "us"). We are committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your information. This Privacy Policy explains our practices regarding data collection, usage, and protection when you visit and use our website and calculator tools.
+              Welcome to Mycalculating.com (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). We are committed to protecting your privacy and ensuring transparency about how we collect, use, and safeguard your information. This Privacy Policy explains our practices regarding data collection, usage, and protection when you visit and use our website and calculator tools.
             </p>
             <p className="text-base leading-relaxed">
               By accessing or using Mycalculating.com, you agree to the collection and use of information in accordance with this policy. If you do not agree with our policies and practices, please do not use our website.
@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-base leading-relaxed">
               We use Firebase Analytics, a Google service, for website analytics. This service collects information about your use of the website, including your IP address, time of visit, pages visited, and other standard log information. This information is used to evaluate website usage and compile statistical reports. For more information about how Google uses data, please visit{' '}
               <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                Google's Privacy Policy
+                Google&apos;s Privacy Policy
               </a>.
             </p>
 
@@ -152,7 +152,7 @@ export default function PrivacyPolicyPage() {
             <p className="text-base leading-relaxed">
               We use third-party advertising partners (such as Google AdSense) that may use cookies to serve personalized ads. These advertising partners may collect information about your visits to our website and other websites to provide you with relevant advertisements. You can learn more about how Google uses data for advertising by visiting{' '}
               <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                Google's Advertising Privacy Policy
+                Google&apos;s Advertising Privacy Policy
               </a>.
             </p>
           </section>
@@ -165,7 +165,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">8. Children's Privacy</h2>
+            <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">8. Children&apos;s Privacy</h2>
             <p className="text-base leading-relaxed">
               Our website is not intended for children under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe that your child has provided us with personal information, please contact us immediately. If we become aware that we have collected personal information from children under 13 without verification of parental consent, we will take steps to remove that information from our servers.
             </p>
@@ -188,7 +188,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">11. Changes to This Privacy Policy</h2>
             <p className="text-base leading-relaxed">
-              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last updated" date. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
+              We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the &quot;Last updated&quot; date. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
             </p>
           </section>
 

@@ -109,7 +109,7 @@ export default function CaloriesToKilocaloriesConverter() {
           <div className="text-muted-foreground space-y-4">
             <div>
               <h4 className="font-semibold text-foreground mb-1">What is the difference between calories and kilocalories?</h4>
-              <p>In nutrition, "Calorie" (with a capital C) is often used interchangeably with "kilocalorie" (kcal). However, in science, 1 kilocalorie is strictly 1000 small calories (cal).</p>
+              <p>In nutrition, &quot;Calorie&quot; (with a capital C) is often used interchangeably with &quot;kilocalorie&quot; (kcal). However, in science, 1 kilocalorie is strictly 1000 small calories (cal).</p>
             </div>
           </div>
         </div>

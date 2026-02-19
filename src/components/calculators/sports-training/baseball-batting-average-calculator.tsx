@@ -35,7 +35,7 @@ export default function BaseballBattingAverageCalculator() {
                                 Hits (H)
                             </h4>
                             <p className="text-sm text-muted-foreground mb-3">
-                                The number of times a batter reaches base safely on a fair ball without an error or fielder's choice.
+                                The number of times a batter reaches base safely on a fair ball without an error or fielder&apos;s choice.
                             </p>
                             <ul className="space-y-2">
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -44,7 +44,7 @@ export default function BaseballBattingAverageCalculator() {
                                 </li>
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                                    <span>Exclude: Walks, Errors, Fielder's Choice</span>
+                                    <span>Exclude: Walks, Errors, Fielder&apos;s Choice</span>
                                 </li>
                             </ul>
                         </div>
@@ -55,12 +55,12 @@ export default function BaseballBattingAverageCalculator() {
                                 At Bats (AB)
                             </h4>
                             <p className="text-sm text-muted-foreground mb-3">
-                                The batter's turn against a pitcher, excluding specific non-attempt outcomes.
+                                The batter&apos;s turn against a pitcher, excluding specific non-attempt outcomes.
                             </p>
                             <ul className="space-y-2">
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                                    <span>Includes: Hits, Strikeouts, reach on Error, Fielder's Choice</span>
+                                    <span>Includes: Hits, Strikeouts, reach on Error, Fielder&apos;s Choice</span>
                                 </li>
                                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                                     <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
@@ -197,14 +197,14 @@ export default function BaseballBattingAverageCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Art of Hitting: Mastering Batting Average</h2>
-                <p className="text-lg italic text-muted-foreground">For over a century, Batting Average has been the premier statistic for evaluating a hitter's success. But what does it really tell us?</p>
+                <p className="text-lg italic text-muted-foreground">For over a century, Batting Average has been the premier statistic for evaluating a hitter&apos;s success. But what does it really tell us?</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is Batting Average?</a></li>
                     <li><a href="#history" className="hover:underline">History & Significance</a></li>
-                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a "Good" Average?</a></li>
+                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a &quot;Good&quot; Average?</a></li>
                     <li><a href="#strategies" className="hover:underline">Strategies to Improve Your Average</a></li>
                     <li><a href="#limitations" className="hover:underline">The Limitations of AVG</a></li>
                     <li><a href="#modern-context" className="hover:underline">AVG in the Modern Era</a></li>
@@ -214,23 +214,23 @@ export default function BaseballBattingAverageCalculator() {
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Batting Average?</h2>
                 <p><strong>Batting Average (AVG)</strong> is a statistic that measures the frequency with which a batter reaches base by a hit. It is calculated by dividing the number of hits by the number of official at-bats.</p>
-                <p>Importantly, not every plate appearance counts as an "at-bat." Walks, hit-by-pitches, and sacrifices do not lower a player's average because they are not considered at-bats.</p>
+                <p>Importantly, not every plate appearance counts as an &quot;at-bat.&quot; Walks, hit-by-pitches, and sacrifices do not lower a player&apos;s average because they are not considered at-bats.</p>
 
                 <hr />
 
                 {/* HISTORY */}
                 <h2 id="history" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">History & Significance</h2>
-                <p>Batting average was adopted in the late 19th century as the standard for hitting excellence. It provides a quick snapshot of a player's ability to make contact and place the ball where fielders aren't. While modern analytics (sabermetrics) value getting on base (OBP) and power (SLG) more highly, winning a batting title remains one of the most prestigious honors in the sport.</p>
+                <p>Batting average was adopted in the late 19th century as the standard for hitting excellence. It provides a quick snapshot of a player&apos;s ability to make contact and place the ball where fielders aren&apos;t. While modern analytics (sabermetrics) value getting on base (OBP) and power (SLG) more highly, winning a batting title remains one of the most prestigious honors in the sport.</p>
 
                 <hr />
 
                 {/* BENCHMARKS */}
-                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a "Good" Average?</h2>
+                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a &quot;Good&quot; Average?</h2>
                 <p>Standards vary by league and era, but generally:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Major League Baseball (MLB)</h3>
                 <ul className="list-disc ml-6 space-y-2">
-                    <li><strong>.300+ ("The 300 Hitter"):</strong> Elite. An All-Star level benchmark. Only the best hitters maintain this over a career.</li>
+                    <li><strong>.300+ (&quot;The 300 Hitter&quot;):</strong> Elite. An All-Star level benchmark. Only the best hitters maintain this over a career.</li>
                     <li><strong>.270 - .290:</strong> Solid Regular. Most everyday starters fall in this range.</li>
                     <li><strong>.240 - .260:</strong> Average. Acceptable if the player provides power or defense.</li>
                     <li><strong>Below .220:</strong> The Danger Zone. Often referred to as "The Mendoza Line" (approx .200). Players here risk demotion unless they hit many home runs.</li>

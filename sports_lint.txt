@@ -1,0 +1,5686 @@
+﻿
+> ./src/components/calculato
+rs/sports-training/baseball-
+batting-average-calculator-i
+nteractive.tsx
+  110:32  Warning: 'avg' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  283:61  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+batting-average-calculator.t
+sx
+  38:124  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  47:74  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  58:43  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  63:94  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:159  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  207:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  207:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:73  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:81  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:142  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  223:153  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  223:218  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  228:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  228:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  233:40  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+era-calculator-interactive.t
+sx
+  133:32  Warning: 'era' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+era-calculator.tsx
+  200:207  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:248  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  207:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  207:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:164  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:184  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  243:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  243:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  262:30  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  262:43  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:131  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:153  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  279:37  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+fielding-percentage-calculat
+or-interactive.tsx
+  113:32  Warning: 'fpct' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+fielding-percentage-calculat
+or.tsx
+  3:76  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  56:151  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  56:168  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  78:89  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  78:104  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  188:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  188:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  188:95  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  188:138  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  197:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  197:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:185  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:246  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:166  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:183  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+on-base-percentage-calculato
+r-interactive.tsx
+  117:32  Warning: 'obp' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+on-base-percentage-calculato
+r.tsx
+  3:90  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  13:74  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  204:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:86  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:215  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  210:78  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  210:88  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  220:208  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  225:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  226:123  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  241:120  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  261:72  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  261:80  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  261:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+ops-calculator-interactive.t
+sx
+  11:30  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:74  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  12:10  Warning: 'Badge' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  368:196  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+ops-calculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  100:58  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  210:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  210:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:116  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  229:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:151  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:225  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  246:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  246:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:33  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:35  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:23  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+run-differential-calculator-
+interactive.tsx
+  69:38  Warning: 'pythag' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  93:40  Warning: 'pythag' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  113:32  Warning: 'diff' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+run-differential-calculator.
+tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:38  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  73:128  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  183:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  183:108  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  201:182  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  202:307  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  202:311  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:164  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:176  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  215:196  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  221:96  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  223:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  223:86  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  226:34  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+slugging-percentage-calculat
+or-interactive.tsx
+  127:32  Warning: 'slg' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+slugging-percentage-calculat
+or.tsx
+  66:43  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  215:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  215:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:23  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  254:100  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  259:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  259:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:155  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:172  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  280:158  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  280:167  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  283:27  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  283:44  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  292:162  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  292:169  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+strikeout-to-walk-ratio-calc
+ulator-interactive.tsx
+  123:32  Warning: 'ratio' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+strikeout-to-walk-ratio-calc
+ulator.tsx
+  38:96  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:102  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  52:150  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  52:155  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  72:136  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  72:140  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  182:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  182:155  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  182:163  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  198:106  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  203:280  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:288  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:376  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:395  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  241:190  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+whip-calculator-interactive.
+tsx
+  126:32  Warning: 'whip' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+whip-calculator.tsx
+  13:93  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  102:72  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  219:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:50  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:127  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  272:89  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  272:105  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:96  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  273:136  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:148  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/baseball-
+win-loss-percentage-calculat
+or-interactive.tsx
+  92:45  Warning: 
+'gamesAbove' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  128:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/baseball-
+win-loss-percentage-calculat
+or.tsx
+  13:40  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  56:149  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  56:162  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  56:174  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  56:179  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  84:142  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  84:157  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  84:214  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  84:225  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  193:121  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  193:138  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  194:236  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:78  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:89  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  210:157  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-assist-to-turnover-ratio-c
+alculator-interactive.tsx
+  11:10  Warning: 'Trophy' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  102:32  Warning: 'ratio' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-assist-to-turnover-ratio-c
+alculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  90:231  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:245  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:105  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  214:67  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  214:165  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  253:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  253:77  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  284:251  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  284:262  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  288:62  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  288:64  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  296:133  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  296:145  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-defensive-efficiency-calcu
+lator-interactive.tsx
+  3:27  Warning: 
+'useEffect' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  8:10  Warning: 'Label' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  12:18  Warning: 
+'ChevronRight' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-defensive-efficiency-calcu
+lator.tsx
+  3:10  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  63:125  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  67:96  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  93:76  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  93:96  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:96  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:262  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  209:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:112  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:181  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:207  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  221:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  221:136  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  224:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-field-goal-percentage-calc
+ulator-interactive.tsx
+  100:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  242:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-field-goal-percentage-calc
+ulator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  208:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:141  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:152  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  218:78  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  218:88  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  270:120  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  271:211  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  271:218  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  276:68  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  290:44  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  290:58  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  290:74  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-free-throw-percentage-calc
+ulator-interactive.tsx
+  100:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  242:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-free-throw-percentage-calc
+ulator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  212:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  212:94  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  218:208  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  219:256  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  225:83  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:88  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:174  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:178  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:146  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:151  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  282:30  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  292:87  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  292:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  298:120  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-offensive-efficiency-calcu
+lator-interactive.tsx
+  112:32  Warning: 'ortg' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  202:101  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  202:107  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-offensive-efficiency-calcu
+lator.tsx
+  47:114  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:119  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:105  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  212:88  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  221:62  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  221:152  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:82  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  232:125  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  232:145  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  238:57  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  238:74  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  245:143  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  245:148  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  251:154  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-player-efficiency-rating-c
+alculator-interactive.tsx
+  75:15  Warning: 'term1' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  76:15  Warning: 'term2' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  77:15  Warning: 'term3' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  78:15  Warning: 'term4' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  79:15  Warning: 'term5' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  80:15  Warning: 'term6' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  81:15  Warning: 'term7' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  84:15  Warning: 'term8' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  85:15  Warning: 'term9' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  86:15  Warning: 'term10' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  87:15  Warning: 'term11' 
+is assigned a value but 
+never used.  @typescript-esl
+int/no-unused-vars
+  172:32  Warning: 'per' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-player-efficiency-rating-c
+alculator.tsx
+  217:137  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  217:205  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  221:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  221:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:50  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:66  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:182  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:241  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:151  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  232:238  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  232:250  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  327:195  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  330:287  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  330:296  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  333:94  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-points-per-possession-calc
+ulator-interactive.tsx
+  11:18  Warning: 
+'ChevronRight' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  12:10  Warning: 'Alert' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  12:17  Warning: 
+'AlertDescription' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  12:35  Warning: 
+'AlertTitle' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  14:10  Warning: 
+'Progress' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  266:175  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  266:183  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-points-per-possession-calc
+ulator.tsx
+  54:54  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  54:60  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:58  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:70  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  235:109  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  235:132  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  235:139  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  303:54  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  310:57  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  310:62  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  316:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  316:61  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  316:123  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  316:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  316:161  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-rebound-rate-calculator-in
+teractive.tsx
+  11:10  Warning: 'Trophy' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  11:51  Warning: 
+'Calculator' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:116  Warning: 'Users' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  97:15  Warning: 
+'totalRebounds' is assigned 
+a value but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  110:32  Warning: 'trb' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  193:46  Error: 
+'FormDescription' is not 
+defined.  react/jsx-no-undef
+  206:88  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-rebound-rate-calculator.ts
+x
+  3:17  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:48  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  38:49  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:54  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  48:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  48:72  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  80:206  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  80:225  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  196:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  196:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:23  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:41  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  271:159  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  272:158  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  283:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-three-point-percentage-cal
+culator-interactive.tsx
+  8:10  Warning: 'Label' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  11:29  Warning: 
+'FormDescription' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  12:18  Warning: 
+'ChevronRight' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  15:10  Warning: 
+'Progress' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-three-point-percentage-cal
+culator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:77  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  73:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  73:90  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  178:87  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  178:95  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  234:48  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  234:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  247:96  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  251:73  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  251:77  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  258:127  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  258:135  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  266:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  266:58  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-true-shooting-percentage-c
+alculator-interactive.tsx
+  100:32  Warning: 'ts' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-true-shooting-percentage-c
+alculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  58:92  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  58:95  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  58:108  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  80:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  80:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  196:99  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  196:104  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  204:115  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  210:61  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  210:150  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  235:46  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  235:74  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  239:112  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  239:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-usage-rate-calculator-inte
+ractive.tsx
+  119:32  Warning: 'rate' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  333:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-usage-rate-calculator.tsx
+  13:39  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  13:129  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  63:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  63:86  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:124  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:189  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:284  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  218:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  218:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:143  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  225:186  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  225:324  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:343  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:92  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-win-shares-calculator-inte
+ractive.tsx
+  11:18  Warning: 
+'ChevronRight' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:43  Warning: 
+'Activity' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:80  Warning: 'Info' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  12:10  Warning: 'Alert' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  12:17  Warning: 
+'AlertDescription' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  12:35  Warning: 
+'AlertTitle' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  148:42  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/basketbal
+l-win-shares-calculator.tsx
+  13:38  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  216:263  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  218:115  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  218:133  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  218:154  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  232:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  232:83  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  236:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  236:83  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  252:91  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  262:201  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  263:135  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  263:140  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:53  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  284:98  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/batting-a
+verage-calculator-interactiv
+e.tsx
+  105:32  Warning: 'avg' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/batting-a
+verage-calculator.tsx
+  90:31  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  187:113  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  194:103  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  204:139  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  207:125  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  214:39  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  259:145  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  273:54  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  357:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  363:65  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  372:137  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  374:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  382:132  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  404:202  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  404:219  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/boundary-
+percentage-calculator-intera
+ctive.tsx
+  11:10  Warning: 'Target' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  11:18  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:32  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  111:8  Warning: React 
+Hook useEffect has missing 
+dependencies: 'calculateBoun
+daryPercentage' and 
+'error'. Either include 
+them or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/boundary-
+percentage-calculator.tsx
+  3:30  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:56  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  89:84  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  89:99  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  199:192  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  199:196  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  215:207  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  227:179  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:199  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:103  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:117  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:123  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:150  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  272:37  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  272:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/bowling-a
+verage-calculator-interactiv
+e.tsx
+  113:32  Warning: 'avg' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/bowling-a
+verage-calculator.tsx
+  38:66  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  43:77  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  98:30  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  194:112  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  194:175  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:103  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  208:112  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  218:39  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  234:110  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  236:58  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  244:51  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  246:79  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  265:119  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  413:108  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  413:132  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/bowling-e
+conomy-rate-calculator-inter
+active.tsx
+  113:32  Warning: 'er' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/bowling-e
+conomy-rate-calculator.tsx
+  3:36  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/bowling-s
+trike-rate-calculator-intera
+ctive.tsx
+  10:10  Warning: 
+'Progress' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:10  Warning: 'Target' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  11:18  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:64  Warning: 
+'Activity' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  113:8  Warning: React 
+Hook useEffect has missing 
+dependencies: 
+'calculateStrikeRate' and 
+'error'. Either include 
+them or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/bowling-s
+trike-rate-calculator.tsx
+  3:44  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:85  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  3:134  Warning: 
+'Landmark' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:166  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  27:59  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  161:123  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  163:21  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  163:92  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:98  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:104  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  226:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  226:99  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:73  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/cricket-f
+antasy-points-calculator-int
+eractive.tsx
+  11:18  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:30  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:43  Warning: 'Target' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  11:82  Warning: 'Info' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  11:88  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:118  Warning: 'Award' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:10  Warning: 'Alert' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:17  Warning: 
+'AlertDescription' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/cricket-f
+antasy-points-calculator.tsx
+  3:47  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  310:104  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  310:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  349:84  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  349:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  358:38  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/cricket-p
+artnership-run-rate-calculat
+or.tsx
+  3:18  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:30  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:80  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  3:104  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  34:111  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  34:250  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  216:102  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  223:89  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  255:126  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  258:111  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  289:111  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  310:60  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  310:67  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  313:41  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  313:66  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/cricket-p
+layer-performance-index-calc
+ulator-interactive.tsx
+  11:92  Warning: 'Info' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/cricket-p
+layer-performance-index-calc
+ulator.tsx
+  3:47  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:83  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  202:202  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  236:127  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  302:74  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  302:123  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  302:281  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  308:199  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  308:207  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  314:70  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  320:113  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  320:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  350:117  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  350:121  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  373:94  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/cricket-w
+in-probability-calculator-in
+teractive.tsx
+  11:30  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  99:49  Warning: 'wickets' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  99:66  Warning: 'balls' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  132:48  Warning: 
+'probability' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  169:15  Warning: 
+'runsPerBall' is assigned a 
+value but never used.  @type
+script-eslint/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/cricket-w
+in-probability-calculator.ts
+x
+  3:18  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:80  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  193:211  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  223:92  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  323:201  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  354:67  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  354:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  354:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  354:148  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  354:171  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  366:127  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  432:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  432:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  432:108  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  432:122  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/dot-ball-
+percentage-calculator-intera
+ctive.tsx
+  11:10  Warning: 'Target' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  11:18  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:32  Warning: 'EyeOff' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  97:8  Warning: React Hook 
+useEffect has missing 
+dependencies: 
+'calculateDots' and 
+'error'. Either include 
+them or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+  144:141  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/dot-ball-
+percentage-calculator.tsx
+  3:30  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:44  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:85  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  3:164  Warning: 'EyeOff' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  27:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  27:60  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:53  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:71  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:89  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  220:172  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  220:229  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  220:245  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  230:130  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  277:24  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+assists-per-90-calculator-in
+teractive.tsx
+  100:32  Warning: 'val' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+assists-per-90-calculator.ts
+x
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:134  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:42  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  38:63  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  47:52  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:68  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:72  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:82  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:90  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:219  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:232  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:94  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  278:164  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+clean-sheet-percentage-calcu
+lator-interactive.tsx
+  109:32  Warning: 'rate' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+clean-sheet-percentage-calcu
+lator.tsx
+  90:92  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:161  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:117  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:239  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:244  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  243:141  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  243:153  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  250:57  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  250:70  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  265:55  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  265:110  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  267:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+expected-assists-calculator-
+interactive.tsx
+  10:55  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  10:66  Warning: 
+'ArrowRight' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+expected-assists-calculator.
+tsx
+  3:98  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  245:114  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  245:121  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  267:92  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  267:100  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:71  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:79  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:115  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:127  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  285:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  285:149  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  312:39  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  312:44  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  334:174  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  334:182  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+expected-goals-calculator-in
+teractive.tsx
+  8:10  Warning: 'Input' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  173:41  Warning: 'values' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+expected-goals-calculator.ts
+x
+  267:306  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  267:367  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  277:121  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  284:136  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  360:52  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  360:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  360:68  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  360:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  361:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  361:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  362:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  362:68  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  363:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  363:73  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  364:57  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+fantasy-points-calculator-in
+teractive.tsx
+  9:10  Warning: 'Label' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  11:61  Warning: 
+'FormMessage' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:10  Warning: 'Trophy' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:28  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:61  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:101  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:115  Warning: 'Users' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+fantasy-points-calculator.ts
+x
+  3:28  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:123  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  109:94  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  219:89  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  219:105  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  236:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  236:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:174  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:199  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  239:102  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  240:322  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  240:333  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:27  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:48  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:204  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+goal-conversion-rate-calcula
+tor.tsx
+  2:29  Warning: 
+'CardDescription' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:76  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  165:108  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  165:153  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  225:87  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  272:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  328:112  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  330:149  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+goals-per-90-minutes-calcula
+tor-interactive.tsx
+  100:32  Warning: 'val' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+goals-per-90-minutes-calcula
+tor.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:39  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  90:76  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:86  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:182  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  209:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:89  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  218:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  218:105  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:39  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:87  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:191  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  242:23  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  259:238  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+league-standing-probability-
+calculator-interactive.tsx
+  9:10  Warning: 'Label' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  13:43  Warning: 'Target' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  13:63  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  13:74  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+league-standing-probability-
+calculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:100  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:135  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:38  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  58:94  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  58:107  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  203:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:121  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  222:66  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:95  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:100  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:123  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  254:210  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  254:218  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+offside-frequency-calculator
+-interactive.tsx
+  219:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+offside-frequency-calculator
+.tsx
+  3:108  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:120  Warning: 
+'TrendingDown' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  13:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:99  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:116  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  58:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  58:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:82  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:236  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  258:72  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  258:81  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  272:136  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+pass-accuracy-calculator.tsx
+  2:29  Warning: 
+'CardDescription' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  3:10  Warning: 
+'Navigation' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  3:22  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  165:106  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  165:153  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  239:86  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  243:63  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  301:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  345:112  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  353:46  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  353:120  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  353:177  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+possession-percentage-calcul
+ator-interactive.tsx
+  168:80  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  182:58  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+possession-percentage-calcul
+ator.tsx
+  90:179  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  90:204  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  207:108  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  218:259  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  221:161  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  221:203  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  226:52  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  253:41  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  253:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  270:159  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  286:141  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  286:164  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  343:42  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  379:95  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  380:74  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+save-percentage-calculator-i
+nteractive.tsx
+  109:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+save-percentage-calculator.t
+sx
+  3:49  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  216:109  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  219:242  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:314  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  310:76  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  310:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  329:198  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  336:196  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  336:208  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  343:232  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  343:260  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  348:81  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  348:104  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  364:260  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  364:269  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+shot-accuracy-calculator-int
+eractive.tsx
+  11:47  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  271:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+shot-accuracy-calculator.tsx
+  83:48  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  275:207  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  277:22  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  277:37  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  280:99  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  283:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  283:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  324:183  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  324:203  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  327:109  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  336:89  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  336:104  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  349:212  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  351:158  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  351:188  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+team-points-per-game-calcula
+tor-interactive.tsx
+  11:101  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  102:32  Warning: 'val' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+team-points-per-game-calcula
+tor.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  13:40  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  202:71  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  202:125  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  202:143  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  221:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  221:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:58  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:64  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:99  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  256:119  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  262:100  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  262:119  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  262:178  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  262:191  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/football-
+win-rate-calculator-interact
+ive.tsx
+  114:32  Warning: 'rate' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/football-
+win-rate-calculator.tsx
+  90:56  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  219:41  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  219:54  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:135  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  249:211  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:216  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:333  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:351  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  254:146  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  254:151  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  260:64  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  271:116  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  271:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  274:106  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  274:116  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/match-imp
+act-score-calculator-interac
+tive.tsx
+  11:29  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/match-imp
+act-score-calculator.tsx
+  3:17  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:75  Warning: 
+'CheckCircle2' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  230:89  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  230:351  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  337:64  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  339:67  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  343:101  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  403:203  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  403:231  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  461:46  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/over-econ
+omy-tracker-interactive.tsx
+  10:10  Warning: 
+'Progress' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  114:8  Warning: React 
+Hook useEffect has a 
+missing dependency: 
+'calculateEconomy'. Either 
+include it or remove the 
+dependency array.  
+react-hooks/exhaustive-deps
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/over-econ
+omy-tracker.tsx
+  3:44  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  3:122  Warning: 
+'AlertTriangle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  203:148  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  211:97  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  211:102  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  220:214  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  251:137  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  251:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  252:22  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  252:27  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  284:51  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  284:93  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  287:90  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  287:105  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  293:128  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/powerplay
+-run-rate-calculator.tsx
+  298:70  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  298:82  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  298:93  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  321:123  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  426:66  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  426:68  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  469:70  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  477:36  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  495:81  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  562:31  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  564:160  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  639:492  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  646:63  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  697:112  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  699:148  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/registry.
+tsx
+  3:23  Warning: 'useState' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  6:80  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/required-
+run-rate-calculator-interact
+ive.tsx
+  122:32  Warning: 'rrr' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/required-
+run-rate-calculator.tsx
+  3:82  Warning: 'Target' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/run-contr
+ibution-percentage-calculato
+r.tsx
+  13:90  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  13:126  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  67:63  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  98:56  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  98:194  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  226:145  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  226:240  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  226:261  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  229:171  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  229:234  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  267:43  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  282:68  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  303:100  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  321:80  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  440:118  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/strike-ra
+te-calculator-interactive.ts
+x
+  113:32  Warning: 'sr' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/strike-ra
+te-calculator.tsx
+  3:77  Warning: 'Zap' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  3:130  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/team-batt
+ing-average-calculator.tsx
+  43:61  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  209:181  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  272:45  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  325:79  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  332:159  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  332:188  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  353:156  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  358:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  410:112  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  418:46  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/team-run-
+rate-calculator-interactive.
+tsx
+  47:15  Warning: 
+'totalBalls' is assigned a 
+value but never used.  @type
+script-eslint/no-unused-vars
+  132:32  Warning: 'rr' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/team-run-
+rate-calculator.tsx
+  397:99  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-ac
+es-per-match-calculator-inte
+ractive.tsx
+  100:32  Warning: 'avg' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  241:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-ac
+es-per-match-calculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  47:43  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:59  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:48  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:60  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:89  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  216:148  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  223:53  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  223:58  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:68  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  231:71  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  234:53  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  234:64  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:103  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  245:79  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-br
+eak-point-conversion-rate-ca
+lculator-interactive.tsx
+  11:10  Warning: 'Trophy' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  103:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-br
+eak-point-conversion-rate-ca
+lculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  47:64  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:71  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:22  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:34  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  234:240  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  234:264  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  234:277  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  240:97  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  244:99  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  246:102  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  250:104  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  250:109  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  259:53  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  259:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-do
+uble-fault-percentage-calcul
+ator-interactive.tsx
+  107:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  250:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-do
+uble-fault-percentage-calcul
+ator.tsx
+  90:143  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:159  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:101  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  209:110  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:264  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  217:278  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  232:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  232:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  238:143  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  238:152  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  246:144  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  246:151  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  247:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  247:135  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  251:77  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-el
+o-rating-calculator-interact
+ive.tsx
+  203:57  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-el
+o-rating-calculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  34:34  Error: 'User' is 
+not defined.  
+react/jsx-no-undef
+  38:85  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  93:243  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  167:42  Error: 'Shield' 
+is not defined.  
+react/jsx-no-undef
+  263:53  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  263:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  289:78  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  289:88  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  289:90  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  289:101  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  289:107  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  289:123  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  312:131  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  312:138  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-fi
+rst-serve-percentage-calcula
+tor-interactive.tsx
+  107:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  248:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-fi
+rst-serve-percentage-calcula
+tor.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  38:78  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:81  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:100  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:103  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  67:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  67:60  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:206  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  216:139  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  216:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:92  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  225:106  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  252:201  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  265:142  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  265:153  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-ho
+ld-percentage-calculator-int
+eractive.tsx
+  11:17  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:29  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  11:54  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-ho
+ld-percentage-calculator.tsx
+  3:10  Warning: 'Scale' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  3:107  Warning: 'Clock' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  47:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  63:98  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  63:103  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:97  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:116  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:79  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:87  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  228:119  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  228:127  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:106  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  231:109  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-re
+turn-points-won-calculator-i
+nteractive.tsx
+  104:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  247:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-re
+turn-points-won-calculator.t
+sx
+  13:63  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  67:75  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  90:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  90:115  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:77  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:94  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:114  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:136  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  200:145  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  205:85  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  205:103  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:115  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:120  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  215:125  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-se
+rve-accuracy-calculator-inte
+ractive.tsx
+  104:32  Warning: 'acc' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-se
+rve-accuracy-calculator.tsx
+  38:110  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:119  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:122  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:133  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:139  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  38:144  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  43:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  43:75  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  67:60  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  67:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:69  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  200:116  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  205:105  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  215:145  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  225:110  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-se
+t-win-percentage-calculator-
+interactive.tsx
+  3:20  Warning: 
+'useEffect' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:18  Warning: 
+'TrendingUp' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:63  Warning: 
+'BarChart3' is defined but 
+never used.  @typescript-esl
+int/no-unused-vars
+  11:74  Warning: 'Shield' 
+is defined but never used.  
+@typescript-eslint/no-unused
+-vars
+  34:56  Error: Unexpected 
+any. Specify a different 
+type.  @typescript-eslint/no
+-explicit-any
+  284:61  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-se
+t-win-percentage-calculator.
+tsx
+  47:78  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  47:86  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:78  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  208:88  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  228:76  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  237:39  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  237:44  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:48  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  249:59  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  257:118  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  257:128  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  265:109  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  265:122  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:30  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  273:43  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+> ./src/components/calculato
+rs/sports-training/tennis-wi
+n-ratio-calculator-interacti
+ve.tsx
+  103:32  Warning: 'pct' is 
+defined but never used.  @ty
+pescript-eslint/no-unused-va
+rs
+  244:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  276:53  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  System.Management.Automati
+on.RemoteException
+> ./src/components/calculato
+rs/sports-training/tennis-wi
+n-ratio-calculator.tsx
+  3:18  Warning: 
+'AlertCircle' is defined 
+but never used.  @typescript
+-eslint/no-unused-vars
+  177:42  Error: 'Percent' 
+is not defined.  
+react/jsx-no-undef
+  206:91  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  206:101  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:49  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  222:57  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:131  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  227:141  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  250:135  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  250:147  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  250:244  Error: `'` can 
+be escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+  253:81  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  253:92  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  253:173  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+  253:188  Error: `"` can 
+be escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
+

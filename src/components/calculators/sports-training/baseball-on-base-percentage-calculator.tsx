@@ -10,7 +10,7 @@ export default function BaseballOnBasePercentageCalculator() {
             <div className="space-y-3">
                 <h1 className="text-3xl md:text-4xl font-bold">Baseball OBP Calculator</h1>
                 <p className="text-lg text-muted-foreground">
-                    Calculate On-Base Percentage (OBP) to reveal a player's true ability to avoid making an out.
+                    Calculate On-Base Percentage (OBP) to reveal a player&apos;s true ability to avoid making an out.
                 </p>
             </div>
 
@@ -201,13 +201,13 @@ export default function BaseballOnBasePercentageCalculator() {
                 <meta itemProp="datePublished" content="2026-02-19" />
 
                 <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Get On Base: Why OBP is King</h2>
-                <p className="text-lg italic text-muted-foreground">"He gets on base." In the modern era of baseball analytics, On-Base Percentage has largely surpassed Batting Average as the vital sign of a hitter's effectiveness.</p>
+                <p className="text-lg italic text-muted-foreground">&quot;He gets on base.&quot; In the modern era of baseball analytics, On-Base Percentage has largely surpassed Batting Average as the vital sign of a hitter&apos;s effectiveness.</p>
 
                 {/* TABLE OF CONTENTS */}
                 <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is On-Base Percentage?</a></li>
-                    <li><a href="#moneyball" className="hover:underline">The "Moneyball" Revolution</a></li>
+                    <li><a href="#moneyball" className="hover:underline">The &quot;Moneyball&quot; Revolution</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks for Success</a></li>
                     <li><a href="#obp-vs-avg" className="hover:underline">OBP vs. Batting Average</a></li>
                     <li><a href="#improving" className="hover:underline">How to Improve Your OBP</a></li>
@@ -217,12 +217,12 @@ export default function BaseballOnBasePercentageCalculator() {
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is On-Base Percentage?</h2>
-                <p><strong>On-Base Percentage (OBP)</strong> measures the proportion of plate appearances in which a batter reaches base safely essentially by any means other than a fielding error or fielder's choice. It answers the simple question: <em>How often does this player avoid making an out?</em></p>
+                <p><strong>On-Base Percentage (OBP)</strong> measures the proportion of plate appearances in which a batter reaches base safely essentially by any means other than a fielding error or fielder&apos;s choice. It answers the simple question: <em>How often does this player avoid making an out?</em></p>
 
                 <hr />
 
                 {/* MONEYBALL */}
-                <h2 id="moneyball" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Moneyball" Revolution</h2>
+                <h2 id="moneyball" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The &quot;Moneyball&quot; Revolution</h2>
                 <p>In the early 2000s, the Oakland Athletics and Billy Beane popularized the idea (derived from Bill James' sabermetrics) that OBP was significantly undervalued by the market compared to Batting Average.</p>
                 <p>The logic is irrefutable: <strong>You cannot score a run unless you get on base.</strong> A walk is as good as a single for the purposes of not making an out and extending the inning.</p>
 
@@ -258,10 +258,10 @@ export default function BaseballOnBasePercentageCalculator() {
                 <h2 id="improving" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Improve Your OBP</h2>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Plate Discipline</h3>
-                <p>The easiest way to raise OBP is to stop swinging at "pitcher's pitches." Learn to recognize spin and lay off curveballs in the dirt. Force the pitcher to come into the strike zone.</p>
+                <p>The easiest way to raise OBP is to stop swinging at &quot;pitcher&apos;s pitches.&quot; Learn to recognize spin and lay off curveballs in the dirt. Force the pitcher to come into the strike zone.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Work the Count</h3>
-                <p>Hitters perform better in "hitter's counts" (2-0, 3-1). By taking pitches early in the at-bat, you increase the likelihood of seeing a fastball down the middle later.</p>
+                <p>Hitters perform better in &quot;hitter&apos;s counts&quot; (2-0, 3-1). By taking pitches early in the at-bat, you increase the likelihood of seeing a fastball down the middle later.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Two-Strike Battling</h3>
                 <p>Spoiling tough pitches (fouling them off) keeps the at-bat alive. The longer an at-bat goes, the higher the probability of a mistake pitch or a walk.</p>
@@ -270,7 +270,7 @@ export default function BaseballOnBasePercentageCalculator() {
 
                 {/* LIMITATIONS */}
                 <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations of OBP</h2>
-                <p>While superior to AVG, OBP isn't perfect:</p>
+                <p>While superior to AVG, OBP isn&apos;t perfect:</p>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Speed Context:</strong> A walk for a fast runner is more valuable than a walk for a slow runner, but OBP treats them the same.</li>
                     <li><strong>Aggressiveness:</strong> Bases empty with 2 outs, a walk is great. But bases loaded down by 1 run, a walk forces in a run while a double scores 2-3. OBP doesn't account for "clutch" power hitting (which Slugging/OPS covers).</li>
@@ -312,7 +312,7 @@ export default function BaseballOnBasePercentageCalculator() {
                         </div>
 
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What is "OPS"?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is &quot;OPS&quot;?</h4>
                             <p className="text-muted-foreground">
                                 OPS stands for On-Base Plus Slugging. It is simply OBP + Slugging Percentage. It is widely considered the best simple metric for overall offensive production because it combines the ability to get on base (OBP) with power (SLG).
                             </p>
@@ -380,6 +380,6 @@ export default function BaseballOnBasePercentageCalculator() {
                     </div>
                 </CardContent>
             </Card>
-        </div>
+        </div >
     );
 }

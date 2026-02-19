@@ -212,7 +212,7 @@ export default function BaseballSluggingPercentageCalculator() {
                 <ul className="list-disc ml-6 space-y-2 text-primary">
                     <li><a href="#definition" className="hover:underline">What is Slugging Percentage?</a></li>
                     <li><a href="#difference" className="hover:underline">Slugging Percentage vs. Batting Average</a></li>
-                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a "Good" SLG?</a></li>
+                    <li><a href="#benchmarks" className="hover:underline">Benchmarks: What is a &quot;Good&quot; SLG?</a></li>
                     <li><a href="#strategies" className="hover:underline">Strategies to Increase Power</a></li>
                     <li><a href="#limitations" className="hover:underline">Limitations of SLG</a></li>
                 </ul>
@@ -234,7 +234,7 @@ export default function BaseballSluggingPercentageCalculator() {
 
                 {/* DIFFERENCE */}
                 <h2 id="difference" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Slugging Percentage vs. Batting Average</h2>
-                <p>Let's compare two hypothetical players with 100 At-Bats:</p>
+                <p>Let&apos;s compare two hypothetical players with 100 At-Bats:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-4">Player A (Contact Hitter)</h3>
                 <p>30 Singles, 0 Doubles, 0 Triples, 0 Home Runs.</p>
@@ -256,7 +256,7 @@ export default function BaseballSluggingPercentageCalculator() {
                 <hr />
 
                 {/* BENCHMARKS */}
-                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a "Good" SLG?</h2>
+                <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks: What is a &quot;Good&quot; SLG?</h2>
                 <p>Like Batting Average, context matters, but general MLB standards are:</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">Major League Baseball (MLB)</h3>
@@ -274,13 +274,13 @@ export default function BaseballSluggingPercentageCalculator() {
                 <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategies to Increase Power</h2>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Launch Angle</h3>
-                <p>Modern analytics emphasize hitting the ball in the air. Ground balls rarely result in extra-base hits. Generating a slight uppercut or "getting on plane" with the pitch allows hitters to drive the ball into the gaps or over the fence.</p>
+                <p>Modern analytics emphasize hitting the ball in the air. Ground balls rarely result in extra-base hits. Generating a slight uppercut or &quot;getting on plane&quot; with the pitch allows hitters to drive the ball into the gaps or over the fence.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Weight Transfer</h3>
-                <p>Power comes from the ground up. Efficiently transferring energy from the back leg to the front side during the swing generates bat speed. "Sit into" your legs and drive through the baseball.</p>
+                <p>Power comes from the ground up. Efficiently transferring energy from the back leg to the front side during the swing generates bat speed. &quot;Sit into&quot; your legs and drive through the baseball.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">3. Pitch Selection</h3>
-                <p>You can't slug a pitcher's pitch. High-SLG hitters are patient; they wait for a mistake over the heart of the plate that they can drive, rather than chasing breaking balls on the corners.</p>
+                <p>You can&apos;t slug a pitcher&apos;s pitch. High-SLG hitters are patient; they wait for a mistake over the heart of the plate that they can drive, rather than chasing breaking balls on the corners.</p>
 
                 <hr />
 

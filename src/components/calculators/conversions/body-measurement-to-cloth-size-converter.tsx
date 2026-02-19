@@ -23,13 +23,13 @@ const formSchema = z.object({
   bust: z.number().positive().optional(),
   hips: z.number().positive().optional(),
 }).refine(data => {
-    if (data.gender === 'men') {
-        return data.chest !== undefined && data.waist !== undefined;
-    }
-    return data.bust !== undefined && data.waist !== undefined && data.hips !== undefined;
+  if (data.gender === 'men') {
+    return data.chest !== undefined && data.waist !== undefined;
+  }
+  return data.bust !== undefined && data.waist !== undefined && data.hips !== undefined;
 }, {
-    message: "Please fill in all required measurements for the selected gender.",
-    path: ['chest'], // Arbitrary path to display the message
+  message: "Please fill in all required measurements for the selected gender.",
+  path: ['chest'], // Arbitrary path to display the message
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -59,37 +59,37 @@ export default function BodyMeasurementToClothSizeConverter() {
     const { unit, gender } = values;
 
     const toInches = (value?: number) => {
-        if (!value) return 0;
-        return unit === 'cm' ? value / 2.54 : value;
+      if (!value) return 0;
+      return unit === 'cm' ? value / 2.54 : value;
     };
 
     if (gender === 'men') {
-        let chest = toInches(values.chest);
-        let waist = toInches(values.waist);
+      let chest = toInches(values.chest);
+      let waist = toInches(values.waist);
 
-        let usShirt = Math.round(chest);
-        usShirt = usShirt % 2 !== 0 ? usShirt + 1 : usShirt; // Round to nearest even number
-        
-        const pantsWaist = Math.round(waist);
+      let usShirt = Math.round(chest);
+      usShirt = usShirt % 2 !== 0 ? usShirt + 1 : usShirt; // Round to nearest even number
 
-        setResult({
-            shirtSizes: { US: usShirt, UK: usShirt, EU: usShirt + 10, India: usShirt - 2, Japan: usShirt + 8 },
-            pantsSizes: { US: pantsWaist, UK: pantsWaist, EU: Math.round(waist * 2.54 + 10), India: Math.round(waist * 2.54 - 2), Japan: Math.round(waist * 2.54 + 4) }
-        });
+      const pantsWaist = Math.round(waist);
+
+      setResult({
+        shirtSizes: { US: usShirt, UK: usShirt, EU: usShirt + 10, India: usShirt - 2, Japan: usShirt + 8 },
+        pantsSizes: { US: pantsWaist, UK: pantsWaist, EU: Math.round(waist * 2.54 + 10), India: Math.round(waist * 2.54 - 2), Japan: Math.round(waist * 2.54 + 4) }
+      });
     } else {
-        let bust = toInches(values.bust);
-        let waist = toInches(values.waist);
+      let bust = toInches(values.bust);
+      let waist = toInches(values.waist);
 
-        let usTop = Math.round((bust - 32) * 1.5);
-        usTop = usTop % 2 !== 0 ? usTop + 1 : usTop;
+      let usTop = Math.round((bust - 32) * 1.5);
+      usTop = usTop % 2 !== 0 ? usTop + 1 : usTop;
 
-        let usBottom = Math.round(waist - 24);
-        usBottom = usBottom % 2 !== 0 ? usBottom + 1 : usBottom;
-        
-        setResult({
-            topSizes: { US: usTop, UK: usTop - 2, EU: usTop + 30, India: usTop + 26, Japan: usTop + 6 },
-            bottomSizes: { US: usBottom, UK: usBottom - 2, EU: usBottom + 30, India: usBottom + 26, Japan: usBottom + 6 }
-        });
+      let usBottom = Math.round(waist - 24);
+      usBottom = usBottom % 2 !== 0 ? usBottom + 1 : usBottom;
+
+      setResult({
+        topSizes: { US: usTop, UK: usTop - 2, EU: usTop + 30, India: usTop + 26, Japan: usTop + 6 },
+        bottomSizes: { US: usBottom, UK: usBottom - 2, EU: usBottom + 30, India: usBottom + 26, Japan: usBottom + 6 }
+      });
     }
   };
 
@@ -100,68 +100,68 @@ export default function BodyMeasurementToClothSizeConverter() {
           <Card>
             <CardHeader><CardTitle>Measurements</CardTitle></CardHeader>
             <CardContent className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField control={form.control} name="gender" render={({ field }) => (
+                  <FormItem><FormLabel>Gender</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="men">Men</SelectItem><SelectItem value="women">Women</SelectItem></SelectContent></Select></FormItem>
+                )} />
+                <FormField control={form.control} name="unit" render={({ field }) => (
+                  <FormItem><FormLabel>Unit</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="cm">Centimeters</SelectItem><SelectItem value="inch">Inches</SelectItem></SelectContent></Select></FormItem>
+                )} />
+              </div>
+              {gender === 'men' ? (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <FormField control={form.control} name="gender" render={({ field }) => (
-                        <FormItem><FormLabel>Gender</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue/></SelectTrigger></FormControl><SelectContent><SelectItem value="men">Men</SelectItem><SelectItem value="women">Women</SelectItem></SelectContent></Select></FormItem>
-                    )} />
-                    <FormField control={form.control} name="unit" render={({ field }) => (
-                        <FormItem><FormLabel>Unit</FormLabel><Select onValueChange={field.onChange} defaultValue={field.value}><FormControl><SelectTrigger><SelectValue /></SelectTrigger></FormControl><SelectContent><SelectItem value="cm">Centimeters</SelectItem><SelectItem value="inch">Inches</SelectItem></SelectContent></Select></FormItem>
-                    )} />
+                  <FormField control={form.control} name="chest" render={({ field }) => (<FormItem><FormLabel>Chest</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="waist" render={({ field }) => (<FormItem><FormLabel>Waist</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
                 </div>
-                 {gender === 'men' ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <FormField control={form.control} name="chest" render={({ field }) => (<FormItem><FormLabel>Chest</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
-                        <FormField control={form.control} name="waist" render={({ field }) => (<FormItem><FormLabel>Waist</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
-                    </div>
-                ) : (
-                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <FormField control={form.control} name="bust" render={({ field }) => (<FormItem><FormLabel>Bust</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
-                        <FormField control={form.control} name="waist" render={({ field }) => (<FormItem><FormLabel>Waist</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
-                        <FormField control={form.control} name="hips" render={({ field }) => (<FormItem><FormLabel>Hips</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
-                    </div>
-                )}
-                 {form.formState.errors.chest && <FormMessage>{form.formState.errors.chest.message}</FormMessage>}
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <FormField control={form.control} name="bust" render={({ field }) => (<FormItem><FormLabel>Bust</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="waist" render={({ field }) => (<FormItem><FormLabel>Waist</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
+                  <FormField control={form.control} name="hips" render={({ field }) => (<FormItem><FormLabel>Hips</FormLabel><FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl></FormItem>)} />
+                </div>
+              )}
+              {form.formState.errors.chest && <FormMessage>{form.formState.errors.chest.message}</FormMessage>}
             </CardContent>
           </Card>
           <Button type="submit">Convert</Button>
         </form>
       </Form>
       {result && 'shirtSizes' in result && (
-          <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Shirt className="h-8 w-8 text-primary" /><CardTitle>Men's Estimated Sizes</CardTitle></div></CardHeader>
-            <CardContent className="space-y-4">
-                 <div>
-                    <h3 className="font-semibold">Shirt Sizes</h3>
-                    <p>US: {result.shirtSizes.US}, UK: {result.shirtSizes.UK}, EU: {result.shirtSizes.EU}, India: {result.shirtSizes.India}, Japan: {result.shirtSizes.Japan}</p>
-                 </div>
-                 <div>
-                    <h3 className="font-semibold">Pants Sizes</h3>
-                    <p>US: {result.pantsSizes.US}, UK: {result.pantsSizes.UK}, EU: {result.pantsSizes.EU}, India: {result.pantsSizes.India}, Japan: {result.pantsSizes.Japan}</p>
-                 </div>
-                 <CardDescription className='pt-2'>Note: These are approximations. Sizes vary greatly by brand and fit.</CardDescription>
-            </CardContent>
-          </Card>
+        <Card className="mt-8">
+          <CardHeader><div className='flex items-center gap-4'><Shirt className="h-8 w-8 text-primary" /><CardTitle>Men&apos;s Estimated Sizes</CardTitle></div></CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h3 className="font-semibold">Shirt Sizes</h3>
+              <p>US: {result.shirtSizes.US}, UK: {result.shirtSizes.UK}, EU: {result.shirtSizes.EU}, India: {result.shirtSizes.India}, Japan: {result.shirtSizes.Japan}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Pants Sizes</h3>
+              <p>US: {result.pantsSizes.US}, UK: {result.pantsSizes.UK}, EU: {result.pantsSizes.EU}, India: {result.pantsSizes.India}, Japan: {result.pantsSizes.Japan}</p>
+            </div>
+            <CardDescription className='pt-2'>Note: These are approximations. Sizes vary greatly by brand and fit.</CardDescription>
+          </CardContent>
+        </Card>
       )}
-       {result && 'topSizes' in result && (
-          <Card className="mt-8">
-            <CardHeader><div className='flex items-center gap-4'><Shirt className="h-8 w-8 text-primary" /><CardTitle>Women's Estimated Sizes</CardTitle></div></CardHeader>
-            <CardContent className="space-y-4">
-                 <div>
-                    <h3 className="font-semibold">Top / Dress Sizes</h3>
-                    <p>US: {result.topSizes.US}, UK: {result.topSizes.UK}, EU: {result.topSizes.EU}, India: {result.topSizes.India}, Japan: {result.topSizes.Japan}</p>
-                 </div>
-                 <div>
-                    <h3 className="font-semibold">Bottom / Skirt Sizes</h3>
-                    <p>US: {result.bottomSizes.US}, UK: {result.bottomSizes.UK}, EU: {result.bottomSizes.EU}, India: {result.bottomSizes.India}, Japan: {result.bottomSizes.Japan}</p>
-                 </div>
-                 <CardDescription className='pt-2'>Note: These are approximations. Sizes vary greatly by brand and fit.</CardDescription>
-            </CardContent>
-          </Card>
+      {result && 'topSizes' in result && (
+        <Card className="mt-8">
+          <CardHeader><div className='flex items-center gap-4'><Shirt className="h-8 w-8 text-primary" /><CardTitle>Women&apos;s Estimated Sizes</CardTitle></div></CardHeader>
+          <CardContent className="space-y-4">
+            <div>
+              <h3 className="font-semibold">Top / Dress Sizes</h3>
+              <p>US: {result.topSizes.US}, UK: {result.topSizes.UK}, EU: {result.topSizes.EU}, India: {result.topSizes.India}, Japan: {result.topSizes.Japan}</p>
+            </div>
+            <div>
+              <h3 className="font-semibold">Bottom / Skirt Sizes</h3>
+              <p>US: {result.bottomSizes.US}, UK: {result.bottomSizes.UK}, EU: {result.bottomSizes.EU}, India: {result.bottomSizes.India}, Japan: {result.bottomSizes.Japan}</p>
+            </div>
+            <CardDescription className='pt-2'>Note: These are approximations. Sizes vary greatly by brand and fit.</CardDescription>
+          </CardContent>
+        </Card>
       )}
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">This calculator uses simplified formulas to estimate clothing sizes based on body measurements. It converts all measurements to a base unit (inches) and then applies different calculations for men's and women's clothing to approximate sizes in various international systems. These are rough estimates, as brand sizing can vary significantly.</AccordionContent>
+          <AccordionTrigger>How It Works</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground">This calculator uses simplified formulas to estimate clothing sizes based on body measurements. It converts all measurements to a base unit (inches) and then applies different calculations for men&apos;s and women&apos;s clothing to approximate sizes in various international systems. These are rough estimates, as brand sizing can vary significantly.</AccordionContent>
         </AccordionItem>
       </Accordion>
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
@@ -239,7 +239,7 @@ export default function BodyMeasurementToClothSizeConverter() {
 
         <h4 className='font-bold'>Common Mistakes to Avoid</h4>
         <ul className="list-disc list-inside text-sm pl-4 space-y-1">
-          <li>Relying only on “usual size”: Your normal size may not fit every brand or country.</li>
+          <li>Relying only on &quot;usual size&quot;: Your normal size may not fit every brand or country.</li>
           <li>Ignoring regional conversions: US, UK, EU, India, and Japan sizes differ.</li>
           <li>Not measuring hips or waist for bottoms: Skipping measurements can lead to poor fit.</li>
           <li>Forgetting material stretch: Tight-fitting fabrics may require sizing up.</li>
@@ -247,29 +247,29 @@ export default function BodyMeasurementToClothSizeConverter() {
 
         <h4 className='font-bold'>Benefits of Using a Body Measurement to Clothing Size Converter</h4>
         <ul className="list-disc list-inside text-sm pl-4 space-y-1">
-            <li>Provides accurate sizes for multiple regions.</li>
-            <li>Reduces returns and exchanges from online shopping.</li>
-            <li>Ensures comfort and proper fit for every garment.</li>
-            <li>Ideal for international shopping, gifts, and special occasions.</li>
+          <li>Provides accurate sizes for multiple regions.</li>
+          <li>Reduces returns and exchanges from online shopping.</li>
+          <li>Ensures comfort and proper fit for every garment.</li>
+          <li>Ideal for international shopping, gifts, and special occasions.</li>
         </ul>
 
         <h4 className='font-bold'>FAQ</h4>
-        <p className="text-sm"><strong>Q1: Can I use the same size for all brands?</strong><br/>No. Sizes vary by brand; always check brand-specific size charts.</p>
-        <p className="text-sm"><strong>Q2: Should I round up or down?</strong><br/>Round to the nearest practical size. When in doubt, choose slightly larger for comfort.</p>
-        <p className="text-sm"><strong>Q3: Do men and women converters differ?</strong><br/>Yes. Men’s sizes are based on chest/waist; women’s sizes include bust, waist, and hips.</p>
-        <p className="text-sm"><strong>Q4: Can I use this converter for kids or plus sizes?</strong><br/>This converter is designed for adult sizes; children and specialty sizes may need separate charts.</p>
+        <p className="text-sm"><strong>Q1: Can I use the same size for all brands?</strong><br />No. Sizes vary by brand; always check brand-specific size charts.</p>
+        <p className="text-sm"><strong>Q2: Should I round up or down?</strong><br />Round to the nearest practical size. When in doubt, choose slightly larger for comfort.</p>
+        <p className="text-sm"><strong>Q3: Do men and women converters differ?</strong><br />Yes. Men’s sizes are based on chest/waist; women’s sizes include bust, waist, and hips.</p>
+        <p className="text-sm"><strong>Q4: Can I use this converter for kids or plus sizes?</strong><br />This converter is designed for adult sizes; children and specialty sizes may need separate charts.</p>
 
         <h4 className='font-bold'>Conclusion</h4>
         <p className="text-sm">A body measurement to clothing size converter simplifies shopping by providing accurate sizes for US, UK, EU, India, and Japan. By measuring your chest/bust, waist, and hips correctly and using this tool, you can confidently purchase clothes that fit perfectly.</p>
         <p className="text-sm">Properly fitting clothing improves comfort, appearance, and confidence, whether you are buying casual wear, formal attire, or athletic apparel. Always measure, check the converter, and consult brand-specific charts for the best results.</p>
-      
+
         <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
-            <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
-            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
-            <li><Link href="/category/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
-            <li><Link href="/category/conversions/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
+          <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+          <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
+          <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
+          <li><Link href="/category/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
+          <li><Link href="/category/conversions/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
         </ul>
       </div>
     </div>

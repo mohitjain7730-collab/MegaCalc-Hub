@@ -40,18 +40,18 @@ export default function OperatingLeverageCalculator() {
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="contributionMargin" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Contribution Margin ($)</FormLabel>
-                  <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                  <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Contribution Margin ($)</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
             <FormField control={form.control} name="operatingIncome" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Operating Income (EBIT, $)</FormLabel>
-                  <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
-                  <FormMessage />
-                </FormItem>
+              <FormItem>
+                <FormLabel>Operating Income (EBIT, $)</FormLabel>
+                <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
+                <FormMessage />
+              </FormItem>
             )} />
           </div>
           <Button type="submit">Calculate DOL</Button>
@@ -71,7 +71,7 @@ export default function OperatingLeverageCalculator() {
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="how-it-works">
           <AccordionTrigger>How It Works</AccordionTrigger>
-          <AccordionContent className="text-muted-foreground">Operating leverage measures how sensitive a company's operating income is to a change in its sales. It's determined by the proportion of fixed costs to variable costs. This calculator divides the Contribution Margin (Sales - Variable Costs) by the Operating Income to find the DOL, a key metric for understanding business risk.</AccordionContent>
+          <AccordionContent className="text-muted-foreground">Operating leverage measures how sensitive a company&apos;s operating income is to a change in its sales. It&apos;s determined by the proportion of fixed costs to variable costs. This calculator divides the Contribution Margin (Sales - Variable Costs) by the Operating Income to find the DOL, a key metric for understanding business risk.</AccordionContent>
         </AccordionItem>
       </Accordion>
     </div>

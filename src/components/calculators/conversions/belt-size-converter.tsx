@@ -64,7 +64,7 @@ export default function BeltSizeConverter() {
     } else if (unit === 'cm' && newUnit === 'inch') {
       newWaist = currentWaist / 2.54;
     }
-    
+
     setValue('unit', newUnit);
     setValue('waist', parseFloat(newWaist.toFixed(1)));
   }
@@ -74,15 +74,15 @@ export default function BeltSizeConverter() {
   const step = unit === 'inch' ? 0.5 : 1;
 
   const sizeChartData = [
-      { waist: 28, us_uk: 30, eu: 76 },
-      { waist: 30, us_uk: 32, eu: 81 },
-      { waist: 32, us_uk: 34, eu: 86 },
-      { waist: 34, us_uk: 36, eu: 91 },
-      { waist: 36, us_uk: 38, eu: 97 },
-      { waist: 38, us_uk: 40, eu: 102 },
-      { waist: 40, us_uk: 42, eu: 107 },
-      { waist: 42, us_uk: 44, eu: 112 },
-      { waist: 44, us_uk: 46, eu: 117 },
+    { waist: 28, us_uk: 30, eu: 76 },
+    { waist: 30, us_uk: 32, eu: 81 },
+    { waist: 32, us_uk: 34, eu: 86 },
+    { waist: 34, us_uk: 36, eu: 91 },
+    { waist: 36, us_uk: 38, eu: 97 },
+    { waist: 38, us_uk: 40, eu: 102 },
+    { waist: 40, us_uk: 42, eu: 107 },
+    { waist: 42, us_uk: 44, eu: 112 },
+    { waist: 44, us_uk: 46, eu: 117 },
   ];
 
   return (
@@ -111,24 +111,24 @@ export default function BeltSizeConverter() {
               )}
             />
           </div>
-            <FormField
-              control={form.control}
-              name="waist"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Waist Size: {waist} {unit === 'inch' ? 'in' : 'cm'}</FormLabel>
-                  <FormControl>
-                    <Slider
-                      min={min}
-                      max={max}
-                      step={step}
-                      value={[field.value]}
-                      onValueChange={(vals) => field.onChange(vals[0])}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+          <FormField
+            control={form.control}
+            name="waist"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Waist Size: {waist} {unit === 'inch' ? 'in' : 'cm'}</FormLabel>
+                <FormControl>
+                  <Slider
+                    min={min}
+                    max={max}
+                    step={step}
+                    value={[field.value]}
+                    onValueChange={(vals) => field.onChange(vals[0])}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
         </form>
       </Form>
       {result && (
@@ -141,41 +141,41 @@ export default function BeltSizeConverter() {
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                <div className="p-3 border rounded-lg">
-                    <p className="font-semibold">US Size</p>
-                    <p className="text-xl font-bold">{result.us}"</p>
-                </div>
-                <div className="p-3 border rounded-lg">
-                    <p className="font-semibold">UK Size</p>
-                    <p className="text-xl font-bold">{result.uk}"</p>
-                </div>
-                <div className="p-3 border rounded-lg">
-                    <p className="font-semibold">EU Size</p>
-                    <p className="text-xl font-bold">{result.eu} cm</p>
-                </div>
+              <div className="p-3 border rounded-lg">
+                <p className="font-semibold">US Size</p>
+                <p className="text-xl font-bold">{result.us}&quot;</p>
+              </div>
+              <div className="p-3 border rounded-lg">
+                <p className="font-semibold">UK Size</p>
+                <p className="text-xl font-bold">{result.uk}&quot;</p>
+              </div>
+              <div className="p-3 border rounded-lg">
+                <p className="font-semibold">EU Size</p>
+                <p className="text-xl font-bold">{result.eu} cm</p>
+              </div>
             </div>
           </CardContent>
         </Card>
       )}
 
-       <Accordion type="single" collapsible defaultValue="how-it-works" className="w-full">
+      <Accordion type="single" collapsible defaultValue="how-it-works" className="w-full">
         <AccordionItem value="how-it-works">
-            <AccordionTrigger>How It Works</AccordionTrigger>
-            <AccordionContent className="text-muted-foreground">
-                <p>This calculator follows the standard convention for belt sizing:</p>
-                <ol className="list-decimal list-inside space-y-2 mt-2">
-                    <li>It takes your waist measurement (the size of your trousers/pants).</li>
-                    <li>It adds 2 inches to your waist size to determine the ideal belt size in inches. This extra length allows the belt to be comfortably buckled in the middle hole.</li>
-                    <li>It then converts this ideal inch-based size to its equivalent in other regional systems, such as centimeters for the EU market.</li>
-                </ol>
-            </AccordionContent>
+          <AccordionTrigger>How It Works</AccordionTrigger>
+          <AccordionContent className="text-muted-foreground">
+            <p>This calculator follows the standard convention for belt sizing:</p>
+            <ol className="list-decimal list-inside space-y-2 mt-2">
+              <li>It takes your waist measurement (the size of your trousers/pants).</li>
+              <li>It adds 2 inches to your waist size to determine the ideal belt size in inches. This extra length allows the belt to be comfortably buckled in the middle hole.</li>
+              <li>It then converts this ideal inch-based size to its equivalent in other regional systems, such as centimeters for the EU market.</li>
+            </ol>
+          </AccordionContent>
         </AccordionItem>
       </Accordion>
 
       <div className="space-y-4 prose prose-sm dark:prose-invert max-w-none">
         <h3 className='font-bold text-lg'>Ultimate Belt Size Guide: How to Choose the Perfect Belt for Men and Women</h3>
         <p className="text-sm">Finding the right belt size can be surprisingly tricky. Whether you are shopping online or in-store, wearing a belt that is too small or too large can ruin the look of an outfit and even be uncomfortable. This comprehensive guide will help you understand belt sizing, convert your waist size into US, UK, and EU belt sizes, and provide tips for choosing the perfect belt style for any occasion.</p>
-        
+
         <h4 className='font-bold'>Why Belt Size Matters</h4>
         <p className="text-sm">A belt is not just a functional accessory; it is a statement piece that enhances your outfit. Wearing the wrong size can:</p>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
@@ -195,7 +195,7 @@ export default function BeltSizeConverter() {
         <p className="text-sm">For example, if your waist is 32 inches, your recommended belt size is 34 inches (US/UK) or 86 cm (EU).</p>
 
         <h4 className='font-bold'>Step-by-Step Guide to Measuring Your Waist</h4>
-        <p className="text-sm">Before using a belt size converter, it’s essential to measure your waist accurately. Follow these steps:</p>
+        <p className="text-sm">Before using a belt size converter, it&apos;s essential to measure your waist accurately. Follow these steps:</p>
         <ol className="list-decimal list-inside text-sm space-y-1 pl-4">
           <li><strong>Use a soft measuring tape:</strong> Avoid rigid rulers; a flexible tape works best.</li>
           <li><strong>Measure at the natural waistline:</strong> This is usually the narrowest part of your waist, just above your belly button.</li>
@@ -204,36 +204,36 @@ export default function BeltSizeConverter() {
         </ol>
 
         <h4 className='font-bold'>Using a Belt Size Converter</h4>
-        <p className="text-sm">A belt size converter is a simple tool that converts your waist measurement into standard belt sizes. Here’s how it works:</p>
+        <p className="text-sm">A belt size converter is a simple tool that converts your waist measurement into standard belt sizes. Here&apos;s how it works:</p>
         <ol className="list-decimal list-inside text-sm space-y-1 pl-4">
-            <li>Enter your waist size in inches or centimeters.</li>
-            <li>Select the unit of measurement.</li>
-            <li>The calculator automatically provides your US, UK, and EU belt sizes.</li>
+          <li>Enter your waist size in inches or centimeters.</li>
+          <li>Select the unit of measurement.</li>
+          <li>The calculator automatically provides your US, UK, and EU belt sizes.</li>
         </ol>
         <p className="text-sm">This method eliminates the guesswork and ensures a perfect fit every time.</p>
 
         <h4 className='font-bold'>Belt Size Chart</h4>
         <p className="text-sm">For reference, here’s a general belt size chart for men and women:</p>
         <Table>
-            <TableHeader>
-                <TableRow>
-                    <TableHead>Waist (inches)</TableHead>
-                    <TableHead>US/UK Belt Size</TableHead>
-                    <TableHead>EU Belt Size (cm)</TableHead>
-                </TableRow>
-            </TableHeader>
-            <TableBody>
-                {sizeChartData.map(row => (
-                    <TableRow key={row.waist}>
-                        <TableCell>{row.waist}</TableCell>
-                        <TableCell>{row.us_uk}</TableCell>
-                        <TableCell>{row.eu}</TableCell>
-                    </TableRow>
-                ))}
-            </TableBody>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Waist (inches)</TableHead>
+              <TableHead>US/UK Belt Size</TableHead>
+              <TableHead>EU Belt Size (cm)</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {sizeChartData.map(row => (
+              <TableRow key={row.waist}>
+                <TableCell>{row.waist}</TableCell>
+                <TableCell>{row.us_uk}</TableCell>
+                <TableCell>{row.eu}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
         </Table>
         <p className="text-xs font-bold mt-2">💡 Tip: Always choose a belt where the middle hole aligns with your waist measurement.</p>
-        
+
         <h4 className='font-bold'>Types of Belts</h4>
         <p className="text-sm">Belts come in various styles, materials, and designs. Choosing the right type depends on the occasion and outfit.</p>
         <ol className="list-decimal list-inside text-sm space-y-1 pl-4">
@@ -253,32 +253,32 @@ export default function BeltSizeConverter() {
 
         <h4 className='font-bold'>Belt Fit Tips</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><strong>Middle Hole Rule:</strong> Ideally, the belt should fit snugly on the middle hole.</li>
-            <li><strong>Extra Holes:</strong> There should be 2–3 inches of belt beyond the buckle.</li>
-            <li><strong>Buckle Style:</strong> Larger buckles work well with casual belts, while smaller, sleek buckles suit formal wear.</li>
+          <li><strong>Middle Hole Rule:</strong> Ideally, the belt should fit snugly on the middle hole.</li>
+          <li><strong>Extra Holes:</strong> There should be 2–3 inches of belt beyond the buckle.</li>
+          <li><strong>Buckle Style:</strong> Larger buckles work well with casual belts, while smaller, sleek buckles suit formal wear.</li>
         </ul>
 
         <h4 className='font-bold'>How to Adjust Belt Size</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><strong>Punch extra holes:</strong> Use a leather punch to add holes if the belt is slightly too large.</li>
-            <li><strong>Belt Trimming:</strong> For leather belts, trim the end to reduce length if it’s too long.</li>
-            <li><strong>Belt Keepers:</strong> Small loops can hold excess belt length neatly.</li>
+          <li><strong>Punch extra holes:</strong> Use a leather punch to add holes if the belt is slightly too large.</li>
+          <li><strong>Belt Trimming:</strong> For leather belts, trim the end to reduce length if it’s too long.</li>
+          <li><strong>Belt Keepers:</strong> Small loops can hold excess belt length neatly.</li>
         </ul>
 
         <h4 className='font-bold'>Special Considerations</h4>
         <ol className="list-decimal list-inside text-sm space-y-1 pl-4">
-            <li><strong>Weight Fluctuations:</strong> Your belt size may change if your waist size fluctuates. It’s advisable to measure your waist periodically and adjust your belts accordingly.</li>
-            <li><strong>Belt Material Stretch:</strong> Some materials, like soft leather or fabric, may stretch over time. Consider this when selecting a size—choosing a slightly tighter fit may be preferable.</li>
-            <li><strong>Shopping Online:</strong> When buying belts online, always check size conversion charts. Our belt size converter is especially useful for international purchases where sizes differ between US, UK, and EU standards.</li>
+          <li><strong>Weight Fluctuations:</strong> Your belt size may change if your waist size fluctuates. It’s advisable to measure your waist periodically and adjust your belts accordingly.</li>
+          <li><strong>Belt Material Stretch:</strong> Some materials, like soft leather or fabric, may stretch over time. Consider this when selecting a size—choosing a slightly tighter fit may be preferable.</li>
+          <li><strong>Shopping Online:</strong> When buying belts online, always check size conversion charts. Our belt size converter is especially useful for international purchases where sizes differ between US, UK, and EU standards.</li>
         </ol>
 
         <h4 className='font-bold'>Belt Fashion Tips</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><strong>Match belt with shoes:</strong> This is especially important for formal occasions.</li>
-            <li><strong>Contrast belt with pants:</strong> For a modern casual look, choose a belt that contrasts with your trousers.</li>
-            <li><strong>Avoid over-tightening:</strong> A belt should be snug but comfortable to sit and move in.</li>
+          <li><strong>Match belt with shoes:</strong> This is especially important for formal occasions.</li>
+          <li><strong>Contrast belt with pants:</strong> For a modern casual look, choose a belt that contrasts with your trousers.</li>
+          <li><strong>Avoid over-tightening:</strong> A belt should be snug but comfortable to sit and move in.</li>
         </ul>
-        
+
         <h4 className='font-bold'>Common Belt Size Mistakes</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
           <li>Buying belts based on pants size: Pants size is not always the same as waist size.</li>
@@ -288,29 +288,29 @@ export default function BeltSizeConverter() {
 
         <h4 className='font-bold'>Why Use a Belt Size Converter</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li>Eliminates guesswork and ensures a perfect fit.</li>
-            <li>Saves time and avoids returns when shopping online.</li>
-            <li>Helps you choose the correct size for any brand or country.</li>
-            <li>Reduces frustration caused by inconsistent sizing across manufacturers.</li>
+          <li>Eliminates guesswork and ensures a perfect fit.</li>
+          <li>Saves time and avoids returns when shopping online.</li>
+          <li>Helps you choose the correct size for any brand or country.</li>
+          <li>Reduces frustration caused by inconsistent sizing across manufacturers.</li>
         </ul>
-        
+
         <h4 className='font-bold'>FAQ: Belt Size</h4>
-        <p className="text-sm"><strong>Q1: How do I know my belt size if I only know my pants size?</strong><br/>Measure your waist at the natural waistline and add 2 inches for US/UK sizing. Use a belt size converter for accurate results.</p>
-        <p className="text-sm"><strong>Q2: Can I wear a smaller belt and stretch it?</strong><br/>Not recommended. Stretching can damage the belt and shorten its lifespan.</p>
-        <p className="text-sm"><strong>Q3: Are men's and women's belts sized differently?</strong><br/>Men’s belts usually follow the US/UK/EU system, while women’s belts may use smaller sizing or adjustable options. Always measure the waist to confirm.</p>
-        <p className="text-sm"><strong>Q4: How do I measure for a formal belt?</strong><br/>Measure your waist where you normally wear trousers. The middle hole should align with this measurement.</p>
-        
+        <p className="text-sm"><strong>Q1: How do I know my belt size if I only know my pants size?</strong><br />Measure your waist at the natural waistline and add 2 inches for US/UK sizing. Use a belt size converter for accurate results.</p>
+        <p className="text-sm"><strong>Q2: Can I wear a smaller belt and stretch it?</strong><br />Not recommended. Stretching can damage the belt and shorten its lifespan.</p>
+        <p className="text-sm"><strong>Q3: Are men&apos;s and women&apos;s belts sized differently?</strong><br />Men&apos;s belts usually follow the US/UK/EU system, while women&apos;s belts may use smaller sizing or adjustable options. Always measure the waist to confirm.</p>
+        <p className="text-sm"><strong>Q4: How do I measure for a formal belt?</strong><br />Measure your waist where you normally wear trousers. The middle hole should align with this measurement.</p>
+
         <h4 className='font-bold'>Conclusion</h4>
         <p className="text-sm">Choosing the correct belt size is essential for both comfort and style. By measuring your waist accurately and using a belt size converter, you can ensure a perfect fit every time. Understanding US, UK, and EU belt sizes, along with the proper style and width, will help you select belts that complement your wardrobe effortlessly.</p>
         <p className="text-sm">Whether you are buying belts for casual wear, formal attire, or designer fashion, this guide equips you with everything you need to know to look sharp and feel comfortable.</p>
 
         <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
-            <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
-            <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
-            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
-            <li><Link href="/category/conversions/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
+          <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+          <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
+          <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
+          <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
+          <li><Link href="/category/conversions/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
         </ul>
       </div>
     </div>

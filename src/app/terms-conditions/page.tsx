@@ -46,7 +46,7 @@ export default function TermsConditionsPage() {
         <div className="prose dark:prose-invert max-w-none space-y-6">
           <section>
             <p className="text-base leading-relaxed">
-              Welcome to Mycalculating.com ("we," "our," or "us"). These Terms and Conditions ("Terms") govern your access to and use of our website, including all calculator tools, content, and services (collectively, the "Service"). By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of these Terms, then you may not access the Service.
+              Welcome to Mycalculating.com (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;). These Terms and Conditions (&quot;Terms&quot;) govern your access to and use of our website, including all calculator tools, content, and services (collectively, the &quot;Service&quot;). By accessing or using our Service, you agree to be bound by these Terms. If you disagree with any part of these Terms, then you may not access the Service.
             </p>
           </section>
 
@@ -67,7 +67,7 @@ export default function TermsConditionsPage() {
               <li>Use the materials for any commercial purpose or for any public display (commercial or non-commercial)</li>
               <li>Attempt to decompile or reverse engineer any software contained on the website</li>
               <li>Remove any copyright or other proprietary notations from the materials</li>
-              <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+              <li>Transfer the materials to another person or &quot;mirror&quot; the materials on any other server</li>
             </ul>
             <p className="text-base leading-relaxed mt-4">
               This license shall automatically terminate if you violate any of these restrictions and may be terminated by us at any time.
@@ -81,7 +81,7 @@ export default function TermsConditionsPage() {
               While we strive to provide accurate calculator tools and results:
             </p>
             <ul className="list-disc ml-6 space-y-2 text-base leading-relaxed">
-              <li>All calculator results are provided "as is" without warranties of any kind</li>
+              <li>All calculator results are provided &quot;as is&quot; without warranties of any kind</li>
               <li>Results are informational estimates based on the data you provide. They are not a substitute for professional medical, financial, legal, or other expert advice</li>
               <li>We do not guarantee the accuracy, completeness, or usefulness of any calculator results</li>
               <li>You should always consult with qualified professionals for advice specific to your situation</li>
@@ -115,7 +115,7 @@ export default function TermsConditionsPage() {
           <section>
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">5. User Conduct</h2>
             <p className="text-base leading-relaxed">
-              You agree to use our Service only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the Service. Prohibited behavior includes:
+              You agree to use our Service only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else&apos;s use and enjoyment of the Service. Prohibited behavior includes:
             </p>
             <ul className="list-disc ml-6 space-y-2 text-base leading-relaxed">
               <li>Harassing, abusing, or harming other users</li>
@@ -140,7 +140,7 @@ export default function TermsConditionsPage() {
           <section>
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">7. Disclaimer of Warranties</h2>
             <p className="text-base leading-relaxed">
-              The information on this website is provided on an "as is" basis. To the fullest extent permitted by law, we:
+              The information on this website is provided on an &quot;as is&quot; basis. To the fullest extent permitted by law, we:
             </p>
             <ul className="list-disc ml-6 space-y-2 text-base leading-relaxed">
               <li>Exclude all representations, warranties, and conditions relating to our website and the use of this website</li>
@@ -167,7 +167,7 @@ export default function TermsConditionsPage() {
           <section>
             <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">9. Indemnification</h2>
             <p className="text-base leading-relaxed">
-              You agree to defend, indemnify, and hold harmless Mycalculating.com and its licensee and licensors, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees), resulting from or arising out of:
+              You agree to defend, indemnify, and hold harmless Mycalculating.com and its licensee and licensors, and their employees, contractors, agents, officers and directors, from and against any and all claims, damages, obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney&apos;s fees), resulting from or arising out of:
             </p>
             <ul className="list-disc ml-6 space-y-2 text-base leading-relaxed">
               <li>Your use and access of the Service</li>

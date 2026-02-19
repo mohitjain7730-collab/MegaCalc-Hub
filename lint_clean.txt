@@ -42,6 +42,33 @@ rs
 but never used.  @typescript
 -eslint/no-unused-vars
 
+./src/app/contact/page.tsx
+55:107  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+84:17  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+84:141  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+167:33  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+167:133  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
 ./src/app/images/[[...path]]
 /route.ts
 8:21  Warning: '_request' 
@@ -63,6 +90,64 @@ eslint-disable directive
 (no problems were reported 
 from 'react/no-danger').
 
+./src/app/privacy-policy/pag
+e.tsx
+49:45  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:49  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:61  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:64  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+113:23  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+155:23  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+168:85  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+191:165  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+191:178  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
 ./src/app/site-map/page.tsx
 4:33  Warning: 'BookOpen' 
 is defined but never used.  
@@ -78,12 +163,232 @@ a value but never used.  @ty
 pescript-eslint/no-unused-va
 rs
 
+./src/app/terms-conditions/p
+age.tsx
+49:45  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:49  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:51  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:56  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:61  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:64  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:96  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:102  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:224  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:232  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+70:63  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+70:70  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+84:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+84:61  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+118:152  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+143:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+143:71  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+170:327  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
 ./src/components/article-sch
 ema-injector.tsx
 6:12  Error: Unexpected 
 any. Specify a different 
 type.  @typescript-eslint/no
 -explicit-any
+
+./src/components/calculator-
+sidebar.tsx
+70:10  Error: Error: Cannot 
+create components during 
+render
+
+Components created during 
+render will reset their 
+state each time they are 
+created. Declare components 
+outside of render.
+
+D:\MegaCalc-Hub\src\componen
+ts\calculator-sidebar.tsx:70
+:10
+  68 |       {/* Desktop 
+Sidebar */}
+  69 |       <aside 
+className="hidden lg:flex 
+fixed left-0 top-14 
+bottom-0 w-64 bg-background 
+border-r z-30 
+overflow-hidden">
+> 70 |         
+<SidebarContent />
+     |          
+^^^^^^^^^^^^^^ This 
+component is created during 
+render
+  71 |       </aside>
+  72 |
+  73 |       {/* Mobile 
+Dropdown */}
+
+D:\MegaCalc-Hub\src\componen
+ts\calculator-sidebar.tsx:27
+:26
+  25 |   const [mobileOpen, 
+setMobileOpen] = 
+useState(false);
+  26 |
+> 27 |   const 
+SidebarContent = () => (
+     |                      
+    ^^^^^^^
+> 28 |     <div 
+className="flex flex-col 
+h-full">
+     | ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+> 29 |       {/* Calculator 
+Categories */}
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+> 63 |     </div>
+     | ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+> 64 |   );
+     | ^^^^ The component 
+is created during render 
+here
+  65 |
+  66 |   return (
+  67 |     <>  react-hooks/s
+tatic-components
+91:16  Error: Error: Cannot 
+create components during 
+render
+
+Components created during 
+render will reset their 
+state each time they are 
+created. Declare components 
+outside of render.
+
+D:\MegaCalc-Hub\src\componen
+ts\calculator-sidebar.tsx:91
+:16
+  89 |             
+</SheetHeader>
+  90 |             <div 
+className="overflow-y-auto">
+> 91 |               
+<SidebarContent />
+     |                
+^^^^^^^^^^^^^^ This 
+component is created during 
+render
+  92 |             </div>
+  93 |           
+</SheetContent>
+  94 |         </Sheet>
+
+D:\MegaCalc-Hub\src\componen
+ts\calculator-sidebar.tsx:27
+:26
+  25 |   const [mobileOpen, 
+setMobileOpen] = 
+useState(false);
+  26 |
+> 27 |   const 
+SidebarContent = () => (
+     |                      
+    ^^^^^^^
+> 28 |     <div 
+className="flex flex-col 
+h-full">
+     | ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+> 29 |       {/* Calculator 
+Categories */}
+     ΓÇª
+     | ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+> 63 |     </div>
+     | ^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^
+> 64 |   );
+     | ^^^^ The component 
+is created during render 
+here
+  65 |
+  66 |   return (
+  67 |     <>  react-hooks/s
+tatic-components
 
 ./src/components/calculators
 /biology/cell-dilution-calcu
@@ -129,6 +434,36 @@ on-calculator.tsx
 defined but never used.  @ty
 pescript-eslint/no-unused-va
 rs
+68:173  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+68:175  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+68:196  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+68:198  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+68:241  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+68:243  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /biology/registry.tsx
@@ -144,6 +479,72 @@ is defined but never used.
 any. Specify a different 
 type.  @typescript-eslint/no
 -explicit-any
+
+./src/components/calculators
+/business-startup/break-even
+-point-calculator.tsx
+94:116  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+94:136  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/business-startup/contributi
+on-margin-calculator.tsx
+77:169  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/business-startup/customer-a
+cquisition-cost-calculator.t
+sx
+81:124  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+81:297  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/business-startup/dscr-calcu
+lator.tsx
+74:97  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+74:131  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/business-startup/operating-
+leverage-calculator.tsx
+74:114  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+74:165  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /business-startup/registry.t
@@ -228,6 +629,21 @@ pescript-eslint/no-unused-va
 rs
 
 ./src/components/calculators
+/cognitive-psychology/mental
+-fatigue-index-calculator.ts
+x
+81:65  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+81:72  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
 /cognitive-psychology/person
 ality-trait-calculator.tsx
 9:61  Warning: 
@@ -256,7 +672,7 @@ ts\calculators\cognitive-psy
 chology\personality-trait-ca
 lculator.tsx:85:18
   83 |   };
-  84 |
+  84 |   
 > 85 |   const values = 
 form.watch();
      |                  
@@ -269,6 +685,16 @@ cannot be memoized safely.
   88 |     <div 
 className="space-y-8">  reac
 t-hooks/incompatible-library
+135:24  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+135:33  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /cognitive-psychology/regist
@@ -285,6 +711,114 @@ is defined but never used.
 any. Specify a different 
 type.  @typescript-eslint/no
 -explicit-any
+
+./src/components/calculators
+/cognitive-psychology/sleep-
+debt-calculator.tsx
+110:50  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+110:59  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+110:68  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/cognitive-psychology/stress
+-level-index-calculator.tsx
+116:192  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/cognitive-psychology/stroop
+-effect-reaction-time-calcul
+ator.tsx
+49:137  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+49:142  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+57:105  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+57:130  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+57:135  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:132  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:138  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:140  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:147  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:152  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:156  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:230  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+78:234  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+79:175  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+79:195  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /conversions/angle-converter
@@ -328,6 +862,56 @@ watchedValues.fromUnit &&
 watchedValues.toUnit) {  rea
 ct-hooks/incompatible-librar
 y
+170:186  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+242:196  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+246:89  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+246:116  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+249:62  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+249:70  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+250:120  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+250:184  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+250:197  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+250:205  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /conversions/area-converter.
@@ -391,6 +975,56 @@ escaped with `&apos;`,
 `&rsquo;`.  
 react/no-unescaped-entities
 259:124  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+262:55  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+262:67  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+262:81  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+262:93  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+263:80  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+263:92  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+263:134  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+263:146  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/conversions/astronomical-un
+its-to-kilometers-converter.
+tsx
+115:106  Error: `'` can be 
 escaped with `&apos;`, 
 `&lsquo;`, `&#39;`, 
 `&rsquo;`.  
@@ -459,6 +1093,26 @@ prefer-const
 never reassigned. Use 
 'const' instead.  
 prefer-const
+146:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+150:65  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+300:51  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+300:63  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /conversions/body-measuremen
@@ -500,22 +1154,99 @@ cannot be memoized safely.
   59 |     const { unit, 
 gender } = values;  react-ho
 oks/incompatible-library
-67:11  Error: 'chest' is 
+67:13  Error: 'chest' is 
 never reassigned. Use 
 'const' instead.  
 prefer-const
-68:11  Error: 'waist' is 
+68:13  Error: 'waist' is 
 never reassigned. Use 
 'const' instead.  
 prefer-const
-80:11  Error: 'bust' is 
+80:13  Error: 'bust' is 
 never reassigned. Use 
 'const' instead.  
 prefer-const
-81:11  Error: 'waist' is 
+81:13  Error: 'waist' is 
 never reassigned. Use 
 'const' instead.  
 prefer-const
+131:122  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+147:124  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+164:261  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+164:273  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/conversions/calories-to-jou
+les-converter.tsx
+120:98  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+120:106  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/conversions/calories-to-kil
+ocalories-converter.tsx
+112:32  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+112:40  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+112:96  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+112:108  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+
+./src/components/calculators
+/conversions/carats-to-grams
+-converter.tsx
+115:89  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+115:125  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
+115:132  Error: `"` can be 
+escaped with `&quot;`, 
+`&ldquo;`, `&#34;`, 
+`&rdquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /conversions/chemical-concen
@@ -560,6 +1291,16 @@ watchedValues.fromUnit &&
 watchedValues.toUnit) {  rea
 ct-hooks/incompatible-librar
 y
+233:134  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
+233:175  Error: `'` can be 
+escaped with `&apos;`, 
+`&lsquo;`, `&#39;`, 
+`&rsquo;`.  
+react/no-unescaped-entities
 
 ./src/components/calculators
 /conversions/cloth-size-conv

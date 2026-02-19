@@ -205,7 +205,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                     <li><a href="#definition" className="hover:underline">What is Field Goal Percentage?</a></li>
                     <li><a href="#calculation" className="hover:underline">How to Calculate FG%</a></li>
                     <li><a href="#benchmarks" className="hover:underline">Benchmarks by Position: Guard vs. Center</a></li>
-                    <li><a href="#limitations" className="hover:underline">The "Deandre Jordan Effect" (Limitations)</a></li>
+                    <li><a href="#limitations" className="hover:underline">The &quot;Deandre Jordan Effect&quot; (Limitations)</a></li>
                     <li><a href="#efg" className="hover:underline">FG% vs. Effective Field Goal Percentage (eFG%)</a></li>
                     <li><a href="#improvement" className="hover:underline">Strategies to Improve Your FG%</a></li>
                     <li><a href="#shot-selection" className="hover:underline">The Art of Shot Selection</a></li>
@@ -214,8 +214,8 @@ export default function BasketballFieldGoalPercentageCalculator() {
 
                 {/* DEFINITION */}
                 <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Field Goal Percentage?</h2>
-                <p><strong>Field Goal Percentage (FG%)</strong> is the ratio of field goals made to field goals attempted. In basketball, a "field goal" is any shot scored from the court during live play, including 2-pointers (layups, dunks, mid-range jumpshots) and 3-pointers. Free throws do not count as field goals.</p>
-                <p>This statistic serves as the primary indicator of a player's or team's shooting accuracy. A high FG% generally suggests an efficient offense that generates high-quality shots, while a low FG% often indicates forced shots or poor execution.</p>
+                <p><strong>Field Goal Percentage (FG%)</strong> is the ratio of field goals made to field goals attempted. In basketball, a &quot;field goal&quot; is any shot scored from the court during live play, including 2-pointers (layups, dunks, mid-range jumpshots) and 3-pointers. Free throws do not count as field goals.</p>
+                <p>This statistic serves as the primary indicator of a player&apos;s or team&apos;s shooting accuracy. A high FG% generally suggests an efficient offense that generates high-quality shots, while a low FG% often indicates forced shots or poor execution.</p>
 
                 {/* CALCULATION */}
                 <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Calculate FG%</h2>
@@ -267,13 +267,13 @@ export default function BasketballFieldGoalPercentageCalculator() {
                 <hr />
 
                 {/* LIMITATIONS */}
-                <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The "Deandre Jordan Effect" (Limitations)</h2>
-                <p>FG% can be misleading without context. A center who only dunks the ball might shoot 70%, while a superstar guard who carries the offense with difficult 3-pointers shoots 45%. Is the center a "better" shooter? No.</p>
+                <h2 id="limitations" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The &quot;Deandre Jordan Effect&quot; (Limitations)</h2>
+                <p>FG% can be misleading without context. A center who only dunks the ball might shoot 70%, while a superstar guard who carries the offense with difficult 3-pointers shoots 45%. Is the center a &quot;better&quot; shooter? No.</p>
 
                 <p><strong>Key Limitations:</strong></p>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Volume:</strong> Low-volume players often have inflated percentages.</li>
-                    <li><strong>Shot Difficulty:</strong> FG% doesn't account for the difficulty of the shot created.</li>
+                    <li><strong>Shot Difficulty:</strong> FG% doesn&apos;t account for the difficulty of the shot created.</li>
                     <li><strong>3-Point Disadvantage:</strong> A player shooting 40% from 3 is more valuable than a player shooting 45% from 2, but raw FG% penalizes the 3-point shooter.</li>
                 </ul>
 
@@ -287,7 +287,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
 
                 {/* IMPROVEMENT */}
                 <h2 id="improvement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategies to Improve Your FG%</h2>
-                <p>Improving efficiency isn't just about "shooting better"—it's about playing smarter.</p>
+                <p>Improving efficiency isn&apos;t just about &quot;shooting better&quot;—it&apos;s about playing smarter.</p>
 
                 <h3 className="text-xl font-semibold text-foreground mt-6">1. Improve Shot Selection</h3>
                 <p>The fastest way to raise your FG% is to eliminate low-percentage shots. Avoid contested long 2s. Prioritize layups and open catch-and-shoot 3s.</p>
@@ -295,22 +295,22 @@ export default function BasketballFieldGoalPercentageCalculator() {
                 <h3 className="text-xl font-semibold text-foreground mt-6">2. Move Without the Ball</h3>
                 <p>Stationary targets are easy to guard. Cutting to the basket or relocating on the perimeter gets you easier, open looks, which are statistically more likely to go in.</p>
 
-                <h3 className="text-xl font-semibold text-foreground mt-6">3. Develop a "Go-To" Move</h3>
+                <h3 className="text-xl font-semibold text-foreground mt-6">3. Develop a &quot;Go-To&quot; Move</h3>
                 <p>Having one unstoppable move (like a floater or a drop-step) that you can execute at a high percentage gives you a safety valve when the offense breaks down.</p>
 
                 {/* SHOT SELECTION */}
                 <h2 id="shot-selection" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Art of Shot Selection</h2>
-                <p>Shot selection is the mental component of FG%. A "good shot" varies by player:</p>
+                <p>Shot selection is the mental component of FG%. A &quot;good shot&quot; varies by player:</p>
                 <ul className="list-disc ml-6 space-y-2">
                     <li><strong>Range:</strong> Only take shots you practice. If you shoot 20% from 3 in practice, don't take them in games.</li>
-                    <li><strong>Context:</strong> A contested jumper with 2 seconds on the shot clock is a "good shot." The same shot with 18 seconds left is a "bad shot."</li>
+                    <li><strong>Context:</strong> A contested jumper with 2 seconds on the shot clock is a &quot;good shot.&quot; The same shot with 18 seconds left is a &quot;bad shot.&quot;</li>
                     <li><strong>Rhythm:</strong> Stepping into a shot in rhythm yields higher percentages than hesitating.</li>
                 </ul>
 
                 <hr />
 
                 <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Summary</h2>
-                <p>Field Goal Percentage (FG%) is the baseline metric of basketball efficiency. While advanced stats like eFG% and True Shooting % (TS%) offer more nuance, FG% remains the universal language for "making shots." By understanding your role, refining your shot selection, and mastering your mechanics, you can maximize your FG% and become a more valuable asset to any team.</p>
+                <p>Field Goal Percentage (FG%) is the baseline metric of basketball efficiency. While advanced stats like eFG% and True Shooting % (TS%) offer more nuance, FG% remains the universal language for &quot;making shots.&quot; By understanding your role, refining your shot selection, and mastering your mechanics, you can maximize your FG% and become a more valuable asset to any team.</p>
             </section>
 
             {/* FAQ Section */}
@@ -369,7 +369,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                             </p>
                         </div>
                         <div>
-                            <h4 className="font-semibold text-lg mb-3">What is a "Field Goal"?</h4>
+                            <h4 className="font-semibold text-lg mb-3">What is a &quot;Field Goal&quot;?</h4>
                             <p className="text-muted-foreground">
                                 A field goal is any basket scored on any shot other than a free throw. It includes 2-point shots (dunks, layups, jumpers) and 3-point shots.
                             </p>
@@ -426,7 +426,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                                     <p className="text-sm text-muted-foreground">
                                         Player shoots 8/25, mostly contested jumpers. <br />
                                         FG% = 32%. <br />
-                                        <strong>Analysis:</strong> Hurts the offense; "shooting the team out of the game".
+                                        <strong>Analysis:</strong> Hurts the offense; &quot;shooting the team out of the game&quot;.
                                     </p>
                                 </div>
                             </div>
