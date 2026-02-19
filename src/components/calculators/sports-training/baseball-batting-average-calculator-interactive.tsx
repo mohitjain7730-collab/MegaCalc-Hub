@@ -46,7 +46,7 @@ export default function BaseballBattingAverageCalculatorInteractive() {
 
     const calculate = (v: FormValues) => {
         if (v.hits == null || v.atBats == null) return null;
-        if (v.atBats === 0) return 0;
+        if (v.atBats === 0) return { value: 0, formatted: ".000" };
 
         const avg = v.hits / v.atBats;
 
