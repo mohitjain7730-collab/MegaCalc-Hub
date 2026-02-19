@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Target, AlertCircle, Info, Calculator, BarChart3, TrendingUp, Zap, CheckCircle2 } from 'lucide-react';
+import { Target, AlertCircle, Info, Calculator, BarChart3, TrendingUp, Zap, CheckCircle2, Users } from 'lucide-react';
 import BasketballThreePointPercentageCalculatorInteractive from './basketball-three-point-percentage-calculator-interactive';
 
 export default function BasketballThreePointPercentageCalculator() {
