@@ -112,6 +112,14 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'tennis-return-points-won-calculator': lazy(() => import('./tennis-return-points-won-calculator')),
   'tennis-hold-percentage-calculator-interactive': lazy(() => import('./tennis-hold-percentage-calculator-interactive')),
   'tennis-hold-percentage-calculator': lazy(() => import('./tennis-hold-percentage-calculator')),
+  'tennis-elo-rating-calculator-interactive': lazy(() => import('./tennis-elo-rating-calculator-interactive')),
+  'tennis-elo-rating-calculator': lazy(() => import('./tennis-elo-rating-calculator')),
+  'tennis-set-win-percentage-calculator-interactive': lazy(() => import('./tennis-set-win-percentage-calculator-interactive')),
+  'tennis-set-win-percentage-calculator': lazy(() => import('./tennis-set-win-percentage-calculator')),
+  'baseball-batting-average-calculator-interactive': lazy(() => import('./baseball-batting-average-calculator-interactive')),
+  'baseball-batting-average-calculator': lazy(() => import('./baseball-batting-average-calculator')),
+  'baseball-on-base-percentage-calculator-interactive': lazy(() => import('./baseball-on-base-percentage-calculator-interactive')),
+  'baseball-on-base-percentage-calculator': lazy(() => import('./baseball-on-base-percentage-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
