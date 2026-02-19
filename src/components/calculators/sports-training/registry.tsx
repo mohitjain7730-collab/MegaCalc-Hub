@@ -96,6 +96,14 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'team-batting-average-calculator': lazy(() => import('./team-batting-average-calculator')),
   'team-run-rate-calculator-interactive': lazy(() => import('./team-run-rate-calculator-interactive')),
   'team-run-rate-calculator': lazy(() => import('./team-run-rate-calculator')),
+  'tennis-first-serve-percentage-calculator-interactive': lazy(() => import('./tennis-first-serve-percentage-calculator-interactive')),
+  'tennis-first-serve-percentage-calculator': lazy(() => import('./tennis-first-serve-percentage-calculator')),
+  'tennis-break-point-conversion-rate-calculator-interactive': lazy(() => import('./tennis-break-point-conversion-rate-calculator-interactive')),
+  'tennis-break-point-conversion-rate-calculator': lazy(() => import('./tennis-break-point-conversion-rate-calculator')),
+  'tennis-win-ratio-calculator-interactive': lazy(() => import('./tennis-win-ratio-calculator-interactive')),
+  'tennis-win-ratio-calculator': lazy(() => import('./tennis-win-ratio-calculator')),
+  'tennis-aces-per-match-calculator-interactive': lazy(() => import('./tennis-aces-per-match-calculator-interactive')),
+  'tennis-aces-per-match-calculator': lazy(() => import('./tennis-aces-per-match-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
