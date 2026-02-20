@@ -280,5 +280,245 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "basketball-free-throw-percentage-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Basketball Free Throw Percentage (FT%) instantly. Measure shooting consistency, reliability under pressure, and clutch performance from the charity stripe."
+    },
+    {
+        "id": 10036,
+        "name": "Basketball True Shooting Percentage Calculator",
+        "description": "Calculate true shooting percentage (TS%) to measure overall scoring efficiency including 2-pointers, 3-pointers, and free throws.",
+        "slug": "basketball-true-shooting-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball True Shooting Percentage (TS%) instantly. Measure overall scoring efficiency accounting for all shot types and free throws with expert analysis."
+    },
+    {
+        "id": 10037,
+        "name": "Basketball Player Efficiency Rating Calculator",
+        "description": "Calculate player efficiency rating (PER) to measure per-minute performance across all statistical categories.",
+        "slug": "basketball-player-efficiency-rating-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Player Efficiency Rating (PER) instantly. Measure per-minute performance across all statistical categories and compare players fairly."
+    },
+    {
+        "id": 10038,
+        "name": "Basketball Assist-to-Turnover Ratio Calculator",
+        "description": "Calculate assist-to-turnover ratio to measure playmaking efficiency and ball security.",
+        "slug": "basketball-assist-to-turnover-ratio-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Assist-to-Turnover Ratio instantly. Measure playmaking efficiency, ball security, and decision-making quality for guards and forwards."
+    },
+    {
+        "id": 10039,
+        "name": "Basketball Rebound Rate Calculator",
+        "description": "Calculate rebound rate to measure a player's ability to secure missed shots on both ends of the floor.",
+        "slug": "basketball-rebound-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Rebound Rate instantly. Measure rebounding dominance, positional impact, and board control efficiency with expert benchmarks."
+    },
+    {
+        "id": 10040,
+        "name": "Basketball Offensive Efficiency Calculator",
+        "description": "Calculate offensive efficiency rating to measure points scored per 100 possessions.",
+        "slug": "basketball-offensive-efficiency-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Offensive Efficiency instantly. Measure points per 100 possessions, compare offensive systems, and evaluate scoring performance with expert insights."
+    },
+    {
+        "id": 10041,
+        "name": "Basketball Defensive Efficiency Calculator",
+        "description": "Calculate defensive efficiency rating to measure points allowed per 100 possessions.",
+        "slug": "basketball-defensive-efficiency-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Defensive Efficiency instantly. Measure points allowed per 100 possessions, evaluate defensive systems, and compare team defense with expert benchmarks."
+    },
+    {
+        "id": 10042,
+        "name": "Basketball Usage Rate Calculator",
+        "description": "Calculate usage rate to measure the percentage of team plays a player is involved in while on the floor.",
+        "slug": "basketball-usage-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Usage Rate instantly. Measure how often a player is involved in team plays, identify primary ball handlers, and evaluate role efficiency."
+    },
+    {
+        "id": 10043,
+        "name": "Basketball Win Shares Calculator",
+        "description": "Calculate win shares to estimate the number of wins a player has contributed to their team.",
+        "slug": "basketball-win-shares-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Win Shares instantly. Estimate a player's total contribution to team wins by combining offensive and defensive win shares."
+    },
+    {
+        "id": 10044,
+        "name": "Basketball Points per Possession Calculator",
+        "description": "Calculate points per possession to measure offensive efficiency and scoring effectiveness.",
+        "slug": "basketball-points-per-possession-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball Points per Possession instantly. Measure offensive efficiency, compare scoring systems, and evaluate half-court vs fast-break performance."
+    },
+    {
+        "id": 10045,
+        "name": "Basketball 3-Point Percentage Calculator",
+        "description": "Calculate 3-point field goal percentage to measure long-range shooting accuracy and efficiency.",
+        "slug": "basketball-three-point-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Basketball 3-Point Percentage instantly. Measure long-range shooting accuracy, compare shooters, and analyze the impact of three-point shooting on scoring."
+    },
+    {
+        "id": 10046,
+        "name": "Tennis Win Ratio Calculator",
+        "description": "Calculate tennis win ratio to measure match success rate and competitive performance.",
+        "slug": "tennis-win-ratio-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Win Ratio instantly. Measure match success rate, compare players across surfaces, and analyze competitive performance with expert insights."
+    },
+    {
+        "id": 10047,
+        "name": "Tennis Aces per Match Calculator",
+        "description": "Calculate average aces per match to measure serving dominance and consistency.",
+        "slug": "tennis-aces-per-match-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Aces per Match instantly. Measure serving dominance, compare serve stats, and evaluate acing consistency across surfaces and tournaments."
+    },
+    {
+        "id": 10048,
+        "name": "Tennis Return Points Won Calculator",
+        "description": "Calculate return points won percentage to measure effectiveness at disrupting opponents' serve.",
+        "slug": "tennis-return-points-won-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Return Points Won instantly. Measure return game effectiveness, baseline pressure, and ability to break opponent serves with expert analysis."
+    },
+    {
+        "id": 10049,
+        "name": "Tennis Hold Percentage Calculator",
+        "description": "Calculate service hold percentage to measure serve reliability and dominance on your own delivery.",
+        "slug": "tennis-hold-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Hold Percentage instantly. Measure service game reliability, serve dominance, and ability to hold under pressure with expert benchmarks."
+    },
+    {
+        "id": 10050,
+        "name": "Tennis First Serve Percentage Calculator",
+        "description": "Calculate first serve percentage to measure serve consistency and in-play landing accuracy.",
+        "slug": "tennis-first-serve-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis First Serve Percentage instantly. Measure serve consistency, control, and performance under pressure with tour-level benchmarks."
+    },
+    {
+        "id": 10051,
+        "name": "Tennis Double Fault Percentage Calculator",
+        "description": "Calculate double fault percentage to measure serve reliability and pressure management.",
+        "slug": "tennis-double-fault-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Double Fault Percentage instantly. Measure serve reliability, identify pressure points, and analyze double fault impact on match outcomes."
+    },
+    {
+        "id": 10052,
+        "name": "Tennis Break Point Conversion Rate Calculator",
+        "description": "Calculate break point conversion rate to measure effectiveness at converting break opportunities.",
+        "slug": "tennis-break-point-conversion-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Break Point Conversion Rate instantly. Measure clutch performance, pressure game effectiveness, and ability to capitalize on break opportunities."
+    },
+    {
+        "id": 10053,
+        "name": "Tennis Set Win Percentage Calculator",
+        "description": "Calculate set win percentage to measure dominance at the set level across matches.",
+        "slug": "tennis-set-win-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Set Win Percentage instantly. Measure set-level dominance, consistency across matches, and overall competitive performance."
+    },
+    {
+        "id": 10054,
+        "name": "Tennis Serve Accuracy Calculator",
+        "description": "Calculate serve accuracy percentage to measure placement precision and serving reliability.",
+        "slug": "tennis-serve-accuracy-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Serve Accuracy instantly. Measure placement precision, serving reliability, and targeting consistency with expert performance benchmarks."
+    },
+    {
+        "id": 10055,
+        "name": "Tennis Elo Rating Calculator",
+        "description": "Calculate tennis Elo rating to measure player skill level and predict match outcomes.",
+        "slug": "tennis-elo-rating-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Tennis Elo Rating instantly. Measure player skill level, track rating progression, and predict match win probabilities with the Elo rating system."
+    },
+    {
+        "id": 10056,
+        "name": "Baseball/Softball Batting Average Calculator",
+        "description": "Calculate baseball and softball batting average to measure hitting consistency and offensive performance.",
+        "slug": "baseball-batting-average-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Batting Average instantly. Measure hitting consistency, compare performance benchmarks, and analyze offensive contributions with expert insights."
+    },
+    {
+        "id": 10057,
+        "name": "Baseball/Softball On-Base Percentage (OBP) Calculator",
+        "description": "Calculate on-base percentage to measure how frequently a batter reaches base via hits, walks, or hit-by-pitch.",
+        "slug": "baseball-on-base-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball On-Base Percentage (OBP) instantly. Measure plate discipline, walk rate, and overall offensive value with expert benchmarks."
+    },
+    {
+        "id": 10058,
+        "name": "Baseball/Softball Earned Run Average (ERA) Calculator",
+        "description": "Calculate earned run average to measure pitching effectiveness and run prevention per nine innings.",
+        "slug": "baseball-era-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball ERA instantly. Measure pitching effectiveness, compare historical benchmarks, and evaluate run prevention ability with expert analysis."
+    },
+    {
+        "id": 10059,
+        "name": "Baseball/Softball WHIP Calculator",
+        "description": "Calculate WHIP (Walks + Hits per Inning Pitched) to measure baserunner prevention and pitching control.",
+        "slug": "baseball-whip-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball WHIP instantly. Measure pitching control, baserunner prevention, and efficiency with expert benchmarks and performance analysis."
+    },
+    {
+        "id": 10060,
+        "name": "Baseball/Softball Win-Loss Percentage Calculator",
+        "description": "Calculate win-loss percentage to measure pitching decision record and team winning contribution.",
+        "slug": "baseball-win-loss-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Win-Loss Percentage instantly. Measure pitching decision record, compare winning rates, and analyze team contribution with expert insights."
+    },
+    {
+        "id": 10061,
+        "name": "Baseball/Softball Strikeout-to-Walk Ratio Calculator",
+        "description": "Calculate strikeout-to-walk ratio (K/BB) to measure pitching command and dominance.",
+        "slug": "baseball-strikeout-to-walk-ratio-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Strikeout-to-Walk Ratio (K/BB) instantly. Measure pitching command, dominance, and control with expert benchmarks and historical comparisons."
+    },
+    {
+        "id": 10062,
+        "name": "Baseball/Softball Slugging Percentage Calculator",
+        "description": "Calculate slugging percentage to measure total bases per at-bat and extra-base hit power.",
+        "slug": "baseball-slugging-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Slugging Percentage instantly. Measure extra-base hit power, offensive production, and hitting strength with expert benchmarks."
+    },
+    {
+        "id": 10063,
+        "name": "Baseball/Softball OPS Calculator",
+        "description": "Calculate OPS (On-Base Plus Slugging) to measure overall offensive value combining on-base and power ability.",
+        "slug": "baseball-ops-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball OPS instantly. Measure total offensive value combining on-base percentage and slugging for a comprehensive hitting performance metric."
+    },
+    {
+        "id": 10064,
+        "name": "Baseball/Softball Fielding Percentage Calculator",
+        "description": "Calculate fielding percentage to measure defensive reliability and error rate in the field.",
+        "slug": "baseball-fielding-percentage-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Fielding Percentage instantly. Measure defensive reliability, error rate, and fielding consistency across all positions with expert benchmarks."
+    },
+    {
+        "id": 10065,
+        "name": "Baseball/Softball Run Differential Calculator",
+        "description": "Calculate run differential to measure team offensive and defensive balance and predict winning potential.",
+        "slug": "baseball-run-differential-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Run Differential instantly. Measure offensive and defensive balance, predict winning percentage, and analyze team performance with expert analysis."
     }
 ];
