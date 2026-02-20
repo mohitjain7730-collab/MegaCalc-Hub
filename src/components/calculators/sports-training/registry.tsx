@@ -120,6 +120,22 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'baseball-batting-average-calculator': lazy(() => import('./baseball-batting-average-calculator')),
   'baseball-on-base-percentage-calculator-interactive': lazy(() => import('./baseball-on-base-percentage-calculator-interactive')),
   'baseball-on-base-percentage-calculator': lazy(() => import('./baseball-on-base-percentage-calculator')),
+  'baseball-slugging-percentage-calculator-interactive': lazy(() => import('./baseball-slugging-percentage-calculator-interactive')),
+  'baseball-slugging-percentage-calculator': lazy(() => import('./baseball-slugging-percentage-calculator')),
+  'baseball-ops-calculator-interactive': lazy(() => import('./baseball-ops-calculator-interactive')),
+  'baseball-ops-calculator': lazy(() => import('./baseball-ops-calculator')),
+  'baseball-era-calculator-interactive': lazy(() => import('./baseball-era-calculator-interactive')),
+  'baseball-era-calculator': lazy(() => import('./baseball-era-calculator')),
+  'baseball-whip-calculator-interactive': lazy(() => import('./baseball-whip-calculator-interactive')),
+  'baseball-whip-calculator': lazy(() => import('./baseball-whip-calculator')),
+  'baseball-fielding-percentage-calculator-interactive': lazy(() => import('./baseball-fielding-percentage-calculator-interactive')),
+  'baseball-fielding-percentage-calculator': lazy(() => import('./baseball-fielding-percentage-calculator')),
+  'baseball-run-differential-calculator-interactive': lazy(() => import('./baseball-run-differential-calculator-interactive')),
+  'baseball-run-differential-calculator': lazy(() => import('./baseball-run-differential-calculator')),
+  'baseball-win-loss-percentage-calculator-interactive': lazy(() => import('./baseball-win-loss-percentage-calculator-interactive')),
+  'baseball-win-loss-percentage-calculator': lazy(() => import('./baseball-win-loss-percentage-calculator')),
+  'baseball-strikeout-to-walk-ratio-calculator-interactive': lazy(() => import('./baseball-strikeout-to-walk-ratio-calculator-interactive')),
+  'baseball-strikeout-to-walk-ratio-calculator': lazy(() => import('./baseball-strikeout-to-walk-ratio-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
