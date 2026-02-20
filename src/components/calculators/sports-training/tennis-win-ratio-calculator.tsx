@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Trophy, AlertCircle, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, Target, Zap, Activity } from 'lucide-react';
+import { Trophy, AlertCircle, Info, Calculator, BarChart3, FunctionSquare, CheckCircle2, Target, Zap, Activity, Percent } from 'lucide-react';
 import TennisWinRatioCalculatorInteractive from './tennis-win-ratio-calculator-interactive';
 
 export default function TennisWinRatioCalculator() {
