@@ -96,10 +96,10 @@ export default function MyoglobinOxygenStorageCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Link physiology to performance</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Cardiorespiratory ceiling.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/cycling-power-output-calculator" className="text-primary hover:underline">O₂ Cost per Watt</Link></h4><p className="text-sm text-muted-foreground">Movement efficiency proxy.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC → VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">O₂ transport capacity.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Diffusion & delivery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Cardiorespiratory ceiling.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/cycling-power-output-calculator" className="text-primary hover:underline">O₂ Cost per Watt</Link></h4><p className="text-sm text-muted-foreground">Movement efficiency proxy.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC → VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">O₂ transport capacity.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Diffusion & delivery.</p></div>
           </div>
         </CardContent>
       </Card>

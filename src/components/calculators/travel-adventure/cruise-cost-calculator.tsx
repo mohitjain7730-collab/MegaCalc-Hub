@@ -45,7 +45,7 @@ type FormValues = z.infer<typeof formSchema>;
 const relatedCalculators = [
     { name: 'Trip Budget Calculator', href: '/trip-budget-calculator' },
     { name: 'Hotel Cost Calculator', href: '/hotel-cost-calculator' },
-    { name: 'Vacation Daily Budget', href: '/category/travel-adventure/vacation-daily-budget-calculator' },
+    { name: 'Vacation Daily Budget', href: '/travel-adventure/vacation-daily-budget-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function CruiseCostCalculator() {

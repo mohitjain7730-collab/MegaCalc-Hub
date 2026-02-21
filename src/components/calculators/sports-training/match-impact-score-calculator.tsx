@@ -134,7 +134,7 @@ export default function MatchImpactScoreCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/cricket-player-performance-index-calculator" className="block">
+                        <Link href="/sports-training/cricket-player-performance-index-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -147,7 +147,7 @@ export default function MatchImpactScoreCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/batting-average-calculator" className="block">
+                        <Link href="/sports-training/batting-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export default function MatchImpactScoreCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/bowling-average-calculator" className="block">
+                        <Link href="/sports-training/bowling-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -173,7 +173,7 @@ export default function MatchImpactScoreCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/strike-rate-calculator" className="block">
+                        <Link href="/sports-training/strike-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -186,7 +186,7 @@ export default function MatchImpactScoreCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/bowling-economy-rate-calculator" className="block">
+                        <Link href="/sports-training/bowling-economy-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -199,7 +199,7 @@ export default function MatchImpactScoreCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/cricket-fantasy-points-calculator" className="block">
+                        <Link href="/sports-training/cricket-fantasy-points-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

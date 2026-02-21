@@ -222,9 +222,9 @@ export default function WorldTimeZoneConverter() {
 
         <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
         <div className="space-y-2">
-          <p><Link href="/category/time-date/date-difference-calculator" className="text-primary underline">Date Difference Calculator</Link></p>
-          <p><Link href="/category/time-date/day-of-the-week-calculator" className="text-primary underline">Day of the Week Calculator</Link></p>
-          <p><Link href="/category/time-date/working-days-business-days-calculator" className="text-primary underline">Working Days / Business Days Calculator</Link></p>
+          <p><Link href="/time-date/date-difference-calculator" className="text-primary underline">Date Difference Calculator</Link></p>
+          <p><Link href="/time-date/day-of-the-week-calculator" className="text-primary underline">Day of the Week Calculator</Link></p>
+          <p><Link href="/time-date/working-days-business-days-calculator" className="text-primary underline">Working Days / Business Days Calculator</Link></p>
         </div>
       </section>
     </div>

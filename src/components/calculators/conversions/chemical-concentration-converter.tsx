@@ -181,11 +181,11 @@ export default function ConcentrationConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/conversions/short-tons-us-to-metric-tons-converter" className="hover:underline">Short Tons Us To Metric Tons Converter</Link></li>
-              <li><Link href="/category/conversions/seconds-to-days-converter" className="hover:underline">Seconds To Days Converter</Link></li>
-              <li><Link href="/category/conversions/miles-per-hour-to-knots-converter" className="hover:underline">Miles Per Hour To Knots Converter</Link></li>
-              <li><Link href="/category/conversions/construction-converter" className="hover:underline">Construction Converter</Link></li>
-              <li><Link href="/category/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
+              <li><Link href="/conversions/short-tons-us-to-metric-tons-converter" className="hover:underline">Short Tons Us To Metric Tons Converter</Link></li>
+              <li><Link href="/conversions/seconds-to-days-converter" className="hover:underline">Seconds To Days Converter</Link></li>
+              <li><Link href="/conversions/miles-per-hour-to-knots-converter" className="hover:underline">Miles Per Hour To Knots Converter</Link></li>
+              <li><Link href="/conversions/construction-converter" className="hover:underline">Construction Converter</Link></li>
+              <li><Link href="/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

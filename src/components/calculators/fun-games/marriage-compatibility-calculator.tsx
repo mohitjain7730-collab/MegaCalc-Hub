@@ -657,7 +657,7 @@ const MarriageCompatibilityCalculator: React.FC = () => {
             <Button
               variant="outline"
               className="h-20 flex flex-col items-center justify-center space-y-2 border-2 border-pink-200 hover:border-pink-400 hover:bg-pink-50"
-              onClick={() => router.push('/category/fun-games/love-percentage-calculator')}
+              onClick={() => router.push('/fun-games/love-percentage-calculator')}
             >
               <Heart className="h-6 w-6 text-pink-500" />
               <span className="text-sm font-medium">Love Percentage</span>
@@ -665,7 +665,7 @@ const MarriageCompatibilityCalculator: React.FC = () => {
             <Button
               variant="outline"
               className="h-20 flex flex-col items-center justify-center space-y-2 border-2 border-purple-200 hover:border-purple-400 hover:bg-purple-50"
-              onClick={() => router.push('/category/fun-games/crush-compatibility-calculator')}
+              onClick={() => router.push('/fun-games/crush-compatibility-calculator')}
             >
               <Eye className="h-6 w-6 text-purple-500" />
               <span className="text-sm font-medium">Crush Compatibility</span>
@@ -673,7 +673,7 @@ const MarriageCompatibilityCalculator: React.FC = () => {
             <Button
               variant="outline"
               className="h-20 flex flex-col items-center justify-center space-y-2 border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50"
-              onClick={() => router.push('/category/fun-games/friendship-compatibility-calculator')}
+              onClick={() => router.push('/fun-games/friendship-compatibility-calculator')}
             >
               <Coffee className="h-6 w-6 text-blue-500" />
               <span className="text-sm font-medium">Friendship Test</span>
@@ -681,7 +681,7 @@ const MarriageCompatibilityCalculator: React.FC = () => {
             <Button
               variant="outline"
               className="h-20 flex flex-col items-center justify-center space-y-2 border-2 border-green-200 hover:border-green-400 hover:bg-green-50"
-              onClick={() => router.push('/category/fun-games/zodiac-match-calculator')}
+              onClick={() => router.push('/fun-games/zodiac-match-calculator')}
             >
               <Star className="h-6 w-6 text-green-500" />
               <span className="text-sm font-medium">Zodiac Match</span>

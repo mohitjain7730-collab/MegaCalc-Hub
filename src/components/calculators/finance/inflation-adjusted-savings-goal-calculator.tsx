@@ -454,7 +454,7 @@ export default function InflationAdjustedSavingsGoalCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/inflation-calculator" className="block">
+            <Link href="/finance/inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -467,7 +467,7 @@ export default function InflationAdjustedSavingsGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/real-rate-of-return-calculator" className="block">
+            <Link href="/finance/real-rate-of-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -480,7 +480,7 @@ export default function InflationAdjustedSavingsGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/investment-goal-tracker-calculator" className="block">
+            <Link href="/finance/investment-goal-tracker-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -493,7 +493,7 @@ export default function InflationAdjustedSavingsGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/retirement-savings-calculator" className="block">
+            <Link href="/finance/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -506,7 +506,7 @@ export default function InflationAdjustedSavingsGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -519,7 +519,7 @@ export default function InflationAdjustedSavingsGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/purchasing-power-parity-calculator" className="block">
+            <Link href="/finance/purchasing-power-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

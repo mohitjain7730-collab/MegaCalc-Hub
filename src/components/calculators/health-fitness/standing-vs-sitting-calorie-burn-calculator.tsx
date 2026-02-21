@@ -549,7 +549,7 @@ export default function StandingVsSittingCalorieBurnCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/step-to-calorie-converter" className="text-primary hover:underline">
+                <Link href="/health-fitness/step-to-calorie-converter" className="text-primary hover:underline">
                   Step-to-Calorie Converter
                 </Link>
               </h4>
@@ -557,7 +557,7 @@ export default function StandingVsSittingCalorieBurnCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
                   Daily Activity Points Calculator
                 </Link>
               </h4>
@@ -565,7 +565,7 @@ export default function StandingVsSittingCalorieBurnCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">
                   Calorie Burn Calculator
                 </Link>
               </h4>
@@ -573,7 +573,7 @@ export default function StandingVsSittingCalorieBurnCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/bmr-calculator" className="text-primary hover:underline">
                   BMR Calculator
                 </Link>
               </h4>

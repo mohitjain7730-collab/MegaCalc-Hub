@@ -179,11 +179,11 @@ export default function FlowRateConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/parsecs-to-light-years-converter" className="hover:underline">Parsecs To Light Years Converter</Link></li>
-                <li><Link href="/category/conversions/inches-to-millimeters-converter" className="hover:underline">Inches To Millimeters Converter</Link></li>
-                <li><Link href="/category/conversions/force-converter" className="hover:underline">Force Converter</Link></li>
-                <li><Link href="/category/conversions/cubic-feet-to-gallons-converter" className="hover:underline">Cubic Feet To Gallons Converter</Link></li>
-                <li><Link href="/category/conversions/fuel-economy-converter" className="hover:underline">Fuel Economy Converter</Link></li>
+                <li><Link href="/conversions/parsecs-to-light-years-converter" className="hover:underline">Parsecs To Light Years Converter</Link></li>
+                <li><Link href="/conversions/inches-to-millimeters-converter" className="hover:underline">Inches To Millimeters Converter</Link></li>
+                <li><Link href="/conversions/force-converter" className="hover:underline">Force Converter</Link></li>
+                <li><Link href="/conversions/cubic-feet-to-gallons-converter" className="hover:underline">Cubic Feet To Gallons Converter</Link></li>
+                <li><Link href="/conversions/fuel-economy-converter" className="hover:underline">Fuel Economy Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

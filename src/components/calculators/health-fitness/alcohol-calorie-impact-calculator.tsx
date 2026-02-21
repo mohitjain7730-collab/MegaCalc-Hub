@@ -161,11 +161,11 @@ export default function AlcoholCalorieImpactCalculator() {
 				<CardContent>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 						<div className="p-4 border rounded-lg">
-							<h4 className="font-semibold mb-1"><a href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</a></h4>
+							<h4 className="font-semibold mb-1"><a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</a></h4>
 							<p className="text-sm text-muted-foreground">Estimate your TDEE to plan intake.</p>
 						</div>
 						<div className="p-4 border rounded-lg">
-							<h4 className="font-semibold mb-1"><a href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Protein Intake</a></h4>
+							<h4 className="font-semibold mb-1"><a href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Protein Intake</a></h4>
 							<p className="text-sm text-muted-foreground">Set protein for recovery goals.</p>
 						</div>
 					</div>

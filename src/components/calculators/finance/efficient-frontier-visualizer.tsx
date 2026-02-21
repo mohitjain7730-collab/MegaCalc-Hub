@@ -549,12 +549,12 @@ export default function EfficientFrontierVisualizer() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "Two-Asset Allocator", desc: "Solve for precise weights", href: "/category/finance/optimal-portfolio-allocation-two-asset-calculator" },
-              { title: "Portfolio Variance", desc: "N-Asset risk calculation", href: "/category/finance/portfolio-variance-calculator" },
-              { title: "Sharpe Ratio", desc: "Historical efficiency audit", href: "/category/finance/sharpe-ratio-calculator" },
-              { title: "Treynor Ratio", desc: "Systemic risk-return audit", href: "/category/finance/treynor-ratio-calculator" },
-              { title: "CAPM Model", desc: "Expected return modeling", href: "/category/finance/capm-calculator" },
-              { title: "Beta Adjuster", desc: "Risk-adjusted performance", href: "/category/finance/beta-adjusted-portfolio-return-calculator" },
+              { title: "Two-Asset Allocator", desc: "Solve for precise weights", href: "/finance/optimal-portfolio-allocation-two-asset-calculator" },
+              { title: "Portfolio Variance", desc: "N-Asset risk calculation", href: "/finance/portfolio-variance-calculator" },
+              { title: "Sharpe Ratio", desc: "Historical efficiency audit", href: "/finance/sharpe-ratio-calculator" },
+              { title: "Treynor Ratio", desc: "Systemic risk-return audit", href: "/finance/treynor-ratio-calculator" },
+              { title: "CAPM Model", desc: "Expected return modeling", href: "/finance/capm-calculator" },
+              { title: "Beta Adjuster", desc: "Risk-adjusted performance", href: "/finance/beta-adjusted-portfolio-return-calculator" },
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-lg hover:bg-muted/30">

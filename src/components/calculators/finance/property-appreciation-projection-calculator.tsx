@@ -379,7 +379,7 @@ export default function PropertyAppreciationProjectionCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/rental-yield-calculator" className="block">
+            <Link href="/finance/rental-yield-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -389,7 +389,7 @@ export default function PropertyAppreciationProjectionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/rent-vs-buy-home-calculator" className="block">
+            <Link href="/finance/rent-vs-buy-home-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -399,7 +399,7 @@ export default function PropertyAppreciationProjectionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/return-on-investment-roi-calculator" className="block">
+            <Link href="/finance/return-on-investment-roi-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -409,7 +409,7 @@ export default function PropertyAppreciationProjectionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/mortgage-payoff-calculator" className="block">
+            <Link href="/finance/mortgage-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -419,7 +419,7 @@ export default function PropertyAppreciationProjectionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/loan-to-value-ltv-ratio-calculator" className="block">
+            <Link href="/finance/loan-to-value-ltv-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -429,7 +429,7 @@ export default function PropertyAppreciationProjectionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/retirement-savings-calculator" className="block">
+            <Link href="/finance/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

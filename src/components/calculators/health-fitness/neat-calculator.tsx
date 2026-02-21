@@ -342,10 +342,10 @@ export default function NeatCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Integrate NEAT estimates into total energy targets.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">Standing vs Sitting Burn</Link></h4><p className="text-sm text-muted-foreground">Quantify posture changes during desk work.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/step-to-calorie-converter" className="text-primary hover:underline">Step Count to Distance</Link></h4><p className="text-sm text-muted-foreground">Translate step goals into kilometers or miles.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">Habit Streak Tracker</Link></h4><p className="text-sm text-muted-foreground">Build consistency around daily movement habits.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Integrate NEAT estimates into total energy targets.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">Standing vs Sitting Burn</Link></h4><p className="text-sm text-muted-foreground">Quantify posture changes during desk work.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/step-to-calorie-converter" className="text-primary hover:underline">Step Count to Distance</Link></h4><p className="text-sm text-muted-foreground">Translate step goals into kilometers or miles.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">Habit Streak Tracker</Link></h4><p className="text-sm text-muted-foreground">Build consistency around daily movement habits.</p></div>
           </div>
         </CardContent>
       </Card>

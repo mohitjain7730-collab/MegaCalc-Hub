@@ -184,10 +184,10 @@ export default function WaterFastingElectrolyteNeedsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate daily hydration requirements.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Electrolyte Replacement</Link></h4><p className="text-sm text-muted-foreground">Estimate electrolyte replacement needs.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/intermittent-fasting-calculator" className="text-primary hover:underline">Intermittent Fasting</Link></h4><p className="text-sm text-muted-foreground">Plan intermittent fasting schedules.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate daily calorie requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate daily hydration requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Electrolyte Replacement</Link></h4><p className="text-sm text-muted-foreground">Estimate electrolyte replacement needs.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/intermittent-fasting-calculator" className="text-primary hover:underline">Intermittent Fasting</Link></h4><p className="text-sm text-muted-foreground">Plan intermittent fasting schedules.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate daily calorie requirements.</p></div>
           </div>
         </CardContent>
       </Card>

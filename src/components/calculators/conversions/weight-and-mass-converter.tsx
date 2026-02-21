@@ -180,11 +180,11 @@ export default function WeightAndMassConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/square-miles-to-square-kilometers-converter" className="hover:underline">Square Miles To Square Kilometers Converter</Link></li>
-                <li><Link href="/category/conversions/square-kilometers-to-hectares-converter" className="hover:underline">Square Kilometers To Hectares Converter</Link></li>
-                <li><Link href="/category/conversions/bars-to-pascals-converter" className="hover:underline">Bars To Pascals Converter</Link></li>
-                <li><Link href="/category/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
-                <li><Link href="/category/conversions/btu-to-kwh-converter" className="hover:underline">Btu To Kwh Converter</Link></li>
+                <li><Link href="/conversions/square-miles-to-square-kilometers-converter" className="hover:underline">Square Miles To Square Kilometers Converter</Link></li>
+                <li><Link href="/conversions/square-kilometers-to-hectares-converter" className="hover:underline">Square Kilometers To Hectares Converter</Link></li>
+                <li><Link href="/conversions/bars-to-pascals-converter" className="hover:underline">Bars To Pascals Converter</Link></li>
+                <li><Link href="/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
+                <li><Link href="/conversions/btu-to-kwh-converter" className="hover:underline">Btu To Kwh Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

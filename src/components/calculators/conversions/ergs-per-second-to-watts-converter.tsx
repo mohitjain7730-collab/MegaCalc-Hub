@@ -62,7 +62,7 @@ export default function ErgsPerSecondToWattsConverter() {
          <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/watts-to-ergs-per-second-converter" className="text-primary underline">Watts to Ergs/s Converter</Link></p>
+            <p><Link href="/conversions/watts-to-ergs-per-second-converter" className="text-primary underline">Watts to Ergs/s Converter</Link></p>
           </div>
         </div>
       </div>

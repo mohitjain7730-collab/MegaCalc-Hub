@@ -447,7 +447,7 @@ export default function BinomialOptionPricingCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/category/finance/black-scholes-calculator" className="group">
+            <Link href="/finance/black-scholes-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -455,7 +455,7 @@ export default function BinomialOptionPricingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/option-payoff-calculator" className="group">
+            <Link href="/finance/option-payoff-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -463,7 +463,7 @@ export default function BinomialOptionPricingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/volatility-standard-deviation-calculator" className="group">
+            <Link href="/finance/volatility-standard-deviation-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -471,7 +471,7 @@ export default function BinomialOptionPricingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/monte-carlo-portfolio-calculator" className="group">
+            <Link href="/finance/monte-carlo-portfolio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />

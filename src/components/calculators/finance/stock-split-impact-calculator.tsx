@@ -142,10 +142,10 @@ export default function StockSplitImpactCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Valuation & returns</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth over time.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/earnings-per-share-calculator" className="text-primary hover:underline">Earnings per Share</Link></h4><p className="text-sm text-muted-foreground">EPS context for splits.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/price-to-earnings-ratio-calculator" className="text-primary hover:underline">P/E Ratio</Link></h4><p className="text-sm text-muted-foreground">Valuation multiple.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/dividend-yield-calculator" className="text-primary hover:underline">Dividend Yield</Link></h4><p className="text-sm text-muted-foreground">Income rate per price.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth over time.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/earnings-per-share-calculator" className="text-primary hover:underline">Earnings per Share</Link></h4><p className="text-sm text-muted-foreground">EPS context for splits.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/price-to-earnings-ratio-calculator" className="text-primary hover:underline">P/E Ratio</Link></h4><p className="text-sm text-muted-foreground">Valuation multiple.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/dividend-yield-calculator" className="text-primary hover:underline">Dividend Yield</Link></h4><p className="text-sm text-muted-foreground">Income rate per price.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -119,8 +119,8 @@ export default function SquareKilometersToSquareMilesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/square-miles-to-square-kilometers-converter" className="text-primary underline">Square Miles to Square Kilometers Converter</Link></p>
-            <p><Link href="/category/conversions/hectares-to-square-kilometers-converter" className="text-primary underline">Hectares to Square Kilometers Converter</Link></p>
+            <p><Link href="/conversions/square-miles-to-square-kilometers-converter" className="text-primary underline">Square Miles to Square Kilometers Converter</Link></p>
+            <p><Link href="/conversions/hectares-to-square-kilometers-converter" className="text-primary underline">Hectares to Square Kilometers Converter</Link></p>
           </div>
         </div>
       </div>

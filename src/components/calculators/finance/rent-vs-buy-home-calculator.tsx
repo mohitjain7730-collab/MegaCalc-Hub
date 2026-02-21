@@ -554,7 +554,7 @@ export default function RentVsBuyHomeCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/mortgage-payment-calculator" className="block">
+            <Link href="/finance/mortgage-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -564,7 +564,7 @@ export default function RentVsBuyHomeCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/home-affordability-calculator" className="block">
+            <Link href="/finance/home-affordability-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -574,7 +574,7 @@ export default function RentVsBuyHomeCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/house-down-payment-savings-calculator" className="block">
+            <Link href="/finance/house-down-payment-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -584,7 +584,7 @@ export default function RentVsBuyHomeCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/mortgage-points-calculator" className="block">
+            <Link href="/finance/mortgage-points-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -594,7 +594,7 @@ export default function RentVsBuyHomeCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/debt-to-income-ratio-calculator" className="block">
+            <Link href="/finance/debt-to-income-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -604,7 +604,7 @@ export default function RentVsBuyHomeCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/monthly-budget-planner-calculator" className="block">
+            <Link href="/finance/monthly-budget-planner-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

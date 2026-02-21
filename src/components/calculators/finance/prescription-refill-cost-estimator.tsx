@@ -371,9 +371,9 @@ export default function PrescriptionRefillCostEstimator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
-              <li><Link href="/category/finance/health-plan-coverage-gap-estimator" className="hover:underline">Health Plan Coverage Gap Estimator</Link></li>
-              <li><Link href="/category/finance/dental-cost-comparison-calculator" className="hover:underline">Dental Cost Comparison Calculator</Link></li>
+              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/finance/health-plan-coverage-gap-estimator" className="hover:underline">Health Plan Coverage Gap Estimator</Link></li>
+              <li><Link href="/finance/dental-cost-comparison-calculator" className="hover:underline">Dental Cost Comparison Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

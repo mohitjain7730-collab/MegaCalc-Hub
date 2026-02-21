@@ -405,7 +405,7 @@ export default function PutCallParityCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/black-scholes-calculator" className="text-primary hover:underline">
+                <a href="/finance/black-scholes-calculator" className="text-primary hover:underline">
                   Black-Scholes Calculator
                 </a>
               </h4>
@@ -415,7 +415,7 @@ export default function PutCallParityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
                   Options Profit Calculator
                 </a>
               </h4>
@@ -425,7 +425,7 @@ export default function PutCallParityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
+                <a href="/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
                   Forward Rate Agreement Calculator
                 </a>
               </h4>
@@ -435,7 +435,7 @@ export default function PutCallParityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/swap-spread-calculator" className="text-primary hover:underline">
+                <a href="/finance/swap-spread-calculator" className="text-primary hover:underline">
                   Swap Spread Calculator
                 </a>
               </h4>

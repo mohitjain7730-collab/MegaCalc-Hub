@@ -562,7 +562,7 @@ export default function BodySurfaceAreaCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/bmi-calculator" className="text-primary hover:underline">
                   BMI Calculator
                 </Link>
               </h4>
@@ -570,7 +570,7 @@ export default function BodySurfaceAreaCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
                   Body Fat Percentage Calculator
                 </Link>
               </h4>
@@ -578,7 +578,7 @@ export default function BodySurfaceAreaCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">
                   Ideal Body Weight Calculator
                 </Link>
               </h4>
@@ -586,7 +586,7 @@ export default function BodySurfaceAreaCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
                   Lean Body Mass Calculator
                 </Link>
               </h4>

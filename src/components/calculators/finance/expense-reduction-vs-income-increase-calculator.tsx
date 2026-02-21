@@ -349,7 +349,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/monthly-savings-gap-calculator" className="block">
+            <Link href="/finance/monthly-savings-gap-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -362,7 +362,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/lifestyle-inflation-calculator" className="block">
+            <Link href="/finance/lifestyle-inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -375,7 +375,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/sip-vs-lump-sum-return-difference-calculator" className="block">
+            <Link href="/finance/sip-vs-lump-sum-return-difference-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -388,7 +388,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/paycheck-to-paycheck-risk-calculator" className="block">
+            <Link href="/finance/paycheck-to-paycheck-risk-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -401,7 +401,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/side-income-impact-on-savings-calculator" className="block">
+            <Link href="/finance/side-income-impact-on-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -414,7 +414,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
+            <Link href="/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -437,7 +437,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
         <meta itemProp="keywords" content="expense reduction vs income increase, boost savings, cut spending or earn more, marginal tax rate, monthly savings" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/expense-reduction-vs-income-increase-calculator" />
+        <meta itemProp="url" content="/finance/expense-reduction-vs-income-increase-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Expense Reduction vs Income Increase: Same Savings, Two Paths</h1>
         <p className="text-lg italic text-muted-foreground">To add a given amount to monthly savings, you can either reduce expenses (dollar-for-dollar) or increase take-home income. This calculator shows the exact expense cut or income increase needed and, with a marginal tax rate, the gross income required.</p>

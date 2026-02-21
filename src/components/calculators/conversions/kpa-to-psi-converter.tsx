@@ -95,7 +95,7 @@ export default function KpaToPsiConverter() {
        <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/psi-to-kpa-converter" className="text-primary underline">PSI to Kilopascals Converter</Link></p>
+            <p><Link href="/conversions/psi-to-kpa-converter" className="text-primary underline">PSI to Kilopascals Converter</Link></p>
           </div>
         </div>
     </div>

@@ -325,15 +325,15 @@ export default function VitaminDSunExposureCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Calcium Intake Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Calcium Intake Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Ensure strong bones by pairing Vitamin D with adequate calcium.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Magnesium Intake Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Magnesium Intake Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Support Vitamin D metabolism with optimal magnesium levels.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT (Daily Movement) Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT (Daily Movement) Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Track non-exercise activity that complements outdoor time.</p>
             </div>
           </div>

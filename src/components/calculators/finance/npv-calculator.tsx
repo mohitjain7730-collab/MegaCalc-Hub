@@ -375,7 +375,7 @@ export default function NpvCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/dcf-calculator" className="text-primary hover:underline">
+                  <a href="/finance/dcf-calculator" className="text-primary hover:underline">
                     Discounted Cash Flow Calculator
                   </a>
                 </h4>
@@ -385,7 +385,7 @@ export default function NpvCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/payback-period-calculator" className="text-primary hover:underline">
+                  <a href="/finance/payback-period-calculator" className="text-primary hover:underline">
                     Payback Period Calculator
                   </a>
                 </h4>
@@ -395,7 +395,7 @@ export default function NpvCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/return-on-investment-calculator" className="text-primary hover:underline">
+                  <a href="/finance/return-on-investment-calculator" className="text-primary hover:underline">
                     ROI Calculator
                   </a>
                 </h4>
@@ -405,7 +405,7 @@ export default function NpvCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/discount-rate-calculator" className="text-primary hover:underline">
+                  <a href="/finance/discount-rate-calculator" className="text-primary hover:underline">
                     Discount Rate Calculator
                   </a>
                 </h4>

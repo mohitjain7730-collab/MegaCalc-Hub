@@ -239,7 +239,7 @@ export default function OverheadRateAllocationCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/activity-based-costing-calculator" className="text-primary hover:underline">
+                  <a href="/finance/activity-based-costing-calculator" className="text-primary hover:underline">
                     Activity-Based Costing Calculator
                   </a>
                 </h4>
@@ -249,7 +249,7 @@ export default function OverheadRateAllocationCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/business-startup/break-even-point-calculator" className="text-primary hover:underline">
+                  <a href="/business-startup/break-even-point-calculator" className="text-primary hover:underline">
                     Break-Even Point Calculator
                   </a>
                 </h4>
@@ -259,7 +259,7 @@ export default function OverheadRateAllocationCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/business-startup/contribution-margin-calculator" className="text-primary hover:underline">
+                  <a href="/business-startup/contribution-margin-calculator" className="text-primary hover:underline">
                     Contribution Margin Calculator
                   </a>
                 </h4>
@@ -269,7 +269,7 @@ export default function OverheadRateAllocationCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/business-startup/customer-acquisition-cost-calculator" className="text-primary hover:underline">
+                  <a href="/business-startup/customer-acquisition-cost-calculator" className="text-primary hover:underline">
                     Customer Acquisition Cost Calculator
                   </a>
                 </h4>

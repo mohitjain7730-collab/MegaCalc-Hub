@@ -358,7 +358,7 @@ export default function EquityCapTableGenerator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -374,7 +374,7 @@ export default function EquityCapTableGenerator() {
         <meta itemProp="keywords" content="cap table, ownership, dilution, fully diluted shares" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/equity-cap-table-generator" />
+        <meta itemProp="url" content="/finance/equity-cap-table-generator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Equity Cap Table Generator: Simplified Ownership Modeling</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A lightweight cap table view to understand ownership splits and dilution.</p>

@@ -315,7 +315,7 @@ export default function ForwardRateAgreementCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/swap-spread-calculator" className="text-primary hover:underline">
+                <a href="/finance/swap-spread-calculator" className="text-primary hover:underline">
                   Swap Spread Calculator
                 </a>
               </h4>
@@ -325,7 +325,7 @@ export default function ForwardRateAgreementCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/breakeven-inflation-rate-calculator" className="text-primary hover:underline">
+                <a href="/finance/breakeven-inflation-rate-calculator" className="text-primary hover:underline">
                   Breakeven Inflation Rate Calculator
                 </a>
               </h4>
@@ -335,7 +335,7 @@ export default function ForwardRateAgreementCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/fixed-vs-floating-rate-calculator" className="text-primary hover:underline">
+                <a href="/finance/fixed-vs-floating-rate-calculator" className="text-primary hover:underline">
                   Fixed vs Floating Rate Calculator
                 </a>
               </h4>
@@ -345,7 +345,7 @@ export default function ForwardRateAgreementCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/currency-volatility-calculator" className="text-primary hover:underline">
+                <a href="/finance/currency-volatility-calculator" className="text-primary hover:underline">
                   Currency Volatility Calculator
                 </a>
               </h4>

@@ -411,7 +411,7 @@ export default function BondPriceCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            <Link href="/category/finance/bond-yield-to-maturity-calculator" className="block">
+            <Link href="/finance/bond-yield-to-maturity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2">
@@ -421,7 +421,7 @@ export default function BondPriceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-duration-calculator" className="block">
+            <Link href="/finance/bond-duration-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2">
@@ -431,7 +431,7 @@ export default function BondPriceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-convexity-calculator" className="block">
+            <Link href="/finance/bond-convexity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2">
@@ -441,7 +441,7 @@ export default function BondPriceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-yield-spread-calculator" className="block">
+            <Link href="/finance/bond-yield-spread-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2">
@@ -451,7 +451,7 @@ export default function BondPriceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/yield-to-call-calculator" className="block">
+            <Link href="/finance/yield-to-call-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2">
@@ -461,7 +461,7 @@ export default function BondPriceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/zero-coupon-bond-valuation-calculator" className="block">
+            <Link href="/finance/zero-coupon-bond-valuation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-2">

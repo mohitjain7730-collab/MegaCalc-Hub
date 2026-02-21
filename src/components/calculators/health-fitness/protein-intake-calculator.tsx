@@ -67,7 +67,7 @@ export default function ProteinIntakeCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
-              <Link href="/category/health-fitness/daily-calorie-needs-calculator" className="flex flex-col h-full">
+              <Link href="/health-fitness/daily-calorie-needs-calculator" className="flex flex-col h-full">
                 <h4 className="font-semibold mb-2 text-primary">Daily Calorie Needs Calculator</h4>
                 <p className="text-sm text-muted-foreground">
                   Calculate your TDEE to ensure you're eating enough calories to support your protein goals.
@@ -75,7 +75,7 @@ export default function ProteinIntakeCalculator() {
               </Link>
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
-              <Link href="/category/health-fitness/macro-ratio-calculator" className="flex flex-col h-full">
+              <Link href="/health-fitness/macro-ratio-calculator" className="flex flex-col h-full">
                 <h4 className="font-semibold mb-2 text-primary">Macro Ratio Calculator</h4>
                 <p className="text-sm text-muted-foreground">
                   See how your protein intake fits into your overall macronutrient distribution.
@@ -83,7 +83,7 @@ export default function ProteinIntakeCalculator() {
               </Link>
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
-              <Link href="/category/health-fitness/carbohydrate-intake-calculator" className="flex flex-col h-full">
+              <Link href="/health-fitness/carbohydrate-intake-calculator" className="flex flex-col h-full">
                 <h4 className="font-semibold mb-2 text-primary">Carbohydrate Intake Calculator</h4>
                 <p className="text-sm text-muted-foreground">
                   Calculate your optimal daily carbohydrate intake to fuel your workouts alongside adequate protein.
@@ -91,7 +91,7 @@ export default function ProteinIntakeCalculator() {
               </Link>
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors cursor-pointer">
-              <Link href="/category/health-fitness/fat-intake-calculator" className="flex flex-col h-full">
+              <Link href="/health-fitness/fat-intake-calculator" className="flex flex-col h-full">
                 <h4 className="font-semibold mb-2 text-primary">Fat Intake Calculator</h4>
                 <p className="text-sm text-muted-foreground">
                   Determine your daily fat requirements to complete your macronutrient planning.

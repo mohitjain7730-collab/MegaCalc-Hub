@@ -40,11 +40,11 @@ function SidebarContent({ currentCategorySlug, pathname, onMobileClose }: Sideba
         </div>
         <nav className="p-2 space-y-1">
           {categories.map((category) => {
-            const isActive = currentCategorySlug === category.slug || pathname?.includes(`/category/${category.slug}`);
+            const isActive = currentCategorySlug === category.slug || pathname?.includes(`/${category.slug}`);
             return (
               <Link
                 key={category.slug}
-                href={`/category/${category.slug}`}
+                href={`/${category.slug}`}
                 onClick={onMobileClose}
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",

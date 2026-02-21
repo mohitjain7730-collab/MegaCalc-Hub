@@ -179,11 +179,11 @@ export default function PowerConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/cubic-inches-to-milliliters-converter" className="hover:underline">Cubic Inches To Milliliters Converter</Link></li>
-                <li><Link href="/category/conversions/kilometers-to-miles-converter" className="hover:underline">Kilometers To Miles Converter</Link></li>
-                <li><Link href="/category/conversions/watts-to-horsepower-converter" className="hover:underline">Watts To Horsepower Converter</Link></li>
-                <li><Link href="/category/conversions/stones-to-pounds-converter" className="hover:underline">Stones To Pounds Converter</Link></li>
-                <li><Link href="/category/conversions/pounds-to-stones-converter" className="hover:underline">Pounds To Stones Converter</Link></li>
+                <li><Link href="/conversions/cubic-inches-to-milliliters-converter" className="hover:underline">Cubic Inches To Milliliters Converter</Link></li>
+                <li><Link href="/conversions/kilometers-to-miles-converter" className="hover:underline">Kilometers To Miles Converter</Link></li>
+                <li><Link href="/conversions/watts-to-horsepower-converter" className="hover:underline">Watts To Horsepower Converter</Link></li>
+                <li><Link href="/conversions/stones-to-pounds-converter" className="hover:underline">Stones To Pounds Converter</Link></li>
+                <li><Link href="/conversions/pounds-to-stones-converter" className="hover:underline">Pounds To Stones Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

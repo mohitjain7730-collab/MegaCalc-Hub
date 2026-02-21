@@ -504,10 +504,10 @@ export default function JensensAlphaCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Treynor Ratio", desc: "Performance per unit of Beta", href: "/category/finance/treynor-ratio-calculator" },
-              { title: "Sharpe Ratio", desc: "Total risk efficiency", href: "/category/finance/sharpe-ratio-calculator" },
-              { title: "Information Ratio", desc: "Quantifying tracking error alpha", href: "/category/finance/information-ratio-calculator" },
-              { title: "Beta Calculator", desc: "Market sensitivity audit", href: "/category/finance/beta-asset-calculator" }
+              { title: "Treynor Ratio", desc: "Performance per unit of Beta", href: "/finance/treynor-ratio-calculator" },
+              { title: "Sharpe Ratio", desc: "Total risk efficiency", href: "/finance/sharpe-ratio-calculator" },
+              { title: "Information Ratio", desc: "Quantifying tracking error alpha", href: "/finance/information-ratio-calculator" },
+              { title: "Beta Calculator", desc: "Market sensitivity audit", href: "/finance/beta-asset-calculator" }
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-lg bg-muted/20 hover:bg-muted/40 relative overflow-hidden">

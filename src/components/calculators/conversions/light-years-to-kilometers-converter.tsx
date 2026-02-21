@@ -119,8 +119,8 @@ export default function LightYearsToKilometersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/parsecs-to-light-years-converter" className="text-primary underline">Parsecs to Light Years Converter</Link></p>
-            <p><Link href="/category/conversions/astronomical-units-to-kilometers-converter" className="text-primary underline">Astronomical Units to Kilometers Converter</Link></p>
+            <p><Link href="/conversions/parsecs-to-light-years-converter" className="text-primary underline">Parsecs to Light Years Converter</Link></p>
+            <p><Link href="/conversions/astronomical-units-to-kilometers-converter" className="text-primary underline">Astronomical Units to Kilometers Converter</Link></p>
           </div>
         </div>
         <section

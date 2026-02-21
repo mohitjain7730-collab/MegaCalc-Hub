@@ -381,7 +381,7 @@ export default function ZeroCouponBondValuationCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/category/finance/bond-yield-to-maturity-calculator" className="group">
+            <Link href="/finance/bond-yield-to-maturity-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Percent className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -389,7 +389,7 @@ export default function ZeroCouponBondValuationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-price-calculator" className="group">
+            <Link href="/finance/bond-price-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -397,7 +397,7 @@ export default function ZeroCouponBondValuationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-duration-calculator" className="group">
+            <Link href="/finance/bond-duration-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -405,7 +405,7 @@ export default function ZeroCouponBondValuationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/yield-to-call-calculator" className="group">
+            <Link href="/finance/yield-to-call-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -622,7 +622,7 @@ export default function ZeroCouponBondValuationCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/bond-price-calculator" className="text-primary hover:underline">
+                <Link href="/finance/bond-price-calculator" className="text-primary hover:underline">
                   Bond Price Calculator
                 </Link>
               </h4>
@@ -632,7 +632,7 @@ export default function ZeroCouponBondValuationCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/bond-yield-to-maturity-calculator" className="text-primary hover:underline">
+                <Link href="/finance/bond-yield-to-maturity-calculator" className="text-primary hover:underline">
                   Bond Yield to Maturity Calculator
                 </Link>
               </h4>
@@ -642,7 +642,7 @@ export default function ZeroCouponBondValuationCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/bond-duration-calculator" className="text-primary hover:underline">
+                <Link href="/finance/bond-duration-calculator" className="text-primary hover:underline">
                   Bond Duration Calculator
                 </Link>
               </h4>
@@ -652,7 +652,7 @@ export default function ZeroCouponBondValuationCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/present-value-calculator" className="text-primary hover:underline">
+                <Link href="/finance/present-value-calculator" className="text-primary hover:underline">
                   Present Value Calculator
                 </Link>
               </h4>

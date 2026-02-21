@@ -516,7 +516,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/health-fitness/intermittent-fasting-calculator" className="block">
+            <Link href="/health-fitness/intermittent-fasting-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -529,7 +529,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/macro-ratio-calculator" className="block">
+            <Link href="/health-fitness/macro-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -542,7 +542,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/keto-macro-calculator" className="block">
+            <Link href="/health-fitness/keto-macro-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -555,7 +555,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/bmr-calculator" className="block">
+            <Link href="/health-fitness/bmr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -568,7 +568,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/hydration-needs-calculator" className="block">
+            <Link href="/health-fitness/hydration-needs-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -581,7 +581,7 @@ export default function IntermittentFasting52ScheduleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/health-fitness/protein-intake-calculator" className="block">
+            <Link href="/health-fitness/protein-intake-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

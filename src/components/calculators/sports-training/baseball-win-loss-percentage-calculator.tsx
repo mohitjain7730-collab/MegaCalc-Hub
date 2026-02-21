@@ -99,7 +99,7 @@ export default function BaseballWinLossCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/baseball-run-differential-calculator" className="block">
+                        <Link href="/sports-training/baseball-run-differential-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -112,7 +112,7 @@ export default function BaseballWinLossCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/baseball-batting-average-calculator" className="block">
+                        <Link href="/sports-training/baseball-batting-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -125,7 +125,7 @@ export default function BaseballWinLossCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/baseball-era-calculator" className="block">
+                        <Link href="/sports-training/baseball-era-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -138,7 +138,7 @@ export default function BaseballWinLossCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/baseball-whip-calculator" className="block">
+                        <Link href="/sports-training/baseball-whip-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -151,7 +151,7 @@ export default function BaseballWinLossCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/baseball-on-base-percentage-calculator" className="block">
+                        <Link href="/sports-training/baseball-on-base-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -164,7 +164,7 @@ export default function BaseballWinLossCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/baseball-slugging-percentage-calculator" className="block">
+                        <Link href="/sports-training/baseball-slugging-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -264,7 +264,7 @@ export default function BaseballWinLossCalculator() {
                 {/* PYTHAGOREAN LUCK */}
                 <h2 id="pythag-luck" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Luck vs. Skill: The Pythagorean Theorem</h2>
                 <p>Is your 50-30 record &quot;real&quot;? Or are you just lucky?</p>
-                <p>Bill James developed the <Link href="/category/sports-training/baseball-run-differential-calculator" className="text-primary hover:underline">Pythagorean Expectation</Link> to answer this. It uses Run Differential to predict what a team&apos;s winning percentage <em>should</em> be.</p>
+                <p>Bill James developed the <Link href="/sports-training/baseball-run-differential-calculator" className="text-primary hover:underline">Pythagorean Expectation</Link> to answer this. It uses Run Differential to predict what a team&apos;s winning percentage <em>should</em> be.</p>
                 <ul className="list-disc ml-6 space-y-2 mt-2">
                     <li>If your <strong>Actual Win %</strong> is significantly higher than your Pythagorean projection, you are considered &quot;lucky&quot; (winning many close games) and likely to regress.</li>
                     <li>If your Actual Win % is lower, you are &quot;unlucky&quot; and likely to improve.</li>

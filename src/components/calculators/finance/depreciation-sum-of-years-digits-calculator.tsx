@@ -273,7 +273,7 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/depreciation-straight-line-calculator" className="text-primary hover:underline">
+                  <a href="/finance/depreciation-straight-line-calculator" className="text-primary hover:underline">
                     Depreciation (Straight-Line) Calculator
                   </a>
                 </h4>
@@ -283,7 +283,7 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/depreciation-double-declining-calculator" className="text-primary hover:underline">
+                  <a href="/finance/depreciation-double-declining-calculator" className="text-primary hover:underline">
                     Depreciation (Double Declining) Calculator
                   </a>
                 </h4>
@@ -293,7 +293,7 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/macrs-depreciation-calculator" className="text-primary hover:underline">
+                  <a href="/finance/macrs-depreciation-calculator" className="text-primary hover:underline">
                     MACRS Depreciation Calculator
                   </a>
                 </h4>
@@ -303,7 +303,7 @@ export default function DepreciationSumOfYearsDigitsCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/overhead-rate-allocation-calculator" className="text-primary hover:underline">
+                  <a href="/finance/overhead-rate-allocation-calculator" className="text-primary hover:underline">
                     Overhead Rate Allocation Calculator
                   </a>
                 </h4>

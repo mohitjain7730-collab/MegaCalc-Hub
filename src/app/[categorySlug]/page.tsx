@@ -100,9 +100,9 @@ const categorySeoContent: Record<
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params;
-  const category = categories.find((c) => c.slug === slug);
+export async function generateMetadata({ params }: { params: Promise<{ categorySlug: string }> }): Promise<Metadata> {
+  const { categorySlug } = await params;
+  const category = categories.find((c) => c.slug === categorySlug);
 
   if (!category) {
     return {
@@ -116,7 +116,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${category.name} Calculators - Mycalculating.com`,
     description: category.description,
     alternates: {
-      canonical: `/category/${category.slug}`,
+      canonical: `/${category.slug}`,
     },
     robots: {
       index: isIndexable,
@@ -125,9 +125,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
-  const category = categories.find((c) => c.slug === slug);
+export default async function CategoryPage({ params }: { params: Promise<{ categorySlug: string }> }) {
+  const { categorySlug } = await params;
+  const category = categories.find((c) => c.slug === categorySlug);
 
   if (!category) {
     notFound();

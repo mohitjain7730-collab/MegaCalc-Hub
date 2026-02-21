@@ -41,7 +41,7 @@ export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) 
       <div className="mt-4 flex gap-2">
         <EmbedCopyButton embedCode={embedCode} />
         <Link
-          href={`/category/${categorySlug}/${calculatorSlug}`}
+          href={`/${categorySlug}/${calculatorSlug}`}
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md text-sm hover:bg-secondary/90 transition-colors"

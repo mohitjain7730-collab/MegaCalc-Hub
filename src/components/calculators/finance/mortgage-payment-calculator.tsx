@@ -721,7 +721,7 @@ export default function MortgagePaymentCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                  <a href="/finance/loan-emi-calculator" className="text-primary hover:underline">
                     Loan/EMI Calculator
                   </a>
                 </h4>
@@ -731,7 +731,7 @@ export default function MortgagePaymentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
+                  <a href="/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
                     Mortgage Refinance Calculator
                   </a>
                 </h4>
@@ -741,7 +741,7 @@ export default function MortgagePaymentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/real-estate-cash-on-cash-return-calculator" className="text-primary hover:underline">
+                  <a href="/finance/real-estate-cash-on-cash-return-calculator" className="text-primary hover:underline">
                     Real Estate Cash-on-Cash Return
                   </a>
                 </h4>
@@ -751,7 +751,7 @@ export default function MortgagePaymentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/rental-property-cap-rate-calculator" className="text-primary hover:underline">
+                  <a href="/finance/rental-property-cap-rate-calculator" className="text-primary hover:underline">
                     Rental Property Cap Rate Calculator
                   </a>
                 </h4>

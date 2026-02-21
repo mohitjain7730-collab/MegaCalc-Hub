@@ -296,10 +296,10 @@ export default function FinancialHealthScoreCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/finance/compound-interest-calculator" className="hover:underline">Compound Interest Calculator</Link></li>
-              <li><Link href="/category/finance/return-on-investment-calculator" className="hover:underline">Return on Investment (ROI) Calculator</Link></li>
-              <li><Link href="/category/finance/monthly-budget-planner-calculator" className="hover:underline">Monthly Budget Planner</Link></li>
-              <li><Link href="/category/finance/emergency-fund-requirement-calculator" className="hover:underline">Emergency Fund Requirement Calculator</Link></li>
+              <li><Link href="/finance/compound-interest-calculator" className="hover:underline">Compound Interest Calculator</Link></li>
+              <li><Link href="/finance/return-on-investment-calculator" className="hover:underline">Return on Investment (ROI) Calculator</Link></li>
+              <li><Link href="/finance/monthly-budget-planner-calculator" className="hover:underline">Monthly Budget Planner</Link></li>
+              <li><Link href="/finance/emergency-fund-requirement-calculator" className="hover:underline">Emergency Fund Requirement Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

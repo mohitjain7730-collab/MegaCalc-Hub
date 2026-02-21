@@ -213,10 +213,10 @@ export default function BreakEvenStockSalePriceCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Plan exits and taxes</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/finance/stock-average-cost-multiple-buys-calculator" className="text-primary hover:underline">Average Cost (Multi‑Buys)</a></h4><p className="text-sm text-muted-foreground">Cost basis helper.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/finance/capital-gain-loss-calculator" className="text-primary hover:underline">Capital Gain/Loss</a></h4><p className="text-sm text-muted-foreground">Net proceeds.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/finance/target-price-calculator" className="text-primary hover:underline">Target Price</a></h4><p className="text-sm text-muted-foreground">Goal based exits.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</a></h4><p className="text-sm text-muted-foreground">After‑inflation metric.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/stock-average-cost-multiple-buys-calculator" className="text-primary hover:underline">Average Cost (Multi‑Buys)</a></h4><p className="text-sm text-muted-foreground">Cost basis helper.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/capital-gain-loss-calculator" className="text-primary hover:underline">Capital Gain/Loss</a></h4><p className="text-sm text-muted-foreground">Net proceeds.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/target-price-calculator" className="text-primary hover:underline">Target Price</a></h4><p className="text-sm text-muted-foreground">Goal based exits.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</a></h4><p className="text-sm text-muted-foreground">After‑inflation metric.</p></div>
           </div>
         </CardContent>
       </Card>

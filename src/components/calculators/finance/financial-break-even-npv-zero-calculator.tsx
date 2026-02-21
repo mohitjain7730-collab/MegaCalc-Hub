@@ -476,7 +476,7 @@ export default function FinancialBreakEvenNPVZeroCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/npv-calculator" className="block">
+            <Link href="/finance/npv-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -489,7 +489,7 @@ export default function FinancialBreakEvenNPVZeroCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/internal-rate-of-return-calculator" className="block">
+            <Link href="/finance/internal-rate-of-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -502,7 +502,7 @@ export default function FinancialBreakEvenNPVZeroCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/project-irr-vs-wacc-comparison-calculator" className="block">
+            <Link href="/finance/project-irr-vs-wacc-comparison-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -515,7 +515,7 @@ export default function FinancialBreakEvenNPVZeroCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/payback-period-calculator" className="block">
+            <Link href="/finance/payback-period-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -528,7 +528,7 @@ export default function FinancialBreakEvenNPVZeroCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cogs-estimator" className="block">
+            <Link href="/finance/cogs-estimator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -541,7 +541,7 @@ export default function FinancialBreakEvenNPVZeroCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/profit-margin-calculator" className="block">
+            <Link href="/finance/profit-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

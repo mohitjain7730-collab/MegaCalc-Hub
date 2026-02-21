@@ -116,10 +116,10 @@ export default function PortfolioTurnoverRatioCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/sector-exposure-calculator" className="text-primary hover:underline">Sector Exposure</a></h4><p className="text-sm text-muted-foreground">Sector allocation analysis.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/tracking-difference-calculator" className="text-primary hover:underline">Tracking Difference</a></h4><p className="text-sm text-muted-foreground">Fund vs benchmark.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/sharpe-ratio-calculator" className="text-primary hover:underline">Sharpe Ratio</a></h4><p className="text-sm text-muted-foreground">Risk‑adjusted return.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/rolling-return-calculator" className="text-primary hover:underline">Rolling Return</a></h4><p className="text-sm text-muted-foreground">Performance consistency.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/sector-exposure-calculator" className="text-primary hover:underline">Sector Exposure</a></h4><p className="text-sm text-muted-foreground">Sector allocation analysis.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/tracking-difference-calculator" className="text-primary hover:underline">Tracking Difference</a></h4><p className="text-sm text-muted-foreground">Fund vs benchmark.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/sharpe-ratio-calculator" className="text-primary hover:underline">Sharpe Ratio</a></h4><p className="text-sm text-muted-foreground">Risk‑adjusted return.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/rolling-return-calculator" className="text-primary hover:underline">Rolling Return</a></h4><p className="text-sm text-muted-foreground">Performance consistency.</p></div>
           </div>
         </CardContent>
       </Card>

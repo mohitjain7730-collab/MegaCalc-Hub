@@ -212,10 +212,10 @@ export default function TargetPriceCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Plan returns and valuation</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/cagr-calculator" className="text-primary hover:underline">CAGR</Link></h4><p className="text-sm text-muted-foreground">Annualized returns.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth modeling.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discounting tool.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</Link></h4><p className="text-sm text-muted-foreground">After inflation.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/cagr-calculator" className="text-primary hover:underline">CAGR</Link></h4><p className="text-sm text-muted-foreground">Annualized returns.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth modeling.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discounting tool.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</Link></h4><p className="text-sm text-muted-foreground">After inflation.</p></div>
           </div>
         </CardContent>
       </Card>

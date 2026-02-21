@@ -214,8 +214,8 @@ export default function TimeZoneOverlapCalculator() {
             <ul className="list-disc pl-5 text-sm text-primary">
               <li><Link href="/shift-rotation-calculator" className="hover:underline">Shift Rotation Calculator</Link></li>
               <li><Link href="/night-shift-duration-calculator" className="hover:underline">Night Shift Duration Calculator</Link></li>
-              <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
-              <li><Link href="/category/time-date/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
+              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/time-date/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

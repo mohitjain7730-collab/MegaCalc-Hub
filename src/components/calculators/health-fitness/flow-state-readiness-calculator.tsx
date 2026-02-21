@@ -511,7 +511,7 @@ export default function FlowStateReadinessCalculator() {
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href={`/category/health-fitness/${calc.slug}`}
+                  href={`/health-fitness/${calc.slug}`}
                   className="text-primary hover:underline"
                 >
                   {calc.name}

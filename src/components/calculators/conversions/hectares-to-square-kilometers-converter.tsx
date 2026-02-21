@@ -119,8 +119,8 @@ export default function HectaresToSquareKilometersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/square-kilometers-to-hectares-converter" className="text-primary underline">Square Kilometers to Hectares Converter</Link></p>
-            <p><Link href="/category/conversions/hectares-to-acres-converter" className="text-primary underline">Hectares to Acres Converter</Link></p>
+            <p><Link href="/conversions/square-kilometers-to-hectares-converter" className="text-primary underline">Square Kilometers to Hectares Converter</Link></p>
+            <p><Link href="/conversions/hectares-to-acres-converter" className="text-primary underline">Hectares to Acres Converter</Link></p>
           </div>
         </div>
       </div>

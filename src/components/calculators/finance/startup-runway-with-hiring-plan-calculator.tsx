@@ -662,7 +662,7 @@ export default function StartupRunwayHiringCalculator() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/burn-rate-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/burn-rate-calculator" className="text-primary hover:underline">
                                         Burn Rate Calculator
                                     </a>
                                 </h4>
@@ -672,7 +672,7 @@ export default function StartupRunwayHiringCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/saas-cac-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/saas-cac-calculator" className="text-primary hover:underline">
                                         SaaS CAC Calculator
                                     </a>
                                 </h4>
@@ -682,7 +682,7 @@ export default function StartupRunwayHiringCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/option-pool-allocation-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/option-pool-allocation-calculator" className="text-primary hover:underline">
                                         Option Pool Calculator
                                     </a>
                                 </h4>
@@ -692,7 +692,7 @@ export default function StartupRunwayHiringCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/startup-valuation-post-money-pre-money-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/startup-valuation-post-money-pre-money-calculator" className="text-primary hover:underline">
                                         Startup Valuation
                                     </a>
                                 </h4>

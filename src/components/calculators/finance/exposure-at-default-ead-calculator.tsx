@@ -380,7 +380,7 @@ export default function ExposureAtDefaultEADCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/credit-risk-expected-loss-calculator" className="block">
+            <Link href="/finance/credit-risk-expected-loss-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -393,7 +393,7 @@ export default function ExposureAtDefaultEADCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/probability-of-default-pd-estimator" className="block">
+            <Link href="/finance/probability-of-default-pd-estimator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -406,7 +406,7 @@ export default function ExposureAtDefaultEADCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/current-ratio-calculator" className="block">
+            <Link href="/finance/current-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

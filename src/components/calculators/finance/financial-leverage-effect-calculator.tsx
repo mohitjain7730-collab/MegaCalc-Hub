@@ -382,7 +382,7 @@ export default function FinancialLeverageEffectCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/return-on-equity-calculator" className="block">
+            <Link href="/finance/return-on-equity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -395,7 +395,7 @@ export default function FinancialLeverageEffectCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/wacc-calculator" className="block">
+            <Link href="/finance/wacc-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -408,7 +408,7 @@ export default function FinancialLeverageEffectCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/debt-to-equity-ratio-calculator" className="block">
+            <Link href="/finance/debt-to-equity-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -421,7 +421,7 @@ export default function FinancialLeverageEffectCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/interest-coverage-ratio-calculator" className="block">
+            <Link href="/finance/interest-coverage-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -434,7 +434,7 @@ export default function FinancialLeverageEffectCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/operating-leverage-calculator" className="block">
+            <Link href="/finance/operating-leverage-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -447,7 +447,7 @@ export default function FinancialLeverageEffectCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/return-on-assets-calculator" className="block">
+            <Link href="/finance/return-on-assets-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

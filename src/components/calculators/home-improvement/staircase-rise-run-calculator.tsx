@@ -455,7 +455,7 @@ export default function StaircaseRiseRunCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/home-improvement/concrete-volume-calculator" className="text-primary hover:underline">
+                  <a href="/home-improvement/concrete-volume-calculator" className="text-primary hover:underline">
                     Concrete Volume Calculator
                   </a>
                 </h4>
@@ -465,7 +465,7 @@ export default function StaircaseRiseRunCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/home-improvement/cost-estimator-renovation-calculator" className="text-primary hover:underline">
+                  <a href="/home-improvement/cost-estimator-renovation-calculator" className="text-primary hover:underline">
                     Renovation Cost Estimator
                   </a>
                 </h4>
@@ -475,7 +475,7 @@ export default function StaircaseRiseRunCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/home-improvement/drywall-plasterboard-calculator" className="text-primary hover:underline">
+                  <a href="/home-improvement/drywall-plasterboard-calculator" className="text-primary hover:underline">
                     Drywall Calculator
                   </a>
                 </h4>
@@ -485,7 +485,7 @@ export default function StaircaseRiseRunCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/home-improvement/paint-coverage-calculator" className="text-primary hover:underline">
+                  <a href="/home-improvement/paint-coverage-calculator" className="text-primary hover:underline">
                     Paint Coverage Calculator
                   </a>
                 </h4>

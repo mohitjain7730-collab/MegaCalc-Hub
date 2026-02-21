@@ -509,7 +509,7 @@ export default function GoalBasedInvestingAllocationCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -529,7 +529,7 @@ export default function GoalBasedInvestingAllocationCalculator() {
     <meta itemProp="keywords" content="goal based investing, asset allocation, portfolio allocation, financial goals, time horizon, stock bond allocation" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/category/finance/goal-based-investing-allocation-calculator" />
+    <meta itemProp="url" content="/finance/goal-based-investing-allocation-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Goal-Based Investing Allocation: Portfolio Strategy for Financial Goals</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at goal-based investing allocation, optimizing asset allocation for specific financial goals based on time horizons and risk requirements.</p>

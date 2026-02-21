@@ -179,11 +179,11 @@ export default function EnergyConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/kilometers-per-hour-to-miles-per-hour-converter" className="hover:underline">Kilometers Per Hour To Miles Per Hour Converter</Link></li>
-                <li><Link href="/category/conversions/watts-to-foot-pounds-per-second-converter" className="hover:underline">Watts To Foot Pounds Per Second Converter</Link></li>
-                <li><Link href="/category/conversions/joules-to-foot-pounds-converter" className="hover:underline">Joules To Foot Pounds Converter</Link></li>
-                <li><Link href="/category/conversions/angle-converter" className="hover:underline">Angle Converter</Link></li>
-                <li><Link href="/category/conversions/pressure-converter" className="hover:underline">Pressure Converter</Link></li>
+                <li><Link href="/conversions/kilometers-per-hour-to-miles-per-hour-converter" className="hover:underline">Kilometers Per Hour To Miles Per Hour Converter</Link></li>
+                <li><Link href="/conversions/watts-to-foot-pounds-per-second-converter" className="hover:underline">Watts To Foot Pounds Per Second Converter</Link></li>
+                <li><Link href="/conversions/joules-to-foot-pounds-converter" className="hover:underline">Joules To Foot Pounds Converter</Link></li>
+                <li><Link href="/conversions/angle-converter" className="hover:underline">Angle Converter</Link></li>
+                <li><Link href="/conversions/pressure-converter" className="hover:underline">Pressure Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

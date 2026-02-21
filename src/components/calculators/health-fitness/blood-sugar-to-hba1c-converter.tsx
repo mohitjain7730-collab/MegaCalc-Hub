@@ -123,13 +123,13 @@ function RelatedCalculators() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/category/health-fitness/glycemic-load-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/health-fitness/glycemic-load-calculator" className="text-primary underline hover:text-primary/80">
             Glycemic Load Calculator
           </Link>
-          <Link href="/category/health-fitness/meal-glycemic-load-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/health-fitness/meal-glycemic-load-calculator" className="text-primary underline hover:text-primary/80">
             Meal Glycemic Load Calculator
           </Link>
-          <Link href="/category/health-fitness/bmi-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/health-fitness/bmi-calculator" className="text-primary underline hover:text-primary/80">
             Body Mass Index (BMI) Calculator
           </Link>
         </div>

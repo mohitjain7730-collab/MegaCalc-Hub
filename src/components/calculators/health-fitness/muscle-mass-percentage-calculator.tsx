@@ -488,7 +488,7 @@ export default function MuscleMassPercentageCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
                   Body Fat Percentage Calculator
                 </Link>
               </h4>
@@ -496,7 +496,7 @@ export default function MuscleMassPercentageCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
                   Lean Body Mass Calculator
                 </Link>
               </h4>
@@ -504,7 +504,7 @@ export default function MuscleMassPercentageCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/fat-free-mass-index-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/fat-free-mass-index-calculator" className="text-primary hover:underline">
                   Fat-Free Mass Index Calculator
                 </Link>
               </h4>
@@ -512,7 +512,7 @@ export default function MuscleMassPercentageCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                   Protein Intake Calculator
                 </Link>
               </h4>

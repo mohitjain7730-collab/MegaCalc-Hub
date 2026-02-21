@@ -165,7 +165,7 @@ export default function SplitShiftHoursCalculator() {
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
               <li><Link href="/night-shift-duration-calculator" className="hover:underline">Night Shift Duration Calculator</Link></li>
-              <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
               <li><Link href="/freelance-billable-hours-calculator" className="hover:underline">Freelance Billable Hours Calculator</Link></li>
               <li><Link href="/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
             </ul>

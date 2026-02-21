@@ -124,7 +124,7 @@ export default function KmhToMsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/meters-per-second-to-kilometers-per-hour-converter" className="text-primary underline">m/s to km/h Converter</Link></p>
+            <p><Link href="/conversions/meters-per-second-to-kilometers-per-hour-converter" className="text-primary underline">m/s to km/h Converter</Link></p>
           </div>
         </div>
       </div>

@@ -414,7 +414,7 @@ export default function BondDurationCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/category/finance/bond-yield-to-maturity-calculator" className="group">
+            <Link href="/finance/bond-yield-to-maturity-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Percent className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -422,7 +422,7 @@ export default function BondDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-price-calculator" className="group">
+            <Link href="/finance/bond-price-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -430,7 +430,7 @@ export default function BondDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-convexity-calculator" className="group">
+            <Link href="/finance/bond-convexity-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -438,7 +438,7 @@ export default function BondDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-yield-spread-calculator" className="group">
+            <Link href="/finance/bond-yield-spread-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />

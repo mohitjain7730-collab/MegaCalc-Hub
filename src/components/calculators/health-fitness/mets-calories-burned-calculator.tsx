@@ -126,8 +126,8 @@ export default function MetsCaloriesBurnedCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/running-speed-to-calories-burned-calculator" className="text-primary hover:underline">Running Calories Burned</a></h4><p className="text-sm text-muted-foreground">Estimate running energy cost.</p></div>
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/cycling-power-output-calculator" className="text-primary hover:underline">Cycling Power Output</a></h4><p className="text-sm text-muted-foreground">Relate effort to watts.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/running-speed-to-calories-burned-calculator" className="text-primary hover:underline">Running Calories Burned</a></h4><p className="text-sm text-muted-foreground">Estimate running energy cost.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/cycling-power-output-calculator" className="text-primary hover:underline">Cycling Power Output</a></h4><p className="text-sm text-muted-foreground">Relate effort to watts.</p></div>
           </div>
         </CardContent>
       </Card>

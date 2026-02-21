@@ -103,10 +103,10 @@ export default function LoanToValueLTVRatioCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">Mortgage Payment</a></h4><p className="text-sm text-muted-foreground">Monthly payment details.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/home-affordability-calculator" className="text-primary hover:underline">Home Affordability</a></h4><p className="text-sm text-muted-foreground">Budget‑based price ceiling.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return indicator.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/mortgage-points-impact-calculator" className="text-primary hover:underline">Mortgage Points Impact</a></h4><p className="text-sm text-muted-foreground">Effect of buying points.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/mortgage-payment-calculator" className="text-primary hover:underline">Mortgage Payment</a></h4><p className="text-sm text-muted-foreground">Monthly payment details.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/home-affordability-calculator" className="text-primary hover:underline">Home Affordability</a></h4><p className="text-sm text-muted-foreground">Budget‑based price ceiling.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return indicator.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/mortgage-points-impact-calculator" className="text-primary hover:underline">Mortgage Points Impact</a></h4><p className="text-sm text-muted-foreground">Effect of buying points.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -336,7 +336,7 @@ export default function CAPMCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/category/finance/portfolio-expected-return-calculator" className="group">
+            <Link href="/finance/portfolio-expected-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -344,7 +344,7 @@ export default function CAPMCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/beta-asset-calculator" className="group">
+            <Link href="/finance/beta-asset-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -352,7 +352,7 @@ export default function CAPMCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/alpha-investment-calculator" className="group">
+            <Link href="/finance/alpha-investment-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -360,7 +360,7 @@ export default function CAPMCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/sharpe-ratio-calculator" className="group">
+            <Link href="/finance/sharpe-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />

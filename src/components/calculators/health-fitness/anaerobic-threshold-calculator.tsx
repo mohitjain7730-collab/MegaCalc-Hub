@@ -576,10 +576,10 @@ export default function AnaerobicThresholdCalculator() {
 
         <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
         <div className="space-y-2">
-          <p><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary underline">Maximum Lactate Steady State Calculator</Link></p>
-          <p><Link href="/category/health-fitness/vo2-max-calculator" className="text-primary underline">VO2 Max Calculator</Link></p>
-          <p><Link href="/category/health-fitness/target-heart-rate-calculator" className="text-primary underline">Heart Rate Zone Training Calculator</Link></p>
-          <p><Link href="/category/health-fitness/training-volume-calculator" className="text-primary underline">Training Volume Calculator</Link></p>
+          <p><Link href="/health-fitness/vo2-max-calculator" className="text-primary underline">Maximum Lactate Steady State Calculator</Link></p>
+          <p><Link href="/health-fitness/vo2-max-calculator" className="text-primary underline">VO2 Max Calculator</Link></p>
+          <p><Link href="/health-fitness/target-heart-rate-calculator" className="text-primary underline">Heart Rate Zone Training Calculator</Link></p>
+          <p><Link href="/health-fitness/training-volume-calculator" className="text-primary underline">Training Volume Calculator</Link></p>
         </div>
       </section>
     </div>

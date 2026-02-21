@@ -371,7 +371,7 @@ export default function StartupValuationPreMoneyVsPostMoneyCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/founder-dilution-after-funding-calculator" className="block">
+            <Link href="/finance/founder-dilution-after-funding-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -384,7 +384,7 @@ export default function StartupValuationPreMoneyVsPostMoneyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/startup-valuation-post-money-pre-money-calculator" className="block">
+            <Link href="/finance/startup-valuation-post-money-pre-money-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -397,7 +397,7 @@ export default function StartupValuationPreMoneyVsPostMoneyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/pre-money-vs-post-money-valuation-calculator" className="block">
+            <Link href="/finance/pre-money-vs-post-money-valuation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -410,7 +410,7 @@ export default function StartupValuationPreMoneyVsPostMoneyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/equity-split-calculator-for-co-founders" className="block">
+            <Link href="/finance/equity-split-calculator-for-co-founders" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -423,7 +423,7 @@ export default function StartupValuationPreMoneyVsPostMoneyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/option-pool-allocation-calculator" className="block">
+            <Link href="/finance/option-pool-allocation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -436,7 +436,7 @@ export default function StartupValuationPreMoneyVsPostMoneyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/post-funding-runway-extension-calculator" className="block">
+            <Link href="/finance/post-funding-runway-extension-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

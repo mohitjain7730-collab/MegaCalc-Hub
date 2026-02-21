@@ -178,8 +178,8 @@ export default function WorkingDaysBusinessDaysCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/category/time-date/date-difference-calculator" className="text-primary hover:underline">Date Difference Calculator</a></h4><p className="text-sm text-muted-foreground">Compute days, weeks, and months between dates.</p></div>
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/category/time-date/day-of-the-week-calculator" className="text-primary hover:underline">Day of the Week</a></h4><p className="text-sm text-muted-foreground">Find weekday for any date.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/time-date/date-difference-calculator" className="text-primary hover:underline">Date Difference Calculator</a></h4><p className="text-sm text-muted-foreground">Compute days, weeks, and months between dates.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/time-date/day-of-the-week-calculator" className="text-primary hover:underline">Day of the Week</a></h4><p className="text-sm text-muted-foreground">Find weekday for any date.</p></div>
           </div>
         </CardContent>
       </Card>

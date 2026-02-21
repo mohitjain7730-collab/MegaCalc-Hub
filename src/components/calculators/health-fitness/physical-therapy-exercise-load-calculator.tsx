@@ -122,8 +122,8 @@ export default function PhysicalTherapyExerciseLoadCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/post-injury-mobility-progress-calculator" className="text-primary hover:underline">Mobility Progress</a></h4><p className="text-sm text-muted-foreground">Track ROM improvements over time.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/physical-therapy-exercise-load-calculator" className="text-primary hover:underline">Session Intensity</a></h4><p className="text-sm text-muted-foreground">Balance effort and symptoms.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/health-fitness/post-injury-mobility-progress-calculator" className="text-primary hover:underline">Mobility Progress</a></h4><p className="text-sm text-muted-foreground">Track ROM improvements over time.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/health-fitness/physical-therapy-exercise-load-calculator" className="text-primary hover:underline">Session Intensity</a></h4><p className="text-sm text-muted-foreground">Balance effort and symptoms.</p></div>
           </div>
         </CardContent>
       </Card>

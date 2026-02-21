@@ -128,8 +128,8 @@ export default function MonthsToYearsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/years-to-months-converter" className="text-primary underline">Years to Months Converter</Link></p>
-            <p><Link href="/category/conversions/months-to-weeks-converter" className="text-primary underline">Months to Weeks Converter</Link></p>
+            <p><Link href="/conversions/years-to-months-converter" className="text-primary underline">Years to Months Converter</Link></p>
+            <p><Link href="/conversions/months-to-weeks-converter" className="text-primary underline">Months to Weeks Converter</Link></p>
           </div>
         </div>
       </div>

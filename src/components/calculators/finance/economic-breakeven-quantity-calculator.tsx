@@ -82,10 +82,10 @@ export default function EconomicBreakevenQuantityCalculator() {
         <CardHeader><CardTitle className="flex items-center gap-2"><Calculator className="h-5 w-5" /> Related Calculators</CardTitle><CardDescription>Margins and leverage</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/contribution-margin-calculator" className="text-primary hover:underline">Contribution Margin</a></h4><p className="text-sm text-muted-foreground">Unit margin.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/break-even-analysis-calculator" className="text-primary hover:underline">Break-even Analysis</a></h4><p className="text-sm text-muted-foreground">Fixed vs variable.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/gross-margin-calculator" className="text-primary hover:underline">Gross Margin</a></h4><p className="text-sm text-muted-foreground">Gross profitability.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/operating-leverage-calculator" className="text-primary hover:underline">Operating Leverage</a></h4><p className="text-sm text-muted-foreground">Profit sensitivity.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/contribution-margin-calculator" className="text-primary hover:underline">Contribution Margin</a></h4><p className="text-sm text-muted-foreground">Unit margin.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/break-even-analysis-calculator" className="text-primary hover:underline">Break-even Analysis</a></h4><p className="text-sm text-muted-foreground">Fixed vs variable.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/gross-margin-calculator" className="text-primary hover:underline">Gross Margin</a></h4><p className="text-sm text-muted-foreground">Gross profitability.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/operating-leverage-calculator" className="text-primary hover:underline">Operating Leverage</a></h4><p className="text-sm text-muted-foreground">Profit sensitivity.</p></div>
           </div>
         </CardContent>
       </Card>

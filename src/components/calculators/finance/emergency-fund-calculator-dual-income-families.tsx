@@ -410,7 +410,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/emergency-fund-calculator-single-income-households" className="block">
+            <Link href="/finance/emergency-fund-calculator-single-income-households" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -423,7 +423,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/emergency-fund-calculator-freelancers" className="block">
+            <Link href="/finance/emergency-fund-calculator-freelancers" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -436,7 +436,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -459,7 +459,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
         <meta itemProp="keywords" content="emergency fund dual income, dual income family emergency fund, how much emergency fund two incomes, 3 months expenses dual income" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/emergency-fund-calculator-dual-income-families" />
+        <meta itemProp="url" content="/finance/emergency-fund-calculator-dual-income-families" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Dual Income Families: Why 3–9 Months</h1>
         <p className="text-lg italic text-muted-foreground">Dual-income families have a backup earner; if one loses a job, the other income can cover expenses. A target of 3–9 months of essential expenses is the standard recommendation.</p>

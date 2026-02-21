@@ -402,7 +402,7 @@ export default function RentalYieldCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/property-appreciation-projection-calculator" className="block">
+            <Link href="/finance/property-appreciation-projection-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -412,7 +412,7 @@ export default function RentalYieldCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/real-estate-cap-rate-sensitivity-calculator" className="block">
+            <Link href="/finance/real-estate-cap-rate-sensitivity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -422,7 +422,7 @@ export default function RentalYieldCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/gross-rent-multiplier-grm-calculator" className="block">
+            <Link href="/finance/gross-rent-multiplier-grm-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -432,7 +432,7 @@ export default function RentalYieldCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/mortgage-payment-calculator" className="block">
+            <Link href="/finance/mortgage-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -442,7 +442,7 @@ export default function RentalYieldCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/dscr-calculator" className="block">
+            <Link href="/finance/dscr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

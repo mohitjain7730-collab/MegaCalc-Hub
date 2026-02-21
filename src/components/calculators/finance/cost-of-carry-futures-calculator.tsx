@@ -542,7 +542,7 @@ export default function CostOfCarryFuturesCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/futures-basis-calculator" className="block">
+            <Link href="/finance/futures-basis-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -555,7 +555,7 @@ export default function CostOfCarryFuturesCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/interest-rate-parity-calculator" className="block">
+            <Link href="/finance/interest-rate-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -568,7 +568,7 @@ export default function CostOfCarryFuturesCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/present-value-calculator" className="block">
+            <Link href="/finance/present-value-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

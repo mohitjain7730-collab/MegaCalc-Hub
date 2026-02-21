@@ -179,11 +179,11 @@ export default function PressureConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/kilojoules-to-joules-converter" className="hover:underline">Kilojoules To Joules Converter</Link></li>
-                <li><Link href="/category/conversions/meters-per-second-to-knots-converter" className="hover:underline">Meters Per Second To Knots Converter</Link></li>
-                <li><Link href="/category/conversions/btu-to-kwh-converter" className="hover:underline">Btu To Kwh Converter</Link></li>
-                <li><Link href="/category/conversions/hours-to-minutes-converter" className="hover:underline">Hours To Minutes Converter</Link></li>
-                <li><Link href="/category/conversions/chemical-concentration-converter" className="hover:underline">Chemical Concentration Converter</Link></li>
+                <li><Link href="/conversions/kilojoules-to-joules-converter" className="hover:underline">Kilojoules To Joules Converter</Link></li>
+                <li><Link href="/conversions/meters-per-second-to-knots-converter" className="hover:underline">Meters Per Second To Knots Converter</Link></li>
+                <li><Link href="/conversions/btu-to-kwh-converter" className="hover:underline">Btu To Kwh Converter</Link></li>
+                <li><Link href="/conversions/hours-to-minutes-converter" className="hover:underline">Hours To Minutes Converter</Link></li>
+                <li><Link href="/conversions/chemical-concentration-converter" className="hover:underline">Chemical Concentration Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

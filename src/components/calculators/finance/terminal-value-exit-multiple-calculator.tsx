@@ -488,7 +488,7 @@ export default function TerminalValueExitMultipleCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -508,7 +508,7 @@ export default function TerminalValueExitMultipleCalculator() {
         <meta itemProp="keywords" content="terminal value, exit multiple, EV/EBITDA, EV/Revenue, DCF terminal value, exit multiple method" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/terminal-value-exit-multiple-calculator" />
+        <meta itemProp="url" content="/finance/terminal-value-exit-multiple-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Terminal Value: Exit Multiple Method</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at calculating terminal value using exit multiple method (EV/EBITDA or EV/Revenue) for DCF valuation.</p>

@@ -159,9 +159,9 @@ export default function TennisServeSpeedCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/vo2-max-calculator">VO₂ Max Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/target-heart-rate-calculator">Target Heart Rate Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/strength-to-weight-ratio-calculator">Strength-to-Weight Ratio</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/vo2-max-calculator">VO₂ Max Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/target-heart-rate-calculator">Target Heart Rate Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/strength-to-weight-ratio-calculator">Strength-to-Weight Ratio</Link></p>
       </div>
     </div>
   );

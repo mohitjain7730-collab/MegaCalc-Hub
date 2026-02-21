@@ -426,7 +426,7 @@ export default function EmergencyFundCalculatorSingleIncomeHouseholds() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -439,7 +439,7 @@ export default function EmergencyFundCalculatorSingleIncomeHouseholds() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/monthly-budget-planner-calculator" className="block">
+            <Link href="/finance/monthly-budget-planner-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -452,7 +452,7 @@ export default function EmergencyFundCalculatorSingleIncomeHouseholds() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/savings-goal-timeline-calculator" className="block">
+            <Link href="/finance/savings-goal-timeline-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -475,7 +475,7 @@ export default function EmergencyFundCalculatorSingleIncomeHouseholds() {
         <meta itemProp="keywords" content="emergency fund single income, single income household emergency fund, how much emergency fund single earner, 6 months expenses single income" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/emergency-fund-calculator-single-income-households" />
+        <meta itemProp="url" content="/finance/emergency-fund-calculator-single-income-households" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Single Income Households: Why 6–12 Months</h1>
         <p className="text-lg italic text-muted-foreground">Single-income households have no backup earner; job loss removes 100% of income. A larger emergency fund (6–12 months of essential expenses) is the standard recommendation.</p>

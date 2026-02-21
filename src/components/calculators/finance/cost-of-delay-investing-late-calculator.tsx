@@ -348,7 +348,7 @@ export default function CostOfDelayInvestingLateCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -361,7 +361,7 @@ export default function CostOfDelayInvestingLateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/savings-goal-timeline-calculator" className="block">
+            <Link href="/finance/savings-goal-timeline-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -374,7 +374,7 @@ export default function CostOfDelayInvestingLateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/retirement-savings-calculator" className="block">
+            <Link href="/finance/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -387,7 +387,7 @@ export default function CostOfDelayInvestingLateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -400,7 +400,7 @@ export default function CostOfDelayInvestingLateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/monthly-budget-planner-calculator" className="block">
+            <Link href="/finance/monthly-budget-planner-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -413,7 +413,7 @@ export default function CostOfDelayInvestingLateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/simple-inflation-adjusted-return-calculator" className="block">
+            <Link href="/finance/simple-inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

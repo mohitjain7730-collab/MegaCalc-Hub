@@ -140,7 +140,7 @@ export default function PonderalIndexCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/bmi-calculator" className="text-primary hover:underline">
                     BMI Calculator
                   </a>
                 </h4>
@@ -150,7 +150,7 @@ export default function PonderalIndexCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/waist-to-height-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/waist-to-height-ratio-calculator" className="text-primary hover:underline">
                     Waist-to-Height Ratio Calculator
                   </a>
                 </h4>
@@ -160,7 +160,7 @@ export default function PonderalIndexCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
                     Body Fat Percentage Calculator
                   </a>
                 </h4>
@@ -170,7 +170,7 @@ export default function PonderalIndexCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">
                     Ideal Body Weight Calculator
                   </a>
                 </h4>

@@ -214,7 +214,7 @@ export default function RealEstateCashOnCashReturnCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/rental-property-cap-rate-calculator" className="text-primary hover:underline">
+                <a href="/finance/rental-property-cap-rate-calculator" className="text-primary hover:underline">
                   Rental Property Cap Rate
                 </a>
               </h4>
@@ -224,7 +224,7 @@ export default function RealEstateCashOnCashReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                <a href="/finance/mortgage-payment-calculator" className="text-primary hover:underline">
                   Mortgage Payment Calculator
                 </a>
               </h4>
@@ -234,7 +234,7 @@ export default function RealEstateCashOnCashReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
+                <a href="/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
                   Mortgage Refinance Savings
                 </a>
               </h4>
@@ -244,7 +244,7 @@ export default function RealEstateCashOnCashReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/dscr-calculator" className="text-primary hover:underline">
+                <a href="/finance/dscr-calculator" className="text-primary hover:underline">
                   DSCR Calculator
                 </a>
               </h4>

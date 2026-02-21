@@ -337,7 +337,7 @@ export default function FortniteLootDropOddsEstimator() {
               <div key={calc.slug} className="group">
                 <h4 className="font-semibold text-sm flex items-center gap-2">
                   <ArrowRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity text-yellow-500" />
-                  <Link href={`/category/gaming/${calc.slug}`} className="text-foreground hover:text-yellow-500 transition-colors">
+                  <Link href={`/gaming/${calc.slug}`} className="text-foreground hover:text-yellow-500 transition-colors">
                     {calc.name}
                   </Link>
                 </h4>

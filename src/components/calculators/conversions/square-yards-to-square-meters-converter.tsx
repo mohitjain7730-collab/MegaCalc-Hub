@@ -110,8 +110,8 @@ export default function SquareYardsToSquareMetersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/square-meters-to-square-yards-converter" className="text-primary underline">Square Meters to Square Yards Converter</Link></p>
-            <p><Link href="/category/conversions/square-yards-to-square-feet-converter" className="text-primary underline">Square Yards to Square Feet Converter</Link></p>
+            <p><Link href="/conversions/square-meters-to-square-yards-converter" className="text-primary underline">Square Meters to Square Yards Converter</Link></p>
+            <p><Link href="/conversions/square-yards-to-square-feet-converter" className="text-primary underline">Square Yards to Square Feet Converter</Link></p>
           </div>
         </div>
       </div>

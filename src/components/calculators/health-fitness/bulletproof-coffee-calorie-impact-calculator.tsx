@@ -287,10 +287,10 @@ export default function BulletproofCoffeeCalorieImpactCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Estimate maintenance calories before adding fat-heavy drinks.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Balance carbs, fat, and protein alongside Bulletproof coffee.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/intermittent-fasting-calculator" className="text-primary hover:underline">Intermittent Fasting Planner</Link></h4><p className="text-sm text-muted-foreground">Coordinate coffee timing with fasting windows.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/alcohol-calorie-impact-calculator" className="text-primary hover:underline">Alcohol Calorie Impact</Link></h4><p className="text-sm text-muted-foreground">Compare occasional drinks to Bulletproof coffee calories.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Estimate maintenance calories before adding fat-heavy drinks.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Balance carbs, fat, and protein alongside Bulletproof coffee.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/intermittent-fasting-calculator" className="text-primary hover:underline">Intermittent Fasting Planner</Link></h4><p className="text-sm text-muted-foreground">Coordinate coffee timing with fasting windows.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/alcohol-calorie-impact-calculator" className="text-primary hover:underline">Alcohol Calorie Impact</Link></h4><p className="text-sm text-muted-foreground">Compare occasional drinks to Bulletproof coffee calories.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -409,7 +409,7 @@ export default function EsopDilutionImpactCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/founder-dilution-after-funding-calculator" className="block">
+            <Link href="/finance/founder-dilution-after-funding-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -422,7 +422,7 @@ export default function EsopDilutionImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/post-funding-runway-extension-calculator" className="block">
+            <Link href="/finance/post-funding-runway-extension-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -435,7 +435,7 @@ export default function EsopDilutionImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/burn-rate-calculator" className="block">
+            <Link href="/finance/burn-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -448,7 +448,7 @@ export default function EsopDilutionImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
+            <Link href="/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -461,7 +461,7 @@ export default function EsopDilutionImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/hiring-cost-impact-on-runway-calculator" className="block">
+            <Link href="/finance/hiring-cost-impact-on-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -474,7 +474,7 @@ export default function EsopDilutionImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/equity-split-calculator-for-co-founders" className="block">
+            <Link href="/finance/equity-split-calculator-for-co-founders" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -499,7 +499,7 @@ export default function EsopDilutionImpactCalculator() {
         <meta itemProp="keywords" content="ESOP dilution calculator, option pool dilution, employee stock option plan, fully diluted shares, startup option pool size, ESOP dilution formula" />
         <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/esop-dilution-impact-calculator" />
+        <meta itemProp="url" content="/finance/esop-dilution-impact-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to ESOP Dilution: Impact on Ownership and Pool Sizing</h1>
         <p className="text-lg italic text-muted-foreground">Understand how creating or expanding an employee option pool dilutes existing shareholders and how to size the pool for hiring and retention.</p>

@@ -180,11 +180,11 @@ export default function AngleConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/conversions/belt-size-converter" className="hover:underline">Belt Size Converter</Link></li>
-              <li><Link href="/category/conversions/joules-to-watt-hours-converter" className="hover:underline">Joules To Watt Hours Converter</Link></li>
-              <li><Link href="/category/conversions/fuel-economy-converter" className="hover:underline">Fuel Economy Converter</Link></li>
-              <li><Link href="/category/conversions/kilograms-to-stones-converter" className="hover:underline">Kilograms To Stones Converter</Link></li>
-              <li><Link href="/category/conversions/days-to-hours-converter" className="hover:underline">Days To Hours Converter</Link></li>
+              <li><Link href="/conversions/belt-size-converter" className="hover:underline">Belt Size Converter</Link></li>
+              <li><Link href="/conversions/joules-to-watt-hours-converter" className="hover:underline">Joules To Watt Hours Converter</Link></li>
+              <li><Link href="/conversions/fuel-economy-converter" className="hover:underline">Fuel Economy Converter</Link></li>
+              <li><Link href="/conversions/kilograms-to-stones-converter" className="hover:underline">Kilograms To Stones Converter</Link></li>
+              <li><Link href="/conversions/days-to-hours-converter" className="hover:underline">Days To Hours Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

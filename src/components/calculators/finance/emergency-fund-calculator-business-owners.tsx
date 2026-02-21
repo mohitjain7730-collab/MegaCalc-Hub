@@ -460,7 +460,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/emergency-fund-calculator-freelancers" className="block">
+            <Link href="/finance/emergency-fund-calculator-freelancers" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -473,7 +473,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/paycheck-to-paycheck-risk-calculator" className="block">
+            <Link href="/finance/paycheck-to-paycheck-risk-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -486,7 +486,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -509,7 +509,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
         <meta itemProp="keywords" content="emergency fund business owner, business owner emergency fund, how much emergency fund self employed business, 6 months expenses business owner" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/emergency-fund-calculator-business-owners" />
+        <meta itemProp="url" content="/finance/emergency-fund-calculator-business-owners" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Business Owners: Why 6–12+ Months</h1>
         <p className="text-lg italic text-muted-foreground">Business owners often rely on draw or profit; when the business slows, personal income can drop. A larger personal emergency fund (6–12+ months of essential expenses) is the standard recommendation.</p>

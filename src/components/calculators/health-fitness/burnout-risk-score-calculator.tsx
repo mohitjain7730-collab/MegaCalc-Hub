@@ -384,10 +384,10 @@ export default function BurnoutRiskScoreCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">Daily Stress Tendency Check-In</Link></h4><p className="text-sm text-muted-foreground">Evaluate stress levels and coping strategies.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">Sleep Quality Score</Link></h4><p className="text-sm text-muted-foreground">Reflect on your sleep patterns and nightly rest.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">Recovery Readiness</Link></h4><p className="text-sm text-muted-foreground">Monitor how ready you feel for physical or mental demands.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rhythm Helper</Link></h4><p className="text-sm text-muted-foreground">Explore simple breathing practices that may ease stress throughout the day.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">Daily Stress Tendency Check-In</Link></h4><p className="text-sm text-muted-foreground">Evaluate stress levels and coping strategies.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">Sleep Quality Score</Link></h4><p className="text-sm text-muted-foreground">Reflect on your sleep patterns and nightly rest.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">Recovery Readiness</Link></h4><p className="text-sm text-muted-foreground">Monitor how ready you feel for physical or mental demands.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/meditation-breathing-rate-calculator" className="text-primary hover:underline">Meditation Breathing Rhythm Helper</Link></h4><p className="text-sm text-muted-foreground">Explore simple breathing practices that may ease stress throughout the day.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -404,7 +404,7 @@ export default function InsuranceClaimDelayImpactCalculator() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/inflation-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/inflation-calculator" className="text-primary hover:underline">
                                         Inflation Calculator
                                     </a>
                                 </h4>
@@ -414,7 +414,7 @@ export default function InsuranceClaimDelayImpactCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
                                         Compound Interest
                                     </a>
                                 </h4>
@@ -424,7 +424,7 @@ export default function InsuranceClaimDelayImpactCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/emergency-fund-requirement-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/emergency-fund-requirement-calculator" className="text-primary hover:underline">
                                         Emergency Fund
                                     </a>
                                 </h4>
@@ -434,7 +434,7 @@ export default function InsuranceClaimDelayImpactCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/category/finance/future-value-calculator" className="text-primary hover:underline">
+                                    <a href="/finance/future-value-calculator" className="text-primary hover:underline">
                                         Future Value
                                     </a>
                                 </h4>

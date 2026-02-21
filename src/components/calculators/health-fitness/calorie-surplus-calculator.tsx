@@ -152,7 +152,7 @@ export default function CalorieSurplusCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs Calculator (TDEE)
                   </a>
                 </h4>
@@ -162,7 +162,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                     Protein Intake Calculator
                   </a>
                 </h4>
@@ -172,7 +172,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
                     Macro Ratio Calculator
                   </a>
                 </h4>
@@ -182,7 +182,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/calorie-deficit-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/calorie-deficit-calculator" className="text-primary hover:underline">
                     Calorie Deficit Calculator
                   </a>
                 </h4>
@@ -192,7 +192,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/bmr-calculator" className="text-primary hover:underline">
                     BMR Calculator
                   </a>
                 </h4>
@@ -202,7 +202,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
                     Carbohydrate Intake Calculator
                   </a>
                 </h4>
@@ -212,7 +212,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/fat-intake-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/fat-intake-calculator" className="text-primary hover:underline">
                     Fat Intake Calculator
                   </a>
                 </h4>
@@ -222,7 +222,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
                     Body Fat Percentage Calculator
                   </a>
                 </h4>
@@ -232,7 +232,7 @@ export default function CalorieSurplusCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
                     Lean Body Mass Calculator
                   </a>
                 </h4>

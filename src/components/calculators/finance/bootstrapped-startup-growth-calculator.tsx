@@ -452,7 +452,7 @@ export default function BootstrappedStartupGrowthCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/startup-runway-calculator-with-revenue-growth" className="block">
+            <Link href="/finance/startup-runway-calculator-with-revenue-growth" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -465,7 +465,7 @@ export default function BootstrappedStartupGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/startup-cash-flow-break-even-calculator" className="block">
+            <Link href="/finance/startup-cash-flow-break-even-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -478,7 +478,7 @@ export default function BootstrappedStartupGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/unit-economics-calculator-startup" className="block">
+            <Link href="/finance/unit-economics-calculator-startup" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -501,7 +501,7 @@ export default function BootstrappedStartupGrowthCalculator() {
         <meta itemProp="keywords" content="bootstrapped startup growth calculator, compound revenue growth, months to target revenue, bootstrap growth rate, startup without funding" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/bootstrapped-startup-growth-calculator" />
+        <meta itemProp="url" content="/finance/bootstrapped-startup-growth-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Bootstrapped Startup Growth: Compound Revenue and Months to Target</h1>
         <p className="text-lg italic text-muted-foreground">Project how long it takes to reach target revenue at a given monthly growth rate when growth is funded only by retained profit.</p>

@@ -486,7 +486,7 @@ export default function PostFundingRunwayExtensionCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {relatedCalculators.map((calc) => (
-              <Link key={calc.slug} href={`/category/finance/${calc.slug}`} className="block">
+              <Link key={calc.slug} href={`/finance/${calc.slug}`} className="block">
                 <Card className="hover:shadow-md transition-shadow cursor-pointer">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-3">
@@ -509,7 +509,7 @@ export default function PostFundingRunwayExtensionCalculator() {
         <meta itemProp="name" content="The Definitive Guide to Post-Funding Runway: Cash at Close and Extended Runway" />
         <meta itemProp="description" content="Expert guide to post-funding runway: cash at close, extended runway from new capital, interpreting results, and optional post-raise burn for startups." />
         <meta itemProp="keywords" content="post-funding runway, cash at close, runway extension, startup runway, burn rate, funding round, months of runway" />
-        <meta itemProp="url" content="/category/finance/post-funding-runway-extension-calculator" />
+        <meta itemProp="url" content="/finance/post-funding-runway-extension-calculator" />
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Post-Funding Runway: Cash at Close and Extended Runway</h1>
         <p className="text-lg italic text-muted-foreground">After you close a round, see how much runway you get: cash at close (burn until close), new capital, and optional post-raise burn. Plan milestones and your next raise with realistic numbers.</p>
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>

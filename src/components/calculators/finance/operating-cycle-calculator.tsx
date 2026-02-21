@@ -356,7 +356,7 @@ export default function OperatingCycleCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/inventory-turnover-ratio-calculator" className="block">
+            <Link href="/finance/inventory-turnover-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -369,7 +369,7 @@ export default function OperatingCycleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/receivables-turnover-calculator" className="block">
+            <Link href="/finance/receivables-turnover-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -382,7 +382,7 @@ export default function OperatingCycleCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/current-ratio-calculator" className="block">
+            <Link href="/finance/current-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -240,11 +240,11 @@ export default function GloveSizeConverter() {
         <p className="text-sm">Properly fitted gloves improve comfort, protect your hands, and enhance performance, whether for sports, work, or fashion. Always measure your hand, use a reliable converter, and consult brand-specific size charts for the best results.</p>
         <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><Link href="/category/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
-            <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
-            <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
-            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
-            <li><Link href="/category/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
+            <li><Link href="/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+            <li><Link href="/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
+            <li><Link href="/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
+            <li><Link href="/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
+            <li><Link href="/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
         </ul>
       </div>
     </div>

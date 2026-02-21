@@ -340,7 +340,7 @@ export default function ChronicConditionLifetimeCostCalculator() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/category/finance/doctor-visit-roi-calculator" className="text-primary hover:underline">
+                                <a href="/finance/doctor-visit-roi-calculator" className="text-primary hover:underline">
                                     Preventive ROI
                                 </a>
                             </h4>
@@ -350,7 +350,7 @@ export default function ChronicConditionLifetimeCostCalculator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/category/finance/prescription-generic-savings-calculator" className="text-primary hover:underline">
+                                <a href="/finance/prescription-generic-savings-calculator" className="text-primary hover:underline">
                                     Generic Savings
                                 </a>
                             </h4>
@@ -360,7 +360,7 @@ export default function ChronicConditionLifetimeCostCalculator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/category/finance/employer-health-plan-tax-savings-calculator" className="text-primary hover:underline">
+                                <a href="/finance/employer-health-plan-tax-savings-calculator" className="text-primary hover:underline">
                                     Health Plan Tax
                                 </a>
                             </h4>
@@ -370,7 +370,7 @@ export default function ChronicConditionLifetimeCostCalculator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/category/finance/medical-tourism-savings-estimator" className="text-primary hover:underline">
+                                <a href="/finance/medical-tourism-savings-estimator" className="text-primary hover:underline">
                                     Medical Tourism
                                 </a>
                             </h4>

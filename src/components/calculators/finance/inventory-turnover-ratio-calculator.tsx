@@ -419,7 +419,7 @@ export default function InventoryTurnoverRatioCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/current-ratio-calculator" className="block">
+            <Link href="/finance/current-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -432,7 +432,7 @@ export default function InventoryTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/receivables-turnover-calculator" className="block">
+            <Link href="/finance/receivables-turnover-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -445,7 +445,7 @@ export default function InventoryTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cash-conversion-cycle-calculator" className="block">
+            <Link href="/finance/cash-conversion-cycle-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -458,7 +458,7 @@ export default function InventoryTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/working-capital-calculator" className="block">
+            <Link href="/finance/working-capital-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -471,7 +471,7 @@ export default function InventoryTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/operating-margin-calculator" className="block">
+            <Link href="/finance/operating-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -484,7 +484,7 @@ export default function InventoryTurnoverRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/economic-break-even-quantity-calculator" className="block">
+            <Link href="/finance/economic-break-even-quantity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

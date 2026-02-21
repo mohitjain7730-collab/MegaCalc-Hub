@@ -179,11 +179,11 @@ export default function DataTransferSpeedConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/conversions/square-meters-to-square-yards-converter" className="hover:underline">Square Meters To Square Yards Converter</Link></li>
-              <li><Link href="/category/conversions/minutes-to-seconds-converter" className="hover:underline">Minutes To Seconds Converter</Link></li>
-              <li><Link href="/category/conversions/carats-to-grams-converter" className="hover:underline">Carats To Grams Converter</Link></li>
-              <li><Link href="/category/conversions/milliliters-to-cubic-inches-converter" className="hover:underline">Milliliters To Cubic Inches Converter</Link></li>
-              <li><Link href="/category/conversions/torr-to-pascals-converter" className="hover:underline">Torr To Pascals Converter</Link></li>
+              <li><Link href="/conversions/square-meters-to-square-yards-converter" className="hover:underline">Square Meters To Square Yards Converter</Link></li>
+              <li><Link href="/conversions/minutes-to-seconds-converter" className="hover:underline">Minutes To Seconds Converter</Link></li>
+              <li><Link href="/conversions/carats-to-grams-converter" className="hover:underline">Carats To Grams Converter</Link></li>
+              <li><Link href="/conversions/milliliters-to-cubic-inches-converter" className="hover:underline">Milliliters To Cubic Inches Converter</Link></li>
+              <li><Link href="/conversions/torr-to-pascals-converter" className="hover:underline">Torr To Pascals Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

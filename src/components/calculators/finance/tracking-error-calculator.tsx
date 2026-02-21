@@ -518,10 +518,10 @@ export default function TrackingErrorCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Information Ratio", desc: "Risk-adjusted active returns", href: "/category/finance/information-ratio-calculator" },
-              { title: "Jensen's Alpha", desc: "Differential skill audit", href: "/category/finance/jensens-alpha-calculator" },
-              { title: "Standard Deviation", desc: "Total volatility engine", href: "/category/finance/volatility-standard-deviation-calculator" },
-              { title: "Sharpe Ratio", desc: "Absolute return efficiency", href: "/category/finance/sharpe-ratio-calculator" }
+              { title: "Information Ratio", desc: "Risk-adjusted active returns", href: "/finance/information-ratio-calculator" },
+              { title: "Jensen's Alpha", desc: "Differential skill audit", href: "/finance/jensens-alpha-calculator" },
+              { title: "Standard Deviation", desc: "Total volatility engine", href: "/finance/volatility-standard-deviation-calculator" },
+              { title: "Sharpe Ratio", desc: "Absolute return efficiency", href: "/finance/sharpe-ratio-calculator" }
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-lg bg-muted/20 hover:bg-muted/40 relative overflow-hidden">

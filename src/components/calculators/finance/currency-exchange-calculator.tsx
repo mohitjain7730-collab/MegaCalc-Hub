@@ -275,7 +275,7 @@ export default function CurrencyExchangeCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/currency-volatility-calculator" className="text-primary hover:underline">
+                <a href="/finance/currency-volatility-calculator" className="text-primary hover:underline">
                   Currency Volatility Impact Calculator
                 </a>
               </h4>
@@ -285,7 +285,7 @@ export default function CurrencyExchangeCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/npv-calculator" className="text-primary hover:underline">
+                <a href="/finance/npv-calculator" className="text-primary hover:underline">
                   Net Present Value (NPV) Calculator
                 </a>
               </h4>
@@ -295,7 +295,7 @@ export default function CurrencyExchangeCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
+                <a href="/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
                   Forward Rate Agreement Calculator
                 </a>
               </h4>
@@ -305,7 +305,7 @@ export default function CurrencyExchangeCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/currency-exchange-calculator" className="text-primary hover:underline">
+                <a href="/finance/currency-exchange-calculator" className="text-primary hover:underline">
                   Foreign Exchange Position Calculator
                 </a>
               </h4>

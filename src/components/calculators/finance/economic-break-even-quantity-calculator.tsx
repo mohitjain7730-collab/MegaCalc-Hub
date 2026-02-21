@@ -398,7 +398,7 @@ export default function EconomicBreakEvenQuantityCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/contribution-margin-calculator" className="block">
+            <Link href="/finance/contribution-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -411,7 +411,7 @@ export default function EconomicBreakEvenQuantityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/profit-margin-calculator" className="block">
+            <Link href="/finance/profit-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -424,7 +424,7 @@ export default function EconomicBreakEvenQuantityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/financial-break-even-npv-zero-calculator" className="block">
+            <Link href="/finance/financial-break-even-npv-zero-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -437,7 +437,7 @@ export default function EconomicBreakEvenQuantityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cogs-estimator" className="block">
+            <Link href="/finance/cogs-estimator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -450,7 +450,7 @@ export default function EconomicBreakEvenQuantityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/operating-margin-calculator" className="block">
+            <Link href="/finance/operating-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -463,7 +463,7 @@ export default function EconomicBreakEvenQuantityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/markup-calculator" className="block">
+            <Link href="/finance/markup-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

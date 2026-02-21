@@ -68,7 +68,7 @@ export default function GolfHandicapCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Running Pace</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/running-pace-calculator">Running Pace</Link></p>
       </div>
     </div>
   );

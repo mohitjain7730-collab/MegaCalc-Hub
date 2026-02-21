@@ -228,8 +228,8 @@ export default function FreelanceBillableHoursCalculator() {
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
               <li><Link href="/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
-              <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
-              <li><Link href="/category/time-date/date-difference-calculator" className="hover:underline">Date Difference Calculator</Link></li>
+              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/time-date/date-difference-calculator" className="hover:underline">Date Difference Calculator</Link></li>
               <li><Link href="/split-shift-hours-calculator" className="hover:underline">Split Shift Hours Calculator</Link></li>
             </ul>
           </CardContent>

@@ -12,7 +12,7 @@ import { CategoryIcon } from './category-icon';
 
 export function CategoryCard({ name, slug, description, Icon }: Category) {
   return (
-    <Link href={`/category/${slug}`} className="group block h-full">
+    <Link href={`/${slug}`} className="group block h-full">
       <Card className="h-full transition-all duration-200 ease-in-out group-hover:shadow-lg group-hover:-translate-y-1 group-hover:border-primary/50">
         <CardHeader>
           <CategoryIcon name={Icon} className="h-7 w-7 sm:h-8 sm:w-8 mb-3 sm:mb-4 text-primary flex-shrink-0" strokeWidth={1.5} />

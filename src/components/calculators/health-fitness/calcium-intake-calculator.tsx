@@ -431,7 +431,7 @@ export default function CalciumIntakeCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Magnesium Intake Calculator
                 </Link>
               </h4>
@@ -439,7 +439,7 @@ export default function CalciumIntakeCalculator() {
   </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
         Vitamin D Sun Exposure Calculator
       </Link>
               </h4>
@@ -447,7 +447,7 @@ export default function CalciumIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                   Iron Intake Calculator
                 </Link>
               </h4>
@@ -455,7 +455,7 @@ export default function CalciumIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Zinc Requirement Calculator
       </Link>
               </h4>

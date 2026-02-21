@@ -263,7 +263,7 @@ export default function MacrsDepreciationCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/depreciation-straight-line-calculator" className="text-primary hover:underline">
+                <a href="/finance/depreciation-straight-line-calculator" className="text-primary hover:underline">
                   Straight-Line Depreciation Calculator
                 </a>
               </h4>
@@ -273,7 +273,7 @@ export default function MacrsDepreciationCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/depreciation-double-declining-calculator" className="text-primary hover:underline">
+                <a href="/finance/depreciation-double-declining-calculator" className="text-primary hover:underline">
                   Double Declining Balance Calculator
                 </a>
               </h4>
@@ -283,7 +283,7 @@ export default function MacrsDepreciationCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/depreciation-sum-of-years-digits-calculator" className="text-primary hover:underline">
+                <a href="/finance/depreciation-sum-of-years-digits-calculator" className="text-primary hover:underline">
                   Sum-of-Years Digits Calculator
                 </a>
               </h4>
@@ -293,7 +293,7 @@ export default function MacrsDepreciationCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/activity-based-costing-calculator" className="text-primary hover:underline">
+                <a href="/finance/activity-based-costing-calculator" className="text-primary hover:underline">
                   Activity-Based Costing Calculator
                 </a>
               </h4>

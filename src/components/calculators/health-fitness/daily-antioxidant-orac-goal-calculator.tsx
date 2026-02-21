@@ -361,7 +361,7 @@ export default function DailyAntioxidantOracGoalCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
                   Fiber Intake Calculator
                 </Link>
               </h4>
@@ -369,7 +369,7 @@ export default function DailyAntioxidantOracGoalCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Sodium-to-Potassium Ratio Calculator
                 </Link>
               </h4>
@@ -377,7 +377,7 @@ export default function DailyAntioxidantOracGoalCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Magnesium Intake Calculator
                 </Link>
               </h4>
@@ -385,7 +385,7 @@ export default function DailyAntioxidantOracGoalCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                   PDCAAS Calculator
                 </Link>
               </h4>

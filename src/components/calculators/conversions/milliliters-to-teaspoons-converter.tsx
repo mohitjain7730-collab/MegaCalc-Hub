@@ -97,7 +97,7 @@ export default function MillilitersToTeaspoonsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/teaspoons-to-milliliters-converter" className="text-primary underline">Teaspoons to Milliliters Converter</Link></p>
+            <p><Link href="/conversions/teaspoons-to-milliliters-converter" className="text-primary underline">Teaspoons to Milliliters Converter</Link></p>
           </div>
         </div>
       </div>

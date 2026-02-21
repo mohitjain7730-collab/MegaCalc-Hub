@@ -339,7 +339,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
+            <Link href="/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -352,7 +352,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -365,7 +365,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/expense-reduction-vs-income-increase-calculator" className="block">
+            <Link href="/finance/expense-reduction-vs-income-increase-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -378,7 +378,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cost-of-delay-investing-late-calculator" className="block">
+            <Link href="/finance/cost-of-delay-investing-late-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -391,7 +391,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/monthly-savings-gap-calculator" className="block">
+            <Link href="/finance/monthly-savings-gap-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -404,7 +404,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/side-income-impact-on-savings-calculator" className="block">
+            <Link href="/finance/side-income-impact-on-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -427,7 +427,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         <meta itemProp="keywords" content="SIP vs lump sum, systematic investment plan, lump sum vs SIP return difference, dollar cost averaging, future value comparison" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/sip-vs-lump-sum-return-difference-calculator" />
+        <meta itemProp="url" content="/finance/sip-vs-lump-sum-return-difference-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">SIP vs Lump Sum Return Difference: Same Total Invested, Different Timing</h1>
         <p className="text-lg italic text-muted-foreground">You have the same total amount to invest. You can put it all in at the start (lump sum) or invest it in equal monthly installments (SIP) over the same period. This calculator compares the future value of both strategies with the same expected return.</p>

@@ -135,8 +135,8 @@ export default function CupsToMillilitersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/milliliters-to-cups-converter" className="text-primary underline">Milliliters to Cups Converter</Link></p>
-            <p><Link href="/category/conversions/liters-to-gallons-converter" className="text-primary underline">Liters to Gallons Converter</Link></p>
+            <p><Link href="/conversions/milliliters-to-cups-converter" className="text-primary underline">Milliliters to Cups Converter</Link></p>
+            <p><Link href="/conversions/liters-to-gallons-converter" className="text-primary underline">Liters to Gallons Converter</Link></p>
           </div>
         </div>
       </div>

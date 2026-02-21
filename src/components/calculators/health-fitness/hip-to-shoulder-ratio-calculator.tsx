@@ -466,7 +466,7 @@ export default function HipToShoulderRatioCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/waist-to-hip-ratio-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/waist-to-hip-ratio-calculator" className="text-primary hover:underline">
                   Waist-to-Hip Ratio Calculator
                 </Link>
               </h4>
@@ -474,7 +474,7 @@ export default function HipToShoulderRatioCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
                   Body Fat Percentage Calculator
                 </Link>
               </h4>
@@ -482,7 +482,7 @@ export default function HipToShoulderRatioCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/somatotype-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/somatotype-calculator" className="text-primary hover:underline">
                   Somatotype Calculator
                 </Link>
               </h4>
@@ -490,7 +490,7 @@ export default function HipToShoulderRatioCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/muscle-mass-percentage-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/muscle-mass-percentage-calculator" className="text-primary hover:underline">
                   Muscle Mass Percentage Calculator
                 </Link>
               </h4>

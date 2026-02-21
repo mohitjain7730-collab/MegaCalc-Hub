@@ -92,7 +92,7 @@ export default function BasketballReboundRateCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/basketball-player-efficiency-rating-calculator" className="block">
+                        <Link href="/sports-training/basketball-player-efficiency-rating-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -105,7 +105,7 @@ export default function BasketballReboundRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/basketball-assist-to-turnover-ratio-calculator" className="block">
+                        <Link href="/sports-training/basketball-assist-to-turnover-ratio-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function BasketballReboundRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/basketball-true-shooting-percentage-calculator" className="block">
+                        <Link href="/sports-training/basketball-true-shooting-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function BasketballReboundRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-win-rate-calculator" className="block">
+                        <Link href="/sports-training/football-win-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function BasketballReboundRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-clean-sheet-percentage-calculator" className="block">
+                        <Link href="/sports-training/football-clean-sheet-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function BasketballReboundRateCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-pass-accuracy-calculator" className="block">
+                        <Link href="/sports-training/football-pass-accuracy-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

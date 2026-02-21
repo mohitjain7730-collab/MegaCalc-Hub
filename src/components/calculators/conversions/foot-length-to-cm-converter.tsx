@@ -256,9 +256,9 @@ export default function FootLengthToShoeSizeConverter() {
 
         <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><Link href="/category/conversions/cloth-size-converter" className="text-primary underline">Universal Clothing Size Converter</Link></li>
-            <li><Link href="/category/conversions/ring-size-converter" className="text-primary underline">Ring Size Converter</Link></li>
-            <li><Link href="/category/conversions/hat-size-converter" className="text-primary underline">Hat Size Converter</Link></li>
+            <li><Link href="/conversions/cloth-size-converter" className="text-primary underline">Universal Clothing Size Converter</Link></li>
+            <li><Link href="/conversions/ring-size-converter" className="text-primary underline">Ring Size Converter</Link></li>
+            <li><Link href="/conversions/hat-size-converter" className="text-primary underline">Hat Size Converter</Link></li>
         </ul>
       </div>
     </div>

@@ -679,7 +679,7 @@ export default function StudentLoanRepaymentCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/loan-emi-calculator" className="text-primary hover:underline">
+                  <a href="/finance/loan-emi-calculator" className="text-primary hover:underline">
                     Loan/EMI Calculator
                   </a>
                 </h4>
@@ -689,7 +689,7 @@ export default function StudentLoanRepaymentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/credit-card-payoff-calculator" className="text-primary hover:underline">
+                  <a href="/finance/credit-card-payoff-calculator" className="text-primary hover:underline">
                     Credit Card Payoff Calculator
                   </a>
                 </h4>
@@ -699,7 +699,7 @@ export default function StudentLoanRepaymentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                  <a href="/finance/mortgage-payment-calculator" className="text-primary hover:underline">
                     Mortgage Payment Calculator
                   </a>
                 </h4>
@@ -709,7 +709,7 @@ export default function StudentLoanRepaymentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/debt-to-equity-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/finance/debt-to-equity-ratio-calculator" className="text-primary hover:underline">
                     Debt-to-Equity Ratio Calculator
                   </a>
                 </h4>

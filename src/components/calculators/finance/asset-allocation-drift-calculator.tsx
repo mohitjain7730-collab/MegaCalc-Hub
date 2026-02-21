@@ -403,7 +403,7 @@ export default function AssetAllocationDriftCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/rebalancing-frequency-impact-calculator" className="block">
+            <Link href="/finance/rebalancing-frequency-impact-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -416,7 +416,7 @@ export default function AssetAllocationDriftCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/efficient-frontier-portfolio-calculator" className="block">
+            <Link href="/finance/efficient-frontier-portfolio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -429,7 +429,7 @@ export default function AssetAllocationDriftCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -442,7 +442,7 @@ export default function AssetAllocationDriftCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cagr-calculator" className="block">
+            <Link href="/finance/cagr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -455,7 +455,7 @@ export default function AssetAllocationDriftCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -468,7 +468,7 @@ export default function AssetAllocationDriftCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/portfolio-turnover-ratio-calculator" className="block">
+            <Link href="/finance/portfolio-turnover-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -491,7 +491,7 @@ export default function AssetAllocationDriftCalculator() {
         <meta itemProp="keywords" content="asset allocation drift, portfolio drift, rebalancing, target allocation, stocks bonds allocation" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/asset-allocation-drift-calculator" />
+        <meta itemProp="url" content="/finance/asset-allocation-drift-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Asset Allocation Drift: How Much Has Your Portfolio Drifted From Target?</h1>
         <p className="text-lg italic text-muted-foreground">When you hold a target allocation (e.g. 60% stocks, 40% bonds) and do not rebalance, the asset that performs better becomes a larger share of the portfolio. This calculator shows how much your allocation has drifted in percentage points and the resulting portfolio value.</p>

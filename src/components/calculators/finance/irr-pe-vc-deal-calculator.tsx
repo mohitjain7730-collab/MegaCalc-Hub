@@ -520,7 +520,7 @@ export default function IrrPeVcDealCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -540,7 +540,7 @@ export default function IrrPeVcDealCalculator() {
         <meta itemProp="keywords" content="IRR, PE IRR, VC IRR, private equity IRR, venture capital IRR, cash flow analysis" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/irr-pe-vc-deal-calculator" />
+        <meta itemProp="url" content="/finance/irr-pe-vc-deal-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to IRR for PE/VC Deals: Cash Flow Analysis</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">From check-in to exit: how to structure cash flows, solve for IRR, and benchmark returns across PE/VC strategies.</p>

@@ -104,7 +104,7 @@ export default async function SitemapPage() {
                         {categoryCalculators.map((calc) => (
                           <Link
                             key={calc.id}
-                            href={`/category/${category.slug}/${calc.slug}`}
+                            href={`/${category.slug}/${calc.slug}`}
                             className="group block p-2.5 sm:p-3 rounded-lg border border-border hover:border-primary/50 hover:bg-muted/50 transition-all duration-200 min-h-[60px] sm:min-h-[70px] flex flex-col justify-center"
                           >
                             <h3 className="font-semibold text-xs sm:text-sm group-hover:text-primary transition-colors leading-tight">

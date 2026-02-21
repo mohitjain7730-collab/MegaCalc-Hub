@@ -371,7 +371,7 @@ export default function DollarDurationCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/pvbp-calculator" className="block">
+            <Link href="/finance/pvbp-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -384,7 +384,7 @@ export default function DollarDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-duration-calculator" className="block">
+            <Link href="/finance/bond-duration-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -397,7 +397,7 @@ export default function DollarDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/bond-convexity-calculator" className="block">
+            <Link href="/finance/bond-convexity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -410,7 +410,7 @@ export default function DollarDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/duration-gap-calculator" className="block">
+            <Link href="/finance/duration-gap-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -423,7 +423,7 @@ export default function DollarDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/duration-matching-calculator" className="block">
+            <Link href="/finance/duration-matching-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -436,7 +436,7 @@ export default function DollarDurationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/convexity-adjustment-bond-futures-calculator" className="block">
+            <Link href="/finance/convexity-adjustment-bond-futures-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

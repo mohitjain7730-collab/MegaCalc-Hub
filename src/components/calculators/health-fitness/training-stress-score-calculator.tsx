@@ -275,19 +275,19 @@ export default function TrainingStressScoreCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/chronic-training-load-calculator" className="text-primary hover:underline">Chronic Training Load (CTL)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/chronic-training-load-calculator" className="text-primary hover:underline">Chronic Training Load (CTL)</Link></h4>
               <p className="text-sm text-muted-foreground">Monitor long-term fitness trends informed by daily TSS.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/acute-training-load-calculator" className="text-primary hover:underline">Acute Training Load (ATL)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/acute-training-load-calculator" className="text-primary hover:underline">Acute Training Load (ATL)</Link></h4>
               <p className="text-sm text-muted-foreground">Gauge short-term fatigue to balance training stress.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-impulse-trimp-calculator" className="text-primary hover:underline">Training Impulse (TRIMP)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/training-impulse-trimp-calculator" className="text-primary hover:underline">Training Impulse (TRIMP)</Link></h4>
               <p className="text-sm text-muted-foreground">Estimate load using heart-rate-based scoring.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
               <p className="text-sm text-muted-foreground">Track aerobic efficiency alongside TSS trends.</p>
             </div>
           </div>

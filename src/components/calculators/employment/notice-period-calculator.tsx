@@ -207,7 +207,7 @@ export default function NoticePeriodCalculator() {
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
               <li><Link href="/last-working-day-calculator" className="hover:underline">Last Working Day Calculator</Link></li>
-              <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
               <li><Link href="/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
               <li><Link href="/probation-period-calculator" className="hover:underline">Probation Period End Date Calculator</Link></li>
             </ul>

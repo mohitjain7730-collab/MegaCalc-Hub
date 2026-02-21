@@ -179,11 +179,11 @@ export default function DataStorageConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/kilojoules-to-joules-converter" className="hover:underline">Kilojoules To Joules Converter</Link></li>
-                <li><Link href="/category/conversions/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
-                <li><Link href="/category/conversions/kwh-to-joules-converter" className="hover:underline">Kwh To Joules Converter</Link></li>
-                <li><Link href="/category/conversions/chemical-concentration-converter" className="hover:underline">Chemical Concentration Converter</Link></li>
-                <li><Link href="/category/conversions/kilometers-to-nautical-miles-converter" className="hover:underline">Kilometers To Nautical Miles Converter</Link></li>
+                <li><Link href="/conversions/kilojoules-to-joules-converter" className="hover:underline">Kilojoules To Joules Converter</Link></li>
+                <li><Link href="/conversions/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
+                <li><Link href="/conversions/kwh-to-joules-converter" className="hover:underline">Kwh To Joules Converter</Link></li>
+                <li><Link href="/conversions/chemical-concentration-converter" className="hover:underline">Chemical Concentration Converter</Link></li>
+                <li><Link href="/conversions/kilometers-to-nautical-miles-converter" className="hover:underline">Kilometers To Nautical Miles Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

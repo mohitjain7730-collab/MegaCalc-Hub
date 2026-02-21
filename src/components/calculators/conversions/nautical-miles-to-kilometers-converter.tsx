@@ -123,8 +123,8 @@ export default function NauticalMilesToKilometersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/kilometers-to-nautical-miles-converter" className="text-primary underline">Kilometers to Nautical Miles Converter</Link></p>
-            <p><Link href="/category/conversions/miles-to-kilometers-converter" className="text-primary underline">Miles to Kilometers Converter</Link></p>
+            <p><Link href="/conversions/kilometers-to-nautical-miles-converter" className="text-primary underline">Kilometers to Nautical Miles Converter</Link></p>
+            <p><Link href="/conversions/miles-to-kilometers-converter" className="text-primary underline">Miles to Kilometers Converter</Link></p>
           </div>
         </div>
         <section

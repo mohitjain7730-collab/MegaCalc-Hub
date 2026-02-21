@@ -475,7 +475,7 @@ export default function ErgonomicDeskSetupCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/health-fitness/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/health-fitness/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>

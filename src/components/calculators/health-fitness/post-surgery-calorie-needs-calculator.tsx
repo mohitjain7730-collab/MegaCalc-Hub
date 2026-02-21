@@ -57,10 +57,10 @@ const faqs: [string, string][] = [
 ];
 
 const relatedCalculators = [
-  { title: 'Basal Metabolic Rate (BMR) Calculator', href: '/category/health-fitness/bmr-calculator', description: 'Understand your baseline before surgery adjustments.' },
-  { title: 'Protein Intake Calculator', href: '/category/health-fitness/protein-intake-calculator', description: 'Dial in daily grams to support wound healing.' },
-  { title: 'Hydration Needs Calculator', href: '/category/health-fitness/hydration-needs-calculator', description: 'Set fluid targets that aid recovery and medication absorption.' },
-  { title: 'Body Composition Tracker', href: '/category/health-fitness/body-fat-percentage-calculator', description: 'Monitor long-term shifts after returning to activity.' },
+  { title: 'Basal Metabolic Rate (BMR) Calculator', href: '/health-fitness/bmr-calculator', description: 'Understand your baseline before surgery adjustments.' },
+  { title: 'Protein Intake Calculator', href: '/health-fitness/protein-intake-calculator', description: 'Dial in daily grams to support wound healing.' },
+  { title: 'Hydration Needs Calculator', href: '/health-fitness/hydration-needs-calculator', description: 'Set fluid targets that aid recovery and medication absorption.' },
+  { title: 'Body Composition Tracker', href: '/health-fitness/body-fat-percentage-calculator', description: 'Monitor long-term shifts after returning to activity.' },
 ];
 
 const completeGuideSections = [

@@ -404,12 +404,12 @@ export default function CreditScoreImpactEstimator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { name: "Debt Repayment", url: "/category/finance/debt-snowball-avalanche-repayment-calculator", icon: <TrendingUp className="h-5 w-5 text-indigo-500" />, desc: "Plan your payoff strategy" },
-              { name: "Home Affordability", url: "/category/finance/home-affordability-calculator", icon: <Shield className="h-5 w-5 text-green-500" />, desc: "See what DTI allows you to buy" },
-              { name: "Credit Card Payoff", url: "/category/finance/credit-card-payoff-calculator", icon: <CreditCard className="h-5 w-5 text-red-500" />, desc: "Eliminate revolving debt" },
-              { name: "Emergency Fund", url: "/category/finance/emergency-fund-calculator", icon: <Shield className="h-5 w-5 text-blue-500" />, desc: "Safety net sizing" },
-              { name: "Savings Goal", url: "/category/finance/savings-goal-timeline-calculator", icon: <DollarSign className="h-5 w-5 text-purple-500" />, desc: "Plan for big purchases" },
-              { name: "Loan Amortization", url: "/category/finance/amortization-schedule-generator", icon: <BarChart className="h-5 w-5 text-amber-500" />, desc: "Understand interest costs" },
+              { name: "Debt Repayment", url: "/finance/debt-snowball-avalanche-repayment-calculator", icon: <TrendingUp className="h-5 w-5 text-indigo-500" />, desc: "Plan your payoff strategy" },
+              { name: "Home Affordability", url: "/finance/home-affordability-calculator", icon: <Shield className="h-5 w-5 text-green-500" />, desc: "See what DTI allows you to buy" },
+              { name: "Credit Card Payoff", url: "/finance/credit-card-payoff-calculator", icon: <CreditCard className="h-5 w-5 text-red-500" />, desc: "Eliminate revolving debt" },
+              { name: "Emergency Fund", url: "/finance/emergency-fund-calculator", icon: <Shield className="h-5 w-5 text-blue-500" />, desc: "Safety net sizing" },
+              { name: "Savings Goal", url: "/finance/savings-goal-timeline-calculator", icon: <DollarSign className="h-5 w-5 text-purple-500" />, desc: "Plan for big purchases" },
+              { name: "Loan Amortization", url: "/finance/amortization-schedule-generator", icon: <BarChart className="h-5 w-5 text-amber-500" />, desc: "Understand interest costs" },
             ].map((item, i) => (
               <Link key={i} href={item.url} className="block group">
                 <Card className="hover:shadow-md transition-all h-full">

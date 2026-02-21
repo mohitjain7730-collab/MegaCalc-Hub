@@ -411,7 +411,7 @@ export default function GrossProfitVsNetProfitAnalyzer() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/net-profit-margin-calculator" className="block">
+            <Link href="/finance/net-profit-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -424,7 +424,7 @@ export default function GrossProfitVsNetProfitAnalyzer() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/gross-margin-calculator" className="block">
+            <Link href="/finance/gross-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -437,7 +437,7 @@ export default function GrossProfitVsNetProfitAnalyzer() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/return-on-investment-calculator" className="block">
+            <Link href="/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -450,7 +450,7 @@ export default function GrossProfitVsNetProfitAnalyzer() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/operating-margin-calculator" className="block">
+            <Link href="/finance/operating-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -463,7 +463,7 @@ export default function GrossProfitVsNetProfitAnalyzer() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/ebitda-calculator" className="block">
+            <Link href="/finance/ebitda-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -476,7 +476,7 @@ export default function GrossProfitVsNetProfitAnalyzer() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/break-even-point-calculator" className="block">
+            <Link href="/finance/break-even-point-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

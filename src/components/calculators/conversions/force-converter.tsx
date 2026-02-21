@@ -179,11 +179,11 @@ export default function ForceConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/micrometers-to-millimeters-converter" className="hover:underline">Micrometers To Millimeters Converter</Link></li>
-                <li><Link href="/category/conversions/construction-converter" className="hover:underline">Construction Converter</Link></li>
-                <li><Link href="/category/conversions/torque-converter" className="hover:underline">Torque Converter</Link></li>
-                <li><Link href="/category/conversions/kilocalories-to-joules-converter" className="hover:underline">Kilocalories To Joules Converter</Link></li>
-                <li><Link href="/category/conversions/seconds-to-minutes-converter" className="hover:underline">Seconds To Minutes Converter</Link></li>
+                <li><Link href="/conversions/micrometers-to-millimeters-converter" className="hover:underline">Micrometers To Millimeters Converter</Link></li>
+                <li><Link href="/conversions/construction-converter" className="hover:underline">Construction Converter</Link></li>
+                <li><Link href="/conversions/torque-converter" className="hover:underline">Torque Converter</Link></li>
+                <li><Link href="/conversions/kilocalories-to-joules-converter" className="hover:underline">Kilocalories To Joules Converter</Link></li>
+                <li><Link href="/conversions/seconds-to-minutes-converter" className="hover:underline">Seconds To Minutes Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

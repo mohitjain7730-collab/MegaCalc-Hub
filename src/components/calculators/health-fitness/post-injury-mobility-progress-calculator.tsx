@@ -133,8 +133,8 @@ export default function PostInjuryMobilityProgressCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/physical-therapy-exercise-load-calculator" className="text-primary hover:underline">PT Exercise Load</a></h4><p className="text-sm text-muted-foreground">Set safe therapeutic loads.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/ice-bath-duration-temp-calculator" className="text-primary hover:underline">Ice Bath Duration</a></h4><p className="text-sm text-muted-foreground">Recovery guidance after sessions.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/health-fitness/physical-therapy-exercise-load-calculator" className="text-primary hover:underline">PT Exercise Load</a></h4><p className="text-sm text-muted-foreground">Set safe therapeutic loads.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/health-fitness/ice-bath-duration-temp-calculator" className="text-primary hover:underline">Ice Bath Duration</a></h4><p className="text-sm text-muted-foreground">Recovery guidance after sessions.</p></div>
           </div>
         </CardContent>
       </Card>

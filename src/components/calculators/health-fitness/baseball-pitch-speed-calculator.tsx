@@ -199,9 +199,9 @@ export default function BaseballPitchSpeedCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Tennis Serve Speed Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/strength-to-weight-ratio-calculator">Strength-to-Weight Ratio</Link></p>
-        <p><Link className="text-primary underline" href="/category/health-fitness/running-pace-calculator">Basketball Shooting Percentage Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/running-pace-calculator">Tennis Serve Speed Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/strength-to-weight-ratio-calculator">Strength-to-Weight Ratio</Link></p>
+        <p><Link className="text-primary underline" href="/health-fitness/running-pace-calculator">Basketball Shooting Percentage Calculator</Link></p>
       </div>
     </div>
   );

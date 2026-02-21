@@ -115,7 +115,7 @@ export default function MsToFtsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/feet-per-second-to-meters-per-second-converter" className="text-primary underline">ft/s to m/s Converter</Link></p>
+            <p><Link href="/conversions/feet-per-second-to-meters-per-second-converter" className="text-primary underline">ft/s to m/s Converter</Link></p>
           </div>
         </div>
       </div>

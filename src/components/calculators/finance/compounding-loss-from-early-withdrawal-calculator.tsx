@@ -376,7 +376,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/sequence-of-returns-risk-calculator" className="block">
+            <Link href="/finance/sequence-of-returns-risk-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -389,7 +389,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -402,7 +402,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/investment-delay-cost-calculator" className="block">
+            <Link href="/finance/investment-delay-cost-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -415,7 +415,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -428,7 +428,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/retirement-savings-calculator" className="block">
+            <Link href="/finance/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -441,7 +441,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -464,7 +464,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
         <meta itemProp="keywords" content="early withdrawal cost, compounding loss, retirement withdrawal, cost of withdrawing early" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/compounding-loss-from-early-withdrawal-calculator" />
+        <meta itemProp="url" content="/finance/compounding-loss-from-early-withdrawal-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Compounding Loss from Early Withdrawal: How Much Future Growth You Give Up</h1>
         <p className="text-lg italic text-muted-foreground">When you withdraw money from an investment early, you lose not only that amount but the future compounding on it. This calculator shows how much you would have had if you had left the money invested (FV) and the compounding loss in dollars and percentage. Use it to decide whether to tap retirement or other accounts and to prioritize other sources first.</p>

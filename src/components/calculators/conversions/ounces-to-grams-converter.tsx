@@ -119,8 +119,8 @@ export default function OuncesToGramsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/grams-to-ounces-converter" className="text-primary underline">Grams to Ounces Converter</Link></p>
-            <p><Link href="/category/conversions/pounds-to-kilograms-converter" className="text-primary underline">Pounds to Kilograms Converter</Link></p>
+            <p><Link href="/conversions/grams-to-ounces-converter" className="text-primary underline">Grams to Ounces Converter</Link></p>
+            <p><Link href="/conversions/pounds-to-kilograms-converter" className="text-primary underline">Pounds to Kilograms Converter</Link></p>
           </div>
         </div>
       </div>

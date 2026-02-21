@@ -375,7 +375,7 @@ export default function PdcaasCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                   Protein Intake Calculator
                 </Link>
               </h4>
@@ -383,7 +383,7 @@ export default function PdcaasCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                   Amino Acid Blend Optimizer
                 </Link>
               </h4>
@@ -391,7 +391,7 @@ export default function PdcaasCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">
                   Power-to-HR Efficiency Calculator
                 </Link>
               </h4>
@@ -399,7 +399,7 @@ export default function PdcaasCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
                   Antioxidant (ORAC) Goal Calculator
                 </Link>
               </h4>

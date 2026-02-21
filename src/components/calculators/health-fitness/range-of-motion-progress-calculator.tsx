@@ -48,10 +48,10 @@ const faqs: [string, string][] = [
 ];
 
 const relatedCalculators = [
-  { title: 'Injury Recovery Timeline Calculator', href: '/category/health-fitness/injury-recovery-timeline-calculator', description: 'Align ROM gains with expected tissue healing windows.' },
-  { title: 'Physical Therapy Session Intensity Calculator', href: '/category/health-fitness/physical-therapy-session-intensity-calculator', description: 'Match session load with your current recovery stage.' },
-  { title: 'Strength to Weight Ratio Calculator', href: '/category/health-fitness/strength-to-weight-ratio-calculator', description: 'Track strength improvements that support functional ROM.' },
-  { title: 'Training Volume Calculator', href: '/category/health-fitness/training-volume-calculator', description: 'Balance total workload to avoid overtraining stiff joints.' },
+  { title: 'Injury Recovery Timeline Calculator', href: '/health-fitness/injury-recovery-timeline-calculator', description: 'Align ROM gains with expected tissue healing windows.' },
+  { title: 'Physical Therapy Session Intensity Calculator', href: '/health-fitness/physical-therapy-session-intensity-calculator', description: 'Match session load with your current recovery stage.' },
+  { title: 'Strength to Weight Ratio Calculator', href: '/health-fitness/strength-to-weight-ratio-calculator', description: 'Track strength improvements that support functional ROM.' },
+  { title: 'Training Volume Calculator', href: '/health-fitness/training-volume-calculator', description: 'Balance total workload to avoid overtraining stiff joints.' },
 ];
 
 const completeGuideSections = [

@@ -338,7 +338,7 @@ export default function PurchasingPowerParityCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/interest-rate-parity-calculator" className="block">
+            <Link href="/finance/interest-rate-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -351,7 +351,7 @@ export default function PurchasingPowerParityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/inflation-calculator" className="block">
+            <Link href="/finance/inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -364,7 +364,7 @@ export default function PurchasingPowerParityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/currency-exchange-calculator" className="block">
+            <Link href="/finance/currency-exchange-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -436,7 +436,7 @@ export default function GoodwillImpairmentCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -456,7 +456,7 @@ export default function GoodwillImpairmentCalculator() {
         <meta itemProp="keywords" content="goodwill impairment, impairment testing, goodwill write-down, ASC 350, IFRS 3, impairment loss" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/goodwill-impairment-calculator" />
+        <meta itemProp="url" content="/finance/goodwill-impairment-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Goodwill Impairment: Testing and Recognizing Impairment Losses</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at goodwill impairment, testing goodwill for impairment and recognizing impairment losses when carrying value exceeds fair value.</p>

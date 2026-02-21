@@ -369,9 +369,9 @@ export default function SavingsRateGoalVisualizer() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/finance/spending-pattern-analyzer" className="hover:underline">Spending Pattern Analyzer</Link></li>
-              <li><Link href="/category/finance/delayed-gratification-roi-calculator" className="hover:underline">Delayed Gratification ROI Calculator</Link></li>
-              <li><Link href="/category/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/finance/spending-pattern-analyzer" className="hover:underline">Spending Pattern Analyzer</Link></li>
+              <li><Link href="/finance/delayed-gratification-roi-calculator" className="hover:underline">Delayed Gratification ROI Calculator</Link></li>
+              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

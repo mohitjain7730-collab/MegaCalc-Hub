@@ -276,7 +276,7 @@ export default function CurrencyVolatilityCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/currency-exchange-calculator" className="text-primary hover:underline">
+                <a href="/finance/currency-exchange-calculator" className="text-primary hover:underline">
                   Currency Exchange Calculator
                 </a>
               </h4>
@@ -286,7 +286,7 @@ export default function CurrencyVolatilityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/npv-calculator" className="text-primary hover:underline">
+                <a href="/finance/npv-calculator" className="text-primary hover:underline">
                   Net Present Value (NPV) Calculator
                 </a>
               </h4>
@@ -296,7 +296,7 @@ export default function CurrencyVolatilityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
+                <a href="/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
                   Forward Rate Agreement Calculator
                 </a>
               </h4>
@@ -306,7 +306,7 @@ export default function CurrencyVolatilityCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/sensitivity-analysis-what-if-calculator" className="text-primary hover:underline">
+                <a href="/finance/sensitivity-analysis-what-if-calculator" className="text-primary hover:underline">
                   Sensitivity Analysis Calculator
                 </a>
               </h4>

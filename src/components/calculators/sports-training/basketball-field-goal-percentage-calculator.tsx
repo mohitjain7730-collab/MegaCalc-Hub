@@ -105,7 +105,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/basketball-free-throw-percentage-calculator" className="block">
+                        <Link href="/sports-training/basketball-free-throw-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-goals-per-90-minutes-calculator" className="block">
+                        <Link href="/sports-training/football-goals-per-90-minutes-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/cricket-win-probability-calculator" className="block">
+                        <Link href="/sports-training/cricket-win-probability-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/team-batting-average-calculator" className="block">
+                        <Link href="/sports-training/team-batting-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-fantasy-points-calculator" className="block">
+                        <Link href="/sports-training/football-fantasy-points-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -170,7 +170,7 @@ export default function BasketballFieldGoalPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/cricket-partnership-run-rate-calculator" className="block">
+                        <Link href="/sports-training/cricket-partnership-run-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

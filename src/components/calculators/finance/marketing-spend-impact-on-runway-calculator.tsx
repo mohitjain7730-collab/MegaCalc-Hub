@@ -461,7 +461,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/hiring-cost-impact-on-runway-calculator" className="block">
+            <Link href="/finance/hiring-cost-impact-on-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -474,7 +474,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/unit-economics-calculator-startup" className="block">
+            <Link href="/finance/unit-economics-calculator-startup" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -487,7 +487,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/pre-revenue-startup-runway-calculator" className="block">
+            <Link href="/finance/pre-revenue-startup-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -500,7 +500,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/saas-customer-acquisition-cost-calculator" className="block">
+            <Link href="/finance/saas-customer-acquisition-cost-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -513,7 +513,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/saas-cac-payback-period-calculator" className="block">
+            <Link href="/finance/saas-cac-payback-period-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -526,7 +526,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/burn-rate-calculator" className="block">
+            <Link href="/finance/burn-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -550,7 +550,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
         <meta itemProp="keywords" content="marketing spend runway calculator, startup runway impact, marketing burn rate, CAC payback runway, startup unit economics marketing" />
         <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/marketing-spend-impact-on-runway-calculator" />
+        <meta itemProp="url" content="/finance/marketing-spend-impact-on-runway-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Marketing Spend Impact on Runway</h1>
         <p className="text-lg italic text-muted-foreground">See how adding or increasing marketing spend changes monthly burn and shortens runway, and how to plan spend against CAC payback and unit economics.</p>

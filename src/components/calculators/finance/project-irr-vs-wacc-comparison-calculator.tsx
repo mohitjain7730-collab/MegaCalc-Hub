@@ -428,7 +428,7 @@ export default function ProjectIRRVsWACCComparisonCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/wacc-calculator" className="block">
+            <Link href="/finance/wacc-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -441,7 +441,7 @@ export default function ProjectIRRVsWACCComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/npv-calculator" className="block">
+            <Link href="/finance/npv-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -454,7 +454,7 @@ export default function ProjectIRRVsWACCComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/roi-calculator" className="block">
+            <Link href="/finance/roi-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -467,7 +467,7 @@ export default function ProjectIRRVsWACCComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/payback-period-calculator" className="block">
+            <Link href="/finance/payback-period-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -480,7 +480,7 @@ export default function ProjectIRRVsWACCComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/capital-budgeting-risk-standard-deviation-calculator" className="block">
+            <Link href="/finance/capital-budgeting-risk-standard-deviation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -493,7 +493,7 @@ export default function ProjectIRRVsWACCComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/accounting-rate-of-return-calculator" className="block">
+            <Link href="/finance/accounting-rate-of-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

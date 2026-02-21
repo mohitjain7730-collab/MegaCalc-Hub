@@ -77,12 +77,12 @@ export default function VolleyballServeEfficiencyCalculator() {
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[
-                            { href: '/category/sports-training/volleyball-attack-success-rate-calculator', icon: <Zap className="h-5 w-5 text-orange-600" />, title: 'Volleyball Attack Success Rate', desc: 'Kill% & hitting efficiency' },
-                            { href: '/category/sports-training/tennis-first-serve-percentage-calculator', icon: <Trophy className="h-5 w-5 text-yellow-600" />, title: 'Tennis First Serve %', desc: 'Serve consistency & control' },
-                            { href: '/category/sports-training/tennis-serve-accuracy-calculator', icon: <Target className="h-5 w-5 text-green-600" />, title: 'Tennis Serve Accuracy', desc: 'Placement & precision' },
-                            { href: '/category/sports-training/tennis-aces-per-match-calculator', icon: <Shield className="h-5 w-5 text-blue-600" />, title: 'Tennis Aces Per Match', desc: 'Serving dominance metric' },
-                            { href: '/category/sports-training/baseball-batting-average-calculator', icon: <BarChart3 className="h-5 w-5 text-red-600" />, title: 'Baseball Batting Average', desc: 'Hitting consistency metric' },
-                            { href: '/category/sports-training/basketball-field-goal-percentage-calculator', icon: <TrendingUp className="h-5 w-5 text-indigo-600" />, title: 'Basketball FG%', desc: 'Shooting efficiency' },
+                            { href: '/sports-training/volleyball-attack-success-rate-calculator', icon: <Zap className="h-5 w-5 text-orange-600" />, title: 'Volleyball Attack Success Rate', desc: 'Kill% & hitting efficiency' },
+                            { href: '/sports-training/tennis-first-serve-percentage-calculator', icon: <Trophy className="h-5 w-5 text-yellow-600" />, title: 'Tennis First Serve %', desc: 'Serve consistency & control' },
+                            { href: '/sports-training/tennis-serve-accuracy-calculator', icon: <Target className="h-5 w-5 text-green-600" />, title: 'Tennis Serve Accuracy', desc: 'Placement & precision' },
+                            { href: '/sports-training/tennis-aces-per-match-calculator', icon: <Shield className="h-5 w-5 text-blue-600" />, title: 'Tennis Aces Per Match', desc: 'Serving dominance metric' },
+                            { href: '/sports-training/baseball-batting-average-calculator', icon: <BarChart3 className="h-5 w-5 text-red-600" />, title: 'Baseball Batting Average', desc: 'Hitting consistency metric' },
+                            { href: '/sports-training/basketball-field-goal-percentage-calculator', icon: <TrendingUp className="h-5 w-5 text-indigo-600" />, title: 'Basketball FG%', desc: 'Shooting efficiency' },
                         ].map((c, i) => (
                             <Link key={i} href={c.href} className="block">
                                 <Card className="hover:shadow-md transition-shadow cursor-pointer">

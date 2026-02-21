@@ -228,11 +228,11 @@ export default function MaterialConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/square-miles-to-square-kilometers-converter" className="hover:underline">Square Miles To Square Kilometers Converter</Link></li>
-                <li><Link href="/category/conversions/area-converter" className="hover:underline">Area Converter</Link></li>
-                <li><Link href="/category/conversions/pascals-to-bars-converter" className="hover:underline">Pascals To Bars Converter</Link></li>
-                <li><Link href="/category/conversions/centimeters-to-inches-converter" className="hover:underline">Centimeters To Inches Converter</Link></li>
-                <li><Link href="/category/conversions/kilometers-to-miles-converter" className="hover:underline">Kilometers To Miles Converter</Link></li>
+                <li><Link href="/conversions/square-miles-to-square-kilometers-converter" className="hover:underline">Square Miles To Square Kilometers Converter</Link></li>
+                <li><Link href="/conversions/area-converter" className="hover:underline">Area Converter</Link></li>
+                <li><Link href="/conversions/pascals-to-bars-converter" className="hover:underline">Pascals To Bars Converter</Link></li>
+                <li><Link href="/conversions/centimeters-to-inches-converter" className="hover:underline">Centimeters To Inches Converter</Link></li>
+                <li><Link href="/conversions/kilometers-to-miles-converter" className="hover:underline">Kilometers To Miles Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

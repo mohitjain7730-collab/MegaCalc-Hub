@@ -11,7 +11,7 @@ export default async function CalculatorRedirect({ params }: PageProps) {
     const calc = calculators.find((c) => c.slug === slug);
 
     if (calc) {
-        redirect(`/category/${calc.category}/${calc.slug}`);
+        redirect(`/${calc.category}/${calc.slug}`);
     }
 
     notFound();

@@ -498,7 +498,7 @@ export default function InvestmentGoalTrackerCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -511,7 +511,7 @@ export default function InvestmentGoalTrackerCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/inflation-calculator" className="block">
+            <Link href="/finance/inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -524,7 +524,7 @@ export default function InvestmentGoalTrackerCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/retirement-savings-calculator" className="block">
+            <Link href="/finance/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -537,7 +537,7 @@ export default function InvestmentGoalTrackerCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/return-on-investment-calculator" className="block">
+            <Link href="/finance/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -550,7 +550,7 @@ export default function InvestmentGoalTrackerCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/lump-sum-vs-sip-comparison-calculator" className="block">
+            <Link href="/finance/lump-sum-vs-sip-comparison-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -563,7 +563,7 @@ export default function InvestmentGoalTrackerCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/fire-financial-independence-retire-early-calculator" className="block">
+            <Link href="/finance/fire-financial-independence-retire-early-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

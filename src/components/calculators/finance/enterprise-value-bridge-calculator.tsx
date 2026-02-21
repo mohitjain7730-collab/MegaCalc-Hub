@@ -473,7 +473,7 @@ export default function EnterpriseValueBridgeCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -493,7 +493,7 @@ export default function EnterpriseValueBridgeCalculator() {
     <meta itemProp="keywords" content="enterprise value bridge, EV bridge, equity value, enterprise value, valuation bridge, capital structure" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/category/finance/enterprise-value-bridge-calculator" />
+    <meta itemProp="url" content="/finance/enterprise-value-bridge-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Enterprise Value Bridge: Converting EV to Equity Value</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at the enterprise value bridge, calculating equity value from enterprise value by adjusting for debt, cash, preferred equity, minority interest, and investments.</p>

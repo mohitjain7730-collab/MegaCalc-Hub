@@ -110,8 +110,8 @@ export default function MetricTonsToShortTonsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/short-tons-us-to-metric-tons-converter" className="text-primary underline">Short Tons to Metric Tons Converter</Link></p>
-            <p><Link href="/category/conversions/tons-metric-to-pounds-converter" className="text-primary underline">Metric Tons to Pounds Converter</Link></p>
+            <p><Link href="/conversions/short-tons-us-to-metric-tons-converter" className="text-primary underline">Short Tons to Metric Tons Converter</Link></p>
+            <p><Link href="/conversions/tons-metric-to-pounds-converter" className="text-primary underline">Metric Tons to Pounds Converter</Link></p>
           </div>
         </div>
       </div>

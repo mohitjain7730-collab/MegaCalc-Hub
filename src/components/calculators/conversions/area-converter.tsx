@@ -180,11 +180,11 @@ export default function AreaConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/conversions/miles-per-hour-to-kilometers-per-hour-converter" className="hover:underline">Miles Per Hour To Kilometers Per Hour Converter</Link></li>
-              <li><Link href="/category/conversions/watts-to-megawatts-converter" className="hover:underline">Watts To Megawatts Converter</Link></li>
-              <li><Link href="/category/conversions/fathoms-to-meters-converter" className="hover:underline">Fathoms To Meters Converter</Link></li>
-              <li><Link href="/category/conversions/belt-size-converter" className="hover:underline">Belt Size Converter</Link></li>
-              <li><Link href="/category/conversions/square-feet-to-square-yards-converter" className="hover:underline">Square Feet To Square Yards Converter</Link></li>
+              <li><Link href="/conversions/miles-per-hour-to-kilometers-per-hour-converter" className="hover:underline">Miles Per Hour To Kilometers Per Hour Converter</Link></li>
+              <li><Link href="/conversions/watts-to-megawatts-converter" className="hover:underline">Watts To Megawatts Converter</Link></li>
+              <li><Link href="/conversions/fathoms-to-meters-converter" className="hover:underline">Fathoms To Meters Converter</Link></li>
+              <li><Link href="/conversions/belt-size-converter" className="hover:underline">Belt Size Converter</Link></li>
+              <li><Link href="/conversions/square-feet-to-square-yards-converter" className="hover:underline">Square Feet To Square Yards Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

@@ -638,7 +638,7 @@ export default function MaintenanceMarginCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/margin-leverage-calculator" className="text-primary hover:underline">
+                <a href="/finance/margin-leverage-calculator" className="text-primary hover:underline">
                   Margin & Leverage Calculator
                 </a>
               </h4>
@@ -648,7 +648,7 @@ export default function MaintenanceMarginCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/leverage-debt-ratio-calculator" className="text-primary hover:underline">
+                <a href="/finance/leverage-debt-ratio-calculator" className="text-primary hover:underline">
                   Leverage Ratio Calculator
                 </a>
               </h4>
@@ -658,7 +658,7 @@ export default function MaintenanceMarginCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">
+                <a href="/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">
                   Risk-Return Calculator
                 </a>
               </h4>
@@ -668,7 +668,7 @@ export default function MaintenanceMarginCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
                   Position Size Calculator
                 </a>
               </h4>

@@ -317,7 +317,7 @@ export default function EarningsPerShareCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/price-to-earnings-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/finance/price-to-earnings-ratio-calculator" className="text-primary hover:underline">
                     P/E Ratio Calculator
                   </a>
                 </h4>
@@ -327,7 +327,7 @@ export default function EarningsPerShareCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/return-on-equity-calculator" className="text-primary hover:underline">
+                  <a href="/finance/return-on-equity-calculator" className="text-primary hover:underline">
                     Return on Equity Calculator
                   </a>
                 </h4>
@@ -337,7 +337,7 @@ export default function EarningsPerShareCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/return-on-assets-calculator" className="text-primary hover:underline">
+                  <a href="/finance/return-on-assets-calculator" className="text-primary hover:underline">
                     Return on Assets Calculator
                   </a>
                 </h4>
@@ -347,7 +347,7 @@ export default function EarningsPerShareCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/net-profit-margin-calculator" className="text-primary hover:underline">
+                  <a href="/finance/net-profit-margin-calculator" className="text-primary hover:underline">
                     Net Profit Margin Calculator
                   </a>
                 </h4>

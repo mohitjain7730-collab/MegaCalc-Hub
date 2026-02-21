@@ -79,7 +79,7 @@ export default function LifespanExpectancyCalculator() {
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
         <p>
-          <Link className="text-primary underline" href="/category/health-fitness/vo2-max-calculator">
+          <Link className="text-primary underline" href="/health-fitness/vo2-max-calculator">
             VO₂ Max
           </Link>
         </p>

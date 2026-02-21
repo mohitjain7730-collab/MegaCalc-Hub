@@ -282,7 +282,7 @@ export default function FreeCashFlowCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/category/finance/operating-margin-calculator" className="group">
+            <Link href="/finance/operating-margin-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -290,7 +290,7 @@ export default function FreeCashFlowCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/net-profit-margin-calculator" className="group">
+            <Link href="/finance/net-profit-margin-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -298,7 +298,7 @@ export default function FreeCashFlowCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/ebitda-ebit-calculator" className="group">
+            <Link href="/finance/ebitda-ebit-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Calculator className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -306,7 +306,7 @@ export default function FreeCashFlowCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/interest-coverage-ratio-calculator" className="group">
+            <Link href="/finance/interest-coverage-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />

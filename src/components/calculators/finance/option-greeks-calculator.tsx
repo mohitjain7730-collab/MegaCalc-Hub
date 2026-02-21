@@ -570,7 +570,7 @@ export default function OptionGreeksCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/black-scholes-calculator" className="block">
+            <Link href="/finance/black-scholes-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -583,7 +583,7 @@ export default function OptionGreeksCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/implied-volatility-calculator" className="block">
+            <Link href="/finance/implied-volatility-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -596,7 +596,7 @@ export default function OptionGreeksCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/option-payoff-calculator" className="block">
+            <Link href="/finance/option-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -609,7 +609,7 @@ export default function OptionGreeksCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/put-call-parity-calculator" className="block">
+            <Link href="/finance/put-call-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -622,7 +622,7 @@ export default function OptionGreeksCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/binomial-option-pricing-calculator" className="block">
+            <Link href="/finance/binomial-option-pricing-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -635,7 +635,7 @@ export default function OptionGreeksCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/straddle-strangle-strategy-calculator" className="block">
+            <Link href="/finance/straddle-strangle-strategy-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

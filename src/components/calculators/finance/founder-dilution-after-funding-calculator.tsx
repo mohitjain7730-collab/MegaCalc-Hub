@@ -461,7 +461,7 @@ export default function FounderDilutionAfterFundingCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {relatedCalculators.map((calc) => (
-              <Link key={calc.slug} href={`/category/finance/${calc.slug}`} className="block">
+              <Link key={calc.slug} href={`/finance/${calc.slug}`} className="block">
                 <Card className="hover:shadow-md transition-shadow cursor-pointer">
                   <CardContent className="p-4">
                     <div className="flex items-center gap-3">
@@ -484,7 +484,7 @@ export default function FounderDilutionAfterFundingCalculator() {
         <meta itemProp="name" content="The Definitive Guide to Founder Dilution After Funding: Post-Round Ownership and Dilution" />
         <meta itemProp="description" content="Expert guide to founder ownership and dilution after a single funding round: post-money valuation, investor ownership, optional pre-money option pool, and interpreting dilution." />
         <meta itemProp="keywords" content="founder dilution, post-money valuation, option pool, startup funding, ownership after round, dilution percentage" />
-        <meta itemProp="url" content="/category/finance/founder-dilution-after-funding-calculator" />
+        <meta itemProp="url" content="/finance/founder-dilution-after-funding-calculator" />
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Founder Dilution After Funding: Post-Round Ownership and Dilution</h1>
         <p className="text-lg italic text-muted-foreground">See founder ownership and dilution after a single funding round. Optional pre-money option pool. Startup-specific. Use this guide to interpret post-money valuation, investor %, founder % after, and dilution %.</p>
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>

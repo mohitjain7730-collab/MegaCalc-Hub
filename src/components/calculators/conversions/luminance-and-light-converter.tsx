@@ -180,11 +180,11 @@ export default function LuminanceConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/fuel-economy-converter" className="hover:underline">Fuel Economy Converter</Link></li>
-                <li><Link href="/category/conversions/watts-to-btu-per-hour-converter" className="hover:underline">Watts To Btu Per Hour Converter</Link></li>
-                <li><Link href="/category/conversions/bars-to-mmhg-converter" className="hover:underline">Bars To Mmhg Converter</Link></li>
-                <li><Link href="/category/conversions/acres-to-square-miles-converter" className="hover:underline">Acres To Square Miles Converter</Link></li>
-                <li><Link href="/category/conversions/kilograms-to-stones-converter" className="hover:underline">Kilograms To Stones Converter</Link></li>
+                <li><Link href="/conversions/fuel-economy-converter" className="hover:underline">Fuel Economy Converter</Link></li>
+                <li><Link href="/conversions/watts-to-btu-per-hour-converter" className="hover:underline">Watts To Btu Per Hour Converter</Link></li>
+                <li><Link href="/conversions/bars-to-mmhg-converter" className="hover:underline">Bars To Mmhg Converter</Link></li>
+                <li><Link href="/conversions/acres-to-square-miles-converter" className="hover:underline">Acres To Square Miles Converter</Link></li>
+                <li><Link href="/conversions/kilograms-to-stones-converter" className="hover:underline">Kilograms To Stones Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

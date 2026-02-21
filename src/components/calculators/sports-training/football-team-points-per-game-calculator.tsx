@@ -107,7 +107,7 @@ export default function FootballTeamPointsPerGameCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/football-win-rate-calculator" className="block">
+                        <Link href="/sports-training/football-win-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -120,7 +120,7 @@ export default function FootballTeamPointsPerGameCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-goals-per-90-minutes-calculator" className="block">
+                        <Link href="/sports-training/football-goals-per-90-minutes-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -133,7 +133,7 @@ export default function FootballTeamPointsPerGameCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-clean-sheet-percentage-calculator" className="block">
+                        <Link href="/sports-training/football-clean-sheet-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -146,7 +146,7 @@ export default function FootballTeamPointsPerGameCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-goal-conversion-rate-calculator" className="block">
+                        <Link href="/sports-training/football-goal-conversion-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -159,7 +159,7 @@ export default function FootballTeamPointsPerGameCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-possession-percentage-calculator" className="block">
+                        <Link href="/sports-training/football-possession-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -172,7 +172,7 @@ export default function FootballTeamPointsPerGameCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-save-percentage-calculator" className="block">
+                        <Link href="/sports-training/football-save-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

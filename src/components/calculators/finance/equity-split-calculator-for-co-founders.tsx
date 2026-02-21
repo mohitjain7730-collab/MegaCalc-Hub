@@ -441,7 +441,7 @@ export default function EquitySplitCalculatorForCoFounders() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/equity-cap-table-generator" className="block">
+            <Link href="/finance/equity-cap-table-generator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -454,7 +454,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/founder-dilution-after-funding-calculator" className="block">
+            <Link href="/finance/founder-dilution-after-funding-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -467,7 +467,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/option-pool-allocation-calculator" className="block">
+            <Link href="/finance/option-pool-allocation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -480,7 +480,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
+            <Link href="/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -493,7 +493,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/post-funding-runway-extension-calculator" className="block">
+            <Link href="/finance/post-funding-runway-extension-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -506,7 +506,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/burn-rate-calculator" className="block">
+            <Link href="/finance/burn-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

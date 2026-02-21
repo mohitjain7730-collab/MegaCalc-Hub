@@ -98,7 +98,7 @@ export default function AtmospheresToPsiConverter() {
        <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/psi-to-atmospheres-converter" className="text-primary underline">PSI to Atmospheres Converter</Link></p>
+            <p><Link href="/conversions/psi-to-atmospheres-converter" className="text-primary underline">PSI to Atmospheres Converter</Link></p>
           </div>
         </div>
     </div>

@@ -111,10 +111,10 @@ export default function BetaWeightedPortfolioExposureCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/beta-asset-calculator" className="text-primary hover:underline">Single‑Asset Beta</a></h4><p className="text-sm text-muted-foreground">Beta versus a benchmark.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/portfolio-expected-return-calculator" className="text-primary hover:underline">Portfolio Expected Return</a></h4><p className="text-sm text-muted-foreground">Weighted mean of returns.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/tracking-error-calculator" className="text-primary hover:underline">Tracking Error</a></h4><p className="text-sm text-muted-foreground">Volatility vs benchmark.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/category/finance/information-ratio-calculator" className="text-primary hover:underline">Information Ratio</a></h4><p className="text-sm text-muted-foreground">Excess return per unit TE.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/beta-asset-calculator" className="text-primary hover:underline">Single‑Asset Beta</a></h4><p className="text-sm text-muted-foreground">Beta versus a benchmark.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/portfolio-expected-return-calculator" className="text-primary hover:underline">Portfolio Expected Return</a></h4><p className="text-sm text-muted-foreground">Weighted mean of returns.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/tracking-error-calculator" className="text-primary hover:underline">Tracking Error</a></h4><p className="text-sm text-muted-foreground">Volatility vs benchmark.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/information-ratio-calculator" className="text-primary hover:underline">Information Ratio</a></h4><p className="text-sm text-muted-foreground">Excess return per unit TE.</p></div>
           </div>
         </CardContent>
       </Card>

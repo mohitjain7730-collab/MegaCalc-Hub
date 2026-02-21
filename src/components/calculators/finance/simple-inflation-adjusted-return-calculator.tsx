@@ -411,7 +411,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/category/finance/real-rate-of-return-calculator" className="group">
+            <Link href="/finance/real-rate-of-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Percent className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -419,7 +419,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/margin-of-safety-calculator" className="group">
+            <Link href="/finance/margin-of-safety-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -427,7 +427,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/sharpe-ratio-calculator" className="group">
+            <Link href="/finance/sharpe-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -435,7 +435,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/portfolio-expected-return-calculator" className="group">
+            <Link href="/finance/portfolio-expected-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -646,7 +646,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/real-rate-of-return-calculator" className="text-primary hover:underline">
+                <Link href="/finance/real-rate-of-return-calculator" className="text-primary hover:underline">
                   Real Rate of Return Calculator
                 </Link>
               </h4>
@@ -656,7 +656,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                <Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">
                   Compound Interest Calculator
                 </Link>
               </h4>
@@ -666,7 +666,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/inflation-calculator" className="text-primary hover:underline">
+                <Link href="/finance/inflation-calculator" className="text-primary hover:underline">
                   Inflation Calculator
                 </Link>
               </h4>
@@ -676,7 +676,7 @@ export default function SimpleInflationAdjustedReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/category/finance/future-value-calculator" className="text-primary hover:underline">
+                <Link href="/finance/future-value-calculator" className="text-primary hover:underline">
                   Future Value Calculator
                 </Link>
               </h4>

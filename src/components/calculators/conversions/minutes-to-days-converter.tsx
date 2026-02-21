@@ -127,8 +127,8 @@ export default function MinutesToDaysConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/days-to-minutes-converter" className="text-primary underline">Days to Minutes Converter</Link></p>
-            <p><Link href="/category/conversions/minutes-to-hours-converter" className="text-primary underline">Minutes to Hours Converter</Link></p>
+            <p><Link href="/conversions/days-to-minutes-converter" className="text-primary underline">Days to Minutes Converter</Link></p>
+            <p><Link href="/conversions/minutes-to-hours-converter" className="text-primary underline">Minutes to Hours Converter</Link></p>
           </div>
         </div>
       </div>

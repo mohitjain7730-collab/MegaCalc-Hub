@@ -511,10 +511,10 @@ export default function HydrationSweatRateCalculator() {
 
         <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
         <div className="space-y-2">
-          <p><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary underline">Hydration Needs Calculator</Link></p>
-          <p><Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Electrolyte Replacement Calculator</Link></p>
-          <p><Link href="/category/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Core Body Temperature Rise Calculator</Link></p>
-          <p><Link href="/category/health-fitness/mets-calories-burned-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
+          <p><Link href="/health-fitness/hydration-needs-calculator" className="text-primary underline">Hydration Needs Calculator</Link></p>
+          <p><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Electrolyte Replacement Calculator</Link></p>
+          <p><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Core Body Temperature Rise Calculator</Link></p>
+          <p><Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
         </div>
       </section>
     </div>

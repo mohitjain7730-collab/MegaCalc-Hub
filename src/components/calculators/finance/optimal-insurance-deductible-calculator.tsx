@@ -445,7 +445,7 @@ export default function OptimalInsuranceDeductibleCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -465,7 +465,7 @@ export default function OptimalInsuranceDeductibleCalculator() {
     <meta itemProp="keywords" content="optimal insurance deductible, deductible calculator, break-even analysis, premium savings, insurance cost-benefit analysis" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/category/finance/optimal-insurance-deductible-calculator" />
+    <meta itemProp="url" content="/finance/optimal-insurance-deductible-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Optimal Insurance Deductible: Break-Even Analysis and Decision Making</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at choosing optimal insurance deductibles using break-even analysis to balance premium savings and financial risk.</p>

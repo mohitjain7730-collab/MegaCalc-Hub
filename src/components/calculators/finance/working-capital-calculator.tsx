@@ -332,7 +332,7 @@ export default function WorkingCapitalCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/current-ratio-calculator" className="block">
+            <Link href="/finance/current-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -345,7 +345,7 @@ export default function WorkingCapitalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/quick-ratio-calculator" className="block">
+            <Link href="/finance/quick-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -358,7 +358,7 @@ export default function WorkingCapitalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cash-conversion-cycle-calculator" className="block">
+            <Link href="/finance/cash-conversion-cycle-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -371,7 +371,7 @@ export default function WorkingCapitalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/interest-coverage-ratio-calculator" className="block">
+            <Link href="/finance/interest-coverage-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -384,7 +384,7 @@ export default function WorkingCapitalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/free-cash-flow-calculator" className="block">
+            <Link href="/finance/free-cash-flow-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -397,7 +397,7 @@ export default function WorkingCapitalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/debt-to-equity-ratio-calculator" className="block">
+            <Link href="/finance/debt-to-equity-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

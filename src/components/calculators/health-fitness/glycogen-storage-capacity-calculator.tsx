@@ -127,19 +127,19 @@ export default function GlycogenStorageCapacityCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4>
               <p className="text-sm text-muted-foreground">Estimate total energy requirement.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Balance carbs, protein, and fat.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Carbohydrate Intake</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Carbohydrate Intake</Link></h4>
               <p className="text-sm text-muted-foreground">Daily carb targets by activity.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4>
               <p className="text-sm text-muted-foreground">Track sets × reps × weight.</p>
             </div>
           </div>

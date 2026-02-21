@@ -543,7 +543,7 @@ export default function MindfulMinutesTrackingCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/category/health-fitness/meditation-breathing-rate-calculator"
+                  href="/health-fitness/meditation-breathing-rate-calculator"
                   className="text-primary hover:underline"
                 >
                   Meditation Breathing Rhythm Helper
@@ -556,7 +556,7 @@ export default function MindfulMinutesTrackingCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/category/health-fitness/habit-streak-tracker-calculator"
+                  href="/health-fitness/habit-streak-tracker-calculator"
                   className="text-primary hover:underline"
                 >
                   Meditation Time Progress Tracker
@@ -569,7 +569,7 @@ export default function MindfulMinutesTrackingCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/category/health-fitness/habit-streak-tracker-calculator"
+                  href="/health-fitness/habit-streak-tracker-calculator"
                   className="text-primary hover:underline"
                 >
                   Habit Streak Tracker
@@ -580,7 +580,7 @@ export default function MindfulMinutesTrackingCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/category/health-fitness/daily-activity-points-calculator"
+                  href="/health-fitness/daily-activity-points-calculator"
                   className="text-primary hover:underline"
                 >
                   Daily Stress Tendency Check-In

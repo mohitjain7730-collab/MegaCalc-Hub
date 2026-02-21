@@ -439,7 +439,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/pre-revenue-startup-runway-calculator" className="block">
+            <Link href="/finance/pre-revenue-startup-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -452,7 +452,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/startup-runway-calculator-with-revenue-growth" className="block">
+            <Link href="/finance/startup-runway-calculator-with-revenue-growth" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -465,7 +465,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/burn-rate-calculator-pre-revenue" className="block">
+            <Link href="/finance/burn-rate-calculator-pre-revenue" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -478,7 +478,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/saas-burn-rate-calculator-gross-vs-net" className="block">
+            <Link href="/finance/saas-burn-rate-calculator-gross-vs-net" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -491,7 +491,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/runway-extension-calculator" className="block">
+            <Link href="/finance/runway-extension-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -504,7 +504,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/cash-flow-break-even-calculator-for-small-businesses" className="block">
+            <Link href="/finance/cash-flow-break-even-calculator-for-small-businesses" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

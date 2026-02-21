@@ -62,7 +62,7 @@ export default function HorsepowerToKilowattsConverter() {
          <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/category/conversions/kilowatts-to-horsepower-converter" className="text-primary underline">Kilowatts to Horsepower Converter</Link></p>
+            <p><Link href="/conversions/kilowatts-to-horsepower-converter" className="text-primary underline">Kilowatts to Horsepower Converter</Link></p>
           </div>
         </div>
       </div>

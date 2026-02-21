@@ -349,9 +349,9 @@ export default function ThyroidFunctionBasalEnergyCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">Resting Metabolic Rate</Link></h4><p className="text-sm text-muted-foreground">Compare BMR formulas to cross-check estimates.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Translate BMR into total daily energy requirements.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Hydration supports hormone production and recovery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/bmr-calculator" className="text-primary hover:underline">Resting Metabolic Rate</Link></h4><p className="text-sm text-muted-foreground">Compare BMR formulas to cross-check estimates.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Translate BMR into total daily energy requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Hydration supports hormone production and recovery.</p></div>
           </div>
         </CardContent>
       </Card>

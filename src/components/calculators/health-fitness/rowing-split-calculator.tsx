@@ -152,8 +152,8 @@ export default function RowingSplitCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/swimming-lap-time-calculator" className="text-primary hover:underline">Swimming Lap Time</a></h4><p className="text-sm text-muted-foreground">Convert total time, laps, and pace.</p></div>
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/category/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">METs Calories Burned</a></h4><p className="text-sm text-muted-foreground">Estimate calories for rowing sessions.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/swimming-lap-time-calculator" className="text-primary hover:underline">Swimming Lap Time</a></h4><p className="text-sm text-muted-foreground">Convert total time, laps, and pace.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">METs Calories Burned</a></h4><p className="text-sm text-muted-foreground">Estimate calories for rowing sessions.</p></div>
     </div>
         </CardContent>
       </Card>

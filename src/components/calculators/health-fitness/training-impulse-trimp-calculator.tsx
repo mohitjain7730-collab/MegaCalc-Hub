@@ -323,19 +323,19 @@ export default function TrainingImpulseTRIMPCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/running-pace-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/running-pace-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
               <p className="text-sm text-muted-foreground">Compare heart-rate load with power or pace-based TSS values.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/chronic-training-load-calculator" className="text-primary hover:underline">Chronic Training Load (CTL)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/chronic-training-load-calculator" className="text-primary hover:underline">Chronic Training Load (CTL)</Link></h4>
               <p className="text-sm text-muted-foreground">Feed TRIMP-derived TSS into CTL for long-term planning.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/acute-training-load-calculator" className="text-primary hover:underline">Acute Training Load (ATL)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/acute-training-load-calculator" className="text-primary hover:underline">Acute Training Load (ATL)</Link></h4>
               <p className="text-sm text-muted-foreground">Monitor short-term fatigue alongside TRIMP scores.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
               <p className="text-sm text-muted-foreground">Observe how heart rate efficiency changes as TRIMP varies.</p>
             </div>
           </div>

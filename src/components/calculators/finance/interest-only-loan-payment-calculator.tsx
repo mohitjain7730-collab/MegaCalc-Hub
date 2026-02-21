@@ -405,10 +405,10 @@ export default function InterestOnlyCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { name: "Mortgage Payment", url: "/category/finance/mortgage-payment-calculator", icon: <Home className="h-5 w-5 text-indigo-500" />, desc: "Standard P&I Calculation" },
-              { name: "Amortization Schedule", url: "/category/finance/amortization-schedule-generator", icon: <Calendar className="h-5 w-5 text-blue-500" />, desc: "Year-by-year breakdown" },
-              { name: "Home Affordability", url: "/category/finance/home-affordability-calculator", icon: <Shield className="h-5 w-5 text-green-500" />, desc: "What can you borrow?" },
-              { name: "DTI Calculator", url: "/category/finance/dscr-calculator", icon: <Percent className="h-5 w-5 text-red-500" />, desc: "Loan qualification check" },
+              { name: "Mortgage Payment", url: "/finance/mortgage-payment-calculator", icon: <Home className="h-5 w-5 text-indigo-500" />, desc: "Standard P&I Calculation" },
+              { name: "Amortization Schedule", url: "/finance/amortization-schedule-generator", icon: <Calendar className="h-5 w-5 text-blue-500" />, desc: "Year-by-year breakdown" },
+              { name: "Home Affordability", url: "/finance/home-affordability-calculator", icon: <Shield className="h-5 w-5 text-green-500" />, desc: "What can you borrow?" },
+              { name: "DTI Calculator", url: "/finance/dscr-calculator", icon: <Percent className="h-5 w-5 text-red-500" />, desc: "Loan qualification check" },
             ].map((item, i) => (
               <Link key={i} href={item.url} className="block group">
                 <Card className="hover:shadow-md transition-all h-full">

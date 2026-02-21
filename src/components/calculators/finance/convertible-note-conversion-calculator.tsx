@@ -529,7 +529,7 @@ export default function ConvertibleNoteConversionCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/safe-note-conversion-calculator" className="block">
+            <Link href="/finance/safe-note-conversion-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -542,7 +542,7 @@ export default function ConvertibleNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
+            <Link href="/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -555,7 +555,7 @@ export default function ConvertibleNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/founder-dilution-after-funding-calculator" className="block">
+            <Link href="/finance/founder-dilution-after-funding-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -568,7 +568,7 @@ export default function ConvertibleNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/equity-cap-table-generator" className="block">
+            <Link href="/finance/equity-cap-table-generator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -581,7 +581,7 @@ export default function ConvertibleNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/safe-convertible-note-conversion-calculator" className="block">
+            <Link href="/finance/safe-convertible-note-conversion-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -594,7 +594,7 @@ export default function ConvertibleNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/option-pool-allocation-calculator" className="block">
+            <Link href="/finance/option-pool-allocation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -618,7 +618,7 @@ export default function ConvertibleNoteConversionCalculator() {
         <meta itemProp="keywords" content="convertible note conversion, valuation cap, discount, accrued interest, startup financing, equity conversion" />
         <meta itemProp="author" content="Mycalculating.com" />
         <meta itemProp="datePublished" content="2025-01-01" />
-        <meta itemProp="url" content="/category/finance/convertible-note-conversion-calculator" />
+        <meta itemProp="url" content="/finance/convertible-note-conversion-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Convertible Note Conversion: Principal, Interest, Cap, and Discount</h1>
         <p className="text-lg italic text-muted-foreground">How convertible notes convert into equity when a company raises a priced round, including accrued interest.</p>

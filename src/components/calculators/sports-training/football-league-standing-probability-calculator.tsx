@@ -108,7 +108,7 @@ export default function FootballLeagueStandingProbabilityCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/football-win-rate-calculator" className="block">
+                        <Link href="/sports-training/football-win-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function FootballLeagueStandingProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-goals-per-90-calculator" className="block">
+                        <Link href="/sports-training/football-goals-per-90-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function FootballLeagueStandingProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-clean-sheet-percentage-calculator" className="block">
+                        <Link href="/sports-training/football-clean-sheet-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -147,7 +147,7 @@ export default function FootballLeagueStandingProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-expected-assists-calculator" className="block">
+                        <Link href="/sports-training/football-expected-assists-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export default function FootballLeagueStandingProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-save-percentage-calculator" className="block">
+                        <Link href="/sports-training/football-save-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -173,7 +173,7 @@ export default function FootballLeagueStandingProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-shot-accuracy-calculator" className="block">
+                        <Link href="/sports-training/football-shot-accuracy-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

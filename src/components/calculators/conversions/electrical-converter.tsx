@@ -251,11 +251,11 @@ export default function ElectricalConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/mach-number-to-miles-per-hour-converter" className="hover:underline">Mach Number To Miles Per Hour Converter</Link></li>
-                <li><Link href="/category/conversions/torr-to-pascals-converter" className="hover:underline">Torr To Pascals Converter</Link></li>
-                <li><Link href="/category/conversions/watts-to-horsepower-converter" className="hover:underline">Watts To Horsepower Converter</Link></li>
-                <li><Link href="/category/conversions/weeks-to-days-converter" className="hover:underline">Weeks To Days Converter</Link></li>
-                <li><Link href="/category/conversions/speed-converter" className="hover:underline">Speed Converter</Link></li>
+                <li><Link href="/conversions/mach-number-to-miles-per-hour-converter" className="hover:underline">Mach Number To Miles Per Hour Converter</Link></li>
+                <li><Link href="/conversions/torr-to-pascals-converter" className="hover:underline">Torr To Pascals Converter</Link></li>
+                <li><Link href="/conversions/watts-to-horsepower-converter" className="hover:underline">Watts To Horsepower Converter</Link></li>
+                <li><Link href="/conversions/weeks-to-days-converter" className="hover:underline">Weeks To Days Converter</Link></li>
+                <li><Link href="/conversions/speed-converter" className="hover:underline">Speed Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

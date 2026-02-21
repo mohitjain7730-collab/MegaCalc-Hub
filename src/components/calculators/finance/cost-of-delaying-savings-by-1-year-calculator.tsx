@@ -265,7 +265,7 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/cost-of-delay-investing-late-calculator" className="block">
+            <Link href="/finance/cost-of-delay-investing-late-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -278,7 +278,7 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/side-income-impact-on-savings-calculator" className="block">
+            <Link href="/finance/side-income-impact-on-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -291,7 +291,7 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/compound-interest-calculator" className="block">
+            <Link href="/finance/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -314,7 +314,7 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
         <meta itemProp="keywords" content="cost of delaying savings, 1 year delay, start saving now, compound interest, future value" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/category/finance/cost-of-delaying-savings-by-1-year-calculator" />
+        <meta itemProp="url" content="/finance/cost-of-delaying-savings-by-1-year-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Cost of Delaying Savings by 1 Year: How Much You Lose</h1>
         <p className="text-lg italic text-muted-foreground">Delaying the start of savings by just one year reduces your future balance because you make fewer contributions and lose a year of compound growth. This calculator shows the dollar and percentage cost of a 1-year delay.</p>

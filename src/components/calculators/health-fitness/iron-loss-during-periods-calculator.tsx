@@ -188,10 +188,10 @@ export default function IronLossDuringPeriodsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/menstrual-cycle-phase-tracker-calculator" className="text-primary hover:underline">Menstrual Cycle Tracker</Link></h4><p className="text-sm text-muted-foreground">Track cycle phases.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/pms-symptom-score-calculator" className="text-primary hover:underline">PMS Symptom Score</Link></h4><p className="text-sm text-muted-foreground">Assess PMS symptom severity.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Iron Intake</Link></h4><p className="text-sm text-muted-foreground">Calculate daily iron requirements.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate daily calorie requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/menstrual-cycle-phase-tracker-calculator" className="text-primary hover:underline">Menstrual Cycle Tracker</Link></h4><p className="text-sm text-muted-foreground">Track cycle phases.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/pms-symptom-score-calculator" className="text-primary hover:underline">PMS Symptom Score</Link></h4><p className="text-sm text-muted-foreground">Assess PMS symptom severity.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Iron Intake</Link></h4><p className="text-sm text-muted-foreground">Calculate daily iron requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate daily calorie requirements.</p></div>
           </div>
         </CardContent>
       </Card>

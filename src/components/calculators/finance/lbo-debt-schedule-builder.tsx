@@ -514,7 +514,7 @@ export default function LboDebtScheduleBuilder() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -534,7 +534,7 @@ export default function LboDebtScheduleBuilder() {
         <meta itemProp="keywords" content="LBO debt schedule, debt amortization, debt prepayment, interest expense, leveraged buyout debt" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/lbo-debt-schedule-builder" />
+        <meta itemProp="url" content="/finance/lbo-debt-schedule-builder" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to LBO Debt Schedules: Amortization and Interest Calculation</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">How to design, model, and stress-test LBO debt schedules across tranches, amortization rules, and prepayment strategies.</p>

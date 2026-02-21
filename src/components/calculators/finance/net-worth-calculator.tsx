@@ -708,7 +708,7 @@ export default function NetWorthCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/retirement-savings-calculator" className="text-primary hover:underline">
+                  <a href="/finance/retirement-savings-calculator" className="text-primary hover:underline">
                     Retirement Savings Calculator
                   </a>
                 </h4>
@@ -718,7 +718,7 @@ export default function NetWorthCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/compound-interest-calculator" className="text-primary hover:underline">
+                  <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
                     Emergency Fund Calculator
                   </a>
                 </h4>
@@ -728,7 +728,7 @@ export default function NetWorthCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/roth-ira-contribution-limit-calculator" className="text-primary hover:underline">
+                  <a href="/finance/roth-ira-contribution-limit-calculator" className="text-primary hover:underline">
                     Roth IRA Contribution Calculator
                   </a>
                 </h4>
@@ -738,7 +738,7 @@ export default function NetWorthCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/finance/401k-contribution-calculator" className="text-primary hover:underline">
+                  <a href="/finance/401k-contribution-calculator" className="text-primary hover:underline">
                     401k Contribution Calculator
                   </a>
                 </h4>

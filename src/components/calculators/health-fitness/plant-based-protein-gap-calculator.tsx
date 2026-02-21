@@ -295,10 +295,10 @@ export default function PlantBasedProteinGapCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Protein Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Set baseline protein targets for different goals.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Balance carbs and fats while increasing protein.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Ensure adequate fiber alongside higher protein meals.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Iron Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Monitor iron intake when reducing animal products.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Protein Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Set baseline protein targets for different goals.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Balance carbs and fats while increasing protein.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Ensure adequate fiber alongside higher protein meals.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Iron Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Monitor iron intake when reducing animal products.</p></div>
           </div>
         </CardContent>
       </Card>

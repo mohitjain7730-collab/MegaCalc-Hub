@@ -74,12 +74,12 @@ export default function VolleyballAttackSuccessRateCalculator() {
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                         {[
-                            { href: '/category/sports-training/volleyball-serve-efficiency-calculator', icon: <Zap className="h-5 w-5 text-purple-600" />, title: 'Volleyball Serve Efficiency', desc: 'Aces, errors & serve rating' },
-                            { href: '/category/sports-training/baseball-batting-average-calculator', icon: <Trophy className="h-5 w-5 text-yellow-600" />, title: 'Baseball Batting Average', desc: 'Hits per at-bat metric' },
-                            { href: '/category/sports-training/basketball-field-goal-percentage-calculator', icon: <BarChart3 className="h-5 w-5 text-blue-600" />, title: 'Basketball FG%', desc: 'Shooting efficiency' },
-                            { href: '/category/sports-training/basketball-true-shooting-percentage-calculator', icon: <Shield className="h-5 w-5 text-indigo-600" />, title: 'Basketball TS%', desc: 'True shooting percentage' },
-                            { href: '/category/sports-training/football-goal-conversion-rate-calculator', icon: <Target className="h-5 w-5 text-green-600" />, title: 'Football Goal Conversion', desc: 'Shot to goal efficiency' },
-                            { href: '/category/sports-training/baseball-slugging-percentage-calculator', icon: <TrendingUp className="h-5 w-5 text-red-600" />, title: 'Baseball Slugging %', desc: 'Power & extra-base hits' },
+                            { href: '/sports-training/volleyball-serve-efficiency-calculator', icon: <Zap className="h-5 w-5 text-purple-600" />, title: 'Volleyball Serve Efficiency', desc: 'Aces, errors & serve rating' },
+                            { href: '/sports-training/baseball-batting-average-calculator', icon: <Trophy className="h-5 w-5 text-yellow-600" />, title: 'Baseball Batting Average', desc: 'Hits per at-bat metric' },
+                            { href: '/sports-training/basketball-field-goal-percentage-calculator', icon: <BarChart3 className="h-5 w-5 text-blue-600" />, title: 'Basketball FG%', desc: 'Shooting efficiency' },
+                            { href: '/sports-training/basketball-true-shooting-percentage-calculator', icon: <Shield className="h-5 w-5 text-indigo-600" />, title: 'Basketball TS%', desc: 'True shooting percentage' },
+                            { href: '/sports-training/football-goal-conversion-rate-calculator', icon: <Target className="h-5 w-5 text-green-600" />, title: 'Football Goal Conversion', desc: 'Shot to goal efficiency' },
+                            { href: '/sports-training/baseball-slugging-percentage-calculator', icon: <TrendingUp className="h-5 w-5 text-red-600" />, title: 'Baseball Slugging %', desc: 'Power & extra-base hits' },
                         ].map((c, i) => (
                             <Link key={i} href={c.href} className="block">
                                 <Card className="hover:shadow-md transition-shadow cursor-pointer">

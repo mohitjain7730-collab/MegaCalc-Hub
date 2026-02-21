@@ -180,11 +180,11 @@ export default function FrequencyConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/category/conversions/bars-to-psi-converter" className="hover:underline">Bars To Psi Converter</Link></li>
-                <li><Link href="/category/conversions/watts-to-ergs-per-second-converter" className="hover:underline">Watts To Ergs Per Second Converter</Link></li>
-                <li><Link href="/category/conversions/weeks-to-months-converter" className="hover:underline">Weeks To Months Converter</Link></li>
-                <li><Link href="/category/conversions/years-to-months-converter" className="hover:underline">Years To Months Converter</Link></li>
-                <li><Link href="/category/conversions/milligrams-to-micrograms-converter" className="hover:underline">Milligrams To Micrograms Converter</Link></li>
+                <li><Link href="/conversions/bars-to-psi-converter" className="hover:underline">Bars To Psi Converter</Link></li>
+                <li><Link href="/conversions/watts-to-ergs-per-second-converter" className="hover:underline">Watts To Ergs Per Second Converter</Link></li>
+                <li><Link href="/conversions/weeks-to-months-converter" className="hover:underline">Weeks To Months Converter</Link></li>
+                <li><Link href="/conversions/years-to-months-converter" className="hover:underline">Years To Months Converter</Link></li>
+                <li><Link href="/conversions/milligrams-to-micrograms-converter" className="hover:underline">Milligrams To Micrograms Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

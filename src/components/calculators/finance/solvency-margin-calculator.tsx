@@ -419,7 +419,7 @@ export default function SolvencyMarginCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -439,7 +439,7 @@ export default function SolvencyMarginCalculator() {
     <meta itemProp="keywords" content="solvency margin, solvency ratio, insurance capital, available solvency margin, required solvency margin, insurance regulation" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/category/finance/solvency-margin-calculator" />
+    <meta itemProp="url" content="/finance/solvency-margin-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Solvency Margin: Insurance Capital Requirements and Ratios</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at solvency margin, regulatory capital requirements, and capital management strategies for insurance companies.</p>

@@ -324,10 +324,10 @@ export default function DetoxJuiceNutrientCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Anchor juice intake within your energy budget.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/glycemic-load-calculator" className="text-primary hover:underline">Glycemic Load Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess blood sugar impact of meals and juices.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Ensure total daily fiber hits health-promoting targets.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/category/health-fitness/sugar-intake-calculator" className="text-primary hover:underline">Sugar Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Monitor added sugar alongside natural fruit sugars.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Anchor juice intake within your energy budget.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/glycemic-load-calculator" className="text-primary hover:underline">Glycemic Load Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess blood sugar impact of meals and juices.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Ensure total daily fiber hits health-promoting targets.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/sugar-intake-calculator" className="text-primary hover:underline">Sugar Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Monitor added sugar alongside natural fruit sugars.</p></div>
           </div>
         </CardContent>
       </Card>

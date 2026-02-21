@@ -574,12 +574,12 @@ export default function BetaAdjustedPortfolioReturnCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "Sharpe Ratio", desc: "Risk-adjusted return vs volatility", icon: <Zap className="h-5 w-5 text-yellow-600" />, href: "/category/finance/sharpe-ratio-calculator" },
-              { title: "Treynor Ratio", desc: "Return per unit of market risk", icon: <TrendingUp className="h-5 w-5 text-green-600" />, href: "/category/finance/treynor-ratio-calculator" },
-              { title: "Portfolio Variance", desc: "Measure total portfolio risk", icon: <BarChart3 className="h-5 w-5 text-blue-600" />, href: "/category/finance/portfolio-variance-calculator" },
-              { title: "WACC Calculator", desc: "Weighted Average Cost of Capital", icon: <Landmark className="h-5 w-5 text-purple-600" />, href: "/category/finance/wacc-calculator" },
-              { title: "Information Ratio", desc: "Active return over tracking error", icon: <Target className="h-5 w-5 text-orange-600" />, href: "/category/finance/information-ratio-calculator" },
-              { title: "Capm Calculator", desc: "Standard expected return model", icon: <FunctionSquare className="h-5 w-5 text-indigo-600" />, href: "/category/finance/capm-calculator" },
+              { title: "Sharpe Ratio", desc: "Risk-adjusted return vs volatility", icon: <Zap className="h-5 w-5 text-yellow-600" />, href: "/finance/sharpe-ratio-calculator" },
+              { title: "Treynor Ratio", desc: "Return per unit of market risk", icon: <TrendingUp className="h-5 w-5 text-green-600" />, href: "/finance/treynor-ratio-calculator" },
+              { title: "Portfolio Variance", desc: "Measure total portfolio risk", icon: <BarChart3 className="h-5 w-5 text-blue-600" />, href: "/finance/portfolio-variance-calculator" },
+              { title: "WACC Calculator", desc: "Weighted Average Cost of Capital", icon: <Landmark className="h-5 w-5 text-purple-600" />, href: "/finance/wacc-calculator" },
+              { title: "Information Ratio", desc: "Active return over tracking error", icon: <Target className="h-5 w-5 text-orange-600" />, href: "/finance/information-ratio-calculator" },
+              { title: "Capm Calculator", desc: "Standard expected return model", icon: <FunctionSquare className="h-5 w-5 text-indigo-600" />, href: "/finance/capm-calculator" },
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="block group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-md">

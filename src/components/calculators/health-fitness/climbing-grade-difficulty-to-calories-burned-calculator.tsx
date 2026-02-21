@@ -316,15 +316,15 @@ export default function ClimbingGradeDifficultyToCaloriesBurnedCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/post-exercise-oxygen-consumption-calculator" className="text-primary hover:underline">Post-Exercise Oxygen Consumption</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/post-exercise-oxygen-consumption-calculator" className="text-primary hover:underline">Post-Exercise Oxygen Consumption</Link></h4>
               <p className="text-sm text-muted-foreground">Estimate recovery demands after intense climbing days.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Understand daily activity calories alongside training.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/category/health-fitness/seasonal-energy-expenditure-calculator" className="text-primary hover:underline">Seasonal Energy Expenditure</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/health-fitness/seasonal-energy-expenditure-calculator" className="text-primary hover:underline">Seasonal Energy Expenditure</Link></h4>
               <p className="text-sm text-muted-foreground">Plan energy needs across different climbing seasons.</p>
             </div>
           </div>

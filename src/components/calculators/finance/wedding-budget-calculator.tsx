@@ -563,7 +563,7 @@ export default function WeddingBudgetCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/category/finance/monthly-budget-planner-calculator" className="block">
+            <Link href="/finance/monthly-budget-planner-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -576,7 +576,7 @@ export default function WeddingBudgetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -589,7 +589,7 @@ export default function WeddingBudgetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/house-down-payment-savings-calculator" className="block">
+            <Link href="/finance/house-down-payment-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -602,7 +602,7 @@ export default function WeddingBudgetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/credit-card-payoff-calculator" className="block">
+            <Link href="/finance/credit-card-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -615,7 +615,7 @@ export default function WeddingBudgetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/savings-goal-timeline-calculator" className="block">
+            <Link href="/finance/savings-goal-timeline-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -628,7 +628,7 @@ export default function WeddingBudgetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/category/finance/loan-emi-calculator" className="block">
+            <Link href="/finance/loan-emi-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

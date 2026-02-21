@@ -105,7 +105,7 @@ export default function TennisReturnPointsWonCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/category/sports-training/tennis-win-ratio-calculator" className="block">
+                        <Link href="/sports-training/tennis-win-ratio-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function TennisReturnPointsWonCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/tennis-break-point-conversion-rate-calculator" className="block">
+                        <Link href="/sports-training/tennis-break-point-conversion-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function TennisReturnPointsWonCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/tennis-double-fault-percentage-calculator" className="block">
+                        <Link href="/sports-training/tennis-double-fault-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function TennisReturnPointsWonCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/tennis-hold-percentage-calculator" className="block">
+                        <Link href="/sports-training/tennis-hold-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function TennisReturnPointsWonCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/tennis-first-serve-percentage-calculator" className="block">
+                        <Link href="/sports-training/tennis-first-serve-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -170,7 +170,7 @@ export default function TennisReturnPointsWonCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/category/sports-training/football-goals-per-90-minutes-calculator" className="block">
+                        <Link href="/sports-training/football-goals-per-90-minutes-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

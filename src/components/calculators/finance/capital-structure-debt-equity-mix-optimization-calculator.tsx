@@ -476,7 +476,7 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -496,7 +496,7 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
         <meta itemProp="keywords" content="capital structure, WACC, debt equity mix, optimal capital structure, cost of capital" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/capital-structure-debt-equity-mix-optimization-calculator" />
+        <meta itemProp="url" content="/finance/capital-structure-debt-equity-mix-optimization-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Capital Structure Optimization: WACC and Debt/Equity Mix</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">Balance tax shields and financial risk to minimize WACC and protect equity value.</p>

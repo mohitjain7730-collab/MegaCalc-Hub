@@ -537,7 +537,7 @@ export default function StepToCalorieConverter() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
                   Daily Activity Points Calculator
                 </Link>
               </h4>
@@ -545,7 +545,7 @@ export default function StepToCalorieConverter() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">
                   Standing vs Sitting Calculator
                 </Link>
               </h4>
@@ -553,7 +553,7 @@ export default function StepToCalorieConverter() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">
                   Calorie Burn Calculator
                 </Link>
               </h4>
@@ -561,7 +561,7 @@ export default function StepToCalorieConverter() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/category/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                <Link href="/health-fitness/bmr-calculator" className="text-primary hover:underline">
                   BMR Calculator
                 </Link>
               </h4>

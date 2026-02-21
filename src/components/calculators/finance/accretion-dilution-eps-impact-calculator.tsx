@@ -570,7 +570,7 @@ export default function AccretionDilutionEpsImpactCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/category/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -590,7 +590,7 @@ export default function AccretionDilutionEpsImpactCalculator() {
         <meta itemProp="keywords" content="accretion dilution, EPS impact, M&A analysis, pro forma EPS, merger model, acquisition EPS" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/category/finance/accretion-dilution-eps-impact-calculator" />
+        <meta itemProp="url" content="/finance/accretion-dilution-eps-impact-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Accretion/Dilution Analysis: M&A EPS Impact Assessment</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at accretion/dilution analysis for M&A transactions, assessing how deals affect acquiring company EPS.</p>

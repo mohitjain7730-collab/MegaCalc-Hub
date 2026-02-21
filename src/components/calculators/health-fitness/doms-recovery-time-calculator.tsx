@@ -404,7 +404,7 @@ export default function DOMSRecoveryTimeCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
                     Protein Intake Calculator
                   </a>
                 </h4>
@@ -414,7 +414,7 @@ export default function DOMSRecoveryTimeCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">
                     Target Heart Rate Calculator
                   </a>
                 </h4>
@@ -424,7 +424,7 @@ export default function DOMSRecoveryTimeCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
                     Body Fat Percentage Calculator
                   </a>
                 </h4>
@@ -434,7 +434,7 @@ export default function DOMSRecoveryTimeCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/category/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs Calculator
                   </a>
                 </h4>
