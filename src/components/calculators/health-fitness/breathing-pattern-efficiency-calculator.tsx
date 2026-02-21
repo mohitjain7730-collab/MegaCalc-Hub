@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/breathing-pattern-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/breathing-pattern-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Breathing Pattern Efficiency Wellness Calculator', item: baseUrl },
       ],
     },
@@ -205,7 +205,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   const recommendations = [
-    `Your breathing rate is ${values.breathsPerMinute} breaths/min. ${values.breathsPerMinute >= 12 && values.breathsPerMinute <= 20 ? 'Optimal range!' : values.breathsPerMinute > 20 ? 'Consider slowing your breathing rate for better efficiency.' : 'Your breathing rate is quite slow—ensure this feels comfortable and natural.'}`,
+    `Your breathing rate is ${values.breathsPerMinute} breaths/min. ${values.breathsPerMinute >= 12 && values.breathsPerMinute <= 20 ? 'Optimal range!' : values.breathsPerMinute > 20 ? 'Consider slowing your breathing rate for better efficiency.' : 'Your breathing rate is quite slowâ€”ensure this feels comfortable and natural.'}`,
     `Your inhalation-to-exhalation ratio is 1:${breathingRatio.toFixed(1)}. ${ratio >= 1.8 && ratio <= 2.2 ? 'Optimal ratio!' : 'Aim for a 1:2 ratio (exhalation twice as long as inhalation) for optimal efficiency and relaxation.'}`,
     `Breath hold capacity: ${values.breathHoldCapacity} seconds. ${values.breathHoldCapacity >= 40 ? 'Good capacity!' : 'Practice breath hold exercises to improve lung efficiency and capacity.'}`,
     `Diaphragmatic breathing: ${values.diaphragmaticBreathing}/10. ${values.diaphragmaticBreathing >= 8 ? 'Excellent!' : 'Practice diaphragmatic (belly) breathing to improve efficiency and oxygen exchange.'}`,
@@ -445,13 +445,13 @@ export default function BreathingPatternEfficiencyCalculator() {
             <strong>Ratio Score</strong> = Based on exhalation-to-inhalation ratio (optimal 1:2 = 25 points)
           </p>
           <p>
-            <strong>Hold Score</strong> = (Breath Hold Capacity / 60) × 20 (max 20 points)
+            <strong>Hold Score</strong> = (Breath Hold Capacity / 60) Ã— 20 (max 20 points)
           </p>
           <p>
-            <strong>Diaphragmatic Score</strong> = (Diaphragmatic Breathing Rating / 10) × 15
+            <strong>Diaphragmatic Score</strong> = (Diaphragmatic Breathing Rating / 10) Ã— 15
           </p>
           <p>
-            <strong>Regularity Score</strong> = (Breathing Regularity Rating / 10) × 15
+            <strong>Regularity Score</strong> = (Breathing Regularity Rating / 10) Ã— 15
           </p>
           <p>
             <strong>Breathing Ratio</strong> = Exhalation Seconds / Inhalation Seconds

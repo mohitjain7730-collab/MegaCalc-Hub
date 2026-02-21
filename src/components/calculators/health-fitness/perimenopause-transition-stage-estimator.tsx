@@ -110,7 +110,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/perimenopause-transition-stage-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/perimenopause-transition-stage-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -119,7 +119,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Perimenopause Transition Stage Estimator', item: baseUrl },
       ],
     },
@@ -189,28 +189,28 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   if (status === 'pre-perimenopause') {
     interpretation =
-      'This snapshot looks more like an earlier phase where noticeable cycle or symptom changes are still limited. Continuing to notice patterns and talking with a clinician if you’re curious can be helpful.';
+      'This snapshot looks more like an earlier phase where noticeable cycle or symptom changes are still limited. Continuing to notice patterns and talking with a clinician if youâ€™re curious can be helpful.';
   } else if (status === 'mid-perimenopause') {
     interpretation =
       'Your responses line up with patterns that often show up midway through the perimenopause transition, but the exact stage is something to explore with a healthcare professional.';
   } else if (status === 'late-perimenopause') {
     interpretation =
-      'This pattern resembles what some people experience later in the transition, with more marked changes, yet it is still just an educational estimate—not a diagnosis or exact staging.';
+      'This pattern resembles what some people experience later in the transition, with more marked changes, yet it is still just an educational estimateâ€”not a diagnosis or exact staging.';
   } else if (status === 'post-menopause') {
     interpretation =
-      'Your answers look similar to those of many people who are beyond the main transition, though only a clinician can confirm whether you’re post‑menopause.';
+      'Your answers look similar to those of many people who are beyond the main transition, though only a clinician can confirm whether youâ€™re postâ€‘menopause.';
   }
 
   const recommendations = [
     'If you find it helpful, you can jot down cycle changes and how you feel to make patterns easier to talk about with a clinician.',
-    'Gentle lifestyle shifts—like dressing in light layers, keeping your sleep space cool, and having simple wind‑down routines—can sometimes ease hot moments and restlessness.',
-    'Giving extra care to sleep, movement you enjoy, and stress‑soothing activities can support you throughout this transition, whatever stage you are in.',
+    'Gentle lifestyle shiftsâ€”like dressing in light layers, keeping your sleep space cool, and having simple windâ€‘down routinesâ€”can sometimes ease hot moments and restlessness.',
+    'Giving extra care to sleep, movement you enjoy, and stressâ€‘soothing activities can support you throughout this transition, whatever stage you are in.',
   ];
   if (status === 'mid-perimenopause' || status === 'late-perimenopause') {
     recommendations.push('If symptoms feel intense or disruptive, consider checking in with a qualified healthcare professional to discuss options that fit your health history and preferences.');
   }
   if (status === 'post-menopause') {
-    recommendations.push('You might want to ask your care team about long‑term supports such as bone, heart, and emotional health check‑ins that feel right for you.');
+    recommendations.push('You might want to ask your care team about longâ€‘term supports such as bone, heart, and emotional health checkâ€‘ins that feel right for you.');
   }
 
   const plan = [
@@ -369,12 +369,12 @@ export default function PerimenopauseTransitionStageEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Transition score</p>
                 <p className="text-2xl font-semibold text-primary">{result.transitionScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 pattern score from this model, based on your entries.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 pattern score from this model, based on your entries.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stage</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.stage}</p>
-                <p className="text-xs text-muted-foreground">An educational label only—true stage needs clinical input.</p>
+                <p className="text-xs text-muted-foreground">An educational label onlyâ€”true stage needs clinical input.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Years to menopause</p>
@@ -539,7 +539,7 @@ export default function PerimenopauseTransitionStageEstimator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool combines age, cycle shifts, and how you feel into one simple view of where you might be in the perimenopause transition.</p>
-          <p>The scores and labels are only for reflection and conversation—they are not a diagnosis or timeline, and are best used alongside professional care.</p>
+          <p>The scores and labels are only for reflection and conversationâ€”they are not a diagnosis or timeline, and are best used alongside professional care.</p>
         </CardContent>
       </Card>
 

@@ -46,7 +46,7 @@ const faqs = [
   {
     question: 'How do I calculate survival time during storm surge?',
     answer:
-      'Survival time = (Current Health / Damage Per Tick) × Tick Interval. For example, with 100 health, 2 damage per tick, and 1 second intervals, you can survive 50 seconds (100 / 2 × 1 = 50). However, you should deal damage to enemies to avoid storm surge entirely rather than relying on survival time.',
+      'Survival time = (Current Health / Damage Per Tick) Ã— Tick Interval. For example, with 100 health, 2 damage per tick, and 1 second intervals, you can survive 50 seconds (100 / 2 Ã— 1 = 50). However, you should deal damage to enemies to avoid storm surge entirely rather than relying on survival time.',
   },
 ];
 
@@ -87,7 +87,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite Storm Surge Timer', item: baseUrl },
       ],
     },
@@ -210,7 +210,7 @@ export default function FortniteStormSurgeTimer() {
         <p>Damage accumulation reduces health over time. Multiple ticks can eliminate players if they don't deal damage or heal. Players with low health are especially vulnerable. Survival depends on dealing damage to avoid targeting or healing to survive damage.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Damage Calculation</h3>
-        <p>Damage calculation: Each tick deals fixed damage (damage per tick). Total damage = Damage Per Tick × Number of Ticks. Survival time = (Current Health / Damage Per Tick) × Tick Interval. These calculations help players understand damage impact and plan survival strategies.</p>
+        <p>Damage calculation: Each tick deals fixed damage (damage per tick). Total damage = Damage Per Tick Ã— Number of Ticks. Survival time = (Current Health / Damage Per Tick) Ã— Tick Interval. These calculations help players understand damage impact and plan survival strategies.</p>
 
         <hr />
 
@@ -220,7 +220,7 @@ export default function FortniteStormSurgeTimer() {
 
         <p>Activation threshold is the player count that triggers storm surge. When current player count exceeds the threshold, storm surge activates. Typical thresholds are 60-80 players, varying by match phase. Early game phases may have higher thresholds, while later phases may have lower thresholds.</p>
 
-        <p>Time until activation depends on elimination rate. If player count is above threshold, storm surge may activate soon. Time until activation = (Players Above Threshold / Elimination Rate) × 60 seconds. Actual time varies based on player behavior and combat activity.</p>
+        <p>Time until activation depends on elimination rate. If player count is above threshold, storm surge may activate soon. Time until activation = (Players Above Threshold / Elimination Rate) Ã— 60 seconds. Actual time varies based on player behavior and combat activity.</p>
 
         <p>Deactivation occurs when player count drops below threshold. More aggressive play reduces player count faster, ending storm surge sooner. Passive play prolongs storm surge, increasing damage over time. Understanding this relationship helps players optimize strategies.</p>
 
@@ -239,14 +239,14 @@ export default function FortniteStormSurgeTimer() {
 
         <p>Tick intervals are typically 0.5-1.0 seconds between damage ticks. Consistent intervals allow players to predict damage timing. Shorter intervals mean more frequent damage, reducing survival time. Longer intervals provide more time between damage ticks.</p>
 
-        <p>Total damage accumulates over multiple ticks. Players taking storm surge damage continuously will accumulate damage over time. Total damage = Damage Per Tick × Number of Ticks. Understanding accumulation helps players calculate when they'll be eliminated.</p>
+        <p>Total damage accumulates over multiple ticks. Players taking storm surge damage continuously will accumulate damage over time. Total damage = Damage Per Tick Ã— Number of Ticks. Understanding accumulation helps players calculate when they'll be eliminated.</p>
 
-        <p>Survival calculations depend on health and damage. Survival time = (Current Health / Damage Per Tick) × Tick Interval. Ticks to survive = Current Health / Damage Per Tick. These calculations help players understand how long they can survive storm surge damage.</p>
+        <p>Survival calculations depend on health and damage. Survival time = (Current Health / Damage Per Tick) Ã— Tick Interval. Ticks to survive = Current Health / Damage Per Tick. These calculations help players understand how long they can survive storm surge damage.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Damage Examples</h3>
-        <p>Example 1: 100 health, 2 damage per tick, 1 second intervals. Survival time = 50 seconds (100 / 2 × 1). Ticks to survive = 50 ticks. This provides reasonable survival time if taking damage.</p>
+        <p>Example 1: 100 health, 2 damage per tick, 1 second intervals. Survival time = 50 seconds (100 / 2 Ã— 1). Ticks to survive = 50 ticks. This provides reasonable survival time if taking damage.</p>
 
-        <p>Example 2: 50 health, 1.5 damage per tick, 0.5 second intervals. Survival time = 16.7 seconds (50 / 1.5 × 0.5). Ticks to survive = 33 ticks. Lower health significantly reduces survival time.</p>
+        <p>Example 2: 50 health, 1.5 damage per tick, 0.5 second intervals. Survival time = 16.7 seconds (50 / 1.5 Ã— 0.5). Ticks to survive = 33 ticks. Lower health significantly reduces survival time.</p>
 
         <hr />
 
@@ -271,7 +271,7 @@ export default function FortniteStormSurgeTimer() {
 
         <p>If you're taking storm surge damage, survival strategies help you stay alive while dealing damage to avoid further targeting. Understanding survival calculations helps players plan strategies and manage health effectively.</p>
 
-        <p>Survival time calculations help players understand how long they can survive storm surge damage. Formula: Survival Time = (Current Health / Damage Per Tick) × Tick Interval. This shows maximum survival time if taking continuous damage.</p>
+        <p>Survival time calculations help players understand how long they can survive storm surge damage. Formula: Survival Time = (Current Health / Damage Per Tick) Ã— Tick Interval. This shows maximum survival time if taking continuous damage.</p>
 
         <p>Health management is crucial during storm surge. Use healing items to extend survival time. Prioritize healing when health is low. Balance healing with damage dealing to avoid further targeting. Effective health management can save you from elimination.</p>
 

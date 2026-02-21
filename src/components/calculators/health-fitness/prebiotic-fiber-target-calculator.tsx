@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/prebiotic-fiber-target-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/prebiotic-fiber-target-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Prebiotic Fiber Wellness Target Calculator', item: baseUrl },
       ],
     },
@@ -427,13 +427,13 @@ export default function PrebioticFiberTargetCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Prebiotic target</strong> = Total fiber × Prebiotic percentage + Adjustment for probiotics + Goal adjustment.
+            <strong>Prebiotic target</strong> = Total fiber Ã— Prebiotic percentage + Adjustment for probiotics + Goal adjustment.
           </p>
           <p>
             <strong>Prebiotic percentage</strong>: Maintenance = 25% of total fiber, Improve = 30% of total fiber, Digestive issues = 30% (minimum 10g).
           </p>
           <p>
-            <strong>Probiotic adjustment</strong>: Regular probiotic use (rating ≥7) = +20% target, Moderate use (rating ≥4) = +10% target.
+            <strong>Probiotic adjustment</strong>: Regular probiotic use (rating â‰¥7) = +20% target, Moderate use (rating â‰¥4) = +10% target.
           </p>
           <p>
             <strong>Target range</strong>: Minimum 5g daily, maximum practical 15g daily. Prebiotics should make up 20-30% of total fiber intake.

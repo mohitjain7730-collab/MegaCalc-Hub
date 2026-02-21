@@ -16,9 +16,9 @@ import Link from 'next/link';
 
 const formSchema = z.object({
   nominalReturnPct: z.number(),
-  dividendYieldPct: z.number().min(0).max(100, 'Enter 0–100'),
-  taxRateDividendsPct: z.number().min(0).max(100, 'Enter 0–100'),
-  taxRateCapGainsPct: z.number().min(0).max(100, 'Enter 0–100'),
+  dividendYieldPct: z.number().min(0).max(100, 'Enter 0â€“100'),
+  taxRateDividendsPct: z.number().min(0).max(100, 'Enter 0â€“100'),
+  taxRateCapGainsPct: z.number().min(0).max(100, 'Enter 0â€“100'),
   years: z.number().min(0).optional(),
   initialAmount: z.number().min(0).optional(),
 });
@@ -33,8 +33,8 @@ const schemaMarkup = {
       name: 'Tax Drag on Investment Returns Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'See how taxes reduce your investment return. Enter nominal return, dividend yield, and tax rates on dividends and capital gains—get after-tax return and optional FV impact.',
-      url: 'https://mycalculating.com/category/finance/tax-drag-on-investment-returns-calculator',
+      description: 'See how taxes reduce your investment return. Enter nominal return, dividend yield, and tax rates on dividends and capital gainsâ€”get after-tax return and optional FV impact.',
+      url: 'https://mycalculating.com/finance/tax-drag-on-investment-returns-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -90,11 +90,11 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
     }
 
     const insights: string[] = [];
-    insights.push(`Tax drag = (Dividend yield × Tax on dividends) + (Capital gain component × Tax on cap gains) = ${taxDragPct.toFixed(2)}% per year.`);
-    insights.push(`After-tax return = Nominal return − Tax drag = ${afterTaxReturnPct.toFixed(2)}%. Your portfolio grows at this rate after taxes in a taxable account.`);
+    insights.push(`Tax drag = (Dividend yield Ã— Tax on dividends) + (Capital gain component Ã— Tax on cap gains) = ${taxDragPct.toFixed(2)}% per year.`);
+    insights.push(`After-tax return = Nominal return âˆ’ Tax drag = ${afterTaxReturnPct.toFixed(2)}%. Your portfolio grows at this rate after taxes in a taxable account.`);
     if (fvNominal != null && fvAfterTax != null) {
       const diff = fvNominal - fvAfterTax;
-      insights.push(`Over ${years} years: nominal FV ≈ $${fvNominal.toLocaleString(undefined, { maximumFractionDigits: 0 })}, after-tax FV ≈ $${fvAfterTax.toLocaleString(undefined, { maximumFractionDigits: 0 })}. Tax drag cost ≈ $${diff.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
+      insights.push(`Over ${years} years: nominal FV â‰ˆ $${fvNominal.toLocaleString(undefined, { maximumFractionDigits: 0 })}, after-tax FV â‰ˆ $${fvAfterTax.toLocaleString(undefined, { maximumFractionDigits: 0 })}. Tax drag cost â‰ˆ $${diff.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
     }
     insights.push('Higher dividend yield and higher tax rates increase drag. Tax-advantaged accounts (IRA, 401k) avoid this drag; use taxable accounts for tax-efficient holdings when possible.');
 
@@ -212,7 +212,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
             <CardContent className="space-y-6">
               <div className="text-center">
                 <Badge variant="destructive" className="text-lg px-4 py-2">
-                  Tax drag: {result.taxDragPct.toFixed(2)}% per year → After-tax return: {result.afterTaxReturnPct.toFixed(2)}%
+                  Tax drag: {result.taxDragPct.toFixed(2)}% per year â†’ After-tax return: {result.afterTaxReturnPct.toFixed(2)}%
                 </Badge>
                 <p className="text-sm text-muted-foreground mt-2">{result.recommendation}</p>
               </div>
@@ -273,11 +273,11 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Tax drag is the reduction in your return due to taxes on dividends and (when realized) capital gains. In a taxable account, you don&apos;t keep the full nominal return—you keep the after-tax return.</span>
+                <span className="text-sm font-medium">Tax drag is the reduction in your return due to taxes on dividends and (when realized) capital gains. In a taxable account, you don&apos;t keep the full nominal returnâ€”you keep the after-tax return.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Tax drag ≈ (Dividend yield × Tax on dividends) + (Capital gain component × Tax on cap gains). Dividends are often taxed yearly; capital gains when realized (this calculator assumes annual realization for simplicity).</span>
+                <span className="text-sm font-medium">Tax drag â‰ˆ (Dividend yield Ã— Tax on dividends) + (Capital gain component Ã— Tax on cap gains). Dividends are often taxed yearly; capital gains when realized (this calculator assumes annual realization for simplicity).</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -305,7 +305,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Qualified dividends may be taxed at long-term capital gain rates; use that rate for dividend tax if applicable. Non-qualified dividends taxed as ordinary income—use your ordinary rate.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Qualified dividends may be taxed at long-term capital gain rates; use that rate for dividend tax if applicable. Non-qualified dividends taxed as ordinary incomeâ€”use your ordinary rate.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
@@ -332,7 +332,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-100 dark:border-blue-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-blue-700 dark:text-blue-300">Nominal return</h4>
-              <p className="text-sm text-muted-foreground mb-3">The stated or headline return (e.g. 7% per year). Before taxes. In a taxable account, you don&apos;t keep all of it—dividends and realized gains are taxed.</p>
+              <p className="text-sm text-muted-foreground mb-3">The stated or headline return (e.g. 7% per year). Before taxes. In a taxable account, you don&apos;t keep all of itâ€”dividends and realized gains are taxed.</p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
@@ -354,15 +354,15 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
             </div>
             <div className="p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-100 dark:border-green-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-green-700 dark:text-green-300">Tax drag</h4>
-              <p className="text-sm text-muted-foreground mb-3">The percentage points of return lost to taxes each year. Tax drag = (Dividend yield × Tax on dividends) + (Capital gain component × Tax on cap gains). After-tax return = Nominal − Tax drag.</p>
+              <p className="text-sm text-muted-foreground mb-3">The percentage points of return lost to taxes each year. Tax drag = (Dividend yield Ã— Tax on dividends) + (Capital gain component Ã— Tax on cap gains). After-tax return = Nominal âˆ’ Tax drag.</p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>Higher dividend yield → more taxed yearly → higher drag.</span>
+                  <span>Higher dividend yield â†’ more taxed yearly â†’ higher drag.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>Higher tax rates → higher drag.</span>
+                  <span>Higher tax rates â†’ higher drag.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -387,13 +387,13 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Tax drag = (Dividend yield × Tax rate on dividends) + (Capital gain component × Tax rate on cap gains)</p>
-            <p className="font-mono text-sm text-center">Capital gain component = max(0, Nominal return − Dividend yield)</p>
-            <p className="font-mono text-sm text-center">After-tax return = Nominal return − Tax drag</p>
-            <p className="font-mono text-sm text-center">FV after-tax = Initial × (1 + After-tax return)^years</p>
+            <p className="font-mono text-sm text-center">Tax drag = (Dividend yield Ã— Tax rate on dividends) + (Capital gain component Ã— Tax rate on cap gains)</p>
+            <p className="font-mono text-sm text-center">Capital gain component = max(0, Nominal return âˆ’ Dividend yield)</p>
+            <p className="font-mono text-sm text-center">After-tax return = Nominal return âˆ’ Tax drag</p>
+            <p className="font-mono text-sm text-center">FV after-tax = Initial Ã— (1 + After-tax return)^years</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Dividends are assumed taxed each year at your dividend tax rate. The remainder of the return (capital gain component) is assumed taxed at your capital gain rate—in practice, unrealized gains are not taxed until sale, so this is a simplified annual drag.
+            Dividends are assumed taxed each year at your dividend tax rate. The remainder of the return (capital gain component) is assumed taxed at your capital gain rateâ€”in practice, unrealized gains are not taxed until sale, so this is a simplified annual drag.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             Over long horizons, the after-tax return compounds; the difference between nominal and after-tax FV grows. Use this calculator to see the dollar impact of tax drag and to compare taxable vs tax-advantaged placement.
@@ -495,14 +495,14 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
         <meta itemProp="name" content="Tax Drag on Investment Returns Calculator" />
-        <meta itemProp="description" content="See how taxes reduce your investment return. Enter nominal return, dividend yield, and tax rates—get after-tax return and optional FV impact." />
+        <meta itemProp="description" content="See how taxes reduce your investment return. Enter nominal return, dividend yield, and tax ratesâ€”get after-tax return and optional FV impact." />
         <meta itemProp="keywords" content="tax drag, after-tax return, investment tax, dividend tax, capital gain tax" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
         <meta itemProp="url" content="/finance/tax-drag-on-investment-returns-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Tax Drag on Investment Returns: How Taxes Reduce Your Effective Return</h1>
-        <p className="text-lg italic text-muted-foreground">In a taxable account, you don&apos;t keep the full nominal return—you pay tax on dividends and, when realized, on capital gains. Tax drag is the reduction in your return due to those taxes. This calculator shows your annual tax drag and after-tax return, and optionally the future value impact over time.</p>
+        <p className="text-lg italic text-muted-foreground">In a taxable account, you don&apos;t keep the full nominal returnâ€”you pay tax on dividends and, when realized, on capital gains. Tax drag is the reduction in your return due to those taxes. This calculator shows your annual tax drag and after-tax return, and optionally the future value impact over time.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
@@ -521,7 +521,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
         <hr />
 
         <h2 id="how-calculated-tax-drag" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Tax drag = (Dividend yield × Tax rate on dividends) + (Capital gain component × Tax rate on capital gains). Capital gain component = max(0, Nominal return − Dividend yield). After-tax return = Nominal return − Tax drag. If you enter years and initial amount, FV after-tax = Initial × (1 + After-tax return)^years.</p>
+        <p>Tax drag = (Dividend yield Ã— Tax rate on dividends) + (Capital gain component Ã— Tax rate on capital gains). Capital gain component = max(0, Nominal return âˆ’ Dividend yield). After-tax return = Nominal return âˆ’ Tax drag. If you enter years and initial amount, FV after-tax = Initial Ã— (1 + After-tax return)^years.</p>
         <hr />
 
         <h2 id="why-it-matters-tax-drag" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why It Matters</h2>
@@ -555,11 +555,11 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is it calculated?</h4>
-            <p className="text-muted-foreground">Tax drag = (Dividend yield × Tax on dividends) + (Capital gain component × Tax on cap gains). Capital gain component = nominal return − dividend yield (if positive). After-tax return = Nominal − Tax drag.</p>
+            <p className="text-muted-foreground">Tax drag = (Dividend yield Ã— Tax on dividends) + (Capital gain component Ã— Tax on cap gains). Capital gain component = nominal return âˆ’ dividend yield (if positive). After-tax return = Nominal âˆ’ Tax drag.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why use capital gain tax for the growth part?</h4>
-            <p className="text-muted-foreground">The part of return that is not dividends is assumed to be capital appreciation. When realized (we assume annually for simplicity), it is taxed at the capital gain rate. In practice, unrealized gains are not taxed until sale—this calculator gives an approximate annual drag.</p>
+            <p className="text-muted-foreground">The part of return that is not dividends is assumed to be capital appreciation. When realized (we assume annually for simplicity), it is taxed at the capital gain rate. In practice, unrealized gains are not taxed until saleâ€”this calculator gives an approximate annual drag.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my dividends are qualified?</h4>
@@ -571,11 +571,11 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What rate should I use for dividends?</h4>
-            <p className="text-muted-foreground">Your marginal tax rate on dividend income—ordinary rate for non-qualified dividends, or long-term capital gain rate (0%, 15%, 20%) for qualified dividends. Add state tax if applicable.</p>
+            <p className="text-muted-foreground">Your marginal tax rate on dividend incomeâ€”ordinary rate for non-qualified dividends, or long-term capital gain rate (0%, 15%, 20%) for qualified dividends. Add state tax if applicable.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How does tax drag compound?</h4>
-            <p className="text-muted-foreground">Each year you earn the after-tax return, not the nominal return. So FV after-tax = Initial × (1 + after-tax return)^years. The gap between nominal FV and after-tax FV grows with time.</p>
+            <p className="text-muted-foreground">Each year you earn the after-tax return, not the nominal return. So FV after-tax = Initial Ã— (1 + after-tax return)^years. The gap between nominal FV and after-tax FV grows with time.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How do I reduce tax drag?</h4>
@@ -591,7 +591,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my dividend yield is higher than my nominal return?</h4>
-            <p className="text-muted-foreground">Then the capital gain component is zero (we use max(0, nominal − dividend yield)). Tax drag = dividend yield × tax on dividends only. That can happen in high-dividend, low-growth scenarios (e.g. some bond funds or REITs).</p>
+            <p className="text-muted-foreground">Then the capital gain component is zero (we use max(0, nominal âˆ’ dividend yield)). Tax drag = dividend yield Ã— tax on dividends only. That can happen in high-dividend, low-growth scenarios (e.g. some bond funds or REITs).</p>
           </div>
         </CardContent>
       </Card>
@@ -663,15 +663,15 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: 7% nominal, 2% dividend, 20% div tax, 15% CG tax</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">Tax drag = 2%×20% + 5%×15% = 0.4% + 0.75% = 1.15%. After-tax return = 5.85%. Over 20 years on $100k, nominal FV ≈ $387k, after-tax ≈ $312k—tax drag costs about $75k.</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">Tax drag = 2%Ã—20% + 5%Ã—15% = 0.4% + 0.75% = 1.15%. After-tax return = 5.85%. Over 20 years on $100k, nominal FV â‰ˆ $387k, after-tax â‰ˆ $312kâ€”tax drag costs about $75k.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: High dividend, high tax</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">4% nominal, 3% dividend, 32% div tax, 20% CG tax: drag = 3%×32% + 1%×20% = 1.16%. After-tax return = 2.84%. High-dividend in taxable with high rates creates large drag.</p>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">4% nominal, 3% dividend, 32% div tax, 20% CG tax: drag = 3%Ã—32% + 1%Ã—20% = 1.16%. After-tax return = 2.84%. High-dividend in taxable with high rates creates large drag.</p>
               </div>
               <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20">
                 <h5 className="font-semibold text-amber-800 dark:text-amber-300 mb-1">Example: Growth stock, low dividend</h5>
-                <p className="text-sm text-amber-700/80 dark:text-amber-400">10% nominal, 0.5% dividend, 20% div tax, 15% CG tax: drag = 0.1% + 1.43% = 1.53%. After-tax = 8.47%. Low dividend reduces drag—tax-efficient for taxable accounts.</p>
+                <p className="text-sm text-amber-700/80 dark:text-amber-400">10% nominal, 0.5% dividend, 20% div tax, 15% CG tax: drag = 0.1% + 1.43% = 1.53%. After-tax = 8.47%. Low dividend reduces dragâ€”tax-efficient for taxable accounts.</p>
               </div>
             </div>
           </div>

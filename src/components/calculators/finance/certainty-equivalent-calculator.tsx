@@ -113,7 +113,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/certainty-equivalent-calculator';
+const baseUrl = 'https://mycalculating.com/finance/certainty-equivalent-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -122,7 +122,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Certainty Equivalent Calculator', item: baseUrl },
       ],
     },
@@ -493,7 +493,7 @@ export default function CertaintyEquivalentCalculator() {
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
         <p className="font-mono"><strong>U(CE) = E[U(W)]</strong></p>
     </div>
-    <p>For square-root utility: CE = [E[U(W)]]²</p>
+    <p>For square-root utility: CE = [E[U(W)]]Â²</p>
     <p>For logarithmic utility: CE = e^E[U(W)]</p>
 
 <hr className="my-6" />

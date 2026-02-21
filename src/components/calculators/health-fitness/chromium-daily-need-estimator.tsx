@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/chromium-daily-need-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/chromium-daily-need-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Chromium Daily Need Estimator', item: baseUrl },
       ],
     },
@@ -392,7 +392,7 @@ export default function ChromiumDailyNeedEstimator() {
             <strong>Daily need</strong> = estimated from age and gender. Men 19-50: 35 mcg/day, Men 51+: 30 mcg/day, Women 19-50: 25 mcg/day, Women 51+: 20 mcg/day.
           </p>
           <p>
-            <strong>Intake percentage</strong> = (chromium intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (chromium intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
             <strong>Recommended intake</strong>: Requirements are based on adequate intake (AI) rather than RDA, as requirements vary. Chromium needs decrease slightly with age.
@@ -578,7 +578,7 @@ export default function ChromiumDailyNeedEstimator() {
     <p>While outright chromium deficiency is extremely rare in the general healthy population, it has been definitively observed in specific clinical settings. The symptoms are linked directly to its role in glucose control.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Clinical Manifestations of Deficiency</h3>
-    <p>The few documented cases of severe chromium deficiency occurred in patients receiving **Total Parenteral Nutrition (TPN)**—a method of intravenous feeding—without chromium added to the formula. Symptoms observed included:</p>
+    <p>The few documented cases of severe chromium deficiency occurred in patients receiving **Total Parenteral Nutrition (TPN)**â€”a method of intravenous feedingâ€”without chromium added to the formula. Symptoms observed included:</p>
     <ul>
         <li><b>Severe Impaired Glucose Tolerance:</b> Difficulty maintaining steady blood sugar levels, often requiring drastically increased insulin.</li>
         <li><b>Peripheral Neuropathy:</b> Nerve damage, typically affecting the hands and feet.</li>

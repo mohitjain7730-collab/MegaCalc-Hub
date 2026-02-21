@@ -75,7 +75,7 @@ const faqs = [
   {
     question: 'What is the correction formula?',
     answer:
-      'The most common formula is: Corrected Calcium = Total Calcium + 0.8 × (4 - Albumin), where albumin is in g/dL. This assumes normal albumin is 4 g/dL and adjusts for deviations from this value.',
+      'The most common formula is: Corrected Calcium = Total Calcium + 0.8 Ã— (4 - Albumin), where albumin is in g/dL. This assumes normal albumin is 4 g/dL and adjusts for deviations from this value.',
   },
   {
     question: 'Can corrected calcium be used in all situations?',
@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/calcium-correction-for-albumin-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/calcium-correction-for-albumin-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Calcium Correction for Albumin Calculator', item: baseUrl },
       ],
     },
@@ -143,7 +143,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const totalCalcium = values.totalCalcium; // mg/dL
   const albumin = values.albumin; // g/dL
   
-  // Calculate corrected calcium: Total Calcium + 0.8 × (4 - Albumin)
+  // Calculate corrected calcium: Total Calcium + 0.8 Ã— (4 - Albumin)
   // Assumes normal albumin is 4 g/dL
   const correctedCalcium = totalCalcium + 0.8 * (4 - albumin);
   
@@ -335,7 +335,7 @@ export default function CalciumCorrectionForAlbuminCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Corrected Calcium (mg/dL)</strong> = Total Calcium (mg/dL) + 0.8 × (4 - Albumin (g/dL))
+            <strong>Corrected Calcium (mg/dL)</strong> = Total Calcium (mg/dL) + 0.8 Ã— (4 - Albumin (g/dL))
           </p>
           <p>
             This formula adjusts total calcium for albumin concentration. Since approximately 40-50% of blood calcium is bound to albumin, abnormal albumin levels can make total calcium appear falsely low or high. The correction assumes normal albumin is 4 g/dL.
@@ -450,7 +450,7 @@ export default function CalciumCorrectionForAlbuminCalculator() {
 
     <h2 id="calcium-correction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calcium Correction Formula and Calculation</h2>
     <p>The most commonly used formula for calcium correction is:</p>
-    <p><b>Corrected Calcium = Total Calcium + 0.8 × (4 - Albumin)</b></p>
+    <p><b>Corrected Calcium = Total Calcium + 0.8 Ã— (4 - Albumin)</b></p>
     <p>This formula assumes normal albumin is 4 g/dL and adjusts calcium by 0.8 mg/dL for each 1 g/dL deviation from normal albumin.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">When to Use Corrected Calcium</h3>

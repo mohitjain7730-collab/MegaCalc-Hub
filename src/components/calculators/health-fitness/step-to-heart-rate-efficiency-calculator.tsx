@@ -58,7 +58,7 @@ const faqs = [
   {
     question: 'What is heart rate reserve?',
     answer:
-      'Heart rate reserve (HRR) is the difference between maximum heart rate and resting heart rate. It represents your available heart rate range. HRR percentage = ((Exercise HR - Resting HR) / (Max HR - Resting HR)) × 100. It indicates exercise intensity relative to your capacity.',
+      'Heart rate reserve (HRR) is the difference between maximum heart rate and resting heart rate. It represents your available heart rate range. HRR percentage = ((Exercise HR - Resting HR) / (Max HR - Resting HR)) Ã— 100. It indicates exercise intensity relative to your capacity.',
   },
   {
     question: 'What is a good efficiency score?',
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'What does a low efficiency score mean?',
     answer:
-      'A low efficiency score may indicate: lower fitness level, higher exercise intensity relative to steps, walking at faster pace, challenging terrain, excess body weight, or need for improved cardiovascular fitness. It doesn\'t necessarily mean poor health—it indicates room for improvement.',
+      'A low efficiency score may indicate: lower fitness level, higher exercise intensity relative to steps, walking at faster pace, challenging terrain, excess body weight, or need for improved cardiovascular fitness. It doesn\'t necessarily mean poor healthâ€”it indicates room for improvement.',
   },
   {
     question: 'Should I aim for high steps or low heart rate?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/step-to-heart-rate-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/step-to-heart-rate-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Step-to-Heart Rate Efficiency Calculator', item: baseUrl },
       ],
     },
@@ -390,10 +390,10 @@ export default function StepToHeartRateEfficiencyCalculator() {
             <strong>Steps per minute</strong> = Total Steps / Duration (minutes). This indicates walking pace and activity intensity.
           </p>
           <p>
-            <strong>Heart rate reserve (HRR) percentage</strong> = ((Average Heart Rate - Resting HR) / (Max HR - Resting HR)) × 100. Max HR = 220 - Age. HRR indicates exercise intensity relative to capacity.
+            <strong>Heart rate reserve (HRR) percentage</strong> = ((Average Heart Rate - Resting HR) / (Max HR - Resting HR)) Ã— 100. Max HR = 220 - Age. HRR indicates exercise intensity relative to capacity.
           </p>
           <p>
-            <strong>Efficiency score</strong> = Steps Component + HRR Component. Steps component = (Steps/min / 120) × 50 (max 50 points). HRR component = (1 - HRR% / 100) × 50 (max 50 points). Higher steps with lower HRR = higher efficiency.
+            <strong>Efficiency score</strong> = Steps Component + HRR Component. Steps component = (Steps/min / 120) Ã— 50 (max 50 points). HRR component = (1 - HRR% / 100) Ã— 50 (max 50 points). Higher steps with lower HRR = higher efficiency.
           </p>
           <p>Efficiency score indicates cardiovascular efficiency: higher scores mean more steps achieved with lower heart rate response, indicating better fitness and cardiovascular health.</p>
         </CardContent>
@@ -599,7 +599,7 @@ export default function StepToHeartRateEfficiencyCalculator() {
         <li>Higher exercise intensity relative to steps</li>
         <li>Potential for improvement with training</li>
     </ul>
-    <p>Low efficiency doesn't necessarily indicate poor health—it indicates room for improvement through regular cardiovascular training.</p>
+    <p>Low efficiency doesn't necessarily indicate poor healthâ€”it indicates room for improvement through regular cardiovascular training.</p>
 
 <hr />
 

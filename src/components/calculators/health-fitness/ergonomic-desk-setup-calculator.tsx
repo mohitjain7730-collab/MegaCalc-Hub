@@ -43,7 +43,7 @@ const faqs = [
   {
     question: 'What does the ergonomic desk setup score represent?',
     answer:
-      'It is a simple 0–100 score estimating how closely your current setup matches common ergonomic guidelines for desk, chair, and monitor.',
+      'It is a simple 0â€“100 score estimating how closely your current setup matches common ergonomic guidelines for desk, chair, and monitor.',
   },
   {
     question: 'Do I need professional measurement tools?',
@@ -78,12 +78,12 @@ const faqs = [
   {
     question: 'Can I apply this to standing desks?',
     answer:
-      'Yes—ideal elbow and monitor heights are similar. Just treat your standing elbow height as the reference instead of seated.',
+      'Yesâ€”ideal elbow and monitor heights are similar. Just treat your standing elbow height as the reference instead of seated.',
   },
   {
     question: 'Does this tool consider keyboard and mouse placement?',
     answer:
-      'Indirectly via desk and chair height. For best results, keep keyboard and mouse so elbows rest near 90° with relaxed shoulders.',
+      'Indirectly via desk and chair height. For best results, keep keyboard and mouse so elbows rest near 90Â° with relaxed shoulders.',
   },
   {
     question: 'What if pain persists even after changes?',
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/ergonomic-desk-setup-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/ergonomic-desk-setup-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Ergonomic Desk Setup Calculator', item: baseUrl },
       ],
     },
@@ -168,9 +168,9 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'Adjust your chair so your feet rest flat and knees are near 90°, then match desk height to relaxed elbows.',
+    'Adjust your chair so your feet rest flat and knees are near 90Â°, then match desk height to relaxed elbows.',
     'Raise your monitor so the top of the screen is at or slightly below eye level without chin jutting.',
-    'Keep the monitor roughly an arm’s length away to reduce eye strain and neck craning.',
+    'Keep the monitor roughly an armâ€™s length away to reduce eye strain and neck craning.',
   ];
 
   if (setupScore < 80) {
@@ -181,7 +181,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'Today', detail: 'Change one dimension—chair or monitor height—and notice how your body feels by day’s end.' },
+    { label: 'Today', detail: 'Change one dimensionâ€”chair or monitor heightâ€”and notice how your body feels by dayâ€™s end.' },
     {
       label: 'This Week',
       detail: 'Iterate on desk, chair, and monitor positions while logging comfort and focus levels.',
@@ -411,7 +411,7 @@ export default function ErgonomicDeskSetupCalculator() {
             <strong>Setup score</strong> starts at 100 and subtracts weighted penalties for how far desk, chair, monitor distance, and
             eye-to-screen height drift from common ergonomic targets.
           </p>
-          <p>Larger mismatches pull the score down, while close alignment keeps it in the 80–100 range.</p>
+          <p>Larger mismatches pull the score down, while close alignment keeps it in the 80â€“100 range.</p>
           <p>This is a heuristic model to highlight likely tension points, not a medical-grade measurement.</p>
         </CardContent>
       </Card>
@@ -490,9 +490,9 @@ export default function ErgonomicDeskSetupCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Ergonomics is about stacking small advantages—better angles, smarter distances, and more comfortable support.</p>
+          <p>Ergonomics is about stacking small advantagesâ€”better angles, smarter distances, and more comfortable support.</p>
           <p>
-            Use this calculator as a quick check, then iterate on your setup over days and weeks rather than chasing one “perfect” position.
+            Use this calculator as a quick check, then iterate on your setup over days and weeks rather than chasing one â€œperfectâ€ position.
           </p>
         </CardContent>
       </Card>
@@ -520,7 +520,7 @@ export default function ErgonomicDeskSetupCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            The Ergonomic Desk Setup Calculator turns a handful of simple measurements into a 0–100 alignment score and clear
+            The Ergonomic Desk Setup Calculator turns a handful of simple measurements into a 0â€“100 alignment score and clear
             recommendations.
           </p>
           <p>It helps you see where to tweak desk, chair, and monitor height before discomfort builds up.</p>

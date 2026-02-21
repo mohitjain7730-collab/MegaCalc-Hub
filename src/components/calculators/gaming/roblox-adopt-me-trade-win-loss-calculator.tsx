@@ -34,7 +34,7 @@ const faqs = [
     },
     {
         question: "Why is 'Demand' important in this calculator?",
-        answer: "A High Tier pet like a Bat Dragon has high demand—people will overpay for it. A Low Demand pet like a Golden Rat is hard to swap. This calculator lets you adjust for 'Demand' to reveal the *real* trade outcome, not just the paper value.",
+        answer: "A High Tier pet like a Bat Dragon has high demandâ€”people will overpay for it. A Low Demand pet like a Golden Rat is hard to swap. This calculator lets you adjust for 'Demand' to reveal the *real* trade outcome, not just the paper value.",
     },
     {
         question: " What is a 'Shark' in Adopt Me?",
@@ -59,7 +59,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Adopt Me Trade Win/Loss Calculator', item: baseUrl },
             ],
         },
@@ -169,7 +169,7 @@ export default function RobloxAdoptMeTradeWinLoss() {
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">Concept 3: "Happy Values"</h2>
                 <p>Sometimes, a "Loss" is actually a "Win". This is called <strong>Happy Values</strong>.</p>
-                <p>If you have a Giraffe and you trade it for a Bat Dragon (technically a small loss/fair depending on the week), but the Bat Dragon is your absolute Dream Pet that you will never trade—that is a Win. The goal of the game is to have fun.</p>
+                <p>If you have a Giraffe and you trade it for a Bat Dragon (technically a small loss/fair depending on the week), but the Bat Dragon is your absolute Dream Pet that you will never tradeâ€”that is a Win. The goal of the game is to have fun.</p>
                 <p>However, be careful. Don't overpay by 50% for Happy Values unless you are 100% sure you will keep the pet forever. If you try to trade it later, you will realize you lost a huge chunk of your inventory's net worth.</p>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">Advanced: The "HTT" List (Hard To Trade)</h2>

@@ -56,7 +56,7 @@ const faqs = [
   {
     question: 'How is RBC requirement calculated?',
     answer:
-      'For life insurers: RBC = C-4 + √[(C-1 + C-3)² + C-2²]. The square root formula incorporates covariance adjustments, recognizing that not all risks occur simultaneously. Each risk category is calculated using specific factors and formulas.',
+      'For life insurers: RBC = C-4 + âˆš[(C-1 + C-3)Â² + C-2Â²]. The square root formula incorporates covariance adjustments, recognizing that not all risks occur simultaneously. Each risk category is calculated using specific factors and formulas.',
   },
   {
     question: 'What are RBC action levels?',
@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/risk-capital-requirement-rbc-calculator';
+const baseUrl = 'https://mycalculating.com/finance/risk-capital-requirement-rbc-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Risk Capital Requirement (RBC) Calculator', item: baseUrl },
       ],
     },
@@ -149,7 +149,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const c3 = values.interestRateRisk;
   const c4 = values.businessRisk;
   
-  // RBC Requirement = C-4 + √[(C-1 + C-3)² + C-2²]
+  // RBC Requirement = C-4 + âˆš[(C-1 + C-3)Â² + C-2Â²]
   const rbcRequirement = c4 + Math.sqrt(Math.pow(c1 + c3, 2) + Math.pow(c2, 2));
   
   let status: ResultPayload['status'] = 'optimal';
@@ -355,7 +355,7 @@ export default function RiskCapitalRequirementRBCCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>RBC Requirement</strong> = C-4 + √[(C-1 + C-3)² + C-2²]
+            <strong>RBC Requirement</strong> = C-4 + âˆš[(C-1 + C-3)Â² + C-2Â²]
           </p>
           <p>
             <strong>C-1 (Asset Risk):</strong> Risk from investment defaults and asset value fluctuations
@@ -543,7 +543,7 @@ export default function RiskCapitalRequirementRBCCalculator() {
     <p>The RBC formula for life insurers incorporates covariance adjustments:</p>
     
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>RBC = C-4 + √[(C-1 + C-3)² + C-2²]</strong></p>
+        <p className="font-mono text-lg"><strong>RBC = C-4 + âˆš[(C-1 + C-3)Â² + C-2Â²]</strong></p>
     </div>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Covariance Adjustment</h3>

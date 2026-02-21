@@ -44,10 +44,10 @@ const steps = [
 
 const faqs = [
   { question: 'What is MRR?', answer: 'Monthly Recurring Revenue (MRR) is predictable subscription revenue normalized to a monthly amount.' },
-  { question: 'What is Net Dollar Retention (NDR)?', answer: 'NDR = (Starting MRR + Expansion − Contraction − Churn) ÷ Starting MRR. It measures revenue retention from existing customers.' },
+  { question: 'What is Net Dollar Retention (NDR)?', answer: 'NDR = (Starting MRR + Expansion âˆ’ Contraction âˆ’ Churn) Ã· Starting MRR. It measures revenue retention from existing customers.' },
   { question: 'Should I include one-time fees?', answer: 'No. MRR should exclude one-time or usage spikes to stay recurring and predictable.' },
   { question: 'How often should I track MRR?', answer: 'Track monthly; also monitor leading indicators weekly (signups, activations) to react faster.' },
-  { question: 'How does MRR link to ARR?', answer: 'ARR ≈ MRR × 12. Use ARR for annualized metrics and burn multiple comparisons.' },
+  { question: 'How does MRR link to ARR?', answer: 'ARR â‰ˆ MRR Ã— 12. Use ARR for annualized metrics and burn multiple comparisons.' },
 ];
 
 const relatedCalculators = [
@@ -55,7 +55,7 @@ const relatedCalculators = [
   { name: 'LTV Calculator', slug: 'ltv-calculator', description: 'Estimate lifetime value from ARPA, margin, and churn.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/mrr-calculator';
+const baseUrl = 'https://mycalculating.com/finance/mrr-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -64,7 +64,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'MRR (Monthly Recurring Revenue) Calculator', item: baseUrl },
       ],
     },
@@ -309,10 +309,10 @@ export default function MrrCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Ending MRR</strong> = starting + new + expansion − churned − contraction.</p>
-          <p><strong>Net new MRR</strong> = ending − starting.</p>
-          <p><strong>Growth %</strong> = net new ÷ starting × 100.</p>
-          <p><strong>NDR</strong> = (starting + expansion − churned − contraction) ÷ starting × 100.</p>
+          <p><strong>Ending MRR</strong> = starting + new + expansion âˆ’ churned âˆ’ contraction.</p>
+          <p><strong>Net new MRR</strong> = ending âˆ’ starting.</p>
+          <p><strong>Growth %</strong> = net new Ã· starting Ã— 100.</p>
+          <p><strong>NDR</strong> = (starting + expansion âˆ’ churned âˆ’ contraction) Ã· starting Ã— 100.</p>
         </CardContent>
       </Card>
 
@@ -351,7 +351,7 @@ export default function MrrCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">ARR (est.)</p>
                 <p className="text-xl font-semibold text-primary">${(result.endingMRR * 12).toLocaleString()}</p>
-                <p className="text-xs text-muted-foreground">MRR × 12</p>
+                <p className="text-xs text-muted-foreground">MRR Ã— 12</p>
               </div>
             </div>
           ) : (

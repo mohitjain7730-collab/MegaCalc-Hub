@@ -36,14 +36,14 @@ const steps = [
   'Enter daily servings of whole grains like oats, brown rice, and whole-grain bread.',
   'Count weekly meals that are mostly ultra-processed (fast food, packaged snacks, sugary drinks).',
   'Estimate daily teaspoons of added sugar from drinks, desserts, and processed foods.',
-  'Log how many servings of omega-3–rich foods (fatty fish, flax, chia, walnuts) you get per week.',
+  'Log how many servings of omega-3â€“rich foods (fatty fish, flax, chia, walnuts) you get per week.',
 ];
 
 const faqs = [
   {
     question: 'What does the Anti-Aging Nutrition Score represent?',
     answer:
-      'It is a 0–100 index that roughly aligns your weekly eating pattern with research-backed, healthy-aging nutrition principles.',
+      'It is a 0â€“100 index that roughly aligns your weekly eating pattern with research-backed, healthy-aging nutrition principles.',
   },
   {
     question: 'Is this a substitute for seeing a dietitian?',
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/anti-aging-nutrition-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/anti-aging-nutrition-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Anti-Aging Nutrition Score Calculator', item: baseUrl },
       ],
     },
@@ -154,7 +154,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let band: ResultPayload['band'] = 'tune-up';
   let interpretation =
-    'Your snapshot suggests a number of helpful food habits already in place, with some gentle room to play with processing and added sugar if you’d like.';
+    'Your snapshot suggests a number of helpful food habits already in place, with some gentle room to play with processing and added sugar if youâ€™d like.';
 
   if (nutritionScore < 60) {
     band = 'rebuild';
@@ -170,11 +170,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations = [
     'When it feels realistic, you can fill more of your plate with vegetables and fruits you genuinely enjoy.',
     'Choosing whole grains a bit more often than refined ones can be a simple way to nudge your pattern toward more fiber.',
-    'You might experiment with keeping ultra‑processed “convenience” meals for some days and balancing them with easier whole‑food options on others.',
+    'You might experiment with keeping ultraâ€‘processed â€œconvenienceâ€ meals for some days and balancing them with easier wholeâ€‘food options on others.',
   ];
 
   if (values.ultraProcessedMealsPerWeek > 7) {
-    recommendations.push('You could choose just one ultra‑processed meal this week to swap for a simple, low‑effort home or fresh option.');
+    recommendations.push('You could choose just one ultraâ€‘processed meal this week to swap for a simple, lowâ€‘effort home or fresh option.');
   }
   if (values.addedSugarTeaspoons > 12) {
     recommendations.push('If you ever want to lower added sugar, many people find it easiest to start with sweet drinks and then gently adjust desserts.');
@@ -187,7 +187,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     },
     {
       label: 'This Week',
-      detail: 'You might batch‑cook a simple whole‑grain or legume base so throwing together a more nourishing meal feels easier.',
+      detail: 'You might batchâ€‘cook a simple wholeâ€‘grain or legume base so throwing together a more nourishing meal feels easier.',
     },
     {
       label: 'Next 30 days',
@@ -352,12 +352,12 @@ export default function AntiAgingNutritionScoreCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Nutrition score</p>
                 <p className="text-2xl font-semibold text-primary">{result.nutritionScore}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 view of how your current weekly pattern fits this simple framework.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 view of how your current weekly pattern fits this simple framework.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Band</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.band.replace('-', ' ')}</p>
-                <p className="text-xs text-muted-foreground">Just a label describing how protective or comfort‑focused this week’s pattern may feel.</p>
+                <p className="text-xs text-muted-foreground">Just a label describing how protective or comfortâ€‘focused this weekâ€™s pattern may feel.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Summary</p>
@@ -414,7 +414,7 @@ export default function AntiAgingNutritionScoreCalculator() {
             <strong>Nutrition score</strong> boosts points for fruits, vegetables, whole grains, and omega-rich foods while subtracting
             for ultra-processed meals and high added sugar.
           </p>
-          <p>The result is clamped to a 0–100 range and categorized into rebuild, tune-up, or protective bands.</p>
+          <p>The result is clamped to a 0â€“100 range and categorized into rebuild, tune-up, or protective bands.</p>
           <p>This is an educational pattern score, not a micronutrient tracker or medical prescription.</p>
         </CardContent>
       </Card>
@@ -458,7 +458,7 @@ export default function AntiAgingNutritionScoreCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().omegaRichServingsPerWeek ?? 0) / 4 * 100).toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground">Alignment with a 2–4 servings/week pattern.</p>
+                <p className="text-xs text-muted-foreground">Alignment with a 2â€“4 servings/week pattern.</p>
               </div>
             </div>
           ) : (
@@ -521,7 +521,7 @@ export default function AntiAgingNutritionScoreCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
             The Anti-Aging Nutrition Score Calculator summarizes your weekly eating pattern into one simple snapshot of how it aligns with
-            healthy‑aging nutrition ideas.
+            healthyâ€‘aging nutrition ideas.
           </p>
           <p>It highlights small, optional swaps and areas of curiosity that may support you over time, alongside your own preferences and needs.</p>
           <p>You can bring these reflections into conversations with nutrition professionals or simply use them to notice gradual shifts.</p>

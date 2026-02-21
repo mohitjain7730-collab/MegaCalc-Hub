@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/carb-to-fiber-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/carb-to-fiber-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Carb-to-Fiber Ratio Calculator', item: baseUrl },
       ],
     },
@@ -354,7 +354,7 @@ export default function CarbToFiberRatioCalculator() {
             <strong>Net carbs</strong> = total carbohydrates - dietary fiber. Fiber is not digested and doesn\'t significantly raise blood sugar.
           </p>
           <p>
-            <strong>Fiber percentage</strong> = (fiber / total carbs) × 100. Higher percentages indicate more fiber relative to total carbohydrates.
+            <strong>Fiber percentage</strong> = (fiber / total carbs) Ã— 100. Higher percentages indicate more fiber relative to total carbohydrates.
           </p>
           <p>
             <strong>Optimal ratios</strong>: Excellent: &lt;5:1, Good: 5-10:1, Moderate: 10-15:1, Poor: &gt;15:1. Lower ratios indicate better fiber content relative to carbohydrates.
@@ -478,7 +478,7 @@ export default function CarbToFiberRatioCalculator() {
     <p>The Carb-to-Fiber ratio is often cited by institutions like the <b>Mayo Clinic</b> as an easy tool to distinguish between nutrient-dense whole foods and low-quality processed foods, especially in the bread and cereal aisles.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Case of Grains</h3>
-    <p>Whole grains (like whole wheat, brown rice, and oats) naturally contain the entire grain kernel—the bran (fiber), the germ (vitamins/fats), and the endosperm (starch). Processing removes the bran and germ, leaving primarily the starchy endosperm. This directly impacts the ratio:</p>
+    <p>Whole grains (like whole wheat, brown rice, and oats) naturally contain the entire grain kernelâ€”the bran (fiber), the germ (vitamins/fats), and the endosperm (starch). Processing removes the bran and germ, leaving primarily the starchy endosperm. This directly impacts the ratio:</p>
     <ul>
         <li><b>Whole Grain:</b> Low ratio, as fiber is present alongside the starch.</li>
         <li><b>Refined Grain:</b> High ratio, as fiber has been removed, concentrating the starch component.</li>

@@ -18,7 +18,7 @@ const formSchema = z.object({
   initialInvestment: z.number().min(0.01, 'Enter initial investment'),
   monthlyContribution: z.number().min(0).optional(),
   sharePrice: z.number().min(0.01, 'Enter share price'),
-  annualDividendYieldPct: z.number().min(0).max(50, '0–50%'),
+  annualDividendYieldPct: z.number().min(0).max(50, '0â€“50%'),
   dividendGrowthRatePct: z.number().min(-10).max(30, 'Typically -10 to 30%'),
   priceAppreciationPct: z.number().min(-20).max(50, 'Annual price growth'),
   dividendFrequency: z.enum(['monthly', 'quarterly', 'semiannual', 'annual']),
@@ -35,8 +35,8 @@ const schemaMarkup = {
       name: 'Dividend Reinvestment Growth Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'Project long-term portfolio growth with dividend reinvestment (DRIP). Enter initial investment, contributions, yield, dividend growth rate, and price appreciation—get future value, total dividends, shares accumulated, and effective CAGR.',
-      url: 'https://mycalculating.com/category/finance/dividend-reinvestment-growth-calculator',
+      description: 'Project long-term portfolio growth with dividend reinvestment (DRIP). Enter initial investment, contributions, yield, dividend growth rate, and price appreciationâ€”get future value, total dividends, shares accumulated, and effective CAGR.',
+      url: 'https://mycalculating.com/finance/dividend-reinvestment-growth-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -412,11 +412,11 @@ export default function DividendReinvestmentGrowthCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto">
             <p className="font-mono text-sm">
-              Period-by-period: Dividends = Shares × Price × (Annual Yield / Frequency). Reinvested dividends buy new shares at current price. Share price grows by (1 + Appreciation)^(1/12) each month. Dividend per period grows by (1 + Dividend Growth Rate)^(years elapsed) annually.
+              Period-by-period: Dividends = Shares Ã— Price Ã— (Annual Yield / Frequency). Reinvested dividends buy new shares at current price. Share price grows by (1 + Appreciation)^(1/12) each month. Dividend per period grows by (1 + Dividend Growth Rate)^(years elapsed) annually.
             </p>
           </div>
           <p className="text-sm text-muted-foreground">
-            Future value = shares accumulated × final share price. Effective CAGR = (Future Value / Initial Investment)^(1/Years) − 1. Value from reinvested dividends is estimated as the difference between total future value and the growth of contributions alone at the price appreciation rate.
+            Future value = shares accumulated Ã— final share price. Effective CAGR = (Future Value / Initial Investment)^(1/Years) âˆ’ 1. Value from reinvested dividends is estimated as the difference between total future value and the growth of contributions alone at the price appreciation rate.
           </p>
         </CardContent>
       </Card>
@@ -536,15 +536,15 @@ export default function DividendReinvestmentGrowthCalculator() {
         <p>Without reinvestment, dividends are just income. With reinvestment, they become growth. In tax-advantaged accounts (IRA, 401k), all dividends can be reinvested without current tax, maximizing the effect. In taxable accounts, taxes on dividends reduce the amount reinvested.</p>
 
         <h2 id="how-calculated-drip" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How the Calculator Works</h2>
-        <p>The model steps through time month by month. Each period it applies your monthly contribution (if any), then on dividend dates it computes dividends as shares × price × (annual yield / frequency), grows that yield by your dividend growth rate for the elapsed years, reinvests the cash into new shares at the current price, and then grows the share price by your assumed annual appreciation. Final value is shares × price at the end.</p>
+        <p>The model steps through time month by month. Each period it applies your monthly contribution (if any), then on dividend dates it computes dividends as shares Ã— price Ã— (annual yield / frequency), grows that yield by your dividend growth rate for the elapsed years, reinvests the cash into new shares at the current price, and then grows the share price by your assumed annual appreciation. Final value is shares Ã— price at the end.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Effective CAGR</h3>
         <p>The effective CAGR is the single annual rate that would turn your initial investment into the projected future value over the same number of years. It blends price appreciation, dividend income, dividend growth, and the impact of recurring contributions.</p>
 
         <h2 id="inputs-drip" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Inputs and Assumptions</h2>
         <p>Initial investment and monthly contribution are in dollars. Share price is the starting price; it grows at your entered appreciation rate. Annual dividend yield is the current dividend as a percentage of share price; it increases each year by your dividend growth rate. Dividend frequency (monthly, quarterly, semiannual, annual) determines how often dividends are paid and reinvested.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Realistic Ranges</h3>
-        <p>Typical dividend yields for large-cap dividend payers are 2–5%; dividend growth might be 3–8% per year. Price appreciation is highly variable; long-term equity returns have often been in the mid-single digits. Use conservative assumptions to avoid overstating future wealth.</p>
-        <p>If you are modeling a specific stock or fund, use its current yield and historical dividend growth rate; for price appreciation, use a long-term market assumption (e.g. 5–7%) unless you have a strong view.</p>
+        <p>Typical dividend yields for large-cap dividend payers are 2â€“5%; dividend growth might be 3â€“8% per year. Price appreciation is highly variable; long-term equity returns have often been in the mid-single digits. Use conservative assumptions to avoid overstating future wealth.</p>
+        <p>If you are modeling a specific stock or fund, use its current yield and historical dividend growth rate; for price appreciation, use a long-term market assumption (e.g. 5â€“7%) unless you have a strong view.</p>
 
         <h2 id="when-drip-helps" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">When DRIP Matters Most</h2>
         <p>DRIP has the largest impact when the horizon is long, the yield is meaningful, and the dividend grows over time. High-growth, low-yield names get less benefit from reinvestment; stable, higher-yield names benefit more. Combining DRIP with regular contributions further increases ending wealth.</p>
@@ -600,7 +600,7 @@ export default function DividendReinvestmentGrowthCalculator() {
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">Can I use this for ETFs or funds?</h4>
-              <p className="text-muted-foreground">Yes, if you use the fund’s yield, an assumed dividend growth rate, and an assumed price appreciation. Many ETFs have lower yields and different growth than individual stocks.</p>
+              <p className="text-muted-foreground">Yes, if you use the fundâ€™s yield, an assumed dividend growth rate, and an assumed price appreciation. Many ETFs have lower yields and different growth than individual stocks.</p>
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">What is effective CAGR?</h4>
@@ -634,7 +634,7 @@ export default function DividendReinvestmentGrowthCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
               <strong className="block text-primary mb-1">Long-term dividend investors</strong>
-              <span className="text-sm text-muted-foreground">To see how much DRIP and dividend growth can add to portfolio value over 10–30 years.</span>
+              <span className="text-sm text-muted-foreground">To see how much DRIP and dividend growth can add to portfolio value over 10â€“30 years.</span>
             </div>
             <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
               <strong className="block text-primary mb-1">Retirement savers</strong>

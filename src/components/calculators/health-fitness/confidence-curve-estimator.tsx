@@ -36,16 +36,16 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Estimate a baseline confidence score (0–10) from an earlier stage in this area of life.',
-  'Rate your current confidence (0–10) for the same area (work, study, relationships, etc.).',
-  'Rate how challenging your current environment feels (0–10).',
-  'Rate how supported you feel by people, tools, or resources (0–10).',
+  'Estimate a baseline confidence score (0â€“10) from an earlier stage in this area of life.',
+  'Rate your current confidence (0â€“10) for the same area (work, study, relationships, etc.).',
+  'Rate how challenging your current environment feels (0â€“10).',
+  'Rate how supported you feel by people, tools, or resources (0â€“10).',
   'Review where you sit on the confidence curve and how to nudge it upward.',
 ];
 
 const faqs = [
   {
-    question: 'What is the “confidence curve”?',
+    question: 'What is the â€œconfidence curveâ€?',
     answer:
       'The confidence curve represents how your confidence typically rises with practice and feedback, flattens, and sometimes dips under very high challenge or low support.',
   },
@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'What does challenge level mean?',
     answer:
-      'Challenge level captures how demanding the tasks or environment feel right now—high stakes, complexity, novelty, or pressure can all increase it.',
+      'Challenge level captures how demanding the tasks or environment feel right nowâ€”high stakes, complexity, novelty, or pressure can all increase it.',
   },
   {
     question: 'What does support level mean?',
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'Can confidence drop even as skills grow?',
     answer:
-      'Yes. Realizing how much there is to learn (the “valley of competence awareness”) can temporarily lower confidence before it rises again.',
+      'Yes. Realizing how much there is to learn (the â€œvalley of competence awarenessâ€) can temporarily lower confidence before it rises again.',
   },
   {
     question: 'How often should I recalculate?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/confidence-curve-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/confidence-curve-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Confidence Curve Estimator', item: baseUrl },
       ],
     },
@@ -147,11 +147,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const normalizedChallenge = challengeLevel / 10;
   const normalizedSupport = supportLevel / 10;
 
-  // Ideal zone: challenge ~0.6–0.8, support ~0.6–0.9
+  // Ideal zone: challenge ~0.6â€“0.8, support ~0.6â€“0.9
   const challengeDistance = Math.abs(normalizedChallenge - 0.7);
   const supportDistance = Math.abs(normalizedSupport - 0.75);
 
-  const curveFit = clamp(1 - (challengeDistance + supportDistance) / 2, 0, 1); // 0–1
+  const curveFit = clamp(1 - (challengeDistance + supportDistance) / 2, 0, 1); // 0â€“1
   const growthCurvePosition = clamp(curveFit * 100, 0, 100);
 
   const delta = currentConfidence - baselineConfidence;
@@ -249,7 +249,7 @@ export default function ConfidenceCurveEstimator() {
                   name="baselineConfidence"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Baseline confidence (0–10)</FormLabel>
+                      <FormLabel>Baseline confidence (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -262,7 +262,7 @@ export default function ConfidenceCurveEstimator() {
                   name="currentConfidence"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Current confidence (0–10)</FormLabel>
+                      <FormLabel>Current confidence (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -275,7 +275,7 @@ export default function ConfidenceCurveEstimator() {
                   name="challengeLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Challenge level (0–10)</FormLabel>
+                      <FormLabel>Challenge level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -288,7 +288,7 @@ export default function ConfidenceCurveEstimator() {
                   name="supportLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Support level (0–10)</FormLabel>
+                      <FormLabel>Support level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 5.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -319,19 +319,19 @@ export default function ConfidenceCurveEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Curve position</p>
                 <p className="text-2xl font-semibold text-primary">{result.growthCurvePosition}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Projected peak</p>
                 <p className="text-2xl font-semibold text-primary">{result.projectedPeakConfidence}</p>
-                <p className="text-xs text-muted-foreground">Confidence (0–10)</p>
+                <p className="text-xs text-muted-foreground">Confidence (0â€“10)</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Delta vs baseline</p>
                 <p className="text-2xl font-semibold text-primary">
                   {(result.currentConfidence - result.baselineConfidence).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Current − baseline</p>
+                <p className="text-xs text-muted-foreground">Current âˆ’ baseline</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -386,7 +386,7 @@ export default function ConfidenceCurveEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Curve position</strong> is based on how close your challenge and support scores are to a “growth zone” (around 7/10 challenge and 7.5/10 support), scaled to 0–100.
+            <strong>Curve position</strong> is based on how close your challenge and support scores are to a â€œgrowth zoneâ€ (around 7/10 challenge and 7.5/10 support), scaled to 0â€“100.
           </p>
           <p>
             <strong>Projected peak confidence</strong> adjusts current confidence upward based on curve fit, with small penalties when challenge is far above the sweet spot.
@@ -475,7 +475,7 @@ export default function ConfidenceCurveEstimator() {
           Confidence Curves: Finding Your Personal Growth Zone
         </h1>
         <p className="text-lg italic text-gray-700">
-          Learn why confidence naturally rises, dips, and plateaus—and how to calibrate challenge and support so that your curve keeps trending upward.
+          Learn why confidence naturally rises, dips, and plateausâ€”and how to calibrate challenge and support so that your curve keeps trending upward.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
@@ -492,7 +492,7 @@ export default function ConfidenceCurveEstimator() {
           Confidence Curve Basics
         </h2>
         <p>
-          Most people experience confidence growth as a curve, not a straight line—slow progress at first, faster gains with practice, and then plateaus or dips when facing new challenges.
+          Most people experience confidence growth as a curve, not a straight lineâ€”slow progress at first, faster gains with practice, and then plateaus or dips when facing new challenges.
         </p>
 
         <h2 id="challenge-support" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -506,7 +506,7 @@ export default function ConfidenceCurveEstimator() {
           When Confidence Dips During Growth
         </h2>
         <p>
-          Realizing how much you do not know—common after learning the basics—can trigger a temporary dip. Normalizing this phase prevents you from mislabeling growth as failure.
+          Realizing how much you do not knowâ€”common after learning the basicsâ€”can trigger a temporary dip. Normalizing this phase prevents you from mislabeling growth as failure.
         </p>
 
         <h2 id="design" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -520,7 +520,7 @@ export default function ConfidenceCurveEstimator() {
           Reflection Prompts
         </h2>
         <p>
-          Ask: “Where do I feel stretched but not broken? What support would make this challenge feel 20% easier? What would a small win look like this week?”
+          Ask: â€œWhere do I feel stretched but not broken? What support would make this challenge feel 20% easier? What would a small win look like this week?â€
         </p>
 
         <hr />
@@ -584,7 +584,7 @@ export default function ConfidenceCurveEstimator() {
 // Helper for additional calculations
 function baselineConfidenceToPercent(baseline: number, current: number): string {
   if (baseline <= 0) {
-    return '—';
+    return 'â€”';
   }
   const pct = ((current - baseline) / baseline) * 100;
   return `${pct.toFixed(1)}%`;

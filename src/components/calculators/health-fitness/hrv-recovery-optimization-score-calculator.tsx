@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/hrv-recovery-optimization-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/hrv-recovery-optimization-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'HRV Recovery Optimization Wellness Score', item: baseUrl },
       ],
     },
@@ -152,7 +152,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Base recovery score from HRV change (0-100 scale)
   let recoveryScore = 50; // Baseline at 50
   
-  // HRV change contribution (up to ±50 points)
+  // HRV change contribution (up to Â±50 points)
   if (hrvChange > 0) {
     // Above baseline = better recovery
     recoveryScore += Math.min(hrvChange / 2, 50); // Up to +50 points
@@ -164,7 +164,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // rMSSD adjustment (if provided)
   if (values.rMSSD) {
     // Normalize rMSSD (typical range 20-100ms, higher is better)
-    const rMSSDScore = clamp((values.rMSSD - 20) / 80, 0, 1) * 20; // Up to ±20 points
+    const rMSSDScore = clamp((values.rMSSD - 20) / 80, 0, 1) * 20; // Up to Â±20 points
     recoveryScore += (rMSSDScore - 10); // -10 to +10 adjustment
   }
   
@@ -440,19 +440,19 @@ export default function HRVRecoveryOptimizationScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>HRV change</strong> = ((Current HRV - Baseline HRV) / Baseline HRV) × 100%.
+            <strong>HRV change</strong> = ((Current HRV - Baseline HRV) / Baseline HRV) Ã— 100%.
           </p>
           <p>
             <strong>Base recovery score</strong> = 50 (baseline).
           </p>
           <p>
-            <strong>HRV change contribution</strong> = Up to ±50 points based on HRV change percentage (above baseline = positive, below = negative).
+            <strong>HRV change contribution</strong> = Up to Â±50 points based on HRV change percentage (above baseline = positive, below = negative).
           </p>
           <p>
-            <strong>rMSSD adjustment</strong> = ±20 points based on rMSSD value (normalized to 20-100ms range).
+            <strong>rMSSD adjustment</strong> = Â±20 points based on rMSSD value (normalized to 20-100ms range).
           </p>
           <p>
-            <strong>Sleep adjustment</strong> = ±15 points based on sleep hours (optimal around 7-9 hours).
+            <strong>Sleep adjustment</strong> = Â±15 points based on sleep hours (optimal around 7-9 hours).
           </p>
           <p>
             <strong>Stress adjustment</strong> = -20 to +20 points (higher stress reduces score).

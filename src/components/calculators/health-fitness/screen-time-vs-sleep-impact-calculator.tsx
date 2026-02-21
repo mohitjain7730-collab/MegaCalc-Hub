@@ -47,7 +47,7 @@ const understandingInputs = [
   {
     label: 'Age',
     description:
-      'Different ages can experience screen use and sleep differently; younger people may be more sensitive to late‑evening screens.',
+      'Different ages can experience screen use and sleep differently; younger people may be more sensitive to lateâ€‘evening screens.',
   },
   {
     label: 'Daily Screen Time',
@@ -57,12 +57,12 @@ const understandingInputs = [
   {
     label: 'Sleep Hours per Night',
     description:
-      'Total hours of sleep per night. Many adults feel best with roughly 7–9 hours, but the exact amount is personal.',
+      'Total hours of sleep per night. Many adults feel best with roughly 7â€“9 hours, but the exact amount is personal.',
   },
   {
     label: 'Screen Time Before Bed',
     description:
-      'Hours of screen use in the 1–2 hours before bedtime. For many people, less screen time close to bed makes it easier to unwind.',
+      'Hours of screen use in the 1â€“2 hours before bedtime. For many people, less screen time close to bed makes it easier to unwind.',
   },
   {
     label: 'Device Type',
@@ -115,7 +115,7 @@ const faqs: [string, string][] = [
   ],
   [
     'How much screen time is too much?',
-    'There is no single “right” number, but when screens crowd out movement, rest, or offline connection, it can be a cue to explore small shifts.',
+    'There is no single â€œrightâ€ number, but when screens crowd out movement, rest, or offline connection, it can be a cue to explore small shifts.',
   ],
   [
     'Do blue light filters really help?',
@@ -123,11 +123,11 @@ const faqs: [string, string][] = [
   ],
   [
     'Can screen time cause insomnia?',
-    'Screen habits can influence how easy or hard it feels to fall asleep, especially late‑night scrolling. If sleep difficulties persist or worry you, it can be helpful to talk with a health professional.',
+    'Screen habits can influence how easy or hard it feels to fall asleep, especially lateâ€‘night scrolling. If sleep difficulties persist or worry you, it can be helpful to talk with a health professional.',
   ],
   [
     'How does age affect screen time impact on sleep?',
-    'Families often notice that children and teens may be more sensitive to late‑evening screens, so many caregivers choose earlier digital “wind‑down” times.',
+    'Families often notice that children and teens may be more sensitive to lateâ€‘evening screens, so many caregivers choose earlier digital â€œwindâ€‘downâ€ times.',
   ],
   [
     'What are the health risks of excessive screen time?',
@@ -139,7 +139,7 @@ const faqs: [string, string][] = [
   ],
   [
     'How do I reduce screen time before bed?',
-    'You might experiment with setting a “screen pause” before bed, charging devices outside the bedroom, or swapping some scrolling time for reading, stretching, or quiet music.',
+    'You might experiment with setting a â€œscreen pauseâ€ before bed, charging devices outside the bedroom, or swapping some scrolling time for reading, stretching, or quiet music.',
   ],
   [
     'What are signs I need to reduce screen time?',
@@ -165,7 +165,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/screen-time-vs-sleep-impact-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/screen-time-vs-sleep-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -174,7 +174,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Screen Time vs Sleep Impact Wellness Tracker', item: baseUrl },
       ],
     },
@@ -234,8 +234,8 @@ const plan = (): { week: number; focus: string }[] => [
 ];
 
 const warningSigns = () => [
-  'If screen time regularly replaces movement, rest, or in‑person connection, it may be helpful to explore small changes.',
-  'Using screens right before bed can make it harder for some people to feel sleepy; a short wind‑down window away from devices can help.',
+  'If screen time regularly replaces movement, rest, or inâ€‘person connection, it may be helpful to explore small changes.',
+  'Using screens right before bed can make it harder for some people to feel sleepy; a short windâ€‘down window away from devices can help.',
   'If you feel concerned about your sleep, mood, or daytime energy, consider discussing your experience with a qualified professional.',
   'If screens feel difficult to put down or are creating tension in relationships or routines, gentle boundaries and support can be useful.',
 ];
@@ -363,10 +363,10 @@ export default function ScreenTimeVsSleepImpactCalculator() {
     if (sleepImpactScore >= 70) {
       recommendations = [
         'Experiment with shorter total screen time, especially on days when you would like more space for rest or movement.',
-        'Try a longer screen‑free wind‑down before bedtime and notice how your body responds.',
-        'Use night‑mode or blue‑shifted displays in the evening if they feel better on your eyes.',
+        'Try a longer screenâ€‘free windâ€‘down before bedtime and notice how your body responds.',
+        'Use nightâ€‘mode or blueâ€‘shifted displays in the evening if they feel better on your eyes.',
         'Sprinkle more light movement or stretching breaks through your day to balance out sitting time.',
-        'Pick one regular “low‑screen” block in your week to lean into offline activities you enjoy.',
+        'Pick one regular â€œlowâ€‘screenâ€ block in your week to lean into offline activities you enjoy.',
       ];
       healthRisks = [
         'With very long screen days, it can be easy for movement, rest, or hobbies to get squeezed out.',
@@ -376,18 +376,18 @@ export default function ScreenTimeVsSleepImpactCalculator() {
     } else if (sleepImpactScore >= 50) {
       recommendations = [
         'Gently experiment with trimming a little screen time from parts of the day that feel most crowded.',
-        'Create a simple, screen‑lighter buffer before bed and replace it with something calming.',
+        'Create a simple, screenâ€‘lighter buffer before bed and replace it with something calming.',
         'Use display settings or apps that make evening viewing feel softer or warmer to your eyes.',
         'Pair screen use with short movement breaks or standing intervals when it feels possible.',
         'Notice which types of content leave you feeling rested versus wired, and lean toward the former in the evening.',
       ];
       healthRisks = [
         'Moderate screen use can still feel intense if most of it happens late at night or without breaks.',
-        'Pausing to ask how your screen habits make you feel can help you fine‑tune your routine.',
+        'Pausing to ask how your screen habits make you feel can help you fineâ€‘tune your routine.',
       ];
     } else if (sleepImpactScore >= 30) {
       recommendations = [
-        'You may be close to a balance that works for you—continue noticing what helps you feel rested.',
+        'You may be close to a balance that works for youâ€”continue noticing what helps you feel rested.',
         'If you like, keep a short buffer before bed where screens are set aside in favour of calm activities.',
         'Maintain movement and breaks throughout the day alongside your screen use.',
         'Check in with your sleep and energy from time to time and adjust if your needs change.',
@@ -397,7 +397,7 @@ export default function ScreenTimeVsSleepImpactCalculator() {
       ];
     } else {
       recommendations = [
-        'Your screen and sleep patterns appear relatively gentle—continue with what already supports you.',
+        'Your screen and sleep patterns appear relatively gentleâ€”continue with what already supports you.',
         'You can share routines that work for you with friends or family who are exploring their own balance.',
         'Keep tuning in to how your sleep and focus feel, and adjust your habits if your situation changes.',
       ];
@@ -436,7 +436,7 @@ export default function ScreenTimeVsSleepImpactCalculator() {
             Screen Time vs Sleep Impact Wellness Tracker
           </CardTitle>
           <CardDescription>
-            Reflect on how your screen habits relate to your wind‑down time and overall sense of rest, in a non‑diagnostic way.
+            Reflect on how your screen habits relate to your windâ€‘down time and overall sense of rest, in a nonâ€‘diagnostic way.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -683,11 +683,11 @@ export default function ScreenTimeVsSleepImpactCalculator() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             <strong>Sleep Impact Score</strong> = Age Factor + Daily Screen Time Factor + Screen Time Before Bed Factor + Device
-            Type Factor − Blue Light Filter Benefit + Sleep Quality Factor + Eye Strain Factor − Physical Activity Benefit. The
+            Type Factor âˆ’ Blue Light Filter Benefit + Sleep Quality Factor + Eye Strain Factor âˆ’ Physical Activity Benefit. The
             score ranges from 0-100, with higher scores indicating greater potential impact on sleep.
           </p>
           <p>
-            <strong>Sleep Quality Score</strong> = 100 − Sleep Hours Deficit − (Screen Time Before Bed × 8) + Blue Light Filter
+            <strong>Sleep Quality Score</strong> = 100 âˆ’ Sleep Hours Deficit âˆ’ (Screen Time Before Bed Ã— 8) + Blue Light Filter
             Benefit. This estimates sleep support based on sleep duration, evening screen exposure, and protective measures.
           </p>
           <p>
@@ -956,7 +956,7 @@ export default function ScreenTimeVsSleepImpactCalculator() {
             Understanding how screen time affects sleep is essential for maintaining quality rest and overall well-being. By
             recognizing the impact of evening screen exposure, implementing screen-free wind-down periods, optimizing device
             settings, and creating healthy digital boundaries, you can improve sleep quality while still enjoying technology.
-            Remember that small, consistent changes often have the biggest impact—start with one strategy, track your progress,
+            Remember that small, consistent changes often have the biggest impactâ€”start with one strategy, track your progress,
             and gradually build healthier habits. If sleep difficulties persist despite lifestyle changes, consider consulting a
             healthcare provider or sleep specialist who can provide personalized guidance. This tool is designed for wellness
             reflection and is not a substitute for professional medical evaluation or treatment.

@@ -41,7 +41,7 @@ const steps = [
   'Count approximate negative emotional instances (stress, anger, anxiety, sadness) for the same period.',
   'Estimate minutes spent in positive and negative states (time you felt mostly that emotion).',
   'Enter the four values into the calculator.',
-  'Review your positive–negative ratios, combined score, and suggested micro-adjustments.',
+  'Review your positiveâ€“negative ratios, combined score, and suggested micro-adjustments.',
 ];
 
 const faqs = [
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/positive-emotion-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/positive-emotion-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Positive Emotion Ratio Calculator', item: baseUrl },
       ],
     },
@@ -172,7 +172,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (combinedScore < 80) {
     status = 'good';
     interpretation =
-      'This suggests a general lifestyle tendency where you may experience more positive than challenging emotion overall. Gentle micro-habits—like brief walks, music, or gratitude notes—may support this pattern further if you choose.';
+      'This suggests a general lifestyle tendency where you may experience more positive than challenging emotion overall. Gentle micro-habitsâ€”like brief walks, music, or gratitude notesâ€”may support this pattern further if you choose.';
   }
 
   const recommendations: string[] = [
@@ -186,7 +186,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   if (negativeMinutes > positiveMinutes) {
-    recommendations.push('Experiment with “micro resets” (2–5 minutes of breathwork, stretching, or going outside) whenever you feel stuck in a negative state.');
+    recommendations.push('Experiment with â€œmicro resetsâ€ (2â€“5 minutes of breathwork, stretching, or going outside) whenever you feel stuck in a negative state.');
   }
 
   if (positiveEvents === 0 && positiveMinutes === 0) {
@@ -334,7 +334,7 @@ export default function PositiveEmotionRatioCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Combined score</p>
                 <p className="text-2xl font-semibold text-primary">{result.combinedScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -395,7 +395,7 @@ export default function PositiveEmotionRatioCalculator() {
             <strong>Time ratio</strong> is minutes spent in positive states divided by minutes in negative states. When there are no negative minutes, a high placeholder ratio is used to reflect a very positive balance.
           </p>
           <p>
-            <strong>Combined score</strong> averages the normalized event and time ratios on a 0–100 scale using a 3:1 benchmark as a flourishing reference point.
+            <strong>Combined score</strong> averages the normalized event and time ratios on a 0â€“100 scale using a 3:1 benchmark as a flourishing reference point.
           </p>
           <p>These formulas are simplifications meant for self-reflection, not clinical diagnosis; focus on trends over time rather than any single score.</p>
         </CardContent>
@@ -477,7 +477,7 @@ export default function PositiveEmotionRatioCalculator() {
           The Positive Emotion Ratio: How Much Positivity Do You Actually Experience?
         </h1>
         <p className="text-lg italic text-gray-700">
-          Learn how your balance of positive and negative emotions shapes resilience, relationships, and long-term health—and how to shift the ratio without toxic positivity.
+          Learn how your balance of positive and negative emotions shapes resilience, relationships, and long-term healthâ€”and how to shift the ratio without toxic positivity.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
@@ -495,7 +495,7 @@ export default function PositiveEmotionRatioCalculator() {
         </h2>
         <p>
           The positive emotion ratio looks at how many moments of joy, curiosity, gratitude, love, or calm you experience relative to moments of anger, fear, stress, or sadness. It does not deny that negative emotions are
-          valid—it simply gives a sense of whether your nervous system is spending most of the day under threat or in safety.
+          validâ€”it simply gives a sense of whether your nervous system is spending most of the day under threat or in safety.
         </p>
 
         <h2 id="research" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -503,7 +503,7 @@ export default function PositiveEmotionRatioCalculator() {
         </h2>
         <p>
           Early popular writing sometimes treated specific ratios (like 3:1) as exact prescriptions, which drew criticism from statisticians. Today, most experts treat positive emotion ratios as directional indicators: higher
-          ratios correlate with better outcomes, but there is no magical cut-off. Context—such as grief, illness, or systemic stressors—matters.
+          ratios correlate with better outcomes, but there is no magical cut-off. Contextâ€”such as grief, illness, or systemic stressorsâ€”matters.
         </p>
 
         <h2 id="measurement" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -518,7 +518,7 @@ export default function PositiveEmotionRatioCalculator() {
           Habits That Tilt the Ratio
         </h2>
         <p>
-          Powerful levers include sleep, movement, meaningful relationships, gratitude practices, creative hobbies, and values-aligned work. Even small doses—a five-minute walk, one kind message—accumulate when practiced daily.
+          Powerful levers include sleep, movement, meaningful relationships, gratitude practices, creative hobbies, and values-aligned work. Even small dosesâ€”a five-minute walk, one kind messageâ€”accumulate when practiced daily.
         </p>
 
         <h2 id="when-to-seek-help" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -534,7 +534,7 @@ export default function PositiveEmotionRatioCalculator() {
           Conclusion
         </h2>
         <p>
-          By gently tracking your positive emotion ratio and experimenting with small habit shifts, you can gradually move your days toward more safety, connection, and joy—without pretending that hard things do not exist.
+          By gently tracking your positive emotion ratio and experimenting with small habit shifts, you can gradually move your days toward more safety, connection, and joyâ€”without pretending that hard things do not exist.
         </p>
       </section>
 

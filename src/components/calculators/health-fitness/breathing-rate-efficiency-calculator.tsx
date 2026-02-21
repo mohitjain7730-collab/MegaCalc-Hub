@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/breathing-rate-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/breathing-rate-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Breathing Rate Efficiency Calculator', item: baseUrl },
       ],
     },
@@ -402,16 +402,16 @@ export default function BreathingRateEfficiencyCalculator() {
             <strong>Resting factor</strong> = 30 if Resting Rate is 12-20 (optimal), else calculated based on deviation. Normal resting rate is 12-20 breaths/min. Rates outside this range reduce efficiency.
           </p>
           <p>
-            <strong>Activity factor</strong> = 25 if Activity Rate ≤ 30, else penalty for excessive rates. Efficient breathing shows appropriate increases with activity without excessive rates. Rates above 30 may indicate inefficiency.
+            <strong>Activity factor</strong> = 25 if Activity Rate â‰¤ 30, else penalty for excessive rates. Efficient breathing shows appropriate increases with activity without excessive rates. Rates above 30 may indicate inefficiency.
           </p>
           <p>
-            <strong>Recovery factor</strong> = ((180 - Recovery Time) / 180) × 25, if Recovery Time ≤ 180, else calculated. Faster recovery (1-3 minutes) indicates better cardiovascular fitness and breathing efficiency. Slower recovery reduces efficiency.
+            <strong>Recovery factor</strong> = ((180 - Recovery Time) / 180) Ã— 25, if Recovery Time â‰¤ 180, else calculated. Faster recovery (1-3 minutes) indicates better cardiovascular fitness and breathing efficiency. Slower recovery reduces efficiency.
           </p>
           <p>
-            <strong>Depth factor</strong> = (Breath Depth / 5) × 10. Contributes 0-10 points. Deep diaphragmatic breathing (5) is more efficient than shallow chest breathing (1-2). Deeper breaths improve oxygen exchange and efficiency.
+            <strong>Depth factor</strong> = (Breath Depth / 5) Ã— 10. Contributes 0-10 points. Deep diaphragmatic breathing (5) is more efficient than shallow chest breathing (1-2). Deeper breaths improve oxygen exchange and efficiency.
           </p>
           <p>
-            <strong>Nasal factor</strong> = (Nasal Breathing / 100) × 10. Contributes 0-10 points. Nasal breathing is more efficient than mouth breathing: filters air, increases nitric oxide, supports better mechanics. Higher nasal percentage improves efficiency.
+            <strong>Nasal factor</strong> = (Nasal Breathing / 100) Ã— 10. Contributes 0-10 points. Nasal breathing is more efficient than mouth breathing: filters air, increases nitric oxide, supports better mechanics. Higher nasal percentage improves efficiency.
           </p>
           <p>
             <strong>Efficiency score</strong> = Resting Factor + Activity Factor + Recovery Factor + Depth Factor + Nasal Factor, normalized to 0-100 scale. Higher scores indicate better breathing efficiency based on optimal rates, fast recovery, deep breathing, and nasal breathing patterns.

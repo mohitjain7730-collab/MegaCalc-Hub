@@ -56,7 +56,7 @@ const faqs = [
   },
   {
     question: 'What is a healthy runway target?',
-    answer: 'Early-stage companies often target 12–18 months to allow for learning cycles and a buffer for fundraising.',
+    answer: 'Early-stage companies often target 12â€“18 months to allow for learning cycles and a buffer for fundraising.',
   },
   {
     question: 'How often should I recalc runway?',
@@ -87,7 +87,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/runway-extension-calculator';
+const baseUrl = 'https://mycalculating.com/finance/runway-extension-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -96,7 +96,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Runway Extension Calculator', item: baseUrl },
       ],
     },
@@ -145,7 +145,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const plan = [
     { label: 'This Week', detail: 'Validate burn inputs with finance and ensure all recurring costs are included.' },
     { label: 'This Month', detail: 'Execute savings initiatives and lock in vendor or headcount adjustments to capture burn reductions.' },
-    { label: 'Ongoing', detail: 'Recalculate runway monthly and keep a 3–6 month buffer for fundraising timelines.' },
+    { label: 'Ongoing', detail: 'Recalculate runway monthly and keep a 3â€“6 month buffer for fundraising timelines.' },
   ];
 
   return {
@@ -272,7 +272,7 @@ export default function RunwayExtensionCalculator() {
                 <p className="text-2xl font-semibold text-primary">
                   {result.currentRunway === Infinity ? 'No burn' : `${result.currentRunway.toFixed(1)} mo`}
                 </p>
-                <p className="text-xs text-muted-foreground">Cash ÷ burn after savings</p>
+                <p className="text-xs text-muted-foreground">Cash Ã· burn after savings</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Adjusted runway</p>
@@ -339,16 +339,16 @@ export default function RunwayExtensionCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Burn after savings</strong> = max(0, monthly burn − monthly savings).
+            <strong>Burn after savings</strong> = max(0, monthly burn âˆ’ monthly savings).
           </p>
           <p>
-            <strong>Current runway (months)</strong> = cash balance ÷ burn after savings.
+            <strong>Current runway (months)</strong> = cash balance Ã· burn after savings.
           </p>
           <p>
-            <strong>Adjusted runway (months)</strong> = (cash balance + new funding) ÷ burn after savings.
+            <strong>Adjusted runway (months)</strong> = (cash balance + new funding) Ã· burn after savings.
           </p>
           <p>
-            <strong>Extension (months)</strong> = adjusted runway − current runway.
+            <strong>Extension (months)</strong> = adjusted runway âˆ’ current runway.
           </p>
         </CardContent>
       </Card>

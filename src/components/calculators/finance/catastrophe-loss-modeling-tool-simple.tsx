@@ -46,7 +46,7 @@ const faqs = [
   {
     question: 'What is the catastrophe ratio?',
     answer:
-      'Catastrophe ratio measures the proportion of earned premiums consumed by catastrophic losses. Formula: (Catastrophic Losses / Net Premiums Earned) × 100. Lower ratios indicate better catastrophe risk management.',
+      'Catastrophe ratio measures the proportion of earned premiums consumed by catastrophic losses. Formula: (Catastrophic Losses / Net Premiums Earned) Ã— 100. Lower ratios indicate better catastrophe risk management.',
   },
   {
     question: 'What are catastrophic losses?',
@@ -113,7 +113,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/catastrophe-loss-modeling-tool-simple';
+const baseUrl = 'https://mycalculating.com/finance/catastrophe-loss-modeling-tool-simple';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -122,7 +122,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Catastrophe Loss Modeling Tool (Simple)', item: baseUrl },
       ],
     },
@@ -142,7 +142,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const catastrophicLosses = values.catastrophicLosses;
   const netPremiumsEarned = values.netPremiumsEarned;
   
-  // Catastrophe Ratio = (Catastrophic Losses / Net Premiums Earned) × 100
+  // Catastrophe Ratio = (Catastrophic Losses / Net Premiums Earned) Ã— 100
   const catastropheRatio = netPremiumsEarned > 0 ? (catastrophicLosses / netPremiumsEarned) * 100 : 0;
   
   // Average Annual Loss (assuming annual period)
@@ -330,7 +330,7 @@ export default function CatastropheLossModelingToolSimple() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Catastrophe Ratio</strong> = (Catastrophic Losses / Net Premiums Earned) × 100
+            <strong>Catastrophe Ratio</strong> = (Catastrophic Losses / Net Premiums Earned) Ã— 100
           </p>
           <p>
             <strong>Average Annual Loss (AAL)</strong> = Expected catastrophe loss per year (for the period analyzed)
@@ -459,7 +459,7 @@ export default function CatastropheLossModelingToolSimple() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Formula</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>Catastrophe Ratio = (Catastrophic Losses / Net Premiums Earned) × 100</strong></p>
+        <p className="font-mono text-lg"><strong>Catastrophe Ratio = (Catastrophic Losses / Net Premiums Earned) Ã— 100</strong></p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Interpreting Catastrophe Ratios</h3>

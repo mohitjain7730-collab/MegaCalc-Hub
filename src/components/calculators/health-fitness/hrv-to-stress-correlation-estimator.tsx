@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter your typical or baseline HRV (e.g., 7–30 day rolling average in ms or RMSSD units).',
+  'Enter your typical or baseline HRV (e.g., 7â€“30 day rolling average in ms or RMSSD units).',
   'Enter your current HRV value from today or the most recent measurement.',
-  'Rate your perceived stress level on a 0–10 scale.',
-  'Rate your sleep quality for the last night or recent period on a 0–10 scale.',
+  'Rate your perceived stress level on a 0â€“10 scale.',
+  'Rate your sleep quality for the last night or recent period on a 0â€“10 scale.',
   'Review the HRV change percentage, stress correlation index, and practical suggestions.',
 ];
 
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/hrv-to-stress-correlation-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/hrv-to-stress-correlation-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'HRV to Stress Correlation Estimator', item: baseUrl },
       ],
     },
@@ -188,7 +188,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations: string[] = [
     'Measure HRV at consistent times (often first thing in the morning) and in similar conditions for better comparisons.',
     'Log big stressors (work, emotional events, intense training) alongside HRV and sleep quality to see more nuanced patterns.',
-    'Use HRV as a supportive metric, not a verdict—combine it with symptoms, mood, and professional guidance.',
+    'Use HRV as a supportive metric, not a verdictâ€”combine it with symptoms, mood, and professional guidance.',
   ];
 
   if (hrvChangePercent < -15 && perceivedStressScore >= 7) {
@@ -320,7 +320,7 @@ export default function HRVToStressCorrelationEstimator() {
                   name="perceivedStressScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Perceived stress (0–10)</FormLabel>
+                      <FormLabel>Perceived stress (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -339,7 +339,7 @@ export default function HRVToStressCorrelationEstimator() {
                   name="sleepQualityScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Recent sleep quality (0–10)</FormLabel>
+                      <FormLabel>Recent sleep quality (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -355,7 +355,7 @@ export default function HRVToStressCorrelationEstimator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate HRV–stress correlation
+                Calculate HRVâ€“stress correlation
               </Button>
             </form>
           </Form>
@@ -381,7 +381,7 @@ export default function HRVToStressCorrelationEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stress correlation index</p>
                 <p className="text-2xl font-semibold text-primary">{result.stressCorrelationIndex}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Perceived stress</p>
@@ -446,7 +446,7 @@ export default function HRVToStressCorrelationEstimator() {
           </p>
           <p>
             <strong>Stress load composite</strong> blends perceived stress and inverse sleep quality into a single
-            0–100 index, where higher values suggest more physiological and psychological load.
+            0â€“100 index, where higher values suggest more physiological and psychological load.
           </p>
           <p>
             <strong>Stress correlation index</strong> highlights how well HRV shifts line up with stress load, giving
@@ -549,7 +549,7 @@ export default function HRVToStressCorrelationEstimator() {
         </h1>
         <p className="text-lg italic text-gray-700">
           This guide explains how to interpret heart rate variability (HRV) in the context of stress, sleep, and
-          recovery—so you can use it as a helpful signal rather than a source of anxiety.
+          recoveryâ€”so you can use it as a helpful signal rather than a source of anxiety.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents</h2>
@@ -571,7 +571,7 @@ export default function HRVToStressCorrelationEstimator() {
           </li>
           <li>
             <a href="#using-index" className="hover:underline">
-              4. Using the HRV–Stress Correlation Index in Daily Decisions
+              4. Using the HRVâ€“Stress Correlation Index in Daily Decisions
             </a>
           </li>
           <li>
@@ -588,14 +588,14 @@ export default function HRVToStressCorrelationEstimator() {
         </h2>
         <p>
           Heart rate variability (HRV) represents the variation in time between heartbeats, usually expressed in
-          milliseconds or summarized as metrics like RMSSD, SDNN, or proprietary “readiness” scores. Rather than being
-          a random wiggle, this variation reflects the tug-of-war between your sympathetic (“fight or flight”) and
-          parasympathetic (“rest and digest”) branches of the autonomic nervous system.
+          milliseconds or summarized as metrics like RMSSD, SDNN, or proprietary â€œreadinessâ€ scores. Rather than being
+          a random wiggle, this variation reflects the tug-of-war between your sympathetic (â€œfight or flightâ€) and
+          parasympathetic (â€œrest and digestâ€) branches of the autonomic nervous system.
         </p>
         <p>
           Higher HRV at rest is often associated with greater adaptability and recovery capacity, especially when
-          interpreted in the context of your personal baseline. However, HRV is influenced by many variables—age, sex,
-          genetics, training status, illness, medications, and measurement conditions—so absolute numbers vary widely
+          interpreted in the context of your personal baseline. However, HRV is influenced by many variablesâ€”age, sex,
+          genetics, training status, illness, medications, and measurement conditionsâ€”so absolute numbers vary widely
           between people.
         </p>
 
@@ -603,7 +603,7 @@ export default function HRVToStressCorrelationEstimator() {
           2. Stress Physiology and the Autonomic Nervous System
         </h2>
         <p>
-          Acute stressors—tough workouts, deadlines, emotional conflict, sleep loss—tend to increase sympathetic tone
+          Acute stressorsâ€”tough workouts, deadlines, emotional conflict, sleep lossâ€”tend to increase sympathetic tone
           and reduce HRV in the short term. When recovery is adequate, HRV typically rebounds toward baseline. When
           stressors accumulate without sufficient recovery, HRV may remain suppressed and symptoms like fatigue,
           irritability, and decreased performance can emerge.
@@ -620,7 +620,7 @@ export default function HRVToStressCorrelationEstimator() {
         <p>
           Sleep is one of the most powerful levers for autonomic balance. Fragmented or insufficient sleep typically
           lowers HRV and raises perceived stress, while high-quality sleep allows parasympathetic tone to rise and HRV
-          to recover. Because of this, poor sleep can make it hard to interpret HRV—low numbers may be as much about
+          to recover. Because of this, poor sleep can make it hard to interpret HRVâ€”low numbers may be as much about
           sleep debt as about training or work stress.
         </p>
         <p>
@@ -630,7 +630,7 @@ export default function HRVToStressCorrelationEstimator() {
         </p>
 
         <h2 id="using-index" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
-          4. Using the HRV–Stress Correlation Index in Daily Decisions
+          4. Using the HRVâ€“Stress Correlation Index in Daily Decisions
         </h2>
         <p>
           When HRV drops significantly and your correlation index is high (meaning HRV, stress, and sleep signals agree),
@@ -639,7 +639,7 @@ export default function HRVToStressCorrelationEstimator() {
           making major changes.
         </p>
         <p>
-          If the index is low—HRV and your lived experience do not match—it is a sign to zoom out. Check for obvious
+          If the index is lowâ€”HRV and your lived experience do not matchâ€”it is a sign to zoom out. Check for obvious
           artifacts (poor sensor contact, measurement at odd times), review medications and health conditions that
           affect HRV, and discuss persistent mismatches with your clinician rather than ignoring your symptoms.
         </p>
@@ -649,8 +649,8 @@ export default function HRVToStressCorrelationEstimator() {
         </h2>
         <p>
           HRV is a helpful but imperfect lens on your nervous system. It should not be used to self-diagnose heart
-          disease, mental health disorders, or overtraining. Sudden, extreme changes in HRV—especially when paired with
-          chest pain, shortness of breath, palpitations, or neurological symptoms—warrant prompt medical attention.
+          disease, mental health disorders, or overtraining. Sudden, extreme changes in HRVâ€”especially when paired with
+          chest pain, shortness of breath, palpitations, or neurological symptomsâ€”warrant prompt medical attention.
         </p>
         <p>
           Used thoughtfully, HRV can complement, not replace, clinical reasoning and self-awareness. This tool is
@@ -664,7 +664,7 @@ export default function HRVToStressCorrelationEstimator() {
         </h2>
         <p>
           The HRV to Stress Correlation Estimator helps you translate numbers on a screen into a story about how your
-          body is handling life’s demands. By pairing HRV with stress and sleep data, you gain a richer picture than any
+          body is handling lifeâ€™s demands. By pairing HRV with stress and sleep data, you gain a richer picture than any
           single metric can provide. Use that picture to nudge your habits toward better balance, and to know when it is
           time to ask for expert support.
         </p>

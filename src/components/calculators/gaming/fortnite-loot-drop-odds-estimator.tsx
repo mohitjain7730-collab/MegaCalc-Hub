@@ -27,12 +27,12 @@ const faqs = [
   {
     question: 'What is the expected number of drops?',
     answer:
-      'Expected number of drops = Drop Rate × Number of Opens. For example, with 5% legendary drop rate and 20 opens, expected legendary drops = 1.0. This is the average number you can expect, though actual results will vary due to randomness.',
+      'Expected number of drops = Drop Rate Ã— Number of Opens. For example, with 5% legendary drop rate and 20 opens, expected legendary drops = 1.0. This is the average number you can expect, though actual results will vary due to randomness.',
   },
   {
     question: 'What is the probability of getting at least one legendary?',
     answer:
-      'Probability of at least one legendary = 1 - (1 - Legendary Drop Rate)^Number of Opens. For example, with 5% drop rate and 20 opens: 1 - (0.95)^20 ≈ 64.2%. This shows the chance of getting at least one legendary across multiple opens.',
+      'Probability of at least one legendary = 1 - (1 - Legendary Drop Rate)^Number of Opens. For example, with 5% drop rate and 20 opens: 1 - (0.95)^20 â‰ˆ 64.2%. This shows the chance of getting at least one legendary across multiple opens.',
   },
   {
     question: 'Do drop rates add up to 100%?',
@@ -88,7 +88,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite Loot Drop Odds Estimator', item: baseUrl },
       ],
     },
@@ -223,16 +223,16 @@ export default function FortniteLootDropOddsEstimator() {
 
         <p>Single open probability is simply the drop rate. For example, with 5% legendary drop rate, each open has a 5% chance of legendary. This is straightforward but doesn't account for multiple opens.</p>
 
-        <p>Probability of at least one uses the formula: P(At Least One) = 1 - (1 - Drop Rate)^Number of Opens. This calculates the chance of getting at least one item of a specific rarity across multiple opens. For example, with 5% drop rate and 20 opens: 1 - (0.95)^20 ≈ 64.2%.</p>
+        <p>Probability of at least one uses the formula: P(At Least One) = 1 - (1 - Drop Rate)^Number of Opens. This calculates the chance of getting at least one item of a specific rarity across multiple opens. For example, with 5% drop rate and 20 opens: 1 - (0.95)^20 â‰ˆ 64.2%.</p>
 
-        <p>Probability of exactly N uses binomial probability: P(Exactly N) = C(Opens, N) × (Drop Rate)^N × (1 - Drop Rate)^(Opens - N). This calculates the chance of getting exactly N items of a specific rarity. More complex but provides precise probabilities.</p>
+        <p>Probability of exactly N uses binomial probability: P(Exactly N) = C(Opens, N) Ã— (Drop Rate)^N Ã— (1 - Drop Rate)^(Opens - N). This calculates the chance of getting exactly N items of a specific rarity. More complex but provides precise probabilities.</p>
 
         <p>Probability of all common uses: P(All Common) = (Common Rate)^Number of Opens. This calculates the chance that all opens result in common items only. This probability decreases as number of opens increases, showing that rare items become more likely with more opens.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Probability Examples</h3>
-        <p>Example: 5% legendary rate, 20 opens. Probability of at least one legendary = 1 - (0.95)^20 ≈ 64.2%. This means you have a 64.2% chance of getting at least one legendary in 20 opens. Not guaranteed, but likely.</p>
+        <p>Example: 5% legendary rate, 20 opens. Probability of at least one legendary = 1 - (0.95)^20 â‰ˆ 64.2%. This means you have a 64.2% chance of getting at least one legendary in 20 opens. Not guaranteed, but likely.</p>
 
-        <p>Example: 2% epic rate, 50 opens. Probability of at least one epic = 1 - (0.98)^50 ≈ 63.6%. This shows that even with low drop rates, multiple opens provide reasonable probabilities of rare items.</p>
+        <p>Example: 2% epic rate, 50 opens. Probability of at least one epic = 1 - (0.98)^50 â‰ˆ 63.6%. This shows that even with low drop rates, multiple opens provide reasonable probabilities of rare items.</p>
 
         <hr />
 
@@ -240,7 +240,7 @@ export default function FortniteLootDropOddsEstimator() {
 
         <p>Expected values represent average outcomes over many trials, helping players understand typical results. Understanding expected values helps players set realistic expectations and plan loot collection.</p>
 
-        <p>Expected drops formula: Expected = (Drop Rate / 100) × Number of Opens. This calculates the average number of drops you can expect for each rarity tier. For example, with 5% drop rate and 20 opens: Expected = 0.05 × 20 = 1.0 legendary.</p>
+        <p>Expected drops formula: Expected = (Drop Rate / 100) Ã— Number of Opens. This calculates the average number of drops you can expect for each rarity tier. For example, with 5% drop rate and 20 opens: Expected = 0.05 Ã— 20 = 1.0 legendary.</p>
 
         <p>Expected values are averages, not guarantees. Actual results will vary due to randomness. Some players will get more than expected, others will get less. Over many trials, results average to expected values.</p>
 

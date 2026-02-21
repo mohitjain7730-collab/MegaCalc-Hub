@@ -74,7 +74,7 @@ const faqs = [
   {
     question: 'How is total premium calculated?',
     answer:
-      'Total Premium = (Expected Losses + Expense Load + Profit Margin) × (1 + Risk Loading Factor). The profit margin is calculated as a percentage of (Expected Losses + Expense Load).',
+      'Total Premium = (Expected Losses + Expense Load + Profit Margin) Ã— (1 + Risk Loading Factor). The profit margin is calculated as a percentage of (Expected Losses + Expense Load).',
   },
   {
     question: 'What is a reasonable profit margin?',
@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/premium-loading-factor-calculator';
+const baseUrl = 'https://mycalculating.com/finance/premium-loading-factor-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Premium Loading Factor Calculator', item: baseUrl },
       ],
     },
@@ -152,13 +152,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const profitMarginPct = values.profitMargin / 100;
   const riskLoadingFactorPct = values.riskLoadingFactor / 100;
   
-  // Profit Amount = (Expected Losses + Expense Load) × Profit Margin
+  // Profit Amount = (Expected Losses + Expense Load) Ã— Profit Margin
   const profitAmount = (expectedLosses + expenseLoad) * profitMarginPct;
   
   // Base Premium = Expected Losses + Expense Load + Profit Amount
   const basePremium = expectedLosses + expenseLoad + profitAmount;
   
-  // Total Premium = Base Premium × (1 + Risk Loading Factor)
+  // Total Premium = Base Premium Ã— (1 + Risk Loading Factor)
   const totalPremium = basePremium * (1 + riskLoadingFactorPct);
   
   // Overall Loading Factor = (Total Premium - Expected Losses) / Expected Losses
@@ -372,16 +372,16 @@ export default function PremiumLoadingFactorCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Profit Amount</strong> = (Expected Losses + Expense Load) × Profit Margin
+            <strong>Profit Amount</strong> = (Expected Losses + Expense Load) Ã— Profit Margin
           </p>
           <p>
             <strong>Base Premium</strong> = Expected Losses + Expense Load + Profit Amount
           </p>
           <p>
-            <strong>Total Premium</strong> = Base Premium × (1 + Risk Loading Factor)
+            <strong>Total Premium</strong> = Base Premium Ã— (1 + Risk Loading Factor)
           </p>
           <p>
-            <strong>Loading Factor</strong> = [(Total Premium - Expected Losses) / Expected Losses] × 100
+            <strong>Loading Factor</strong> = [(Total Premium - Expected Losses) / Expected Losses] Ã— 100
           </p>
           <p>The premium loading factor calculation ensures premiums cover expected losses, operating expenses, profit margin, and provide a buffer for risk and uncertainty. This comprehensive approach ensures insurers can meet obligations while maintaining profitability.</p>
         </CardContent>
@@ -526,10 +526,10 @@ export default function PremiumLoadingFactorCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Step 1: Calculate Profit Amount</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>Profit Amount = (Expected Losses + Expense Load) × Profit Margin</strong></p>
+        <p className="font-mono"><strong>Profit Amount = (Expected Losses + Expense Load) Ã— Profit Margin</strong></p>
     </div>
     <p>Example: Expected losses $500, expenses $100, profit margin 10%</p>
-    <p>Profit Amount = ($500 + $100) × 10% = $60</p>
+    <p>Profit Amount = ($500 + $100) Ã— 10% = $60</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Step 2: Calculate Base Premium</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
@@ -539,15 +539,15 @@ export default function PremiumLoadingFactorCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Step 3: Apply Risk Loading</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>Total Premium = Base Premium × (1 + Risk Loading Factor)</strong></p>
+        <p className="font-mono"><strong>Total Premium = Base Premium Ã— (1 + Risk Loading Factor)</strong></p>
     </div>
-    <p>If risk loading factor is 5%: Total Premium = $660 × 1.05 = $693</p>
+    <p>If risk loading factor is 5%: Total Premium = $660 Ã— 1.05 = $693</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Overall Loading Factor</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>Loading Factor = [(Total Premium - Expected Losses) / Expected Losses] × 100</strong></p>
+        <p className="font-mono"><strong>Loading Factor = [(Total Premium - Expected Losses) / Expected Losses] Ã— 100</strong></p>
     </div>
-    <p>Loading Factor = [($693 - $500) / $500] × 100 = 38.6%</p>
+    <p>Loading Factor = [($693 - $500) / $500] Ã— 100 = 38.6%</p>
     <p>This indicates the premium is 38.6% higher than expected losses, covering expenses, profit, and risk.</p>
 
 <hr className="my-6" />

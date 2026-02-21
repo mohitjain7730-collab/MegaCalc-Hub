@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/menstrual-phase-workout-intensity-planner';
+const baseUrl = 'https://mycalculating.com/health-fitness/menstrual-phase-workout-intensity-planner';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Menstrual Phase Workout Intensity Planner', item: baseUrl },
       ],
     },
@@ -189,7 +189,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (recommendedIntensity >= 7) {
     status = 'high-intensity';
     interpretation =
-      'Your entries suggest today might suit a higher‑energy session, if that feels good in your body. It is also okay to scale back if it does not.';
+      'Your entries suggest today might suit a higherâ€‘energy session, if that feels good in your body. It is also okay to scale back if it does not.';
   } else if (recommendedIntensity >= 4) {
     status = 'moderate-intensity';
     interpretation =
@@ -197,7 +197,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (recommendedIntensity >= 2) {
     status = 'low-intensity';
     interpretation =
-      'A lighter‑intensity day may feel more supportive right now, focusing on gentle movement and recovery rather than pushing hard.';
+      'A lighterâ€‘intensity day may feel more supportive right now, focusing on gentle movement and recovery rather than pushing hard.';
   } else {
     status = 'rest';
     interpretation =
@@ -208,11 +208,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
     values.phase === 'menstrual'
       ? 'During menstrual days, many people find that light movement (walking, yoga, stretching) feels kinder on the body and can sometimes ease cramps and mood.'
       : values.phase === 'follicular' || values.phase === 'ovulation'
-      ? 'Follicular and ovulation phases often come with more natural energy; if that fits your experience, you can explore somewhat higher‑intensity sessions here.'
-      : 'In the luteal phase, some people prefer to soften intensity or build in more recovery—listening to your own signals is more important than following a fixed plan.',
+      ? 'Follicular and ovulation phases often come with more natural energy; if that fits your experience, you can explore somewhat higherâ€‘intensity sessions here.'
+      : 'In the luteal phase, some people prefer to soften intensity or build in more recoveryâ€”listening to your own signals is more important than following a fixed plan.',
     values.painLevel >= 6
       ? 'If pain feels high, it may be kinder to favor rest or only very light movement until things ease.'
-      : 'If pain feels low and manageable, you can try today’s suggestion but always pause or stop if discomfort grows.',
+      : 'If pain feels low and manageable, you can try todayâ€™s suggestion but always pause or stop if discomfort grows.',
     'Noticing how different kinds of movement feel in each phase over time can help you design a routine that truly fits you.',
   ];
   
@@ -371,7 +371,7 @@ export default function MenstrualPhaseWorkoutIntensityPlanner() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recommended intensity</p>
                 <p className="text-2xl font-semibold text-primary">{result.recommendedIntensity.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">A 1–10 suggestion from this model—your own comfort is more important.</p>
+                <p className="text-xs text-muted-foreground">A 1â€“10 suggestion from this modelâ€”your own comfort is more important.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Workout type</p>
@@ -436,8 +436,8 @@ export default function MenstrualPhaseWorkoutIntensityPlanner() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Base intensity</strong> by phase: Menstrual 3, Follicular 7, Ovulation 8, Luteal 5 (out of 10).</p>
-          <p><strong>Recommended intensity</strong> = base intensity + energy adjustment ((energy − 5.5) × 0.4) − pain penalty (pain × 0.3), clamped to 1-10.</p>
-          <p><strong>Duration</strong>: High intensity (≥7) = 60 min, Moderate (5-6) = 45 min, Low (3-4) = 30 min, Rest (&lt;3) = 20 min.</p>
+          <p><strong>Recommended intensity</strong> = base intensity + energy adjustment ((energy âˆ’ 5.5) Ã— 0.4) âˆ’ pain penalty (pain Ã— 0.3), clamped to 1-10.</p>
+          <p><strong>Duration</strong>: High intensity (â‰¥7) = 60 min, Moderate (5-6) = 45 min, Low (3-4) = 30 min, Rest (&lt;3) = 20 min.</p>
           <p>Follicular and ovulation phases typically support higher intensity; menstrual and luteal phases may require lighter workouts.</p>
         </CardContent>
       </Card>
@@ -541,7 +541,7 @@ export default function MenstrualPhaseWorkoutIntensityPlanner() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool suggests a workout intensity, type, and rough duration based on your cycle phase, energy, pain level, and goals in this simple model.</p>
-          <p>Treat the outputs as flexible ideas—not rules—and adapt them to what feels safe and supportive for your body, ideally alongside any guidance from your care team.</p>
+          <p>Treat the outputs as flexible ideasâ€”not rulesâ€”and adapt them to what feels safe and supportive for your body, ideally alongside any guidance from your care team.</p>
         </CardContent>
       </Card>
 

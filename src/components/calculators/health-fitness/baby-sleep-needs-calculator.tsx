@@ -29,7 +29,7 @@ function calculateBabySleepNeeds(values: FormValues) {
   const currentSleep = values.currentSleepHours || 14; // hours
   const napCount = values.napCount || 3;
   
-  // Age‑based sleep ranges, used as gentle reference ranges only
+  // Ageâ€‘based sleep ranges, used as gentle reference ranges only
   let recommendedTotalSleep = 0;
   let recommendedNaps = 0;
   let recommendedNightSleep = 0;
@@ -65,7 +65,7 @@ function calculateBabySleepNeeds(values: FormValues) {
   // Calculate sleep adequacy (for insight only, not diagnosis)
   const sleepAdequacy = (currentSleep / recommendedTotalSleep) * 100;
   
-  // Determine sleep status in gentle, non‑diagnostic terms
+  // Determine sleep status in gentle, nonâ€‘diagnostic terms
   let sleepStatus = 'adequate';
   let statusMessage = '';
   
@@ -172,7 +172,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/baby-sleep-needs-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/baby-sleep-needs-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -181,7 +181,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Baby Sleep Needs Wellness Tracker', item: baseUrl },
       ],
     },
@@ -319,8 +319,8 @@ export default function BabySleepNeedsCalculator() {
                 <select {...field} className="w-full h-10 rounded-md border border-input bg-background px-3 py-2 text-sm">
                   <option value="" />
                   <option value="excellent">Very settled most nights</option>
-                  <option value="good">Mostly settled with a few brief wake‑ups</option>
-                  <option value="fair">Quite a few wake‑ups</option>
+                  <option value="good">Mostly settled with a few brief wakeâ€‘ups</option>
+                  <option value="fair">Quite a few wakeâ€‘ups</option>
                   <option value="poor">Often hard to settle</option>
                 </select>
                 <FormMessage />
@@ -426,7 +426,7 @@ export default function BabySleepNeedsCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Sleep Adequacy</strong> = (Current Sleep Hours ÷ Recommended Total Sleep for Age) × 100. This compares your
+            <strong>Sleep Adequacy</strong> = (Current Sleep Hours Ã· Recommended Total Sleep for Age) Ã— 100. This compares your
             baby's current sleep to age-appropriate reference ranges.
           </p>
           <p>
@@ -660,7 +660,7 @@ export default function BabySleepNeedsCalculator() {
               <b>Room sharing:</b> Share room (not bed) for first 6-12 months
             </li>
             <li>
-              <b>Temperature:</b> Keep room temperature comfortable (68-72°F or 20-22°C)
+              <b>Temperature:</b> Keep room temperature comfortable (68-72Â°F or 20-22Â°C)
             </li>
           </ul>
 
@@ -765,7 +765,7 @@ export default function BabySleepNeedsCalculator() {
             Understanding baby sleep needs and patterns helps caregivers support healthy sleep habits. By recognizing
             age-appropriate sleep ranges, creating safe sleep environments, establishing consistent routines, and responding to
             individual needs, you can help your baby develop healthy sleep patterns. Remember that sleep needs vary between
-            babies—what works for one may not work for another. Be patient, flexible, and responsive to your baby's cues. If you
+            babiesâ€”what works for one may not work for another. Be patient, flexible, and responsive to your baby's cues. If you
             have persistent concerns about your baby's sleep, growth, or development, consult with your pediatrician who can
             provide personalized guidance. This tool is designed for wellness reflection and is not a substitute for professional
             medical evaluation or treatment.

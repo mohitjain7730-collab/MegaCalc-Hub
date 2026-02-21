@@ -80,7 +80,7 @@ const faqs = [
   {
     question: 'Can I train to improve focus retention?',
     answer:
-      'Yes. Focus is like a muscle—it improves with practice. Start with shorter focused sessions (20-30 minutes) and gradually increase duration. Meditation, mindfulness, and concentration exercises can enhance focus retention.',
+      'Yes. Focus is like a muscleâ€”it improves with practice. Start with shorter focused sessions (20-30 minutes) and gradually increase duration. Meditation, mindfulness, and concentration exercises can enhance focus retention.',
   },
   {
     question: 'What about task complexity?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/focus-retention-time-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/focus-retention-time-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Focus Retention Wellness Score', item: baseUrl },
       ],
     },
@@ -424,16 +424,16 @@ export default function FocusRetentionTimeCalculator() {
             <strong>Distraction penalty</strong> = -5 minutes per distraction.
           </p>
           <p>
-            <strong>Task complexity adjustment</strong> = Base score × (1 - ((Complexity - 5) / 5) × 0.15).
+            <strong>Task complexity adjustment</strong> = Base score Ã— (1 - ((Complexity - 5) / 5) Ã— 0.15).
           </p>
           <p>
-            <strong>Sleep adjustment</strong> = &lt;6 hours: ×0.7, 6-7 hours: ×0.85, ≥8 hours: ×1.1.
+            <strong>Sleep adjustment</strong> = &lt;6 hours: Ã—0.7, 6-7 hours: Ã—0.85, â‰¥8 hours: Ã—1.1.
           </p>
           <p>
-            <strong>Stress adjustment</strong> = Base score × (1 - ((Stress level - 5) / 5) × 0.2).
+            <strong>Stress adjustment</strong> = Base score Ã— (1 - ((Stress level - 5) / 5) Ã— 0.2).
           </p>
           <p>
-            <strong>Efficiency ratio</strong> = (Focused time / (Focused time + Distractions × 5)) × 100%.
+            <strong>Efficiency ratio</strong> = (Focused time / (Focused time + Distractions Ã— 5)) Ã— 100%.
           </p>
           <p>Focus retention reflects ability to maintain sustained attention. Scores above 75 minutes indicate excellent focus, while scores below 25 minutes indicate need for improvement in environment, sleep, and focus training.</p>
         </CardContent>

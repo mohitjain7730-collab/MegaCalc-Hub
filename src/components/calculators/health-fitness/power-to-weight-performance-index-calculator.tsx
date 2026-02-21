@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/power-to-weight-performance-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/power-to-weight-performance-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Power-to-Weight Performance Wellness Index', item: baseUrl },
       ],
     },
@@ -430,10 +430,10 @@ export default function PowerToWeightPerformanceIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Power conversion</strong> = Horsepower × 745.7 = Watts (if needed).
+            <strong>Power conversion</strong> = Horsepower Ã— 745.7 = Watts (if needed).
           </p>
           <p>
-            <strong>Weight conversion</strong> = Pounds × 0.453592 = Kilograms (if needed).
+            <strong>Weight conversion</strong> = Pounds Ã— 0.453592 = Kilograms (if needed).
           </p>
           <p>
             <strong>Power-to-weight ratio</strong> = Power (W) / Body weight (kg) = W/kg.

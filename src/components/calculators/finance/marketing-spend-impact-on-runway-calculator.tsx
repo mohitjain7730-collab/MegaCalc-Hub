@@ -32,7 +32,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate how adding or increasing marketing spend affects startup runway: new monthly burn, new runway in months, runway lost, and percentage impact. Optional one-time campaign cost.',
-      url: 'https://mycalculating.com/category/finance/marketing-spend-impact-on-runway-calculator',
+      url: 'https://mycalculating.com/finance/marketing-spend-impact-on-runway-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -126,9 +126,9 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
       insights.push(`One-time marketing cost: $${r.oneTimeCostTotal.toLocaleString()} reduces cash before new runway calculation`);
     }
     if (r.newRunwayMonths >= 12) {
-      insights.push('Post-spend runway is still 12+ months; reasonable buffer if marketing drives payback within 12–18 months');
+      insights.push('Post-spend runway is still 12+ months; reasonable buffer if marketing drives payback within 12â€“18 months');
     } else if (r.newRunwayMonths >= 6) {
-      insights.push('Post-spend runway is 6–12 months; ensure marketing ROI and CAC payback are measurable before scaling');
+      insights.push('Post-spend runway is 6â€“12 months; ensure marketing ROI and CAC payback are measurable before scaling');
     } else {
       insights.push('Post-spend runway is under 6 months; high risk without proven unit economics or near-term funding');
     }
@@ -138,8 +138,8 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
   const getConsiderations = () => [
     'Include all incremental marketing: paid ads, content, tools, contractors, and allocated internal time.',
     'One-time costs (campaigns, creative, launches) reduce cash immediately and shorten runway in addition to recurring spend.',
-    'Marketing should be tied to CAC and LTV; use unit economics calculator to ensure LTV:CAC ≥ 3 and payback under 18 months.',
-    'Fundraising typically takes 3–6 months; keep runway above that after adding marketing burn.',
+    'Marketing should be tied to CAC and LTV; use unit economics calculator to ensure LTV:CAC â‰¥ 3 and payback under 18 months.',
+    'Fundraising typically takes 3â€“6 months; keep runway above that after adding marketing burn.',
     'Test before scaling: validate channel ROI and payback before increasing monthly marketing burn.',
   ];
 
@@ -251,7 +251,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <DollarSign className="h-4 w-4" />
-                        One-Time Marketing Spend ($) — Optional
+                        One-Time Marketing Spend ($) â€” Optional
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -294,7 +294,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">{result.newRunwayMonths.toFixed(1)} mo</p>
                 <p className="text-lg text-muted-foreground mt-2">New runway after marketing spend</p>
-                <p className="text-sm text-muted-foreground mt-1">Down from {result.oldRunwayMonths.toFixed(1)} months (−{result.runwayLostMonths.toFixed(1)} months)</p>
+                <p className="text-sm text-muted-foreground mt-1">Down from {result.oldRunwayMonths.toFixed(1)} months (âˆ’{result.runwayLostMonths.toFixed(1)} months)</p>
                 <p className="text-sm text-muted-foreground mt-1">{result.interpretation}</p>
               </div>
 
@@ -314,7 +314,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <BarChart3 className="h-6 w-6 mx-auto mb-2 text-purple-600" />
                   <p className="font-semibold">Runway Lost</p>
-                  <p className="text-lg font-bold">−{result.runwayLostMonths.toFixed(1)} mo ({result.runwayChangePct.toFixed(0)}%)</p>
+                  <p className="text-lg font-bold">âˆ’{result.runwayLostMonths.toFixed(1)} mo ({result.runwayChangePct.toFixed(0)}%)</p>
                 </div>
               </div>
 
@@ -386,7 +386,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
                 Current Cash & Monthly Burn
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Current cash is the balance available today. Monthly burn is total recurring expenses (excluding the new marketing you are adding). Runway = Cash ÷ Burn.
+                Current cash is the balance available today. Monthly burn is total recurring expenses (excluding the new marketing you are adding). Runway = Cash Ã· Burn.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -436,10 +436,10 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
               New Monthly Burn = Current Burn + Additional Monthly Marketing Spend
             </p>
             <p className="font-mono text-sm text-center">
-              Cash After One-Time = Current Cash − One-Time Marketing Spend
+              Cash After One-Time = Current Cash âˆ’ One-Time Marketing Spend
             </p>
             <p className="font-mono text-sm text-center">
-              New Runway (months) = Cash After One-Time ÷ New Monthly Burn
+              New Runway (months) = Cash After One-Time Ã· New Monthly Burn
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
@@ -573,19 +573,19 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Recurring vs One-Time</h3>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong className="font-semibold">Recurring:</strong> Monthly ad spend, tools, contractors, and allocated internal cost increase burn. New runway = Cash ÷ New monthly burn.</li>
+          <li><strong className="font-semibold">Recurring:</strong> Monthly ad spend, tools, contractors, and allocated internal cost increase burn. New runway = Cash Ã· New monthly burn.</li>
           <li><strong className="font-semibold">One-time:</strong> Campaigns, creative, launch events reduce cash in the period paid. Cash after one-time is used in the runway calculation.</li>
         </ul>
 
         <hr />
 
         <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Runway and Marketing Spend Formulas</h2>
-        <p>New monthly burn = Current burn + Additional monthly marketing spend. If there are one-time costs, cash after one-time = Current cash − One-time marketing spend. New runway = Cash after one-time ÷ New monthly burn.</p>
+        <p>New monthly burn = Current burn + Additional monthly marketing spend. If there are one-time costs, cash after one-time = Current cash âˆ’ One-time marketing spend. New runway = Cash after one-time Ã· New monthly burn.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-xl text-destructive font-bold">
-            New Runway = (Cash − One-Time Marketing) ÷ (Current Burn + Additional Monthly Marketing)
+            New Runway = (Cash âˆ’ One-Time Marketing) Ã· (Current Burn + Additional Monthly Marketing)
           </p>
         </div>
 
@@ -603,12 +603,12 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
         <p>A small percentage drop in runway (e.g. under 10%) usually means the incremental marketing is affordable relative to burn, provided you have or expect payback. A large drop (e.g. over 25%) means runway shortens materially; plan for measurable ROI and payback.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Target Runway After Adding Marketing</h3>
-        <p>Keep runway above <strong>12–18 months</strong> when possible so you have time to fundraise (typically 3–6 months) and validate channels. If post-spend runway falls below 12 months, ensure CAC payback is under 18 months and LTV:CAC is healthy (e.g. ≥ 3:1).</p>
+        <p>Keep runway above <strong>12â€“18 months</strong> when possible so you have time to fundraise (typically 3â€“6 months) and validate channels. If post-spend runway falls below 12 months, ensure CAC payback is under 18 months and LTV:CAC is healthy (e.g. â‰¥ 3:1).</p>
 
         <hr />
 
         <h2 id="unit-economics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tying Marketing to Unit Economics and CAC Payback</h2>
-        <p>Marketing spend should be justified by <strong>Customer Acquisition Cost (CAC)</strong> and <strong>Lifetime Value (LTV)</strong>. Use a unit economics or CAC payback calculator to ensure: (1) LTV:CAC ≥ 3:1, and (2) CAC payback in months is under 18 (ideally under 12) for SaaS. If payback is long, increasing marketing shortens runway without sufficient revenue lift.</p>
+        <p>Marketing spend should be justified by <strong>Customer Acquisition Cost (CAC)</strong> and <strong>Lifetime Value (LTV)</strong>. Use a unit economics or CAC payback calculator to ensure: (1) LTV:CAC â‰¥ 3:1, and (2) CAC payback in months is under 18 (ideally under 12) for SaaS. If payback is long, increasing marketing shortens runway without sufficient revenue lift.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Best Practice</h3>
         <p>Model scenarios: e.g. $20k vs $50k additional monthly marketing. Compare post-spend runway to your target and to typical fundraising timelines. Pair this calculator with unit economics and CAC payback tools to ensure spend is efficient before scaling.</p>
@@ -621,7 +621,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
         <hr />
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Marketing spend increases burn and, when one-time costs exist, reduces cash. Both shorten runway. Use this tool to quantify the impact and plan marketing against runway, unit economics, and CAC payback. Keep runway above 12–18 months when possible, and tie marketing to proven channels and payback metrics.</p>
+        <p>Marketing spend increases burn and, when one-time costs exist, reduces cash. Both shorten runway. Use this tool to quantify the impact and plan marketing against runway, unit economics, and CAC payback. Keep runway above 12â€“18 months when possible, and tie marketing to proven channels and payback metrics.</p>
       </section>
 
       {/* FAQ Section */}
@@ -656,13 +656,13 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
             <div>
               <h4 className="font-semibold text-lg mb-3">What runway should I target after adding marketing?</h4>
               <p className="text-muted-foreground">
-                Many startups aim for 12–18 months of runway after adding marketing. Fundraising often takes 3–6 months, so having at least 12 months gives time to raise or validate channels. Ensure CAC payback is under 18 months and LTV:CAC is healthy (e.g. ≥ 3:1) before scaling spend.
+                Many startups aim for 12â€“18 months of runway after adding marketing. Fundraising often takes 3â€“6 months, so having at least 12 months gives time to raise or validate channels. Ensure CAC payback is under 18 months and LTV:CAC is healthy (e.g. â‰¥ 3:1) before scaling spend.
               </p>
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I justify marketing spend against runway?</h4>
               <p className="text-muted-foreground">
-                Tie marketing to unit economics: use a CAC and LTV calculator to ensure LTV:CAC ≥ 3:1 and CAC payback is under 18 months (ideally under 12 for SaaS). If payback is long, increasing marketing shortens runway without sufficient revenue lift; optimize channels before scaling.
+                Tie marketing to unit economics: use a CAC and LTV calculator to ensure LTV:CAC â‰¥ 3:1 and CAC payback is under 18 months (ideally under 12 for SaaS). If payback is long, increasing marketing shortens runway without sufficient revenue lift; optimize channels before scaling.
               </p>
             </div>
           </div>
@@ -695,7 +695,7 @@ export default function MarketingSpendImpactOnRunwayCalculator() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Investors</strong>
-                <span className="text-sm text-muted-foreground">To assess whether a startup’s marketing plan is consistent with runway and unit economics.</span>
+                <span className="text-sm text-muted-foreground">To assess whether a startupâ€™s marketing plan is consistent with runway and unit economics.</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Startup Advisors</strong>

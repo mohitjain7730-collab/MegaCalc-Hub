@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'How do I calculate ownership percentage?',
     answer:
-      'Ownership percentage = (Investment Amount / Post-Money Valuation) × 100. Alternatively, if you know pre-money and investment: Ownership % = Investment / (Pre-Money + Investment) × 100.',
+      'Ownership percentage = (Investment Amount / Post-Money Valuation) Ã— 100. Alternatively, if you know pre-money and investment: Ownership % = Investment / (Pre-Money + Investment) Ã— 100.',
   },
   {
     question: 'What is dilution?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/pre-money-vs-post-money-valuation-calculator';
+const baseUrl = 'https://mycalculating.com/finance/pre-money-vs-post-money-valuation-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Pre-Money vs Post-Money Valuation Calculator', item: baseUrl },
       ],
     },
@@ -408,10 +408,10 @@ export default function PreMoneyVsPostMoneyValuationCalculator() {
             <strong>Pre-Money Valuation</strong> = Post-Money Valuation - Investment Amount. This represents company value before the investment.
           </p>
           <p>
-            <strong>Ownership Percentage</strong> = (Investment Amount / Post-Money Valuation) × 100. The percentage of the company the investor receives.
+            <strong>Ownership Percentage</strong> = (Investment Amount / Post-Money Valuation) Ã— 100. The percentage of the company the investor receives.
           </p>
           <p>
-            <strong>Investment Amount</strong> = Post-Money Valuation × (Ownership Percentage / 100). The cash invested for the ownership stake.
+            <strong>Investment Amount</strong> = Post-Money Valuation Ã— (Ownership Percentage / 100). The cash invested for the ownership stake.
           </p>
           <p>Pre-money and post-money valuations are fundamental concepts in startup financing. Pre-money is the value before investment, post-money includes the investment. The difference determines ownership percentage and dilution.</p>
         </CardContent>
@@ -507,7 +507,7 @@ export default function PreMoneyVsPostMoneyValuationCalculator() {
     <p><b>Pre-money valuation</b> is the company's value immediately before receiving new investment, representing the value of existing shares. <b>Post-money valuation</b> is the company's value immediately after receiving investment, equal to pre-money plus the investment amount.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Core Relationship</h3>
-    <p>The fundamental equation is: <b>Post-Money Valuation = Pre-Money Valuation + Investment Amount</b>. This relationship determines ownership percentage: <b>Ownership % = (Investment / Post-Money) × 100</b>.</p>
+    <p>The fundamental equation is: <b>Post-Money Valuation = Pre-Money Valuation + Investment Amount</b>. This relationship determines ownership percentage: <b>Ownership % = (Investment / Post-Money) Ã— 100</b>.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Why It Matters</h3>
     <p>Understanding pre-money vs post-money is critical for:</p>
@@ -527,17 +527,17 @@ export default function PreMoneyVsPostMoneyValuationCalculator() {
         <p className="text-lg font-mono"><b>Post-Money = Pre-Money + Investment</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Ownership % = (Investment / Post-Money) × 100</b></p>
+        <p className="text-lg font-mono"><b>Ownership % = (Investment / Post-Money) Ã— 100</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Investment = Post-Money × (Ownership % / 100)</b></p>
+        <p className="text-lg font-mono"><b>Investment = Post-Money Ã— (Ownership % / 100)</b></p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If a company has a $5M pre-money valuation and receives a $1M investment:</p>
     <ul>
         <li>Post-money valuation = $5M + $1M = $6M</li>
-        <li>Investor ownership = ($1M / $6M) × 100 = 16.67%</li>
+        <li>Investor ownership = ($1M / $6M) Ã— 100 = 16.67%</li>
         <li>Founder ownership = 100% - 16.67% = 83.33%</li>
     </ul>
 

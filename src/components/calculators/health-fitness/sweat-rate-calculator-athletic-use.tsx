@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sweat-rate-calculator-athletic-use';
+const baseUrl = 'https://mycalculating.com/health-fitness/sweat-rate-calculator-athletic-use';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sweat Rate Calculator (Athletic Use)', item: baseUrl },
       ],
     },
@@ -381,13 +381,13 @@ export default function SweatRateCalculatorAthleticUse() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Sweat loss</strong> = (Pre-Exercise Weight - Post-Exercise Weight) × 1000 + Fluid Consumed. Weight loss in kg is converted to ml (1 kg = 1000 ml), and fluid consumed during exercise is added.
+            <strong>Sweat loss</strong> = (Pre-Exercise Weight - Post-Exercise Weight) Ã— 1000 + Fluid Consumed. Weight loss in kg is converted to ml (1 kg = 1000 ml), and fluid consumed during exercise is added.
           </p>
           <p>
             <strong>Sweat rate</strong> = Sweat Loss / Exercise Duration (hours). This gives sweat rate in ml per hour. Divide by 1000 to get liters per hour.
           </p>
           <p>
-            <strong>Hydration target</strong> = Sweat Rate × 0.8-1.0. Aim to replace 80-100% of sweat loss during exercise to maintain performance and prevent dehydration.
+            <strong>Hydration target</strong> = Sweat Rate Ã— 0.8-1.0. Aim to replace 80-100% of sweat loss during exercise to maintain performance and prevent dehydration.
           </p>
           <p>Accurate sweat rate measurement requires weighing before and after exercise under consistent conditions (minimal clothing, after using bathroom). Measure in different conditions (temperature, intensity) to develop comprehensive hydration strategies.</p>
         </CardContent>
@@ -516,7 +516,7 @@ export default function SweatRateCalculatorAthleticUse() {
         <li><b>Pre-exercise:</b> Weigh yourself in minimal clothing, after using the bathroom, and before exercise. Record weight in kg.</li>
         <li><b>During exercise:</b> Track any fluid consumed (in ml) during the exercise session.</li>
         <li><b>Post-exercise:</b> Immediately after exercise, towel dry and weigh yourself again in the same minimal clothing. Record weight.</li>
-        <li><b>Calculate:</b> Sweat Loss = (Pre-Weight - Post-Weight) × 1000 + Fluid Consumed (ml). Sweat Rate = Sweat Loss / Exercise Duration (hours).</li>
+        <li><b>Calculate:</b> Sweat Loss = (Pre-Weight - Post-Weight) Ã— 1000 + Fluid Consumed (ml). Sweat Rate = Sweat Loss / Exercise Duration (hours).</li>
     </ol>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Tips for Accuracy</h3>

@@ -50,7 +50,7 @@ const steps = [
   'Enter your average bedtime variability in minutes (difference between the earliest and latest bedtime across the week).',
   'Enter your average wake time variability in minutes.',
   'Enter your average variability in total sleep duration in minutes (night-to-night swings).',
-  'Enter how many nights per week you go to bed and wake up within a 30–45 minute window.',
+  'Enter how many nights per week you go to bed and wake up within a 30â€“45 minute window.',
   'Review your sleep consistency score, status, and personalized recommendations.',
 ];
 
@@ -68,22 +68,22 @@ const faqs = [
   {
     question: 'How many consistent nights per week should I aim for?',
     answer:
-      'Most sleep experts recommend aiming for at least 5–6 highly consistent nights per week, including weekends. The more regularly you keep your schedule, the easier it becomes for your body to anticipate sleep and wake times.',
+      'Most sleep experts recommend aiming for at least 5â€“6 highly consistent nights per week, including weekends. The more regularly you keep your schedule, the easier it becomes for your body to anticipate sleep and wake times.',
   },
   {
     question: 'Does sleep duration consistency matter as much as total hours?',
     answer:
-      'Both matter. Getting enough total sleep is essential, but large night‑to‑night swings in sleep duration (for example, 5 hours one night and 9 hours the next) can still leave you feeling jet‑lagged. Stable, sufficient sleep is ideal.',
+      'Both matter. Getting enough total sleep is essential, but large nightâ€‘toâ€‘night swings in sleep duration (for example, 5 hours one night and 9 hours the next) can still leave you feeling jetâ€‘lagged. Stable, sufficient sleep is ideal.',
   },
   {
     question: 'Can I catch up on sleep on weekends?',
     answer:
-      'Weekend “catch‑up” sleep can help if you are temporarily sleep deprived, but chronic weekday restriction followed by weekend oversleeping often worsens social jet lag. A consistent schedule with adequate nightly sleep is more effective long term.',
+      'Weekend â€œcatchâ€‘upâ€ sleep can help if you are temporarily sleep deprived, but chronic weekday restriction followed by weekend oversleeping often worsens social jet lag. A consistent schedule with adequate nightly sleep is more effective long term.',
   },
   {
     question: 'How quickly can I improve my sleep consistency score?',
     answer:
-      'You can improve your score within 1–2 weeks by choosing a target bedtime and wake time and sticking to them most days. Small, sustainable adjustments—15–30 minutes at a time—are easier to maintain than abrupt changes.',
+      'You can improve your score within 1â€“2 weeks by choosing a target bedtime and wake time and sticking to them most days. Small, sustainable adjustmentsâ€”15â€“30 minutes at a timeâ€”are easier to maintain than abrupt changes.',
   },
   {
     question: 'What if my work schedule is irregular or I work shifts?',
@@ -116,11 +116,11 @@ const relatedCalculators = [
   {
     name: 'Caffeine Cutoff Sleep Impact Calculator',
     slug: 'caffeine-cutoff-sleep-impact-calculator',
-    description: 'Identify how late‑day caffeine might be disrupting your sleep timing.',
+    description: 'Identify how lateâ€‘day caffeine might be disrupting your sleep timing.',
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-consistency-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-consistency-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Consistency Wellness Score Calculator', item: baseUrl },
       ],
     },
@@ -150,10 +150,10 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 const calculateResult = (values: FormValues): ResultPayload => {
   const { bedtimeVariability, wakeTimeVariability, sleepDurationVariability, consistentNightsPerWeek } = values;
 
-  // Normalize each variability metric to a 0–100 penalty (higher variability = bigger penalty)
-  const bedtimePenalty = clamp((bedtimeVariability / 120) * 30, 0, 30); // 0–2 hours → up to 30 points
+  // Normalize each variability metric to a 0â€“100 penalty (higher variability = bigger penalty)
+  const bedtimePenalty = clamp((bedtimeVariability / 120) * 30, 0, 30); // 0â€“2 hours â†’ up to 30 points
   const wakePenalty = clamp((wakeTimeVariability / 120) * 30, 0, 30);
-  const durationPenalty = clamp((sleepDurationVariability / 90) * 20, 0, 20); // 0–1.5 hours → up to 20
+  const durationPenalty = clamp((sleepDurationVariability / 90) * 20, 0, 20); // 0â€“1.5 hours â†’ up to 20
   const consistencyBonus = clamp((consistentNightsPerWeek / 7) * 30, 0, 30); // more nights = bonus
 
   let rawScore = 100 - bedtimePenalty - wakePenalty - durationPenalty + (consistencyBonus - 15);
@@ -178,9 +178,9 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations: string[] = [
-    'Choose a target bedtime and wake time that you can keep within a 30–45 minute window most days of the week.',
-    'Limit large weekend schedule shifts (“social jet lag”) by staying within 1 hour of your usual sleep and wake times.',
-    'Create a wind‑down routine (dim lights, reduce screens, relaxing activity) in the 30–60 minutes before bed.',
+    'Choose a target bedtime and wake time that you can keep within a 30â€“45 minute window most days of the week.',
+    'Limit large weekend schedule shifts (â€œsocial jet lagâ€) by staying within 1 hour of your usual sleep and wake times.',
+    'Create a windâ€‘down routine (dim lights, reduce screens, relaxing activity) in the 30â€“60 minutes before bed.',
   ];
 
   if (consistentNightsPerWeek < 5) {
@@ -191,13 +191,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (bedtimeVariability > 90 || wakeTimeVariability > 90) {
     recommendations.push(
-      'Reduce large swings in bedtime and wake time by adjusting in 15–30 minute steps each few nights instead of making sudden, big changes.'
+      'Reduce large swings in bedtime and wake time by adjusting in 15â€“30 minute steps each few nights instead of making sudden, big changes.'
     );
   }
 
   if (sleepDurationVariability > 60) {
     recommendations.push(
-      'Try to keep your total sleep duration within about 45–60 minutes of your nightly target by avoiding very short or very long nights when possible.'
+      'Try to keep your total sleep duration within about 45â€“60 minutes of your nightly target by avoiding very short or very long nights when possible.'
     );
   }
 
@@ -205,12 +205,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'This Week',
       detail:
-        'Track your actual bed and wake times for 7 days. Choose a realistic target schedule and focus on keeping at least 4–5 nights within a 45 minute window.',
+        'Track your actual bed and wake times for 7 days. Choose a realistic target schedule and focus on keeping at least 4â€“5 nights within a 45 minute window.',
     },
     {
       label: 'This Month',
       detail:
-        'Gradually tighten the window for both bedtime and wake time, aiming for at least 5–6 consistent nights per week. Adjust evening routines so that sleep timing feels natural, not forced.',
+        'Gradually tighten the window for both bedtime and wake time, aiming for at least 5â€“6 consistent nights per week. Adjust evening routines so that sleep timing feels natural, not forced.',
     },
     {
       label: 'Ongoing',
@@ -342,7 +342,7 @@ export default function SleepConsistencyScoreCalculator() {
                   name="consistentNightsPerWeek"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Consistent nights per week (0–7)</FormLabel>
+                      <FormLabel>Consistent nights per week (0â€“7)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -451,11 +451,11 @@ export default function SleepConsistencyScoreCalculator() {
           </p>
           <p>
             Bedtime and wake time variability contribute the largest penalties because irregular timing has the strongest
-            impact on your circadian rhythm. Sleep duration variability adds an additional penalty when night‑to‑night swings
+            impact on your circadian rhythm. Sleep duration variability adds an additional penalty when nightâ€‘toâ€‘night swings
             are large.
           </p>
           <p>
-            The final score is normalized to a 0–100 scale where higher scores indicate a more stable and predictable sleep
+            The final score is normalized to a 0â€“100 scale where higher scores indicate a more stable and predictable sleep
             pattern that supports energy, mood, and recovery.
           </p>
         </CardContent>
@@ -547,7 +547,7 @@ export default function SleepConsistencyScoreCalculator() {
         />
         <meta
           itemProp="description"
-          content="A practical, evidence‑informed guide to understanding sleep consistency, circadian rhythm stability, and how regular bed and wake times improve energy, mood, and long‑term health."
+          content="A practical, evidenceâ€‘informed guide to understanding sleep consistency, circadian rhythm stability, and how regular bed and wake times improve energy, mood, and longâ€‘term health."
         />
         <meta
           itemProp="keywords"
@@ -565,7 +565,7 @@ export default function SleepConsistencyScoreCalculator() {
         </h1>
         <p className="text-lg italic text-gray-700">
           Learn how consistent sleep and wake times stabilize your circadian rhythm, deepen your sleep, and improve energy,
-          focus, and long‑term health—and how to gradually fix a chaotic schedule.
+          focus, and longâ€‘term healthâ€”and how to gradually fix a chaotic schedule.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
@@ -614,7 +614,7 @@ export default function SleepConsistencyScoreCalculator() {
           clocks receive conflicting signals about when to promote alertness and when to promote sleep.
         </p>
         <p>
-          In practice, a “consistent” schedule typically means keeping bedtime and wake time within about 30–60 minutes of
+          In practice, a â€œconsistentâ€ schedule typically means keeping bedtime and wake time within about 30â€“60 minutes of
           your target on most days. Occasional disruptions are normal, but chronic irregularity accumulates like a form of
           internal jet lag, even if you never change time zones.
         </p>
@@ -627,13 +627,13 @@ export default function SleepConsistencyScoreCalculator() {
           Circadian Rhythm, Social Jet Lag, and Your Energy
         </h2>
         <p>
-          Your circadian rhythm is a roughly 24‑hour cycle that coordinates sleep, hormone release, body temperature, and
-          digestion. Light exposure, meal timing, physical activity, and social cues all act as “zeitgebers”—time givers
+          Your circadian rhythm is a roughly 24â€‘hour cycle that coordinates sleep, hormone release, body temperature, and
+          digestion. Light exposure, meal timing, physical activity, and social cues all act as â€œzeitgebersâ€â€”time givers
           that keep your clock aligned with the environment.
         </p>
         <p>
           When you wake up early for work all week but stay up late and sleep in on weekends, you create what researchers
-          call <strong>social jet lag</strong>. The mismatch between your workday schedule and your free‑day schedule can
+          call <strong>social jet lag</strong>. The mismatch between your workday schedule and your freeâ€‘day schedule can
           leave you feeling like you fly across time zones every week, even if you stay home.
         </p>
 
@@ -646,7 +646,7 @@ export default function SleepConsistencyScoreCalculator() {
         </h2>
         <p>
           Studies link irregular sleep timing to higher rates of cardiometabolic disease, mood disorders, and impaired
-          cognitive performance—independent of total sleep duration. Even when people get enough hours, inconsistent timing
+          cognitive performanceâ€”independent of total sleep duration. Even when people get enough hours, inconsistent timing
           leads to lower sleep efficiency and more fragmented sleep.
         </p>
         <ul className="list-disc ml-6 space-y-1">
@@ -664,14 +664,14 @@ export default function SleepConsistencyScoreCalculator() {
         </h2>
         <p>
           You do not need a perfect schedule to benefit. Focus on sustainable, incremental change rather than an abrupt
-          overhaul. Pick a wake time you can realistically keep 6–7 days per week, then anchor your bedtime to allow for
+          overhaul. Pick a wake time you can realistically keep 6â€“7 days per week, then anchor your bedtime to allow for
           enough total sleep.
         </p>
         <ul className="list-disc ml-6 space-y-1">
-          <li>Shift your schedule in 15–30 minute steps every few nights instead of several hours at once.</li>
-          <li>Use morning light exposure and movement to strengthen your wake‑up signal.</li>
-          <li>Wind down with dim light, low‑stimulation activities, and reduced screens in the hour before bed.</li>
-          <li>Keep large weekend sleep‑ins for special occasions rather than every week.</li>
+          <li>Shift your schedule in 15â€“30 minute steps every few nights instead of several hours at once.</li>
+          <li>Use morning light exposure and movement to strengthen your wakeâ€‘up signal.</li>
+          <li>Wind down with dim light, lowâ€‘stimulation activities, and reduced screens in the hour before bed.</li>
+          <li>Keep large weekend sleepâ€‘ins for special occasions rather than every week.</li>
         </ul>
 
         <h2
@@ -716,7 +716,7 @@ export default function SleepConsistencyScoreCalculator() {
             nights you maintain each week. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
-            Outputs include a 0–100 score, qualitative status, interpretation, recommendations, and an action plan to help
+            Outputs include a 0â€“100 score, qualitative status, interpretation, recommendations, and an action plan to help
             you design a more stable sleep routine.
           </p>
           <p>

@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/central-nervous-system-cns-fatigue-recovery-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/central-nervous-system-cns-fatigue-recovery-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Central Nervous System (CNS) Fatigue Recovery Wellness Guide', item: baseUrl },
       ],
     },
@@ -436,25 +436,25 @@ export default function CentralNervousSystemCNSFatigueRecoveryCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Intensity base</strong> = (Intensity level / 10)^1.5 × 48 hours (max 48 hours at intensity 10).
+            <strong>Intensity base</strong> = (Intensity level / 10)^1.5 Ã— 48 hours (max 48 hours at intensity 10).
           </p>
           <p>
-            <strong>Volume adjustment</strong> = (Training volume / 20) × 12 hours.
+            <strong>Volume adjustment</strong> = (Training volume / 20) Ã— 12 hours.
           </p>
           <p>
             <strong>Training type multiplier</strong> = Strength: 1.2x, Power: 1.5x, Endurance: 0.8x, Mixed: 1.3x.
           </p>
           <p>
-            <strong>Days multiplier</strong> = 1 + ((Consecutive days - 1) / 5) × 0.8 (up to 1.8x for many consecutive days).
+            <strong>Days multiplier</strong> = 1 + ((Consecutive days - 1) / 5) Ã— 0.8 (up to 1.8x for many consecutive days).
           </p>
           <p>
-            <strong>Sleep adjustment</strong> = Recovery hours × (1 - ((Sleep quality - 7) / 3) × 0.3).
+            <strong>Sleep adjustment</strong> = Recovery hours Ã— (1 - ((Sleep quality - 7) / 3) Ã— 0.3).
           </p>
           <p>
-            <strong>Stress adjustment</strong> = Recovery hours × (1 + ((Stress level - 5) / 5) × 0.25).
+            <strong>Stress adjustment</strong> = Recovery hours Ã— (1 + ((Stress level - 5) / 5) Ã— 0.25).
           </p>
           <p>
-            <strong>Recovery hours</strong> = ((Intensity base + Volume adjustment) × Type multiplier × Days multiplier) + Sleep adjustment + Stress adjustment (clamped 6-168 hours).
+            <strong>Recovery hours</strong> = ((Intensity base + Volume adjustment) Ã— Type multiplier Ã— Days multiplier) + Sleep adjustment + Stress adjustment (clamped 6-168 hours).
           </p>
           <p>CNS fatigue recovery is longer than muscle recovery. High-intensity training, especially power training, requires more CNS recovery time.</p>
         </CardContent>

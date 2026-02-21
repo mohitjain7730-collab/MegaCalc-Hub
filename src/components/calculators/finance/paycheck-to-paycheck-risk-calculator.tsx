@@ -31,7 +31,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Assess paycheck-to-paycheck risk: expense-to-income ratio, months of buffer, and risk level. See how close your income is to covering essential expenses and how much buffer you have.',
-      url: 'https://mycalculating.com/category/finance/paycheck-to-paycheck-risk-calculator',
+      url: 'https://mycalculating.com/finance/paycheck-to-paycheck-risk-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -85,9 +85,9 @@ export default function PaycheckToPaycheckRiskCalculator() {
       return 'You are at high paycheck-to-paycheck risk: expenses consume most or all of income and you have little or no buffer. Prioritize cutting non-essential spending, building at least 1 month of expenses in savings, and increasing income or reducing fixed costs.';
     }
     if (r.riskLevel === 'Medium') {
-      return 'You have moderate paycheck-to-paycheck risk: expenses are a high share of income or your buffer is thin. Aim to build at least 2–3 months of expenses in savings and reduce the expense-to-income ratio below 80% to lower risk.';
+      return 'You have moderate paycheck-to-paycheck risk: expenses are a high share of income or your buffer is thin. Aim to build at least 2â€“3 months of expenses in savings and reduce the expense-to-income ratio below 80% to lower risk.';
     }
-    return 'You have lower paycheck-to-paycheck risk: you have margin after expenses and some buffer. Continue building an emergency fund (3–6+ months of expenses) and keep the expense-to-income ratio under 80% to stay resilient.';
+    return 'You have lower paycheck-to-paycheck risk: you have margin after expenses and some buffer. Continue building an emergency fund (3â€“6+ months of expenses) and keep the expense-to-income ratio under 80% to stay resilient.';
   };
 
   const getInsights = (v: FormValues, r: NonNullable<ReturnType<typeof calculate>>) => {
@@ -96,13 +96,13 @@ export default function PaycheckToPaycheckRiskCalculator() {
       insights.push('Expenses are 95% or more of income; one missed paycheck or unexpected expense can cause shortfall.');
     }
     if (r.expenseToIncomeRatio >= 80 && r.expenseToIncomeRatio < 95) {
-      insights.push('Expenses are 80–95% of income; little margin for savings or emergencies. Reducing fixed costs or increasing income will help.');
+      insights.push('Expenses are 80â€“95% of income; little margin for savings or emergencies. Reducing fixed costs or increasing income will help.');
     }
     if (r.monthsOfBuffer < 1 && v.liquidSavings !== undefined) {
       insights.push('Less than 1 month of expenses in savings; high vulnerability to income disruption or emergency.');
     }
     if (r.monthsOfBuffer >= 1 && r.monthsOfBuffer < 3) {
-      insights.push('You have 1–3 months of buffer; building to 3–6 months will significantly reduce paycheck-to-paycheck risk.');
+      insights.push('You have 1â€“3 months of buffer; building to 3â€“6 months will significantly reduce paycheck-to-paycheck risk.');
     }
     const income = v.monthlyIncome || 0;
     if (income > 0 && r.marginAfterExpenses > 0 && r.marginAfterExpenses < income * 0.2) {
@@ -203,19 +203,19 @@ export default function PaycheckToPaycheckRiskCalculator() {
                   <BarChart3 className="h-6 w-6 mx-auto mb-2 text-blue-600" />
                   <p className="font-semibold">Expense-to-Income Ratio</p>
                   <p className="text-lg font-bold">{result.expenseToIncomeRatio.toFixed(1)}%</p>
-                  <p className="text-xs text-muted-foreground">Essential expenses ÷ income</p>
+                  <p className="text-xs text-muted-foreground">Essential expenses Ã· income</p>
                 </div>
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <Wallet className="h-6 w-6 mx-auto mb-2 text-green-600" />
                   <p className="font-semibold">Months of Buffer</p>
-                  <p className="text-lg font-bold">{result.monthsOfBuffer >= 999 ? '—' : result.monthsOfBuffer.toFixed(1)}</p>
-                  <p className="text-xs text-muted-foreground">Savings ÷ monthly expenses</p>
+                  <p className="text-lg font-bold">{result.monthsOfBuffer >= 999 ? 'â€”' : result.monthsOfBuffer.toFixed(1)}</p>
+                  <p className="text-xs text-muted-foreground">Savings Ã· monthly expenses</p>
                 </div>
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <DollarSign className="h-6 w-6 mx-auto mb-2 text-purple-600" />
                   <p className="font-semibold">Margin After Expenses</p>
                   <p className="text-lg font-bold">${result.marginAfterExpenses.toLocaleString()}</p>
-                  <p className="text-xs text-muted-foreground">Income − essential expenses</p>
+                  <p className="text-xs text-muted-foreground">Income âˆ’ essential expenses</p>
                 </div>
               </div>
 
@@ -272,7 +272,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
                 Months of Buffer
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                How many months of essential expenses your current liquid savings could cover. Less than 1 month means one missed paycheck or emergency can cause shortfall. Building to 3–6 months significantly reduces paycheck-to-paycheck risk.
+                How many months of essential expenses your current liquid savings could cover. Less than 1 month means one missed paycheck or emergency can cause shortfall. Building to 3â€“6 months significantly reduces paycheck-to-paycheck risk.
               </p>
             </div>
           </div>
@@ -289,13 +289,13 @@ export default function PaycheckToPaycheckRiskCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Expense-to-Income Ratio (%) = (Monthly Essential Expenses ÷ Monthly Take-Home Income) × 100
+              Expense-to-Income Ratio (%) = (Monthly Essential Expenses Ã· Monthly Take-Home Income) Ã— 100
             </p>
             <p className="font-mono text-sm text-center">
-              Months of Buffer = Current Liquid Savings ÷ Monthly Essential Expenses
+              Months of Buffer = Current Liquid Savings Ã· Monthly Essential Expenses
             </p>
             <p className="font-mono text-sm text-center">
-              Risk: High if ratio ≥ 95% or buffer &lt; 1 month; Medium if ratio ≥ 80% or buffer &lt; 2 months; otherwise Low.
+              Risk: High if ratio â‰¥ 95% or buffer &lt; 1 month; Medium if ratio â‰¥ 80% or buffer &lt; 2 months; otherwise Low.
             </p>
           </div>
         </CardContent>
@@ -331,7 +331,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
                     <Shield className="h-5 w-5 text-green-600" />
                     <div>
                       <p className="font-medium">Emergency Fund (Business Owners)</p>
-                      <p className="text-sm text-muted-foreground">6–12+ months, business risk</p>
+                      <p className="text-sm text-muted-foreground">6â€“12+ months, business risk</p>
                     </div>
                   </div>
                 </CardContent>
@@ -379,32 +379,32 @@ export default function PaycheckToPaycheckRiskCalculator() {
         <p>Paycheck-to-paycheck means your income barely covers or does not cover essential expenses, leaving little or no margin for savings or emergencies. One missed paycheck, medical bill, or car repair can cause shortfall or debt.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why It Matters</h3>
-        <p>High expense-to-income ratios and low savings buffers increase stress and vulnerability. Reducing the ratio (by cutting expenses or increasing income) and building a buffer (3–6 months of expenses) significantly lowers paycheck-to-paycheck risk.</p>
+        <p>High expense-to-income ratios and low savings buffers increase stress and vulnerability. Reducing the ratio (by cutting expenses or increasing income) and building a buffer (3â€“6 months of expenses) significantly lowers paycheck-to-paycheck risk.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Who Is Most at Risk</h3>
-        <p>Households with essential expenses at or above 95% of take-home income, or with less than 1 month of expenses in liquid savings, are at high risk. Moderate risk typically means 80–95% expense ratio or 1–2 months of buffer.</p>
+        <p>Households with essential expenses at or above 95% of take-home income, or with less than 1 month of expenses in liquid savings, are at high risk. Moderate risk typically means 80â€“95% expense ratio or 1â€“2 months of buffer.</p>
 
         <hr />
 
         <h2 id="how-measured" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How Risk Is Measured</h2>
-        <p>This calculator uses two main metrics: <strong>expense-to-income ratio</strong> (essential expenses ÷ take-home income) and <strong>months of buffer</strong> (liquid savings ÷ monthly essential expenses). High risk: ratio ≥ 95% or buffer &lt; 1 month. Medium risk: ratio ≥ 80% or buffer &lt; 2 months. Otherwise, risk is lower.</p>
+        <p>This calculator uses two main metrics: <strong>expense-to-income ratio</strong> (essential expenses Ã· take-home income) and <strong>months of buffer</strong> (liquid savings Ã· monthly essential expenses). High risk: ratio â‰¥ 95% or buffer &lt; 1 month. Medium risk: ratio â‰¥ 80% or buffer &lt; 2 months. Otherwise, risk is lower.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Expense-to-Income Ratio</h3>
         <p>The ratio shows what share of income goes to essential expenses. When it is 95% or higher, almost all income is committed; when it is under 80%, there is room for savings and emergencies.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Months of Buffer</h3>
-        <p>Liquid savings divided by monthly essential expenses gives how many months you could cover expenses without income. Less than 1 month is high risk; 3–6 months is a common target for resilience.</p>
+        <p>Liquid savings divided by monthly essential expenses gives how many months you could cover expenses without income. Less than 1 month is high risk; 3â€“6 months is a common target for resilience.</p>
 
         <hr />
 
         <h2 id="reduce-risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Reduce Risk</h2>
-        <p>Reduce paycheck-to-paycheck risk by: (1) lowering essential expenses or increasing income so the expense-to-income ratio falls below 80%; (2) building liquid savings to at least 3–6 months of essential expenses; (3) avoiding new high-interest debt.</p>
+        <p>Reduce paycheck-to-paycheck risk by: (1) lowering essential expenses or increasing income so the expense-to-income ratio falls below 80%; (2) building liquid savings to at least 3â€“6 months of essential expenses; (3) avoiding new high-interest debt.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Increase Margin</h3>
         <p>Cut non-essential spending, refinance or pay down debt to reduce minimum payments, or increase income (side income, raise, or better job). Even a small increase in margin can be directed to savings.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Build Buffer First</h3>
-        <p>Prioritize building at least 1 month of expenses, then 2–3, then 3–6 months. Keep the buffer in a high-yield savings account or other liquid account so it is available in an emergency.</p>
+        <p>Prioritize building at least 1 month of expenses, then 2â€“3, then 3â€“6 months. Keep the buffer in a high-yield savings account or other liquid account so it is available in an emergency.</p>
 
         <hr />
 
@@ -417,7 +417,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
         <hr />
 
         <h2 id="conclusion-ptp" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Paycheck-to-paycheck risk is driven by high expense-to-income ratios and low savings buffers. Use this calculator to measure your ratio and buffer, then work to bring the ratio below 80% and build at least 3–6 months of expenses in liquid savings to reduce risk.</p>
+        <p>Paycheck-to-paycheck risk is driven by high expense-to-income ratios and low savings buffers. Use this calculator to measure your ratio and buffer, then work to bring the ratio below 80% and build at least 3â€“6 months of expenses in liquid savings to reduce risk.</p>
       </section>
 
       <Card>
@@ -440,7 +440,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">What is a good months-of-buffer number?</h4>
             <p className="text-muted-foreground">
-              Financial advisors often recommend 3–6 months of essential expenses in liquid savings. Less than 1 month is high risk; 1–2 months is moderate risk. Building to 3–6 months significantly reduces vulnerability to income loss or emergencies.
+              Financial advisors often recommend 3â€“6 months of essential expenses in liquid savings. Less than 1 month is high risk; 1â€“2 months is moderate risk. Building to 3â€“6 months significantly reduces vulnerability to income loss or emergencies.
             </p>
           </div>
           <div>
@@ -474,7 +474,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">How does this relate to an emergency fund?</h4>
             <p className="text-muted-foreground">
-              Months of buffer is the same idea as an emergency fund: liquid savings ÷ monthly essential expenses. This calculator shows your risk level; building to 3–6 months of buffer is the standard emergency fund target and significantly lowers paycheck-to-paycheck risk.</p>
+              Months of buffer is the same idea as an emergency fund: liquid savings Ã· monthly essential expenses. This calculator shows your risk level; building to 3â€“6 months of buffer is the standard emergency fund target and significantly lowers paycheck-to-paycheck risk.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if I have negative margin (expenses exceed income)?</h4>
@@ -516,7 +516,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Budgeters & Planners</strong>
-                <span className="text-sm text-muted-foreground">To quantify how close income is to expenses and set targets (e.g. ratio below 80%, buffer 3–6 months).</span>
+                <span className="text-sm text-muted-foreground">To quantify how close income is to expenses and set targets (e.g. ratio below 80%, buffer 3â€“6 months).</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">After a Job or Income Change</strong>
@@ -577,7 +577,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Paycheck-to-Paycheck Risk Calculator assesses risk using your expense-to-income ratio and months of buffer. High risk: ratio ≥ 95% or buffer &lt; 1 month. Reduce risk by lowering the ratio and building 3–6 months of expenses in liquid savings.</p>
+          <p>The Paycheck-to-Paycheck Risk Calculator assesses risk using your expense-to-income ratio and months of buffer. High risk: ratio â‰¥ 95% or buffer &lt; 1 month. Reduce risk by lowering the ratio and building 3â€“6 months of expenses in liquid savings.</p>
           <p>Use it to see your risk level and track progress as you increase margin and buffer.</p>
         </CardContent>
       </Card>

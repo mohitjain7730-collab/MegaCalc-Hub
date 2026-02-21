@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/intermittent-cold-exposure-calorie-burn-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/intermittent-cold-exposure-calorie-burn-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Intermittent Cold Exposure Calorie Burn Estimator', item: baseUrl },
       ],
     },
@@ -243,7 +243,7 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
                   name="waterTempC"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Water/air temperature (°C)</FormLabel>
+                      <FormLabel>Water/air temperature (Â°C)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -300,7 +300,7 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
                   name="shiverLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Shiver intensity (1–3)</FormLabel>
+                      <FormLabel>Shiver intensity (1â€“3)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -346,7 +346,7 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Thermogenesis multiplier</p>
-                <p className="text-2xl font-semibold text-primary">{result.thermogenesisFactor.toFixed(2)}×</p>
+                <p className="text-2xl font-semibold text-primary">{result.thermogenesisFactor.toFixed(2)}Ã—</p>
                 <p className="text-xs text-muted-foreground">Approximate metabolic increase during exposure within this rough framework.</p>
               </div>
             </div>
@@ -405,7 +405,7 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
             capped to stay within plausible ranges.
           </p>
           <p>
-            Extra calories are estimated as baseline calories per minute × session minutes × (multiplier − 1), summed across weekly
+            Extra calories are estimated as baseline calories per minute Ã— session minutes Ã— (multiplier âˆ’ 1), summed across weekly
             sessions.
           </p>
           <p>All values are approximations and should not drive aggressive dieting or extreme cold protocols.</p>
@@ -449,7 +449,7 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Temp gradient used</p>
                 <p className="text-xl font-semibold text-primary">
-                  {clamp(37 - (form.getValues().waterTempC ?? 0), 5, 30).toFixed(1)} °C
+                  {clamp(37 - (form.getValues().waterTempC ?? 0), 5, 30).toFixed(1)} Â°C
                 </p>
                 <p className="text-xs text-muted-foreground">Effective difference between core and environment in the model.</p>
               </div>
@@ -483,7 +483,7 @@ export default function IntermittentColdExposureCalorieBurnEstimator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Cold exposure is a stressor—potentially useful in small, well-chosen doses and risky when overdone.</p>
+          <p>Cold exposure is a stressorâ€”potentially useful in small, well-chosen doses and risky when overdone.</p>
           <p>Use this estimator to keep expectations realistic and to complement, not replace, foundational health habits.</p>
         </CardContent>
       </Card>

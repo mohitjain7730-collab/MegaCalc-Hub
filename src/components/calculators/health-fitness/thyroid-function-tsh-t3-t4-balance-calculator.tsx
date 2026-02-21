@@ -36,7 +36,7 @@ type ResultPayload = {
 const steps = [
   'Enter TSH (thyroid-stimulating hormone) level (mIU/L) from thyroid function test.',
   'Optionally enter T3 (triiodothyronine) level (ng/dL) from thyroid function test.',
-  'Optionally enter T4 (thyroxine) level (μg/dL) from thyroid function test.',
+  'Optionally enter T4 (thyroxine) level (Î¼g/dL) from thyroid function test.',
   'Enter your age (thyroid function can change with age).',
   'Review TSH/T3/T4 balance, thyroid function status, and recommendations.',
 ];
@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'What are normal thyroid hormone levels?',
     answer:
-      'Normal TSH: 0.4-4.0 mIU/L. Normal T3: 80-200 ng/dL. Normal T4: 5-12 μg/dL. Ranges may vary by lab and individual factors. Optimal TSH is often 1.0-2.5 mIU/L.',
+      'Normal TSH: 0.4-4.0 mIU/L. Normal T3: 80-200 ng/dL. Normal T4: 5-12 Î¼g/dL. Ranges may vary by lab and individual factors. Optimal TSH is often 1.0-2.5 mIU/L.',
   },
   {
     question: 'What is hypothyroidism?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/thyroid-function-tsh-t3-t4-balance-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/thyroid-function-tsh-t3-t4-balance-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Thyroid Function TSH/T3/T4 Balance Calculator', item: baseUrl },
       ],
     },
@@ -157,7 +157,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else {
     // Estimate based on TSH (inverse relationship)
     // Normal TSH: 0.4-4.0, optimal: 1.0-2.5
-    // Normal T3: 80-200 ng/dL, T4: 5-12 μg/dL
+    // Normal T3: 80-200 ng/dL, T4: 5-12 Î¼g/dL
     if (tshLevel < 0.4) {
       // Hyperthyroidism - high T3/T4
       t3Level = values.t3Level || 180;
@@ -313,7 +313,7 @@ export default function ThyroidFunctionTshT3T4BalanceCalculator() {
                   name="t4Level"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>T4 level (μg/dL) (optional)</FormLabel>
+                      <FormLabel>T4 level (Î¼g/dL) (optional)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.1" placeholder="e.g., 8.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -367,7 +367,7 @@ export default function ThyroidFunctionTshT3T4BalanceCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">T4 level</p>
                 <p className="text-2xl font-semibold text-primary">{result.t4Level.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">μg/dL</p>
+                <p className="text-xs text-muted-foreground">Î¼g/dL</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -425,7 +425,7 @@ export default function ThyroidFunctionTshT3T4BalanceCalculator() {
             <strong>Thyroid balance</strong> = assessed from TSH, T3, and T4 levels and their relationships.
           </p>
           <p>
-            <strong>Normal ranges</strong>: TSH: 0.4-4.0 mIU/L (optimal: 1.0-2.5), T3: 80-200 ng/dL, T4: 5-12 μg/dL. Ranges may vary by lab and individual factors.
+            <strong>Normal ranges</strong>: TSH: 0.4-4.0 mIU/L (optimal: 1.0-2.5), T3: 80-200 ng/dL, T4: 5-12 Î¼g/dL. Ranges may vary by lab and individual factors.
           </p>
           <p>
             <strong>Thyroid function</strong>: High TSH indicates hypothyroidism (low function), low TSH indicates hyperthyroidism (high function). T3 and T4 levels reflect actual thyroid hormone production.
@@ -505,7 +505,7 @@ export default function ThyroidFunctionTshT3T4BalanceCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>TSH, T3, and T4 are key thyroid hormones that regulate metabolism. TSH stimulates thyroid hormone production. High TSH indicates hypothyroidism, low TSH indicates hyperthyroidism. Normal TSH: 0.4-4.0 mIU/L, T3: 80-200 ng/dL, T4: 5-12 μg/dL.</p>
+          <p>TSH, T3, and T4 are key thyroid hormones that regulate metabolism. TSH stimulates thyroid hormone production. High TSH indicates hypothyroidism, low TSH indicates hyperthyroidism. Normal TSH: 0.4-4.0 mIU/L, T3: 80-200 ng/dL, T4: 5-12 Î¼g/dL.</p>
           <p>Use this calculator to assess thyroid function TSH/T3/T4 balance from TSH level, T3 level (optional), T4 level (optional), and age.</p>
         </CardContent>
       </Card>

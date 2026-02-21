@@ -38,7 +38,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter current weight in kilograms (or convert from pounds: lbs ÷ 2.2).',
+  'Enter current weight in kilograms (or convert from pounds: lbs Ã· 2.2).',
   'Enter current body fat percentage (from DEXA, BodPod, or estimate).',
   'Enter target body fat percentage (realistic goals: Men 10-15%, Women 18-25%).',
   'Optionally enter current muscle mass percentage if known.',
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/fat-to-muscle-recomposition-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/fat-to-muscle-recomposition-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Body Composition Lifestyle Progress Tracker', item: baseUrl },
       ],
     },
@@ -225,7 +225,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const plan = [
     { label: 'This Week', detail: 'Establish baseline: measure body fat, take photos, record measurements. Set up training and nutrition plan.' },
     { label: 'This Month', detail: 'Track progress weekly. Adjust calories/protein as needed. Focus on consistency in training and nutrition.' },
-    { label: 'Ongoing', detail: 'Reassess monthly. Recomposition is slow—expect 0.5-1% body fat loss and 0.25-0.5 kg muscle gain per month with consistency.' },
+    { label: 'Ongoing', detail: 'Reassess monthly. Recomposition is slowâ€”expect 0.5-1% body fat loss and 0.25-0.5 kg muscle gain per month with consistency.' },
   ];
 
   return { currentFatMass, currentMuscleMass, targetFatMass, targetMuscleMass, fatToLose, muscleToGain, recompositionScore, status, interpretation, recommendations, plan };
@@ -431,12 +431,12 @@ export default function FatToMuscleRecompositionTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Current fat mass</strong> = current weight × body fat % / 100.</p>
-          <p><strong>Current muscle mass</strong> = (current weight × muscle mass %) / 100, or estimated as lean mass × 0.55.</p>
-          <p><strong>Target fat mass</strong> = target weight × target body fat % / 100 (target weight ≈ current weight × 0.98 for recomposition).</p>
-          <p><strong>Target muscle mass</strong> = target lean mass × 0.55.</p>
-          <p><strong>Fat to lose</strong> = current fat mass − target fat mass.</p>
-          <p><strong>Muscle to gain</strong> = target muscle mass − current muscle mass.</p>
+          <p><strong>Current fat mass</strong> = current weight Ã— body fat % / 100.</p>
+          <p><strong>Current muscle mass</strong> = (current weight Ã— muscle mass %) / 100, or estimated as lean mass Ã— 0.55.</p>
+          <p><strong>Target fat mass</strong> = target weight Ã— target body fat % / 100 (target weight â‰ˆ current weight Ã— 0.98 for recomposition).</p>
+          <p><strong>Target muscle mass</strong> = target lean mass Ã— 0.55.</p>
+          <p><strong>Fat to lose</strong> = current fat mass âˆ’ target fat mass.</p>
+          <p><strong>Muscle to gain</strong> = target muscle mass âˆ’ current muscle mass.</p>
           <p><strong>Recomposition score</strong>: Based on realistic rates (0.5-1% body fat loss/month, 0.25-0.5 kg muscle/month). Higher scores indicate more achievable goals.</p>
         </CardContent>
       </Card>

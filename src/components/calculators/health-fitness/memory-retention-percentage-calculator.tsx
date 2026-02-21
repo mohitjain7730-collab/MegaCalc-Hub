@@ -44,12 +44,12 @@ const faqs = [
   { question: 'What counts as an item?', answer: 'Flashcards, concepts, question stems, or any discrete chunk of information you can answer independently.' },
   { question: 'Why track spaced sessions?', answer: 'Each spaced pass resets some forgetting. Logging them shows whether more repetitions are required.' },
   { question: 'How often should I test retention?', answer: 'Weekly during semester-style study, or within 24 hours when prepping for shorter exams.' },
-  { question: 'Does sleep really matter?', answer: 'Yes—sleep drives memory consolidation. Poor sleep increases forgetting penalties.' },
+  { question: 'Does sleep really matter?', answer: 'Yesâ€”sleep drives memory consolidation. Poor sleep increases forgetting penalties.' },
   { question: 'Can I use this for language vocab?', answer: 'Absolutely. Track words attempted vs recalled and plan review sessions.' },
-  { question: 'What if I don’t have exact numbers?', answer: 'Estimate using percentages or sample questions—the calculator is meant for quick planning.' },
-  { question: 'How can I raise retention fast?', answer: 'Use spaced repetition, mix question types, teach concepts aloud, and sleep 7–9 hours.' },
+  { question: 'What if I donâ€™t have exact numbers?', answer: 'Estimate using percentages or sample questionsâ€”the calculator is meant for quick planning.' },
+  { question: 'How can I raise retention fast?', answer: 'Use spaced repetition, mix question types, teach concepts aloud, and sleep 7â€“9 hours.' },
   { question: 'Should I log recognition or recall?', answer: 'Recall (no cues) gives the clearest signal. Recognition often overestimates true mastery.' },
-  { question: 'Can teams or classrooms use this?', answer: 'Yes—log averages for cohorts to schedule group reviews or labs.' },
+  { question: 'Can teams or classrooms use this?', answer: 'Yesâ€”log averages for cohorts to schedule group reviews or labs.' },
   { question: 'Does caffeine influence results?', answer: 'Indirectly through sleep. Track caffeine separately if it impacts rest.' },
 ];
 
@@ -60,7 +60,7 @@ const relatedCalculators = [
   { name: 'Emotional Wellbeing Index Calculator', slug: 'emotional-wellbeing-index-calculator', description: 'Check mood patterns that affect learning motivation.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-activity-points-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-activity-points-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -69,7 +69,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Memory Retention Percentage Wellness Tracker', item: baseUrl },
       ],
     },
@@ -146,19 +146,19 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'When it feels helpful, try simple recall (like jotting ideas from memory) instead of only re‑reading your notes.',
+    'When it feels helpful, try simple recall (like jotting ideas from memory) instead of only reâ€‘reading your notes.',
     'You can turn trickier ideas into small review prompts or cards so they come up again over time.',
     'Easing away from bright screens before bed can make your evenings feel calmer and may support how your studying settles in.',
   ];
   if (reinforcementLevel !== 'excellent') {
-    recommendations.push('Some people enjoy short review blocks of around 15–20 minutes with small breaks so studying feels more manageable.');
+    recommendations.push('Some people enjoy short review blocks of around 15â€“20 minutes with small breaks so studying feels more manageable.');
   }
   if (reinforcementLevel === 'review ASAP') {
-    recommendations.push('Explaining ideas out loud—to yourself or someone else—can gently strengthen what you want to remember.');
+    recommendations.push('Explaining ideas out loudâ€”to yourself or someone elseâ€”can gently strengthen what you want to remember.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'Spend a little time with the items that felt most wobbly and see which ones you’d like to feel clearer about.' },
+    { label: 'Today', detail: 'Spend a little time with the items that felt most wobbly and see which ones youâ€™d like to feel clearer about.' },
     { label: 'This Week', detail: 'If it fits your schedule, add one or two gentle review sessions for this material on different days.' },
     { label: 'Next Block', detail: 'Notice how your studying and sleep routines relate to how confident you feel with new material.' },
   ];
@@ -345,9 +345,9 @@ export default function MemoryRetentionPercentageTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Retention %</strong> = (Recalled ÷ Total) × 100</p>
-          <p><strong>Forgetting penalty</strong> = days × 2 − spacedSessions × 3 − (sleep − 6) × 2</p>
-          <p>Adjusted retention = clamp(Retention % − Penalty)</p>
+          <p><strong>Retention %</strong> = (Recalled Ã· Total) Ã— 100</p>
+          <p><strong>Forgetting penalty</strong> = days Ã— 2 âˆ’ spacedSessions Ã— 3 âˆ’ (sleep âˆ’ 6) Ã— 2</p>
+          <p>Adjusted retention = clamp(Retention % âˆ’ Penalty)</p>
         </CardContent>
       </Card>
 
@@ -411,7 +411,7 @@ export default function MemoryRetentionPercentageTracker() {
         </h1>
         <p className="text-lg italic text-gray-700">
           Instead of judging results, this guide frames memory tracking as a supportive way to notice what helps ideas
-          stay familiar—from spacing and sleep to stress and mindfulness.
+          stay familiarâ€”from spacing and sleep to stress and mindfulness.
         </p>
 
         {/* TABLE OF CONTENTS */}
@@ -429,7 +429,7 @@ export default function MemoryRetentionPercentageTracker() {
           </li>
           <li>
             <a href="#forgetting-penalty" className="hover:underline">
-              Understanding the “Forgetting Penalty” Concept
+              Understanding the â€œForgetting Penaltyâ€ Concept
             </a>
           </li>
           <li>
@@ -450,12 +450,12 @@ export default function MemoryRetentionPercentageTracker() {
           Why Track Memory Retention as a Wellness Signal?
         </h2>
         <p>
-          Remembering information is not just about grades or work performance—it also affects how confident and calm
+          Remembering information is not just about grades or work performanceâ€”it also affects how confident and calm
           you feel when facing exams, presentations, or everyday tasks. A simple retention tracker can reduce guesswork
           by showing when material still feels familiar and when it might appreciate a gentle review.
         </p>
         <p>
-          In this tool, percentages and labels like “reinforce soon” are descriptive, not diagnostic. They are there to
+          In this tool, percentages and labels like â€œreinforce soonâ€ are descriptive, not diagnostic. They are there to
           help you make choices about review timing and to keep learning feeling more manageable, not to measure your
           worth or abilities.
         </p>
@@ -470,28 +470,28 @@ export default function MemoryRetentionPercentageTracker() {
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>
-            <strong>Total items</strong> – cards, questions, or concepts you aimed to remember.
+            <strong>Total items</strong> â€“ cards, questions, or concepts you aimed to remember.
           </li>
           <li>
-            <strong>Recalled items</strong> – how many you could bring back without prompts.
+            <strong>Recalled items</strong> â€“ how many you could bring back without prompts.
           </li>
           <li>
-            <strong>Days since study</strong> – how much time forgetting has had to work.
+            <strong>Days since study</strong> â€“ how much time forgetting has had to work.
           </li>
           <li>
-            <strong>Spaced sessions</strong> – how many times you revisited the material.
+            <strong>Spaced sessions</strong> â€“ how many times you revisited the material.
           </li>
           <li>
-            <strong>Sleep hours</strong> – a rough sense of consolidation support from rest.
+            <strong>Sleep hours</strong> â€“ a rough sense of consolidation support from rest.
           </li>
         </ul>
 
         <h2 id="forgetting-penalty" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
-          Understanding the “Forgetting Penalty” Concept
+          Understanding the â€œForgetting Penaltyâ€ Concept
         </h2>
         <p>
           The forgetting penalty in this tracker is a simple way of modeling how time, spacing, and sleep might interact
-          with your recall percentage. It does not claim clinical accuracy—it simply nudges your raw recall score down
+          with your recall percentage. It does not claim clinical accuracyâ€”it simply nudges your raw recall score down
           a little when spacing and rest have been limited.
         </p>
         <p>
@@ -505,7 +505,7 @@ export default function MemoryRetentionPercentageTracker() {
         </h2>
         <p>
           Instead of pushing constant study, the tracker encourages short, intentional review blocks. Labels like
-          “reinforce soon” or “review ASAP” are invitations to choose what feels realistic—perhaps a 15–20 minute review
+          â€œreinforce soonâ€ or â€œreview ASAPâ€ are invitations to choose what feels realisticâ€”perhaps a 15â€“20 minute review
           block, a quick practice quiz, or explaining ideas out loud to someone else.
         </p>
         <p>
@@ -518,8 +518,8 @@ export default function MemoryRetentionPercentageTracker() {
         </h2>
         <p>
           Learning rarely happens in isolation. Stress, sleep, food, movement, and relationships all affect how steady
-          and motivated you feel. Combining this memory tracker with other wellness tools—like mindfulness streaks or
-          emotional wellbeing check-ins—can offer a fuller picture of what supports your learning seasons.
+          and motivated you feel. Combining this memory tracker with other wellness toolsâ€”like mindfulness streaks or
+          emotional wellbeing check-insâ€”can offer a fuller picture of what supports your learning seasons.
         </p>
         <p>
           If studying ever feels overwhelming or consistently impacts your mood, it can be helpful to talk with a
@@ -571,8 +571,8 @@ export default function MemoryRetentionPercentageTracker() {
         <CardContent className="text-sm text-muted-foreground">
           <p>
             Disclaimer: This tool provides general wellness and learning insights for educational purposes only. It is
-            not a medical, psychological, or academic diagnosis. For health or mental health concerns—or for formal
-            accommodations—please speak with a qualified professional or relevant support service.
+            not a medical, psychological, or academic diagnosis. For health or mental health concernsâ€”or for formal
+            accommodationsâ€”please speak with a qualified professional or relevant support service.
           </p>
         </CardContent>
       </Card>

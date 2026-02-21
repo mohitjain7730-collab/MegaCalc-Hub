@@ -48,7 +48,7 @@ const faqs = [
   {
     question: 'What is mindfulness consistency?',
     answer:
-      'Mindfulness consistency refers to the regularity and frequency of mindfulness practice. Consistent practice—both formal (meditation sessions) and informal (mindful moments throughout the day)—is key to experiencing the benefits of mindfulness.',
+      'Mindfulness consistency refers to the regularity and frequency of mindfulness practice. Consistent practiceâ€”both formal (meditation sessions) and informal (mindful moments throughout the day)â€”is key to experiencing the benefits of mindfulness.',
   },
   {
     question: 'What counts as mindfulness practice?',
@@ -58,7 +58,7 @@ const faqs = [
   {
     question: 'How often should I practice mindfulness?',
     answer:
-      'Research suggests practicing mindfulness 3-5 times per week provides benefits. Daily practice is ideal for maximum benefits. Consistency matters more than duration—even 5-10 minutes daily is more effective than longer, irregular sessions.',
+      'Research suggests practicing mindfulness 3-5 times per week provides benefits. Daily practice is ideal for maximum benefits. Consistency matters more than durationâ€”even 5-10 minutes daily is more effective than longer, irregular sessions.',
   },
   {
     question: 'What is a good mindfulness consistency score?',
@@ -68,7 +68,7 @@ const faqs = [
   {
     question: 'Does practice quality matter?',
     answer:
-      'Yes, quality matters. Present-moment awareness, non-judgmental attention, and focused practice enhance benefits. However, consistency is foundational—regular practice, even if imperfect, builds mindfulness skills.',
+      'Yes, quality matters. Present-moment awareness, non-judgmental attention, and focused practice enhance benefits. However, consistency is foundationalâ€”regular practice, even if imperfect, builds mindfulness skills.',
   },
   {
     question: 'What is the difference between formal and informal practice?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mindfulness-consistency-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/mindfulness-consistency-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mindfulness Consistency Wellness Score Calculator', item: baseUrl },
       ],
     },
@@ -194,11 +194,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   const recommendations = [
     `Your consistency score is ${consistencyScore}/100. ${consistencyScore >= 75 ? 'Excellent consistency!' : consistencyScore >= 60 ? 'Good consistency with room for growth.' : 'Consider increasing practice consistency.'}`,
-    'Establish a daily practice routine: Aim for at least 5-10 minutes daily. Consistency matters more than duration—regular short sessions are better than sporadic long ones.',
+    'Establish a daily practice routine: Aim for at least 5-10 minutes daily. Consistency matters more than durationâ€”regular short sessions are better than sporadic long ones.',
     'Combine formal and informal practice: Schedule formal meditation sessions (3-5 per week) and practice informal mindfulness throughout the day (mindful breathing, mindful activities).',
     'Build practice gradually: Start with 5-10 minutes daily, then gradually increase duration as practice becomes more consistent and comfortable.',
     'Set reminders and create cues: Use phone reminders, link practice to existing habits (morning coffee, bedtime), and create a dedicated practice space.',
-    'Track your streak: Monitoring your consistency streak can motivate continued practice. Don\'t let missed days derail you—return to practice as soon as possible.',
+    'Track your streak: Monitoring your consistency streak can motivate continued practice. Don\'t let missed days derail youâ€”return to practice as soon as possible.',
     `Your current streak is ${values.consistencyStreak} days. ${values.consistencyStreak >= 30 ? 'Excellent! Keep it going.' : values.consistencyStreak >= 7 ? 'Good start! Build on this momentum.' : 'Start building your streak today.'}`,
     'Focus on quality: While consistency is foundational, bring present-moment awareness, non-judgmental attention, and kindness to your practice.',
     'Be patient and kind to yourself: Building consistency takes time. Missed days are normal. Focus on long-term consistency rather than perfection.',
@@ -427,22 +427,22 @@ export default function MindfulnessConsistencyScoreCalculator() {
             <strong>Consistency Score</strong> = Frequency Score + Duration Score + Formal Practice Score + Informal Practice Score + Streak Score + Quality Score
           </p>
           <p>
-            <strong>Frequency Score</strong> = (Practice Days per Week / 7) × 30
+            <strong>Frequency Score</strong> = (Practice Days per Week / 7) Ã— 30
           </p>
           <p>
-            <strong>Duration Score</strong> = Min((Average Minutes per Day / 20) × 20, 20)
+            <strong>Duration Score</strong> = Min((Average Minutes per Day / 20) Ã— 20, 20)
           </p>
           <p>
-            <strong>Formal Practice Score</strong> = Min((Formal Sessions per Week / 7) × 15, 15)
+            <strong>Formal Practice Score</strong> = Min((Formal Sessions per Week / 7) Ã— 15, 15)
           </p>
           <p>
-            <strong>Informal Practice Score</strong> = Min((Informal Moments per Week / 14) × 15, 15)
+            <strong>Informal Practice Score</strong> = Min((Informal Moments per Week / 14) Ã— 15, 15)
           </p>
           <p>
-            <strong>Streak Score</strong> = Min((Streak Days / 90) × 10, 10)
+            <strong>Streak Score</strong> = Min((Streak Days / 90) Ã— 10, 10)
           </p>
           <p>
-            <strong>Quality Score</strong> = (Practice Quality / 10) × 10
+            <strong>Quality Score</strong> = (Practice Quality / 10) Ã— 10
           </p>
           <p>
             <strong>Quality Index</strong> = Practice Quality Rating (1-10)
@@ -488,7 +488,7 @@ export default function MindfulnessConsistencyScoreCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Mindfulness consistency is crucial for experiencing the full benefits of mindfulness practice. Regular, consistent practice—both formal meditation sessions and informal mindful moments—builds mindfulness skills, strengthens neural pathways, and leads to improvements in stress reduction, emotional regulation, attention, and overall wellbeing.
+            Mindfulness consistency is crucial for experiencing the full benefits of mindfulness practice. Regular, consistent practiceâ€”both formal meditation sessions and informal mindful momentsâ€”builds mindfulness skills, strengthens neural pathways, and leads to improvements in stress reduction, emotional regulation, attention, and overall wellbeing.
           </p>
           <p>
             This calculator helps you assess the consistency of your mindfulness practice by evaluating frequency, duration, formal and informal practice, consistency streak, and practice quality. Understanding your consistency score helps you identify areas for improvement and develop a sustainable mindfulness routine.

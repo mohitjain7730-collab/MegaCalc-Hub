@@ -109,7 +109,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/metabolic-adaptation-rate-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/metabolic-adaptation-rate-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -118,7 +118,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Metabolic Adaptation Rate Calculator', item: baseUrl },
       ],
     },
@@ -412,10 +412,10 @@ export default function MetabolicAdaptationRateCalculator() {
             <strong>Metabolic adaptation</strong> = reduction in TDEE beyond what's expected from weight loss. Expected reduction from weight loss: ~10-15 calories per pound lost.
           </p>
           <p>
-            <strong>Adaptation amount</strong> = (initial TDEE - current TDEE) - (estimated weight loss × 12 cal/lb). This represents the metabolic slowdown beyond normal weight loss effects.
+            <strong>Adaptation amount</strong> = (initial TDEE - current TDEE) - (estimated weight loss Ã— 12 cal/lb). This represents the metabolic slowdown beyond normal weight loss effects.
           </p>
           <p>
-            <strong>Adaptation rate</strong> = (adaptation amount / initial TDEE) × 100. Rates above 15-20% indicate significant adaptation requiring diet breaks or reverse dieting.
+            <strong>Adaptation rate</strong> = (adaptation amount / initial TDEE) Ã— 100. Rates above 15-20% indicate significant adaptation requiring diet breaks or reverse dieting.
           </p>
           <p>Metabolic adaptation is the body's natural response to prolonged calorie restriction, where metabolism slows to conserve energy. Understanding adaptation helps plan diet breaks, refeeds, or reverse dieting strategies to restore metabolic rate.</p>
         </CardContent>

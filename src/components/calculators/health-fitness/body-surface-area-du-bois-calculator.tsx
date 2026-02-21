@@ -41,7 +41,7 @@ const faqs = [
   {
     question: 'What is the Du Bois formula?',
     answer:
-      'The Du Bois & Du Bois formula (1916) estimates body surface area (BSA) using BSA = 0.007184 × height(cm)^0.725 × weight(kg)^0.425. Despite its age it remains widely used in clinical dosing.',
+      'The Du Bois & Du Bois formula (1916) estimates body surface area (BSA) using BSA = 0.007184 Ã— height(cm)^0.725 Ã— weight(kg)^0.425. Despite its age it remains widely used in clinical dosing.',
   },
   {
     question: 'Why is BSA important?',
@@ -51,7 +51,7 @@ const faqs = [
   {
     question: 'What is a typical adult BSA?',
     answer:
-      'Average adult BSA is ~1.7 m². Values below 1.4 m² generally represent smaller individuals, whereas BSA above 2.2 m² is common in larger or very tall people.',
+      'Average adult BSA is ~1.7 mÂ². Values below 1.4 mÂ² generally represent smaller individuals, whereas BSA above 2.2 mÂ² is common in larger or very tall people.',
   },
   {
     question: 'Is Du Bois accurate for all patients?',
@@ -78,7 +78,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/body-surface-area-du-bois-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/body-surface-area-du-bois-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -87,7 +87,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Body Surface Area by Du Bois Formula', item: baseUrl },
       ],
     },
@@ -113,7 +113,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (bsa < 1.4) {
     status = 'good';
-    interpretation = 'BSA is on the lower side—doses based on BSA will scale accordingly. Verify weight entry for underweight individuals.';
+    interpretation = 'BSA is on the lower sideâ€”doses based on BSA will scale accordingly. Verify weight entry for underweight individuals.';
   } else if (bsa > 2.2) {
     status = 'moderate';
     interpretation = 'BSA is elevated (common in tall/heavy individuals). Ensure dosing caps are respected, especially for chemotherapy.';
@@ -132,7 +132,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     },
     {
       label: 'This Month',
-      detail: 'Reassess weight trends—5-10% changes warrant recalculating BSA for dosing accuracy.',
+      detail: 'Reassess weight trendsâ€”5-10% changes warrant recalculating BSA for dosing accuracy.',
     },
     {
       label: 'Ongoing',
@@ -241,8 +241,8 @@ export default function BodySurfaceAreaDuBoisCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">BSA (Du Bois)</p>
-                <p className="text-2xl font-semibold text-primary">{result.bsa.toFixed(2)} m²</p>
-                <p className="text-xs text-muted-foreground">0.007184 × H^0.725 × W^0.425</p>
+                <p className="text-2xl font-semibold text-primary">{result.bsa.toFixed(2)} mÂ²</p>
+                <p className="text-xs text-muted-foreground">0.007184 Ã— H^0.725 Ã— W^0.425</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Height</p>
@@ -307,7 +307,7 @@ export default function BodySurfaceAreaDuBoisCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Du Bois BSA (m²)</strong> = 0.007184 × height(cm)<sup>0.725</sup> × weight(kg)<sup>0.425</sup>
+            <strong>Du Bois BSA (mÂ²)</strong> = 0.007184 Ã— height(cm)<sup>0.725</sup> Ã— weight(kg)<sup>0.425</sup>
           </p>
           <p>
             The exponents approximate the nonlinear relationship between body size and surface area. BSA is used to index
@@ -369,13 +369,13 @@ export default function BodySurfaceAreaDuBoisCalculator() {
         <CardContent className="space-y-3 text-sm text-muted-foreground">
           <p>
             Body surface area is most often used to scale doses and normalize physiologic measurements. Average adult BSA
-            is around 1.7 m², but there is wide normal variation by sex, height, and body composition.
+            is around 1.7 mÂ², but there is wide normal variation by sex, height, and body composition.
           </p>
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
                 <tr>
-                  <th className="border-b p-2 font-semibold">BSA (m²)</th>
+                  <th className="border-b p-2 font-semibold">BSA (mÂ²)</th>
                   <th className="border-b p-2 font-semibold">Typical description</th>
                   <th className="border-b p-2 font-semibold">Notes</th>
                 </tr>
@@ -387,7 +387,7 @@ export default function BodySurfaceAreaDuBoisCalculator() {
                   <td className="border-b p-2">Common in smaller adults; double-check dosing caps.</td>
                 </tr>
                 <tr>
-                  <td className="border-b p-2">1.4–2.2</td>
+                  <td className="border-b p-2">1.4â€“2.2</td>
                   <td className="border-b p-2">Typical adult</td>
                   <td className="border-b p-2">Most reference tables assume BSA in this range.</td>
                 </tr>

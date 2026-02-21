@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/fat-quality-score-sfa-mufa-pufa-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/fat-quality-score-sfa-mufa-pufa-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Fat Quality Score (SFA/MUFA/PUFA ratio) Calculator', item: baseUrl },
       ],
     },
@@ -405,7 +405,7 @@ export default function FatQualityScoreSfaMufaPufaRatioCalculator() {
             <strong>Total fat</strong> = saturated fat + monounsaturated fat + polyunsaturated fat (grams).
           </p>
           <p>
-            <strong>Fat percentages</strong> = (each fat type / total fat) × 100. Optimal: SFA &lt;30%, MUFA 40-50%, PUFA 20-30%.
+            <strong>Fat percentages</strong> = (each fat type / total fat) Ã— 100. Optimal: SFA &lt;30%, MUFA 40-50%, PUFA 20-30%.
           </p>
           <p>
             <strong>Quality score</strong> = calculated from SFA (0-30 points, inverted), MUFA (0-35 points), and PUFA (0-35 points). Higher scores indicate better fat quality.
@@ -507,7 +507,7 @@ export default function FatQualityScoreSfaMufaPufaRatioCalculator() {
 
     {/* THE CHEMICAL BASIS OF FAT QUALITY */}
     <h2 id="structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Chemical Basis of Fat Quality</h2>
-    <p>Dietary fats are composed of triglycerides—three fatty acid chains attached to a glycerol backbone. The health effect of the fat is determined almost entirely by the <b>saturation</b> of these fatty acid chains—specifically, the number of double bonds present along the carbon chain.</p>
+    <p>Dietary fats are composed of triglyceridesâ€”three fatty acid chains attached to a glycerol backbone. The health effect of the fat is determined almost entirely by the <b>saturation</b> of these fatty acid chainsâ€”specifically, the number of double bonds present along the carbon chain.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Saturation and Physical State</h3>
     <p>The degree of saturation dictates the fat's physical state at room temperature:</p>
@@ -562,7 +562,7 @@ export default function FatQualityScoreSfaMufaPufaRatioCalculator() {
 
     {/* OPTIMIZING THE RATIO: REPLACING SFA WITH MUFA/PUFA */}
     <h2 id="ratio" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optimizing the Ratio: Replacing SFA with MUFA/PUFA</h2>
-    <p>Current authoritative nutritional advice has shifted from focusing on total fat restriction to emphasizing <b>fat substitution</b>—that is, replacing SFA and trans fats with MUFA and PUFA. This substitution is the foundation of fat quality assessment.</p>
+    <p>Current authoritative nutritional advice has shifted from focusing on total fat restriction to emphasizing <b>fat substitution</b>â€”that is, replacing SFA and trans fats with MUFA and PUFA. This substitution is the foundation of fat quality assessment.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Substitution</h3>
     <p>A high-quality fat ratio is achieved not by eliminating SFA entirely, but by ensuring that when SFA is consumed, it is balanced by unsaturated fats, and when SFA is reduced, it is replaced by an unsaturated fat source. Strong evidence from the **NIH** and **AHA** shows that replacing SFA with PUFA significantly lowers the risk of coronary heart disease.</p>

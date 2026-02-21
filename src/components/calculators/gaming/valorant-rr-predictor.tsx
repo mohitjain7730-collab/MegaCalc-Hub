@@ -70,7 +70,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Valorant RR Predictor', item: baseUrl },
             ],
         },
@@ -143,7 +143,7 @@ export default function ValorantRRPredictor() {
                     <li><strong>Scenario A:</strong> You are winning 12-4. You get cocky, try to knife the enemy, and throw 3 rounds. You win 13-7.</li>
                     <li><strong>Scenario B:</strong> You are winning 12-4. You play disciplined and close it out 13-4.</li>
                 </ul>
-                <p>In Scenario B, you might gain +24 RR. In Scenario A, you might only gain +19 RR. Those 3 rounds you threw effectively cost you 5 RR. Over the course of 100 wins, "throwing for content" or getting lazy with a lead can cost you 500 RR—that's five entire rank tiers!</p>
+                <p>In Scenario B, you might gain +24 RR. In Scenario A, you might only gain +19 RR. Those 3 rounds you threw effectively cost you 5 RR. Over the course of 100 wins, "throwing for content" or getting lazy with a lead can cost you 500 RRâ€”that's five entire rank tiers!</p>
                 <p><strong>The takeaway:</strong> Every round counts. Losing 0-13 destroys your RR. Fighting back to lose 5-13 softens the blow significantly.</p>
 
                 <h2 id="hidden-mmr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Hidden MMR System (Convergence)</h2>

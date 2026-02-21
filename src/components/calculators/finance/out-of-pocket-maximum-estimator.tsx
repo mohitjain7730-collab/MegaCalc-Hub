@@ -70,12 +70,12 @@ const faqs = [
   {
     question: 'What are ACA out-of-pocket maximum limits?',
     answer:
-      'For 2024, ACA limits are: $9,450 for individual plans, $18,900 for family plans. These are maximums—many plans have lower limits. Limits increase annually with inflation.',
+      'For 2024, ACA limits are: $9,450 for individual plans, $18,900 for family plans. These are maximumsâ€”many plans have lower limits. Limits increase annually with inflation.',
   },
   {
     question: 'How do I estimate my out-of-pocket costs?',
     answer:
-      'Estimate as: Deductible + (Expected Costs - Deductible) × Coinsurance Rate + Copays, up to the out-of-pocket maximum. If costs exceed the maximum, you only pay up to the maximum.',
+      'Estimate as: Deductible + (Expected Costs - Deductible) Ã— Coinsurance Rate + Copays, up to the out-of-pocket maximum. If costs exceed the maximum, you only pay up to the maximum.',
   },
   {
     question: 'What if I don\'t use much healthcare?',
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/out-of-pocket-maximum-estimator';
+const baseUrl = 'https://mycalculating.com/finance/out-of-pocket-maximum-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Out-of-Pocket Maximum Estimator', item: baseUrl },
       ],
     },
@@ -156,7 +156,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   // Estimate out-of-pocket costs
   // If costs <= deductible: pay full costs
-  // If costs > deductible: pay deductible + (costs - deductible) × coinsurance rate + copays
+  // If costs > deductible: pay deductible + (costs - deductible) Ã— coinsurance rate + copays
   let estimatedOutOfPocket = 0;
   if (expectedMedicalCosts <= annualDeductible) {
     estimatedOutOfPocket = expectedMedicalCosts + copayAmount;
@@ -166,7 +166,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   // Out-of-pocket maximum (typically 2-3x deductible, but capped by ACA limits)
-  // For estimation: use deductible × 2.5 as typical ratio, but cap at ACA limit
+  // For estimation: use deductible Ã— 2.5 as typical ratio, but cap at ACA limit
   const acaLimit = 9450; // Individual plan limit for 2024
   const outOfPocketMaximum = Math.min(annualDeductible * 2.5, acaLimit);
 
@@ -197,7 +197,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations = [
     `Estimated out-of-pocket costs: ${finalEstimatedOutOfPocket.toLocaleString(undefined, { maximumFractionDigits: 0 })} based on expected medical costs of ${expectedMedicalCosts.toLocaleString(undefined, { maximumFractionDigits: 0 })}. This includes deductible (${annualDeductible.toLocaleString(undefined, { maximumFractionDigits: 0 })}), coinsurance (${coinsuranceRate}%), and copays.`,
     `Out-of-pocket maximum: ${outOfPocketMaximum.toLocaleString(undefined, { maximumFractionDigits: 0 })}. This is the most you pay for covered services in a year. Once reached, insurance pays 100% of covered costs.`,
-    `Affordability: ${affordabilityPercent > 0 ? `${affordabilityPercent.toFixed(1)}% of income` : 'Enter income to assess affordability'}. ${affordabilityPercent > 10 ? 'This may be challenging—ensure you have savings to cover potential costs.' : 'This is reasonable, but ensure you can afford if medical care is needed.'}`,
+    `Affordability: ${affordabilityPercent > 0 ? `${affordabilityPercent.toFixed(1)}% of income` : 'Enter income to assess affordability'}. ${affordabilityPercent > 10 ? 'This may be challengingâ€”ensure you have savings to cover potential costs.' : 'This is reasonable, but ensure you can afford if medical care is needed.'}`,
   ];
   if (finalEstimatedOutOfPocket >= outOfPocketMaximum) {
     recommendations.push('Maximum reached: Estimated costs reach the out-of-pocket maximum. You would pay the maximum amount, and insurance would cover all additional costs beyond that.');
@@ -428,19 +428,19 @@ export default function OutOfPocketMaximumEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>If Costs ≤ Deductible:</strong> Out-of-Pocket = Costs + Copays. You pay full costs until deductible is met.
+            <strong>If Costs â‰¤ Deductible:</strong> Out-of-Pocket = Costs + Copays. You pay full costs until deductible is met.
           </p>
           <p>
-            <strong>If Costs &gt; Deductible:</strong> Out-of-Pocket = Deductible + (Costs - Deductible) × Coinsurance Rate + Copays. After deductible, you pay coinsurance percentage.
+            <strong>If Costs &gt; Deductible:</strong> Out-of-Pocket = Deductible + (Costs - Deductible) Ã— Coinsurance Rate + Copays. After deductible, you pay coinsurance percentage.
           </p>
           <p>
-            <strong>Out-of-Pocket Maximum:</strong> Typically 2-3× deductible, capped by ACA limits ($9,450 individual, $18,900 family for 2024). This is the most you pay in a year.
+            <strong>Out-of-Pocket Maximum:</strong> Typically 2-3Ã— deductible, capped by ACA limits ($9,450 individual, $18,900 family for 2024). This is the most you pay in a year.
           </p>
           <p>
             <strong>Estimated Costs (Capped):</strong> Min(Estimated Out-of-Pocket, Out-of-Pocket Maximum). Once maximum is reached, insurance pays 100%.
           </p>
           <p>
-            <strong>Affordability %:</strong> (Estimated Out-of-Pocket / Annual Income) × 100. Should ideally be ≤ 10% of income.
+            <strong>Affordability %:</strong> (Estimated Out-of-Pocket / Annual Income) Ã— 100. Should ideally be â‰¤ 10% of income.
           </p>
           <p>Out-of-pocket maximum is the most you pay for covered healthcare services in a year (after premiums). It includes deductibles, copays, and coinsurance. Once reached, insurance pays 100% of covered costs.</p>
         </CardContent>
@@ -556,10 +556,10 @@ export default function OutOfPocketMaximumEstimator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>If Costs ≤ Deductible: Out-of-Pocket = Costs + Copays</b></p>
+        <p className="text-lg font-mono"><b>If Costs â‰¤ Deductible: Out-of-Pocket = Costs + Copays</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>If Costs &gt; Deductible: Out-of-Pocket = Deductible + (Costs - Deductible) × Coinsurance + Copays</b></p>
+        <p className="text-lg font-mono"><b>If Costs &gt; Deductible: Out-of-Pocket = Deductible + (Costs - Deductible) Ã— Coinsurance + Copays</b></p>
     </div>
     <p>Out-of-pocket costs are capped at the out-of-pocket maximum. Once reached, insurance pays 100% of covered costs.</p>
 
@@ -582,7 +582,7 @@ export default function OutOfPocketMaximumEstimator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Affordability Guidelines</h3>
     <ul>
-        <li><b>Optimal:</b> Out-of-pocket maximum ≤ 5% of income</li>
+        <li><b>Optimal:</b> Out-of-pocket maximum â‰¤ 5% of income</li>
         <li><b>Good:</b> Out-of-pocket maximum 5-10% of income</li>
         <li><b>Moderate:</b> Out-of-pocket maximum 10-20% of income (may be challenging)</li>
         <li><b>Low:</b> Out-of-pocket maximum {'>'} 20% of income (may be unaffordable)</li>

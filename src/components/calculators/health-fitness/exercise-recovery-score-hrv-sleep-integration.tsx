@@ -54,7 +54,7 @@ const faqs = [
   {
     question: 'What is a good HRV range?',
     answer:
-      'HRV varies widely by individual (20–200+ ms). Track your baseline and trends rather than comparing to others. Higher relative to your baseline is better.',
+      'HRV varies widely by individual (20â€“200+ ms). Track your baseline and trends rather than comparing to others. Higher relative to your baseline is better.',
   },
   {
     question: 'How does sleep affect recovery?',
@@ -89,7 +89,7 @@ const faqs = [
   {
     question: 'Should I use HRV for every workout?',
     answer:
-      'Not necessary for every session, but regular monitoring (daily or 3–4x/week) helps optimize training and prevent overtraining.',
+      'Not necessary for every session, but regular monitoring (daily or 3â€“4x/week) helps optimize training and prevent overtraining.',
   },
 ];
 
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/exercise-recovery-score-hrv-sleep-integration';
+const baseUrl = 'https://mycalculating.com/health-fitness/exercise-recovery-score-hrv-sleep-integration';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Exercise Recovery Score (HRV + Sleep Integration)', item: baseUrl },
       ],
     },
@@ -169,14 +169,14 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations = [
     'If you use HRV, taking readings at similar times (for example, in the morning) can make trends easier to notice.',
-    'Gently moving toward 7–9 hours of sleep, when realistic, can support how recovered you feel from training.',
+    'Gently moving toward 7â€“9 hours of sleep, when realistic, can support how recovered you feel from training.',
     'You can let the score nudge you toward lighter or heavier days, while still prioritizing how your body actually feels over any single number.',
   ];
   if (readinessLevel === 'moderate') {
-    recommendations.push('On “in‑between” days, many people find that light activity, stretching, or easy movement feels better than pushing hard.');
+    recommendations.push('On â€œinâ€‘betweenâ€ days, many people find that light activity, stretching, or easy movement feels better than pushing hard.');
   }
   if (readinessLevel === 'rest-needed') {
-    recommendations.push('When you feel run down, a softer day—rest, gentle walks, or calm routines—can be a helpful experiment if it fits your life.');
+    recommendations.push('When you feel run down, a softer dayâ€”rest, gentle walks, or calm routinesâ€”can be a helpful experiment if it fits your life.');
   }
 
   const plan = [
@@ -312,7 +312,7 @@ export default function ExerciseRecoveryScoreHRVSleepIntegration() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery score</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 snapshot of how this model views your current recovery inputs.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 snapshot of how this model views your current recovery inputs.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">HRV status</p>
@@ -371,9 +371,9 @@ export default function ExerciseRecoveryScoreHRVSleepIntegration() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>HRV score</strong> = (HRV − 30) / 100 × 40, clamped to 0-40 points.</p>
-          <p><strong>Sleep score</strong> = (sleepHours / 9 × 25) + (sleepQuality / 10 × 20), clamped to 0-45 points.</p>
-          <p><strong>Recovery score</strong> = HRV score + sleep score − training penalty − stress penalty, clamped to 0-100.</p>
+          <p><strong>HRV score</strong> = (HRV âˆ’ 30) / 100 Ã— 40, clamped to 0-40 points.</p>
+          <p><strong>Sleep score</strong> = (sleepHours / 9 Ã— 25) + (sleepQuality / 10 Ã— 20), clamped to 0-45 points.</p>
+          <p><strong>Recovery score</strong> = HRV score + sleep score âˆ’ training penalty âˆ’ stress penalty, clamped to 0-100.</p>
           <p>Higher HRV, better sleep, appropriate training load, and lower stress increase recovery score.</p>
         </CardContent>
       </Card>
@@ -417,7 +417,7 @@ export default function ExerciseRecoveryScoreHRVSleepIntegration() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().stressLevel ?? 0) <= 5 ? 'Low' : 'High')}
                 </p>
-                <p className="text-xs text-muted-foreground">Target: ≤5 for recovery</p>
+                <p className="text-xs text-muted-foreground">Target: â‰¤5 for recovery</p>
               </div>
             </div>
           ) : (

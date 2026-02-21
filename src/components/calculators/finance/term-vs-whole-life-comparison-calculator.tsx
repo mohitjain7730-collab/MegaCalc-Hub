@@ -129,7 +129,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/term-vs-whole-life-comparison-calculator';
+const baseUrl = 'https://mycalculating.com/finance/term-vs-whole-life-comparison-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -138,7 +138,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Term vs Whole Life Comparison Calculator', item: baseUrl },
       ],
     },
@@ -478,10 +478,10 @@ export default function TermVsWholeLifeComparisonCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Term Total Cost</strong> = Term Annual Premium × Min(Term Years, Years to Compare). Represents total premiums paid for term coverage.
+            <strong>Term Total Cost</strong> = Term Annual Premium Ã— Min(Term Years, Years to Compare). Represents total premiums paid for term coverage.
           </p>
           <p>
-            <strong>Whole Life Total Cost</strong> = Whole Life Annual Premium × Years to Compare. Represents total premiums paid for whole life coverage.
+            <strong>Whole Life Total Cost</strong> = Whole Life Annual Premium Ã— Years to Compare. Represents total premiums paid for whole life coverage.
           </p>
           <p>
             <strong>Whole Life Cash Value</strong> = Accumulated cash value with compound growth. Typically 30% of premiums go to cash value, growing at 2-6% annually.

@@ -39,18 +39,18 @@ const steps = [
   'Measure a comfortable breath hold at the end of a normal exhale (seconds).',
   'Measure a longer breath hold until you feel a strong urge to breathe (seconds), stopping before dizziness or distress.',
   'Count your resting breathing rate in breaths per minute (while seated and relaxed).',
-  'Rate your perceived breath-related anxiety or air hunger sensitivity (0–10).',
-  'Review your CO₂ tolerance and breathing efficiency scores.',
+  'Rate your perceived breath-related anxiety or air hunger sensitivity (0â€“10).',
+  'Review your COâ‚‚ tolerance and breathing efficiency scores.',
 ];
 
 const faqs = [
   {
-    question: 'What is CO₂ tolerance?',
+    question: 'What is COâ‚‚ tolerance?',
     answer:
-      'CO₂ tolerance reflects how comfortably your body and nervous system handle rising carbon dioxide during breath holding or slower breathing.',
+      'COâ‚‚ tolerance reflects how comfortably your body and nervous system handle rising carbon dioxide during breath holding or slower breathing.',
   },
   {
-    question: 'Why does CO₂ tolerance matter?',
+    question: 'Why does COâ‚‚ tolerance matter?',
     answer:
       'Lower tolerance can drive over-breathing, anxiety sensations, and difficulty with breathwork; improving it may support calm and performance.',
   },
@@ -70,14 +70,14 @@ const faqs = [
       'No. This tool is about comfort thresholds, not extreme performance. Stop before you feel panicked, dizzy, or unwell.',
   },
   {
-    question: 'Can training improve CO₂ tolerance?',
+    question: 'Can training improve COâ‚‚ tolerance?',
     answer:
-      'Yes. Many breath training protocols gradually increase comfortable hold times and reduce resting breathing rates, often improving resilience to CO₂.',
+      'Yes. Many breath training protocols gradually increase comfortable hold times and reduce resting breathing rates, often improving resilience to COâ‚‚.',
   },
   {
-    question: 'Is CO₂ tolerance the same as VO₂max?',
+    question: 'Is COâ‚‚ tolerance the same as VOâ‚‚max?',
     answer:
-      'No. VO₂max measures maximal oxygen consumption. CO₂ tolerance is more about chemosensitivity and breathing patterns.',
+      'No. VOâ‚‚max measures maximal oxygen consumption. COâ‚‚ tolerance is more about chemosensitivity and breathing patterns.',
   },
   {
     question: 'Should I train alone?',
@@ -115,11 +115,11 @@ const relatedCalculators = [
   {
     name: 'Sleep Optimization Routine Score',
     slug: 'sleep-optimization-routine-score',
-    description: 'Assess sleep hygiene that interacts with breathing and CO₂ tolerance.',
+    description: 'Assess sleep hygiene that interacts with breathing and COâ‚‚ tolerance.',
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/breath-hold-co2-tolerance-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/breath-hold-co2-tolerance-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,16 +128,16 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
-        { '@type': 'ListItem', position: 3, name: 'Breath-Hold CO₂ Tolerance Calculator', item: baseUrl },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
+        { '@type': 'ListItem', position: 3, name: 'Breath-Hold COâ‚‚ Tolerance Calculator', item: baseUrl },
       ],
     },
     {
       '@type': 'SoftwareApplication',
-      name: 'Breath-Hold CO₂ Tolerance Calculator',
+      name: 'Breath-Hold COâ‚‚ Tolerance Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate CO₂ tolerance and breathing efficiency from breath-hold times and resting breathing rate.',
+      description: 'Estimate COâ‚‚ tolerance and breathing efficiency from breath-hold times and resting breathing rate.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -164,14 +164,14 @@ const calculateResult = (values: FormValues): ResultPayload => {
   );
 
   let status: ResultPayload['status'] = 'good';
-  let interpretation = 'Your CO₂ tolerance and breathing pattern appear reasonably supportive for breathwork and stress resilience.';
+  let interpretation = 'Your COâ‚‚ tolerance and breathing pattern appear reasonably supportive for breathwork and stress resilience.';
 
   if (co2ToleranceScore >= 75 && breathsPerMinuteAtRest <= 14) {
     status = 'optimal';
-    interpretation = 'You show strong CO₂ tolerance and efficient breathing; you may be well positioned for breath training or endurance work.';
+    interpretation = 'You show strong COâ‚‚ tolerance and efficient breathing; you may be well positioned for breath training or endurance work.';
   } else if (co2ToleranceScore < 45 || breathsPerMinuteAtRest > 18) {
     status = 'moderate';
-    interpretation = 'Your CO₂ tolerance or breathing rate may be limiting comfort under stress; gentle training and lifestyle changes can help.';
+    interpretation = 'Your COâ‚‚ tolerance or breathing rate may be limiting comfort under stress; gentle training and lifestyle changes can help.';
   } else if (co2ToleranceScore < 30 && perceivedAnxietyScore >= 6) {
     status = 'low';
     interpretation = 'Low tolerance and high breath-related anxiety suggest that professional guidance and cautious training are advisable.';
@@ -179,12 +179,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations: string[] = [
     'Practice light, nasal, diaphragmatic breathing at rest to gradually reduce over-breathing.',
-    'Use short, comfortable breath holds (never to extreme discomfort) to gently train CO₂ tolerance.',
+    'Use short, comfortable breath holds (never to extreme discomfort) to gently train COâ‚‚ tolerance.',
     'Pair breathwork with good sleep, hydration, and overall stress management.',
   ];
 
   if (breathsPerMinuteAtRest > 18) {
-    recommendations.push('Aim to gradually lower resting breathing rate towards 10–14 breaths per minute under guidance.');
+    recommendations.push('Aim to gradually lower resting breathing rate towards 10â€“14 breaths per minute under guidance.');
   }
 
   if (perceivedAnxietyScore >= 7) {
@@ -193,7 +193,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Week', detail: 'Record a few breath-hold tests and resting breathing rates under calm conditions to build a baseline.' },
-    { label: 'This Month', detail: 'Introduce 5–10 minutes of gentle breathwork most days, avoiding aggressive protocols without guidance.' },
+    { label: 'This Month', detail: 'Introduce 5â€“10 minutes of gentle breathwork most days, avoiding aggressive protocols without guidance.' },
     { label: 'Ongoing', detail: 'Reassess your scores monthly and adjust training volume in concert with overall stress and recovery.' },
   ];
 
@@ -232,9 +232,9 @@ export default function BreathHoldCo2ToleranceCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Activity className="h-5 w-5" />
-            Breath-Hold CO₂ Tolerance Calculator
+            Breath-Hold COâ‚‚ Tolerance Calculator
           </CardTitle>
-          <CardDescription>Estimate your comfort with rising CO₂ and breathing efficiency for breathwork and performance.</CardDescription>
+          <CardDescription>Estimate your comfort with rising COâ‚‚ and breathing efficiency for breathwork and performance.</CardDescription>
         </CardHeader>
       </Card>
 
@@ -290,7 +290,7 @@ export default function BreathHoldCo2ToleranceCalculator() {
                   name="perceivedAnxietyScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Breath-related anxiety (0–10)</FormLabel>
+                      <FormLabel>Breath-related anxiety (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 3" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -300,7 +300,7 @@ export default function BreathHoldCo2ToleranceCalculator() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate CO₂ tolerance
+                Calculate COâ‚‚ tolerance
               </Button>
             </form>
           </Form>
@@ -314,14 +314,14 @@ export default function BreathHoldCo2ToleranceCalculator() {
               <Zap className="h-5 w-5 text-primary" />
               Interactive results
             </CardTitle>
-            <CardDescription>See CO₂ tolerance score, breathing efficiency, and training suggestions.</CardDescription>
+            <CardDescription>See COâ‚‚ tolerance score, breathing efficiency, and training suggestions.</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">CO₂ tolerance</p>
+                <p className="text-sm text-muted-foreground">COâ‚‚ tolerance</p>
                 <p className="text-2xl font-semibold text-primary">{result.co2ToleranceScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Breathing efficiency</p>
@@ -392,7 +392,7 @@ export default function BreathHoldCo2ToleranceCalculator() {
             <strong>Rate and anxiety penalties</strong> reduce the score when resting breathing is fast or when breath-related anxiety is high, reflecting real-world comfort and control.
           </p>
           <p>
-            <strong>CO₂ tolerance score</strong> is a 0–100 composite, while the breathing efficiency score puts extra weight on slow, relaxed breathing and lower anxiety.
+            <strong>COâ‚‚ tolerance score</strong> is a 0â€“100 composite, while the breathing efficiency score puts extra weight on slow, relaxed breathing and lower anxiety.
           </p>
           <p>These equations are heuristic and should not be used as medical or performance clearance tools.</p>
         </CardContent>
@@ -471,9 +471,9 @@ export default function BreathHoldCo2ToleranceCalculator() {
       >
         <meta
           itemProp="name"
-          content="Breath-Hold CO₂ Tolerance: Safer Approaches to Breathwork and Performance"
+          content="Breath-Hold COâ‚‚ Tolerance: Safer Approaches to Breathwork and Performance"
         />
-        <meta itemProp="description" content="Learn how to measure breath-hold comfort, interpret CO₂ tolerance, and design safe, effective breath training progressions." />
+        <meta itemProp="description" content="Learn how to measure breath-hold comfort, interpret COâ‚‚ tolerance, and design safe, effective breath training progressions." />
         <meta
           itemProp="keywords"
           content="breath-hold CO2 tolerance calculator, breathwork safety, Oxygen Advantage, Buteyko, freediving preparation"
@@ -483,16 +483,16 @@ export default function BreathHoldCo2ToleranceCalculator() {
         <meta itemProp="url" content="/definitive-breath-hold-co2-tolerance-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb=">
-          Breath-Hold CO₂ Tolerance: Building Comfort with the Urge to Breathe
+          Breath-Hold COâ‚‚ Tolerance: Building Comfort with the Urge to Breathe
         </h1>
         <p className="text-lg italic text-gray-700">
-          Breathwork is powerful—but pushing too hard can backfire. This guide explains how to interpret breath-hold numbers and train tolerance without compromising safety.
+          Breathwork is powerfulâ€”but pushing too hard can backfire. This guide explains how to interpret breath-hold numbers and train tolerance without compromising safety.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. The Physiology Behind the Urge to Breathe</h2>
         <p>
-          For most people, the discomfort during a breath hold is driven more by rising CO₂ than falling oxygen. Understanding this helps reframe sensations from “I am suffocating” to “my body is sending a strong but not
-          dangerous signal.”
+          For most people, the discomfort during a breath hold is driven more by rising COâ‚‚ than falling oxygen. Understanding this helps reframe sensations from â€œI am suffocatingâ€ to â€œmy body is sending a strong but not
+          dangerous signal.â€
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt=">
@@ -503,9 +503,9 @@ export default function BreathHoldCo2ToleranceCalculator() {
           rates are usually sufficient.
         </p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Integrating CO₂ Training with Life and Sport</h2>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Integrating COâ‚‚ Training with Life and Sport</h2>
         <p>
-          Better CO₂ tolerance can support calmer responses to stress, improved endurance, and more efficient breathing. However, it should be balanced with overall training load and not attempted during illness, extreme fatigue,
+          Better COâ‚‚ tolerance can support calmer responses to stress, improved endurance, and more efficient breathing. However, it should be balanced with overall training load and not attempted during illness, extreme fatigue,
           or without safety measures.
         </p>
 
@@ -519,7 +519,7 @@ export default function BreathHoldCo2ToleranceCalculator() {
           Conclusion
         </h2>
         <p>
-          Used thoughtfully, CO₂ tolerance work can be a valuable part of a broader resilience toolkit. This calculator and guide help you track progress and keep your experiments within a safe, sustainable range.
+          Used thoughtfully, COâ‚‚ tolerance work can be a valuable part of a broader resilience toolkit. This calculator and guide help you track progress and keep your experiments within a safe, sustainable range.
         </p>
       </section>
 
@@ -545,7 +545,7 @@ export default function BreathHoldCo2ToleranceCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool estimates CO₂ tolerance and breathing efficiency using simple breath-hold and breathing-rate inputs.</p>
+          <p>This tool estimates COâ‚‚ tolerance and breathing efficiency using simple breath-hold and breathing-rate inputs.</p>
           <p>It provides scores, interpretation, recommendations, and a detailed guide to support safe, evidence-informed breath training.</p>
           <p>Always pair these insights with professional guidance, especially if you have medical conditions or practice intense breathwork.</p>
         </CardContent>

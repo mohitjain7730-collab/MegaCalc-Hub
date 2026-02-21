@@ -20,12 +20,12 @@ const faqs = [
   {
     question: 'How is base DPS calculated?',
     answer:
-      'Base DPS = Base Damage × Fire Rate. For example, a weapon with 30 damage per shot and 5 shots per second has 150 base DPS. This represents damage output during continuous firing without accounting for reloads, headshots, or other factors. Base DPS is the foundation for all other DPS calculations.',
+      'Base DPS = Base Damage Ã— Fire Rate. For example, a weapon with 30 damage per shot and 5 shots per second has 150 base DPS. This represents damage output during continuous firing without accounting for reloads, headshots, or other factors. Base DPS is the foundation for all other DPS calculations.',
   },
   {
     question: 'What is headshot DPS?',
     answer:
-      'Headshot DPS accounts for headshot multipliers, which typically double damage (2.0x multiplier). Formula: Headshot DPS = Base Damage × Headshot Multiplier × Fire Rate. Headshot DPS shows potential damage if all shots hit the head, which is ideal but not always achievable in actual gameplay.',
+      'Headshot DPS accounts for headshot multipliers, which typically double damage (2.0x multiplier). Formula: Headshot DPS = Base Damage Ã— Headshot Multiplier Ã— Fire Rate. Headshot DPS shows potential damage if all shots hit the head, which is ideal but not always achievable in actual gameplay.',
   },
   {
     question: 'What is effective DPS?',
@@ -86,7 +86,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite DPS Calculator', item: baseUrl },
       ],
     },
@@ -198,13 +198,13 @@ export default function FortniteDPSCalculator() {
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DPS Calculation Methods</h2>
 
-        <p>DPS calculations use simple multiplication: Base DPS = Base Damage × Fire Rate. This fundamental formula provides the foundation for all DPS analysis. Understanding this calculation helps players compare weapons and understand damage output.</p>
+        <p>DPS calculations use simple multiplication: Base DPS = Base Damage Ã— Fire Rate. This fundamental formula provides the foundation for all DPS analysis. Understanding this calculation helps players compare weapons and understand damage output.</p>
 
         <p>Base damage is the damage dealt per shot when hitting the body (not headshots). This value varies by weapon type, rarity, and specific weapon model. Higher rarity weapons typically have higher base damage. Understanding base damage helps players evaluate weapon effectiveness.</p>
 
         <p>Fire rate is measured in shots per second. Faster fire rates mean more shots fired per second, increasing DPS. Fire rates vary significantly between weapon types. SMGs have very high fire rates (8-12 shots/second), while sniper rifles have very low fire rates (0.5-1 shot/second).</p>
 
-        <p>Example calculation: A weapon with 25 base damage and 6 shots per second has 150 base DPS (25 × 6 = 150). This means the weapon deals 150 damage per second during continuous firing. If an enemy has 100 health, this weapon can eliminate them in approximately 0.67 seconds (100 / 150 = 0.67).</p>
+        <p>Example calculation: A weapon with 25 base damage and 6 shots per second has 150 base DPS (25 Ã— 6 = 150). This means the weapon deals 150 damage per second during continuous firing. If an enemy has 100 health, this weapon can eliminate them in approximately 0.67 seconds (100 / 150 = 0.67).</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Advanced DPS Calculations</h3>
         <p>Advanced calculations account for headshots, reloads, and other factors. Headshot DPS multiplies base damage by headshot multiplier (typically 2.0x) before multiplying by fire rate. Effective DPS accounts for reload time, providing sustained damage output over extended periods. These advanced calculations provide more realistic damage assessments.</p>
@@ -253,7 +253,7 @@ export default function FortniteDPSCalculator() {
 
         <p>Headshot multipliers significantly increase damage output, effectively doubling DPS when all shots hit the head. Most Fortnite weapons have a 2.0x headshot multiplier, meaning headshots deal double damage compared to body shots.</p>
 
-        <p>Headshot DPS is calculated as: Headshot DPS = Base Damage × Headshot Multiplier × Fire Rate. For a weapon with 30 base damage, 2.0x multiplier, and 5 fire rate, headshot DPS is 300 (30 × 2.0 × 5 = 300), compared to 150 base DPS.</p>
+        <p>Headshot DPS is calculated as: Headshot DPS = Base Damage Ã— Headshot Multiplier Ã— Fire Rate. For a weapon with 30 base damage, 2.0x multiplier, and 5 fire rate, headshot DPS is 300 (30 Ã— 2.0 Ã— 5 = 300), compared to 150 base DPS.</p>
 
         <p>Headshot accuracy dramatically affects effective DPS. Players who consistently hit headshots can achieve much higher effective DPS than base DPS suggests. Improving headshot accuracy is one of the most effective ways to increase damage output.</p>
 
@@ -276,7 +276,7 @@ export default function FortniteDPSCalculator() {
 
         <p>Time to empty magazine is calculated as: Time to Empty = Magazine Size / Fire Rate. Larger magazines take longer to empty, allowing longer continuous firing. Smaller magazines empty quickly, requiring frequent reloads.</p>
 
-        <p>Damage per magazine represents total damage from a full magazine: Damage Per Magazine = Base Damage × Magazine Size. This helps understand burst damage potential and elimination capability per magazine.</p>
+        <p>Damage per magazine represents total damage from a full magazine: Damage Per Magazine = Base Damage Ã— Magazine Size. This helps understand burst damage potential and elimination capability per magazine.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Optimizing Effective DPS</h3>
         <p>To optimize effective DPS: prioritize weapons with larger magazines, use weapons with faster reload times, minimize reload frequency by managing ammo efficiently, and consider effective DPS alongside base DPS when choosing weapons. Effective DPS is often more important than base DPS for sustained combat.</p>
@@ -351,7 +351,7 @@ export default function FortniteDPSCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Fortnite weapon DPS (Damage Per Second) based on base damage per shot, fire rate (shots per second), optional headshot multiplier (default 2.0x), optional reload time (seconds), and optional magazine size.</p>
-          <p>Outputs include base DPS (damage × fire rate), headshot DPS (damage × multiplier × fire rate), time to empty magazine (magazine size / fire rate), damage per magazine (damage × magazine size), effective DPS (accounting for reload time), status assessment (low-dps/moderate-dps/high-dps/very-high-dps), interpretation, recommendations, and action plan.</p>
+          <p>Outputs include base DPS (damage Ã— fire rate), headshot DPS (damage Ã— multiplier Ã— fire rate), time to empty magazine (magazine size / fire rate), damage per magazine (damage Ã— magazine size), effective DPS (accounting for reload time), status assessment (low-dps/moderate-dps/high-dps/very-high-dps), interpretation, recommendations, and action plan.</p>
           <p>It helps players compare weapons, optimize loadouts, and understand weapon damage mechanics for better combat performance.</p>
         </CardContent>
       </Card>

@@ -126,7 +126,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/adjusted-book-value-calculator';
+const baseUrl = 'https://mycalculating.com/finance/adjusted-book-value-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -135,7 +135,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Adjusted Book Value Calculator', item: baseUrl },
       ],
     },
@@ -449,7 +449,7 @@ export default function AdjustedBookValueCalculator() {
             <strong>Total Adjustments</strong> = Negative Adjustments + Positive Adjustments. The net effect of all adjustments on reported book value.
           </p>
           <p>
-            <strong>Adjustment Percentage</strong> = (Total Adjustments / Reported Book Value) × 100. Shows the magnitude of adjustments relative to reported book value.
+            <strong>Adjustment Percentage</strong> = (Total Adjustments / Reported Book Value) Ã— 100. Shows the magnitude of adjustments relative to reported book value.
           </p>
           <p>Adjusted book value provides a more accurate measure of economic value than reported book value, making it useful for valuation models, price-to-book ratios, and residual income calculations.</p>
         </CardContent>

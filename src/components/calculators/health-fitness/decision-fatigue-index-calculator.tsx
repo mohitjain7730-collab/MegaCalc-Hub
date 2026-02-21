@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/decision-fatigue-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/decision-fatigue-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Decision Fatigue Wellness Index', item: baseUrl },
       ],
     },
@@ -407,19 +407,19 @@ export default function DecisionFatigueIndexCalculator() {
             <strong>Decision Fatigue Index</strong> = Decision Load + Complexity Load + Time Load + Exhaustion Load + Willpower Load
           </p>
           <p>
-            <strong>Decision Load</strong> = (Decisions per Day / 100) × 30
+            <strong>Decision Load</strong> = (Decisions per Day / 100) Ã— 30
           </p>
           <p>
-            <strong>Complexity Load</strong> = (Complex Decisions / Total Decisions) × 100 × 1.5
+            <strong>Complexity Load</strong> = (Complex Decisions / Total Decisions) Ã— 100 Ã— 1.5
           </p>
           <p>
-            <strong>Time Load</strong> = (Decision Time Minutes / 60) × 10
+            <strong>Time Load</strong> = (Decision Time Minutes / 60) Ã— 10
           </p>
           <p>
-            <strong>Exhaustion Load</strong> = (Mental Exhaustion Level / 10) × 20
+            <strong>Exhaustion Load</strong> = (Mental Exhaustion Level / 10) Ã— 20
           </p>
           <p>
-            <strong>Willpower Load</strong> = (Willpower Depletion / 10) × 20
+            <strong>Willpower Load</strong> = (Willpower Depletion / 10) Ã— 20
           </p>
           <p>Index ranges from 0-100, with higher scores suggesting a general lifestyle tendency where decision fatigue may be greater. This is a personal insight, not a medical evaluation.</p>
         </CardContent>

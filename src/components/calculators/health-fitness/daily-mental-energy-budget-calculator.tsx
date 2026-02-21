@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-mental-energy-budget-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-mental-energy-budget-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Daily Mental Energy Budget Calculator', item: baseUrl },
       ],
     },
@@ -403,19 +403,19 @@ export default function DailyMentalEnergyBudgetCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Sleep base</strong> = (Sleep Quality / 5) × 40. Contributes 0-40 points. Good sleep quality (4-5) provides foundation for mental energy. Poor sleep significantly depletes capacity.
+            <strong>Sleep base</strong> = (Sleep Quality / 5) Ã— 40. Contributes 0-40 points. Good sleep quality (4-5) provides foundation for mental energy. Poor sleep significantly depletes capacity.
           </p>
           <p>
-            <strong>Stress penalty</strong> = ((Stress Level - 1) / 4) × 20. Penalty of 0-20 points. High stress (4-5) depletes mental energy significantly. Low stress (1-2) preserves energy.
+            <strong>Stress penalty</strong> = ((Stress Level - 1) / 4) Ã— 20. Penalty of 0-20 points. High stress (4-5) depletes mental energy significantly. Low stress (1-2) preserves energy.
           </p>
           <p>
-            <strong>Work penalty</strong> = (Work Hours / 16) × 20. Penalty of 0-20 points. More work hours deplete mental energy. 10+ hours significantly reduces available capacity.
+            <strong>Work penalty</strong> = (Work Hours / 16) Ã— 20. Penalty of 0-20 points. More work hours deplete mental energy. 10+ hours significantly reduces available capacity.
           </p>
           <p>
-            <strong>Decision penalty</strong> = (Decision Count / 200) × 15. Penalty of 0-15 points. Decision fatigue depletes mental energy. Making 100+ decisions daily significantly reduces capacity.
+            <strong>Decision penalty</strong> = (Decision Count / 200) Ã— 15. Penalty of 0-15 points. Decision fatigue depletes mental energy. Making 100+ decisions daily significantly reduces capacity.
           </p>
           <p>
-            <strong>Rest bonus</strong> = (Rest Breaks / 20) × 5. Bonus of 0-5 points. Regular breaks restore mental energy and improve sustained performance. More breaks support higher capacity.
+            <strong>Rest bonus</strong> = (Rest Breaks / 20) Ã— 5. Bonus of 0-5 points. Regular breaks restore mental energy and improve sustained performance. More breaks support higher capacity.
           </p>
           <p>
             <strong>Energy budget</strong> = Sleep Base - Stress Penalty - Work Penalty - Decision Penalty + Rest Bonus, normalized to 0-100 scale. Higher scores indicate greater available mental energy based on sleep quality, stress management, work demands, decision load, and rest opportunities.

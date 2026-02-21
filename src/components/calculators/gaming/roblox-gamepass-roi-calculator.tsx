@@ -76,7 +76,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Gamepass ROI Calculator', item: baseUrl },
       ],
     },
@@ -236,7 +236,7 @@ export default function RobloxGamepassROICalculator() {
           When calculating ROI, we assume a standard "Game Lifecycle" of 30 days. Most Roblox players switch main games every month.
           <br />
           If a gamepass costs <strong>1,200 Robux</strong>, you need to get 40 Robux of "Value" out of it every single day for a month to break even.
-          If you quit after 3 days, you paid 400 Robux per day. That is roughly $5 USD per day just to play a Roblox game—more expensive than a AAA subscription!
+          If you quit after 3 days, you paid 400 Robux per day. That is roughly $5 USD per day just to play a Roblox gameâ€”more expensive than a AAA subscription!
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Worked Examples</h2>

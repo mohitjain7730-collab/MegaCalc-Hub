@@ -29,8 +29,8 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
-        { '@type': 'ListItem', position: 3, name: 'SaaS CAC Payback Period Calculator', item: 'https://mycalculating.com/category/finance/saas-cac-payback-period-calculator' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
+        { '@type': 'ListItem', position: 3, name: 'SaaS CAC Payback Period Calculator', item: 'https://mycalculating.com/finance/saas-cac-payback-period-calculator' },
       ],
     },
     {
@@ -39,7 +39,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate how many months it takes to recover Customer Acquisition Cost from monthly gross profit per customer. Essential SaaS unit economics metric.',
-      url: 'https://mycalculating.com/category/finance/saas-cac-payback-period-calculator',
+      url: 'https://mycalculating.com/finance/saas-cac-payback-period-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -70,9 +70,9 @@ export default function SaaSCacPaybackPeriodCalculator() {
   };
 
   const interpret = (months: number) => {
-    if (months < 12) return 'Fast payback – highly efficient. CAC is recovered in under a year; strong unit economics.';
-    if (months <= 18) return 'Standard payback – acceptable for growth stage. Pair with LTV:CAC and churn to confirm efficiency.';
-    return 'Slow payback – elevated risk. Improve CAC, margin, or ARPA to accelerate recovery; monitor churn closely.';
+    if (months < 12) return 'Fast payback â€“ highly efficient. CAC is recovered in under a year; strong unit economics.';
+    if (months <= 18) return 'Standard payback â€“ acceptable for growth stage. Pair with LTV:CAC and churn to confirm efficiency.';
+    return 'Slow payback â€“ elevated risk. Improve CAC, margin, or ARPA to accelerate recovery; monitor churn closely.';
   };
 
   const getStatus = (months: number) => {
@@ -97,12 +97,12 @@ export default function SaaSCacPaybackPeriodCalculator() {
     const insights = [];
     if (months < 12) {
       insights.push('Payback under 12 months supports scalable acquisition');
-      insights.push('Suitable for growth; pair with LTV:CAC (target ≥3:1)');
+      insights.push('Suitable for growth; pair with LTV:CAC (target â‰¥3:1)');
       insights.push('Track payback by segment and channel to double down on winners');
     } else {
       insights.push('Consider increasing ARPA or gross margin to shorten payback');
       insights.push('Reduce CAC via channel efficiency and onboarding optimization');
-      insights.push('Monitor churn – slow payback plus high churn risks unrecovered CAC');
+      insights.push('Monitor churn â€“ slow payback plus high churn risks unrecovered CAC');
     }
     insights.push(`At $${monthlyGross.toFixed(2)}/mo gross profit, $${cac.toLocaleString()} CAC recovers in ${months.toFixed(1)} months`);
     return insights;
@@ -110,10 +110,10 @@ export default function SaaSCacPaybackPeriodCalculator() {
 
   const getConsiderations = () => [
     'Use same definition of CAC (sales + marketing + optional onboarding) as your CAC calculator',
-    'Monthly gross profit = ARPU × gross margin %; use recurring gross profit for SaaS',
+    'Monthly gross profit = ARPU Ã— gross margin %; use recurring gross profit for SaaS',
     'Segment by cohort or channel for accurate payback; blended can hide inefficiency',
     'Pair with LTV:CAC and net revenue retention for full unit economics',
-    'Payback lengthens if churn is high – factor in expected lifetime',
+    'Payback lengthens if churn is high â€“ factor in expected lifetime',
   ];
 
   const onSubmit = (values: FormValues) => {
@@ -156,7 +156,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <DollarSign className="h-4 w-4" />
-                        CAC – Customer Acquisition Cost ($)
+                        CAC â€“ Customer Acquisition Cost ($)
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -334,7 +334,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 Monthly Gross Profit per Customer
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Recurring gross profit from one customer per month: ARPU × gross margin (%). Use gross profit, not revenue, for unit economics.
+                Recurring gross profit from one customer per month: ARPU Ã— gross margin (%). Use gross profit, not revenue, for unit economics.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -347,7 +347,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>ARPU × gross margin % for recurring SaaS revenue</span>
+                  <span>ARPU Ã— gross margin % for recurring SaaS revenue</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -369,7 +369,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto">
             <p className="font-mono text-sm text-center">
-              Payback (months) = CAC ÷ Monthly Gross Profit per Customer
+              Payback (months) = CAC Ã· Monthly Gross Profit per Customer
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
@@ -479,7 +479,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
         <meta itemProp="url" content="/definitive-saas-cac-payback-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to SaaS CAC Payback Period</h1>
-        <p className="text-lg italic text-muted-foreground">How many months it takes to recover the cost of acquiring a customer from the gross profit that customer generates—and why it matters for scalable growth.</p>
+        <p className="text-lg italic text-muted-foreground">How many months it takes to recover the cost of acquiring a customer from the gross profit that customer generatesâ€”and why it matters for scalable growth.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
@@ -499,27 +499,27 @@ export default function SaaSCacPaybackPeriodCalculator() {
         <hr />
 
         <h2 id="payback-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Formula and Components</h2>
-        <p>Payback (months) = CAC ÷ Monthly Gross Profit per Customer. Use <strong className="font-semibold text-foreground">gross profit</strong> (revenue × gross margin), not revenue, so unit economics reflect true contribution after cost of revenue.</p>
+        <p>Payback (months) = CAC Ã· Monthly Gross Profit per Customer. Use <strong className="font-semibold text-foreground">gross profit</strong> (revenue Ã— gross margin), not revenue, so unit economics reflect true contribution after cost of revenue.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-xl text-destructive font-bold">
-            Payback (months) = CAC ÷ Monthly Gross Profit per Customer
+            Payback (months) = CAC Ã· Monthly Gross Profit per Customer
           </p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">Defining CAC and Monthly Gross Profit</h3>
-        <p>CAC is fully loaded cost per new customer (sales + marketing + optional onboarding). Monthly gross profit per customer is ARPU × gross margin—recurring contribution before S&amp;G.</p>
+        <p>CAC is fully loaded cost per new customer (sales + marketing + optional onboarding). Monthly gross profit per customer is ARPU Ã— gross marginâ€”recurring contribution before S&amp;G.</p>
         <hr />
 
         <h2 id="payback-benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks and Interpretation</h2>
-        <p><strong className="font-semibold text-foreground">Sub-12 months:</strong> Efficient; supports scalable acquisition. <strong className="font-semibold text-foreground">12–18 months:</strong> Common in growth stage; pair with LTV:CAC. <strong className="font-semibold text-foreground">Over 18 months:</strong> Risky unless churn is very low and LTV:CAC is strong (e.g. ≥3:1).</p>
+        <p><strong className="font-semibold text-foreground">Sub-12 months:</strong> Efficient; supports scalable acquisition. <strong className="font-semibold text-foreground">12â€“18 months:</strong> Common in growth stage; pair with LTV:CAC. <strong className="font-semibold text-foreground">Over 18 months:</strong> Risky unless churn is very low and LTV:CAC is strong (e.g. â‰¥3:1).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Ideal Payback (Sub-12 Months)</h3>
         <p>Historically, payback under 12 months has been considered efficient for SaaS, indicating that each new customer pays back their acquisition cost within a year from gross profit.</p>
         <hr />
 
         <h2 id="payback-ltv" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Payback vs LTV:CAC and Churn</h2>
-        <p>Payback shows <em>time</em> to recover CAC; LTV:CAC shows <em>total return</em>. Use both: target LTV:CAC ≥ 3:1 and payback under 12–18 months where possible.</p>
+        <p>Payback shows <em>time</em> to recover CAC; LTV:CAC shows <em>total return</em>. Use both: target LTV:CAC â‰¥ 3:1 and payback under 12â€“18 months where possible.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Churn Risk</h3>
-        <p>High churn shortens effective lifetime—slow payback plus high churn can mean CAC is never fully recovered. Pair payback with NRR and LTV for a full picture.</p>
+        <p>High churn shortens effective lifetimeâ€”slow payback plus high churn can mean CAC is never fully recovered. Pair payback with NRR and LTV for a full picture.</p>
         <hr />
 
         <h2 id="payback-improve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Improve Payback</h2>
@@ -532,7 +532,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
 
         <h2 id="payback-conclusion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
         <p>CAC payback period is the core metric for measuring <strong className="font-semibold text-foreground">time to recover acquisition cost</strong> from gross profit. It serves as an essential complement to LTV:CAC and churn for unit economics.</p>
-        <p>Target payback under 12–18 months where possible, and pair it with LTV:CAC ≥ 3:1 and healthy NRR for scalable, sustainable growth.</p>
+        <p>Target payback under 12â€“18 months where possible, and pair it with LTV:CAC â‰¥ 3:1 and healthy NRR for scalable, sustainable growth.</p>
       </section>
 
       <Card>
@@ -547,19 +547,19 @@ export default function SaaSCacPaybackPeriodCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">What is SaaS CAC payback period?</h4>
             <p className="text-muted-foreground">
-              CAC payback period is the number of months required to recover the cost of acquiring a customer (CAC) from the monthly gross profit that customer generates. Formula: Payback (months) = CAC ÷ Monthly Gross Profit per Customer.
+              CAC payback period is the number of months required to recover the cost of acquiring a customer (CAC) from the monthly gross profit that customer generates. Formula: Payback (months) = CAC Ã· Monthly Gross Profit per Customer.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What is a good CAC payback period for SaaS?</h4>
             <p className="text-muted-foreground">
-              Sub-12 months is generally efficient; 12–18 months is common in growth stage; beyond 18 months can be risky unless churn is very low and LTV:CAC is strong (e.g. ≥3:1).
+              Sub-12 months is generally efficient; 12â€“18 months is common in growth stage; beyond 18 months can be risky unless churn is very low and LTV:CAC is strong (e.g. â‰¥3:1).
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Should I use gross profit or revenue per customer?</h4>
             <p className="text-muted-foreground">
-              Use gross profit per customer (revenue × gross margin), not revenue. Gross profit reflects true unit economics after cost of revenue.
+              Use gross profit per customer (revenue Ã— gross margin), not revenue. Gross profit reflects true unit economics after cost of revenue.
             </p>
           </div>
           <div>
@@ -571,7 +571,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Why pair payback with LTV:CAC?</h4>
             <p className="text-muted-foreground">
-              Payback shows how fast you recover CAC; LTV:CAC shows total return over lifetime. Target LTV:CAC ≥ 3:1 and payback under 12–18 months for healthy unit economics.
+              Payback shows how fast you recover CAC; LTV:CAC shows total return over lifetime. Target LTV:CAC â‰¥ 3:1 and payback under 12â€“18 months for healthy unit economics.
             </p>
           </div>
           <div>
@@ -589,7 +589,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">How does payback relate to burn multiple?</h4>
             <p className="text-muted-foreground">
-              Payback shows time to recover CAC per customer; burn multiple shows how much burn it takes to add a dollar of ARR. Both measure capital efficiency—use them together for a full view.
+              Payback shows time to recover CAC per customer; burn multiple shows how much burn it takes to add a dollar of ARR. Both measure capital efficiencyâ€”use them together for a full view.
             </p>
           </div>
           <div>
@@ -653,7 +653,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Churn not in formula:</strong> Payback assumes the customer stays. High churn shortens effective lifetime—pair with NRR and LTV.</span>
+                <span><strong>Churn not in formula:</strong> Payback assumes the customer stays. High churn shortens effective lifetimeâ€”pair with NRR and LTV.</span>
               </li>
             </ul>
           </div>
@@ -669,13 +669,13 @@ export default function SaaSCacPaybackPeriodCalculator() {
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: Efficient SMB SaaS</h5>
                 <p className="text-sm text-green-700/80 dark:text-green-400">
-                  CAC $600, monthly gross profit $75 → payback 8 months. Sub-12-month payback supports scalable acquisition; pair with LTV:CAC ≥ 3:1 for healthy unit economics.
+                  CAC $600, monthly gross profit $75 â†’ payback 8 months. Sub-12-month payback supports scalable acquisition; pair with LTV:CAC â‰¥ 3:1 for healthy unit economics.
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: Enterprise with long payback</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  CAC $15,000, monthly gross profit $800 → payback 18.75 months. Acceptable for enterprise if churn is very low and LTV:CAC is strong; otherwise improve margin or reduce CAC.
+                  CAC $15,000, monthly gross profit $800 â†’ payback 18.75 months. Acceptable for enterprise if churn is very low and LTV:CAC is strong; otherwise improve margin or reduce CAC.
                 </p>
               </div>
             </div>
@@ -693,7 +693,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>The SaaS CAC Payback Period Calculator estimates how many months it takes to recover customer acquisition cost from monthly gross profit per customer.</p>
           <p>Use it with LTV:CAC and churn to assess unit economics and scalability of growth.</p>
-          <p>Target payback under 12–18 months where possible and segment by channel for accurate efficiency analysis.</p>
+          <p>Target payback under 12â€“18 months where possible and segment by channel for accurate efficiency analysis.</p>
         </CardContent>
       </Card>
     </div>

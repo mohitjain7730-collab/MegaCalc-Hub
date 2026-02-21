@@ -88,7 +88,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite Victory Royale Probability Estimator', item: baseUrl },
       ],
     },
@@ -221,7 +221,7 @@ export default function FortniteVictoryRoyaleProbabilityEstimator() {
 
         <p>Placement and player count directly affect base probability, which forms the foundation for all probability calculations. Understanding this relationship helps players evaluate win chances and plan strategies.</p>
 
-        <p>Base probability formula: Base Probability = (1 / Players Remaining) × 100. This represents equal chance for all remaining players if all players are equal skill. Base probability increases as players are eliminated, naturally increasing win chances. Fewer remaining players mean higher base probability.</p>
+        <p>Base probability formula: Base Probability = (1 / Players Remaining) Ã— 100. This represents equal chance for all remaining players if all players are equal skill. Base probability increases as players are eliminated, naturally increasing win chances. Fewer remaining players mean higher base probability.</p>
 
         <p>Placement impact: Higher placement (lower number) means fewer players remaining, increasing base probability. For example, placement 10 with 100 players = 91 players remaining = 1.1% base probability. Placement 10 with 10 players = 1 player remaining = 100% base probability (you won). Placement directly affects remaining players and base probability.</p>
 

@@ -135,7 +135,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/complete-amino-acid-profile-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/complete-amino-acid-profile-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -144,7 +144,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Complete Amino Acid Profile Calculator', item: baseUrl },
       ],
     },
@@ -601,10 +601,10 @@ export default function CompleteAminoAcidProfileCalculator() {
 
     {/* AMINO ACIDS: THE BUILDING BLOCKS OF LIFE */}
     <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Amino Acids: The Building Blocks of Life</h2>
-    <p>Amino acids (AAs) are organic compounds that link together in long chains, known as polypeptides, to form proteins. Proteins are vast and complex molecules, serving structural (collagen, keratin), functional (enzymes, antibodies), and hormonal (insulin) roles. The specific sequence and type of amino acids determine the final protein’s three-dimensional shape and function.</p>
+    <p>Amino acids (AAs) are organic compounds that link together in long chains, known as polypeptides, to form proteins. Proteins are vast and complex molecules, serving structural (collagen, keratin), functional (enzymes, antibodies), and hormonal (insulin) roles. The specific sequence and type of amino acids determine the final proteinâ€™s three-dimensional shape and function.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Structural Diversity</h3>
-    <p>While thousands of amino acids exist in nature, only **20 standard amino acids** are encoded by the human genetic code to build the body’s proteins. The unique side chain (R-group) of each amino acid dictates its chemical properties—such as polarity, charge, and size—which are crucial for protein folding and biological activity.</p>
+    <p>While thousands of amino acids exist in nature, only **20 standard amino acids** are encoded by the human genetic code to build the bodyâ€™s proteins. The unique side chain (R-group) of each amino acid dictates its chemical propertiesâ€”such as polarity, charge, and sizeâ€”which are crucial for protein folding and biological activity.</p>
     
 
 [Image of the basic chemical structure of an amino acid showing the amino group, carboxyl group, and R-group]
@@ -631,7 +631,7 @@ export default function CompleteAminoAcidProfileCalculator() {
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Branch Chain Amino Acids (BCAAs)</h3>
-    <p>Three essential amino acids—**Leucine, Isoleucine, and Valine**—are collectively known as the Branch Chain Amino Acids (BCAAs). They are metabolized primarily in the muscle rather than the liver, making them particularly important for muscle protein synthesis, energy during exercise, and muscle recovery. Leucine is often cited as the key initiator of muscle synthesis pathways.</p>
+    <p>Three essential amino acidsâ€”**Leucine, Isoleucine, and Valine**â€”are collectively known as the Branch Chain Amino Acids (BCAAs). They are metabolized primarily in the muscle rather than the liver, making them particularly important for muscle protein synthesis, energy during exercise, and muscle recovery. Leucine is often cited as the key initiator of muscle synthesis pathways.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Non-Essential and 3. Conditionally Essential Amino Acids</h3>
     <ul>
@@ -654,7 +654,7 @@ export default function CompleteAminoAcidProfileCalculator() {
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Incomplete Sources and Complementary Proteins</h3>
-    <p>Most **plant proteins** (grains, legumes, nuts) are considered incomplete because they lack sufficient quantities of one or two essential amino acids. However, a complete profile can be achieved through **complementary proteins**—combining two or more incomplete sources within the same day that mutually supply the missing essential AAs. Classic examples include:</p>
+    <p>Most **plant proteins** (grains, legumes, nuts) are considered incomplete because they lack sufficient quantities of one or two essential amino acids. However, a complete profile can be achieved through **complementary proteins**â€”combining two or more incomplete sources within the same day that mutually supply the missing essential AAs. Classic examples include:</p>
     <ul>
         <li>Grains (low in Lysine) + Legumes (low in Methionine) = Rice and Beans</li>
         <li>Nuts/Seeds (low in Lysine/Threonine) + Legumes</li>
@@ -667,7 +667,7 @@ export default function CompleteAminoAcidProfileCalculator() {
     <p>To move beyond the simple "complete vs. incomplete" classification, scientific bodies use sophisticated scoring systems to quantify protein quality based on digestibility and the presence of the most critical nutrients.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Limiting Amino Acid Principle</h3>
-    <p>A protein's value is determined by its **limiting amino acid**—the essential amino acid present in the food in the lowest quantity relative to human need. Just as a chain is only as strong as its weakest link, the body can only utilize protein for synthesis until it runs out of the least abundant essential amino acid. </p>
+    <p>A protein's value is determined by its **limiting amino acid**â€”the essential amino acid present in the food in the lowest quantity relative to human need. Just as a chain is only as strong as its weakest link, the body can only utilize protein for synthesis until it runs out of the least abundant essential amino acid. </p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Official Scoring: DIAAS (Digestible Indispensable Amino Acid Score)</h3>
     <p>The standard for measuring protein quality has evolved over time, shifting from PDCAAS (Protein Digestibility Corrected Amino Acid Score) to the more accurate **DIAAS** (Digestible Indispensable Amino Acid Score), which is endorsed by the **Food and Agriculture Organization (FAO) of the United Nations**. DIAAS measures the digestibility of individual essential amino acids in the **ileum** (the final part of the small intestine), giving a much more accurate score of the true amount the body can use.</p>

@@ -81,7 +81,7 @@ const faqs = [
   {
     question: 'How do I calculate fluoride exposure?',
     answer:
-      'Calculate fluoride exposure from water (fluoride ppm × water intake L × 1 mg/L per ppm), plus fluoride from toothpaste (if swallowed), plus other sources. Most toothpaste fluoride is not swallowed.',
+      'Calculate fluoride exposure from water (fluoride ppm Ã— water intake L Ã— 1 mg/L per ppm), plus fluoride from toothpaste (if swallowed), plus other sources. Most toothpaste fluoride is not swallowed.',
   },
   {
     question: 'What about fluoride and children?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/fluoride-exposure-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/fluoride-exposure-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Fluoride Exposure Calculator', item: baseUrl },
       ],
     },
@@ -157,7 +157,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const toothpasteUse = values.toothpasteUse || false;
   const otherSources = values.otherSources || 0;
   
-  // Calculate fluoride from water (ppm × L × 1 mg/L per ppm)
+  // Calculate fluoride from water (ppm Ã— L Ã— 1 mg/L per ppm)
   const waterFluorideMg = (waterFluoride * waterIntake / 1000); // Convert mL to L, then multiply by ppm
   
   // Estimate fluoride from toothpaste (if used, assume small amount swallowed: ~0.1-0.2 mg)
@@ -434,7 +434,7 @@ export default function FluorideExposureCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Fluoride from water</strong> = water fluoride (ppm) × water intake (L) × 1 mg/L per ppm. Convert mL to L by dividing by 1000.
+            <strong>Fluoride from water</strong> = water fluoride (ppm) Ã— water intake (L) Ã— 1 mg/L per ppm. Convert mL to L by dividing by 1000.
           </p>
           <p>
             <strong>Total exposure</strong> = fluoride from water + fluoride from toothpaste (if used, ~0.15 mg) + other sources (mg).

@@ -38,8 +38,8 @@ type ResultPayload = {
 const steps = [
   'Enter your total monthly cost for supplements in your stack.',
   'Enter how many distinct supplement products you use regularly.',
-  'Rate your perceived benefit from the stack on a 0–10 scale.',
-  'Rate the average evidence quality of your stack on a 0–10 scale (based on research and clinician guidance).',
+  'Rate your perceived benefit from the stack on a 0â€“10 scale.',
+  'Rate the average evidence quality of your stack on a 0â€“10 scale (based on research and clinician guidance).',
   'Review your ROI score, cost-per-benefit, and practical recommendations.',
 ];
 
@@ -77,12 +77,12 @@ const faqs = [
   {
     question: 'How often should I reassess my supplement stack?',
     answer:
-      'Revisit your stack every 3–6 months, or whenever your health goals, lab results, medications, or budget change. Use this calculator to track trends over time.',
+      'Revisit your stack every 3â€“6 months, or whenever your health goals, lab results, medications, or budget change. Use this calculator to track trends over time.',
   },
   {
     question: 'Can I use this tool for a single supplement instead of a full stack?',
     answer:
-      'Yes. You can treat “number of supplements” as 1 and focus your ratings on that product alone. The score then reflects that individual item.',
+      'Yes. You can treat â€œnumber of supplementsâ€ as 1 and focus your ratings on that product alone. The score then reflects that individual item.',
   },
   {
     question: 'What if my clinician recommends something with low evidence?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/supplement-stack-roi-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/supplement-stack-roi-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Supplement Stack ROI Calculator', item: baseUrl },
       ],
     },
@@ -180,7 +180,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations: string[] = [
     'List every supplement you take, including dose, cost, and reason for use. Clarify which health goals each item supports.',
-    'Group supplements into essentials (clinically indicated), experiments, and “nice to have” items to visualize priorities.',
+    'Group supplements into essentials (clinically indicated), experiments, and â€œnice to haveâ€ items to visualize priorities.',
     'Consider reallocating a portion of your supplement budget to sleep quality, whole foods, and movement, which often yield higher marginal gains.',
   ];
 
@@ -216,7 +216,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'Ongoing',
       detail:
-        'Reassess your stack every 3–6 months, updating costs, benefits, and evidence as new research or life changes arise.',
+        'Reassess your stack every 3â€“6 months, updating costs, benefits, and evidence as new research or life changes arise.',
     },
   ];
 
@@ -320,7 +320,7 @@ export default function SupplementStackROICalculator() {
                   name="perceivedBenefitScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Perceived benefit (0–10)</FormLabel>
+                      <FormLabel>Perceived benefit (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -339,7 +339,7 @@ export default function SupplementStackROICalculator() {
                   name="evidenceQualityScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Evidence quality (0–10)</FormLabel>
+                      <FormLabel>Evidence quality (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -376,7 +376,7 @@ export default function SupplementStackROICalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">ROI score</p>
                 <p className="text-2xl font-semibold text-primary">{result.roiScore.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Cost per benefit point</p>
@@ -441,11 +441,11 @@ export default function SupplementStackROICalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Benefit factor</strong> combines your perceived benefit score (0–10) with an evidence-weighted
+            <strong>Benefit factor</strong> combines your perceived benefit score (0â€“10) with an evidence-weighted
             modifier, giving more weight to stacks supported by higher-quality data.
           </p>
           <p>
-            <strong>ROI score</strong> is scaled from 0–100 by rewarding higher benefit and evidence, while applying
+            <strong>ROI score</strong> is scaled from 0â€“100 by rewarding higher benefit and evidence, while applying
             logarithmic penalties for higher monthly cost and additional penalties for very large stacks.
           </p>
           <p>
@@ -593,9 +593,9 @@ export default function SupplementStackROICalculator() {
           follow-up, and a few strategic supplements that fit your context.
         </p>
         <p>
-          Thinking in ROI terms does not mean reducing health to money—it means recognizing that every dollar and unit of
+          Thinking in ROI terms does not mean reducing health to moneyâ€”it means recognizing that every dollar and unit of
           attention you spend on a supplement is a dollar and unit of attention you cannot spend elsewhere. A thoughtful
-          ROI framework encourages you to ask, “Is this product still earning its place in my routine?”
+          ROI framework encourages you to ask, â€œIs this product still earning its place in my routine?â€
         </p>
 
         <h2 id="cost-structure" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -604,7 +604,7 @@ export default function SupplementStackROICalculator() {
         <p>
           The most obvious cost is the monthly subscription or bottle price, but the true cost of a stack includes:
           direct spend, time spent ordering and organizing, mental overhead, and potential side effects or interactions.
-          When you add opportunity cost—what you could have done with those funds instead—the picture becomes clearer.
+          When you add opportunity costâ€”what you could have done with those funds insteadâ€”the picture becomes clearer.
         </p>
         <p>
           A simple way to begin is to calculate your monthly spend across all products and compare it to other health
@@ -640,7 +640,7 @@ export default function SupplementStackROICalculator() {
         <p>
           When scoring evidence, consider whether products are recommended in reputable clinical guidelines, supported by
           meta-analyses, and compatible with your diagnoses and medications. Be cautious of claims based solely on
-          testimonials, influencer marketing, or “miracle cure” language. When in doubt, ask a clinician or clinical
+          testimonials, influencer marketing, or â€œmiracle cureâ€ language. When in doubt, ask a clinician or clinical
           pharmacist to review your stack.
         </p>
 

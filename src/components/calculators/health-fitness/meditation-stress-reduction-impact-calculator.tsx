@@ -58,7 +58,7 @@ const faqs = [
   {
     question: 'What is a good meditation stress reduction impact score?',
     answer:
-      'Scores above 75 indicate high impact. 60-75 is moderate impact. 45-59 is low impact. Below 45 suggests minimal impact—consider increasing frequency, duration, or trying different meditation techniques.',
+      'Scores above 75 indicate high impact. 60-75 is moderate impact. 45-59 is low impact. Below 45 suggests minimal impactâ€”consider increasing frequency, duration, or trying different meditation techniques.',
   },
   {
     question: 'How often should I meditate to reduce stress?',
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'What if meditation doesn\'t seem to reduce my stress?',
     answer:
-      'If meditation isn\'t reducing stress, try: increasing frequency or duration, trying different meditation techniques, seeking guidance from a teacher, ensuring you\'re practicing correctly, and being patient—benefits accumulate over time.',
+      'If meditation isn\'t reducing stress, try: increasing frequency or duration, trying different meditation techniques, seeking guidance from a teacher, ensuring you\'re practicing correctly, and being patientâ€”benefits accumulate over time.',
   },
   {
     question: 'Does the time of day matter for stress-reducing meditation?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/meditation-stress-reduction-impact-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/meditation-stress-reduction-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Meditation Stress Reduction Wellness Impact Calculator', item: baseUrl },
       ],
     },
@@ -195,7 +195,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'Increase meditation frequency: Aim for at least 5-6 days per week. Consistency is key for stress reduction benefits.',
     `You're practicing ${values.meditationFrequency} days per week. ${values.meditationFrequency >= 5 ? 'Great frequency!' : 'Consider increasing to 5-6 days for better stress reduction.'}`,
     `Average session duration: ${values.averageSessionMinutes} minutes. ${values.averageSessionMinutes >= 15 ? 'Good duration.' : 'Consider increasing to 15-20 minutes for optimal stress reduction.'}`,
-    `Practice duration: ${values.practiceDurationWeeks} weeks. ${values.practiceDurationWeeks >= 8 ? 'Excellent consistency!' : 'Continue practicing—benefits accumulate over time. Most people see significant improvements after 8-12 weeks.'}`,
+    `Practice duration: ${values.practiceDurationWeeks} weeks. ${values.practiceDurationWeeks >= 8 ? 'Excellent consistency!' : 'Continue practicingâ€”benefits accumulate over time. Most people see significant improvements after 8-12 weeks.'}`,
     'Try different meditation techniques: If current practice isn\'t effective, explore mindfulness meditation, body scan, loving-kindness, or breath-focused meditation.',
     'Practice at consistent times: Establishing a routine helps meditation become a reliable stress-reduction tool.',
     'Combine with other stress-reduction strategies: Exercise, adequate sleep, social support, and healthy coping strategies enhance meditation\'s stress-reduction benefits.',
@@ -425,22 +425,22 @@ export default function MeditationStressReductionImpactCalculator() {
             <strong>Stress Reduction Score</strong> = Frequency Score + Duration Score + Practice Length Score + Perceived Score + Actual Reduction Score
           </p>
           <p>
-            <strong>Frequency Score</strong> = (Meditation Frequency / 7) × 25
+            <strong>Frequency Score</strong> = (Meditation Frequency / 7) Ã— 25
           </p>
           <p>
-            <strong>Duration Score</strong> = Min((Average Session Minutes / 20) × 25, 25)
+            <strong>Duration Score</strong> = Min((Average Session Minutes / 20) Ã— 25, 25)
           </p>
           <p>
-            <strong>Practice Length Score</strong> = Min((Practice Duration Weeks / 12) × 20, 20)
+            <strong>Practice Length Score</strong> = Min((Practice Duration Weeks / 12) Ã— 20, 20)
           </p>
           <p>
-            <strong>Perceived Score</strong> = (Stress Reduction Noticed / 10) × 20
+            <strong>Perceived Score</strong> = (Stress Reduction Noticed / 10) Ã— 20
           </p>
           <p>
-            <strong>Actual Reduction Score</strong> = (Stress Change / 9) × 10
+            <strong>Actual Reduction Score</strong> = (Stress Change / 9) Ã— 10
           </p>
           <p>
-            <strong>Reduction Percentage</strong> = ((Baseline Stress - Current Stress) / Baseline Stress) × 100
+            <strong>Reduction Percentage</strong> = ((Baseline Stress - Current Stress) / Baseline Stress) Ã— 100
           </p>
           <p>Score ranges from 0-100, with higher scores indicating greater stress reduction impact from meditation practice.</p>
         </CardContent>

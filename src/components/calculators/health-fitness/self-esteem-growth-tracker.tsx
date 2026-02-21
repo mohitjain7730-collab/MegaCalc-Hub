@@ -36,9 +36,9 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Estimate your baseline self-esteem rating (0–10) from an earlier period such as last year or before starting growth work.',
-  'Rate your current self-esteem (0–10) based on how you speak to yourself and handle setbacks.',
-  'Count how many “wins” or small achievements you logged in the last 4 weeks.',
+  'Estimate your baseline self-esteem rating (0â€“10) from an earlier period such as last year or before starting growth work.',
+  'Rate your current self-esteem (0â€“10) based on how you speak to yourself and handle setbacks.',
+  'Count how many â€œwinsâ€ or small achievements you logged in the last 4 weeks.',
   'Enter how many days in the last 60 you intentionally practiced self-compassion or affirming self-talk.',
   'Review self-esteem growth percent, practice support score, and suggested next steps.',
 ];
@@ -60,7 +60,7 @@ const faqs = [
       'Think back to a previous period and rate typical self-talk, confidence in your abilities, and how you reacted to mistakes. A rough estimate is sufficient.',
   },
   {
-    question: 'What counts as a “win”?',
+    question: 'What counts as a â€œwinâ€?',
     answer:
       'Any action you genuinely feel proud of or grateful for: completing work, setting a boundary, caring for your body, asking for help, or trying something new.',
   },
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/self-esteem-growth-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/self-esteem-growth-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Self-Esteem Growth Tracker', item: baseUrl },
       ],
     },
@@ -172,7 +172,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations: string[] = [
     'Log at least one genuine win or valued action per day, no matter how small.',
     'Practice speaking to yourself as you would to a close friend when you make mistakes.',
-    'Notice and gently challenge global, negative labels (“I always fail”) with more precise language.',
+    'Notice and gently challenge global, negative labels (â€œI always failâ€) with more precise language.',
   ];
 
   if (weeklyWinsLogged < 7) {
@@ -180,7 +180,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   if (selfCompassionPracticeDays < 10) {
-    recommendations.push('Experiment with short self-compassion practices (guided audio, journaling prompts) 2–3 times per week.');
+    recommendations.push('Experiment with short self-compassion practices (guided audio, journaling prompts) 2â€“3 times per week.');
   }
 
   if (growthPercent < 0) {
@@ -188,7 +188,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'This Week', detail: 'Start or continue a “wins” log, noting at least one small, specific win per day.' },
+    { label: 'This Week', detail: 'Start or continue a â€œwinsâ€ log, noting at least one small, specific win per day.' },
     { label: 'This Month', detail: 'Schedule several self-compassion sessions and track how they influence your self-talk in challenging moments.' },
     { label: 'Ongoing', detail: 'Recalculate growth quarterly and adjust practices as needed, aiming for steady, realistic improvements instead of perfection.' },
   ];
@@ -247,7 +247,7 @@ export default function SelfEsteemGrowthTracker() {
                   name="baselineSelfEsteem"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Baseline self-esteem (0–10)</FormLabel>
+                      <FormLabel>Baseline self-esteem (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 4.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -260,7 +260,7 @@ export default function SelfEsteemGrowthTracker() {
                   name="currentSelfEsteem"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Current self-esteem (0–10)</FormLabel>
+                      <FormLabel>Current self-esteem (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -385,10 +385,10 @@ export default function SelfEsteemGrowthTracker() {
             <strong>Growth percent</strong> compares current self-esteem with baseline as a relative percentage change, capped to avoid extreme outliers.
           </p>
           <p>
-            <strong>Practice support score</strong> combines logged wins and self-compassion practice into a 0–100 indicator of how supportive your habits are for self-esteem growth.
+            <strong>Practice support score</strong> combines logged wins and self-compassion practice into a 0â€“100 indicator of how supportive your habits are for self-esteem growth.
           </p>
           <p>
-            These formulas are intentionally simple and directional—they are best used to inform reflection and planning rather than as rigid grades.
+            These formulas are intentionally simple and directionalâ€”they are best used to inform reflection and planning rather than as rigid grades.
           </p>
         </CardContent>
       </Card>
@@ -418,7 +418,7 @@ export default function SelfEsteemGrowthTracker() {
                 <p className="text-xl font-semibold text-primary">
                   {(result.currentSelfEsteem - result.baselineSelfEsteem).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Current − baseline</p>
+                <p className="text-xs text-muted-foreground">Current âˆ’ baseline</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Average practice/week</p>

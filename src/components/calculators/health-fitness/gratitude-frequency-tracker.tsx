@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/gratitude-frequency-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/gratitude-frequency-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Gratitude Frequency Wellness Tracker', item: baseUrl },
       ],
     },
@@ -408,19 +408,19 @@ export default function GratitudeFrequencyTracker() {
             <strong>Gratitude Score</strong> = Frequency Score + Journaling Score + Expressions Score + Consistency Score + Depth Score
           </p>
           <p>
-            <strong>Frequency Score</strong> = Min((Practices per Week / 7) × 40, 40)
+            <strong>Frequency Score</strong> = Min((Practices per Week / 7) Ã— 40, 40)
           </p>
           <p>
-            <strong>Journaling Score</strong> = Min((Journal Entries per Week / 7) × 20, 20)
+            <strong>Journaling Score</strong> = Min((Journal Entries per Week / 7) Ã— 20, 20)
           </p>
           <p>
-            <strong>Expressions Score</strong> = Min((Expressions per Week / 7) × 20, 20)
+            <strong>Expressions Score</strong> = Min((Expressions per Week / 7) Ã— 20, 20)
           </p>
           <p>
-            <strong>Consistency Score</strong> = (Practice Consistency / 10) × 10
+            <strong>Consistency Score</strong> = (Practice Consistency / 10) Ã— 10
           </p>
           <p>
-            <strong>Depth Score</strong> = (Depth of Gratitude / 10) × 10
+            <strong>Depth Score</strong> = (Depth of Gratitude / 10) Ã— 10
           </p>
           <p>
             <strong>Consistency Index</strong> = (Practice Consistency + Depth of Gratitude) / 2
@@ -466,7 +466,7 @@ export default function GratitudeFrequencyTracker() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Gratitude practice is a powerful tool for enhancing wellbeing, happiness, and mental health. Research consistently shows that regular gratitude practices—including journaling, expressing appreciation to others, and gratitude reflection—improve life satisfaction, relationships, and overall happiness.
+            Gratitude practice is a powerful tool for enhancing wellbeing, happiness, and mental health. Research consistently shows that regular gratitude practicesâ€”including journaling, expressing appreciation to others, and gratitude reflectionâ€”improve life satisfaction, relationships, and overall happiness.
           </p>
           <p>
             This tracker helps you monitor the frequency and consistency of your gratitude practices. By tracking how often you engage in gratitude activities, the depth of your practice, and consistency, you can optimize your gratitude habits for maximum wellbeing benefits.

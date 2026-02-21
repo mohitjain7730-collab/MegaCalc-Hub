@@ -15,9 +15,9 @@ import { Alert, AlertDescription } from '@/components/ui/alert';
 import Link from 'next/link';
 
 const formSchema = z.object({
-  currentAge: z.number().min(18).max(80, '18–80'),
-  retirementAge: z.number().min(50).max(95, '50–95'),
-  lifeExpectancy: z.number().min(65).max(100, '65–100'),
+  currentAge: z.number().min(18).max(80, '18â€“80'),
+  retirementAge: z.number().min(50).max(95, '50â€“95'),
+  lifeExpectancy: z.number().min(65).max(100, '65â€“100'),
   targetAnnualIncomeToday: z.number().min(0, 'Target income'),
   currentSavings: z.number().min(0).optional(),
   annualContribution: z.number().min(0).optional(),
@@ -36,8 +36,8 @@ const schemaMarkup = {
       name: 'Retirement Gap Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'Find your retirement shortfall or surplus. Enter age, target income, savings, contributions, return and inflation—get required nest egg, projected savings at retirement, gap, and monthly savings needed to close the gap.',
-      url: 'https://mycalculating.com/category/finance/retirement-gap-calculator',
+      description: 'Find your retirement shortfall or surplus. Enter age, target income, savings, contributions, return and inflationâ€”get required nest egg, projected savings at retirement, gap, and monthly savings needed to close the gap.',
+      url: 'https://mycalculating.com/finance/retirement-gap-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -364,11 +364,11 @@ export default function RetirementGapCalculator() {
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Years to retirement = retirement age − current age.</span>
+                  <span>Years to retirement = retirement age âˆ’ current age.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Years in retirement = life expectancy − retirement age.</span>
+                  <span>Years in retirement = life expectancy âˆ’ retirement age.</span>
                 </li>
               </ul>
             </div>
@@ -387,11 +387,11 @@ export default function RetirementGapCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Real return = (1 + nominal return) / (1 + inflation) − 1.</span>
+                  <span>Real return = (1 + nominal return) / (1 + inflation) âˆ’ 1.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Gap = Required nest egg − Projected savings at retirement.</span>
+                  <span>Gap = Required nest egg âˆ’ Projected savings at retirement.</span>
                 </li>
               </ul>
             </div>
@@ -409,7 +409,7 @@ export default function RetirementGapCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto">
             <p className="font-mono text-sm">
-              Target income at retirement = Target today × (1 + inflation)^(years to retirement). Required nest egg = Target income at retirement × (1 − (1 + real rate)^(−years in retirement)) / real rate. Projected savings = Current savings × (1 + nominal return)^(years to retirement) + Annual contribution × ((1 + nominal return)^(years to retirement) − 1) / nominal return. Gap = Required − Projected. Monthly savings to close gap = PMT so that FV of contributions + FV of current savings = required nest egg.
+              Target income at retirement = Target today Ã— (1 + inflation)^(years to retirement). Required nest egg = Target income at retirement Ã— (1 âˆ’ (1 + real rate)^(âˆ’years in retirement)) / real rate. Projected savings = Current savings Ã— (1 + nominal return)^(years to retirement) + Annual contribution Ã— ((1 + nominal return)^(years to retirement) âˆ’ 1) / nominal return. Gap = Required âˆ’ Projected. Monthly savings to close gap = PMT so that FV of contributions + FV of current savings = required nest egg.
             </p>
           </div>
           <p className="text-sm text-muted-foreground">
@@ -512,7 +512,7 @@ export default function RetirementGapCalculator() {
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/Article">
         <meta itemProp="name" content="Retirement Gap: How to Find and Close Your Shortfall" />
-        <meta itemProp="description" content="Calculate your retirement gap—the difference between what you need at retirement and what you are on track to have—and how much to save each month to close it." />
+        <meta itemProp="description" content="Calculate your retirement gapâ€”the difference between what you need at retirement and what you are on track to haveâ€”and how much to save each month to close it." />
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Retirement Gap: How to Find and Close Your Shortfall</h1>
         <p className="text-lg italic text-muted-foreground">Estimate the nest egg you need, compare it to your projected savings, and learn how much to save each month to close the gap.</p>
 
@@ -535,15 +535,15 @@ export default function RetirementGapCalculator() {
         <h2 id="how-calculated-gap" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How the Calculator Works</h2>
         <p>You enter current age, retirement age, life expectancy, target annual income in today's dollars, current savings, annual contribution, expected investment return, and inflation. The calculator inflates your target income to the first year of retirement, computes the present value of that annuity over your years in retirement (using the real rate of return), and compares that required nest egg to the future value of your current savings plus contributions. The difference is the gap. If there is a shortfall, it estimates the additional monthly savings needed to close it.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Real vs Nominal</h3>
-        <p>Required nest egg is in &quot;year-1 retirement dollars&quot;—the amount you need at the day you retire to fund a stream of payments that keep pace with inflation. Projected savings are in nominal dollars at retirement. The comparison is consistent because both are in the same (retirement-date) dollar terms.</p>
+        <p>Required nest egg is in &quot;year-1 retirement dollars&quot;â€”the amount you need at the day you retire to fund a stream of payments that keep pace with inflation. Projected savings are in nominal dollars at retirement. The comparison is consistent because both are in the same (retirement-date) dollar terms.</p>
         <p>If you enter Social Security or pension income, subtract it from your target annual income so the calculator only solves for the gap that must be funded from savings.</p>
 
         <h2 id="required-nest-egg" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Required Nest Egg</h2>
-        <p>The required nest egg is the present value of an annuity that pays your target income (in the first year of retirement) for each year of retirement. The discount rate is the real return: (1 + nominal return) / (1 + inflation) − 1. So you need enough money at retirement so that, if you earn the real return each year, you can withdraw the target amount (in real terms) every year for the rest of your life.</p>
+        <p>The required nest egg is the present value of an annuity that pays your target income (in the first year of retirement) for each year of retirement. The discount rate is the real return: (1 + nominal return) / (1 + inflation) âˆ’ 1. So you need enough money at retirement so that, if you earn the real return each year, you can withdraw the target amount (in real terms) every year for the rest of your life.</p>
         <p>This assumes you spend the same real amount each year; in practice, many people spend more early in retirement (travel, hobbies) and less later. You can add a buffer to your target income to reflect that.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Impact of Assumptions</h3>
         <p>Higher expected return lowers the required nest egg (future dollars are discounted more). Higher inflation raises the target income at retirement and can raise or lower the required nest egg depending on how it affects the real rate. Longer life expectancy increases the required nest egg; earlier retirement does too.</p>
-        <p>Use a real return of roughly 3–5% (e.g. 6% nominal and 2–3% inflation) for a balanced assumption; being too optimistic on return can lead to under-saving.</p>
+        <p>Use a real return of roughly 3â€“5% (e.g. 6% nominal and 2â€“3% inflation) for a balanced assumption; being too optimistic on return can lead to under-saving.</p>
 
         <h2 id="closing-the-gap" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Closing the Gap</h2>
         <p>If you have a shortfall, you can close it by saving more (increase monthly or annual contribution), retiring later (more years of contributions and growth), lowering your target income in retirement, or assuming a higher return (use with caution). The calculator's &quot;monthly savings to close gap&quot; is the additional amount to save each month, from now until retirement, so that the future value of those savings (plus your current savings and existing contributions) equals the required nest egg.</p>
@@ -551,7 +551,7 @@ export default function RetirementGapCalculator() {
         <p>If you cannot save the full &quot;monthly to close gap&quot; today, plan to increase savings with raises or bonuses. Alternatively, retire one or two years later to reduce the shortfall; the calculator lets you test different retirement ages to find a feasible plan.</p>
 
         <h2 id="limitations-gap" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Limitations</h2>
-        <p>The model assumes level real spending; many people spend more early in retirement. It does not include Social Security, pensions, or other income—subtract those from your target income for a more accurate gap. Returns and inflation are uncertain; use conservative assumptions. Life expectancy is unknown; planning to 90 or 95 reduces longevity risk but increases the required amount. The monthly savings to close the gap are in nominal terms; in practice, increase savings with inflation each year to maintain real effort.</p>
+        <p>The model assumes level real spending; many people spend more early in retirement. It does not include Social Security, pensions, or other incomeâ€”subtract those from your target income for a more accurate gap. Returns and inflation are uncertain; use conservative assumptions. Life expectancy is unknown; planning to 90 or 95 reduces longevity risk but increases the required amount. The monthly savings to close the gap are in nominal terms; in practice, increase savings with inflation each year to maintain real effort.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Conclusion</h3>
         <p>The retirement gap calculator gives you a clear target and a concrete action (e.g. save $X per month) to close a shortfall. Review your gap periodically as your savings, contributions, and assumptions change, and adjust your plan accordingly.</p>
         <p>Use the calculator with different retirement ages and target incomes to test &quot;what if&quot; scenarios: retiring earlier, spending more in retirement, or reducing target income to see how the gap and required monthly savings change. Updating your gap annually keeps your plan aligned with reality.</p>
@@ -578,7 +578,7 @@ export default function RetirementGapCalculator() {
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">What is the real rate of return?</h4>
-              <p className="text-muted-foreground">Real return = (1 + nominal return) / (1 + inflation) − 1. It is the return after inflation, used to value a stream of real (inflation-adjusted) income.</p>
+              <p className="text-muted-foreground">Real return = (1 + nominal return) / (1 + inflation) âˆ’ 1. It is the return after inflation, used to value a stream of real (inflation-adjusted) income.</p>
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">Should I include Social Security?</h4>
@@ -653,7 +653,7 @@ export default function RetirementGapCalculator() {
             Limitations &amp; Accuracy
           </h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li className="flex gap-2"><CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" /><span>Assumes level real spending; actual spending may vary. Does not include Social Security or pensions—reduce target income by those amounts.</span></li>
+            <li className="flex gap-2"><CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" /><span>Assumes level real spending; actual spending may vary. Does not include Social Security or pensionsâ€”reduce target income by those amounts.</span></li>
             <li className="flex gap-2"><CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" /><span>Returns and inflation are uncertain; use conservative assumptions and revisit regularly.</span></li>
             <li className="flex gap-2"><CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" /><span>Monthly savings to close gap are nominal; increase with inflation each year for constant real effort.</span></li>
             <li className="flex gap-2"><CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" /><span>Life expectancy is uncertain; use 90 or 95 to reduce longevity risk.</span></li>

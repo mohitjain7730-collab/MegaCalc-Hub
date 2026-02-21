@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/plant-based-omega-3-conversion-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/plant-based-omega-3-conversion-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Plant-Based Omega-3 Conversion Calculator', item: baseUrl },
       ],
     },
@@ -416,10 +416,10 @@ export default function PlantBasedOmega3ConversionCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Converted EPA</strong> = (ALA intake × EPA conversion rate) / 100. Typical EPA conversion rate is 5-10% of ALA intake.
+            <strong>Converted EPA</strong> = (ALA intake Ã— EPA conversion rate) / 100. Typical EPA conversion rate is 5-10% of ALA intake.
           </p>
           <p>
-            <strong>Converted DHA</strong> = (ALA intake × DHA conversion rate) / 100. Typical DHA conversion rate is 0.5-5% of ALA intake (much lower than EPA).
+            <strong>Converted DHA</strong> = (ALA intake Ã— DHA conversion rate) / 100. Typical DHA conversion rate is 0.5-5% of ALA intake (much lower than EPA).
           </p>
           <p>
             <strong>Total EPA</strong> = converted EPA + direct EPA intake (from algae supplements). Total DHA = converted DHA + direct DHA intake (from algae supplements).

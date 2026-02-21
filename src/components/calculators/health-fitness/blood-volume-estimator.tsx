@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/blood-volume-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/blood-volume-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Blood Volume Estimator', item: baseUrl },
       ],
     },
@@ -156,8 +156,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
     bloodVolume = values.bloodVolume;
   } else {
     // Nadler formula for blood volume estimation
-    // BV (L) = (0.3669 × H³) + (0.03219 × W) + 0.6041 for males
-    // BV (L) = (0.3561 × H³) + (0.03308 × W) + 0.1833 for females
+    // BV (L) = (0.3669 Ã— HÂ³) + (0.03219 Ã— W) + 0.6041 for males
+    // BV (L) = (0.3561 Ã— HÂ³) + (0.03308 Ã— W) + 0.1833 for females
     // Where H = height in meters, W = weight in kg
     const heightM = height / 100;
     const heightM3 = heightM * heightM * heightM;
@@ -397,10 +397,10 @@ export default function BloodVolumeEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Nadler formula (males)</strong>: BV (L) = (0.3669 × H³) + (0.03219 × W) + 0.6041.
+            <strong>Nadler formula (males)</strong>: BV (L) = (0.3669 Ã— HÂ³) + (0.03219 Ã— W) + 0.6041.
           </p>
           <p>
-            <strong>Nadler formula (females)</strong>: BV (L) = (0.3561 × H³) + (0.03308 × W) + 0.1833.
+            <strong>Nadler formula (females)</strong>: BV (L) = (0.3561 Ã— HÂ³) + (0.03308 Ã— W) + 0.1833.
           </p>
           <p>
             <strong>Where</strong>: H = height in meters, W = weight in kg.

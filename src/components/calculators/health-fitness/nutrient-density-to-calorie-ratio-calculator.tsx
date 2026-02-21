@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/nutrient-density-to-calorie-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/nutrient-density-to-calorie-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Nutrient Density to Calorie Ratio Calculator', item: baseUrl },
       ],
     },
@@ -373,7 +373,7 @@ export default function NutrientDensityToCalorieRatioCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Nutrient density</strong> = (nutrient score / calories) × 100, or provided directly.
+            <strong>Nutrient density</strong> = (nutrient score / calories) Ã— 100, or provided directly.
           </p>
           <p>
             <strong>Density ratio</strong> = nutrient density / calories. Higher ratios indicate more nutrients per calorie.

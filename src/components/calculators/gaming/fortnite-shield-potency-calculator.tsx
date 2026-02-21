@@ -35,7 +35,7 @@ const faqs = [
   {
     question: 'What is shield effectiveness?',
     answer:
-      'Shield effectiveness = (Shield Amount / Total Effective Health) × 100. This shows what percentage of your effective health is shield. Higher shield effectiveness means more protection and less health at risk. Full shield (100) with 100 health = 50% effectiveness.',
+      'Shield effectiveness = (Shield Amount / Total Effective Health) Ã— 100. This shows what percentage of your effective health is shield. Higher shield effectiveness means more protection and less health at risk. Full shield (100) with 100 health = 50% effectiveness.',
   },
   {
     question: 'Should I prioritize shield or health?',
@@ -86,7 +86,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite Shield Potency Calculator', item: baseUrl },
       ],
     },
@@ -217,7 +217,7 @@ export default function FortniteShieldPotencyCalculator() {
 
         <p>Shield effectiveness measures how much of your total effective health is shield protection. Understanding effectiveness helps players evaluate shield value and optimize protection strategies.</p>
 
-        <p>Shield effectiveness formula: Effectiveness = (Shield Amount / Total Effective Health) × 100. This calculates what percentage of your effective health is shield. Higher effectiveness means more protection and less health at risk. Full shield (100) with 100 health = 50% effectiveness.</p>
+        <p>Shield effectiveness formula: Effectiveness = (Shield Amount / Total Effective Health) Ã— 100. This calculates what percentage of your effective health is shield. Higher effectiveness means more protection and less health at risk. Full shield (100) with 100 health = 50% effectiveness.</p>
 
         <p>Effectiveness examples: 100 health + 0 shield = 0% effectiveness (no protection), 100 health + 50 shield = 33.3% effectiveness (moderate protection), 100 health + 100 shield = 50% effectiveness (maximum protection). Higher shield amounts provide better effectiveness and protection.</p>
 
@@ -234,7 +234,7 @@ export default function FortniteShieldPotencyCalculator() {
 
         <p>Shield absorbs damage before health, providing protection that preserves your base health. Understanding damage absorption helps players evaluate shield value and plan survival strategies.</p>
 
-        <p>Damage absorption mechanics: Damage is absorbed by shield first, then health. If incoming damage ≤ shield amount, all damage is absorbed by shield. If incoming damage &gt; shield amount, shield is depleted and remaining damage goes to health. This design protects health by using shield as a buffer.</p>
+        <p>Damage absorption mechanics: Damage is absorbed by shield first, then health. If incoming damage â‰¤ shield amount, all damage is absorbed by shield. If incoming damage &gt; shield amount, shield is depleted and remaining damage goes to health. This design protects health by using shield as a buffer.</p>
 
         <p>Absorption examples: With 50 shield and 100 health, taking 30 damage: 30 damage absorbed by shield (shield reduced to 20), 0 damage to health (health remains 100). Taking 75 damage: 50 damage absorbed by shield (shield depleted), 25 damage to health (health reduced to 75). Shield always protects health when available.</p>
 

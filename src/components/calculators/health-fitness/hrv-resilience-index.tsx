@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter your average RMSSD HRV value (ms) over the last 7–30 days.',
+  'Enter your average RMSSD HRV value (ms) over the last 7â€“30 days.',
   'Enter the % change in HRV trend (e.g., +5 or -10) compared to your longer-term baseline.',
   'Enter your current resting heart rate (bpm).',
-  'Rate your recent sleep quality on a 0–10 scale.',
+  'Rate your recent sleep quality on a 0â€“10 scale.',
   'Review your HRV Resilience Index and recovery readiness score.',
 ];
 
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/hrv-resilience-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/hrv-resilience-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'HRV (Heart Rate Variability) Resilience Index', item: baseUrl },
       ],
     },
@@ -294,7 +294,7 @@ export default function HRVResilienceIndex() {
                   name="sleepQualityScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Sleep quality (0–10)</FormLabel>
+                      <FormLabel>Sleep quality (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 7.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -325,7 +325,7 @@ export default function HRVResilienceIndex() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Resilience index</p>
                 <p className="text-2xl font-semibold text-primary">{result.resilienceIndex}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery readiness</p>
@@ -399,7 +399,7 @@ export default function HRVResilienceIndex() {
             <strong>RHR penalty</strong> subtracts points when resting heart rate is meaningfully above 60 bpm, which may signal higher stress or lower fitness.
           </p>
           <p>
-            <strong>Resilience index</strong> combines all components and clamps them to 0–100 for easy interpretation; the recovery readiness variant slightly boosts sleep and penalizes high RHR.
+            <strong>Resilience index</strong> combines all components and clamps them to 0â€“100 for easy interpretation; the recovery readiness variant slightly boosts sleep and penalizes high RHR.
           </p>
           <p>This model is informational only; it cannot diagnose disease or replace professional HRV interpretation.</p>
         </CardContent>
@@ -499,7 +499,7 @@ export default function HRVResilienceIndex() {
           Heart rate variability offers a fascinating window into how your nervous system responds to life. This guide shows you how to use HRV trends thoughtfully rather than obsess over single numbers.
         </p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. What HRV Can—and Cannot—Tell You</h2>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. What HRV Canâ€”and Cannotâ€”Tell You</h2>
         <p>
           HRV reflects the tug-of-war between sympathetic (fight-or-flight) and parasympathetic (rest-and-digest) branches of the autonomic nervous system. Higher values often mean more flexibility and resilience, but HRV alone
           cannot diagnose heart disease or mental health conditions.
@@ -558,7 +558,7 @@ export default function HRVResilienceIndex() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This calculator estimates an HRV Resilience Index and recovery readiness score from RMSSD, trends, resting HR, and sleep quality.</p>
           <p>It returns scores, qualitative interpretation, recommendations, an action plan, and additional metrics.</p>
-          <p>The expanded guide and FAQs support SEO, E‑E‑A‑T, and responsible interpretation by humans and AI assistants.</p>
+          <p>The expanded guide and FAQs support SEO, Eâ€‘Eâ€‘Aâ€‘T, and responsible interpretation by humans and AI assistants.</p>
         </CardContent>
       </Card>
     </div>

@@ -46,7 +46,7 @@ const faqs = [
   {
     question: 'How do I calculate total profit over time?',
     answer:
-      'Total profit = Profit Per Trade × Trade Frequency × Time Period. For example, 5 emerald profit per trade, 20 trades/hour, over 24 hours = 2,400 emerald profit. Understanding total profit helps plan trading strategies and evaluate trade value over time.',
+      'Total profit = Profit Per Trade Ã— Trade Frequency Ã— Time Period. For example, 5 emerald profit per trade, 20 trades/hour, over 24 hours = 2,400 emerald profit. Understanding total profit helps plan trading strategies and evaluate trade value over time.',
   },
 ];
 
@@ -97,7 +97,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Villager Trade Tracker', item: baseUrl },
       ],
     },
@@ -230,7 +230,7 @@ export default function MinecraftVillagerTradeTracker() {
 
         <p>Profit per trade is the emerald gain or loss per individual trade. Higher profit per trade means better trade value and more efficient emerald generation. Track profit per trade for all trades to identify optimal options.</p>
 
-        <p>Total profit over time: Total Profit = Profit Per Trade × Trade Frequency × Time Period. This calculates total emerald profit over extended periods. Higher frequency dramatically increases total profit, even with moderate profit per trade.</p>
+        <p>Total profit over time: Total Profit = Profit Per Trade Ã— Trade Frequency Ã— Time Period. This calculates total emerald profit over extended periods. Higher frequency dramatically increases total profit, even with moderate profit per trade.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Profit Optimization</h3>
         <p>To optimize profit: identify trades with highest profit per trade, increase trade frequency through automation, compare multiple trade options, level up villagers for better prices, and track total profit over time. Profit optimization maximizes emerald generation and trading efficiency.</p>
@@ -339,8 +339,8 @@ export default function MinecraftVillagerTradeTracker() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool tracks Minecraft villager trades and calculates emerald profit per trade based on trade cost (emeralds), item value (emeralds), trade type (Buy/Sell), optional trade frequency (trades per hour), and optional villager level (1-5).</p>
-          <p>Outputs include emerald profit per trade (positive = gain, negative = loss), profit per hour (profit × frequency), profit per day (24 hours), trade efficiency (profit percentage), status assessment (loss/break-even/low-profit/moderate-profit/high-profit), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use profit calculations: Profit (Buy) = Item Value - Trade Cost, Profit (Sell) = Trade Cost - Item Value, Profit Per Hour = Profit × Frequency, Profit Per Day = Profit Per Hour × 24, Efficiency = (Profit / Cost) × 100. The guide covers trade mechanics, profit calculation, villager leveling, optimization strategies, trade frequency, and villager professions. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft villager trade profit calculations instantly.</p>
+          <p>Outputs include emerald profit per trade (positive = gain, negative = loss), profit per hour (profit Ã— frequency), profit per day (24 hours), trade efficiency (profit percentage), status assessment (loss/break-even/low-profit/moderate-profit/high-profit), interpretation, recommendations, and action plan.</p>
+          <p>Formulas use profit calculations: Profit (Buy) = Item Value - Trade Cost, Profit (Sell) = Trade Cost - Item Value, Profit Per Hour = Profit Ã— Frequency, Profit Per Day = Profit Per Hour Ã— 24, Efficiency = (Profit / Cost) Ã— 100. The guide covers trade mechanics, profit calculation, villager leveling, optimization strategies, trade frequency, and villager professions. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft villager trade profit calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

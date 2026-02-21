@@ -53,7 +53,7 @@ const faqs = [
   {
     question: 'How is lifestyle inflation impact calculated?',
     answer:
-      'Lifestyle inflation impact is calculated by determining the future value of increased spending if that money were instead invested. Future Value = Increased Annual Spending × [(1 + r)^n - 1] / r, where r is the investment return rate and n is years. The opportunity cost is the difference between what you could have accumulated versus what you spent.',
+      'Lifestyle inflation impact is calculated by determining the future value of increased spending if that money were instead invested. Future Value = Increased Annual Spending Ã— [(1 + r)^n - 1] / r, where r is the investment return rate and n is years. The opportunity cost is the difference between what you could have accumulated versus what you spent.',
   },
   {
     question: 'What is opportunity cost of lifestyle inflation?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/lifestyle-inflation-impact-calculator';
+const baseUrl = 'https://mycalculating.com/finance/lifestyle-inflation-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Lifestyle Inflation Impact Calculator', item: baseUrl },
       ],
     },
@@ -152,7 +152,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const currentAge = values.currentAge;
   
   // Future Value of Annuity (increased spending)
-  // FV = PMT × [(1 + r)^n - 1] / r
+  // FV = PMT Ã— [(1 + r)^n - 1] / r
   // But for spending, we calculate what could have been invested
   // Opportunity Cost = Future Value if invested - Total Spent
   
@@ -384,11 +384,11 @@ export default function LifestyleInflationImpactCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Future Value of Increased Spending (if invested)</strong> = Increased Annual Spending × [(1 + r)^n - 1] / r
+            <strong>Future Value of Increased Spending (if invested)</strong> = Increased Annual Spending Ã— [(1 + r)^n - 1] / r
           </p>
           <p>Where: r = investment return rate (decimal), n = number of years</p>
           <p>
-            <strong>Total Spent Over Period</strong> = Increased Annual Spending × Years
+            <strong>Total Spent Over Period</strong> = Increased Annual Spending Ã— Years
           </p>
           <p>
             <strong>Opportunity Cost</strong> = Future Value if Invested - Total Spent Over Period
@@ -516,7 +516,7 @@ export default function LifestyleInflationImpactCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Future Value Formula</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>Future Value = Increased Annual Spending × [(1 + r)^n - 1] / r</strong></p>
+        <p className="font-mono text-lg"><strong>Future Value = Increased Annual Spending Ã— [(1 + r)^n - 1] / r</strong></p>
     </div>
     <p>Where r = investment return rate, n = number of years</p>
 

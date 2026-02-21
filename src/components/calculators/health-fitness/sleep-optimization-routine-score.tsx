@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate how consistent your bedtime is on a 0–10 scale (0 = random, 10 = almost exactly the same time every day).',
-  'Rate how consistent your wake time is on a 0–10 scale.',
-  'Rate your sleep environment (dark, cool, quiet, comfortable) on a 0–10 scale.',
-  'Rate your pre-sleep wind-down routine (screens, stimulants, relaxation) on a 0–10 scale.',
+  'Rate how consistent your bedtime is on a 0â€“10 scale (0 = random, 10 = almost exactly the same time every day).',
+  'Rate how consistent your wake time is on a 0â€“10 scale.',
+  'Rate your sleep environment (dark, cool, quiet, comfortable) on a 0â€“10 scale.',
+  'Rate your pre-sleep wind-down routine (screens, stimulants, relaxation) on a 0â€“10 scale.',
   'Review your sleep optimization routine score, circadian support score, and personalized recommendations.',
 ];
 
@@ -67,12 +67,12 @@ const faqs = [
   {
     question: 'Should I change my routine based only on this score?',
     answer:
-      'Use the score as a starting point. Simple adjustments—like more consistent timing or a darker room—are generally low-risk, but medical concerns (snoring, gasping, insomnia, restless legs) should be addressed with a clinician.',
+      'Use the score as a starting point. Simple adjustmentsâ€”like more consistent timing or a darker roomâ€”are generally low-risk, but medical concerns (snoring, gasping, insomnia, restless legs) should be addressed with a clinician.',
   },
   {
     question: 'How quickly can I expect improvement after changing my routine?',
     answer:
-      'Many people notice changes within 1–2 weeks, but more durable improvements often require several weeks or months of consistent routines.',
+      'Many people notice changes within 1â€“2 weeks, but more durable improvements often require several weeks or months of consistent routines.',
   },
   {
     question: 'What if my routine score is high but I still feel tired?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-optimization-routine-score';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-optimization-routine-score';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Optimization Routine Score', item: baseUrl },
       ],
     },
@@ -174,7 +174,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations: string[] = [
     'Aim for a consistent sleep window, with bedtime and wake time varying by no more than about 1 hour day-to-day.',
     'Make your bedroom darker, cooler, and quieter where possible, and reserve it primarily for sleep and intimacy.',
-    'Create a 30–60 minute wind-down routine that reduces screens, bright light, heavy work, and intense conversations.',
+    'Create a 30â€“60 minute wind-down routine that reduces screens, bright light, heavy work, and intense conversations.',
   ];
 
   if (preSleepWindDownScore <= 4) {
@@ -193,7 +193,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'This Week',
       detail:
-        'Pick one or two simple changes—such as a more consistent bedtime and dimming lights an hour before sleep—and track how you feel.',
+        'Pick one or two simple changesâ€”such as a more consistent bedtime and dimming lights an hour before sleepâ€”and track how you feel.',
     },
     {
       label: 'This Month',
@@ -268,7 +268,7 @@ export default function SleepOptimizationRoutineScore() {
                   name="bedtimeConsistency"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Bedtime consistency (0–10)</FormLabel>
+                      <FormLabel>Bedtime consistency (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -287,7 +287,7 @@ export default function SleepOptimizationRoutineScore() {
                   name="wakeTimeConsistency"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Wake-time consistency (0–10)</FormLabel>
+                      <FormLabel>Wake-time consistency (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -306,7 +306,7 @@ export default function SleepOptimizationRoutineScore() {
                   name="sleepEnvironmentScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Sleep environment (0–10)</FormLabel>
+                      <FormLabel>Sleep environment (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -325,7 +325,7 @@ export default function SleepOptimizationRoutineScore() {
                   name="preSleepWindDownScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Pre-sleep wind-down (0–10)</FormLabel>
+                      <FormLabel>Pre-sleep wind-down (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -362,7 +362,7 @@ export default function SleepOptimizationRoutineScore() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Routine score</p>
                 <p className="text-2xl font-semibold text-primary">{result.routineScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Circadian support</p>
@@ -428,7 +428,7 @@ export default function SleepOptimizationRoutineScore() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             <strong>Sleep optimization routine score</strong> weights timing consistency most heavily, then environment
-            quality and wind-down practices, and scales the result to a 0–100 range.
+            quality and wind-down practices, and scales the result to a 0â€“100 range.
           </p>
           <p>
             <strong>Circadian support score</strong> focuses specifically on how stable your bed and wake times are,
@@ -536,7 +536,7 @@ export default function SleepOptimizationRoutineScore() {
         <ul className="list-disc ml-6 space-y-2 text-blue-600">
           <li>
             <a href="#why-sleep-routines" className="hover:underline">
-              1. Why Sleep Routines Matter More Than Occasional “Perfect” Nights
+              1. Why Sleep Routines Matter More Than Occasional â€œPerfectâ€ Nights
             </a>
           </li>
           <li>
@@ -564,10 +564,10 @@ export default function SleepOptimizationRoutineScore() {
         <hr />
 
         <h2 id="why-sleep-routines" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
-          1. Why Sleep Routines Matter More Than Occasional “Perfect” Nights
+          1. Why Sleep Routines Matter More Than Occasional â€œPerfectâ€ Nights
         </h2>
         <p>
-          Many people focus on single-night hacks—like taking a supplement or using a sleep app—while ignoring the daily
+          Many people focus on single-night hacksâ€”like taking a supplement or using a sleep appâ€”while ignoring the daily
           patterns that drive long-term sleep quality. Your brain and body respond to patterns, not isolated events.
           When your routine sends consistent signals about when it is time to be alert and when it is time to wind down,
           hormones, core body temperature, and brain activity can anticipate sleep more effectively.
@@ -585,10 +585,10 @@ export default function SleepOptimizationRoutineScore() {
           Your circadian rhythm is an internal 24-hour clock that influences sleep-wake cycles, body temperature,
           hormone secretion, and digestion. Going to bed and waking up at wildly different times from day to day can
           confuse this clock. Think of it like constantly changing time zones without giving your body enough time to
-          adapt—your physiology is always catching up.
+          adaptâ€”your physiology is always catching up.
         </p>
         <p>
-          In practice, aiming for a consistent 7–9-hour window that shifts by no more than about one hour, even on
+          In practice, aiming for a consistent 7â€“9-hour window that shifts by no more than about one hour, even on
           weekends, is a powerful foundation. If your life circumstances make this difficult (shift work, caregiving,
           travel), focusing on the most regular schedule you can manage still helps stabilize your system.
         </p>
@@ -599,13 +599,13 @@ export default function SleepOptimizationRoutineScore() {
         <p>
           A sleep-friendly environment signals to your nervous system that it is safe to disengage. Research and
           clinical experience consistently highlight three elements: darkness, cool temperature, and quiet or consistent
-          background sound. Even small tweaks—like blackout curtains, a fan, or a white-noise app—can have an outsized
+          background sound. Even small tweaksâ€”like blackout curtains, a fan, or a white-noise appâ€”can have an outsized
           impact for light or noise-sensitive sleepers.
         </p>
         <p>
           Your bed and pillow also matter, particularly for pain or reflux. If you wake with stiffness, numbness, or
           heartburn, addressing ergonomics and medical contributors can improve comfort and reduce awakenings. The
-          calculator’s environment score prompts you to review these often-overlooked details systematically.
+          calculatorâ€™s environment score prompts you to review these often-overlooked details systematically.
         </p>
 
         <h2 id="wind-down" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -614,7 +614,7 @@ export default function SleepOptimizationRoutineScore() {
         <p>
           A wind-down routine transitions you from daytime problem-solving into a more relaxed, parasympathetic state.
           That transition rarely happens if you are checking email, arguing online, or consuming intense entertainment
-          right up to lights-out. Instead, think of the last 30–60 minutes as a deliberate decompression zone.
+          right up to lights-out. Instead, think of the last 30â€“60 minutes as a deliberate decompression zone.
         </p>
         <p>
           Effective routines do not have to be elaborate. They might include dimming lights, reading physical books,
@@ -672,7 +672,7 @@ export default function SleepOptimizationRoutineScore() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This calculator converts simple 0–10 ratings into a sleep optimization routine score and circadian support
+            This calculator converts simple 0â€“10 ratings into a sleep optimization routine score and circadian support
             index.
           </p>
           <p>

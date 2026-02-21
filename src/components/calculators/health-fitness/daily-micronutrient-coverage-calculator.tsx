@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-micronutrient-coverage-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-micronutrient-coverage-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Daily Micronutrient Coverage Calculator', item: baseUrl },
       ],
     },
@@ -356,7 +356,7 @@ export default function DailyMicronutrientCoverageCalculator() {
             <strong>Total coverage</strong> = number of vitamins + number of minerals + number of trace elements consumed daily.
           </p>
           <p>
-            <strong>Coverage percentage</strong> = (total coverage / maximum possible coverage) × 100. Maximum coverage is approximately 31 (13 vitamins + 8 minerals + 10 trace elements).
+            <strong>Coverage percentage</strong> = (total coverage / maximum possible coverage) Ã— 100. Maximum coverage is approximately 31 (13 vitamins + 8 minerals + 10 trace elements).
           </p>
           <p>
             <strong>Optimal ranges</strong>: Excellent: 25+ micronutrients (80%+ coverage), Good: 20-24 (65-80%), Moderate: 15-19 (50-65%), Low: &lt;15 (&lt;50%).

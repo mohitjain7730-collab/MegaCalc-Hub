@@ -77,7 +77,7 @@ const faqs = [
   {
     question: 'Can exercise help with brain fog?',
     answer:
-      'Regular exercise may improve blood flow to the brain, reduce inflammation, enhance sleep quality, and reduce stress—all of which may help clear brain fog. This is general wellness information, not a medical diagnosis.',
+      'Regular exercise may improve blood flow to the brain, reduce inflammation, enhance sleep quality, and reduce stressâ€”all of which may help clear brain fog. This is general wellness information, not a medical diagnosis.',
   },
   {
     question: 'When should I see a doctor about brain fog?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/brain-fog-severity-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/brain-fog-severity-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Brain Fog Wellness Score', item: baseUrl },
       ],
     },
@@ -406,22 +406,22 @@ export default function BrainFogSeverityScoreCalculator() {
             <strong>Brain Fog Wellness Score</strong> = (Clarity Contribution + Memory Contribution + Concentration Contribution + Word-Finding Contribution + Sleep Contribution + Stress Contribution)
           </p>
           <p>
-            <strong>Clarity Contribution</strong> = (10 - Mental Clarity Level) × 3
+            <strong>Clarity Contribution</strong> = (10 - Mental Clarity Level) Ã— 3
           </p>
           <p>
-            <strong>Memory Contribution</strong> = Memory Difficulties Frequency × 3
+            <strong>Memory Contribution</strong> = Memory Difficulties Frequency Ã— 3
           </p>
           <p>
-            <strong>Concentration Contribution</strong> = Concentration Problems Frequency × 3
+            <strong>Concentration Contribution</strong> = Concentration Problems Frequency Ã— 3
           </p>
           <p>
-            <strong>Word-Finding Contribution</strong> = Word-Finding Difficulties × 2
+            <strong>Word-Finding Contribution</strong> = Word-Finding Difficulties Ã— 2
           </p>
           <p>
-            <strong>Sleep Contribution</strong> = (10 - Sleep Quality) × 2
+            <strong>Sleep Contribution</strong> = (10 - Sleep Quality) Ã— 2
           </p>
           <p>
-            <strong>Stress Contribution</strong> = Stress Level × 2
+            <strong>Stress Contribution</strong> = Stress Level Ã— 2
           </p>
           <p>Score ranges from 0-100, with higher scores suggesting a general lifestyle tendency where brain fog may be more significant. This is a personal insight, not a medical evaluation.</p>
         </CardContent>

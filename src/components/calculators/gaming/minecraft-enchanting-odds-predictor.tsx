@@ -21,7 +21,7 @@ const faqs = [
   {
     question: 'What is the maximum enchantment level?',
     answer:
-      'Maximum enchantment level depends on bookshelves: 0 bookshelves = level 8, 1-14 bookshelves = level 8 + (bookshelves × 1.5), 15 bookshelves = level 30 (maximum). Bookshelves must be placed within 2 blocks of the enchanting table. Always use 15 bookshelves for maximum level 30 enchantments.',
+      'Maximum enchantment level depends on bookshelves: 0 bookshelves = level 8, 1-14 bookshelves = level 8 + (bookshelves Ã— 1.5), 15 bookshelves = level 30 (maximum). Bookshelves must be placed within 2 blocks of the enchanting table. Always use 15 bookshelves for maximum level 30 enchantments.',
   },
   {
     question: 'How are enchantment probabilities calculated?',
@@ -92,7 +92,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Enchanting Odds Predictor', item: baseUrl },
       ],
     },
@@ -228,16 +228,16 @@ export default function MinecraftEnchantingOddsPredictor() {
 
         <p>Bookshelves around the enchanting table increase maximum enchantment level, enabling access to better enchantments. Understanding bookshelf mechanics helps players optimize enchanting setups and maximize enchantment potential.</p>
 
-        <p>Bookshelf placement: Bookshelves must be within 2 blocks of the enchanting table, with air blocks between bookshelves and the table. Bookshelves can be placed in a 5×5 area around the table. Proper placement is essential for maximum level access.</p>
+        <p>Bookshelf placement: Bookshelves must be within 2 blocks of the enchanting table, with air blocks between bookshelves and the table. Bookshelves can be placed in a 5Ã—5 area around the table. Proper placement is essential for maximum level access.</p>
 
-        <p>Maximum level calculation: 0 bookshelves = level 8 maximum, 1-14 bookshelves = 8 + (bookshelves × 1.5) maximum, 15 bookshelves = level 30 maximum. Always use 15 bookshelves for maximum level 30 access. Level 30 is essential for best enchantments.</p>
+        <p>Maximum level calculation: 0 bookshelves = level 8 maximum, 1-14 bookshelves = 8 + (bookshelves Ã— 1.5) maximum, 15 bookshelves = level 30 maximum. Always use 15 bookshelves for maximum level 30 access. Level 30 is essential for best enchantments.</p>
 
         <p>Bookshelf requirements: You need 15 bookshelves for maximum level (30). Bookshelves require 3 books each (9 paper + 1 leather per book). Total: 45 books (135 paper + 15 leather) for 15 bookshelves. This is a one-time investment that provides permanent access to level 30.</p>
 
         <p>Bookshelf benefits: More bookshelves = higher maximum level = better enchantments. Level 30 provides access to all enchantments and maximum enchantment levels. Always use 15 bookshelves for optimal enchanting results. Bookshelves are essential for maximum enchantment potential.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Bookshelf Setup</h3>
-        <p>To set up bookshelves: Place 15 bookshelves within 2 blocks of enchanting table, ensure air blocks between bookshelves and table, arrange in 5×5 pattern around table, and verify level 30 is available. Proper setup provides maximum enchantment level access.</p>
+        <p>To set up bookshelves: Place 15 bookshelves within 2 blocks of enchanting table, ensure air blocks between bookshelves and table, arrange in 5Ã—5 pattern around table, and verify level 30 is available. Proper setup provides maximum enchantment level access.</p>
 
         <hr />
 
@@ -344,7 +344,7 @@ export default function MinecraftEnchantingOddsPredictor() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool predicts Minecraft enchanting odds based on item type (Sword/Bow/Armor/Tool/Book), enchantment level (1-30), optional target enchantment name, optional bookshelf count (0-15, affects max level), and optional previous enchantments count.</p>
           <p>Outputs include maximum enchantment level (based on bookshelves), available enchantments (varies by item type), probability of target enchantment (if specified), expected number of enchantments per enchantment, experience cost (equals enchantment level), success probability (chance of good enchantments), status assessment (low-odds/moderate-odds/good-odds/excellent-odds), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use enchanting mechanics: Max Level = 15 bookshelves = 30, Experience Cost = Enchantment Level, Base Probability = (Level / 30) × 0.5 + 0.1, Target Probability = (Base / Available) × (1 - Previous × 0.1), Success Probability = Min(0.95, Base × (1 + Level Factor)). The guide covers enchanting mechanics, bookshelf mechanics, probabilities, rarity, optimization strategies, and experience management. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft enchanting odds calculations instantly.</p>
+          <p>Formulas use enchanting mechanics: Max Level = 15 bookshelves = 30, Experience Cost = Enchantment Level, Base Probability = (Level / 30) Ã— 0.5 + 0.1, Target Probability = (Base / Available) Ã— (1 - Previous Ã— 0.1), Success Probability = Min(0.95, Base Ã— (1 + Level Factor)). The guide covers enchanting mechanics, bookshelf mechanics, probabilities, rarity, optimization strategies, and experience management. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft enchanting odds calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

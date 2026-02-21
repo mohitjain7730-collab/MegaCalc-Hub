@@ -30,12 +30,12 @@ const faqs = [
   {
     question: 'How is dupe value calculated?',
     answer:
-      'Dupe value = Original Value × (1 - Dupe Penalty). Dupe Penalty = (Dupe Count / (Dupe Count + Base Rarity Factor)) × (Market Impact / 100). Higher dupe counts and market impact increase the penalty, reducing value. Rarer pets have higher base rarity factors, providing some protection against value loss.',
+      'Dupe value = Original Value Ã— (1 - Dupe Penalty). Dupe Penalty = (Dupe Count / (Dupe Count + Base Rarity Factor)) Ã— (Market Impact / 100). Higher dupe counts and market impact increase the penalty, reducing value. Rarer pets have higher base rarity factors, providing some protection against value loss.',
   },
   {
     question: 'What is value retention?',
     answer:
-      'Value retention is the percentage of original value that remains after duplication. Formula: Value Retention = (Dupe Value / Original Value) × 100. Higher retention means less value loss. Retention above 70% is good, 50-70% is moderate, 30-50% is poor, and below 30% is severely depreciated.',
+      'Value retention is the percentage of original value that remains after duplication. Formula: Value Retention = (Dupe Value / Original Value) Ã— 100. Higher retention means less value loss. Retention above 70% is good, 50-70% is moderate, 30-50% is poor, and below 30% is severely depreciated.',
   },
   {
     question: 'Can duplicated pets recover value?',
@@ -86,7 +86,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: '(Roblox) Pet Dupe Value Calculator', item: baseUrl },
       ],
     },
@@ -164,16 +164,16 @@ export default function RobloxPetDupeValueCalculator() {
             <strong>Base Rarity Factor</strong> = Rarity protection factor (Common: 10, Uncommon: 25, Rare: 50, Epic: 100, Legendary: 200, Mythical: 500, Exclusive: 1000). Rarer pets have higher factors, providing more protection against value loss from small dupe counts.
           </p>
           <p>
-            <strong>Dupe Penalty</strong> = (Dupe Count / (Dupe Count + Base Rarity Factor)) × (Market Impact / 100). This creates a diminishing returns effect where additional dupes have less impact. The penalty ranges from 0 (no impact) to 1 (complete value loss).
+            <strong>Dupe Penalty</strong> = (Dupe Count / (Dupe Count + Base Rarity Factor)) Ã— (Market Impact / 100). This creates a diminishing returns effect where additional dupes have less impact. The penalty ranges from 0 (no impact) to 1 (complete value loss).
           </p>
           <p>
-            <strong>Dupe Value</strong> = Original Value × (1 - Dupe Penalty). This calculates the current value after accounting for duplication effects. Higher penalties result in lower dupe values.
+            <strong>Dupe Value</strong> = Original Value Ã— (1 - Dupe Penalty). This calculates the current value after accounting for duplication effects. Higher penalties result in lower dupe values.
           </p>
           <p>
-            <strong>Value Retention</strong> = (Dupe Value / Original Value) × 100. This shows what percentage of original value remains. Higher retention means less value loss. Retention above 70% is good, 50-70% is moderate, 30-50% is poor, and below 30% is severely depreciated.
+            <strong>Value Retention</strong> = (Dupe Value / Original Value) Ã— 100. This shows what percentage of original value remains. Higher retention means less value loss. Retention above 70% is good, 50-70% is moderate, 30-50% is poor, and below 30% is severely depreciated.
           </p>
           <p>
-            <strong>Market Stability</strong> = (1 - Dupe Penalty) × 100. This represents market stability as a percentage. Higher stability means more secure value, while lower stability indicates high volatility and risk.
+            <strong>Market Stability</strong> = (1 - Dupe Penalty) Ã— 100. This represents market stability as a percentage. Higher stability means more secure value, while lower stability indicates high volatility and risk.
           </p>
           <p>These formulas account for dupe count, market impact, and rarity tier to estimate how duplication affects pet value. The diminishing returns formula means that the first few duplicates have the most impact, while additional duplicates have progressively less impact.</p>
         </CardContent>
@@ -291,16 +291,16 @@ export default function RobloxPetDupeValueCalculator() {
 
         <p>The base rarity factor provides protection against value loss. Rarer pets have higher factors (Exclusive: 1000, Mythical: 500, Legendary: 200), meaning they're less affected by small dupe counts. Common pets have lower factors (Common: 10), meaning they're more affected by duplications.</p>
 
-        <p>Dupe penalty formula: (Dupe Count / (Dupe Count + Base Rarity Factor)) × (Market Impact / 100). This creates a curve where penalty increases with dupe count but at a decreasing rate. For example, going from 0 to 10 dupes has more impact than going from 100 to 110 dupes.</p>
+        <p>Dupe penalty formula: (Dupe Count / (Dupe Count + Base Rarity Factor)) Ã— (Market Impact / 100). This creates a curve where penalty increases with dupe count but at a decreasing rate. For example, going from 0 to 10 dupes has more impact than going from 100 to 110 dupes.</p>
 
-        <p>Dupe value formula: Original Value × (1 - Dupe Penalty). This calculates current value after accounting for duplication effects. If dupe penalty is 0.5 (50%), dupe value is 50% of original value. If dupe penalty is 0.8 (80%), dupe value is 20% of original value.</p>
+        <p>Dupe value formula: Original Value Ã— (1 - Dupe Penalty). This calculates current value after accounting for duplication effects. If dupe penalty is 0.5 (50%), dupe value is 50% of original value. If dupe penalty is 0.8 (80%), dupe value is 20% of original value.</p>
 
-        <p>Value retention formula: (Dupe Value / Original Value) × 100. This shows what percentage of original value remains. Higher retention means less value loss. Use retention to evaluate whether a duplicated pet is still worth trading or holding.</p>
+        <p>Value retention formula: (Dupe Value / Original Value) Ã— 100. This shows what percentage of original value remains. Higher retention means less value loss. Use retention to evaluate whether a duplicated pet is still worth trading or holding.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Examples</h3>
-        <p>Example 1: Exclusive pet, original value 50,000 Robux, 20 duplicates, 70% market impact. Base rarity factor: 1000. Dupe penalty: (20 / (20 + 1000)) × 0.7 = 0.0137 (1.37%). Dupe value: 50,000 × 0.9863 = 49,315 Robux. Value retention: 98.6%.</p>
+        <p>Example 1: Exclusive pet, original value 50,000 Robux, 20 duplicates, 70% market impact. Base rarity factor: 1000. Dupe penalty: (20 / (20 + 1000)) Ã— 0.7 = 0.0137 (1.37%). Dupe value: 50,000 Ã— 0.9863 = 49,315 Robux. Value retention: 98.6%.</p>
 
-        <p>Example 2: Rare pet, original value 5,000 Robux, 100 duplicates, 60% market impact. Base rarity factor: 50. Dupe penalty: (100 / (100 + 50)) × 0.6 = 0.4 (40%). Dupe value: 5,000 × 0.6 = 3,000 Robux. Value retention: 60%.</p>
+        <p>Example 2: Rare pet, original value 5,000 Robux, 100 duplicates, 60% market impact. Base rarity factor: 50. Dupe penalty: (100 / (100 + 50)) Ã— 0.6 = 0.4 (40%). Dupe value: 5,000 Ã— 0.6 = 3,000 Robux. Value retention: 60%.</p>
 
         <hr />
 
@@ -308,7 +308,7 @@ export default function RobloxPetDupeValueCalculator() {
 
         <p>Market impact percentage reflects how much duplication has affected actual market prices. This is determined by researching current prices and comparing them to pre-duplication prices. Market impact can range from 0% (no price change) to 100% (complete value loss).</p>
 
-        <p>Market stability represents how secure the pet's value is after duplication. Higher stability (70%+) means more secure value and lower volatility. Lower stability (below 50%) means high volatility and risk. Stability is calculated as (1 - Dupe Penalty) × 100.</p>
+        <p>Market stability represents how secure the pet's value is after duplication. Higher stability (70%+) means more secure value and lower volatility. Lower stability (below 50%) means high volatility and risk. Stability is calculated as (1 - Dupe Penalty) Ã— 100.</p>
 
         <p>Market response to duplication varies. Some markets recover quickly if duplicates are removed, while others experience lasting depreciation. Market confidence is crucial - if players lose confidence in an item's rarity, value may not fully recover even if duplicates are removed.</p>
 
@@ -382,7 +382,7 @@ export default function RobloxPetDupeValueCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Roblox pet dupe value based on original value (Robux), dupe count (number of duplicates), market impact percentage (0-100), and rarity tier (Common to Exclusive).</p>
           <p>Outputs include dupe penalty (value reduction percentage), dupe value (current value after duplication), value retention (percentage of original value remaining), market stability (security of value), status assessment (severely-depreciated/depreciated/moderate/stable/minimal-impact), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use diminishing returns model: Dupe Penalty = (Dupe Count / (Dupe Count + Base Rarity Factor)) × (Market Impact / 100), Dupe Value = Original Value × (1 - Dupe Penalty), Value Retention = (Dupe Value / Original Value) × 100. Base rarity factors provide protection (Common: 10, Exclusive: 1000). The guide covers duplication mechanics, value impact, calculation methods, market effects, recovery potential, and trading strategies. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox pet duplication value impact instantly.</p>
+          <p>Formulas use diminishing returns model: Dupe Penalty = (Dupe Count / (Dupe Count + Base Rarity Factor)) Ã— (Market Impact / 100), Dupe Value = Original Value Ã— (1 - Dupe Penalty), Value Retention = (Dupe Value / Original Value) Ã— 100. Base rarity factors provide protection (Common: 10, Exclusive: 1000). The guide covers duplication mechanics, value impact, calculation methods, market effects, recovery potential, and trading strategies. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox pet duplication value impact instantly.</p>
         </CardContent>
       </Card>
     </div>

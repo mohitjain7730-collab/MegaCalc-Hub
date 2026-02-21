@@ -127,7 +127,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/goal-based-investing-allocation-calculator';
+const baseUrl = 'https://mycalculating.com/finance/goal-based-investing-allocation-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -136,7 +136,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Goal-Based Investing Allocation Calculator', item: baseUrl },
       ],
     },
@@ -162,12 +162,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   // Calculate required return: solve FV = PV(1+r)^n + PMT * [((1+r)^n - 1) / r]
   // For simplicity, assume monthly contributions
-  // Using approximation: r ≈ (Goal/Current)^(1/n) - 1 if no contributions
+  // Using approximation: r â‰ˆ (Goal/Current)^(1/n) - 1 if no contributions
   // More accurate: use present value formula
   const futureValueNeeded = goalAmount - (currentSavings * Math.pow(1 + expectedReturnPct, timeHorizonYears));
   
   // Required monthly contribution (simplified)
-  // Using: PMT = (FV × r) / ((1+r)^n - 1) where r is monthly rate
+  // Using: PMT = (FV Ã— r) / ((1+r)^n - 1) where r is monthly rate
   const monthlyRate = expectedReturnPct / 12;
   const numberOfMonths = timeHorizonYears * 12;
   let requiredMonthlyContribution = 0;
@@ -437,7 +437,7 @@ export default function GoalBasedInvestingAllocationCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Required Return</strong> = [(Goal Amount / Current Savings)^(1/Time Horizon) - 1] × 100
+            <strong>Required Return</strong> = [(Goal Amount / Current Savings)^(1/Time Horizon) - 1] Ã— 100
           </p>
           <p>
             <strong>Sharpe Ratio</strong> = (Expected Return - Risk-Free Rate) / Portfolio Volatility
@@ -681,7 +681,7 @@ export default function GoalBasedInvestingAllocationCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Rebalancing</h3>
     <p>Rebalance to maintain target allocations:</p>
     <ul className="list-disc ml-6 space-y-1">
-        <li>When allocations drift significantly (e.g., ±5%)</li>
+        <li>When allocations drift significantly (e.g., Â±5%)</li>
         <li>As time horizons shorten (glide path)</li>
         <li>When goal amounts or time horizons change</li>
     </ul>

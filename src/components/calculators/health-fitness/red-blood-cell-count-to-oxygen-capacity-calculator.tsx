@@ -34,7 +34,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter red blood cell count if measured (million cells/μL) from blood test.',
+  'Enter red blood cell count if measured (million cells/Î¼L) from blood test.',
   'Enter hemoglobin level (g/dL) from blood test.',
   'Optionally enter oxygen capacity if measured (mL O2/dL blood).',
   'Enter your age (oxygen capacity can change with age).',
@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'What are normal red blood cell counts?',
     answer:
-      'Normal ranges vary by gender. Adult males: 4.5-5.9 million cells/μL, adult females: 4.1-5.1 million cells/μL. Values outside these ranges may indicate anemia or polycythemia.',
+      'Normal ranges vary by gender. Adult males: 4.5-5.9 million cells/Î¼L, adult females: 4.1-5.1 million cells/Î¼L. Values outside these ranges may indicate anemia or polycythemia.',
   },
   {
     question: 'What causes low oxygen capacity?',
@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/red-blood-cell-count-to-oxygen-capacity-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/red-blood-cell-count-to-oxygen-capacity-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Red Blood Cell Count to Oxygen Capacity Calculator', item: baseUrl },
       ],
     },
@@ -246,7 +246,7 @@ export default function RedBloodCellCountToOxygenCapacityCalculator() {
                   name="redBloodCellCount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Red blood cell count (million/μL) (optional)</FormLabel>
+                      <FormLabel>Red blood cell count (million/Î¼L) (optional)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.1" placeholder="e.g., 4.8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -316,7 +316,7 @@ export default function RedBloodCellCountToOxygenCapacityCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Red blood cell count</p>
                 <p className="text-2xl font-semibold text-primary">{result.redBloodCellCount.toFixed(2)}</p>
-                <p className="text-xs text-muted-foreground">Million cells/μL</p>
+                <p className="text-xs text-muted-foreground">Million cells/Î¼L</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Oxygen capacity</p>
@@ -381,7 +381,7 @@ export default function RedBloodCellCountToOxygenCapacityCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Oxygen capacity</strong> = hemoglobin level (g/dL) × 1.34 mL O2/g Hb.
+            <strong>Oxygen capacity</strong> = hemoglobin level (g/dL) Ã— 1.34 mL O2/g Hb.
           </p>
           <p>
             <strong>If oxygen capacity not provided</strong>: Calculated from hemoglobin level. Each gram of hemoglobin can carry approximately 1.34 mL of oxygen.

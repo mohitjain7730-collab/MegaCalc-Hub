@@ -36,7 +36,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter approximate water temperature in °C (for ice baths, cold plunges, or cold showers).',
+  'Enter approximate water temperature in Â°C (for ice baths, cold plunges, or cold showers).',
   'Enter how many sessions per week you intend to do.',
   'Rate your current cold tolerance level from 1 (very low/new) to 10 (very experienced).',
   'Toggle cardiovascular risk if you have known heart disease, uncontrolled blood pressure, or other risk factors (requires medical clearance).',
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: 'Is cold exposure safe for everyone?',
     answer:
-      'No. People with cardiovascular disease, uncontrolled blood pressure, Raynaud’s, or other conditions should consult a physician before cold exposure.',
+      'No. People with cardiovascular disease, uncontrolled blood pressure, Raynaudâ€™s, or other conditions should consult a physician before cold exposure.',
   },
   {
     question: 'What is the purpose of cold exposure?',
@@ -55,9 +55,9 @@ const faqs = [
       'Some people use it for mood, stress resilience, or recovery. Evidence is still developing; this tool focuses on safety-conscious planning, not promises.',
   },
   {
-    question: 'What temperatures are considered “cold” here?',
+    question: 'What temperatures are considered â€œcoldâ€ here?',
     answer:
-      'Most protocols use water between about 2–15 °C. This calculator assumes that range.',
+      'Most protocols use water between about 2â€“15 Â°C. This calculator assumes that range.',
   },
   {
     question: 'Why limit total weekly minutes?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cold-exposure-duration-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cold-exposure-duration-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cold Exposure Wellness Duration Estimator', item: baseUrl },
       ],
     },
@@ -153,7 +153,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const tempFactor = clamp((15 - waterTemperatureC) / 13, 0, 1.5); // colder water => higher factor
   const toleranceFactor = clamp(coldToleranceLevel / 10, 0.2, 1.2);
 
-  const baseMinutes = 3; // reference of ~11 minutes/week split into ~3–4 min sets
+  const baseMinutes = 3; // reference of ~11 minutes/week split into ~3â€“4 min sets
   const recommendedMinutesPerSession = clamp(baseMinutes / tempFactor * toleranceFactor, 1, 15);
 
   const totalWeeklyMinutes = recommendedMinutesPerSession * sessionsPerWeek;
@@ -257,7 +257,7 @@ export default function ColdExposureDurationEstimator() {
                   name="waterTemperatureC"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Water temperature (°C)</FormLabel>
+                      <FormLabel>Water temperature (Â°C)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 10" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -283,7 +283,7 @@ export default function ColdExposureDurationEstimator() {
                   name="coldToleranceLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cold tolerance (1–10)</FormLabel>
+                      <FormLabel>Cold tolerance (1â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="1" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -399,7 +399,7 @@ export default function ColdExposureDurationEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Temperature factor</strong> scales session time based on how far water temperature is below a 15 °C reference.
+            <strong>Temperature factor</strong> scales session time based on how far water temperature is below a 15 Â°C reference.
           </p>
           <p>
             <strong>Recommended minutes</strong> start from a modest baseline and are shortened for very cold water or low tolerance, while slightly lengthened for milder water and higher tolerance.
@@ -432,7 +432,7 @@ export default function ColdExposureDurationEstimator() {
           {result ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Minutes per °C</p>
+                <p className="text-sm text-muted-foreground">Minutes per Â°C</p>
                 <p className="text-xl font-semibold text-primary">
                   {(result.recommendedMinutesPerSession / result.waterTemperatureC).toFixed(2)}
                 </p>
@@ -505,7 +505,7 @@ export default function ColdExposureDurationEstimator() {
           Cold exposure is a strong stimulus. This guide helps you approach it with respect, curiosity, and a solid safety framework.
         </p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. The Appeal—and Risk—of Cold Exposure</h2>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. The Appealâ€”and Riskâ€”of Cold Exposure</h2>
         <p>
           From mood boosts to recovery routines, cold has become trendy. But strong cardiovascular and nervous system responses mean it is essential to respect individual differences and medical history.
         </p>
@@ -535,7 +535,7 @@ export default function ColdExposureDurationEstimator() {
           Conclusion
         </h2>
         <p>
-          Cold exposure can be a powerful experience, but it is optional—not required—for health. Use this estimator and guide to keep experiments within conservative bounds and to know when to seek professional input.
+          Cold exposure can be a powerful experience, but it is optionalâ€”not requiredâ€”for health. Use this estimator and guide to keep experiments within conservative bounds and to know when to seek professional input.
         </p>
       </section>
 
@@ -566,7 +566,7 @@ export default function ColdExposureDurationEstimator() {
             from temperature, frequency, tolerance, and risk flags. This is a personal lifestyle insight, not a medical
             evaluation.
           </p>
-          <p>It outputs per‑session minutes, weekly minutes, qualitative status, recommendations, an action plan, and extra metrics.</p>
+          <p>It outputs perâ€‘session minutes, weekly minutes, qualitative status, recommendations, an action plan, and extra metrics.</p>
           <p>An enhanced guide and FAQs emphasize harm reduction and collaboration with healthcare professionals.</p>
         </CardContent>
       </Card>

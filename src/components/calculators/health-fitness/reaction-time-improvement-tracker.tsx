@@ -43,24 +43,24 @@ const steps = [
 const faqs = [
   { question: 'What counts as a reaction drill?', answer: 'Aim trainers, ball-drop catches, sprint starts, racquet feeds, or light/sound response apps.' },
   { question: 'How often should I retest?', answer: 'Weekly or biweekly provides clean trend data without day-to-day noise.' },
-  { question: 'Do I need special hardware?', answer: 'No—consistency matters more than equipment. Just log which tool you used.' },
-  { question: 'How much improvement is realistic?', answer: '5–10% faster in 4–6 weeks is excellent for most people.' },
+  { question: 'Do I need special hardware?', answer: 'Noâ€”consistency matters more than equipment. Just log which tool you used.' },
+  { question: 'How much improvement is realistic?', answer: '5â€“10% faster in 4â€“6 weeks is excellent for most people.' },
   { question: 'Why include sleep and caffeine?', answer: 'Reaction speed is tightly tied to recovery quality and stimulant timing.' },
   { question: 'Can I use this for esports training?', answer: 'Absolutely. Track aim-trainer scores or custom reaction tests the same way athletes track sprints.' },
   { question: 'Should I test dominant and non-dominant sides?', answer: 'If your sport uses both, track the slower side to keep training priorities clear.' },
   { question: 'What if I regress?', answer: 'Take a deload, improve sleep, or switch drill stimuli; the tool will highlight when adjustments are needed.' },
   { question: 'Does hydration matter?', answer: 'Yes. Pair this with a hydration calculator to keep cognitive speed sharp.' },
-  { question: 'Can mindfulness help?', answer: 'Definitely—calmer nervous systems react faster. See the meditation streak tracker for ideas.' },
+  { question: 'Can mindfulness help?', answer: 'Definitelyâ€”calmer nervous systems react faster. See the meditation streak tracker for ideas.' },
 ];
 
 const relatedCalculators = [
   { name: 'Cognitive Focus Efficiency Calculator', slug: 'cognitive-focus-efficiency-calculator', description: 'Check whether your planning habits support deep focus.' },
-  { name: 'Mental Fatigue Index Calculator', slug: 'daily-activity-points-calculator', description: 'Monitor cognitive load so fatigue doesn’t slow responses.' },
+  { name: 'Mental Fatigue Index Calculator', slug: 'daily-activity-points-calculator', description: 'Monitor cognitive load so fatigue doesnâ€™t slow responses.' },
   { name: 'Meditation Streak Mindfulness Tracker', slug: 'meditation-streak-mindfulness-progress-tracker', description: 'Layer mindfulness for calmer, faster reactions.' },
   { name: 'Stress Hormone Balance Calculator', slug: 'stress-hormone-balance-calculator', description: 'See how cortisol vs melatonin balance affects alertness.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/reaction-time-improvement-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/reaction-time-improvement-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -69,7 +69,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Reaction Time Improvement Wellness Tracker', item: baseUrl },
       ],
     },
@@ -148,20 +148,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'A brief warm‑up with light movement before you test can make sessions feel smoother and more comfortable.',
-    'Noting the testing context (device, time of day, environment) makes it easier to compare sessions in a like‑for‑like way.',
+    'A brief warmâ€‘up with light movement before you test can make sessions feel smoother and more comfortable.',
+    'Noting the testing context (device, time of day, environment) makes it easier to compare sessions in a likeâ€‘forâ€‘like way.',
     'Many people find reaction drills feel better when done at a time of day they naturally feel more alert.',
   ];
   if (status === 'stalled') {
-    recommendations.push('You could gently vary your drills—for example, mixing in different visual or sound cues—to keep practice interesting.');
+    recommendations.push('You could gently vary your drillsâ€”for example, mixing in different visual or sound cuesâ€”to keep practice interesting.');
   }
   if (status === 'regressing') {
-    recommendations.push('If life allows, you might try an easier week, slightly earlier caffeine cut‑offs, or a bit more sleep before your next test.');
+    recommendations.push('If life allows, you might try an easier week, slightly earlier caffeine cutâ€‘offs, or a bit more sleep before your next test.');
   }
 
   const plan = [
     { label: 'Gentle start', detail: 'A few minutes of breathing, stretching, or easy drills can help you ease into practice days.' },
-    { label: 'Midweek check‑in', detail: 'Glance at how your sleep, stress, and practice times have felt and make small adjustments if you’d like.' },
+    { label: 'Midweek checkâ€‘in', detail: 'Glance at how your sleep, stress, and practice times have felt and make small adjustments if youâ€™d like.' },
     { label: 'Weekly reflection', detail: 'Compare your recent tests with your baseline and choose one simple experiment for the next week.' },
   ];
 
@@ -353,9 +353,9 @@ export default function ReactionTimeImprovementTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Improvement %</strong> = ((baseline − latest) ÷ baseline) × 100</p>
-          <p><strong>Consistency score</strong> = clamp(60 + sleepScore + practiceScore − caffeinePenalty)</p>
-          <p>sleepScore = ((sleep − 6) ÷ 2) × 20 · practiceScore = sessions × 5 · caffeinePenalty = cups × 3</p>
+          <p><strong>Improvement %</strong> = ((baseline âˆ’ latest) Ã· baseline) Ã— 100</p>
+          <p><strong>Consistency score</strong> = clamp(60 + sleepScore + practiceScore âˆ’ caffeinePenalty)</p>
+          <p>sleepScore = ((sleep âˆ’ 6) Ã· 2) Ã— 20 Â· practiceScore = sessions Ã— 5 Â· caffeinePenalty = cups Ã— 3</p>
         </CardContent>
       </Card>
 
@@ -398,7 +398,7 @@ export default function ReactionTimeImprovementTracker() {
                 <p className="text-xl font-semibold text-primary">
                   {(form.getValues().caffeineCups ?? 0) * 3} penalty pts
                 </p>
-                <p className="text-xs text-muted-foreground">Keep penalty ≤9 pts for best sleep.</p>
+                <p className="text-xs text-muted-foreground">Keep penalty â‰¤9 pts for best sleep.</p>
               </div>
             </div>
           ) : (
@@ -453,7 +453,7 @@ export default function ReactionTimeImprovementTracker() {
           Reaction Time Improvement Wellness Tracker: Gentle Ways to Monitor Speed and Readiness
         </h1>
         <p className="text-lg italic text-gray-700">
-          This guide explains how to use reaction-time logging as a simple wellness check-in—connecting test results with
+          This guide explains how to use reaction-time logging as a simple wellness check-inâ€”connecting test results with
           sleep, practice rhythms, and stimulants in a non-diagnostic, supportive way.
         </p>
 
@@ -495,7 +495,7 @@ export default function ReactionTimeImprovementTracker() {
         <p>
           Reaction time is the short delay between a stimulus (like a light or sound) and your response (such as a key
           press, click, or movement). In this tracker, reaction-time tests are treated as one lens on how rested,
-          focused, and coordinated you may feel on a given day—not as a medical assessment of nervous system health.
+          focused, and coordinated you may feel on a given dayâ€”not as a medical assessment of nervous system health.
         </p>
         <p>
           Because individual baselines vary widely, the most useful signal comes from comparing you with yourself over
@@ -512,22 +512,22 @@ export default function ReactionTimeImprovementTracker() {
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>
-            <strong>Sleep quality and timing</strong> – Short sleep or irregular bedtimes can leave you feeling slower
+            <strong>Sleep quality and timing</strong> â€“ Short sleep or irregular bedtimes can leave you feeling slower
             or foggier.
           </li>
           <li>
-            <strong>Practice frequency</strong> – Short, focused drills often lead to smoother responses over time.
+            <strong>Practice frequency</strong> â€“ Short, focused drills often lead to smoother responses over time.
           </li>
           <li>
-            <strong>Caffeine and other stimulants</strong> – Helpful for some people in moderation, but too much or
+            <strong>Caffeine and other stimulants</strong> â€“ Helpful for some people in moderation, but too much or
             very late intake can disrupt rest.
           </li>
           <li>
-            <strong>Stress load</strong> – Busy or emotionally heavy days may make it harder to settle and react
+            <strong>Stress load</strong> â€“ Busy or emotionally heavy days may make it harder to settle and react
             cleanly.
           </li>
           <li>
-            <strong>Testing setup</strong> – Device, screen, sound, and even posture all introduce natural variation.
+            <strong>Testing setup</strong> â€“ Device, screen, sound, and even posture all introduce natural variation.
           </li>
         </ul>
 
@@ -540,8 +540,8 @@ export default function ReactionTimeImprovementTracker() {
           sessions, and caffeinated drinks gives extra context for what you see.
         </p>
         <p>
-          You do not need perfect data for this to help. Even rough notes such as “busy week,” “late-night gaming,” or
-          “extra rest days” can explain shifts and keep the tracker feeling like a gentle reflection tool instead of a
+          You do not need perfect data for this to help. Even rough notes such as â€œbusy week,â€ â€œlate-night gaming,â€ or
+          â€œextra rest daysâ€ can explain shifts and keep the tracker feeling like a gentle reflection tool instead of a
           rigid performance report.
         </p>
 
@@ -563,8 +563,8 @@ export default function ReactionTimeImprovementTracker() {
           Building Supportive Routines Around the Tracker
         </h2>
         <p>
-          Over time, many people find that pairing this tracker with simple routines—like a consistent bedtime, light
-          movement, hydration, or mindfulness streaks—feels more helpful than chasing any single number. The goal is a
+          Over time, many people find that pairing this tracker with simple routinesâ€”like a consistent bedtime, light
+          movement, hydration, or mindfulness streaksâ€”feels more helpful than chasing any single number. The goal is a
           smoother, more sustainable rhythm, not constant maximization.
         </p>
         <p>

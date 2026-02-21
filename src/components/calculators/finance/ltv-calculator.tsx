@@ -45,7 +45,7 @@ const faqs = [
   { question: 'What is LTV?', answer: 'Customer Lifetime Value (LTV) estimates gross profit generated over a customer lifetime.' },
   { question: 'Which churn to use?', answer: 'Use logo churn for account-level LTV; use revenue churn if LTV is revenue-weighted.' },
   { question: 'Why discount rate?', answer: 'Discounting future cash flows is conservative and reduces LTV, especially for long lifetimes.' },
-  { question: 'Should I cap lifetime?', answer: 'Many teams cap lifetime at 5–7 years even with low churn to avoid overstating LTV.' },
+  { question: 'Should I cap lifetime?', answer: 'Many teams cap lifetime at 5â€“7 years even with low churn to avoid overstating LTV.' },
   { question: 'How does LTV connect to CAC?', answer: 'Use LTV:CAC to gauge acquisition efficiency. Ratios above 3:1 are typically strong.' },
 ];
 
@@ -54,7 +54,7 @@ const relatedCalculators = [
   { name: 'Payback Period (Customer Acquisition) Calculator', slug: 'payback-period-customer-acquisition-calculator', description: 'See months to recover CAC.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/ltv-calculator';
+const baseUrl = 'https://mycalculating.com/finance/ltv-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -63,7 +63,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'LTV (Customer Lifetime Value) Calculator', item: baseUrl },
       ],
     },
@@ -230,7 +230,7 @@ export default function LtvCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Margin / month</p>
                 <p className="text-2xl font-semibold text-primary">${result.marginPerMonth.toFixed(2)}</p>
-                <p className="text-xs text-muted-foreground">ARPA × margin %</p>
+                <p className="text-xs text-muted-foreground">ARPA Ã— margin %</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Effective rate</p>
@@ -289,9 +289,9 @@ export default function LtvCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Margin per month</strong> = ARPA × gross margin %.</p>
+          <p><strong>Margin per month</strong> = ARPA Ã— gross margin %.</p>
           <p><strong>Effective rate</strong> = churn rate + monthly discount rate.</p>
-          <p><strong>LTV</strong> = margin per month ÷ effective rate.</p>
+          <p><strong>LTV</strong> = margin per month Ã· effective rate.</p>
         </CardContent>
       </Card>
 
@@ -320,7 +320,7 @@ export default function LtvCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {result.effectiveRate === 0 ? 'N/A' : (1 / result.effectiveRate).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">1 ÷ effective rate</p>
+                <p className="text-xs text-muted-foreground">1 Ã· effective rate</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Churn input</p>
@@ -386,13 +386,13 @@ export default function LtvCalculator() {
         <hr />
 
         <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Definition & Formula</h2>
-        <p>LTV = (ARPA × gross margin) ÷ (churn rate + discount rate). Use monthly rates and conservative discounting.</p>
+        <p>LTV = (ARPA Ã— gross margin) Ã· (churn rate + discount rate). Use monthly rates and conservative discounting.</p>
 
         <h2 id="assumptions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Assumptions</h2>
         <p>Accurate churn and margin inputs matter most. Even a 0.5% change in churn can swing LTV meaningfully.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks & Caps</h2>
-        <p>Cap lifetime to avoid overstatement. Many teams cap at 60–84 months. Revisit assumptions quarterly.</p>
+        <p>Cap lifetime to avoid overstatement. Many teams cap at 60â€“84 months. Revisit assumptions quarterly.</p>
 
         <h2 id="improve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Improving LTV</h2>
         <ul className="list-disc ml-6 space-y-2">

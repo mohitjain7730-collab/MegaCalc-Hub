@@ -52,7 +52,7 @@ type ResultPayload = {
 const steps = [
   'Estimate your usual bedtime using a 24-hour clock (e.g., 22.5 for 10:30 PM).',
   'Log the most recent hour you consumed caffeine (coffee, tea, energy drink, pre-workout).',
-  'Add up total caffeine for the day—include espresso shots, sodas, and supplements.',
+  'Add up total caffeine for the dayâ€”include espresso shots, sodas, and supplements.',
   'Enter current sleep debt (hours you are behind your ideal weekly total).',
   'Toggle sensitivity based on how strongly caffeine normally affects your sleep.',
   'Review the cutoff recommendation and adjust your routine for the next few evenings.',
@@ -61,7 +61,7 @@ const steps = [
 const faqs = [
   {
     question: 'Why do I need a caffeine cutoff time?',
-    answer: 'Caffeine’s half-life averages 5–6 hours. Having a cutoff protects deep sleep and REM cycles by allowing enough metabolic clearance before bedtime.',
+    answer: 'Caffeineâ€™s half-life averages 5â€“6 hours. Having a cutoff protects deep sleep and REM cycles by allowing enough metabolic clearance before bedtime.',
   },
   {
     question: 'What if my bedtime is after midnight?',
@@ -77,11 +77,11 @@ const faqs = [
   },
   {
     question: 'Can I replace afternoon coffee with tea?',
-    answer: 'Yes—lower-caffeine beverages plus hydration help you power through without delaying melatonin.',
+    answer: 'Yesâ€”lower-caffeine beverages plus hydration help you power through without delaying melatonin.',
   },
   {
     question: 'Is it okay to nap instead?',
-    answer: 'Short strategic naps (15–20 minutes) before 3 PM often work better than late-day double espresso shots.',
+    answer: 'Short strategic naps (15â€“20 minutes) before 3 PM often work better than late-day double espresso shots.',
   },
   {
     question: 'Does exercise affect caffeine clearance?',
@@ -93,7 +93,7 @@ const faqs = [
   },
   {
     question: 'What if I work night shifts?',
-    answer: 'Treat your planned sleep window as “night.” The tool focuses on aligning stimulant timing with when you need to fall asleep.',
+    answer: 'Treat your planned sleep window as â€œnight.â€ The tool focuses on aligning stimulant timing with when you need to fall asleep.',
   },
   {
     question: 'Should I quit caffeine completely?',
@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/caffeine-cutoff-sleep-impact-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/caffeine-cutoff-sleep-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Caffeine Cutoff Sleep Impact Calculator', item: baseUrl },
       ],
     },
@@ -218,7 +218,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (predictedLatency > 60) {
     riskLevel = 'high';
     interpretation =
-      'Based on these inputs, caffeine may be strongly overlapping with your wind‑down time. Gentle options include moving your last dose earlier, choosing smaller amounts, or swapping to non‑caffeinated drinks in the evening.';
+      'Based on these inputs, caffeine may be strongly overlapping with your windâ€‘down time. Gentle options include moving your last dose earlier, choosing smaller amounts, or swapping to nonâ€‘caffeinated drinks in the evening.';
   }
 
   const recommendations = [
@@ -228,7 +228,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   ];
 
   if (riskLevel === 'elevated') {
-    recommendations.push('You might try half‑caf or lower‑caffeine options after your chosen cutoff to keep the ritual while softening the effect.');
+    recommendations.push('You might try halfâ€‘caf or lowerâ€‘caffeine options after your chosen cutoff to keep the ritual while softening the effect.');
   }
   if (riskLevel === 'high') {
     recommendations.push(
@@ -237,7 +237,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'Morning', detail: 'Enjoy full-strength coffee within the first 3–4 hours of waking.' },
+    { label: 'Morning', detail: 'Enjoy full-strength coffee within the first 3â€“4 hours of waking.' },
     { label: 'Afternoon', detail: 'Transition to hydration, protein-heavy snacks, or light movement for energy.' },
     { label: 'Evening', detail: 'Start wind-down at least 90 minutes before bed with low light and no stimulants.' },
   ];
@@ -269,7 +269,7 @@ export default function CaffeineCutoffSleepImpactCalculator() {
   });
 
   const sensitivityHint = useMemo(
-    () => 'Select “high” if you feel wired after a small espresso or if caffeine lingers into the evening.',
+    () => 'Select â€œhighâ€ if you feel wired after a small espresso or if caffeine lingers into the evening.',
     [],
   );
 
@@ -290,7 +290,7 @@ export default function CaffeineCutoffSleepImpactCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Input your routine</CardTitle>
-          <CardDescription>Leave fields blank until you are ready—everything is personalized on submit.</CardDescription>
+          <CardDescription>Leave fields blank until you are readyâ€”everything is personalized on submit.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -483,15 +483,15 @@ export default function CaffeineCutoffSleepImpactCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Cutoff Time</strong> = Bedtime − 8 hours − (Total caffeine ÷ 100 × Sensitivity factor) − (Sleep debt × 0.25).
+            <strong>Cutoff Time</strong> = Bedtime âˆ’ 8 hours âˆ’ (Total caffeine Ã· 100 Ã— Sensitivity factor) âˆ’ (Sleep debt Ã— 0.25).
             Sensitivity factors: Low = 0.5, Moderate = 1.0, High = 1.5.
           </p>
           <p>
-            <strong>Predicted Sleep Latency</strong> = 15 min + max(0, Last caffeine − Cutoff) × 18 × Sensitivity factor. This
+            <strong>Predicted Sleep Latency</strong> = 15 min + max(0, Last caffeine âˆ’ Cutoff) Ã— 18 Ã— Sensitivity factor. This
             estimates time to fall asleep based on caffeine clearance.
           </p>
           <p>
-            <strong>Wind-Down Start</strong> = Bedtime − 90 minutes − (Sleep debt × 0.1). This provides time for relaxation
+            <strong>Wind-Down Start</strong> = Bedtime âˆ’ 90 minutes âˆ’ (Sleep debt Ã— 0.1). This provides time for relaxation
             before sleep.
           </p>
           <p>
@@ -531,7 +531,7 @@ export default function CaffeineCutoffSleepImpactCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {buffer.toFixed(1)} hrs
                 </p>
-                <p className="text-xs text-muted-foreground">Positive values mean you’re ahead of schedule.</p>
+                <p className="text-xs text-muted-foreground">Positive values mean youâ€™re ahead of schedule.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Dose pressure index</p>
@@ -723,7 +723,7 @@ export default function CaffeineCutoffSleepImpactCalculator() {
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Sleep Latency</h3>
         <p>
-          Caffeine consumed close to bedtime increases sleep latency—the time it takes to fall asleep. Even small amounts of
+          Caffeine consumed close to bedtime increases sleep latencyâ€”the time it takes to fall asleep. Even small amounts of
           caffeine can delay sleep onset, especially in sensitive individuals.
         </p>
 
@@ -878,7 +878,7 @@ export default function CaffeineCutoffSleepImpactCalculator() {
           Understanding caffeine metabolism, sleep impact, and optimal cutoff times is essential for balancing daytime alertness
           with quality sleep. By establishing appropriate cutoff times, managing total daily intake, optimizing morning routines,
           and creating effective wind-down practices, you can enjoy caffeine's benefits while protecting your sleep. Remember that
-          individual responses vary significantly—what works for one person may not work for another. Experiment with timing,
+          individual responses vary significantlyâ€”what works for one person may not work for another. Experiment with timing,
           monitor your sleep quality, and adjust based on your personal experience. If you have persistent sleep concerns or
           questions about caffeine and health, consider consulting a healthcare provider who can provide personalized guidance.
           This tool is designed for wellness reflection and is not a substitute for professional medical evaluation or treatment.

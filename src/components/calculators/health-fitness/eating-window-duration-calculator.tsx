@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/eating-window-duration-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/eating-window-duration-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Eating Window Duration (Fasting vs Feeding) Calculator', item: baseUrl },
       ],
     },
@@ -374,7 +374,7 @@ export default function EatingWindowDurationCalculator() {
             <strong>Fasting hours</strong> = 24 - eating window hours. This is the time spent not eating.
           </p>
           <p>
-            <strong>Window types</strong>: ≤8 hours = Intermittent fasting (short), 8-10 hours = Intermittent fasting (moderate), 10-12 hours = Time-restricted eating, 12-14 hours = Extended eating window, &gt;14 hours = Long eating window.
+            <strong>Window types</strong>: â‰¤8 hours = Intermittent fasting (short), 8-10 hours = Intermittent fasting (moderate), 10-12 hours = Time-restricted eating, 12-14 hours = Extended eating window, &gt;14 hours = Long eating window.
           </p>
           <p>
             <strong>Optimal ranges</strong>: 8-12 hour eating windows during daylight hours (e.g., 8 AM-6 PM or 10 AM-6 PM) typically support best metabolic health and circadian rhythm.

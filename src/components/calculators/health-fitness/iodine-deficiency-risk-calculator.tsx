@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/iodine-deficiency-risk-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/iodine-deficiency-risk-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Iodine Deficiency Risk Calculator', item: baseUrl },
       ],
     },
@@ -451,10 +451,10 @@ export default function IodineDeficiencyRiskCalculator() {
             <strong>Daily need</strong> = estimated from age, gender, and pregnancy/lactation status. Adults: 150 mcg/day, Pregnant: 220 mcg/day, Lactating: 290 mcg/day.
           </p>
           <p>
-            <strong>Intake percentage</strong> = (iodine intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (iodine intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
-            <strong>Deficiency risk</strong> = determined from intake relative to daily need. High risk: &lt;50% of need, Moderate: 50-70%, Mild: 70-90%, Low: ≥90%.
+            <strong>Deficiency risk</strong> = determined from intake relative to daily need. High risk: &lt;50% of need, Moderate: 50-70%, Mild: 70-90%, Low: â‰¥90%.
           </p>
           <p>
             <strong>Recommended intake</strong>: Adults: 150 mcg/day, Pregnant: 220 mcg/day, Lactating: 290 mcg/day. Upper limit: 1100 mcg/day for adults.
@@ -557,7 +557,7 @@ export default function IodineDeficiencyRiskCalculator() {
     <p>The thyroid gland is responsible for trapping circulating iodine (as iodide) from the bloodstream and incorporating it into the thyroglobulin protein to create T3 and T4. In the absence of sufficient iodine, the thyroid gland cannot produce enough of these critical hormones, leading to a condition called <b>hypothyroidism</b> (underactive thyroid).</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Goiter: A Visible Sign of Deficiency</h3>
-    <p>A chronic lack of iodine stimulates the pituitary gland to release excess <b>Thyroid-Stimulating Hormone (TSH)</b> in an effort to compel the thyroid to produce more hormones. This overstimulation causes the thyroid gland to <b>enlarge</b>, a condition medically known as a <b>goiter</b>. Goiter is a classic visible sign of long-term iodine deficiency, reflecting the body’s attempt to maximize iodine uptake from the blood. </p>
+    <p>A chronic lack of iodine stimulates the pituitary gland to release excess <b>Thyroid-Stimulating Hormone (TSH)</b> in an effort to compel the thyroid to produce more hormones. This overstimulation causes the thyroid gland to <b>enlarge</b>, a condition medically known as a <b>goiter</b>. Goiter is a classic visible sign of long-term iodine deficiency, reflecting the bodyâ€™s attempt to maximize iodine uptake from the blood. </p>
 
 <hr />
 

@@ -53,7 +53,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate pre-revenue startup runway with detailed expense breakdown: current cash, monthly expenses by category, zero-cash date, and optional target runway or expected funding.',
-      url: 'https://mycalculating.com/category/finance/pre-revenue-startup-runway-calculator',
+      url: 'https://mycalculating.com/finance/pre-revenue-startup-runway-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -126,7 +126,7 @@ export default function PreRevenueStartupRunwayCalculator() {
   const interpret = (months: number) => {
     if (months >= 24) return 'Excellent runway. You have ample time to reach milestones and plan fundraising.';
     if (months >= 18) return 'Strong runway. Plan fundraising or path to revenue before runway shortens.';
-    if (months >= 12) return 'Moderate runway. Fundraising typically takes 3–6 months; start soon.';
+    if (months >= 12) return 'Moderate runway. Fundraising typically takes 3â€“6 months; start soon.';
     if (months >= 6) return 'Short runway. Urgent need to extend (fundraising or cost cuts).';
     return 'Critical runway. Immediate action required: cut burn or close funding.';
   };
@@ -142,7 +142,7 @@ export default function PreRevenueStartupRunwayCalculator() {
   const getRecommendation = (months: number) => {
     if (months >= 24) return 'Maintain discipline. Use runway to hit milestones and raise on strength.';
     if (months >= 18) return 'Plan fundraising or path to revenue. Start outreach before runway dips below 12 months.';
-    if (months >= 12) return 'Start fundraising now. Fundraising takes 3–6 months; don\'t wait.';
+    if (months >= 12) return 'Start fundraising now. Fundraising takes 3â€“6 months; don\'t wait.';
     if (months >= 6) return 'Urgent: cut burn or close funding. Runway is in the danger zone.';
     return 'Critical: cut burn immediately or close funding. Runway is too short for comfort.';
   };
@@ -162,7 +162,7 @@ export default function PreRevenueStartupRunwayCalculator() {
       insights.push('Plan fundraising or path to revenue before runway shortens');
       insights.push('Track burn monthly to avoid runway creep');
     } else if (months >= 12) {
-      insights.push('Fundraising typically takes 3–6 months; start soon');
+      insights.push('Fundraising typically takes 3â€“6 months; start soon');
       insights.push('Consider cost cuts to extend runway if fundraising slips');
       insights.push('Pair with break-even calculator when revenue starts');
     } else {
@@ -170,7 +170,7 @@ export default function PreRevenueStartupRunwayCalculator() {
       insights.push('Avoid new fixed costs until runway is extended');
       insights.push('Use runway extension calculator to model new capital impact');
     }
-    insights.push(`$${cash.toLocaleString()} ÷ $${burn.toLocaleString()}/mo = ${months.toFixed(1)} months`);
+    insights.push(`$${cash.toLocaleString()} Ã· $${burn.toLocaleString()}/mo = ${months.toFixed(1)} months`);
     if (personnelPercent != null && personnelPercent > 75) {
       insights.push(`Personnel (founder + employee) is ${Math.round(personnelPercent)}% of burn; consider contractors for flexibility.`);
     }
@@ -443,7 +443,7 @@ export default function PreRevenueStartupRunwayCalculator() {
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">{result.runwayMonths.toFixed(1)} months</p>
                 <p className="text-sm text-muted-foreground mt-1">
-                  {result.runwayYears.toFixed(2)} years · Zero cash: {result.zeroCashDate}
+                  {result.runwayYears.toFixed(2)} years Â· Zero cash: {result.zeroCashDate}
                 </p>
                 <p className="text-lg text-muted-foreground mt-2">{result.interpretation}</p>
               </div>
@@ -501,7 +501,7 @@ export default function PreRevenueStartupRunwayCalculator() {
                 <Alert className="border-green-200 bg-green-50/50 dark:border-green-900/30 dark:bg-green-900/10">
                   <TrendingUp className="h-4 w-4" />
                   <AlertDescription>
-                    <strong>If you raise ${result.extendedRunwayInfo.fundingAmount.toLocaleString()} in {result.extendedRunwayInfo.inMonths} months:</strong> Cash at close ≈ ${result.extendedRunwayInfo.cashAtFunding.toLocaleString(undefined, { maximumFractionDigits: 0 })} → extended runway ≈ {result.extendedRunwayInfo.extendedRunwayMonths.toFixed(1)} months from then.
+                    <strong>If you raise ${result.extendedRunwayInfo.fundingAmount.toLocaleString()} in {result.extendedRunwayInfo.inMonths} months:</strong> Cash at close â‰ˆ ${result.extendedRunwayInfo.cashAtFunding.toLocaleString(undefined, { maximumFractionDigits: 0 })} â†’ extended runway â‰ˆ {result.extendedRunwayInfo.extendedRunwayMonths.toFixed(1)} months from then.
                   </AlertDescription>
                 </Alert>
               )}
@@ -597,7 +597,7 @@ export default function PreRevenueStartupRunwayCalculator() {
                 Monthly Expenses (by category)
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Enter recurring monthly costs by category. Total burn = sum of all; runway = cash ÷ total burn.
+                Enter recurring monthly costs by category. Total burn = sum of all; runway = cash Ã· total burn.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -635,7 +635,7 @@ export default function PreRevenueStartupRunwayCalculator() {
               Total monthly burn = Founder + Employee + Rent + Software + Marketing + Legal + Misc
             </p>
             <p className="font-mono text-sm text-center">
-              Runway (months) = Current Cash ÷ Total monthly burn
+              Runway (months) = Current Cash Ã· Total monthly burn
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
@@ -745,7 +745,7 @@ export default function PreRevenueStartupRunwayCalculator() {
         <meta itemProp="url" content="/definitive-pre-revenue-runway-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Pre-Revenue Startup Runway</h1>
-        <p className="text-lg italic text-muted-foreground">How many months your pre-revenue startup can run on current cash at the current burn rate—and why it matters for survival and fundraising.</p>
+        <p className="text-lg italic text-muted-foreground">How many months your pre-revenue startup can run on current cash at the current burn rateâ€”and why it matters for survival and fundraising.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
@@ -764,11 +764,11 @@ export default function PreRevenueStartupRunwayCalculator() {
         <hr />
 
         <h2 id="runway-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Formula and Components</h2>
-        <p>Runway (months) = Current Cash ÷ Monthly Burn Rate. Simple and critical for pre-revenue planning.</p>
+        <p>Runway (months) = Current Cash Ã· Monthly Burn Rate. Simple and critical for pre-revenue planning.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-xl text-destructive font-bold">
-            Runway (months) = Current Cash ÷ Monthly Burn Rate
+            Runway (months) = Current Cash Ã· Monthly Burn Rate
           </p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">Defining Cash and Burn</h3>
@@ -776,9 +776,9 @@ export default function PreRevenueStartupRunwayCalculator() {
         <hr />
 
         <h2 id="runway-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Runway and Benchmarks</h2>
-        <p><strong className="font-semibold text-foreground">18–24+ months:</strong> Strong runway. <strong className="font-semibold text-foreground">12–18 months:</strong> Plan fundraising or path to revenue. <strong className="font-semibold text-foreground">6–12 months:</strong> Start fundraising; process often takes 3–6 months. <strong className="font-semibold text-foreground">Under 6 months:</strong> Critical; cut burn or close funding.</p>
+        <p><strong className="font-semibold text-foreground">18â€“24+ months:</strong> Strong runway. <strong className="font-semibold text-foreground">12â€“18 months:</strong> Plan fundraising or path to revenue. <strong className="font-semibold text-foreground">6â€“12 months:</strong> Start fundraising; process often takes 3â€“6 months. <strong className="font-semibold text-foreground">Under 6 months:</strong> Critical; cut burn or close funding.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Fundraising Timeline</h3>
-        <p>Fundraising typically takes 3–6 months from first meetings to close. Start when runway is 12+ months so you are not desperate.</p>
+        <p>Fundraising typically takes 3â€“6 months from first meetings to close. Start when runway is 12+ months so you are not desperate.</p>
         <hr />
 
         <h2 id="runway-extension" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Extending Runway</h2>
@@ -806,19 +806,19 @@ export default function PreRevenueStartupRunwayCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">What is pre-revenue startup runway?</h4>
             <p className="text-muted-foreground">
-              Runway is how many months your startup can operate on current cash at the current monthly burn rate. Pre-revenue means no (or negligible) revenue, so runway = cash ÷ monthly burn.
+              Runway is how many months your startup can operate on current cash at the current monthly burn rate. Pre-revenue means no (or negligible) revenue, so runway = cash Ã· monthly burn.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How do I calculate runway?</h4>
             <p className="text-muted-foreground">
-              Runway (months) = Current Cash ÷ Monthly Burn Rate. Example: $500K cash and $50K/month burn = 10 months runway.
+              Runway (months) = Current Cash Ã· Monthly Burn Rate. Example: $500K cash and $50K/month burn = 10 months runway.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What is a good runway for a pre-revenue startup?</h4>
             <p className="text-muted-foreground">
-              Generally 12–18+ months is healthy. Under 12 months, start fundraising (process often takes 3–6 months). Under 6 months is critical; cut burn or close funding.
+              Generally 12â€“18+ months is healthy. Under 12 months, start fundraising (process often takes 3â€“6 months). Under 6 months is critical; cut burn or close funding.
             </p>
           </div>
           <div>
@@ -836,13 +836,13 @@ export default function PreRevenueStartupRunwayCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">How does pre-revenue runway differ from runway with revenue?</h4>
             <p className="text-muted-foreground">
-              Pre-revenue runway assumes no revenue, so runway = cash ÷ burn. With revenue, net burn is lower (burn − revenue), so runway extends; use the Startup Runway Calculator with Revenue Growth for that.
+              Pre-revenue runway assumes no revenue, so runway = cash Ã· burn. With revenue, net burn is lower (burn âˆ’ revenue), so runway extends; use the Startup Runway Calculator with Revenue Growth for that.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">When should I start fundraising?</h4>
             <p className="text-muted-foreground">
-              Start when runway is 12+ months. Fundraising typically takes 3–6 months; starting too late forces bad terms or running out of cash.
+              Start when runway is 12+ months. Fundraising typically takes 3â€“6 months; starting too late forces bad terms or running out of cash.
             </p>
           </div>
           <div>
@@ -934,13 +934,13 @@ export default function PreRevenueStartupRunwayCalculator() {
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: Healthy runway</h5>
                 <p className="text-sm text-green-700/80 dark:text-green-400">
-                  $600K cash, $30K/month burn → 20 months runway. Strong position to hit milestones and raise on strength; start fundraising before runway dips below 12 months.
+                  $600K cash, $30K/month burn â†’ 20 months runway. Strong position to hit milestones and raise on strength; start fundraising before runway dips below 12 months.
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: Short runway</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  $200K cash, $45K/month burn → 4.4 months runway. Critical; cut burn or close funding immediately. Fundraising takes 3–6 months—do not wait.
+                  $200K cash, $45K/month burn â†’ 4.4 months runway. Critical; cut burn or close funding immediately. Fundraising takes 3â€“6 monthsâ€”do not wait.
                 </p>
               </div>
             </div>

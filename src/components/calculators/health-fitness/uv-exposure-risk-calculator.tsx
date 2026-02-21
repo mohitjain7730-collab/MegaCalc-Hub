@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/uv-exposure-risk-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/uv-exposure-risk-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'UV Exposure Risk Calculator', item: baseUrl },
       ],
     },
@@ -198,7 +198,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const skinType = values.skinType;
   const spf = values.spf;
   
-  // Calculate base risk: UV Index × Exposure Time × Skin Sensitivity
+  // Calculate base risk: UV Index Ã— Exposure Time Ã— Skin Sensitivity
   const skinSensitivity = skinTypeSensitivity[skinType] || 1.0;
   const baseRisk = uvIndex * exposureTime * skinSensitivity;
   
@@ -208,7 +208,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   // Risk score (normalized to 0-100 scale)
   // Reference: UV Index 6, 60 minutes, Type I skin, no SPF = high risk baseline
-  const referenceRisk = 6 * 60 * 1.0; // UV 6 × 60 min × Type I sensitivity
+  const referenceRisk = 6 * 60 * 1.0; // UV 6 Ã— 60 min Ã— Type I sensitivity
   const riskScore = clamp((effectiveRisk / referenceRisk) * 100, 0, 100);
   
   // Risk percentage (relative to safe exposure)
@@ -446,13 +446,13 @@ export default function UVExposureRiskCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base risk</strong> = UV Index × Exposure Time (minutes) × Skin Type Sensitivity Factor. Skin types I-VI have sensitivity factors from 1.0 (most sensitive) to 0.25 (least sensitive).
+            <strong>Base risk</strong> = UV Index Ã— Exposure Time (minutes) Ã— Skin Type Sensitivity Factor. Skin types I-VI have sensitivity factors from 1.0 (most sensitive) to 0.25 (least sensitive).
           </p>
           <p>
-            <strong>Effective risk</strong> = Base Risk × (1 - SPF Protection Percentage / 100). SPF protection: SPF 15 blocks ~93%, SPF 30 blocks ~97%, SPF 50 blocks ~98% of UVB rays.
+            <strong>Effective risk</strong> = Base Risk Ã— (1 - SPF Protection Percentage / 100). SPF protection: SPF 15 blocks ~93%, SPF 30 blocks ~97%, SPF 50 blocks ~98% of UVB rays.
           </p>
           <p>
-            <strong>Risk score</strong> = (Effective Risk / Reference Risk) × 100, normalized to 0-100 scale where reference is UV Index 6, 60 minutes, Type I skin, no SPF.
+            <strong>Risk score</strong> = (Effective Risk / Reference Risk) Ã— 100, normalized to 0-100 scale where reference is UV Index 6, 60 minutes, Type I skin, no SPF.
           </p>
           <p>UV exposure risk increases with higher UV index, longer exposure time, more sensitive skin types, and insufficient sun protection. Proper sunscreen use, protective clothing, and timing outdoor activities can significantly reduce risk.</p>
         </CardContent>
@@ -697,7 +697,7 @@ export default function UVExposureRiskCalculator() {
         <li><b>Timing:</b> Apply 15-30 minutes before sun exposure to allow it to bind to skin.</li>
         <li><b>Reapplication:</b> Reapply every 2 hours, and immediately after swimming, sweating, or towel-drying.</li>
         <li><b>Coverage:</b> Don't forget ears, back of neck, tops of feet, and backs of hands.</li>
-        <li><b>Expiration:</b> Check expiration dates—sunscreen loses effectiveness over time, especially if stored in heat or sunlight.</li>
+        <li><b>Expiration:</b> Check expiration datesâ€”sunscreen loses effectiveness over time, especially if stored in heat or sunlight.</li>
     </ul>
 
 <hr />
@@ -721,7 +721,7 @@ export default function UVExposureRiskCalculator() {
             <ul>
                 <li><b>Basal Cell Carcinoma (BCC):</b> Most common, rarely spreads but can be disfiguring if not treated early.</li>
                 <li><b>Squamous Cell Carcinoma (SCC):</b> Second most common, can spread if not treated promptly.</li>
-                <li><b>Melanoma:</b> Least common but most dangerous, responsible for the majority of skin cancer deaths. Early detection is critical—melanoma is highly curable when caught early.</li>
+                <li><b>Melanoma:</b> Least common but most dangerous, responsible for the majority of skin cancer deaths. Early detection is criticalâ€”melanoma is highly curable when caught early.</li>
             </ul>
         </li>
     </ul>
@@ -738,7 +738,7 @@ export default function UVExposureRiskCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Timing and Shade</h3>
     <ul>
         <li><b>Avoid Peak Hours:</b> Limit direct sun exposure between 10am-4pm when UV rays are strongest, especially during summer months.</li>
-        <li><b>Seek Shade:</b> Use umbrellas, trees, awnings, or covered areas. Remember that shade reduces but doesn't eliminate UV exposure—reflected UV from surfaces still reaches you.</li>
+        <li><b>Seek Shade:</b> Use umbrellas, trees, awnings, or covered areas. Remember that shade reduces but doesn't eliminate UV exposureâ€”reflected UV from surfaces still reaches you.</li>
         <li><b>Check UV Index:</b> Check daily UV forecasts and plan outdoor activities accordingly. Many weather apps and websites provide hourly UV Index predictions.</li>
     </ul>
 
@@ -755,7 +755,7 @@ export default function UVExposureRiskCalculator() {
         <li><b>Choose Wisely:</b> Select broad-spectrum, water-resistant sunscreen with SPF 30-50. Higher SPF provides minimal additional benefit and may encourage longer exposure.</li>
         <li><b>Apply Correctly:</b> Use enough sunscreen (1 oz for full body), apply 15-30 minutes before exposure, and reapply every 2 hours or after water/sweat.</li>
         <li><b>Daily Use:</b> Apply sunscreen to exposed skin daily, even on cloudy days (clouds block only 20-40% of UV) and in winter. UV exposure occurs year-round.</li>
-        <li><b>Don't Rely Solely:</b> Sunscreen is just one tool—combine with shade, clothing, and timing for best protection.</li>
+        <li><b>Don't Rely Solely:</b> Sunscreen is just one toolâ€”combine with shade, clothing, and timing for best protection.</li>
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">4. Special Considerations</h3>

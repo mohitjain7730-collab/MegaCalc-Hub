@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/breakfast-skipping-effect-on-metabolism-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/breakfast-skipping-effect-on-metabolism-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Breakfast Skipping Effect on Metabolism Calculator', item: baseUrl },
       ],
     },
@@ -395,7 +395,7 @@ export default function BreakfastSkippingEffectOnMetabolismCalculator() {
             <strong>First meal time</strong> = time of first meal of the day. Earlier timing (before 10 AM) typically supports better insulin sensitivity and circadian rhythm than very late first meals (after 12 PM).
           </p>
           <p>
-            <strong>Breakfast percentage</strong> = (breakfast calories / daily calories) × 100. Typical breakfast is 20-25% of daily calories.
+            <strong>Breakfast percentage</strong> = (breakfast calories / daily calories) Ã— 100. Typical breakfast is 20-25% of daily calories.
           </p>
           <p>
             <strong>Metabolic impact</strong> = determined from breakfast frequency and first meal timing. Regular early breakfast (5-7 days/week, before 10 AM) typically has positive impact, while frequent skipping with late first meals may have negative impact.

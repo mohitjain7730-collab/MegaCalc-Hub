@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/meal-timing-and-insulin-response-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/meal-timing-and-insulin-response-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Meal Timing and Insulin Response Calculator', item: baseUrl },
       ],
     },
@@ -409,7 +409,7 @@ export default function MealTimingAndInsulinResponseCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Estimated insulin response</strong> = (carbohydrates × 2) × timing multiplier - (protein × 0.1) - (fiber × 0.2).
+            <strong>Estimated insulin response</strong> = (carbohydrates Ã— 2) Ã— timing multiplier - (protein Ã— 0.1) - (fiber Ã— 0.2).
           </p>
           <p>
             <strong>Timing multipliers</strong>: Morning (6-10 AM): 0.85 (enhanced sensitivity), Midday (10 AM-2 PM): 0.90, Afternoon (2-6 PM): 0.95, Evening (6-10 PM): 1.05 (reduced sensitivity), Late night (10 PM-6 AM): 1.15 (significantly reduced sensitivity).

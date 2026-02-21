@@ -129,7 +129,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/menopause-symptom-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/menopause-symptom-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -138,7 +138,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Menopause Symptom Index Wellness Tracker', item: baseUrl },
       ],
     },
@@ -382,7 +382,7 @@ const schemaMarkup = {
             score across all symptoms entered.
           </p>
           <p>
-            <strong>Average Symptom Score</strong> = Total Symptom Score ÷ Number of Symptoms Rated. This calculates the average
+            <strong>Average Symptom Score</strong> = Total Symptom Score Ã· Number of Symptoms Rated. This calculates the average
             intensity across all rated symptoms.
           </p>
           <p>
@@ -660,7 +660,7 @@ const schemaMarkup = {
             Understanding menopause symptoms and management strategies helps you navigate this natural life transition more
             effectively. By tracking symptoms, implementing lifestyle modifications, and seeking professional guidance when needed,
             you can manage symptoms and maintain well-being during and after menopause. Remember that menopause affects each person
-            differently—what works for one may not work for another. Be patient with yourself, track your patterns, and work with
+            differentlyâ€”what works for one may not work for another. Be patient with yourself, track your patterns, and work with
             healthcare providers to develop a personalized management plan. If symptoms significantly impact your daily life or
             don't respond to lifestyle changes, consider consulting a healthcare provider who specializes in menopause management.
             This tool is designed for wellness reflection and is not a substitute for professional medical evaluation or treatment.

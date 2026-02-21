@@ -29,8 +29,8 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
-        { '@type': 'ListItem', position: 3, name: 'Monthly Burn Multiple Calculator', item: 'https://mycalculating.com/category/finance/monthly-burn-multiple-calculator' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
+        { '@type': 'ListItem', position: 3, name: 'Monthly Burn Multiple Calculator', item: 'https://mycalculating.com/finance/monthly-burn-multiple-calculator' },
       ],
     },
     {
@@ -39,7 +39,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate monthly burn multiple: net burn in a month divided by net new ARR in that month. Measures how efficiently cash converts to recurring revenue.',
-      url: 'https://mycalculating.com/category/finance/monthly-burn-multiple-calculator',
+      url: 'https://mycalculating.com/finance/monthly-burn-multiple-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -70,10 +70,10 @@ export default function MonthlyBurnMultipleCalculator() {
   };
 
   const interpret = (multiple: number) => {
-    if (multiple < 1) return 'Elite efficiency – each dollar of burn creates more than a dollar of ARR this month.';
-    if (multiple < 1.5) return 'Strong efficiency – capital converts well to recurring revenue. Maintain discipline while scaling.';
-    if (multiple <= 2.5) return 'Moderate efficiency – workable; track trend and tighten spend if growth slows.';
-    return 'Weak efficiency – reassess CAC, pricing, and payback to improve capital productivity.';
+    if (multiple < 1) return 'Elite efficiency â€“ each dollar of burn creates more than a dollar of ARR this month.';
+    if (multiple < 1.5) return 'Strong efficiency â€“ capital converts well to recurring revenue. Maintain discipline while scaling.';
+    if (multiple <= 2.5) return 'Moderate efficiency â€“ workable; track trend and tighten spend if growth slows.';
+    return 'Weak efficiency â€“ reassess CAC, pricing, and payback to improve capital productivity.';
   };
 
   const getStatus = (multiple: number) => {
@@ -104,11 +104,11 @@ export default function MonthlyBurnMultipleCalculator() {
       insights.push('Pair with CAC payback and LTV:CAC for full unit economics');
       insights.push('Track monthly and rolling 3-month average to smooth volatility');
     } else {
-      insights.push('Efficiency needs improvement – link burn to pipeline and payback');
+      insights.push('Efficiency needs improvement â€“ link burn to pipeline and payback');
       insights.push('Prioritize channels with CAC payback under 12 months');
       insights.push('Consider pausing low-ROI programs until multiple improves');
     }
-    insights.push(`$${burn.toLocaleString()} burn ÷ $${arr.toLocaleString()} net new ARR = ${multiple.toFixed(2)}x burn multiple`);
+    insights.push(`$${burn.toLocaleString()} burn Ã· $${arr.toLocaleString()} net new ARR = ${multiple.toFixed(2)}x burn multiple`);
     return insights;
   };
 
@@ -338,12 +338,12 @@ export default function MonthlyBurnMultipleCalculator() {
                 Net New ARR This Month
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                ARR added in the same month: ending ARR minus beginning ARR (new + expansion − churn − contraction). If using MRR change, multiply by 12.
+                ARR added in the same month: ending ARR minus beginning ARR (new + expansion âˆ’ churn âˆ’ contraction). If using MRR change, multiply by 12.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>Net new from new customers + expansion − churn − contraction</span>
+                  <span>Net new from new customers + expansion âˆ’ churn âˆ’ contraction</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -373,7 +373,7 @@ export default function MonthlyBurnMultipleCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto">
             <p className="font-mono text-sm text-center">
-              Monthly Burn Multiple = Monthly Net Burn ÷ Net New ARR (same month)
+              Monthly Burn Multiple = Monthly Net Burn Ã· Net New ARR (same month)
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
@@ -483,7 +483,7 @@ export default function MonthlyBurnMultipleCalculator() {
         <meta itemProp="url" content="/definitive-monthly-burn-multiple-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Monthly Burn Multiple</h1>
-        <p className="text-lg italic text-muted-foreground">How many dollars of burn it takes to add one dollar of ARR in a month—and why it matters for capital efficiency and scalability.</p>
+        <p className="text-lg italic text-muted-foreground">How many dollars of burn it takes to add one dollar of ARR in a monthâ€”and why it matters for capital efficiency and scalability.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
@@ -503,19 +503,19 @@ export default function MonthlyBurnMultipleCalculator() {
         <hr />
 
         <h2 id="burn-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Formula and Components</h2>
-        <p>Monthly Burn Multiple = Monthly Net Burn ÷ Net New ARR (same month). Use net burn from cash flow (exclude financing) and net new ARR from recurring revenue change in that month.</p>
+        <p>Monthly Burn Multiple = Monthly Net Burn Ã· Net New ARR (same month). Use net burn from cash flow (exclude financing) and net new ARR from recurring revenue change in that month.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-xl text-destructive font-bold">
-            Monthly Burn Multiple = Monthly Net Burn ÷ Net New ARR (same month)
+            Monthly Burn Multiple = Monthly Net Burn Ã· Net New ARR (same month)
           </p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">Defining Net Burn and Net New ARR</h3>
-        <p>Net burn is cash consumed (operating + investing activities). Net new ARR is the change in ARR over the month—new + expansion − churn − contraction.</p>
+        <p>Net burn is cash consumed (operating + investing activities). Net new ARR is the change in ARR over the monthâ€”new + expansion âˆ’ churn âˆ’ contraction.</p>
         <hr />
 
         <h2 id="burn-benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks and Interpretation</h2>
-        <p><strong className="font-semibold text-foreground">Elite (&lt;1):</strong> Each dollar of burn creates more than a dollar of ARR. <strong className="font-semibold text-foreground">Strong (1–1.5):</strong> Good capital productivity. <strong className="font-semibold text-foreground">Moderate (1.5–2.5):</strong> Workable; track trend. <strong className="font-semibold text-foreground">Weak (&gt;2.5):</strong> Reassess spend and growth strategy.</p>
+        <p><strong className="font-semibold text-foreground">Elite (&lt;1):</strong> Each dollar of burn creates more than a dollar of ARR. <strong className="font-semibold text-foreground">Strong (1â€“1.5):</strong> Good capital productivity. <strong className="font-semibold text-foreground">Moderate (1.5â€“2.5):</strong> Workable; track trend. <strong className="font-semibold text-foreground">Weak (&gt;2.5):</strong> Reassess spend and growth strategy.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Ideal Multiple (Under 1.5)</h3>
         <p>Historically, a burn multiple under 1.5 has been considered strong for SaaS, indicating that capital converts efficiently to recurring revenue.</p>
         <hr />
@@ -523,7 +523,7 @@ export default function MonthlyBurnMultipleCalculator() {
         <h2 id="burn-payback" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Burn Multiple vs CAC Payback and LTV:CAC</h2>
         <p>Burn multiple shows <em>capital-to-ARR</em> efficiency; CAC payback shows <em>time</em> to recover CAC; LTV:CAC shows <em>lifetime return</em>.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Using All Three Together</h3>
-        <p>Target burn multiple under 1.5, payback under 12–18 months, and LTV:CAC ≥ 3:1 for healthy unit economics and scalable growth.</p>
+        <p>Target burn multiple under 1.5, payback under 12â€“18 months, and LTV:CAC â‰¥ 3:1 for healthy unit economics and scalable growth.</p>
         <hr />
 
         <h2 id="burn-improve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How to Improve Burn Multiple</h2>
@@ -557,7 +557,7 @@ export default function MonthlyBurnMultipleCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">What is a good monthly burn multiple?</h4>
             <p className="text-muted-foreground">
-              Elite: under 1; Strong: 1–1.5; OK: 1.5–2.5; Risky: over 2.5. Benchmarks vary by stage and market.
+              Elite: under 1; Strong: 1â€“1.5; OK: 1.5â€“2.5; Risky: over 2.5. Benchmarks vary by stage and market.
             </p>
           </div>
           <div>
@@ -593,13 +593,13 @@ export default function MonthlyBurnMultipleCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Why pair burn multiple with CAC payback?</h4>
             <p className="text-muted-foreground">
-              Burn multiple shows capital-to-ARR efficiency; CAC payback shows time to recover CAC per customer. Both measure capital efficiency—use them together for a full view of spend and growth.
+              Burn multiple shows capital-to-ARR efficiency; CAC payback shows time to recover CAC per customer. Both measure capital efficiencyâ€”use them together for a full view of spend and growth.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why do investors care about burn multiple?</h4>
             <p className="text-muted-foreground">
-              Investors use burn multiple to assess how efficiently cash converts to recurring revenue. Elite (&lt;1) or strong (1–1.5) multiples suggest capital-efficient growth; weak (&gt;2.5) multiples raise concerns.
+              Investors use burn multiple to assess how efficiently cash converts to recurring revenue. Elite (&lt;1) or strong (1â€“1.5) multiples suggest capital-efficient growth; weak (&gt;2.5) multiples raise concerns.
             </p>
           </div>
         </CardContent>
@@ -673,13 +673,13 @@ export default function MonthlyBurnMultipleCalculator() {
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: Elite efficiency</h5>
                 <p className="text-sm text-green-700/80 dark:text-green-400">
-                  $200K monthly burn, $250K net new ARR → burn multiple 0.8x. Each dollar of burn creates more than a dollar of ARR; capital-efficient growth.
+                  $200K monthly burn, $250K net new ARR â†’ burn multiple 0.8x. Each dollar of burn creates more than a dollar of ARR; capital-efficient growth.
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: High burn multiple</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  $400K monthly burn, $120K net new ARR → burn multiple 3.3x. Weak efficiency; reassess CAC, payback, and spend to improve capital productivity.
+                  $400K monthly burn, $120K net new ARR â†’ burn multiple 3.3x. Weak efficiency; reassess CAC, payback, and spend to improve capital productivity.
                 </p>
               </div>
             </div>

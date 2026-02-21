@@ -54,12 +54,12 @@ const faqs = [
   {
     question: 'What is WACC?',
     answer:
-      'WACC (Weighted Average Cost of Capital) is the average cost of financing from both debt and equity sources, weighted by their proportions in the capital structure. WACC = (E/V × Re) + (D/V × Rd × (1 - T)).',
+      'WACC (Weighted Average Cost of Capital) is the average cost of financing from both debt and equity sources, weighted by their proportions in the capital structure. WACC = (E/V Ã— Re) + (D/V Ã— Rd Ã— (1 - T)).',
   },
   {
     question: 'How is WACC calculated?',
     answer:
-      'WACC = (E/V × Re) + (D/V × Rd × (1 - T)), where E = equity value, D = debt value, V = total value (E + D), Re = cost of equity, Rd = cost of debt, T = tax rate. The after-tax cost of debt is used because interest is tax-deductible.',
+      'WACC = (E/V Ã— Re) + (D/V Ã— Rd Ã— (1 - T)), where E = equity value, D = debt value, V = total value (E + D), Re = cost of equity, Rd = cost of debt, T = tax rate. The after-tax cost of debt is used because interest is tax-deductible.',
   },
   {
     question: 'What is optimal capital structure?',
@@ -74,7 +74,7 @@ const faqs = [
   {
     question: 'What is the tax shield benefit?',
     answer:
-      'Tax shield benefit comes from interest expense being tax-deductible. After-tax cost of debt = Cost of Debt × (1 - Tax Rate). For example, 6% debt with 25% tax rate has 4.5% after-tax cost, providing a 1.5% tax benefit.',
+      'Tax shield benefit comes from interest expense being tax-deductible. After-tax cost of debt = Cost of Debt Ã— (1 - Tax Rate). For example, 6% debt with 25% tax rate has 4.5% after-tax cost, providing a 1.5% tax benefit.',
   },
   {
     question: 'How do I optimize capital structure?',
@@ -126,7 +126,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/capital-structure-debt-equity-mix-optimization-calculator';
+const baseUrl = 'https://mycalculating.com/finance/capital-structure-debt-equity-mix-optimization-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -135,7 +135,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Capital Structure (Debt/Equity Mix Optimization) Calculator', item: baseUrl },
       ],
     },
@@ -405,7 +405,7 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>WACC</strong> = (E/V × Re) + (D/V × Rd × (1 - T))
+            <strong>WACC</strong> = (E/V Ã— Re) + (D/V Ã— Rd Ã— (1 - T))
           </p>
           <p>Where:</p>
           <ul className="list-disc pl-6 space-y-1">
@@ -417,7 +417,7 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
             <li>T = Tax rate</li>
           </ul>
           <p>
-            <strong>After-Tax Cost of Debt</strong> = Cost of Debt × (1 - Tax Rate)
+            <strong>After-Tax Cost of Debt</strong> = Cost of Debt Ã— (1 - Tax Rate)
           </p>
           <p>
             <strong>Debt-to-Equity Ratio</strong> = D / E
@@ -515,7 +515,7 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
 
         <h2 id="wacc" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">WACC Refresher</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>WACC = (E/V × Re) + (D/V × Rd × (1 - T))</strong></p>
+          <p className="font-mono text-lg"><strong>WACC = (E/V Ã— Re) + (D/V Ã— Rd Ã— (1 - T))</strong></p>
         </div>
         <p>WACC is the blended cost of capital. Minimizing it increases DCF valuation and expands investment headroom.</p>
 
@@ -523,18 +523,18 @@ export default function CapitalStructureDebtEquityMixOptimizationCalculator() {
         <ul className="list-disc ml-6 space-y-2">
           <li><strong>Re (Cost of Equity):</strong> Higher in volatile/growth sectors.</li>
           <li><strong>Rd (Cost of Debt):</strong> Lower but rises with leverage and credit risk.</li>
-          <li><strong>Tax Shield:</strong> After-tax cost of debt = Rd × (1 - T); shield shrinks as taxes fall.</li>
+          <li><strong>Tax Shield:</strong> After-tax cost of debt = Rd Ã— (1 - T); shield shrinks as taxes fall.</li>
         </ul>
 
         <h2 id="tradeoffs" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Debt vs Equity Trade-offs</h2>
-        <p>Debt lowers WACC until risk and spread creep up. Equity preserves flexibility but costs more and dilutes. The optimum sits where marginal tax benefit ≈ marginal distress cost.</p>
+        <p>Debt lowers WACC until risk and spread creep up. Equity preserves flexibility but costs more and dilutes. The optimum sits where marginal tax benefit â‰ˆ marginal distress cost.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Industry Benchmarks</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li>Tech: 0.1–0.3x D/E (low leverage).</li>
-          <li>Manufacturing/Industrials: 0.5–1.0x.</li>
-          <li>Utilities/Infra: 1.0–2.0x (stable cash flows).</li>
-          <li>Financials: 2.0–5.0x+ (regulatory capital driven).</li>
+          <li>Tech: 0.1â€“0.3x D/E (low leverage).</li>
+          <li>Manufacturing/Industrials: 0.5â€“1.0x.</li>
+          <li>Utilities/Infra: 1.0â€“2.0x (stable cash flows).</li>
+          <li>Financials: 2.0â€“5.0x+ (regulatory capital driven).</li>
         </ul>
         <p>Use peers as guardrails, not absolutes.</p>
 

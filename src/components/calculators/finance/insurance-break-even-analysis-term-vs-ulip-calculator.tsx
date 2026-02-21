@@ -70,7 +70,7 @@ const faqs = [
   {
     question: 'How is ULIP investment value calculated?',
     answer:
-      'ULIP investment value = Sum of (Annual Investment Allocation × (1 + Return Rate)^Years). Investment allocation is typically 70-90% of premium after deducting insurance charges and fees.',
+      'ULIP investment value = Sum of (Annual Investment Allocation Ã— (1 + Return Rate)^Years). Investment allocation is typically 70-90% of premium after deducting insurance charges and fees.',
   },
   {
     question: 'What are ULIP charges and fees?',
@@ -127,7 +127,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/insurance-break-even-analysis-term-vs-ulip-calculator';
+const baseUrl = 'https://mycalculating.com/finance/insurance-break-even-analysis-term-vs-ulip-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -136,7 +136,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Insurance Break-even Analysis (Term vs ULIP) Calculator', item: baseUrl },
       ],
     },
@@ -167,7 +167,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const ulipTotalPremium = ulipAnnualPremium * yearsToAnalyze;
 
   // Calculate ULIP investment value (compound growth)
-  // Investment allocation per year = ULIP premium × allocation percentage
+  // Investment allocation per year = ULIP premium Ã— allocation percentage
   const annualInvestmentAllocation = ulipAnnualPremium * (ulipAllocationToInvestment / 100);
   
   let ulipInvestmentValue = 0;
@@ -458,19 +458,19 @@ export default function InsuranceBreakEvenAnalysisTermVsUlipCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Term Total Cost</strong> = Term Annual Premium × Years to Analyze. Represents total premiums paid for term insurance.
+            <strong>Term Total Cost</strong> = Term Annual Premium Ã— Years to Analyze. Represents total premiums paid for term insurance.
           </p>
           <p>
-            <strong>ULIP Total Premium</strong> = ULIP Annual Premium × Years to Analyze. Represents total premiums paid for ULIP.
+            <strong>ULIP Total Premium</strong> = ULIP Annual Premium Ã— Years to Analyze. Represents total premiums paid for ULIP.
           </p>
           <p>
-            <strong>Annual Investment Allocation</strong> = ULIP Annual Premium × (Allocation to Investment % / 100). Portion of premium invested after charges.
+            <strong>Annual Investment Allocation</strong> = ULIP Annual Premium Ã— (Allocation to Investment % / 100). Portion of premium invested after charges.
           </p>
           <p>
-            <strong>ULIP Investment Value</strong> = Compound growth of annual investment allocations at expected return rate. Formula: Sum of [Annual Allocation × (1 + Return Rate)^(Years - Year + 1)].
+            <strong>ULIP Investment Value</strong> = Compound growth of annual investment allocations at expected return rate. Formula: Sum of [Annual Allocation Ã— (1 + Return Rate)^(Years - Year + 1)].
           </p>
           <p>
-            <strong>Break-Even Year</strong> = Year when ULIP investment value compensates for premium difference (ULIP premiums - Term premiums). This occurs when investment value ≥ (ULIP cost - Term cost).
+            <strong>Break-Even Year</strong> = Year when ULIP investment value compensates for premium difference (ULIP premiums - Term premiums). This occurs when investment value â‰¥ (ULIP cost - Term cost).
           </p>
           <p>
             <strong>Savings with Term</strong> = ULIP Total Premium - Term Total Cost. The premium difference that could be invested separately.

@@ -36,16 +36,16 @@ type ResultPayload = {
 const steps = [
   'Enter your approximate body weight in kilograms.',
   'Log how much additional weight you typically lift or hold near your torso (kg).',
-  'Estimate your trunk angle relative to upright when lifting or leaning (0° = upright, 90° = fully forward).',
+  'Estimate your trunk angle relative to upright when lifting or leaning (0Â° = upright, 90Â° = fully forward).',
   'Enter how many times per hour you repeat this posture or lift, and for how many hours per day.',
   'Review peak compression, bodyweight multiple, and cumulative load index for context.',
 ];
 
 const faqs = [
   {
-    question: 'What does the L4–L5 spine load estimate represent?',
+    question: 'What does the L4â€“L5 spine load estimate represent?',
     answer:
-      'It is a rough estimate of compressive force at the L4–L5 level during a common lifting or forward-leaning posture.',
+      'It is a rough estimate of compressive force at the L4â€“L5 level during a common lifting or forward-leaning posture.',
   },
   {
     question: 'Is this a precise biomechanical model?',
@@ -60,7 +60,7 @@ const faqs = [
   {
     question: 'What trunk angles are most concerning?',
     answer:
-      'Larger forward flexion angles (especially beyond ~45°) generally increase spinal loading, particularly with added weight.',
+      'Larger forward flexion angles (especially beyond ~45Â°) generally increase spinal loading, particularly with added weight.',
   },
   {
     question: 'Do reps and hours matter as much as peak load?',
@@ -85,7 +85,7 @@ const faqs = [
   {
     question: 'What if pain appears during or after these tasks?',
     answer:
-      'Stop or modify the task and consult a clinician—pain is an important signal beyond any single number here.',
+      'Stop or modify the task and consult a clinicianâ€”pain is an important signal beyond any single number here.',
   },
   {
     question: 'Can my workplace safety team use this?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/spine-load-l4-l5-pressure-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/spine-load-l4-l5-pressure-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Spine Load (L4-L5) Pressure Calculator', item: baseUrl },
       ],
     },
@@ -135,7 +135,7 @@ const schemaMarkup = {
       name: 'Spine Load (L4-L5) Pressure Calculator',
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
-      description: 'Estimate L4–L5 spinal compression and cumulative load from bodyweight, external load, angle, and repetition.',
+      description: 'Estimate L4â€“L5 spinal compression and cumulative load from bodyweight, external load, angle, and repetition.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -159,7 +159,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (compressionMultipleBW >= 6 || cumulativeLoadIndex >= 120) {
     riskLevel = 'moderate';
-    interpretation = 'Loads approach moderate concern ranges—technique, rotation, and aids become more important.';
+    interpretation = 'Loads approach moderate concern rangesâ€”technique, rotation, and aids become more important.';
   }
   if (compressionMultipleBW >= 8 || cumulativeLoadIndex >= 200) {
     riskLevel = 'high';
@@ -225,7 +225,7 @@ export default function SpineLoadL4L5PressureCalculator() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <HeartPulse className="h-5 w-5" />
-            Spine Load (L4–L5) Pressure Calculator
+            Spine Load (L4â€“L5) Pressure Calculator
           </CardTitle>
           <CardDescription>Estimate spinal compression and cumulative load for a common lifting or leaning posture.</CardDescription>
         </CardHeader>
@@ -357,11 +357,11 @@ export default function SpineLoadL4L5PressureCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Peak compression</p>
                 <p className="text-2xl font-semibold text-primary">{result.peakCompressionNewton.toFixed(0)} N</p>
-                <p className="text-xs text-muted-foreground">Approximate L4–L5 compressive force.</p>
+                <p className="text-xs text-muted-foreground">Approximate L4â€“L5 compressive force.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Multiple of bodyweight</p>
-                <p className="text-2xl font-semibold text-primary">{result.compressionMultipleBW.toFixed(1)}×</p>
+                <p className="text-2xl font-semibold text-primary">{result.compressionMultipleBW.toFixed(1)}Ã—</p>
                 <p className="text-xs text-muted-foreground">Peak load divided by bodyweight force.</p>
               </div>
               <div className="p-4 border rounded">
@@ -422,8 +422,8 @@ export default function SpineLoadL4L5PressureCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Peak compression</strong> ≈ \((0.6 × bodyWeight + externalLoad) × g × (1 + sin(angle) × 1.5)\), where \(g ≈ 9.81
-            m/s²\).
+            <strong>Peak compression</strong> â‰ˆ \((0.6 Ã— bodyWeight + externalLoad) Ã— g Ã— (1 + sin(angle) Ã— 1.5)\), where \(g â‰ˆ 9.81
+            m/sÂ²\).
           </p>
           <p>
             <strong>Cumulative load index</strong> scales peak compression by total repetitions to highlight repetitive stress alongside
@@ -538,7 +538,7 @@ export default function SpineLoadL4L5PressureCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            The Spine Load (L4–L5) Pressure Calculator estimates peak and cumulative spinal compression using simple ergonomic
+            The Spine Load (L4â€“L5) Pressure Calculator estimates peak and cumulative spinal compression using simple ergonomic
             assumptions.
           </p>
           <p>It highlights relative risk levels, offers practical adjustments, and surfaces metrics you can share with safety teams.</p>

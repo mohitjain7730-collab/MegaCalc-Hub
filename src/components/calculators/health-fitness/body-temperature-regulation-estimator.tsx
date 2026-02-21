@@ -41,7 +41,7 @@ const steps = [
   'Enter your age (years).',
   'Enter your body fat percentage (5-50%).',
   'Rate your activity level (1=sedentary, 5=highly active).',
-  'Enter ambient temperature (°F, -20 to 120).',
+  'Enter ambient temperature (Â°F, -20 to 120).',
   'Rate your hydration level (1=dehydrated, 5=well hydrated).',
   'Review regulation score, status, and recommendations.',
 ];
@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'What is body temperature regulation?',
     answer:
-      'Body temperature regulation (thermoregulation) is the body\'s ability to maintain a stable internal temperature around 98.6°F (37°C) despite changes in ambient temperature, activity level, and other factors. It involves heat production, heat loss, and physiological responses.',
+      'Body temperature regulation (thermoregulation) is the body\'s ability to maintain a stable internal temperature around 98.6Â°F (37Â°C) despite changes in ambient temperature, activity level, and other factors. It involves heat production, heat loss, and physiological responses.',
   },
   {
     question: 'What factors affect temperature regulation?',
@@ -90,7 +90,7 @@ const faqs = [
   {
     question: 'What about extreme temperatures?',
     answer:
-      'Extreme heat or cold challenges regulation: heat stroke risk increases above 90°F with humidity, hypothermia risk increases below 32°F. Limit exposure, use appropriate clothing, stay hydrated, seek shade/shelter, and monitor for warning signs of heat illness or hypothermia.',
+      'Extreme heat or cold challenges regulation: heat stroke risk increases above 90Â°F with humidity, hypothermia risk increases below 32Â°F. Limit exposure, use appropriate clothing, stay hydrated, seek shade/shelter, and monitor for warning signs of heat illness or hypothermia.',
   },
   {
     question: 'When should I consult a healthcare provider?',
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/body-temperature-regulation-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/body-temperature-regulation-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Body Temperature Regulation Estimator', item: baseUrl },
       ],
     },
@@ -294,7 +294,7 @@ export default function BodyTemperatureRegulationEstimator() {
                   name="ambientTemp"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Ambient temperature (°F, -20 to 120)</FormLabel>
+                      <FormLabel>Ambient temperature (Â°F, -20 to 120)</FormLabel>
                       <FormControl>
                         <Input type="number" step="1" placeholder="e.g., 75" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -347,7 +347,7 @@ export default function BodyTemperatureRegulationEstimator() {
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Ambient temp</p>
-                <p className="text-2xl font-semibold text-primary">{result.ambientTemp.toFixed(0)}°F</p>
+                <p className="text-2xl font-semibold text-primary">{result.ambientTemp.toFixed(0)}Â°F</p>
                 <p className="text-xs text-muted-foreground">Environment</p>
               </div>
               <div className="p-4 border rounded">
@@ -403,24 +403,24 @@ export default function BodyTemperatureRegulationEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Age factor</strong> = (100 - Age) / 100 × 30, if Age ≥ 65, else 30. Contributes 0-30 points, decreasing with age. Older adults have reduced regulation capacity.
+            <strong>Age factor</strong> = (100 - Age) / 100 Ã— 30, if Age â‰¥ 65, else 30. Contributes 0-30 points, decreasing with age. Older adults have reduced regulation capacity.
           </p>
           <p>
             <strong>Body fat factor</strong> = 25 if Body Fat is 15-25% (optimal range), else calculated based on deviation from optimal. Body fat provides insulation but excessive fat reduces heat loss in heat.
           </p>
           <p>
-            <strong>Activity factor</strong> = (Activity Level / 5) × 25. Contributes 0-25 points. Regular exercise improves cardiovascular function and sweating efficiency, enhancing regulation.
+            <strong>Activity factor</strong> = (Activity Level / 5) Ã— 25. Contributes 0-25 points. Regular exercise improves cardiovascular function and sweating efficiency, enhancing regulation.
           </p>
           <p>
-            <strong>Temperature stress</strong> = Penalty for extreme temperatures: (32 - Temp) / 50 × 10 if Temp &lt; 32°F, or (Temp - 90) / 30 × 10 if Temp &gt; 90°F, else 0. Extreme temperatures challenge regulation.
+            <strong>Temperature stress</strong> = Penalty for extreme temperatures: (32 - Temp) / 50 Ã— 10 if Temp &lt; 32Â°F, or (Temp - 90) / 30 Ã— 10 if Temp &gt; 90Â°F, else 0. Extreme temperatures challenge regulation.
           </p>
           <p>
-            <strong>Hydration factor</strong> = (Hydration Level / 5) × 10. Contributes 0-10 points. Adequate hydration is critical for sweating and temperature regulation.
+            <strong>Hydration factor</strong> = (Hydration Level / 5) Ã— 10. Contributes 0-10 points. Adequate hydration is critical for sweating and temperature regulation.
           </p>
           <p>
             <strong>Regulation score</strong> = Age Factor + Body Fat Factor + Activity Factor - Temperature Stress + Hydration Factor, normalized to 0-100 scale. Higher scores indicate better temperature regulation capacity based on physiological factors and environmental conditions.
           </p>
-          <p>Temperature regulation maintains core body temperature around 98.6°F. Factors like age, body composition, activity, hydration, and environmental conditions affect regulation capacity. Proper hydration, appropriate clothing, and activity support effective regulation.</p>
+          <p>Temperature regulation maintains core body temperature around 98.6Â°F. Factors like age, body composition, activity, hydration, and environmental conditions affect regulation capacity. Proper hydration, appropriate clothing, and activity support effective regulation.</p>
         </CardContent>
       </Card>
 
@@ -512,7 +512,7 @@ export default function BodyTemperatureRegulationEstimator() {
 <hr />
 
     <h2 id="what-is-regulation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Temperature Regulation</h2>
-    <p>**Body temperature regulation** (thermoregulation) is the body's ability to maintain a stable internal temperature around 98.6°F (37°C) despite changes in ambient temperature, activity level, and other environmental factors.</p>
+    <p>**Body temperature regulation** (thermoregulation) is the body's ability to maintain a stable internal temperature around 98.6Â°F (37Â°C) despite changes in ambient temperature, activity level, and other environmental factors.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">Mechanisms of Regulation</h3>
 <p>Temperature regulation involves:</p>

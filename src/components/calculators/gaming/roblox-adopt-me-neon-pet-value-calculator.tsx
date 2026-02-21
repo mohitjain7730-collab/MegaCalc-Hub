@@ -60,7 +60,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Adopt Me Neon Value Calculator', item: baseUrl },
             ],
         },
@@ -119,10 +119,10 @@ export default function RobloxAdoptMeNeonPetValue() {
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground space-y-2">
                     <p>
-                        <strong>Base Neon Value</strong> = 4 × Single Pet Value.
+                        <strong>Base Neon Value</strong> = 4 Ã— Single Pet Value.
                     </p>
                     <p>
-                        <strong>Aging Bonus</strong> = Base Value × (Rarity Hours Bonus). Legendaries take ~6 hours to age up from Newborn to Full Grown, creating significant scarcity value.
+                        <strong>Aging Bonus</strong> = Base Value Ã— (Rarity Hours Bonus). Legendaries take ~6 hours to age up from Newborn to Full Grown, creating significant scarcity value.
                     </p>
                     <p>
                         <strong>Demand Multiplier</strong> = Additional value for "Preppy" or "High Tier" pets (e.g., Cows, Turtles, Frost Dragons) where players overpay for the neon aesthetic.
@@ -174,7 +174,7 @@ export default function RobloxAdoptMeNeonPetValue() {
                 <hr className="my-6" />
 
                 <h2 id="introduction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Gives a Neon Value?</h2>
-                <p>In <em>Adopt Me!</em>, a Neon pet is created by fusing four fully grown pets of the same type in the specialized Neon Cave located under the main bridge. Visually, the pet gains glowing sections on its body—ears, feet, tails, or horns depending on the species. But economically, the value of a Neon comes from one fundamental resource: <strong>Time</strong>.</p>
+                <p>In <em>Adopt Me!</em>, a Neon pet is created by fusing four fully grown pets of the same type in the specialized Neon Cave located under the main bridge. Visually, the pet gains glowing sections on its bodyâ€”ears, feet, tails, or horns depending on the species. But economically, the value of a Neon comes from one fundamental resource: <strong>Time</strong>.</p>
                 <p>Most pets obtained from eggs start as "Newborn." To make a Neon, you must level up four separate pets through the following life stages: Newborn, Junior, Pre-Teen, Teen, Post-Teen, and Full Grown. This process requires completing hundreds of "tasks" (orange and blue circles that appear on your screen). When you trade for a Neon, you are not just buying the pet; you are paying for the seller's labor hours.</p>
 
                 <h2 id="math-breakdown" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Math: Newborns vs. Full Growns</h2>
@@ -208,7 +208,7 @@ export default function RobloxAdoptMeNeonPetValue() {
                 </ul>
 
                 <h2 id="trading-psychology" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Trading Psychology: "Preppy" Values</h2>
-                <p>Adopt Me trading is not just about rarity; it is about aesthetics. The community has dubbed certain pets as "Preppy" pets—usually cute, pastel, or aesthetically pleasing pets that fit a specific avatar style.</p>
+                <p>Adopt Me trading is not just about rarity; it is about aesthetics. The community has dubbed certain pets as "Preppy" petsâ€”usually cute, pastel, or aesthetically pleasing pets that fit a specific avatar style.</p>
                 <p><strong>Examples of Preppy Pets (High Demand):</strong></p>
                 <ul className="list-disc pl-6 space-y-2">
                     <li>Cows (The ultimate high-demand pet, trades for way above its rarity)</li>
@@ -235,7 +235,7 @@ export default function RobloxAdoptMeNeonPetValue() {
                 <p>Scammers might rename a regular pet to "Neon Shadow" using the Pet Salon. Do not look at the custom name. Look at the official item tag below the name. If it doesn't have the <span className="text-cyan-500 font-bold">N</span> tag, it isn't Neon.</p>
 
                 <h2 id="history" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">History of Neons: From 2017 to Now</h2>
-                <p>Neons were introduced in the "Pet Update" of Summer 2019, forever changing the economy. Before Neons, pets were just singular items. The Neon update introduced a "sink" mechanism—removing 4 pets from the economy to create 1 superior pet. This deflationary mechanic is what keeps the Adopt Me economy alive.</p>
+                <p>Neons were introduced in the "Pet Update" of Summer 2019, forever changing the economy. Before Neons, pets were just singular items. The Neon update introduced a "sink" mechanismâ€”removing 4 pets from the economy to create 1 superior pet. This deflationary mechanic is what keeps the Adopt Me economy alive.</p>
                 <p>Every time a player makes a Neon, 3 pets effectively "disappear" from circulation. This scarcity is what gives Mega Neons (which consume 16 pets) their astronomical value.</p>
 
                 <hr className="my-8" />

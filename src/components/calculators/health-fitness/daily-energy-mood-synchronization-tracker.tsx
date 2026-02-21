@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate your typical morning energy level (0–10) over the last 1–2 weeks.',
-  'Rate your typical afternoon energy level (0–10).',
-  'Rate your typical evening energy level (0–10).',
-  'Rate your overall daily mood (0–10), averaging across the day.',
+  'Rate your typical morning energy level (0â€“10) over the last 1â€“2 weeks.',
+  'Rate your typical afternoon energy level (0â€“10).',
+  'Rate your typical evening energy level (0â€“10).',
+  'Rate your overall daily mood (0â€“10), averaging across the day.',
   'Review your alignment score and recommended schedule adjustments.',
 ];
 
@@ -52,7 +52,7 @@ const faqs = [
   {
     question: 'Why focus on synchronization instead of just mood?',
     answer:
-      'Mood often improves when work, rest, and social time match your natural peaks and dips. Misalignment—such as doing deep work when your energy is lowest—can drag mood down.',
+      'Mood often improves when work, rest, and social time match your natural peaks and dips. Misalignmentâ€”such as doing deep work when your energy is lowestâ€”can drag mood down.',
   },
   {
     question: 'How accurate do my ratings need to be?',
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'Should I change my schedule immediately based on this?',
     answer:
-      'Treat the results as a hypothesis. Make small experiments, observe the impact for 1–2 weeks, and adjust. Large changes (like shift work) may require professional guidance.',
+      'Treat the results as a hypothesis. Make small experiments, observe the impact for 1â€“2 weeks, and adjust. Large changes (like shift work) may require professional guidance.',
   },
   {
     question: 'Can I use this with wearable data?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-energy-mood-synchronization-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-energy-mood-synchronization-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Daily Energy & Mood Synchronization Tracker', item: baseUrl },
       ],
     },
@@ -155,7 +155,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const spread = Math.max(avgEnergyMorning, avgEnergyAfternoon, avgEnergyEvening) - Math.min(avgEnergyMorning, avgEnergyAfternoon, avgEnergyEvening);
   const spreadPenalty = clamp(spread / 5, 0, 1); // larger spread = more penalty if mood is flat
 
-  const baseAlignment = clamp(1 - moodVsEnergyDiff / 10, 0, 1); // 0–1
+  const baseAlignment = clamp(1 - moodVsEnergyDiff / 10, 0, 1); // 0â€“1
   const alignmentScore = clamp((baseAlignment - spreadPenalty * 0.2) * 100, 0, 100);
 
   const energyArray = [
@@ -176,7 +176,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (alignmentScore < 60) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where some parts of your day may feel aligned while others feel flatter or more strained. You may consider trying small shifts—like moving creative tasks to naturally brighter windows or adding brief breaks—to see what feels best.';
+      'This suggests a general lifestyle tendency where some parts of your day may feel aligned while others feel flatter or more strained. You may consider trying small shiftsâ€”like moving creative tasks to naturally brighter windows or adding brief breaksâ€”to see what feels best.';
   } else if (alignmentScore < 80) {
     status = 'good';
     interpretation =
@@ -199,7 +199,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Week', detail: 'Observe your actual mood and energy at three checkpoints and compare them with your current estimates.' },
-    { label: 'This Month', detail: 'Make one schedule adjustment—such as moving deep work to your best window—and track changes in mood and output.' },
+    { label: 'This Month', detail: 'Make one schedule adjustmentâ€”such as moving deep work to your best windowâ€”and track changes in mood and output.' },
     { label: 'Ongoing', detail: 'Re-evaluate alignment after major changes (shift work, new job, travel) and adjust routines accordingly.' },
   ];
 
@@ -257,7 +257,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
                   name="avgEnergyMorning"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Morning energy (0–10)</FormLabel>
+                      <FormLabel>Morning energy (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 4.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -270,7 +270,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
                   name="avgEnergyAfternoon"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Afternoon energy (0–10)</FormLabel>
+                      <FormLabel>Afternoon energy (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -283,7 +283,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
                   name="avgEnergyEvening"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Evening energy (0–10)</FormLabel>
+                      <FormLabel>Evening energy (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 5.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -296,7 +296,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
                   name="avgMoodOverall"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Overall mood (0–10)</FormLabel>
+                      <FormLabel>Overall mood (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -306,7 +306,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate energy–mood alignment
+                Calculate energyâ€“mood alignment
               </Button>
             </form>
           </Form>
@@ -327,7 +327,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Alignment score</p>
                 <p className="text-2xl font-semibold text-primary">{result.alignmentScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Best energy window</p>
@@ -397,10 +397,10 @@ export default function DailyEnergyMoodSynchronizationTracker() {
             <strong>Average energy</strong> is the mean of morning, afternoon, and evening ratings.
           </p>
           <p>
-            <strong>Mood–energy difference</strong> is the absolute gap between overall mood and average energy; larger gaps reduce the alignment score.
+            <strong>Moodâ€“energy difference</strong> is the absolute gap between overall mood and average energy; larger gaps reduce the alignment score.
           </p>
           <p>
-            <strong>Alignment score</strong> scales mood–energy difference and energy spread into a 0–100 indicator, where higher values mean better synchronization between how you feel and how much energy you have.
+            <strong>Alignment score</strong> scales moodâ€“energy difference and energy spread into a 0â€“100 indicator, where higher values mean better synchronization between how you feel and how much energy you have.
           </p>
           <p>This simplified model is designed for self-reflection and schedule design, not as a medical diagnostic measure.</p>
         </CardContent>
@@ -523,7 +523,7 @@ export default function DailyEnergyMoodSynchronizationTracker() {
           Micro-Adjustments for Real Life
         </h2>
         <p>
-          Not everyone can rebuild their entire calendar. Even then, small changes—moving one meeting, adding a 10-minute walk, shifting bedtime by 20 minutes—can materially change how days feel.
+          Not everyone can rebuild their entire calendar. Even then, small changesâ€”moving one meeting, adding a 10-minute walk, shifting bedtime by 20 minutesâ€”can materially change how days feel.
         </p>
 
         <h2 id="signals" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">

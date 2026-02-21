@@ -59,7 +59,7 @@ type ResultPayload = {
   considerations: string[];
 };
 
-const baseUrl = 'https://mycalculating.com/category/finance/equity-split-calculator-for-co-founders';
+const baseUrl = 'https://mycalculating.com/finance/equity-split-calculator-for-co-founders';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -68,7 +68,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Equity Split Calculator for Co-Founders', item: baseUrl },
       ],
     },
@@ -198,7 +198,7 @@ export default function EquitySplitCalculatorForCoFounders() {
       <Card>
         <CardHeader>
           <CardTitle>Contribution inputs</CardTitle>
-          <CardDescription>For each co-founder: idea, time/commitment, capital (0–100 each). Optionally mark lead role for a small multiplier.</CardDescription>
+          <CardDescription>For each co-founder: idea, time/commitment, capital (0â€“100 each). Optionally mark lead role for a small multiplier.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -246,7 +246,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                       name={`idea${i}` as 'idea1'}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Idea / vision (0–100)</FormLabel>
+                          <FormLabel>Idea / vision (0â€“100)</FormLabel>
                           <FormControl>
                             <Input type="number" min={0} max={100} value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                           </FormControl>
@@ -259,7 +259,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                       name={`time${i}` as 'time1'}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Time / commitment (0–100)</FormLabel>
+                          <FormLabel>Time / commitment (0â€“100)</FormLabel>
                           <FormControl>
                             <Input type="number" min={0} max={100} value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                           </FormControl>
@@ -272,7 +272,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                       name={`capital${i}` as 'capital1'}
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Capital (0–100)</FormLabel>
+                          <FormLabel>Capital (0â€“100)</FormLabel>
                           <FormControl>
                             <Input type="number" min={0} max={100} value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                           </FormControl>
@@ -293,7 +293,7 @@ export default function EquitySplitCalculatorForCoFounders() {
                               className="rounded border-input"
                             />
                           </FormControl>
-                          <FormLabel className="!mt-0">Lead role (e.g. CEO) — small multiplier</FormLabel>
+                          <FormLabel className="!mt-0">Lead role (e.g. CEO) â€” small multiplier</FormLabel>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -399,11 +399,11 @@ export default function EquitySplitCalculatorForCoFounders() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-blue-50 dark:bg-blue-900/10 rounded-lg border border-blue-100 dark:border-blue-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-blue-700 dark:text-blue-300"><Percent className="h-4 w-4" />Idea, Time, Capital</h4>
-              <p className="text-sm text-muted-foreground mb-3">Relative contribution (0–100) for idea/vision, time/commitment, and capital. Higher numbers mean greater relative contribution. They need not sum to 100 across co-founders; we use relative weights and normalize to 100%.</p>
+              <p className="text-sm text-muted-foreground mb-3">Relative contribution (0â€“100) for idea/vision, time/commitment, and capital. Higher numbers mean greater relative contribution. They need not sum to 100 across co-founders; we use relative weights and normalize to 100%.</p>
               <ul className="space-y-2">
-                <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Idea / vision (0–100): origin of idea, product direction</span></li>
-                <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Time / commitment (0–100): full-time vs part-time, effort</span></li>
-                <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Capital (0–100): cash invested, forgone salary</span></li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Idea / vision (0â€“100): origin of idea, product direction</span></li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Time / commitment (0â€“100): full-time vs part-time, effort</span></li>
+                <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Capital (0â€“100): cash invested, forgone salary</span></li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground"><CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" /><span>Scores are summed per founder; lead multiplier applied if checked</span></li>
               </ul>
             </div>
@@ -426,10 +426,10 @@ export default function EquitySplitCalculatorForCoFounders() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto">
-            <p className="font-mono text-sm text-center">Score_i = (Idea_i + Time_i + Capital_i) × (1.15 if Lead else 1)</p>
-            <p className="font-mono text-sm text-center mt-2">Equity %_i = Score_i ÷ Sum(Score_j) × 100</p>
+            <p className="font-mono text-sm text-center">Score_i = (Idea_i + Time_i + Capital_i) Ã— (1.15 if Lead else 1)</p>
+            <p className="font-mono text-sm text-center mt-2">Equity %_i = Score_i Ã· Sum(Score_j) Ã— 100</p>
           </div>
-          <p className="text-sm text-muted-foreground mt-2">Scores are relative; we normalize to 100% so suggested equity sums to 100%. Idea, time, and capital are each 0–100 per founder; the lead multiplier (1.15) is applied only if the lead role box is checked.</p>
+          <p className="text-sm text-muted-foreground mt-2">Scores are relative; we normalize to 100% so suggested equity sums to 100%. Idea, time, and capital are each 0â€“100 per founder; the lead multiplier (1.15) is applied only if the lead role box is checked.</p>
         </CardContent>
       </Card>
 
@@ -546,24 +546,24 @@ export default function EquitySplitCalculatorForCoFounders() {
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Contribution-Based Splits</h3>
         <p>Using idea, time, and capital (and optionally lead role) makes the rationale explicit. It reduces conflict when everyone agrees on how contributions are weighted and encourages documenting the assumptions. Many teams use equal splits when contributions are similar; when one founder carries more of the idea, time, or capital, a weighted split can feel fairer and avoid resentment later.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Lead Role Multiplier</h3>
-        <p>If one co-founder has clearly greater responsibility (e.g. CEO), a small multiplier (e.g. 1.15x) increases their suggested share. Use only if the team agrees; otherwise leave lead unchecked for all. The lead multiplier is not meant to double a founder’s share—it reflects slightly greater accountability and visibility.</p>
+        <p>If one co-founder has clearly greater responsibility (e.g. CEO), a small multiplier (e.g. 1.15x) increases their suggested share. Use only if the team agrees; otherwise leave lead unchecked for all. The lead multiplier is not meant to double a founderâ€™s shareâ€”it reflects slightly greater accountability and visibility.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">When to Set the Split</h3>
         <p>Ideally agree on the split before or at incorporation, and document it in a founder agreement or cap table. Revisiting the split after months of work often leads to difficult conversations; doing it upfront with a clear methodology (like this calculator) makes the discussion easier.</p>
         <hr />
         <h2 id="eq-formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Formula and Components</h2>
-        <p>For each co-founder, a score is computed from idea, time, and capital (each 0–100). If the lead role box is checked, that founder’s score is multiplied by 1.15. Equity percentage is then: Score_i ÷ Sum(Score_j) × 100. Scores are relative; they need not sum to 100 across co-founders—we normalize so the suggested equity sums to 100%.</p>
-        <h3 className="text-xl font-semibold text-foreground mt-6">Idea / Vision (0–100)</h3>
+        <p>For each co-founder, a score is computed from idea, time, and capital (each 0â€“100). If the lead role box is checked, that founderâ€™s score is multiplied by 1.15. Equity percentage is then: Score_i Ã· Sum(Score_j) Ã— 100. Scores are relative; they need not sum to 100 across co-foundersâ€”we normalize so the suggested equity sums to 100%.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Idea / Vision (0â€“100)</h3>
         <p>Represents the relative contribution of the original idea, product vision, or strategic direction. A founder who conceived the idea and defined the product might score higher here; a late-joining co-founder might score lower.</p>
-        <h3 className="text-xl font-semibold text-foreground mt-6">Time / Commitment (0–100)</h3>
-        <p>Reflects relative commitment in terms of time and effort—full-time vs. part-time, or years of expected dedication. Be consistent: if one founder is 100% and another 50%, that can be reflected in the time score.</p>
-        <h3 className="text-xl font-semibold text-foreground mt-6">Capital (0–100)</h3>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Time / Commitment (0â€“100)</h3>
+        <p>Reflects relative commitment in terms of time and effortâ€”full-time vs. part-time, or years of expected dedication. Be consistent: if one founder is 100% and another 50%, that can be reflected in the time score.</p>
+        <h3 className="text-xl font-semibold text-foreground mt-6">Capital (0â€“100)</h3>
         <p>Reflects relative financial contribution: cash invested, forgone salary, or other capital put into the company. Not all teams weight capital heavily; some treat it as a separate note or loan. Use 0 for all if you are not factoring capital into the split.</p>
         <hr />
         <h2 id="eq-equal-vs-weighted" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Equal vs. Contribution-Based Splits</h2>
         <p>Equal splits (e.g. 50/50 or 33/33/34) are common when co-founders join at the same time with similar roles and commitment. They are simple and avoid endless debate. When one founder brings the idea, more time, or more capital, a contribution-based split can be fairer. Use this calculator to see what a weighted split looks like; you can always round to a round number (e.g. 55/45) and document the rationale.</p>
         <hr />
         <h2 id="eq-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Results and Vesting</h2>
-        <p>Use the suggested split as a starting point; adjust by agreement. Implement 4-year vesting with 1-year cliff so equity vests over time and early leavers do not keep full unvested shares. Vesting protects the company and aligns long-term incentives—standard in venture-backed startups and recommended even for bootstrapped teams.</p>
+        <p>Use the suggested split as a starting point; adjust by agreement. Implement 4-year vesting with 1-year cliff so equity vests over time and early leavers do not keep full unvested shares. Vesting protects the company and aligns long-term incentivesâ€”standard in venture-backed startups and recommended even for bootstrapped teams.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Why a One-Year Cliff</h3>
         <p>The cliff means no equity vests until the co-founder has been with the company for one year. After the cliff, equity typically vests monthly or quarterly over the remaining period. If someone leaves before the cliff, they typically receive no equity for that period, which avoids giving large stakes to short-term participants.</p>
         <hr />
@@ -590,7 +590,7 @@ export default function EquitySplitCalculatorForCoFounders() {
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">How are idea, time, and capital used?</h4>
-              <p className="text-muted-foreground">You enter 0–100 for each co-founder for idea/vision, time/commitment, and capital. We sum these into a score per founder (with an optional lead multiplier) and normalize to 100% to get suggested equity. They need not sum to 100 across co-founders; we use relative weights. For example, if one founder scores 150 and another 100, the first gets 60% and the second 40%.</p>
+              <p className="text-muted-foreground">You enter 0â€“100 for each co-founder for idea/vision, time/commitment, and capital. We sum these into a score per founder (with an optional lead multiplier) and normalize to 100% to get suggested equity. They need not sum to 100 across co-founders; we use relative weights. For example, if one founder scores 150 and another 100, the first gets 60% and the second 40%.</p>
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">What is the lead role multiplier?</h4>
@@ -598,7 +598,7 @@ export default function EquitySplitCalculatorForCoFounders() {
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">Should equity be equal?</h4>
-              <p className="text-muted-foreground">Equal splits are common for 2–3 co-founders when contributions are similar. When one founder carries more idea, time, or capital, a contribution-based split can be fairer. Use this calculator as a starting point and adjust by agreement. You can always round to a round number (e.g. 55/45) and document the rationale.</p>
+              <p className="text-muted-foreground">Equal splits are common for 2â€“3 co-founders when contributions are similar. When one founder carries more idea, time, or capital, a contribution-based split can be fairer. Use this calculator as a starting point and adjust by agreement. You can always round to a round number (e.g. 55/45) and document the rationale.</p>
             </div>
             <div>
               <h4 className="font-semibold text-lg mb-3">What is vesting and why use it?</h4>
@@ -671,11 +671,11 @@ export default function EquitySplitCalculatorForCoFounders() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: Two co-founders, one lead</h5>
-                <p className="text-sm text-muted-foreground">A has Idea 60, Time 70, Capital 20, Lead; B has Idea 40, Time 30, Capital 80. A’s score = (60+70+20)×1.15 = 172.5; B’s = 150. Equity A ≈ 53.5%, B ≈ 46.5%. They round to 55/45 and document that A drove product and ops while B brought capital.</p>
+                <p className="text-sm text-muted-foreground">A has Idea 60, Time 70, Capital 20, Lead; B has Idea 40, Time 30, Capital 80. Aâ€™s score = (60+70+20)Ã—1.15 = 172.5; Bâ€™s = 150. Equity A â‰ˆ 53.5%, B â‰ˆ 46.5%. They round to 55/45 and document that A drove product and ops while B brought capital.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: Three co-founders, equal commitment</h5>
-                <p className="text-sm text-muted-foreground">All three score Idea 33, Time 33, Capital 33, no lead. Scores are equal, so suggested split is 33.3% each. They keep equal split and add 4-year vesting with 1-year cliff so early departures don’t keep full equity.</p>
+                <p className="text-sm text-muted-foreground">All three score Idea 33, Time 33, Capital 33, no lead. Scores are equal, so suggested split is 33.3% each. They keep equal split and add 4-year vesting with 1-year cliff so early departures donâ€™t keep full equity.</p>
               </div>
             </div>
           </div>

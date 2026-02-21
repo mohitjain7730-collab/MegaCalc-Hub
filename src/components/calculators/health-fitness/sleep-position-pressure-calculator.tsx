@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-position-pressure-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-position-pressure-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Position Pressure Calculator', item: baseUrl },
       ],
     },
@@ -225,7 +225,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'Maintain neutral spine alignment: ensure your head, neck, and spine form a straight line. Use appropriate pillow height for your position—side sleepers need higher pillows, back sleepers need lower pillows.',
+    'Maintain neutral spine alignment: ensure your head, neck, and spine form a straight line. Use appropriate pillow height for your positionâ€”side sleepers need higher pillows, back sleepers need lower pillows.',
     'Distribute pressure evenly: use body pillows or cushions to support pressure points. Side sleepers can place a pillow between knees. Back sleepers can place a pillow under knees.',
   ];
   
@@ -453,10 +453,10 @@ export default function SleepPositionPressureCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Pressure score</strong> = 100 - (Position Pressure × Weight Factor × Firmness Factor × 100). Position pressure: back = 0.3, side = 0.5, stomach = 0.8, varied = 0.4. Lower pressure values indicate better pressure distribution.
+            <strong>Pressure score</strong> = 100 - (Position Pressure Ã— Weight Factor Ã— Firmness Factor Ã— 100). Position pressure: back = 0.3, side = 0.5, stomach = 0.8, varied = 0.4. Lower pressure values indicate better pressure distribution.
           </p>
           <p>
-            <strong>Alignment score</strong> = Base Alignment (by position) ± Pillow Adjustments ± Mattress Adjustments. Base alignment: back = 90, side = 75, stomach = 40, varied = 70. Pillow and mattress adjustments optimize for each position.
+            <strong>Alignment score</strong> = Base Alignment (by position) Â± Pillow Adjustments Â± Mattress Adjustments. Base alignment: back = 90, side = 75, stomach = 40, varied = 70. Pillow and mattress adjustments optimize for each position.
           </p>
           <p>
             <strong>Combined score</strong> = (Pressure Score + Alignment Score) / 2. This provides overall assessment of sleep position quality, considering both pressure distribution and spinal alignment.

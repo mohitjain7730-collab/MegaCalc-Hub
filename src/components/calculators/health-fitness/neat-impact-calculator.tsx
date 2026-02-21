@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/neat-impact-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/neat-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'NEAT Impact Calculator', item: baseUrl },
       ],
     },
@@ -389,13 +389,13 @@ export default function NEATImpactCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Steps calories</strong> = Daily Steps × 0.0005 × Body Weight (kg) × 1.036. Walking steps burn approximately 0.04-0.05 kcal per step per kg body weight.
+            <strong>Steps calories</strong> = Daily Steps Ã— 0.0005 Ã— Body Weight (kg) Ã— 1.036. Walking steps burn approximately 0.04-0.05 kcal per step per kg body weight.
           </p>
           <p>
-            <strong>Standing calories</strong> = (1.5 METs × 3.5 × Body Weight) / 200 × Standing Minutes. Standing uses 1.5 metabolic equivalents, burning about 50% more calories than sitting.
+            <strong>Standing calories</strong> = (1.5 METs Ã— 3.5 Ã— Body Weight) / 200 Ã— Standing Minutes. Standing uses 1.5 metabolic equivalents, burning about 50% more calories than sitting.
           </p>
           <p>
-            <strong>Light activity calories</strong> = (2.5 METs × 3.5 × Body Weight) / 200 × Light Activity Minutes. Light activities like housework use 2.5 METs.
+            <strong>Light activity calories</strong> = (2.5 METs Ã— 3.5 Ã— Body Weight) / 200 Ã— Light Activity Minutes. Light activities like housework use 2.5 METs.
           </p>
           <p>
             <strong>Total NEAT</strong> = Steps Calories + Standing Calories + Light Activity Calories. Impact score compares total NEAT to a reference level of 250 kcal/day for moderate activity.
@@ -608,7 +608,7 @@ export default function NEATImpactCalculator() {
         <li><b>Overeating:</b> Some people naturally increase fidgeting and movement (good NEAT responders)</li>
         <li><b>Calorie restriction:</b> NEAT may decrease as the body tries to conserve energy (adaptive thermogenesis)</li>
     </ul>
-    <p>This adaptation explains why some people struggle more with weight loss—their NEAT decreases significantly during dieting.</p>
+    <p>This adaptation explains why some people struggle more with weight lossâ€”their NEAT decreases significantly during dieting.</p>
 
 <hr />
 
@@ -694,7 +694,7 @@ export default function NEATImpactCalculator() {
 
     {/* CONCLUSION */}
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>NEAT is a powerful, often overlooked component of weight management and metabolic health. By understanding how daily movement contributes to calorie expenditure and implementing strategies to increase NEAT, you can create sustainable calorie deficits without requiring extensive structured exercise. Focus on making movement a natural part of daily life—walk more, stand more, and incorporate light activities throughout the day. These small changes accumulate into significant health benefits over time. Remember, the best NEAT strategy is one you can maintain long-term, so focus on sustainable habits that fit your lifestyle.</p>
+    <p>NEAT is a powerful, often overlooked component of weight management and metabolic health. By understanding how daily movement contributes to calorie expenditure and implementing strategies to increase NEAT, you can create sustainable calorie deficits without requiring extensive structured exercise. Focus on making movement a natural part of daily lifeâ€”walk more, stand more, and incorporate light activities throughout the day. These small changes accumulate into significant health benefits over time. Remember, the best NEAT strategy is one you can maintain long-term, so focus on sustainable habits that fit your lifestyle.</p>
 </section>
       <Card>
         <CardHeader>

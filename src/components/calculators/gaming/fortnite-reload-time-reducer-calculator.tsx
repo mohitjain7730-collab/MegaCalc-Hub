@@ -86,7 +86,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite Reload Time Reducer Calculator', item: baseUrl },
       ],
     },
@@ -240,12 +240,12 @@ export default function FortniteReloadTimeReducerCalculator() {
 
         <p>Time saved calculation: Time Saved = Base Time - Reduced Time. This shows how much time is saved per reload. Time saved directly contributes to increased effective DPS by reducing downtime. Understanding time savings helps players evaluate modifier effectiveness.</p>
 
-        <p>Improvement percentage: Improvement % = (Time Saved / Base Time) × 100. This shows the percentage improvement in reload speed. Higher percentages indicate greater improvements and more significant combat advantages. Understanding improvement percentages helps players compare different modifiers.</p>
+        <p>Improvement percentage: Improvement % = (Time Saved / Base Time) Ã— 100. This shows the percentage improvement in reload speed. Higher percentages indicate greater improvements and more significant combat advantages. Understanding improvement percentages helps players compare different modifiers.</p>
 
-        <p>Effective DPS increase accounts for reload downtime in DPS calculations. Formula: DPS Increase ≈ (Time Saved / (Time to Empty + Reload Time)) × 100. This estimates how much effective DPS increases due to reduced reload time. Understanding DPS impact helps players evaluate reload speed improvements.</p>
+        <p>Effective DPS increase accounts for reload downtime in DPS calculations. Formula: DPS Increase â‰ˆ (Time Saved / (Time to Empty + Reload Time)) Ã— 100. This estimates how much effective DPS increases due to reduced reload time. Understanding DPS impact helps players evaluate reload speed improvements.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Examples</h3>
-        <p>Example: Base reload 3 seconds, 25% speed increase, 30-round magazine, 5 shots/second fire rate. Reduced time = 3 / 1.25 = 2.4 seconds. Time saved = 0.6 seconds. Time to empty = 6 seconds. Cycle time original = 9 seconds, reduced = 8.4 seconds. DPS increase ≈ 6.7%. This demonstrates significant improvement for sustained combat.</p>
+        <p>Example: Base reload 3 seconds, 25% speed increase, 30-round magazine, 5 shots/second fire rate. Reduced time = 3 / 1.25 = 2.4 seconds. Time saved = 0.6 seconds. Time to empty = 6 seconds. Cycle time original = 9 seconds, reduced = 8.4 seconds. DPS increase â‰ˆ 6.7%. This demonstrates significant improvement for sustained combat.</p>
 
         <hr />
 
@@ -255,7 +255,7 @@ export default function FortniteReloadTimeReducerCalculator() {
 
         <p>Effective DPS accounts for reload downtime: Effective DPS = (Damage Per Magazine) / (Time to Empty + Reload Time). Reducing reload time increases effective DPS by reducing downtime. The impact depends on fire rate, magazine size, and base reload time. Understanding effective DPS helps players evaluate reload speed improvements.</p>
 
-        <p>DPS increase from reload reduction: DPS Increase ≈ (Time Saved / Cycle Time) × 100. This estimates percentage DPS increase from reload time reduction. Higher time savings and shorter cycle times result in greater DPS increases. Understanding DPS impact helps players prioritize reload speed improvements.</p>
+        <p>DPS increase from reload reduction: DPS Increase â‰ˆ (Time Saved / Cycle Time) Ã— 100. This estimates percentage DPS increase from reload time reduction. Higher time savings and shorter cycle times result in greater DPS increases. Understanding DPS impact helps players prioritize reload speed improvements.</p>
 
         <p>Weapon characteristics affect DPS impact. Weapons with small magazines and high fire rates benefit more from reload speed, as they reload more frequently. Weapons with large magazines benefit less, as reloads occur less frequently. Understanding weapon characteristics helps players evaluate reload speed importance.</p>
 

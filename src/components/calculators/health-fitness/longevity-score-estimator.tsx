@@ -39,7 +39,7 @@ const steps = [
   'Enter your average weekly minutes of moderate-to-vigorous movement.',
   'Enter how many meals per week are mostly plant-rich, minimally processed foods.',
   'Enter your typical nightly sleep duration (hours).',
-  'Rate harmful habits (smoking, heavy drinking, ultra-processed diet, chronic sleep deprivation) from 0–10.',
+  'Rate harmful habits (smoking, heavy drinking, ultra-processed diet, chronic sleep deprivation) from 0â€“10.',
   'Review your longevity score and protective factor breakdown.',
 ];
 
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: 'What is the Longevity Score Estimator?',
     answer:
-      'It summarizes several lifestyle pillars—movement, diet, sleep, and harmful habits—into a single longevity-oriented score and protective factor index.',
+      'It summarizes several lifestyle pillarsâ€”movement, diet, sleep, and harmful habitsâ€”into a single longevity-oriented score and protective factor index.',
   },
   {
     question: 'Is this predicting my actual lifespan?',
@@ -72,7 +72,7 @@ const faqs = [
   {
     question: 'How do harmful habits affect the score?',
     answer:
-      'Higher harmful-habit ratings reduce the overall longevity score and highlight areas with the highest risk–reward for change.',
+      'Higher harmful-habit ratings reduce the overall longevity score and highlight areas with the highest riskâ€“reward for change.',
   },
   {
     question: 'How often should I re-check?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/longevity-score-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/longevity-score-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Longevity Wellness Score Estimator', item: baseUrl },
       ],
     },
@@ -133,7 +133,7 @@ const schemaMarkup = {
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
-        'Get general wellness insights from a longevity‑oriented lifestyle score based on movement, diet, sleep, and habit patterns. This is a personal lifestyle insight, not a medical evaluation.',
+        'Get general wellness insights from a longevityâ€‘oriented lifestyle score based on movement, diet, sleep, and habit patterns. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -146,8 +146,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const { movementMinutes, plantRichMealsPerWeek, sleepHours, harmfulHabitsScore } = values;
 
   const movementScore = clamp((movementMinutes / 150) * 30, 0, 30); // 150 min/week guideline
-  const dietScore = clamp((plantRichMealsPerWeek / 21) * 30, 0, 30); // 2–3/day
-  const sleepScore = clamp(1 - Math.abs(sleepHours - 8) / 3, 0, 1) * 25; // best near 7–9h
+  const dietScore = clamp((plantRichMealsPerWeek / 21) * 30, 0, 30); // 2â€“3/day
+  const sleepScore = clamp(1 - Math.abs(sleepHours - 8) / 3, 0, 1) * 25; // best near 7â€“9h
   const harmPenalty = clamp((harmfulHabitsScore / 10) * 35, 0, 35);
 
   const protectiveFactorScore = clamp(movementScore + dietScore + sleepScore, 0, 85);
@@ -155,16 +155,16 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'good';
   let interpretation =
-    'This suggests a general lifestyle tendency where your longevity‑oriented score may reflect a reasonably supportive pattern with room for gentle refinement.';
+    'This suggests a general lifestyle tendency where your longevityâ€‘oriented score may reflect a reasonably supportive pattern with room for gentle refinement.';
 
   if (longevityScore >= 80) {
     status = 'optimal';
     interpretation =
-      'This suggests a general lifestyle tendency where you may already lean into many longevity‑supportive habits across several domains.';
+      'This suggests a general lifestyle tendency where you may already lean into many longevityâ€‘supportive habits across several domains.';
   } else if (longevityScore < 50) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where some patterns may feel less aligned with long‑term wellness. Focusing on one or two simple levers could gradually support how you feel over time.';
+      'This suggests a general lifestyle tendency where some patterns may feel less aligned with longâ€‘term wellness. Focusing on one or two simple levers could gradually support how you feel over time.';
   } else if (longevityScore < 35) {
     status = 'low';
     interpretation =
@@ -172,9 +172,9 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations: string[] = [
-    'Aim for at least 150–300 minutes per week of movement, including some strength training if appropriate.',
+    'Aim for at least 150â€“300 minutes per week of movement, including some strength training if appropriate.',
     'Center most meals around plants, lean proteins, and minimally processed foods.',
-    'Protect a consistent sleep window that allows ~7–9 hours of rest.',
+    'Protect a consistent sleep window that allows ~7â€“9 hours of rest.',
   ];
 
   if (harmfulHabitsScore >= 5) {
@@ -191,7 +191,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Month', detail: 'Pick one movement habit and one dietary tweak to practice consistently, tracking how you feel and how your score changes.' },
-    { label: 'Next 3–6 Months', detail: 'Layer in additional longevity levers such as strength training, stress reduction, or social connection rituals.' },
+    { label: 'Next 3â€“6 Months', detail: 'Layer in additional longevity levers such as strength training, stress reduction, or social connection rituals.' },
     { label: 'Ongoing', detail: 'Revisit your score several times per year and collaborate with your clinician on lab markers and screenings.' },
   ];
 
@@ -233,7 +233,7 @@ export default function LongevityScoreEstimator() {
             Longevity Wellness Score Estimator
           </CardTitle>
           <CardDescription>
-            Get general wellness insights about how longevity‑supportive your current lifestyle may appear. This is a
+            Get general wellness insights about how longevityâ€‘supportive your current lifestyle may appear. This is a
             personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
@@ -291,7 +291,7 @@ export default function LongevityScoreEstimator() {
                   name="harmfulHabitsScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Harmful habits score (0–10)</FormLabel>
+                      <FormLabel>Harmful habits score (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 3" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -322,7 +322,7 @@ export default function LongevityScoreEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Longevity score</p>
                 <p className="text-2xl font-semibold text-primary">{result.longevityScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Protective factors</p>
@@ -395,10 +395,10 @@ export default function LongevityScoreEstimator() {
             <strong>Diet score</strong> rewards higher counts of plant-rich meals and penalizes very low intake.
           </p>
           <p>
-            <strong>Sleep score</strong> is highest around 7–9 hours and declines when sleep is too short or too long.
+            <strong>Sleep score</strong> is highest around 7â€“9 hours and declines when sleep is too short or too long.
           </p>
           <p>
-            <strong>Longevity score</strong> = protective factors − harmful habit penalty + small baseline offset, normalized to 0–100.
+            <strong>Longevity score</strong> = protective factors âˆ’ harmful habit penalty + small baseline offset, normalized to 0â€“100.
           </p>
           <p>This model is intended for lifestyle reflection and should be interpreted alongside clinical data and professional advice.</p>
         </CardContent>
@@ -522,7 +522,7 @@ export default function LongevityScoreEstimator() {
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">5. Pairing the Score with Medical Care</h2>
         <p>
-          Use your longevity score to complement—not replace—discussions with healthcare providers. They can tie your behavioral patterns to lab results, imaging, or risk calculators for specific conditions.
+          Use your longevity score to complementâ€”not replaceâ€”discussions with healthcare providers. They can tie your behavioral patterns to lab results, imaging, or risk calculators for specific conditions.
         </p>
 
         <hr />
@@ -530,7 +530,7 @@ export default function LongevityScoreEstimator() {
           Conclusion
         </h2>
         <p>
-          A longevity score is a compass, not a verdict. Check it periodically, celebrate improvements, and treat dips as information that helps you recalibrate—not as reasons for shame.
+          A longevity score is a compass, not a verdict. Check it periodically, celebrate improvements, and treat dips as information that helps you recalibrateâ€”not as reasons for shame.
         </p>
       </section>
 
@@ -558,7 +558,7 @@ export default function LongevityScoreEstimator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
             This tool provides general wellness insights by converting movement, diet, sleep, and habit patterns into a
-            simple longevity‑oriented lifestyle score. This is a personal lifestyle insight, not a medical evaluation.
+            simple longevityâ€‘oriented lifestyle score. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>It provides a longevity score, protective factor score, qualitative status, recommendations, an action plan, and extra metrics.</p>
           <p>An expanded guide explains concepts so humans and AI assistants can interpret and act on the results responsibly.</p>

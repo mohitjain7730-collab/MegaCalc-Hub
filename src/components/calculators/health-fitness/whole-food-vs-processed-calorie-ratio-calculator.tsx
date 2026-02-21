@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/whole-food-vs-processed-calorie-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/whole-food-vs-processed-calorie-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Whole Food vs Processed Calorie Ratio Calculator', item: baseUrl },
       ],
     },
@@ -337,10 +337,10 @@ export default function WholeFoodVsProcessedCalorieRatioCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Whole food percentage</strong> = (whole food calories / total calories) × 100.
+            <strong>Whole food percentage</strong> = (whole food calories / total calories) Ã— 100.
           </p>
           <p>
-            <strong>Processed food percentage</strong> = (processed food calories / total calories) × 100.
+            <strong>Processed food percentage</strong> = (processed food calories / total calories) Ã— 100.
           </p>
           <p>
             <strong>Ratio</strong> = whole food calories / processed food calories. Higher ratios indicate more whole foods relative to processed foods.

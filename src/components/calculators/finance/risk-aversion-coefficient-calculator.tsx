@@ -53,7 +53,7 @@ const faqs = [
   {
     question: 'What is relative risk aversion (RRA)?',
     answer:
-      'Relative Risk Aversion (RRA) = -W × U\'\'(W) / U\'(W) = W × ARA. It measures risk aversion relative to wealth level and indicates the proportion of wealth an individual is willing to risk. Constant RRA means risk aversion as a percentage of wealth remains constant.',
+      'Relative Risk Aversion (RRA) = -W Ã— U\'\'(W) / U\'(W) = W Ã— ARA. It measures risk aversion relative to wealth level and indicates the proportion of wealth an individual is willing to risk. Constant RRA means risk aversion as a percentage of wealth remains constant.',
   },
   {
     question: 'What does decreasing absolute risk aversion (DARA) mean?',
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/risk-aversion-coefficient-calculator';
+const baseUrl = 'https://mycalculating.com/finance/risk-aversion-coefficient-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Risk Aversion Coefficient Calculator', item: baseUrl },
       ],
     },
@@ -144,8 +144,8 @@ const schemaMarkup = {
 const calculateDerivatives = (wealth: number, utilityFunction: string): { first: number; second: number } => {
   switch (utilityFunction) {
     case 'square-root':
-      // U(W) = √W
-      // U'(W) = 1/(2√W)
+      // U(W) = âˆšW
+      // U'(W) = 1/(2âˆšW)
       // U''(W) = -1/(4W^(3/2))
       return {
         first: 1 / (2 * Math.sqrt(wealth)),
@@ -154,7 +154,7 @@ const calculateDerivatives = (wealth: number, utilityFunction: string): { first:
     case 'logarithmic':
       // U(W) = ln(W)
       // U'(W) = 1/W
-      // U''(W) = -1/W²
+      // U''(W) = -1/WÂ²
       return {
         first: 1 / wealth,
         second: -1 / (wealth * wealth),
@@ -168,7 +168,7 @@ const calculateDerivatives = (wealth: number, utilityFunction: string): { first:
         second: 0,
       };
     case 'quadratic':
-      // U(W) = W²
+      // U(W) = WÂ²
       // U'(W) = 2W
       // U''(W) = 2
       return {
@@ -189,7 +189,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Absolute Risk Aversion (ARA) = -U''(W) / U'(W)
   const absoluteRiskAversion = firstDerivative !== 0 ? -secondDerivative / firstDerivative : 0;
   
-  // Relative Risk Aversion (RRA) = W × ARA
+  // Relative Risk Aversion (RRA) = W Ã— ARA
   const relativeRiskAversion = wealth * absoluteRiskAversion;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -322,7 +322,7 @@ export default function RiskAversionCoefficientCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Relative Risk Aversion</p>
                 <p className="text-2xl font-semibold text-primary">{result.relativeRiskAversion.toFixed(4)}</p>
-                <p className="text-xs text-muted-foreground">RRA = W × ARA</p>
+                <p className="text-xs text-muted-foreground">RRA = W Ã— ARA</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">First Derivative</p>
@@ -385,15 +385,15 @@ export default function RiskAversionCoefficientCalculator() {
             <strong>Absolute Risk Aversion (ARA)</strong> = -U''(W) / U'(W)
           </p>
           <p>
-            <strong>Relative Risk Aversion (RRA)</strong> = W × ARA = -W × U''(W) / U'(W)
+            <strong>Relative Risk Aversion (RRA)</strong> = W Ã— ARA = -W Ã— U''(W) / U'(W)
           </p>
           <p>
             <strong>Utility Function Derivatives:</strong>
           </p>
-          <p>Square-Root: U'(W) = 1/(2√W), U''(W) = -1/(4W^(3/2)) → ARA = 1/(2W), RRA = 1/2 (DARA)</p>
-          <p>Logarithmic: U'(W) = 1/W, U''(W) = -1/W² → ARA = 1/W, RRA = 1 (CRRA)</p>
-          <p>Linear: U'(W) = 1, U''(W) = 0 → ARA = 0, RRA = 0 (Risk-Neutral)</p>
-          <p>Quadratic: U'(W) = 2W, U''(W) = 2 → ARA = -1/W (Risk-Seeking)</p>
+          <p>Square-Root: U'(W) = 1/(2âˆšW), U''(W) = -1/(4W^(3/2)) â†’ ARA = 1/(2W), RRA = 1/2 (DARA)</p>
+          <p>Logarithmic: U'(W) = 1/W, U''(W) = -1/WÂ² â†’ ARA = 1/W, RRA = 1 (CRRA)</p>
+          <p>Linear: U'(W) = 1, U''(W) = 0 â†’ ARA = 0, RRA = 0 (Risk-Neutral)</p>
+          <p>Quadratic: U'(W) = 2W, U''(W) = 2 â†’ ARA = -1/W (Risk-Seeking)</p>
           <p>The Arrow-Pratt measures quantify risk aversion based on the curvature of the utility function. ARA measures absolute dollar risk aversion; RRA measures relative (percentage) risk aversion. Higher coefficients indicate greater risk aversion.</p>
         </CardContent>
       </Card>
@@ -516,7 +516,7 @@ export default function RiskAversionCoefficientCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Relative Risk Aversion (RRA)</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>RRA(W) = W × ARA(W) = -W × U''(W) / U'(W)</strong></p>
+        <p className="font-mono text-lg"><strong>RRA(W) = W Ã— ARA(W) = -W Ã— U''(W) / U'(W)</strong></p>
     </div>
     <p>RRA measures risk aversion relative to wealth, indicating the proportion of wealth an individual is willing to risk. RRA is particularly useful for understanding how risk preferences scale with wealth.</p>
 
@@ -539,10 +539,10 @@ export default function RiskAversionCoefficientCalculator() {
     <h2 id="functions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Utility Functions and Coefficients</h2>
     <p>Different utility functions yield different risk aversion patterns.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Square-Root Utility: U(W) = √W</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Square-Root Utility: U(W) = âˆšW</h3>
     <p>Derivatives:</p>
     <ul className="list-disc ml-6 space-y-1">
-        <li>U'(W) = 1/(2√W)</li>
+        <li>U'(W) = 1/(2âˆšW)</li>
         <li>U''(W) = -1/(4W^(3/2))</li>
     </ul>
     <p>Coefficients:</p>
@@ -556,7 +556,7 @@ export default function RiskAversionCoefficientCalculator() {
     <p>Derivatives:</p>
     <ul className="list-disc ml-6 space-y-1">
         <li>U'(W) = 1/W</li>
-        <li>U''(W) = -1/W²</li>
+        <li>U''(W) = -1/WÂ²</li>
     </ul>
     <p>Coefficients:</p>
     <ul className="list-disc ml-6 space-y-1">
@@ -578,7 +578,7 @@ export default function RiskAversionCoefficientCalculator() {
     </ul>
     <p>Represents <b>risk neutrality</b> - decisions based solely on expected value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Quadratic Utility: U(W) = W²</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Quadratic Utility: U(W) = WÂ²</h3>
     <p>Derivatives:</p>
     <ul className="list-disc ml-6 space-y-1">
         <li>U'(W) = 2W</li>

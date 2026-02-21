@@ -40,7 +40,7 @@ const steps = [
 
 const faqs = [
   { question: 'What is burn multiple?', answer: 'Burn multiple = net burn over a period divided by net new ARR in that same period. It measures how efficiently cash is converted into recurring revenue.' },
-  { question: 'What is a good burn multiple?', answer: 'Elite: <1, Strong: 1–1.5, OK: 1.5–2.5, Risky: >2.5. Benchmarks vary with growth stage and market.' },
+  { question: 'What is a good burn multiple?', answer: 'Elite: <1, Strong: 1â€“1.5, OK: 1.5â€“2.5, Risky: >2.5. Benchmarks vary with growth stage and market.' },
   { question: 'Should I use ARR or MRR?', answer: 'Use ARR for annualized growth. If you track MRR change, convert to ARR by multiplying by 12 to keep units consistent with burn multiple benchmarks.' },
   { question: 'Do I include capital expenditures?', answer: 'Use net burn from the cash flow statement. Exclude one-time financing flows but include opex, capex, and working capital changes that consume cash.' },
   { question: 'How often should I track?', answer: 'Track monthly and summarize quarterly. Consistency lets you see trendlines and the impact of go-to-market or efficiency programs.' },
@@ -53,7 +53,7 @@ const relatedCalculators = [
   { name: 'SaaS CAC (Customer Acquisition Cost) Calculator', slug: 'saas-cac-calculator', description: 'Measure acquisition cost per customer to improve efficiency.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/burn-multiple-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/finance/burn-multiple-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -62,7 +62,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Burn Multiple (Efficiency) Calculator', item: baseUrl },
       ],
     },
@@ -279,13 +279,13 @@ export default function BurnMultipleEfficiencyCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Period burn</strong> = net burn per month × period months.
+            <strong>Period burn</strong> = net burn per month Ã— period months.
           </p>
           <p>
-            <strong>Burn multiple</strong> = period burn ÷ net new ARR in the same period.
+            <strong>Burn multiple</strong> = period burn Ã· net new ARR in the same period.
           </p>
           <p>
-            <strong>ARR efficiency</strong> = net new ARR ÷ period burn.
+            <strong>ARR efficiency</strong> = net new ARR Ã· period burn.
           </p>
           <p>Use the same time window for burn and ARR change to avoid distortions.</p>
         </CardContent>
@@ -386,10 +386,10 @@ export default function BurnMultipleEfficiencyCalculator() {
         <hr />
 
         <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Definition and Formula</h2>
-        <p>Burn multiple = cash burned over a period ÷ net new ARR in that period. Use net burn (cash out minus cash in) and net new ARR (including churn) to stay consistent.</p>
+        <p>Burn multiple = cash burned over a period Ã· net new ARR in that period. Use net burn (cash out minus cash in) and net new ARR (including churn) to stay consistent.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks by Stage</h2>
-        <p>Seed/Series A: aim &lt; 1.5 while proving product-market fit. Growth: strive for 1.0–1.5 with scalable go-to-market. Late stage: sub-1 is elite.</p>
+        <p>Seed/Series A: aim &lt; 1.5 while proving product-market fit. Growth: strive for 1.0â€“1.5 with scalable go-to-market. Late stage: sub-1 is elite.</p>
 
         <h2 id="improve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Improving Burn Multiple</h2>
         <ul className="list-disc ml-6 space-y-2">

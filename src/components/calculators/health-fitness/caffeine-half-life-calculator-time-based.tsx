@@ -81,7 +81,7 @@ const faqs = [
   {
     question: 'Can I speed up caffeine elimination?',
     answer:
-      'No, you cannot significantly speed up caffeine elimination. Hydration helps with excretion but doesn\'t change metabolism rate. Time is the only factor—you must wait for your body to metabolize and eliminate caffeine naturally.',
+      'No, you cannot significantly speed up caffeine elimination. Hydration helps with excretion but doesn\'t change metabolism rate. Time is the only factorâ€”you must wait for your body to metabolize and eliminate caffeine naturally.',
   },
   {
     question: 'What are symptoms of too much caffeine?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/caffeine-half-life-calculator-time-based';
+const baseUrl = 'https://mycalculating.com/health-fitness/caffeine-half-life-calculator-time-based';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Caffeine Half-Life Calculator (time-based)', item: baseUrl },
       ],
     },
@@ -425,10 +425,10 @@ export default function CaffeineHalfLifeCalculatorTimeBased() {
             <strong>Caffeine half-life</strong> varies by age and liver function: healthy adults (18-50) = 3-5 hours, older adults (65+) = 5-10 hours, adolescents = 2-3 hours. Liver issues increase half-life by ~50%.
           </p>
           <p>
-            <strong>Current caffeine level</strong> = Initial Amount × (0.5 ^ (Hours Elapsed / Half-Life)). This exponential decay model shows how caffeine decreases over time.
+            <strong>Current caffeine level</strong> = Initial Amount Ã— (0.5 ^ (Hours Elapsed / Half-Life)). This exponential decay model shows how caffeine decreases over time.
           </p>
           <p>
-            <strong>Elimination time</strong> = Half-Life × 5. After 5 half-lives, approximately 3% of original caffeine remains, which is considered essentially eliminated.
+            <strong>Elimination time</strong> = Half-Life Ã— 5. After 5 half-lives, approximately 3% of original caffeine remains, which is considered essentially eliminated.
           </p>
           <p>Caffeine elimination follows exponential decay. To avoid sleep disruption, stop consuming caffeine 6-8 hours before bedtime, accounting for your individual half-life. Older adults and those with liver issues may need longer cutoff times.</p>
         </CardContent>

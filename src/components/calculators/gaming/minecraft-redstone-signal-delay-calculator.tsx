@@ -14,7 +14,7 @@ const faqs = [
   {
     question: 'How does redstone signal delay work in Minecraft?',
     answer:
-      'Redstone signal delay is the time it takes for a signal to travel through redstone components. Repeaters add delay: each repeater can add 1-4 ticks of delay (right-click to adjust). Total delay = (Repeater Count × Tick Delay Per Repeater) + Additional Delay. Understanding delay helps design timing circuits and synchronize redstone components.',
+      'Redstone signal delay is the time it takes for a signal to travel through redstone components. Repeaters add delay: each repeater can add 1-4 ticks of delay (right-click to adjust). Total delay = (Repeater Count Ã— Tick Delay Per Repeater) + Additional Delay. Understanding delay helps design timing circuits and synchronize redstone components.',
   },
   {
     question: 'What is a redstone tick?',
@@ -24,12 +24,12 @@ const faqs = [
   {
     question: 'How do I calculate total signal delay?',
     answer:
-      'Total Delay = (Repeater Count × Tick Delay Per Repeater) + Additional Delay. For example, 5 repeaters at 2 ticks each = 10 ticks delay. Add any additional delay from other components. Total delay in seconds = Total Delay × 0.1. Understanding calculation helps design circuits with precise timing.',
+      'Total Delay = (Repeater Count Ã— Tick Delay Per Repeater) + Additional Delay. For example, 5 repeaters at 2 ticks each = 10 ticks delay. Add any additional delay from other components. Total delay in seconds = Total Delay Ã— 0.1. Understanding calculation helps design circuits with precise timing.',
   },
   {
     question: 'What is the maximum repeater delay?',
     answer:
-      'Each repeater can add 1-4 ticks of delay (right-click to adjust). Maximum delay per repeater is 4 ticks (0.4 seconds). For multiple repeaters, maximum delay = Repeater Count × 4 ticks. Use multiple repeaters for longer delays. Understanding maximum delay helps plan circuit timing.',
+      'Each repeater can add 1-4 ticks of delay (right-click to adjust). Maximum delay per repeater is 4 ticks (0.4 seconds). For multiple repeaters, maximum delay = Repeater Count Ã— 4 ticks. Use multiple repeaters for longer delays. Understanding maximum delay helps plan circuit timing.',
   },
   {
     question: 'How do I reduce signal delay?',
@@ -85,7 +85,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Redstone Signal Delay Calculator', item: baseUrl },
       ],
     },
@@ -184,7 +184,7 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <p>Key factors affecting delay include: repeater count (more repeaters = more delay), tick delay per repeater (1-4 ticks, adjustable), additional delay from other components (pistons, hoppers, comparators), and circuit design (optimization can reduce delay). Understanding these factors helps optimize circuit timing.</p>
 
-        <p>Delay calculation: Total Delay = (Repeater Count × Tick Delay Per Repeater) + Additional Delay. This formula calculates complete signal delay. Understanding calculation helps design circuits with precise timing requirements.</p>
+        <p>Delay calculation: Total Delay = (Repeater Count Ã— Tick Delay Per Repeater) + Additional Delay. This formula calculates complete signal delay. Understanding calculation helps design circuits with precise timing requirements.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Signal Delay Matters</h3>
         <p>Signal delay matters because it affects circuit responsiveness, determines timing for synchronized circuits, influences circuit design decisions, and impacts overall circuit performance. Understanding delay helps players design efficient and responsive redstone circuits.</p>
@@ -214,7 +214,7 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <p>Tick definition: 1 redstone tick = 0.1 seconds (1/10th of a second). There are 10 redstone ticks per second. Ticks are the fundamental unit for all redstone timing calculations.</p>
 
-        <p>Delay conversion: Delay in seconds = Delay in Ticks × 0.1. For example, 10 ticks = 1.0 seconds, 20 ticks = 2.0 seconds. Understanding conversion helps plan timing for real-world applications.</p>
+        <p>Delay conversion: Delay in seconds = Delay in Ticks Ã— 0.1. For example, 10 ticks = 1.0 seconds, 20 ticks = 2.0 seconds. Understanding conversion helps plan timing for real-world applications.</p>
 
         <p>Common tick delays: 1 tick = 0.1 seconds (fast), 2 ticks = 0.2 seconds (moderate), 4 ticks = 0.4 seconds (slow per repeater), 10 ticks = 1.0 seconds (standard delay). Understanding common delays helps design circuits with appropriate timing.</p>
 
@@ -229,16 +229,16 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
 
         <p>Delay calculation determines total signal delay through redstone circuits. Understanding calculation helps players design circuits with precise timing.</p>
 
-        <p>Repeater delay: Repeater Delay = Repeater Count × Tick Delay Per Repeater. This calculates delay from repeaters only. For example, 5 repeaters at 2 ticks each = 10 ticks repeater delay.</p>
+        <p>Repeater delay: Repeater Delay = Repeater Count Ã— Tick Delay Per Repeater. This calculates delay from repeaters only. For example, 5 repeaters at 2 ticks each = 10 ticks repeater delay.</p>
 
         <p>Total delay: Total Delay = Repeater Delay + Additional Delay. This calculates complete signal delay including repeaters and other components. Additional delay comes from pistons, hoppers, comparators, and other redstone components.</p>
 
-        <p>Delay in seconds: Delay in Seconds = Total Delay × 0.1. This converts redstone ticks to seconds for real-world timing understanding. Understanding seconds helps plan timing for applications requiring real-time coordination.</p>
+        <p>Delay in seconds: Delay in Seconds = Total Delay Ã— 0.1. This converts redstone ticks to seconds for real-world timing understanding. Understanding seconds helps plan timing for applications requiring real-time coordination.</p>
 
         <p>Calculation examples: 0 repeaters, 0 additional = 0 ticks (instant), 5 repeaters at 1 tick each, 2 additional = 7 ticks (0.7 seconds), 10 repeaters at 4 ticks each, 5 additional = 45 ticks (4.5 seconds). Understanding examples helps apply calculations to real circuits.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Strategy</h3>
-        <p>Calculation strategy: identify all delay sources (repeaters, other components), calculate repeater delay (count × tick delay), add additional delays, convert to seconds if needed, and verify calculations for circuit design. Good calculation strategy ensures accurate timing.</p>
+        <p>Calculation strategy: identify all delay sources (repeaters, other components), calculate repeater delay (count Ã— tick delay), add additional delays, convert to seconds if needed, and verify calculations for circuit design. Good calculation strategy ensures accurate timing.</p>
 
         <hr />
 
@@ -327,8 +327,8 @@ export default function MinecraftRedstoneSignalDelayCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Minecraft redstone signal delay based on repeater count, tick delay per repeater (1-4 ticks, defaults to 1), and optional additional delay from other components (pistons, hoppers, comparators, etc.).</p>
-          <p>Outputs include delay per repeater (tick delay setting), total repeater delay (count × tick delay), total delay (repeater delay + additional delay), delay in seconds (ticks × 0.1), delay in redstone ticks, status assessment (instant/fast/moderate/slow/very-slow), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use delay calculations: Delay Per Repeater = Tick Delay (1-4 ticks), Total Repeater Delay = Repeater Count × Tick Delay, Total Delay = Repeater Delay + Additional Delay, Delay in Seconds = Total Delay × 0.1. The guide covers repeaters, ticks, delay calculation, optimization, synchronization, and component delays. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft redstone signal delay calculations instantly.</p>
+          <p>Outputs include delay per repeater (tick delay setting), total repeater delay (count Ã— tick delay), total delay (repeater delay + additional delay), delay in seconds (ticks Ã— 0.1), delay in redstone ticks, status assessment (instant/fast/moderate/slow/very-slow), interpretation, recommendations, and action plan.</p>
+          <p>Formulas use delay calculations: Delay Per Repeater = Tick Delay (1-4 ticks), Total Repeater Delay = Repeater Count Ã— Tick Delay, Total Delay = Repeater Delay + Additional Delay, Delay in Seconds = Total Delay Ã— 0.1. The guide covers repeaters, ticks, delay calculation, optimization, synchronization, and component delays. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft redstone signal delay calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

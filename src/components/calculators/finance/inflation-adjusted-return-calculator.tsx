@@ -32,7 +32,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Convert nominal (stated) return to real (inflation-adjusted) return. See purchasing power growth and optional future value in today\'s dollars.',
-      url: 'https://mycalculating.com/category/finance/inflation-adjusted-return-calculator',
+      url: 'https://mycalculating.com/finance/inflation-adjusted-return-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -87,7 +87,7 @@ export default function InflationAdjustedReturnCalculator() {
     }
 
     const insights: string[] = [];
-    insights.push(`Real return = (1 + nominal) ÷ (1 + inflation) − 1 = ${realReturnPct.toFixed(2)}%.`);
+    insights.push(`Real return = (1 + nominal) Ã· (1 + inflation) âˆ’ 1 = ${realReturnPct.toFixed(2)}%.`);
     insights.push(`Purchasing power growth = real return = ${realReturnPct.toFixed(2)}% per year.`);
     if (years != null && years > 0 && fvNominal != null && fvReal != null) {
       const startVal = initial ?? 100;
@@ -250,11 +250,11 @@ export default function InflationAdjustedReturnCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Formula: Real return = (1 + nominal) ÷ (1 + inflation) − 1. Approximate: real ≈ nominal − inflation when both are small.</span>
+                <span className="text-sm font-medium">Formula: Real return = (1 + nominal) Ã· (1 + inflation) âˆ’ 1. Approximate: real â‰ˆ nominal âˆ’ inflation when both are small.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">When inflation is high, real return can be much lower than nominal or even negative—your money grows in dollars but loses purchasing power.</span>
+                <span className="text-sm font-medium">When inflation is high, real return can be much lower than nominal or even negativeâ€”your money grows in dollars but loses purchasing power.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -274,7 +274,7 @@ export default function InflationAdjustedReturnCalculator() {
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Nominal and inflation rates are assumed constant; in reality both vary from year to year—use long-term averages for planning.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Nominal and inflation rates are assumed constant; in reality both vary from year to yearâ€”use long-term averages for planning.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
@@ -286,7 +286,7 @@ export default function InflationAdjustedReturnCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">When inflation is high or volatile, the approximation real ≈ nominal − inflation can be inaccurate; use the exact formula.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">When inflation is high or volatile, the approximation real â‰ˆ nominal âˆ’ inflation can be inaccurate; use the exact formula.</span>
               </div>
             </CardContent>
           </Card>
@@ -321,13 +321,13 @@ export default function InflationAdjustedReturnCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>FV in nominal terms = P × (1 + nominal)^n.</span>
+                  <span>FV in nominal terms = P Ã— (1 + nominal)^n.</span>
                 </li>
               </ul>
             </div>
             <div className="p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-100 dark:border-green-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-green-700 dark:text-green-300">Real return (inflation-adjusted)</h4>
-              <p className="text-sm text-muted-foreground mb-3">The return after adjusting for inflation. It measures how much your purchasing power grows. Real return = (1 + nominal) ÷ (1 + inflation) − 1.</p>
+              <p className="text-sm text-muted-foreground mb-3">The return after adjusting for inflation. It measures how much your purchasing power grows. Real return = (1 + nominal) Ã· (1 + inflation) âˆ’ 1.</p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -343,7 +343,7 @@ export default function InflationAdjustedReturnCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>FV in real terms = P × (1 + real)^n (today&apos;s purchasing power).</span>
+                  <span>FV in real terms = P Ã— (1 + real)^n (today&apos;s purchasing power).</span>
                 </li>
               </ul>
             </div>
@@ -360,15 +360,15 @@ export default function InflationAdjustedReturnCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Real return = (1 + nominal return) ÷ (1 + inflation rate) − 1</p>
+            <p className="font-mono text-sm text-center">Real return = (1 + nominal return) Ã· (1 + inflation rate) âˆ’ 1</p>
             <p className="font-mono text-sm text-center">Purchasing power growth = real return (same)</p>
-            <p className="font-mono text-sm text-center">FV in real terms = Initial × (1 + real return)^years</p>
+            <p className="font-mono text-sm text-center">FV in real terms = Initial Ã— (1 + real return)^years</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            The exact formula divides (1 + nominal) by (1 + inflation); the approximation real ≈ nominal − inflation works when both rates are small. Real return is the growth rate of purchasing power.
+            The exact formula divides (1 + nominal) by (1 + inflation); the approximation real â‰ˆ nominal âˆ’ inflation works when both rates are small. Real return is the growth rate of purchasing power.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            When both nominal and inflation are expressed as decimals (e.g. 0.07 and 0.03), real return = (1.07 ÷ 1.03) − 1 ≈ 0.0388, or 3.88%. Multiply by 100 for percentage. For negative nominal or deflation, the same formula applies.
+            When both nominal and inflation are expressed as decimals (e.g. 0.07 and 0.03), real return = (1.07 Ã· 1.03) âˆ’ 1 â‰ˆ 0.0388, or 3.88%. Multiply by 100 for percentage. For negative nominal or deflation, the same formula applies.
           </p>
         </CardContent>
       </Card>
@@ -487,27 +487,27 @@ export default function InflationAdjustedReturnCalculator() {
         <hr />
 
         <h2 id="what-is-real-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Real (Inflation-Adjusted) Return?</h2>
-        <p>Real return is the return on an investment after adjusting for inflation. It measures how much your purchasing power grows—how much more (or less) you can buy with your money over time. Nominal return ignores inflation; real return does not.</p>
+        <p>Real return is the return on an investment after adjusting for inflation. It measures how much your purchasing power growsâ€”how much more (or less) you can buy with your money over time. Nominal return ignores inflation; real return does not.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Nominal vs Real</h3>
-        <p>Nominal return is the headline number (e.g. 7% per year). If inflation is 3%, your money grows 7% in dollar terms but prices rise 3%, so your purchasing power grows at roughly 4% per year—that 4% is the real return (approximately; the exact formula is below).</p>
+        <p>Nominal return is the headline number (e.g. 7% per year). If inflation is 3%, your money grows 7% in dollar terms but prices rise 3%, so your purchasing power grows at roughly 4% per yearâ€”that 4% is the real return (approximately; the exact formula is below).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Purchasing Power</h3>
         <p>Real return = purchasing power growth. When real return is negative (inflation &gt; nominal return), your balance may go up in dollars but you can buy less with it. Use real return to plan retirement and long-term goals in today&apos;s dollars.</p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
-          <li><strong>Nominal 7%, inflation 3%:</strong> Real return ≈ 3.9% (exact: (1.07/1.03) − 1).</li>
-          <li><strong>Nominal 5%, inflation 6%:</strong> Real return is negative—purchasing power shrinks.</li>
+          <li><strong>Nominal 7%, inflation 3%:</strong> Real return â‰ˆ 3.9% (exact: (1.07/1.03) âˆ’ 1).</li>
+          <li><strong>Nominal 5%, inflation 6%:</strong> Real return is negativeâ€”purchasing power shrinks.</li>
         </ul>
         <hr />
 
         <h2 id="how-calculated-real-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Real return = (1 + nominal return) ÷ (1 + inflation rate) − 1. Express as a percentage by multiplying by 100. The approximation real ≈ nominal − inflation works when both rates are small (e.g. under 10%); for larger rates use the exact formula.</p>
+        <p>Real return = (1 + nominal return) Ã· (1 + inflation rate) âˆ’ 1. Express as a percentage by multiplying by 100. The approximation real â‰ˆ nominal âˆ’ inflation works when both rates are small (e.g. under 10%); for larger rates use the exact formula.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Divide by (1 + Inflation)</h3>
-        <p>Because inflation compounds: if prices rise 3% per year, a dollar next year buys 1 ÷ 1.03 ≈ 0.97 of what it buys today. So nominal growth (1 + nominal) must be deflated by (1 + inflation) to get growth in purchasing power. That gives (1 + nominal) ÷ (1 + inflation) − 1 = real return.</p>
+        <p>Because inflation compounds: if prices rise 3% per year, a dollar next year buys 1 Ã· 1.03 â‰ˆ 0.97 of what it buys today. So nominal growth (1 + nominal) must be deflated by (1 + inflation) to get growth in purchasing power. That gives (1 + nominal) Ã· (1 + inflation) âˆ’ 1 = real return.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-          <p className="font-mono text-lg text-destructive font-bold">Real return = (1 + nominal) ÷ (1 + inflation) − 1</p>
+          <p className="font-mono text-lg text-destructive font-bold">Real return = (1 + nominal) Ã· (1 + inflation) âˆ’ 1</p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">Future Value in Today&apos;s Dollars</h3>
-        <p>FV in nominal terms = P × (1 + nominal)^n. FV in real terms (today&apos;s purchasing power) = P × (1 + real)^n. When you enter years and optional initial amount, the calculator shows both nominal FV and real FV so you can see how much inflation erodes the nominal gain.</p>
+        <p>FV in nominal terms = P Ã— (1 + nominal)^n. FV in real terms (today&apos;s purchasing power) = P Ã— (1 + real)^n. When you enter years and optional initial amount, the calculator shows both nominal FV and real FV so you can see how much inflation erodes the nominal gain.</p>
         <hr />
 
         <h2 id="why-it-matters-real-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why It Matters</h2>
@@ -517,17 +517,17 @@ export default function InflationAdjustedReturnCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">Negative Real Return</h3>
         <p>When inflation exceeds nominal return, real return is negative. Your money loses purchasing power (e.g. cash in a low-yield account during high inflation). This calculator shows when that happens.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Approximation vs Exact Formula</h3>
-        <p>The approximation real ≈ nominal − inflation is easy to remember and works when both rates are small (e.g. under 10%). For 7% nominal and 3% inflation, approximation gives 4%; exact (1.07 ÷ 1.03) − 1 ≈ 3.88%. For higher rates or precision, always use the exact formula.</p>
+        <p>The approximation real â‰ˆ nominal âˆ’ inflation is easy to remember and works when both rates are small (e.g. under 10%). For 7% nominal and 3% inflation, approximation gives 4%; exact (1.07 Ã· 1.03) âˆ’ 1 â‰ˆ 3.88%. For higher rates or precision, always use the exact formula.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">When the Approximation Fails</h3>
-        <p>When nominal or inflation (or both) are large (e.g. 15% nominal, 10% inflation), the approximation real ≈ nominal − inflation = 5% is noticeably off. The exact (1.15 ÷ 1.10) − 1 ≈ 4.55%. For high-inflation regimes or volatile periods, always use the exact formula to avoid overstating real return.</p>
+        <p>When nominal or inflation (or both) are large (e.g. 15% nominal, 10% inflation), the approximation real â‰ˆ nominal âˆ’ inflation = 5% is noticeably off. The exact (1.15 Ã· 1.10) âˆ’ 1 â‰ˆ 4.55%. For high-inflation regimes or volatile periods, always use the exact formula to avoid overstating real return.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Using Real Return in Portfolio Planning</h3>
-        <p>When building a retirement or long-term plan, project future wealth in real (today&apos;s) dollars so you know how much purchasing power you will have. Use expected nominal return and expected inflation to get real return, then compound with (1 + real)^n. This avoids the common mistake of assuming a 7% nominal return means 7% growth in buying power—with 3% inflation it is only about 4% real.</p>
+        <p>When building a retirement or long-term plan, project future wealth in real (today&apos;s) dollars so you know how much purchasing power you will have. Use expected nominal return and expected inflation to get real return, then compound with (1 + real)^n. This avoids the common mistake of assuming a 7% nominal return means 7% growth in buying powerâ€”with 3% inflation it is only about 4% real.</p>
         <hr />
 
         <h2 id="applications-real-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
         <p>Enter nominal return (%), inflation rate (%), and optionally years and initial amount. The calculator shows real return (%), purchasing power growth (same as real return), and if years/amount are provided, future value in nominal and real (today&apos;s dollar) terms.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">What to Enter</h3>
-        <p>Use the nominal return you expect (e.g. 6–8% for equities) and an inflation assumption (e.g. 2–3% long-term). For historical real return, use historical nominal and inflation. Years and initial amount are optional for FV in today&apos;s dollars.</p>
+        <p>Use the nominal return you expect (e.g. 6â€“8% for equities) and an inflation assumption (e.g. 2â€“3% long-term). For historical real return, use historical nominal and inflation. Years and initial amount are optional for FV in today&apos;s dollars.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Typical Use Cases</h3>
         <p>Use this calculator when planning retirement or long-term goals in today&apos;s dollars, when comparing investments that assume different inflation, or when assessing whether a low-yield savings account is losing purchasing power (negative real return). It is also useful for converting historical nominal returns to real returns for backtests.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Sensitivity to Inflation</h3>
@@ -535,7 +535,7 @@ export default function InflationAdjustedReturnCalculator() {
         <hr />
 
         <h2 id="conclusion-real-return" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Inflation-adjusted (real) return shows how much your purchasing power grows after inflation. It is (1 + nominal) ÷ (1 + inflation) − 1. Use it to convert nominal returns to real, to plan in today&apos;s dollars, and to compare investments fairly.</p>
+        <p>Inflation-adjusted (real) return shows how much your purchasing power grows after inflation. It is (1 + nominal) Ã· (1 + inflation) âˆ’ 1. Use it to convert nominal returns to real, to plan in today&apos;s dollars, and to compare investments fairly.</p>
         <p>This calculator gives the exact real return for your nominal and inflation inputs and, with optional years and amount, future value in nominal and real terms. Use real return for retirement and long-term planning so you don&apos;t overstate your future buying power.</p>
         <p>When inflation is high or uncertain, the exact formula matters more than the simple subtraction. Bookmark this tool to quickly convert any nominal return and inflation assumption to real return and to see FV in today&apos;s dollars for your planning horizon.</p>
       </section>
@@ -551,7 +551,7 @@ export default function InflationAdjustedReturnCalculator() {
         <CardContent className="space-y-6">
           <div>
             <h4 className="font-semibold text-lg mb-3">What is real return?</h4>
-            <p className="text-muted-foreground">Real return is the return on an investment after adjusting for inflation. It measures purchasing power growth. Formula: (1 + nominal) ÷ (1 + inflation) − 1. When inflation is zero, real return = nominal return.</p>
+            <p className="text-muted-foreground">Real return is the return on an investment after adjusting for inflation. It measures purchasing power growth. Formula: (1 + nominal) Ã· (1 + inflation) âˆ’ 1. When inflation is zero, real return = nominal return.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What is the difference between nominal and real return?</h4>
@@ -559,23 +559,23 @@ export default function InflationAdjustedReturnCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why not just subtract inflation from nominal return?</h4>
-            <p className="text-muted-foreground">The approximation real ≈ nominal − inflation works when both rates are small. The exact formula is (1 + nominal) ÷ (1 + inflation) − 1 because returns compound. For 7% nominal and 3% inflation, exact real = 3.88%; approximation gives 4%.</p>
+            <p className="text-muted-foreground">The approximation real â‰ˆ nominal âˆ’ inflation works when both rates are small. The exact formula is (1 + nominal) Ã· (1 + inflation) âˆ’ 1 because returns compound. For 7% nominal and 3% inflation, exact real = 3.88%; approximation gives 4%.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">When is real return negative?</h4>
-            <p className="text-muted-foreground">When inflation is higher than nominal return. For example, 5% nominal and 6% inflation gives negative real return—your money grows in dollars but loses purchasing power. Cash in a low-yield account during high inflation often has negative real return.</p>
+            <p className="text-muted-foreground">When inflation is higher than nominal return. For example, 5% nominal and 6% inflation gives negative real returnâ€”your money grows in dollars but loses purchasing power. Cash in a low-yield account during high inflation often has negative real return.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What inflation rate should I use?</h4>
-            <p className="text-muted-foreground">Use a long-term expected inflation rate (e.g. 2–3% in many developed markets) or historical average. For retirement planning, 2.5–3% is common. You can also use current inflation for a snapshot.</p>
+            <p className="text-muted-foreground">Use a long-term expected inflation rate (e.g. 2â€“3% in many developed markets) or historical average. For retirement planning, 2.5â€“3% is common. You can also use current inflation for a snapshot.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What is &quot;FV in today&apos;s dollars&quot;?</h4>
-            <p className="text-muted-foreground">Future value in real terms—how much purchasing power you will have. FV real = P × (1 + real return)^n. It answers: &quot;How much will my money be worth in today&apos;s buying power?&quot; Nominal FV is the dollar amount; real FV is the purchasing-power equivalent.</p>
+            <p className="text-muted-foreground">Future value in real termsâ€”how much purchasing power you will have. FV real = P Ã— (1 + real return)^n. It answers: &quot;How much will my money be worth in today&apos;s buying power?&quot; Nominal FV is the dollar amount; real FV is the purchasing-power equivalent.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this work for negative nominal return or deflation?</h4>
-            <p className="text-muted-foreground">Yes. The formula (1 + nominal) ÷ (1 + inflation) − 1 works for any nominal and inflation. If inflation is negative (deflation), real return can be higher than nominal. Enter negative rates as negative numbers (e.g. −2 for −2%).</p>
+            <p className="text-muted-foreground">Yes. The formula (1 + nominal) Ã· (1 + inflation) âˆ’ 1 works for any nominal and inflation. If inflation is negative (deflation), real return can be higher than nominal. Enter negative rates as negative numbers (e.g. âˆ’2 for âˆ’2%).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why use real return for retirement planning?</h4>
@@ -590,8 +590,8 @@ export default function InflationAdjustedReturnCalculator() {
             <p className="text-muted-foreground">No. Real return adjusts for inflation only. After-tax return adjusts for taxes. For a full picture you can compute real after-tax return: use after-tax nominal return and inflation in the real return formula.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg mb-3">When should I use the exact formula instead of nominal − inflation?</h4>
-            <p className="text-muted-foreground">Use the exact formula whenever nominal or inflation is above roughly 5–10%, or when you need precise numbers for planning. The approximation real ≈ nominal − inflation is fine for quick mental math when both rates are small (e.g. 3% and 2%).</p>
+            <h4 className="font-semibold text-lg mb-3">When should I use the exact formula instead of nominal âˆ’ inflation?</h4>
+            <p className="text-muted-foreground">Use the exact formula whenever nominal or inflation is above roughly 5â€“10%, or when you need precise numbers for planning. The approximation real â‰ˆ nominal âˆ’ inflation is fine for quick mental math when both rates are small (e.g. 3% and 2%).</p>
           </div>
         </CardContent>
       </Card>
@@ -625,7 +625,7 @@ export default function InflationAdjustedReturnCalculator() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Savings & Cash Holders</strong>
-                <span className="text-sm text-muted-foreground">To see when low nominal return (e.g. savings account) plus inflation gives negative real return—losing purchasing power.</span>
+                <span className="text-sm text-muted-foreground">To see when low nominal return (e.g. savings account) plus inflation gives negative real returnâ€”losing purchasing power.</span>
               </div>
             </div>
           </div>
@@ -667,19 +667,19 @@ export default function InflationAdjustedReturnCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: 7% nominal, 3% inflation</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">Real return = (1.07 ÷ 1.03) − 1 ≈ 3.88%. So your purchasing power grows at about 3.9% per year, not 7%. Over 20 years, $100 grows to $387 nominal but only $211 in today&apos;s dollars (real).</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">Real return = (1.07 Ã· 1.03) âˆ’ 1 â‰ˆ 3.88%. So your purchasing power grows at about 3.9% per year, not 7%. Over 20 years, $100 grows to $387 nominal but only $211 in today&apos;s dollars (real).</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: 4% nominal (savings), 5% inflation</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">Real return = (1.04 ÷ 1.05) − 1 ≈ −0.95%. Negative real return—your money loses purchasing power even though the balance grows. You need higher nominal return to keep up with inflation.</p>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">Real return = (1.04 Ã· 1.05) âˆ’ 1 â‰ˆ âˆ’0.95%. Negative real returnâ€”your money loses purchasing power even though the balance grows. You need higher nominal return to keep up with inflation.</p>
               </div>
               <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20">
                 <h5 className="font-semibold text-amber-800 dark:text-amber-300 mb-1">Example: 10% nominal, 2% inflation (high-growth scenario)</h5>
-                <p className="text-sm text-amber-700/80 dark:text-amber-400">Real return = (1.10 ÷ 1.02) − 1 ≈ 7.84%. Purchasing power grows at about 7.8% per year. Over 20 years, $100 grows to $673 nominal but only $452 in today&apos;s dollars (real terms).</p>
+                <p className="text-sm text-amber-700/80 dark:text-amber-400">Real return = (1.10 Ã· 1.02) âˆ’ 1 â‰ˆ 7.84%. Purchasing power grows at about 7.8% per year. Over 20 years, $100 grows to $673 nominal but only $452 in today&apos;s dollars (real terms).</p>
               </div>
               <div className="p-4 rounded-lg bg-muted/50 border border-border/50">
                 <h5 className="font-semibold text-foreground mb-1">Takeaway</h5>
-                <p className="text-sm text-muted-foreground">Always convert nominal returns to real when planning in today&apos;s dollars. A 7% nominal return with 3% inflation is only about 4% real—over decades that gap compounds. Use this calculator to set realistic expectations for purchasing power growth.</p>
+                <p className="text-sm text-muted-foreground">Always convert nominal returns to real when planning in today&apos;s dollars. A 7% nominal return with 3% inflation is only about 4% realâ€”over decades that gap compounds. Use this calculator to set realistic expectations for purchasing power growth.</p>
               </div>
             </div>
           </div>
@@ -695,7 +695,7 @@ export default function InflationAdjustedReturnCalculator() {
           <CardDescription>Quick recap</CardDescription>
         </CardHeader>
         <CardContent>
-          <p className="text-muted-foreground">This calculator converts nominal (stated) return to real (inflation-adjusted) return using the formula (1 + nominal) ÷ (1 + inflation) − 1. You enter nominal return %, inflation %, and optionally years and initial amount to see future value in nominal and real (today&apos;s dollar) terms. Real return is your purchasing power growth; use it for retirement and long-term planning so you don&apos;t overstate future buying power.</p>
+          <p className="text-muted-foreground">This calculator converts nominal (stated) return to real (inflation-adjusted) return using the formula (1 + nominal) Ã· (1 + inflation) âˆ’ 1. You enter nominal return %, inflation %, and optionally years and initial amount to see future value in nominal and real (today&apos;s dollar) terms. Real return is your purchasing power growth; use it for retirement and long-term planning so you don&apos;t overstate future buying power.</p>
         </CardContent>
       </Card>
     </div>

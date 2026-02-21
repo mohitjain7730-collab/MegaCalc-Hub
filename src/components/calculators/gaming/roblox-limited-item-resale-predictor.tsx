@@ -22,12 +22,12 @@ const faqs = [
   {
     question: 'How is predicted value calculated?',
     answer:
-      'Predicted value uses compound growth based on historical growth rate: Predicted Value = Current Value × (1 + Historical Growth Rate / 100)^Prediction Period. This assumes the historical growth rate continues into the future. The calculation accounts for rarity tier, which affects growth potential, and adjusts confidence levels accordingly.',
+      'Predicted value uses compound growth based on historical growth rate: Predicted Value = Current Value Ã— (1 + Historical Growth Rate / 100)^Prediction Period. This assumes the historical growth rate continues into the future. The calculation accounts for rarity tier, which affects growth potential, and adjusts confidence levels accordingly.',
   },
   {
     question: 'What is historical growth rate?',
     answer:
-      'Historical growth rate is the annual percentage change in value over the item\'s lifetime. Calculate it by comparing current value to original price over the years since release: ((Current Value / Original Price)^(1 / Years) - 1) × 100. Positive rates indicate appreciation, negative rates indicate depreciation. Use this to project future values.',
+      'Historical growth rate is the annual percentage change in value over the item\'s lifetime. Calculate it by comparing current value to original price over the years since release: ((Current Value / Original Price)^(1 / Years) - 1) Ã— 100. Positive rates indicate appreciation, negative rates indicate depreciation. Use this to project future values.',
   },
   {
     question: 'How accurate are these predictions?',
@@ -88,7 +88,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: '(Roblox) Limited Item Resale Predictor', item: baseUrl },
       ],
     },
@@ -152,25 +152,25 @@ export default function RobloxLimitedItemResalePredictor() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Total Appreciation</strong> = ((Current Value / Original Price) - 1) × 100. This shows total value change from original price to current value as a percentage.
+            <strong>Total Appreciation</strong> = ((Current Value / Original Price) - 1) Ã— 100. This shows total value change from original price to current value as a percentage.
           </p>
           <p>
-            <strong>Annual Growth Rate</strong> = ((Current Value / Original Price)^(1 / Years Since Release) - 1) × 100. This calculates the average annual growth rate based on historical performance. If historical growth rate is provided, it's used instead.
+            <strong>Annual Growth Rate</strong> = ((Current Value / Original Price)^(1 / Years Since Release) - 1) Ã— 100. This calculates the average annual growth rate based on historical performance. If historical growth rate is provided, it's used instead.
           </p>
           <p>
-            <strong>Adjusted Growth Rate</strong> = Historical Growth Rate × Rarity Multiplier. Rarity multipliers: Limited: 1.0x, Limited U: 0.8x, Rare: 1.5x, Epic: 2.0x, Legendary: 3.0x. Rarer items may have different growth patterns.
+            <strong>Adjusted Growth Rate</strong> = Historical Growth Rate Ã— Rarity Multiplier. Rarity multipliers: Limited: 1.0x, Limited U: 0.8x, Rare: 1.5x, Epic: 2.0x, Legendary: 3.0x. Rarer items may have different growth patterns.
           </p>
           <p>
-            <strong>Predicted Value</strong> = Current Value × (1 + Adjusted Growth Rate / 100)^Prediction Period. This uses compound growth to project future values. Assumes historical growth rate continues into the future.
+            <strong>Predicted Value</strong> = Current Value Ã— (1 + Adjusted Growth Rate / 100)^Prediction Period. This uses compound growth to project future values. Assumes historical growth rate continues into the future.
           </p>
           <p>
-            <strong>Predicted Appreciation</strong> = ((Predicted Value / Current Value) - 1) × 100. This shows predicted value change from current to predicted value as a percentage.
+            <strong>Predicted Appreciation</strong> = ((Predicted Value / Current Value) - 1) Ã— 100. This shows predicted value change from current to predicted value as a percentage.
           </p>
           <p>
-            <strong>Confidence Level</strong> = Base confidence (50%) + (Years Since Release × 5%), adjusted for rarity. More years of data increase confidence. Very rare items (Epic, Legendary) have slightly lower confidence due to higher volatility. Confidence ranges from 30% to 95%.
+            <strong>Confidence Level</strong> = Base confidence (50%) + (Years Since Release Ã— 5%), adjusted for rarity. More years of data increase confidence. Very rare items (Epic, Legendary) have slightly lower confidence due to higher volatility. Confidence ranges from 30% to 95%.
           </p>
           <p>
-            <strong>Projections</strong> = Current Value × (1 + Adjusted Growth Rate / 100)^Time Period. Projections for 3 months, 6 months, 1 year, 2 years, and 5 years help evaluate short-term and long-term potential.
+            <strong>Projections</strong> = Current Value Ã— (1 + Adjusted Growth Rate / 100)^Time Period. Projections for 3 months, 6 months, 1 year, 2 years, and 5 years help evaluate short-term and long-term potential.
           </p>
           <p>These formulas use compound growth based on historical trends. Predictions assume historical growth rates continue, which may not always be accurate. Market conditions, game updates, and community trends can significantly affect actual values. Use predictions as guides, not guarantees.</p>
         </CardContent>
@@ -282,9 +282,9 @@ export default function RobloxLimitedItemResalePredictor() {
 
         <p>Prediction methods use historical data to project future values. The most common approach is compound growth based on historical growth rates. This assumes that historical trends continue into the future, which may or may not be accurate.</p>
 
-        <p>Annual growth rate calculation: ((Current Value / Original Price)^(1 / Years Since Release) - 1) × 100. This calculates the average annual growth rate based on historical performance. If you have a specific historical growth rate, you can use that instead.</p>
+        <p>Annual growth rate calculation: ((Current Value / Original Price)^(1 / Years Since Release) - 1) Ã— 100. This calculates the average annual growth rate based on historical performance. If you have a specific historical growth rate, you can use that instead.</p>
 
-        <p>Predicted value calculation: Current Value × (1 + Growth Rate / 100)^Prediction Period. This uses compound growth to project future values. For example, an item worth 10,000 Robux with 20% annual growth will be worth 14,400 Robux in 2 years (10,000 × 1.2^2).</p>
+        <p>Predicted value calculation: Current Value Ã— (1 + Growth Rate / 100)^Prediction Period. This uses compound growth to project future values. For example, an item worth 10,000 Robux with 20% annual growth will be worth 14,400 Robux in 2 years (10,000 Ã— 1.2^2).</p>
 
         <p>Confidence levels indicate prediction reliability. More years of historical data increase confidence. Items with 5+ years of data have higher confidence than items with 1 year of data. Rarer items (Epic, Legendary) have slightly lower confidence due to higher volatility, even with good historical data.</p>
 
@@ -371,7 +371,7 @@ export default function RobloxLimitedItemResalePredictor() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool predicts Roblox limited item resale values based on current value (Robux), original price (Robux), years since release, rarity tier (Limited to Legendary), historical growth rate percentage (auto-calculated if not provided), and prediction period in years (0.1 to 10).</p>
           <p>Outputs include total appreciation (from original to current), annual growth rate (calculated from historical data), adjusted growth rate (adjusted for rarity tier), predicted value (future value after prediction period), predicted appreciation (percentage change), confidence level (30-95% based on data quality), status assessment (declining/stable/moderate-growth/strong-growth/exceptional-growth), interpretation, recommendations, action plan, and projections for 3 months, 6 months, 1 year, 2 years, and 5 years.</p>
-          <p>Formulas use compound growth: Annual Growth Rate = ((Current / Original)^(1 / Years) - 1) × 100, Predicted Value = Current × (1 + Growth Rate / 100)^Period, with rarity multipliers adjusting growth rates. Confidence levels account for years of data and rarity volatility. The guide covers limited item mechanics, growth patterns, prediction methods, market factors, rarity tiers, and investment strategies. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox limited item resale prediction instantly.</p>
+          <p>Formulas use compound growth: Annual Growth Rate = ((Current / Original)^(1 / Years) - 1) Ã— 100, Predicted Value = Current Ã— (1 + Growth Rate / 100)^Period, with rarity multipliers adjusting growth rates. Confidence levels account for years of data and rarity volatility. The guide covers limited item mechanics, growth patterns, prediction methods, market factors, rarity tiers, and investment strategies. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox limited item resale prediction instantly.</p>
         </CardContent>
       </Card>
     </div>

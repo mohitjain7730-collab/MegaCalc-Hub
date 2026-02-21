@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/happiness-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/happiness-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Happiness Index Wellness Calculator', item: baseUrl },
       ],
     },
@@ -441,10 +441,10 @@ export default function HappinessIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Happiness Index</strong> = ((Life Satisfaction + Positive Emotions + Sense of Purpose + Relationships + Autonomy + Personal Growth + Achievement) / 7) × 10
+            <strong>Happiness Index</strong> = ((Life Satisfaction + Positive Emotions + Sense of Purpose + Relationships + Autonomy + Personal Growth + Achievement) / 7) Ã— 10
           </p>
           <p>
-            <strong>Wellbeing Score</strong> = (Life Satisfaction × 15 + Positive Emotions × 12 + Sense of Purpose × 15 + Relationships × 15 + Autonomy × 10 + Personal Growth × 13 + Achievement × 12) / 10
+            <strong>Wellbeing Score</strong> = (Life Satisfaction Ã— 15 + Positive Emotions Ã— 12 + Sense of Purpose Ã— 15 + Relationships Ã— 15 + Autonomy Ã— 10 + Personal Growth Ã— 13 + Achievement Ã— 12) / 10
           </p>
           <p>All components are rated on a 1-10 scale, with higher scores indicating greater happiness and wellbeing.</p>
           <p>Happiness Index ranges from 0-100, with scores above 75 indicating flourishing, 65-75 indicating satisfaction, 50-64 moderate, and below 50 indicating areas for improvement.</p>

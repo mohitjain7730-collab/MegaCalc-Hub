@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/training-fatigue-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/training-fatigue-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Training Fatigue Wellness Index', item: baseUrl },
       ],
     },
@@ -421,22 +421,22 @@ export default function TrainingFatigueIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Volume fatigue</strong> = (Training volume / 10) × 20 (max 100 at 50+ hours/week).
+            <strong>Volume fatigue</strong> = (Training volume / 10) Ã— 20 (max 100 at 50+ hours/week).
           </p>
           <p>
-            <strong>Frequency fatigue</strong> = (Training frequency / 7) × 15 (max 15 at 7+ sessions/week).
+            <strong>Frequency fatigue</strong> = (Training frequency / 7) Ã— 15 (max 15 at 7+ sessions/week).
           </p>
           <p>
-            <strong>Intensity fatigue</strong> = (Intensity level / 10)^1.5 × 30 (max 30 at intensity 10).
+            <strong>Intensity fatigue</strong> = (Intensity level / 10)^1.5 Ã— 30 (max 30 at intensity 10).
           </p>
           <p>
-            <strong>Recovery reduction</strong> = (Recovery days / 3) × 25 (max 25 reduction at 3+ days).
+            <strong>Recovery reduction</strong> = (Recovery days / 3) Ã— 25 (max 25 reduction at 3+ days).
           </p>
           <p>
-            <strong>Sleep adjustment</strong> = -((Sleep hours - 7) × 5) (better sleep reduces fatigue).
+            <strong>Sleep adjustment</strong> = -((Sleep hours - 7) Ã— 5) (better sleep reduces fatigue).
           </p>
           <p>
-            <strong>Perceived exertion adjustment</strong> = ((Perceived exertion - 5) / 5) × 15.
+            <strong>Perceived exertion adjustment</strong> = ((Perceived exertion - 5) / 5) Ã— 15.
           </p>
           <p>
             <strong>Fatigue index</strong> = Volume fatigue + Frequency fatigue + Intensity fatigue - Recovery reduction + Sleep adjustment + Exertion adjustment (clamped 0-100).

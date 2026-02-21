@@ -41,7 +41,7 @@ const faqs = [
   { question: 'What is CAC?', answer: 'Customer Acquisition Cost (CAC) is the fully loaded cost to acquire one new customer over a period.' },
   { question: 'Which costs go into CAC?', answer: 'Include sales + marketing (people, programs, tools) and implementation/onboarding if required to activate the customer.' },
   { question: 'Why align periods?', answer: 'Use costs and new customers from the same period to avoid mis-stating CAC.' },
-  { question: 'How does CAC connect to LTV?', answer: 'LTV ÷ CAC gauges return on acquisition. Ratios above 3:1 are typically strong; below 2:1 need improvement.' },
+  { question: 'How does CAC connect to LTV?', answer: 'LTV Ã· CAC gauges return on acquisition. Ratios above 3:1 are typically strong; below 2:1 need improvement.' },
   { question: 'How often should I track CAC?', answer: 'Track monthly with rolling averages to smooth volatility; keep cohorts consistent.' },
 ];
 
@@ -50,7 +50,7 @@ const relatedCalculators = [
   { name: 'Payback Period (Customer Acquisition) Calculator', slug: 'payback-period-customer-acquisition-calculator', description: 'See months to recover CAC.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/saas-cac-calculator';
+const baseUrl = 'https://mycalculating.com/finance/saas-cac-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -59,7 +59,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'SaaS CAC (Customer Acquisition Cost) Calculator', item: baseUrl },
       ],
     },
@@ -205,7 +205,7 @@ export default function SaasCacCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">CAC</p>
                 <p className="text-2xl font-semibold text-primary">{result.cac === Infinity ? 'N/A' : `$${result.cac.toFixed(2)}`}</p>
-                <p className="text-xs text-muted-foreground">Spend ÷ new customers</p>
+                <p className="text-xs text-muted-foreground">Spend Ã· new customers</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Adjusted CAC</p>
@@ -268,8 +268,8 @@ export default function SaasCacCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>CAC</strong> = sales + marketing spend ÷ new customers.</p>
-          <p><strong>Adjusted CAC</strong> = (sales + marketing + onboarding) ÷ new customers.</p>
+          <p><strong>CAC</strong> = sales + marketing spend Ã· new customers.</p>
+          <p><strong>Adjusted CAC</strong> = (sales + marketing + onboarding) Ã· new customers.</p>
           <p>Use the same period for spend and customers to keep CAC accurate.</p>
         </CardContent>
       </Card>
@@ -363,7 +363,7 @@ export default function SaasCacCalculator() {
         <hr />
 
         <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Definition and Formula</h2>
-        <p>CAC = total sales + marketing spend ÷ new customers. Adjusted CAC adds onboarding/implementation costs.</p>
+        <p>CAC = total sales + marketing spend Ã· new customers. Adjusted CAC adds onboarding/implementation costs.</p>
 
         <h2 id="scope" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Costs to Include</h2>
         <p>Include salaries, programs, tools, ads, events, and onboarding resources. Exclude COGS and existing customer success unless directly tied to new acquisition.</p>

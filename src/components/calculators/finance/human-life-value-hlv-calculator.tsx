@@ -129,7 +129,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/human-life-value-hlv-calculator';
+const baseUrl = 'https://mycalculating.com/finance/human-life-value-hlv-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -138,7 +138,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Human Life Value (HLV) Calculator', item: baseUrl },
       ],
     },
@@ -482,7 +482,7 @@ export default function HumanLifeValueHlvCalculator() {
             <strong>Net Annual Contribution</strong> = Annual Income - Annual Expenses. Amount available to support dependents after personal expenses.
           </p>
           <p>
-            <strong>Present Value of Future Earnings</strong> = Sum of [Net Contribution × (1 + Inflation)^Year / (1 + Discount Rate)^Year] for each year to retirement. Discounts future earnings to present value.
+            <strong>Present Value of Future Earnings</strong> = Sum of [Net Contribution Ã— (1 + Inflation)^Year / (1 + Discount Rate)^Year] for each year to retirement. Discounts future earnings to present value.
           </p>
           <p>
             <strong>Human Life Value (HLV)</strong> = Present Value of Future Earnings. Represents the economic value of a person's life based on future earnings potential.
@@ -604,7 +604,7 @@ export default function HumanLifeValueHlvCalculator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>HLV = Σ [Net Contribution × (1 + Inflation)^Year / (1 + Discount Rate)^Year]</b></p>
+        <p className="text-lg font-mono"><b>HLV = Î£ [Net Contribution Ã— (1 + Inflation)^Year / (1 + Discount Rate)^Year]</b></p>
     </div>
     <p>Where Net Contribution = Annual Income - Annual Expenses, summed over remaining working years, discounted to present value.</p>
 

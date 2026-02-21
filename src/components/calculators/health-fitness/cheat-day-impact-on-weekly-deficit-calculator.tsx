@@ -79,7 +79,7 @@ const faqs = [
   {
     question: 'How do I calculate the impact of cheat days?',
     answer:
-      'Calculate: (Daily Deficit × Deficit Days) - (Cheat Day Surplus × Cheat Days). Cheat day surplus = Cheat Day Calories - Maintenance Calories. This gives you your effective weekly deficit, which determines actual progress.',
+      'Calculate: (Daily Deficit Ã— Deficit Days) - (Cheat Day Surplus Ã— Cheat Days). Cheat day surplus = Cheat Day Calories - Maintenance Calories. This gives you your effective weekly deficit, which determines actual progress.',
   },
   {
     question: 'Should I exercise more on cheat days?',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cheat-day-impact-on-weekly-deficit-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cheat-day-impact-on-weekly-deficit-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cheat Day Impact on Weekly Deficit Calculator', item: baseUrl },
       ],
     },
@@ -152,7 +152,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Calculate cheat day surplus
   const cheatDaySurplus = cheatDayCalories - maintenanceCalories;
   
-  // Calculate weekly deficit: (daily deficit × deficit days) - (cheat surplus × cheat days)
+  // Calculate weekly deficit: (daily deficit Ã— deficit days) - (cheat surplus Ã— cheat days)
   const deficitDays = 7 - cheatDaysPerWeek;
   const weeklyDeficit = (dailyDeficit * deficitDays) - (cheatDaySurplus * cheatDaysPerWeek);
   const effectiveWeeklyDeficit = Math.max(0, weeklyDeficit);
@@ -382,10 +382,10 @@ export default function CheatDayImpactOnWeeklyDeficitCalculator() {
             <strong>Cheat day surplus</strong> = Cheat Day Calories - Maintenance Calories. This represents excess calories consumed above maintenance on cheat days.
           </p>
           <p>
-            <strong>Effective weekly deficit</strong> = (Daily Deficit × Deficit Days) - (Cheat Day Surplus × Cheat Days). Deficit days = 7 - Cheat Days Per Week.
+            <strong>Effective weekly deficit</strong> = (Daily Deficit Ã— Deficit Days) - (Cheat Day Surplus Ã— Cheat Days). Deficit days = 7 - Cheat Days Per Week.
           </p>
           <p>
-            <strong>Deficit reduction</strong> = ((Theoretical Weekly Deficit - Effective Weekly Deficit) / Theoretical Weekly Deficit) × 100. Theoretical weekly deficit = Daily Deficit × 7.
+            <strong>Deficit reduction</strong> = ((Theoretical Weekly Deficit - Effective Weekly Deficit) / Theoretical Weekly Deficit) Ã— 100. Theoretical weekly deficit = Daily Deficit Ã— 7.
           </p>
           <p>Cheat days can significantly reduce or eliminate weekly calorie deficits, slowing fat loss progress. Large cheat day surpluses or frequent cheat days can eliminate an entire week's progress, making structured refeed days a better alternative for psychological relief.</p>
         </CardContent>
@@ -486,16 +486,16 @@ export default function CheatDayImpactOnWeeklyDeficitCalculator() {
 <ul>
     <li><b>Daily deficit accumulation:</b> Each day you maintain a calorie deficit adds to your weekly deficit</li>
     <li><b>Cheat day surplus:</b> Cheat days create calorie surpluses that subtract from your weekly deficit</li>
-    <li><b>Net weekly deficit:</b> Effective weekly deficit = (Deficit Days × Daily Deficit) - (Cheat Days × Cheat Surplus)</li>
+    <li><b>Net weekly deficit:</b> Effective weekly deficit = (Deficit Days Ã— Daily Deficit) - (Cheat Days Ã— Cheat Surplus)</li>
 </ul>
-<p>For example: If you maintain a 500-calorie daily deficit for 6 days (3000 kcal deficit) but have a 2000-calorie surplus on one cheat day, your effective weekly deficit is only 1000 calories—a 67% reduction from the theoretical 3500-calorie weekly deficit.</p>
+<p>For example: If you maintain a 500-calorie daily deficit for 6 days (3000 kcal deficit) but have a 2000-calorie surplus on one cheat day, your effective weekly deficit is only 1000 caloriesâ€”a 67% reduction from the theoretical 3500-calorie weekly deficit.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">The Math Behind Cheat Day Impact</h3>
 <p>Understanding the calculation helps you make informed decisions:</p>
 <ul>
-    <li><b>Theoretical weekly deficit:</b> Daily Deficit × 7 days (if no cheat days)</li>
+    <li><b>Theoretical weekly deficit:</b> Daily Deficit Ã— 7 days (if no cheat days)</li>
     <li><b>Cheat day surplus:</b> Cheat Day Calories - Maintenance Calories</li>
-    <li><b>Effective weekly deficit:</b> (Daily Deficit × Deficit Days) - (Cheat Surplus × Cheat Days)</li>
+    <li><b>Effective weekly deficit:</b> (Daily Deficit Ã— Deficit Days) - (Cheat Surplus Ã— Cheat Days)</li>
     <li><b>Deficit reduction:</b> Percentage of theoretical deficit lost to cheat days</li>
 </ul>
 <p>This calculator helps you see the true impact of cheat days on your progress.</p>
@@ -512,7 +512,7 @@ export default function CheatDayImpactOnWeeklyDeficitCalculator() {
         <li>Maintenance: 2000 kcal</li>
         <li>Cheat day: 2500 kcal (500 kcal surplus)</li>
         <li>Theoretical weekly deficit: 3500 kcal</li>
-        <li>Effective weekly deficit: 3000 kcal (6 days × 500) - (1 day × 500) = 3000 kcal</li>
+        <li>Effective weekly deficit: 3000 kcal (6 days Ã— 500) - (1 day Ã— 500) = 3000 kcal</li>
         <li>Impact: 14% reduction in weekly deficit</li>
     </ul>
     
@@ -522,7 +522,7 @@ export default function CheatDayImpactOnWeeklyDeficitCalculator() {
         <li>Maintenance: 2000 kcal</li>
         <li>Cheat day: 4000 kcal (2000 kcal surplus)</li>
         <li>Theoretical weekly deficit: 3500 kcal</li>
-        <li>Effective weekly deficit: 1000 kcal (6 days × 500) - (1 day × 2000) = 1000 kcal</li>
+        <li>Effective weekly deficit: 1000 kcal (6 days Ã— 500) - (1 day Ã— 2000) = 1000 kcal</li>
         <li>Impact: 71% reduction in weekly deficit</li>
     </ul>
     
@@ -532,7 +532,7 @@ export default function CheatDayImpactOnWeeklyDeficitCalculator() {
         <li>Maintenance: 2000 kcal</li>
         <li>Cheat days: 2 days at 3000 kcal each (1000 kcal surplus each)</li>
         <li>Theoretical weekly deficit: 3500 kcal</li>
-        <li>Effective weekly deficit: 500 kcal (5 days × 500) - (2 days × 1000) = 500 kcal</li>
+        <li>Effective weekly deficit: 500 kcal (5 days Ã— 500) - (2 days Ã— 1000) = 500 kcal</li>
         <li>Impact: 86% reduction in weekly deficit</li>
     </ul>
 

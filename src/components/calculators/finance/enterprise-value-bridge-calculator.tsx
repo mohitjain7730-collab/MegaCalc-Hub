@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/enterprise-value-bridge-calculator';
+const baseUrl = 'https://mycalculating.com/finance/enterprise-value-bridge-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Enterprise Value Bridge Calculator', item: baseUrl },
       ],
     },
@@ -189,7 +189,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'This Week', detail: `Calculate EV bridge: Enterprise value ${enterpriseValue.toLocaleString()} → Equity value ${equityValue.toLocaleString()}. Document all bridge components (debt, cash, preferred equity, minority interest, investments).` },
+    { label: 'This Week', detail: `Calculate EV bridge: Enterprise value ${enterpriseValue.toLocaleString()} â†’ Equity value ${equityValue.toLocaleString()}. Document all bridge components (debt, cash, preferred equity, minority interest, investments).` },
     { label: 'This Month', detail: 'Use EV bridge to convert EV-based valuations to equity value. Apply equity value per share calculations using shares outstanding. Compare bridge results with market equity values to validate assumptions.' },
     { label: 'Ongoing', detail: 'Regularly update EV bridge as financials change (debt paydown, cash accumulation, etc.). Use bridge in M&A analysis, valuation work, and capital structure planning. Monitor capital structure ratios to maintain appropriate leverage.' },
   ];

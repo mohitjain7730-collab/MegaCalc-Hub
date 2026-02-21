@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/investment-bias-analyzer-anchoring-overconfidence-estimator';
+const baseUrl = 'https://mycalculating.com/finance/investment-bias-analyzer-anchoring-overconfidence-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Investment Bias Analyzer (Anchoring/Overconfidence Estimator)', item: baseUrl },
       ],
     },
@@ -435,7 +435,7 @@ export default function InvestmentBiasAnalyzerAnchoringOverconfidenceEstimator()
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Anchoring Bias</strong> = |Current Price - Anchor Price| / Anchor Price × 100 (when actual value available: measures deviation from anchor relative to anchor)
+            <strong>Anchoring Bias</strong> = |Current Price - Anchor Price| / Anchor Price Ã— 100 (when actual value available: measures deviation from anchor relative to anchor)
           </p>
           <p>
             <strong>Overconfidence Bias</strong> = Prediction Confidence - Prediction Error (when confidence and outcome provided), or Trading Frequency (scaled, when frequency provided)

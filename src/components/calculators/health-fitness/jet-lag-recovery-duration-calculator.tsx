@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/jet-lag-recovery-duration-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/jet-lag-recovery-duration-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Jet Lag Recovery Wellness Estimator', item: baseUrl },
       ],
     },
@@ -417,7 +417,7 @@ export default function JetLagRecoveryDurationCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base recovery days</strong> = Time zones × Recovery factor. Eastward: 1.25 days/zone. Westward: 0.75 days/zone.
+            <strong>Base recovery days</strong> = Time zones Ã— Recovery factor. Eastward: 1.25 days/zone. Westward: 0.75 days/zone.
           </p>
           <p>
             <strong>Age adjustment</strong>: 40-49: +10%, 50-59: +20%, 60+: +30% to recovery time.
@@ -426,7 +426,7 @@ export default function JetLagRecoveryDurationCalculator() {
             <strong>Strategy adjustment</strong>: Comprehensive strategies (rating 10) can reduce recovery by up to 40%.
           </p>
           <p>
-            <strong>Final recovery</strong> = Base recovery × Age multiplier × Strategy multiplier. Minimum: 0.5 days/zone. Maximum: 14 days.
+            <strong>Final recovery</strong> = Base recovery Ã— Age multiplier Ã— Strategy multiplier. Minimum: 0.5 days/zone. Maximum: 14 days.
           </p>
           <p>Eastward travel is generally more difficult because it requires advancing your body clock, which conflicts with your natural circadian tendency to delay.</p>
         </CardContent>

@@ -81,7 +81,7 @@ const faqs = [
   {
     question: 'What is burnout and how is it related?',
     answer:
-      'Burnout is a state of emotional, physical, and mental exhaustion caused by prolonged excessive stress. It\'s characterized by cynicism, reduced accomplishment, and depersonalization. Work stress fatigue is a precursor to burnout—addressing fatigue early prevents burnout.',
+      'Burnout is a state of emotional, physical, and mental exhaustion caused by prolonged excessive stress. It\'s characterized by cynicism, reduced accomplishment, and depersonalization. Work stress fatigue is a precursor to burnoutâ€”addressing fatigue early prevents burnout.',
   },
   {
     question: 'How do breaks help with work fatigue?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/work-stress-fatigue-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/work-stress-fatigue-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Work Stress Fatigue Wellness Index', item: baseUrl },
       ],
     },
@@ -442,13 +442,13 @@ export default function WorkStressFatigueIndex() {
             <strong>Base fatigue</strong> = Work Hours / 10. This normalizes work hours to a fatigue scale.
           </p>
           <p>
-            <strong>Stress-adjusted fatigue</strong> = Base Fatigue × Stress Multiplier. Stress multipliers: low = 0.5, moderate = 1.0, high = 1.5, very high = 2.0. Higher stress significantly increases fatigue.
+            <strong>Stress-adjusted fatigue</strong> = Base Fatigue Ã— Stress Multiplier. Stress multipliers: low = 0.5, moderate = 1.0, high = 1.5, very high = 2.0. Higher stress significantly increases fatigue.
           </p>
           <p>
-            <strong>Break-adjusted fatigue</strong> = Stress-Adjusted Fatigue × Break Multiplier. Break multipliers: frequent = 0.7, moderate = 1.0, rare = 1.3, none = 1.6. Fewer breaks increase fatigue.
+            <strong>Break-adjusted fatigue</strong> = Stress-Adjusted Fatigue Ã— Break Multiplier. Break multipliers: frequent = 0.7, moderate = 1.0, rare = 1.3, none = 1.6. Fewer breaks increase fatigue.
           </p>
           <p>
-            <strong>Fatigue index</strong> = (Break-Adjusted Fatigue + Sleep Adjustment) × 10, normalized to 0-100. Sleep adjustment: less than 6 hours = +2.0, 6-7 hours = +1.5, 7-8 hours = +0.5, 8+ hours = 0.
+            <strong>Fatigue index</strong> = (Break-Adjusted Fatigue + Sleep Adjustment) Ã— 10, normalized to 0-100. Sleep adjustment: less than 6 hours = +2.0, 6-7 hours = +1.5, 7-8 hours = +0.5, 8+ hours = 0.
           </p>
           <p>Work stress fatigue results from cumulative effects of work hours, stress level, inadequate sleep, and insufficient breaks. Addressing multiple factors is most effective for reducing fatigue and preventing burnout.</p>
         </CardContent>
@@ -542,7 +542,7 @@ export default function WorkStressFatigueIndex() {
 <hr />
 
     <h2 id="what-is-fatigue" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Work Stress Fatigue</h2>
-    <p>**Work stress fatigue** is the cumulative physical and mental exhaustion resulting from prolonged work stress, excessive work hours, inadequate recovery, and poor work-life balance. It goes beyond normal tiredness—it's a state of persistent exhaustion that impacts health, performance, and well-being.</p>
+    <p>**Work stress fatigue** is the cumulative physical and mental exhaustion resulting from prolonged work stress, excessive work hours, inadequate recovery, and poor work-life balance. It goes beyond normal tirednessâ€”it's a state of persistent exhaustion that impacts health, performance, and well-being.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">Types of Fatigue</h3>
 <p>Work stress fatigue manifests in multiple ways:</p>
@@ -593,7 +593,7 @@ export default function WorkStressFatigueIndex() {
         <li>Poor sleep quality: Even with adequate hours</li>
         <li>Sleep disruption: From stress or work demands</li>
     </ul>
-    <p>Sleep is when recovery from work stress occurs—inadequate sleep compounds fatigue.</p>
+    <p>Sleep is when recovery from work stress occursâ€”inadequate sleep compounds fatigue.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">4. Break Frequency</h3>
     <p>Insufficient breaks increase fatigue:</p>
@@ -704,7 +704,7 @@ export default function WorkStressFatigueIndex() {
 <hr />
 
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Work stress fatigue is a serious issue affecting health, performance, and well-being. By understanding contributing factors—work hours, stress level, sleep, and breaks—you can take steps to reduce fatigue and prevent burnout. Use this calculator to assess your fatigue level, and implement strategies to improve work-life balance, prioritize recovery, and protect your long-term health. Remember: addressing fatigue early is essential for preventing burnout and maintaining both career success and personal well-being.</p>
+    <p>Work stress fatigue is a serious issue affecting health, performance, and well-being. By understanding contributing factorsâ€”work hours, stress level, sleep, and breaksâ€”you can take steps to reduce fatigue and prevent burnout. Use this calculator to assess your fatigue level, and implement strategies to improve work-life balance, prioritize recovery, and protect your long-term health. Remember: addressing fatigue early is essential for preventing burnout and maintaining both career success and personal well-being.</p>
 </section>
       <Card>
         <CardHeader>

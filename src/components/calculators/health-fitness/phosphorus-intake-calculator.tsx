@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/phosphorus-intake-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/phosphorus-intake-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Phosphorus Intake Calculator', item: baseUrl },
       ],
     },
@@ -385,7 +385,7 @@ export default function PhosphorusIntakeCalculator() {
             <strong>Daily need</strong> = estimated from age. Adults 19+: 700 mg/day, same for men and women. Children and adolescents have different requirements.
           </p>
           <p>
-            <strong>Intake percentage</strong> = (phosphorus intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (phosphorus intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
             <strong>Recommended intake</strong>: Adults: 700 mg/day. Upper limit: 4000 mg/day for adults 19-70, 3000 mg/day for adults 71+. Requirements are the same for men and women in adulthood.
@@ -527,7 +527,7 @@ export default function PhosphorusIntakeCalculator() {
                     <td className="border-b p-2">4,000 mg</td>
                 </tr>
                 <tr>
-                    <td className="border-b p-2">Adolescents (9–18 years)</td>
+                    <td className="border-b p-2">Adolescents (9â€“18 years)</td>
                     <td className="border-b p-2">1,250 mg</td>
                     <td className="border-b p-2">4,000 mg</td>
                 </tr>
@@ -557,9 +557,9 @@ export default function PhosphorusIntakeCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Importance of Inorganic Phosphate Additives</h3>
     <p>A critical modern source of phosphorus comes from **inorganic phosphate food additives** (e.g., phosphoric acid in sodas, phosphate salts used as leavening agents or preservatives). Absorption rates vary by source:</p>
     <ul>
-        <li><b>Organic Phosphorus (Meat, Dairy):</b> Approximately 40%–60% absorbed.</li>
-        <li><b>Plant Phosphorus (Phytate):</b> Only 10%–50% absorbed by humans due to the lack of the enzyme phytase.</li>
-        <li><b>Inorganic Phosphorus (Additives):</b> **90%–100% absorbed**, as it requires no digestion. This highly absorbed form is a major concern for individuals with kidney disease.</li>
+        <li><b>Organic Phosphorus (Meat, Dairy):</b> Approximately 40%â€“60% absorbed.</li>
+        <li><b>Plant Phosphorus (Phytate):</b> Only 10%â€“50% absorbed by humans due to the lack of the enzyme phytase.</li>
+        <li><b>Inorganic Phosphorus (Additives):</b> **90%â€“100% absorbed**, as it requires no digestion. This highly absorbed form is a major concern for individuals with kidney disease.</li>
     </ul>
     
 

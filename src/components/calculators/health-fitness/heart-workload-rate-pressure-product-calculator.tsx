@@ -45,12 +45,12 @@ const faqs = [
   {
     question: 'What is rate pressure product?',
     answer:
-      'Rate pressure product (RPP) is a measure of myocardial oxygen demand and heart workload. It is calculated as heart rate × systolic blood pressure. Higher values indicate increased cardiac workload.',
+      'Rate pressure product (RPP) is a measure of myocardial oxygen demand and heart workload. It is calculated as heart rate Ã— systolic blood pressure. Higher values indicate increased cardiac workload.',
   },
   {
     question: 'How is rate pressure product calculated?',
     answer:
-      'Rate pressure product = heart rate (beats/min) × systolic blood pressure (mmHg). For example, if HR is 70 bpm and SBP is 120 mmHg, RPP = 70 × 120 = 8,400.',
+      'Rate pressure product = heart rate (beats/min) Ã— systolic blood pressure (mmHg). For example, if HR is 70 bpm and SBP is 120 mmHg, RPP = 70 Ã— 120 = 8,400.',
   },
   {
     question: 'What are normal rate pressure product values?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/heart-workload-rate-pressure-product-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/heart-workload-rate-pressure-product-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Heart Workload (Rate Pressure Product) Calculator', item: baseUrl },
       ],
     },
@@ -387,7 +387,7 @@ export default function HeartWorkloadRatePressureProductCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Rate pressure product (RPP)</strong> = heart rate (beats/min) × systolic blood pressure (mmHg).
+            <strong>Rate pressure product (RPP)</strong> = heart rate (beats/min) Ã— systolic blood pressure (mmHg).
           </p>
           <p>
             <strong>If RPP not provided</strong>: Calculated from heart rate and systolic blood pressure measurements.
@@ -466,7 +466,7 @@ export default function HeartWorkloadRatePressureProductCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Rate pressure product (RPP) is a measure of myocardial oxygen demand and heart workload, calculated as heart rate × systolic blood pressure. Normal RPP at rest: 8,000-12,000. Higher values indicate increased cardiac workload.</p>
+          <p>Rate pressure product (RPP) is a measure of myocardial oxygen demand and heart workload, calculated as heart rate Ã— systolic blood pressure. Normal RPP at rest: 8,000-12,000. Higher values indicate increased cardiac workload.</p>
           <p>Use this calculator to assess heart workload from heart rate, systolic pressure, rate pressure product (optional), and age.</p>
         </CardContent>
       </Card>

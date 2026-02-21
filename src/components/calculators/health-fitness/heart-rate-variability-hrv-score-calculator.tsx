@@ -33,14 +33,14 @@ type ResultPayload = {
 
 const steps = [
   'Enter your age and RMSSD value using similar conditions each time (for example, seated and relaxed).',
-  'Submit the form to see a heart rhythm wellness score on a 0–100 scale.',
+  'Submit the form to see a heart rhythm wellness score on a 0â€“100 scale.',
   'Review the interpretation text to get a gentle sense of how your current rhythm patterns may feel.',
-  'Look through the recommendations and 8‑week plan for small, supportive habit ideas.',
-  'Use the tool occasionally as a soft check‑in rather than something to track perfectly every day.',
+  'Look through the recommendations and 8â€‘week plan for small, supportive habit ideas.',
+  'Use the tool occasionally as a soft checkâ€‘in rather than something to track perfectly every day.',
 ];
 
 const baseUrl =
-  'https://mycalculating.com/category/health-fitness/heart-rate-variability-hrv-score-calculator';
+  'https://mycalculating.com/health-fitness/heart-rate-variability-hrv-score-calculator';
 
 const faqs: [string, string][] = [
       ['What is heart rhythm variability?', 'Heart rhythm variability simply describes how the time between beats naturally changes from moment to moment. Many people use it as a gentle wellness signal for how rested or stressed their body feels.'],
@@ -63,7 +63,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -120,40 +120,40 @@ const schemaMarkup = {
 
 const plan = (): { week: number; focus: string }[] => [
   { week: 1, focus: 'Establish baseline HRV by measuring RMSSD consistently (same time, same conditions)' },
-  { week: 2, focus: 'Prioritize 7–9 hours of quality sleep per night to support autonomic recovery' },
-  { week: 3, focus: 'Add stress management: 10–15 minutes daily meditation or breathing exercises' },
+  { week: 2, focus: 'Prioritize 7â€“9 hours of quality sleep per night to support autonomic recovery' },
+  { week: 3, focus: 'Add stress management: 10â€“15 minutes daily meditation or breathing exercises' },
   { week: 4, focus: 'Maintain consistent sleep schedule and reduce evening screen time' },
-  { week: 5, focus: 'Include regular aerobic exercise (3–4 sessions/week) to improve HRV' },
+  { week: 5, focus: 'Include regular aerobic exercise (3â€“4 sessions/week) to improve HRV' },
   { week: 6, focus: 'Limit alcohol and caffeine, especially in the evening' },
   { week: 7, focus: 'Reassess HRV score and compare to baseline' },
   { week: 8, focus: 'Continue healthy habits and track HRV trends over time' },
 ];
 
 const understandingInputs = [
-  { label: 'Age (years)', description: 'Your age in years (18–100). HRV typically decreases with age, so age adjustment is important for accurate scoring.' },
-  { label: 'RMSSD (ms)', description: 'Root Mean Square of Successive Differences, a time-domain HRV metric measured in milliseconds. Typically ranges from 10–100+ ms.' },
+  { label: 'Age (years)', description: 'Your age in years (18â€“100). HRV typically decreases with age, so age adjustment is important for accurate scoring.' },
+  { label: 'RMSSD (ms)', description: 'Root Mean Square of Successive Differences, a time-domain HRV metric measured in milliseconds. Typically ranges from 10â€“100+ ms.' },
 ];
 
 const interpret = (score: number) => {
   if (score >= 80) return 'Your heart rhythm variability looks very strong for this snapshot. Keep leaning on the routines that help you feel rested and grounded.';
   if (score >= 50) return 'Your wellness score suggests a generally supportive balance between demand and recovery. Small tweaks to sleep and stress habits can still make it even smoother.';
-  if (score >= 30) return 'Your wellness score is in a middle range. This can be a gentle nudge to protect sleep, add small movement breaks, and create simple wind‑down time.';
+  if (score >= 30) return 'Your wellness score is in a middle range. This can be a gentle nudge to protect sleep, add small movement breaks, and create simple windâ€‘down time.';
   return 'Your current wellness score is on the lower side for this moment. It may be a sign to ease up a little, protect rest, and add small calming habits into your day.';
 };
 
 const recommendations = (score: number) => [
   'Protect a fairly regular sleep window where you feel you can wind down, sleep, and wake at similar times most days.',
   score < 50
-    ? 'Experiment with one simple relaxation habit most days (for example 5–10 minutes of calm breathing, a short walk, or quiet reading without screens).'
+    ? 'Experiment with one simple relaxation habit most days (for example 5â€“10 minutes of calm breathing, a short walk, or quiet reading without screens).'
     : 'Keep the small relaxation habits that already seem to work for you and revisit them during busier weeks.',
-  'Include light to moderate movement on most days—such as walking, stretching, or gentle exercise—paired with at least one easier day each week.',
-  'Notice how late‑day caffeine, heavy meals, or intense screen time affect your wind‑down and adjust them if they seem to make rest harder.',
+  'Include light to moderate movement on most daysâ€”such as walking, stretching, or gentle exerciseâ€”paired with at least one easier day each week.',
+  'Notice how lateâ€‘day caffeine, heavy meals, or intense screen time affect your windâ€‘down and adjust them if they seem to make rest harder.',
 ];
 
 const warningSigns = () => [
   'This heart rhythm wellness score is a general lifestyle insight, not a diagnosis or medical evaluation.',
   'If you feel unwell, dizzy, short of breath, or notice unexpected changes in your health, it is important to talk with a qualified professional.',
-  'Treat this tool as one reflection point among many—your own sense of energy, mood, and comfort matters most.',
+  'Treat this tool as one reflection point among manyâ€”your own sense of energy, mood, and comfort matters most.',
 ];
 
 export default function HeartRateVariabilityHrvScoreCalculator() {
@@ -319,7 +319,7 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
             </Card>
           </div>
           <Card>
-            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week HRV Improvement Plan</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8â€‘Week HRV Improvement Plan</CardTitle></CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -348,16 +348,16 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Age‑adjusted reference:</strong> The tool builds a simple age‑based reference RMSSD value so that the score
+            <strong>Ageâ€‘adjusted reference:</strong> The tool builds a simple ageâ€‘based reference RMSSD value so that the score
             acts more like a relative wellness index than a strict performance test.
           </p>
           <p>
-            <strong>Score idea:</strong> Your entered RMSSD is compared with that reference and scaled to a 0–100 range, then
-            lightly grouped into pattern labels such as “Good” or “Excellent” for easier interpretation.
+            <strong>Score idea:</strong> Your entered RMSSD is compared with that reference and scaled to a 0â€“100 range, then
+            lightly grouped into pattern labels such as â€œGoodâ€ or â€œExcellentâ€ for easier interpretation.
           </p>
           <p>
-            This is a simplified way to reflect how your current rhythm snapshot sits relative to an age‑adjusted baseline. It is
-            only one lens on your well‑being and works best when paired with how you actually feel day to day.
+            This is a simplified way to reflect how your current rhythm snapshot sits relative to an ageâ€‘adjusted baseline. It is
+            only one lens on your wellâ€‘being and works best when paired with how you actually feel day to day.
           </p>
         </CardContent>
       </Card>
@@ -453,7 +453,7 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
         </h2>
         <p>
           Heart rate variability (HRV) refers to the natural variation in time intervals between consecutive heartbeats. Unlike a
-          metronome, a healthy heart does not beat at perfectly regular intervals—instead, it shows slight variations that reflect the
+          metronome, a healthy heart does not beat at perfectly regular intervalsâ€”instead, it shows slight variations that reflect the
           dynamic interplay between the sympathetic (fight-or-flight) and parasympathetic (rest-and-digest) branches of the autonomic
           nervous system.
         </p>
@@ -590,7 +590,7 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">Stress and Mental Load</h3>
         <p>
           Chronic stress, anxiety, and mental overload can suppress HRV by keeping the sympathetic nervous system activated. Regular
-          stress management practices—such as meditation, breathing exercises, nature exposure, or hobbies—can help restore autonomic
+          stress management practicesâ€”such as meditation, breathing exercises, nature exposure, or hobbiesâ€”can help restore autonomic
           balance.
         </p>
 
@@ -710,7 +710,7 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
         <p>
           Heart rhythm wellness reflects the dynamic balance of your autonomic nervous system and your body's capacity for recovery
           and adaptation. By understanding HRV, RMSSD, and age-adjusted scoring, you can gain gentle insights into how your
-          lifestyle patterns may be supporting or challenging your recovery. Remember that HRV is one lens on wellness—how you feel
+          lifestyle patterns may be supporting or challenging your recovery. Remember that HRV is one lens on wellnessâ€”how you feel
           in your body, your energy levels, and your overall sense of well-being are equally important. Use HRV as a supportive tool
           for reflection and gentle lifestyle adjustments, not as a source of stress or perfectionism. If you have concerns about
           your heart health, recovery patterns, or overall well-being, consider consulting a qualified healthcare professional who
@@ -721,7 +721,7 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Frequently Asked Questions</CardTitle>
-          <CardDescription>Supportive, wellness‑oriented answers</CardDescription>
+          <CardDescription>Supportive, wellnessâ€‘oriented answers</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">{faqs.map(([q,a],i)=>(<div key={i}><h4 className="font-semibold mb-1">{q}</h4><p className="text-sm text-muted-foreground">{a}</p></div>))}</CardContent>
       </Card>
@@ -735,11 +735,11 @@ export default function HeartRateVariabilityHrvScoreCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool offers a heart rhythm wellness score from RMSSD and age as a gentle, lifestyle‑oriented snapshot. It is
+            This tool offers a heart rhythm wellness score from RMSSD and age as a gentle, lifestyleâ€‘oriented snapshot. It is
             intended for personal reflection, not for diagnosis or treatment decisions.
           </p>
           <p>
-            Outputs include a 0–100 score, pattern label, interpretation text, supportive recommendations, an 8‑week ideas plan,
+            Outputs include a 0â€“100 score, pattern label, interpretation text, supportive recommendations, an 8â€‘week ideas plan,
             and contextual information about the inputs and simple scoring approach.
           </p>
         </CardContent>

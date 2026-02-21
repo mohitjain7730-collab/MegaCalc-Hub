@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'What percentage of income should go to health insurance?',
     answer:
-      'Health insurance premiums should ideally be 5-10% of gross income. If premiums exceed 10-15% of income, they may be unaffordable. However, this varies by income level—lower-income individuals may spend a higher percentage on health insurance.',
+      'Health insurance premiums should ideally be 5-10% of gross income. If premiums exceed 10-15% of income, they may be unaffordable. However, this varies by income levelâ€”lower-income individuals may spend a higher percentage on health insurance.',
   },
   {
     question: 'How do I calculate total healthcare costs?',
@@ -95,7 +95,7 @@ const faqs = [
   {
     question: 'What is the difference between premium and total cost?',
     answer:
-      'Premium is the monthly cost of insurance. Total cost includes premiums plus potential out-of-pocket costs (deductibles, copays, coinsurance). Consider both when evaluating affordability—low premiums may mean high out-of-pocket costs.',
+      'Premium is the monthly cost of insurance. Total cost includes premiums plus potential out-of-pocket costs (deductibles, copays, coinsurance). Consider both when evaluating affordabilityâ€”low premiums may mean high out-of-pocket costs.',
   },
 ];
 
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/health-insurance-premium-affordability-calculator';
+const baseUrl = 'https://mycalculating.com/finance/health-insurance-premium-affordability-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Health Insurance Premium Affordability Calculator', item: baseUrl },
       ],
     },
@@ -185,9 +185,9 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    `Premium affordability: ${premiumAsPercentOfIncome.toFixed(1)}% of income goes to health insurance premiums. ${premiumAsPercentOfIncome <= 10 ? 'This is within recommended range (5-10% of income).' : 'This exceeds recommended range—consider shopping for lower-cost plans or qualifying for subsidies.'}`,
+    `Premium affordability: ${premiumAsPercentOfIncome.toFixed(1)}% of income goes to health insurance premiums. ${premiumAsPercentOfIncome <= 10 ? 'This is within recommended range (5-10% of income).' : 'This exceeds recommended rangeâ€”consider shopping for lower-cost plans or qualifying for subsidies.'}`,
     `Total annual cost: ${totalAnnualCost.toLocaleString(undefined, { maximumFractionDigits: 0 })} (premiums ${annualPremium.toLocaleString(undefined, { maximumFractionDigits: 0 })} + out-of-pocket maximum ${outOfPocketMaximum.toLocaleString(undefined, { maximumFractionDigits: 0 })}). This is the maximum you might pay in a year.`,
-    `Affordability ratio: ${affordabilityRatio.toFixed(1)}% of income goes to premiums and expenses. ${affordabilityRatio <= 50 ? 'This leaves adequate room for other expenses.' : 'This may be challenging—review your budget and consider cost-saving options.'}`,
+    `Affordability ratio: ${affordabilityRatio.toFixed(1)}% of income goes to premiums and expenses. ${affordabilityRatio <= 50 ? 'This leaves adequate room for other expenses.' : 'This may be challengingâ€”review your budget and consider cost-saving options.'}`,
   ];
   if (premiumAsPercentOfIncome > 10) {
     recommendations.push('Consider alternatives: Shop for lower-cost plans, qualify for ACA marketplace subsidies, explore employer-sponsored plans, or consider high-deductible plans with Health Savings Accounts (HSAs) for tax benefits.');
@@ -419,16 +419,16 @@ export default function HealthInsurancePremiumAffordabilityCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Annual Premium</strong> = Monthly Premium × 12. Total yearly premium cost.
+            <strong>Annual Premium</strong> = Monthly Premium Ã— 12. Total yearly premium cost.
           </p>
           <p>
             <strong>Total Annual Cost</strong> = Annual Premium + Out-of-Pocket Maximum. Maximum you might pay in a year (worst case scenario).
           </p>
           <p>
-            <strong>Premium as % of Income</strong> = (Annual Premium / Annual Income) × 100. Should ideally be 5-10% of income, not exceeding 15%.
+            <strong>Premium as % of Income</strong> = (Annual Premium / Annual Income) Ã— 100. Should ideally be 5-10% of income, not exceeding 15%.
           </p>
           <p>
-            <strong>Affordability Ratio</strong> = ((Monthly Premium + Monthly Expenses) / Monthly Income) × 100. Percentage of income going to premiums and expenses.
+            <strong>Affordability Ratio</strong> = ((Monthly Premium + Monthly Expenses) / Monthly Income) Ã— 100. Percentage of income going to premiums and expenses.
           </p>
           <p>Health insurance premium affordability measures whether health insurance costs are reasonable relative to income. Premiums should ideally be 5-10% of gross income, not exceeding 15%. Consider total healthcare costs including deductibles and out-of-pocket maximums.</p>
         </CardContent>
@@ -544,7 +544,7 @@ export default function HealthInsurancePremiumAffordabilityCalculator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Premium as % of Income = (Annual Premium / Annual Income) × 100</b></p>
+        <p className="text-lg font-mono"><b>Premium as % of Income = (Annual Premium / Annual Income) Ã— 100</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
         <p className="text-lg font-mono"><b>Total Annual Cost = Annual Premium + Out-of-Pocket Maximum</b></p>
@@ -552,7 +552,7 @@ export default function HealthInsurancePremiumAffordabilityCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Affordability Thresholds</h3>
     <ul>
-        <li><b>Optimal:</b> Premiums ≤ 5% of income</li>
+        <li><b>Optimal:</b> Premiums â‰¤ 5% of income</li>
         <li><b>Good:</b> Premiums 5-10% of income</li>
         <li><b>Moderate:</b> Premiums 10-15% of income (may be challenging)</li>
         <li><b>Low:</b> Premiums {'>'} 15% of income (may be unaffordable)</li>
@@ -573,7 +573,7 @@ export default function HealthInsurancePremiumAffordabilityCalculator() {
     <h2 id="strategies" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Cost-Saving Strategies</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Shopping for Plans</h3>
-    <p>Compare plans considering: premiums, deductibles, out-of-pocket maximums, coverage, and network. Lower premiums may mean higher deductibles—balance based on your expected medical needs and ability to pay deductibles.</p>
+    <p>Compare plans considering: premiums, deductibles, out-of-pocket maximums, coverage, and network. Lower premiums may mean higher deductiblesâ€”balance based on your expected medical needs and ability to pay deductibles.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Subsidies and Assistance</h3>
     <p>Qualify for ACA marketplace subsidies (premium tax credits) based on income. Cost-sharing reductions can lower deductibles and out-of-pocket maximums for lower-income individuals. Medicaid may be available if income is very low.</p>

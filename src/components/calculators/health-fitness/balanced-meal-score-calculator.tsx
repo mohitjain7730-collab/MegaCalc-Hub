@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/balanced-meal-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/balanced-meal-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Balanced Meal Wellness Score Calculator', item: baseUrl },
       ],
     },
@@ -453,7 +453,7 @@ export default function BalancedMealScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Macronutrient percentages</strong> = (calories from each macronutrient / total calories) × 100. Protein and carbs: 4 cal/g, Fat: 9 cal/g.
+            <strong>Macronutrient percentages</strong> = (calories from each macronutrient / total calories) Ã— 100. Protein and carbs: 4 cal/g, Fat: 9 cal/g.
           </p>
           <p>
             <strong>Balance score</strong> = calculated from protein (0-30 points, optimal: 20-30%), carbs (0-30 points, optimal: 40-50%), fat (0-30 points, optimal: 20-35%), and fiber (0-10 points, optimal: 5-10g per meal). Higher scores indicate better balance.
@@ -605,17 +605,17 @@ export default function BalancedMealScoreCalculator() {
             <tbody>
                 <tr>
                     <td className="border-b p-2">Carbohydrates</td>
-                    <td className="border-b p-2">45% – 65%</td>
+                    <td className="border-b p-2">45% â€“ 65%</td>
                     <td className="border-b p-2">Primary energy source; Brain function</td>
                 </tr>
                 <tr>
                     <td className="border-b p-2">Fat (Lipids)</td>
-                    <td className="border-b p-2">20% – 35%</td>
+                    <td className="border-b p-2">20% â€“ 35%</td>
                     <td className="border-b p-2">Hormone production; Vitamin absorption</td>
                 </tr>
                 <tr>
                     <td className="border-b p-2">Protein</td>
-                    <td className="border-b p-2">10% – 35%</td>
+                    <td className="border-b p-2">10% â€“ 35%</td>
                     <td className="border-b p-2">Tissue building and repair; Enzyme creation</td>
                 </tr>
             </tbody>

@@ -45,12 +45,12 @@ const faqs = [
   {
     question: 'What is single loss expectancy (SLE)?',
     answer:
-      'Single loss expectancy (SLE) is the expected financial loss from a single incident. Formula: SLE = Asset Value × Exposure Factor. It represents the monetary impact if the risk materializes once.',
+      'Single loss expectancy (SLE) is the expected financial loss from a single incident. Formula: SLE = Asset Value Ã— Exposure Factor. It represents the monetary impact if the risk materializes once.',
   },
   {
     question: 'What is annual loss expectancy (ALE)?',
     answer:
-      'Annual loss expectancy (ALE) is the expected annual financial loss from a risk. Formula: ALE = SLE × Annual Rate of Occurrence (ARO). It incorporates both the impact (SLE) and probability (ARO) of the risk.',
+      'Annual loss expectancy (ALE) is the expected annual financial loss from a risk. Formula: ALE = SLE Ã— Annual Rate of Occurrence (ARO). It incorporates both the impact (SLE) and probability (ARO) of the risk.',
   },
   {
     question: 'What is exposure factor?',
@@ -65,7 +65,7 @@ const faqs = [
   {
     question: 'How is risk score calculated?',
     answer:
-      'Risk score is calculated as: Risk Score = (ALE / Asset Value) × 100. It represents the annual expected loss as a percentage of asset value. Higher risk scores indicate higher risk relative to asset value.',
+      'Risk score is calculated as: Risk Score = (ALE / Asset Value) Ã— 100. It represents the annual expected loss as a percentage of asset value. Higher risk scores indicate higher risk relative to asset value.',
   },
   {
     question: 'What is a high risk score?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/probability-of-claim-impact-calculator';
+const baseUrl = 'https://mycalculating.com/finance/probability-of-claim-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Probability of Claim Impact Calculator', item: baseUrl },
       ],
     },
@@ -147,15 +147,15 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const exposureFactor = values.exposureFactor; // percentage
   const annualRateOfOccurrence = values.annualRateOfOccurrence; // percentage
 
-  // Single Loss Expectancy (SLE) = Asset Value × Exposure Factor
+  // Single Loss Expectancy (SLE) = Asset Value Ã— Exposure Factor
   // Exposure factor is in percentage, so divide by 100
   const singleLossExpectancy = assetValue * (exposureFactor / 100);
 
-  // Annual Loss Expectancy (ALE) = SLE × Annual Rate of Occurrence
+  // Annual Loss Expectancy (ALE) = SLE Ã— Annual Rate of Occurrence
   // ARO is in percentage, so divide by 100
   const annualLossExpectancy = singleLossExpectancy * (annualRateOfOccurrence / 100);
 
-  // Risk Score = (ALE / Asset Value) × 100
+  // Risk Score = (ALE / Asset Value) Ã— 100
   // Represents annual expected loss as percentage of asset value
   const riskScore = assetValue > 0 ? (annualLossExpectancy / assetValue) * 100 : 0;
 
@@ -380,13 +380,13 @@ export default function ProbabilityOfClaimImpactCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Single Loss Expectancy (SLE)</strong> = Asset Value × (Exposure Factor / 100). The expected financial loss from a single incident if the risk materializes.
+            <strong>Single Loss Expectancy (SLE)</strong> = Asset Value Ã— (Exposure Factor / 100). The expected financial loss from a single incident if the risk materializes.
           </p>
           <p>
-            <strong>Annual Loss Expectancy (ALE)</strong> = SLE × (Annual Rate of Occurrence / 100). The expected annual financial loss, incorporating both impact (SLE) and probability (ARO).
+            <strong>Annual Loss Expectancy (ALE)</strong> = SLE Ã— (Annual Rate of Occurrence / 100). The expected annual financial loss, incorporating both impact (SLE) and probability (ARO).
           </p>
           <p>
-            <strong>Risk Score</strong> = (ALE / Asset Value) × 100. The annual expected loss as a percentage of asset value. Higher scores indicate higher risk relative to asset value.
+            <strong>Risk Score</strong> = (ALE / Asset Value) Ã— 100. The annual expected loss as a percentage of asset value. Higher scores indicate higher risk relative to asset value.
           </p>
           <p>
             <strong>Exposure Factor</strong> = Percentage of asset value that would be lost if risk materializes (0-100%). For example, 5% exposure factor means 5% of asset value would be lost.
@@ -503,12 +503,12 @@ export default function ProbabilityOfClaimImpactCalculator() {
     <h2 id="sle" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Single Loss Expectancy (SLE)</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">SLE Formula</h3>
-    <p>Single Loss Expectancy is calculated as: <b>SLE = Asset Value × Exposure Factor</b></p>
+    <p>Single Loss Expectancy is calculated as: <b>SLE = Asset Value Ã— Exposure Factor</b></p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If an asset worth $100,000 has a 5% exposure factor:</p>
     <ul>
-        <li>SLE = $100,000 × 5% = $5,000</li>
+        <li>SLE = $100,000 Ã— 5% = $5,000</li>
     </ul>
     <p>This means the expected loss from a single incident is $5,000.</p>
 
@@ -517,12 +517,12 @@ export default function ProbabilityOfClaimImpactCalculator() {
     <h2 id="ale" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Annual Loss Expectancy (ALE)</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">ALE Formula</h3>
-    <p>Annual Loss Expectancy is calculated as: <b>ALE = SLE × Annual Rate of Occurrence (ARO)</b></p>
+    <p>Annual Loss Expectancy is calculated as: <b>ALE = SLE Ã— Annual Rate of Occurrence (ARO)</b></p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If SLE is $5,000 and ARO is 10% (0.1 probability per year):</p>
     <ul>
-        <li>ALE = $5,000 × 0.1 = $500</li>
+        <li>ALE = $5,000 Ã— 0.1 = $500</li>
     </ul>
     <p>This suggests an expected annual loss of $500 due to the risk.</p>
 

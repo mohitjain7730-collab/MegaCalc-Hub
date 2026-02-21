@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 const formSchema = z.object({
   initialPortfolio: z.number().min(1, 'Enter initial portfolio value'),
-  targetPctStocks: z.number().min(0).max(100, 'Enter 0–100'),
+  targetPctStocks: z.number().min(0).max(100, 'Enter 0â€“100'),
   returnStocksPct: z.number(),
   returnBondsPct: z.number(),
   years: z.number().min(1, 'Enter at least 1 year'),
@@ -33,7 +33,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'See how much your portfolio allocation has drifted from target when you do not rebalance. Enter initial value, target % stocks, returns, and years.',
-      url: 'https://mycalculating.com/category/finance/asset-allocation-drift-calculator',
+      url: 'https://mycalculating.com/finance/asset-allocation-drift-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -87,7 +87,7 @@ export default function AssetAllocationDriftCalculator() {
     if (Math.abs(driftStocks) >= threshold) {
       recommendation = `Your allocation has drifted ${Math.abs(driftStocks).toFixed(1)} percentage points from target. Stocks are now ${currentPctStocks.toFixed(1)}% (target ${(targetStocks * 100).toFixed(0)}%). Consider rebalancing to restore your target allocation and manage risk.`;
     } else {
-      recommendation = `Drift is ${Math.abs(driftStocks).toFixed(1)} percentage points—within a typical ${threshold}% band. You may keep current allocation or rebalance to target; either is reasonable.`;
+      recommendation = `Drift is ${Math.abs(driftStocks).toFixed(1)} percentage pointsâ€”within a typical ${threshold}% band. You may keep current allocation or rebalance to target; either is reasonable.`;
     }
 
     const insights: string[] = [];
@@ -340,7 +340,7 @@ export default function AssetAllocationDriftCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Drift = current % − target % (in percentage points).</span>
+                  <span>Drift = current % âˆ’ target % (in percentage points).</span>
                 </li>
               </ul>
             </div>
@@ -379,10 +379,10 @@ export default function AssetAllocationDriftCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Value stocks = Initial × (target % stocks) × (1 + r_stocks)^years</p>
-            <p className="font-mono text-sm text-center">Value bonds = Initial × (target % bonds) × (1 + r_bonds)^years</p>
-            <p className="font-mono text-sm text-center">Current % stocks = Value stocks ÷ (Value stocks + Value bonds) × 100</p>
-            <p className="font-mono text-sm text-center">Drift stocks = Current % stocks − Target % stocks (percentage points)</p>
+            <p className="font-mono text-sm text-center">Value stocks = Initial Ã— (target % stocks) Ã— (1 + r_stocks)^years</p>
+            <p className="font-mono text-sm text-center">Value bonds = Initial Ã— (target % bonds) Ã— (1 + r_bonds)^years</p>
+            <p className="font-mono text-sm text-center">Current % stocks = Value stocks Ã· (Value stocks + Value bonds) Ã— 100</p>
+            <p className="font-mono text-sm text-center">Drift stocks = Current % stocks âˆ’ Target % stocks (percentage points)</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
             No rebalancing is applied; each sleeve compounds at its own return. The higher-return sleeve grows faster, so its share of the portfolio increases and allocation drifts.
@@ -511,11 +511,11 @@ export default function AssetAllocationDriftCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Drift Happens</h3>
         <p>Each asset compounds at its own return. The higher-return asset increases in value more, so its share of the total portfolio rises. Without rebalancing, there is no mechanism to bring weights back to target.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Measuring Drift</h3>
-        <p>Drift is measured in percentage points (pp). Current % stocks − target % stocks = drift in stocks. Positive drift means you are overweight stocks; negative drift means you are underweight stocks (overweight bonds).</p>
+        <p>Drift is measured in percentage points (pp). Current % stocks âˆ’ target % stocks = drift in stocks. Positive drift means you are overweight stocks; negative drift means you are underweight stocks (overweight bonds).</p>
         <hr />
 
         <h2 id="how-calculated-drift" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Start with initial portfolio value and target weights. Value in stocks = initial × (target % stocks) × (1 + r_stocks)^years. Value in bonds = initial × (target % bonds) × (1 + r_bonds)^years. Total = value stocks + value bonds. Current % stocks = value stocks ÷ total × 100. Drift = current % stocks − target % stocks (in pp).</p>
+        <p>Start with initial portfolio value and target weights. Value in stocks = initial Ã— (target % stocks) Ã— (1 + r_stocks)^years. Value in bonds = initial Ã— (target % bonds) Ã— (1 + r_bonds)^years. Total = value stocks + value bonds. Current % stocks = value stocks Ã· total Ã— 100. Drift = current % stocks âˆ’ target % stocks (in pp).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">No Rebalancing</h3>
         <p>The calculator assumes you do not rebalance over the period. So each sleeve grows independently. For the effect of rebalancing on terminal value, use the Rebalancing Frequency Impact calculator.</p>
         <hr />
@@ -529,7 +529,7 @@ export default function AssetAllocationDriftCalculator() {
         <hr />
 
         <h2 id="using-drift" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
-        <p>Enter initial portfolio value, target % in stocks (bonds = 100 − stocks), annual return for stocks (%), annual return for bonds (%), and years without rebalancing. The calculator shows current allocation, drift in percentage points, and portfolio value.</p>
+        <p>Enter initial portfolio value, target % in stocks (bonds = 100 âˆ’ stocks), annual return for stocks (%), annual return for bonds (%), and years without rebalancing. The calculator shows current allocation, drift in percentage points, and portfolio value.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">What to Enter</h3>
         <p>Use historical or expected returns for the two sleeves. Years = how long you have not rebalanced. For a quick check, use 1 year and your last year&apos;s returns.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Sensitivity to Return Difference</h3>
@@ -557,7 +557,7 @@ export default function AssetAllocationDriftCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is drift calculated?</h4>
-            <p className="text-muted-foreground">Start with initial value and target weights. Grow each sleeve at its return for the given years (no rebalancing). Current % stocks = value stocks ÷ total × 100. Drift = current % stocks − target % stocks (in pp).</p>
+            <p className="text-muted-foreground">Start with initial value and target weights. Grow each sleeve at its return for the given years (no rebalancing). Current % stocks = value stocks Ã· total Ã— 100. Drift = current % stocks âˆ’ target % stocks (in pp).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why does drift happen?</h4>
@@ -573,7 +573,7 @@ export default function AssetAllocationDriftCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if I have more than two assets?</h4>
-            <p className="text-muted-foreground">This calculator uses two assets (stocks and bonds). For multiple assets, drift is computed per asset: current % − target % for each. The same logic applies.</p>
+            <p className="text-muted-foreground">This calculator uses two assets (stocks and bonds). For multiple assets, drift is computed per asset: current % âˆ’ target % for each. The same logic applies.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What return should I use?</h4>
@@ -623,7 +623,7 @@ export default function AssetAllocationDriftCalculator() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Retirement & Taxable Account Holders</strong>
-                <span className="text-sm text-muted-foreground">To check drift before deciding to rebalance (and where—e.g. in IRA first to avoid taxes).</span>
+                <span className="text-sm text-muted-foreground">To check drift before deciding to rebalance (and whereâ€”e.g. in IRA first to avoid taxes).</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">DIY Portfolio Managers</strong>
@@ -656,7 +656,7 @@ export default function AssetAllocationDriftCalculator() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Bonds = 100 − stocks:</strong> Only two assets; target % bonds is implied. For three or more assets, compute drift per asset separately.</span>
+                <span><strong>Bonds = 100 âˆ’ stocks:</strong> Only two assets; target % bonds is implied. For three or more assets, compute drift per asset separately.</span>
               </li>
             </ul>
           </div>
@@ -669,11 +669,11 @@ export default function AssetAllocationDriftCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: $100k, 60/40, stocks 8%, bonds 3%, 5 years</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">Stocks: $60k × 1.08^5 ≈ $88.1k. Bonds: $40k × 1.03^5 ≈ $46.4k. Total ≈ $134.5k. Current % stocks ≈ 65.5%. Drift ≈ +5.5 pp. Consider rebalancing.</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">Stocks: $60k Ã— 1.08^5 â‰ˆ $88.1k. Bonds: $40k Ã— 1.03^5 â‰ˆ $46.4k. Total â‰ˆ $134.5k. Current % stocks â‰ˆ 65.5%. Drift â‰ˆ +5.5 pp. Consider rebalancing.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: $200k, 50/50, stocks 10%, bonds 2%, 10 years</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">Stocks grow much faster. After 10 years, allocation can drift to roughly 70/30. Drift in stocks ≈ +20 pp. Strong case for rebalancing to restore target.</p>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">Stocks grow much faster. After 10 years, allocation can drift to roughly 70/30. Drift in stocks â‰ˆ +20 pp. Strong case for rebalancing to restore target.</p>
               </div>
               <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20">
                 <h5 className="font-semibold text-amber-800 dark:text-amber-300 mb-1">Example: 1 year, similar returns</h5>

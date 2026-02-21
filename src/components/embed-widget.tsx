@@ -13,15 +13,15 @@ function formatCalculatorTitle(slug: string): string {
 export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) {
   const embedCode = `<div style="max-width: 600px; margin: 0 auto;">
   <iframe 
-    src="https://mycalculating.com/category/${categorySlug}/${calculatorSlug}?embed=true" 
+    src="https://mycalculating.com/${calculatorSlug}?embed=true" 
     width="100%" 
     height="600" 
     style="border:1px solid #ccc; border-radius:8px;" 
     loading="lazy" 
-    title="${formatCalculatorTitle(calculatorSlug)} Calculator by MyCalculating.com"
+    title="\${formatCalculatorTitle(calculatorSlug)} Calculator by MyCalculating.com"
   ></iframe>
   <p style="text-align:center; font-size:12px; margin-top:4px;">
-    <a href="https://mycalculating.com/category/${categorySlug}/${calculatorSlug}" target="_blank" rel="noopener">
+    <a href="https://mycalculating.com/${calculatorSlug}" target="_blank" rel="noopener">
       Use full version on <strong>MyCalculating.com</strong>
     </a>
   </p>
@@ -41,7 +41,7 @@ export function EmbedWidget({ categorySlug, calculatorSlug }: EmbedWidgetProps) 
       <div className="mt-4 flex gap-2">
         <EmbedCopyButton embedCode={embedCode} />
         <Link
-          href={`/${categorySlug}/${calculatorSlug}`}
+          href={`/${calculatorSlug}`}
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-secondary text-secondary-foreground rounded-md text-sm hover:bg-secondary/90 transition-colors"

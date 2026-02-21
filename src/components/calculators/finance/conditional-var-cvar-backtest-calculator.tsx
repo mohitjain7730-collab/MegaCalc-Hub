@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/conditional-var-cvar-backtest-calculator';
+const baseUrl = 'https://mycalculating.com/finance/conditional-var-cvar-backtest-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Conditional VaR (CVaR) Backtest Calculator', item: baseUrl },
       ],
     },
@@ -407,13 +407,13 @@ export default function ConditionalVarCvarBacktestCalculator() {
             <strong>Exceedances</strong> = Count of actual losses exceeding predicted CVaR. Exceedances indicate instances where actual losses exceed model predictions.
           </p>
           <p>
-            <strong>Exceedance Rate</strong> = (Exceedances / Total Observations) × 100. The percentage of observations where actual losses exceed predicted CVaR. For 95% confidence level, expected exceedance rate is 5%.
+            <strong>Exceedance Rate</strong> = (Exceedances / Total Observations) Ã— 100. The percentage of observations where actual losses exceed predicted CVaR. For 95% confidence level, expected exceedance rate is 5%.
           </p>
           <p>
             <strong>Average Exceedance</strong> = Average of losses that exceed predicted CVaR. Measures the severity of exceedances. Should be close to predicted CVaR for accurate models.
           </p>
           <p>
-            <strong>Backtest Score</strong> = (Exceedance Rate Accuracy × 50%) + (Average Exceedance Accuracy × 50%). Composite score (0-100) assessing overall model accuracy. Higher scores indicate better model performance.
+            <strong>Backtest Score</strong> = (Exceedance Rate Accuracy Ã— 50%) + (Average Exceedance Accuracy Ã— 50%). Composite score (0-100) assessing overall model accuracy. Higher scores indicate better model performance.
           </p>
           <p>
             <strong>Expected Exceedance Rate</strong> = 100% - Confidence Level. For 95% confidence, expected exceedance rate is 5%. Actual exceedance rate should be close to expected for accurate models.
@@ -573,7 +573,7 @@ export default function ConditionalVarCvarBacktestCalculator() {
     <h2 id="metrics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Backtest Metrics</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Exceedance Rate</h3>
-    <p>Exceedance rate = (Exceedances / Total Observations) × 100</p>
+    <p>Exceedance rate = (Exceedances / Total Observations) Ã— 100</p>
     <p>For 95% confidence level, expected exceedance rate is 5%. Actual exceedance rate should be close to expected for accurate models.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Average Exceedance</h3>

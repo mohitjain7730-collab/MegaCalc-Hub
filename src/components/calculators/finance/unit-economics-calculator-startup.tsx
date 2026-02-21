@@ -32,7 +32,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate startup unit economics: LTV (Lifetime Value), LTV:CAC ratio, CAC payback period in months, contribution margin per customer, and customer lifetime. Uses ARPU, gross margin %, monthly churn %, and CAC.',
-      url: 'https://mycalculating.com/category/finance/unit-economics-calculator-startup',
+      url: 'https://mycalculating.com/finance/unit-economics-calculator-startup',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -82,10 +82,10 @@ export default function UnitEconomicsCalculatorStartup() {
   const interpret = (ltvCac: number, paybackMonths: number) => {
     const cacOk = ltvCac >= 3;
     const paybackOk = paybackMonths <= 18;
-    if (cacOk && paybackOk) return 'Strong unit economics. LTV:CAC ≥ 3 and payback within 18 months support scalable acquisition and growth.';
+    if (cacOk && paybackOk) return 'Strong unit economics. LTV:CAC â‰¥ 3 and payback within 18 months support scalable acquisition and growth.';
     if (cacOk && !paybackOk) return 'LTV:CAC is healthy but payback is long. Consider improving margin or ARPU, or reducing CAC to shorten payback.';
     if (!cacOk && paybackOk) return 'Payback is acceptable but LTV:CAC is below 3. Improve LTV (reduce churn, increase ARPU or margin) or reduce CAC.';
-    return 'Unit economics need improvement. Target LTV:CAC ≥ 3 and CAC payback under 18 months; optimize pricing, churn, and acquisition efficiency.';
+    return 'Unit economics need improvement. Target LTV:CAC â‰¥ 3 and CAC payback under 18 months; optimize pricing, churn, and acquisition efficiency.';
   };
 
   const getLtvCacLevel = (ratio: number) => {
@@ -106,8 +106,8 @@ export default function UnitEconomicsCalculatorStartup() {
   const getRecommendation = (ltvCac: number, paybackMonths: number) => {
     if (ltvCac >= 3 && paybackMonths <= 18) return 'Maintain and scale. Track LTV:CAC and payback by segment and channel; double down on efficient acquisition.';
     if (ltvCac >= 3 && paybackMonths > 18) return 'Shorten payback: improve gross margin or ARPU, or reduce CAC. Long payback increases sensitivity to churn.';
-    if (ltvCac < 3 && paybackMonths <= 18) return 'Improve LTV:CAC: reduce churn, increase ARPU or margin, or lower CAC. Target ≥ 3:1 for sustainable growth.';
-    return 'Urgent: improve LTV (reduce churn, raise ARPU/margin) and/or reduce CAC. Aim for LTV:CAC ≥ 3 and payback under 18 months before scaling spend.';
+    if (ltvCac < 3 && paybackMonths <= 18) return 'Improve LTV:CAC: reduce churn, increase ARPU or margin, or lower CAC. Target â‰¥ 3:1 for sustainable growth.';
+    return 'Urgent: improve LTV (reduce churn, raise ARPU/margin) and/or reduce CAC. Aim for LTV:CAC â‰¥ 3 and payback under 18 months before scaling spend.';
   };
 
   const getStrength = (ltvCac: number, paybackMonths: number) => {
@@ -120,20 +120,20 @@ export default function UnitEconomicsCalculatorStartup() {
 
   const getInsights = (r: { ltv: number; ltvCacRatio: number; cacPaybackMonths: number; contributionMarginMonthly: number; customerLifetimeMonths: number }, v: FormValues) => {
     const insights = [];
-    insights.push(`LTV $${r.ltv.toFixed(0)} = $${r.contributionMarginMonthly.toFixed(2)}/mo contribution × ${r.customerLifetimeMonths.toFixed(1)} mo lifetime`);
-    insights.push(`LTV:CAC ${r.ltvCacRatio.toFixed(2)}:1 ${r.ltvCacRatio >= 3 ? '(target ≥ 3:1 met)' : '(target ≥ 3:1 not met)'}`);
+    insights.push(`LTV $${r.ltv.toFixed(0)} = $${r.contributionMarginMonthly.toFixed(2)}/mo contribution Ã— ${r.customerLifetimeMonths.toFixed(1)} mo lifetime`);
+    insights.push(`LTV:CAC ${r.ltvCacRatio.toFixed(2)}:1 ${r.ltvCacRatio >= 3 ? '(target â‰¥ 3:1 met)' : '(target â‰¥ 3:1 not met)'}`);
     insights.push(`CAC payback: ${r.cacPaybackMonths.toFixed(1)} months ${r.cacPaybackMonths <= 18 ? '(within 18 mo target)' : '(exceeds 18 mo target)'}`);
     if (r.ltvCacRatio >= 3) {
       insights.push('Unit economics support scalable acquisition; monitor churn and CAC by channel');
     } else {
-      insights.push('Improve LTV (reduce churn, increase ARPU/margin) or reduce CAC to reach LTV:CAC ≥ 3');
+      insights.push('Improve LTV (reduce churn, increase ARPU/margin) or reduce CAC to reach LTV:CAC â‰¥ 3');
     }
     return insights;
   };
 
   const getConsiderations = () => [
     'Use consistent period: ARPU and churn should be from the same cohort or trailing period.',
-    'Gross margin % = (Revenue − COGS) / Revenue; use recurring margin for subscription businesses.',
+    'Gross margin % = (Revenue âˆ’ COGS) / Revenue; use recurring margin for subscription businesses.',
     'Monthly churn % = customers lost in month / customers at start; use cohort or blended with care.',
     'CAC = total sales + marketing spend (and optional onboarding) / new customers in same period.',
     'LTV assumes constant churn; use cohort-based LTV for more accuracy if churn varies by tenure.',
@@ -179,7 +179,7 @@ export default function UnitEconomicsCalculatorStartup() {
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <DollarSign className="h-4 w-4" />
-                        ARPU – Monthly Revenue per Customer ($)
+                        ARPU â€“ Monthly Revenue per Customer ($)
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -248,7 +248,7 @@ export default function UnitEconomicsCalculatorStartup() {
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <UserPlus className="h-4 w-4" />
-                        CAC – Customer Acquisition Cost ($)
+                        CAC â€“ Customer Acquisition Cost ($)
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -291,7 +291,7 @@ export default function UnitEconomicsCalculatorStartup() {
               <div className="text-center">
                 <p className="text-4xl font-bold text-primary">{result.ltvCacRatio.toFixed(2)}:1</p>
                 <p className="text-lg text-muted-foreground mt-2">LTV:CAC ratio</p>
-                <p className="text-sm text-muted-foreground mt-1">LTV ${result.ltv.toFixed(0)} ÷ CAC ${form.getValues('cac').toLocaleString()}</p>
+                <p className="text-sm text-muted-foreground mt-1">LTV ${result.ltv.toFixed(0)} Ã· CAC ${form.getValues('cac').toLocaleString()}</p>
                 <p className="text-sm text-muted-foreground mt-1">{result.interpretation}</p>
               </div>
 
@@ -324,7 +324,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 <div className="p-4 bg-muted/50 rounded-lg">
                   <p className="text-sm font-medium text-muted-foreground">Contribution margin per customer per month</p>
                   <p className="text-xl font-bold">${result.contributionMarginMonthly.toFixed(2)}</p>
-                  <p className="text-xs text-muted-foreground mt-1">ARPU × Gross margin %</p>
+                  <p className="text-xs text-muted-foreground mt-1">ARPU Ã— Gross margin %</p>
                 </div>
                 <div className="p-4 bg-muted/50 rounded-lg">
                   <p className="text-sm font-medium text-muted-foreground">Payback level</p>
@@ -403,7 +403,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 ARPU & Gross Margin
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                ARPU (Average Revenue Per User) is monthly recurring revenue per customer. Gross margin % = (Revenue − COGS) / Revenue; use recurring margin for subscription businesses.
+                ARPU (Average Revenue Per User) is monthly recurring revenue per customer. Gross margin % = (Revenue âˆ’ COGS) / Revenue; use recurring margin for subscription businesses.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -412,7 +412,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Contribution margin = ARPU × Gross margin %</span>
+                  <span>Contribution margin = ARPU Ã— Gross margin %</span>
                 </li>
               </ul>
             </div>
@@ -422,16 +422,16 @@ export default function UnitEconomicsCalculatorStartup() {
                 Monthly Churn & CAC
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Monthly churn % = customers lost in month ÷ customers at start of month. CAC = total sales + marketing spend (and optional onboarding) ÷ new customers in the same period.
+                Monthly churn % = customers lost in month Ã· customers at start of month. CAC = total sales + marketing spend (and optional onboarding) Ã· new customers in the same period.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Customer lifetime (months) = 100 ÷ Monthly churn %</span>
+                  <span>Customer lifetime (months) = 100 Ã· Monthly churn %</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>LTV = Contribution margin per month × Customer lifetime</span>
+                  <span>LTV = Contribution margin per month Ã— Customer lifetime</span>
                 </li>
               </ul>
             </div>
@@ -450,23 +450,23 @@ export default function UnitEconomicsCalculatorStartup() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Contribution margin per month = ARPU × (Gross margin % ÷ 100)
+              Contribution margin per month = ARPU Ã— (Gross margin % Ã· 100)
             </p>
             <p className="font-mono text-sm text-center">
-              Customer lifetime (months) = 100 ÷ Monthly churn %
+              Customer lifetime (months) = 100 Ã· Monthly churn %
             </p>
             <p className="font-mono text-sm text-center">
-              LTV = Contribution margin per month × Customer lifetime
+              LTV = Contribution margin per month Ã— Customer lifetime
             </p>
             <p className="font-mono text-sm text-center">
-              LTV:CAC = LTV ÷ CAC
+              LTV:CAC = LTV Ã· CAC
             </p>
             <p className="font-mono text-sm text-center">
-              CAC payback (months) = CAC ÷ Contribution margin per month
+              CAC payback (months) = CAC Ã· Contribution margin per month
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Startup benchmarks: LTV:CAC ≥ 3:1 is healthy; CAC payback under 18 months (ideally under 12 for SaaS) supports scalable acquisition.
+            Startup benchmarks: LTV:CAC â‰¥ 3:1 is healthy; CAC payback under 18 months (ideally under 12 for SaaS) supports scalable acquisition.
           </p>
         </CardContent>
       </Card>
@@ -569,7 +569,7 @@ export default function UnitEconomicsCalculatorStartup() {
       {/* Complete Guide Section */}
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
         <meta itemProp="name" content="The Definitive Guide to Startup Unit Economics: LTV, CAC, LTV:CAC, and Payback" />
-        <meta itemProp="description" content="An expert guide to startup unit economics: LTV (Lifetime Value) from ARPU, gross margin, and churn; CAC; LTV:CAC ratio (target ≥ 3:1); and CAC payback period. Formulas, benchmarks, and interpretation." />
+        <meta itemProp="description" content="An expert guide to startup unit economics: LTV (Lifetime Value) from ARPU, gross margin, and churn; CAC; LTV:CAC ratio (target â‰¥ 3:1); and CAC payback period. Formulas, benchmarks, and interpretation." />
         <meta itemProp="keywords" content="unit economics calculator startup, LTV CAC ratio, CAC payback period, startup LTV formula, contribution margin per customer, customer lifetime value" />
         <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
         <meta itemProp="datePublished" content="2025-10-25" />
@@ -593,7 +593,7 @@ export default function UnitEconomicsCalculatorStartup() {
         <p><strong>Unit economics</strong> describe the profit (or contribution) per customer over that customer's lifetime, and the cost to acquire that customer. For startups, the core metrics are <strong>LTV</strong> (Lifetime Value), <strong>CAC</strong> (Customer Acquisition Cost), the <strong>LTV:CAC ratio</strong>, and the <strong>CAC payback period</strong> (months to recover CAC from contribution margin).</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why It Matters</h3>
-        <p>If LTV is too low relative to CAC, or payback is too long, the business cannot scale acquisition profitably. Investors and operators use LTV:CAC ≥ 3:1 and payback under 18 months (often under 12 for SaaS) as benchmarks for healthy unit economics.</p>
+        <p>If LTV is too low relative to CAC, or payback is too long, the business cannot scale acquisition profitably. Investors and operators use LTV:CAC â‰¥ 3:1 and payback under 18 months (often under 12 for SaaS) as benchmarks for healthy unit economics.</p>
 
         <hr />
 
@@ -603,28 +603,28 @@ export default function UnitEconomicsCalculatorStartup() {
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-xl text-destructive font-bold">
-            LTV = (ARPU × Gross margin %) × (1 ÷ Monthly churn %) = Contribution margin per month × Customer lifetime (months)
+            LTV = (ARPU Ã— Gross margin %) Ã— (1 Ã· Monthly churn %) = Contribution margin per month Ã— Customer lifetime (months)
           </p>
         </div>
 
-        <p>Where <strong>Contribution margin per month</strong> = ARPU × (Gross margin % ÷ 100), and <strong>Customer lifetime (months)</strong> = 100 ÷ Monthly churn %. For example, 5% monthly churn implies a 20-month average lifetime.</p>
+        <p>Where <strong>Contribution margin per month</strong> = ARPU Ã— (Gross margin % Ã· 100), and <strong>Customer lifetime (months)</strong> = 100 Ã· Monthly churn %. For example, 5% monthly churn implies a 20-month average lifetime.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Defining the Inputs</h3>
         <ul className="list-disc ml-6 space-y-2">
           <li><strong className="font-semibold">ARPU (monthly):</strong> Average recurring revenue per customer per month.</li>
-          <li><strong className="font-semibold">Gross margin %:</strong> (Revenue − COGS) / Revenue; use recurring margin for subscription.</li>
-          <li><strong className="font-semibold">Monthly churn %:</strong> Percentage of customers lost each month; 100 ÷ churn % = average customer lifetime in months.</li>
+          <li><strong className="font-semibold">Gross margin %:</strong> (Revenue âˆ’ COGS) / Revenue; use recurring margin for subscription.</li>
+          <li><strong className="font-semibold">Monthly churn %:</strong> Percentage of customers lost each month; 100 Ã· churn % = average customer lifetime in months.</li>
         </ul>
 
         <hr />
 
         <h2 id="cac" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Customer Acquisition Cost (CAC)</h2>
-        <p><strong>CAC</strong> = Total sales and marketing spend (and optionally onboarding/implementation) in a period ÷ New customers acquired in that same period. Use the same period for spend and new customers to avoid mis-stating CAC.</p>
+        <p><strong>CAC</strong> = Total sales and marketing spend (and optionally onboarding/implementation) in a period Ã· New customers acquired in that same period. Use the same period for spend and new customers to avoid mis-stating CAC.</p>
 
         <hr />
 
         <h2 id="ltv-cac" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">LTV:CAC Ratio and the 3:1 Rule</h2>
-        <p><strong>LTV:CAC</strong> = LTV ÷ CAC. A ratio of <strong>3:1 or higher</strong> is commonly considered healthy: for every dollar spent acquiring a customer, the business expects three or more dollars of contribution over the customer's lifetime. A ratio below 3 often signals that acquisition is expensive relative to value, or that churn is too high.</p>
+        <p><strong>LTV:CAC</strong> = LTV Ã· CAC. A ratio of <strong>3:1 or higher</strong> is commonly considered healthy: for every dollar spent acquiring a customer, the business expects three or more dollars of contribution over the customer's lifetime. A ratio below 3 often signals that acquisition is expensive relative to value, or that churn is too high.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Improving LTV:CAC</h3>
         <p>Raise LTV by increasing ARPU, improving gross margin, or reducing churn. Lower CAC by improving channel efficiency, targeting, and conversion. Both levers improve the ratio.</p>
@@ -632,7 +632,7 @@ export default function UnitEconomicsCalculatorStartup() {
         <hr />
 
         <h2 id="payback" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">CAC Payback Period</h2>
-        <p><strong>CAC payback</strong> = CAC ÷ Contribution margin per month. It is the number of months of contribution margin required to recover the cost of acquiring one customer. For SaaS, payback under <strong>18 months</strong> (ideally under 12) is a common target; longer payback increases sensitivity to churn and cash flow.</p>
+        <p><strong>CAC payback</strong> = CAC Ã· Contribution margin per month. It is the number of months of contribution margin required to recover the cost of acquiring one customer. For SaaS, payback under <strong>18 months</strong> (ideally under 12) is a common target; longer payback increases sensitivity to churn and cash flow.</p>
 
         <hr />
 
@@ -642,7 +642,7 @@ export default function UnitEconomicsCalculatorStartup() {
         <hr />
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Startup unit economics—LTV, CAC, LTV:CAC, and CAC payback—determine whether customer acquisition is profitable and scalable. Target LTV:CAC ≥ 3:1 and CAC payback under 18 months (ideally under 12 for SaaS), and use this calculator to quantify and track these metrics.</p>
+        <p>Startup unit economicsâ€”LTV, CAC, LTV:CAC, and CAC paybackâ€”determine whether customer acquisition is profitable and scalable. Target LTV:CAC â‰¥ 3:1 and CAC payback under 18 months (ideally under 12 for SaaS), and use this calculator to quantify and track these metrics.</p>
       </section>
 
       {/* FAQ Section */}
@@ -659,7 +659,7 @@ export default function UnitEconomicsCalculatorStartup() {
             <div>
               <h4 className="font-semibold text-lg mb-3">What is LTV in unit economics?</h4>
               <p className="text-muted-foreground">
-                LTV (Lifetime Value) is the total contribution (revenue minus variable costs) you expect from one customer over their lifetime. For subscription businesses, LTV = Contribution margin per month × Customer lifetime (months), where customer lifetime = 100 ÷ Monthly churn %.
+                LTV (Lifetime Value) is the total contribution (revenue minus variable costs) you expect from one customer over their lifetime. For subscription businesses, LTV = Contribution margin per month Ã— Customer lifetime (months), where customer lifetime = 100 Ã· Monthly churn %.
               </p>
             </div>
             <div>
@@ -671,7 +671,7 @@ export default function UnitEconomicsCalculatorStartup() {
             <div>
               <h4 className="font-semibold text-lg mb-3">How do I calculate CAC payback period?</h4>
               <p className="text-muted-foreground">
-                CAC payback (months) = CAC ÷ Contribution margin per customer per month. Contribution margin per month = ARPU × (Gross margin % ÷ 100). It is the number of months of contribution required to recover the cost of acquiring one customer.
+                CAC payback (months) = CAC Ã· Contribution margin per customer per month. Contribution margin per month = ARPU Ã— (Gross margin % Ã· 100). It is the number of months of contribution required to recover the cost of acquiring one customer.
               </p>
             </div>
             <div>
@@ -683,7 +683,7 @@ export default function UnitEconomicsCalculatorStartup() {
             <div>
               <h4 className="font-semibold text-lg mb-3">Why use monthly churn for LTV?</h4>
               <p className="text-muted-foreground">
-                Monthly churn % is the percentage of customers lost each month. Average customer lifetime in months = 100 ÷ Monthly churn % (e.g. 5% churn → 20 months). LTV then = Contribution margin per month × Customer lifetime. This simple formula is widely used for subscription unit economics; cohort-based LTV can refine accuracy.
+                Monthly churn % is the percentage of customers lost each month. Average customer lifetime in months = 100 Ã· Monthly churn % (e.g. 5% churn â†’ 20 months). LTV then = Contribution margin per month Ã— Customer lifetime. This simple formula is widely used for subscription unit economics; cohort-based LTV can refine accuracy.
               </p>
             </div>
           </div>
@@ -716,7 +716,7 @@ export default function UnitEconomicsCalculatorStartup() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Investors</strong>
-                <span className="text-sm text-muted-foreground">To assess whether a startup’s unit economics support scalable growth.</span>
+                <span className="text-sm text-muted-foreground">To assess whether a startupâ€™s unit economics support scalable growth.</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Startup Advisors</strong>
@@ -752,7 +752,7 @@ export default function UnitEconomicsCalculatorStartup() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>The Unit Economics Calculator (Startup) computes LTV, LTV:CAC ratio, CAC payback period, contribution margin per customer, and customer lifetime from ARPU, gross margin %, monthly churn %, and CAC.</p>
-          <p>Use it to track and target LTV:CAC ≥ 3:1 and CAC payback under 18 months for scalable, profitable acquisition.</p>
+          <p>Use it to track and target LTV:CAC â‰¥ 3:1 and CAC payback under 18 months for scalable, profitable acquisition.</p>
         </CardContent>
       </Card>
     </div>

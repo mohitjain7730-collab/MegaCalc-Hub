@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/diet-sustainability-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/diet-sustainability-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Diet Sustainability Score Calculator', item: baseUrl },
       ],
     },
@@ -433,22 +433,22 @@ export default function DietSustainabilityScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Restrictiveness score</strong> = (11 - Restrictiveness) × 8. Lower restrictiveness scores higher (inverted scale). Maximum 80 points.
+            <strong>Restrictiveness score</strong> = (11 - Restrictiveness) Ã— 8. Lower restrictiveness scores higher (inverted scale). Maximum 80 points.
           </p>
           <p>
-            <strong>Variety score</strong> = Variety × 5. Higher variety scores higher. Maximum 50 points.
+            <strong>Variety score</strong> = Variety Ã— 5. Higher variety scores higher. Maximum 50 points.
           </p>
           <p>
-            <strong>Social fit score</strong> = Social Fit × 4. Higher social compatibility scores higher. Maximum 40 points.
+            <strong>Social fit score</strong> = Social Fit Ã— 4. Higher social compatibility scores higher. Maximum 40 points.
           </p>
           <p>
-            <strong>Cost/accessibility score</strong> = Cost/Accessibility × 4. Higher affordability scores higher. Maximum 40 points.
+            <strong>Cost/accessibility score</strong> = Cost/Accessibility Ã— 4. Higher affordability scores higher. Maximum 40 points.
           </p>
           <p>
-            <strong>Flexibility score</strong> = Flexibility × 5. Higher flexibility scores higher. Maximum 50 points.
+            <strong>Flexibility score</strong> = Flexibility Ã— 5. Higher flexibility scores higher. Maximum 50 points.
           </p>
           <p>
-            <strong>Adherence bonus</strong> = Months Maintained × 2 (max 30 points). Longer adherence indicates better sustainability.
+            <strong>Adherence bonus</strong> = Months Maintained Ã— 2 (max 30 points). Longer adherence indicates better sustainability.
           </p>
           <p>
             <strong>Total sustainability score</strong> = Sum of all components, normalized to 0-100. Higher scores indicate more sustainable, maintainable dietary patterns.
@@ -585,7 +585,7 @@ export default function DietSustainabilityScoreCalculator() {
         <li>They're easily "broken," leading to guilt and abandonment</li>
         <li>They can cause nutritional deficiencies over time</li>
     </ul>
-    <p><b>Moderate restriction</b> with flexibility is more sustainable—you can still achieve goals while allowing occasional treats and social eating.</p>
+    <p><b>Moderate restriction</b> with flexibility is more sustainableâ€”you can still achieve goals while allowing occasional treats and social eating.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Dietary Variety</h3>
     <p><b>Variety</b> prevents boredom and ensures nutritional adequacy. Diets with limited food choices become monotonous and are more likely to be abandoned. Benefits of variety include:</p>
@@ -599,7 +599,7 @@ export default function DietSustainabilityScoreCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">3. Social Fit</h3>
     <p><b>Social fit</b> refers to how well a diet works in social situations. Diets that isolate you from social eating are harder to maintain because:</p>
     <ul>
-        <li>Eating is inherently social—many celebrations and connections center around food</li>
+        <li>Eating is inherently socialâ€”many celebrations and connections center around food</li>
         <li>Feeling excluded from social meals creates stress and resentment</li>
         <li>Constantly declining food offers can damage relationships</li>
         <li>Social support is crucial for long-term success</li>
@@ -650,7 +650,7 @@ export default function DietSustainabilityScoreCalculator() {
         <li>Preserves metabolic function</li>
         <li>Builds sustainable habits rather than temporary restrictions</li>
     </ul>
-    <p>Think of it as <b>80/20 or 90/10</b>—most of the time you follow your plan, but there's room for flexibility.</p>
+    <p>Think of it as <b>80/20 or 90/10</b>â€”most of the time you follow your plan, but there's room for flexibility.</p>
 
 <hr />
 
@@ -659,7 +659,7 @@ export default function DietSustainabilityScoreCalculator() {
     <p>Creating a sustainable diet requires a shift from short-term thinking to long-term lifestyle design. Here's how to build maintainable eating patterns:</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Start with Your Preferences</h3>
-    <p>Build your eating pattern around foods you actually enjoy. Sustainable diets include foods you like, prepared in ways you find satisfying. Don't force yourself to eat foods you hate—you won't maintain it.</p>
+    <p>Build your eating pattern around foods you actually enjoy. Sustainable diets include foods you like, prepared in ways you find satisfying. Don't force yourself to eat foods you hateâ€”you won't maintain it.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Focus on Addition, Not Just Subtraction</h3>
     <p>Instead of only thinking about what to eliminate, focus on what to add:</p>
@@ -704,7 +704,7 @@ export default function DietSustainabilityScoreCalculator() {
 
     {/* LONG-TERM MAINTENANCE */}
     <h2 id="long-term" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Maintaining Long-Term Adherence</h2>
-    <p>Sustainability isn't just about starting—it's about maintaining. Here are strategies for long-term success:</p>
+    <p>Sustainability isn't just about startingâ€”it's about maintaining. Here are strategies for long-term success:</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Expect and Plan for Setbacks</h3>
     <p>Setbacks are normal and expected. Plan for them:</p>
@@ -747,7 +747,7 @@ export default function DietSustainabilityScoreCalculator() {
 
     {/* CONCLUSION */}
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Diet sustainability is the foundation of long-term health and weight management success. By focusing on maintainable eating patterns rather than short-term restrictions, you create a lifestyle that supports lasting results. Remember: the best diet is one you can follow for life. Prioritize flexibility, variety, social fit, affordability, and enjoyment. Build eating patterns around your preferences, circumstances, and goals. Expect setbacks and adjust as needed. Most importantly, be patient and kind to yourself—sustainable change takes time, but it's the only change that lasts.</p>
+    <p>Diet sustainability is the foundation of long-term health and weight management success. By focusing on maintainable eating patterns rather than short-term restrictions, you create a lifestyle that supports lasting results. Remember: the best diet is one you can follow for life. Prioritize flexibility, variety, social fit, affordability, and enjoyment. Build eating patterns around your preferences, circumstances, and goals. Expect setbacks and adjust as needed. Most importantly, be patient and kind to yourselfâ€”sustainable change takes time, but it's the only change that lasts.</p>
 </section>
       <Card>
         <CardHeader>

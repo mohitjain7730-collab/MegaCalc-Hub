@@ -74,7 +74,7 @@ const faqs = [
   {
     question: 'What is usable protein?',
     answer:
-      'Usable protein = protein grams × (DIAAS score / 100). This represents the amount of protein that can actually be used by the body after accounting for digestibility and amino acid completeness.',
+      'Usable protein = protein grams Ã— (DIAAS score / 100). This represents the amount of protein that can actually be used by the body after accounting for digestibility and amino acid completeness.',
   },
   {
     question: 'How can I improve protein digestibility?',
@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/protein-digestibility-score-diaas-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/protein-digestibility-score-diaas-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Protein Digestibility Score (DIAAS) Calculator', item: baseUrl },
       ],
     },
@@ -408,7 +408,7 @@ export default function ProteinDigestibilityScoreDiaasCalculator() {
             <strong>DIAAS score</strong> = estimated from protein source (animal/dairy: ~100, legume: ~75, grain: ~55, nut: ~65) and cooking method adjustments (cooked: +5, processed: -5).
           </p>
           <p>
-            <strong>Usable protein</strong> = protein grams × (DIAAS score / 100). Represents protein actually usable by the body after accounting for digestibility.
+            <strong>Usable protein</strong> = protein grams Ã— (DIAAS score / 100). Represents protein actually usable by the body after accounting for digestibility.
           </p>
           <p>
             <strong>DIAAS ranges</strong>: Excellent: 100+ (animal, dairy), Good: 75-99 (legumes), Moderate: 50-74 (some plant proteins), Lower: &lt;50 (incomplete profiles). Scores can exceed 100.
@@ -509,7 +509,7 @@ export default function ProteinDigestibilityScoreDiaasCalculator() {
 
     {/* DIAAS: THE MODERN STANDARD FOR PROTEIN QUALITY */}
     <h2 id="definition" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">DIAAS: The Modern Standard for Protein Quality</h2>
-    <p>The **Digestible Indispensable Amino Acid Score (DIAAS)** is the authoritative method for determining protein quality, endorsed by the **Food and Agriculture Organization (FAO) of the United Nations**. DIAAS provides a clear, actionable score that quantifies the extent to which a food’s indispensable (essential) amino acids are digested, absorbed, and available to the body for protein synthesis.</p>
+    <p>The **Digestible Indispensable Amino Acid Score (DIAAS)** is the authoritative method for determining protein quality, endorsed by the **Food and Agriculture Organization (FAO) of the United Nations**. DIAAS provides a clear, actionable score that quantifies the extent to which a foodâ€™s indispensable (essential) amino acids are digested, absorbed, and available to the body for protein synthesis.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Defining Protein Quality</h3>
     <p>Protein quality is determined by two main factors:</p>
@@ -541,7 +541,7 @@ export default function ProteinDigestibilityScoreDiaasCalculator() {
     <p>DIAAS uses amino acid digestibility values measured at the end of the small intestine (**ileum**) to determine the true amount of protein absorbed. This process provides a more precise and physiologically relevant measure of availability than fecal analysis.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Limiting Amino Acid and the Final Score</h3>
-    <p>For each of the nine IAAs, a score is calculated. The final DIAAS score is determined by the **limiting amino acid**—the indispensable amino acid that has the lowest individual DIAAS value. This aligns with the principle that protein synthesis is limited by the least abundant required component.</p>
+    <p>For each of the nine IAAs, a score is calculated. The final DIAAS score is determined by the **limiting amino acid**â€”the indispensable amino acid that has the lowest individual DIAAS value. This aligns with the principle that protein synthesis is limited by the least abundant required component.</p>
     
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The High-Level Formula</h3>

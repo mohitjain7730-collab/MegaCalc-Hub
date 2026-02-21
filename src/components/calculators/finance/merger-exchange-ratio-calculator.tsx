@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/merger-exchange-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/finance/merger-exchange-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Merger Exchange Ratio Calculator', item: baseUrl },
       ],
     },
@@ -446,18 +446,18 @@ export default function MergerExchangeRatioCalculator() {
 
         <h2 id="ownership" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Ownership and Control After the Deal</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Target Ownership % = (Ratio × Target Shares) / (Acquirer Shares + Ratio × Target Shares)</strong></p>
+          <p className="font-mono text-lg"><strong>Target Ownership % = (Ratio Ã— Target Shares) / (Acquirer Shares + Ratio Ã— Target Shares)</strong></p>
         </div>
         <p>Run scenarios to see how the ratio shifts combined voting power, board seats, and governance. Slight ratio changes can flip majority control.</p>
 
         <h2 id="risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Risk Mitigations: Collars and Walk-Aways</h2>
-        <p>Collars bound the effective price if the acquirer’s stock moves. Fixed-share deals without collars transfer market risk to the target; fixed-value deals do the opposite. Walk-away clauses protect if prices move outside agreed bands.</p>
+        <p>Collars bound the effective price if the acquirerâ€™s stock moves. Fixed-share deals without collars transfer market risk to the target; fixed-value deals do the opposite. Walk-away clauses protect if prices move outside agreed bands.</p>
 
         <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation Checklist and Benchmarks</h2>
         <ul className="list-disc ml-6 space-y-2">
           <li>Benchmark against precedent transactions (sector, size, premium).</li>
           <li>Test EPS accretion/dilution and pro forma leverage.</li>
-          <li>Model sensitivity to acquirer price ±10–20% and to synergy delivery.</li>
+          <li>Model sensitivity to acquirer price Â±10â€“20% and to synergy delivery.</li>
           <li>Review fairness opinions and market reaction at announcement.</li>
         </ul>
 
@@ -471,7 +471,7 @@ export default function MergerExchangeRatioCalculator() {
         </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>The exchange ratio is the fulcrum of stock-for-stock M&A. Anchor it with market prices, test EPS neutrality, protect with collars when volatility is high, and validate against comps and accretion/dilution. Small tweaks materially shift value and control—model thoroughly before signing.</p>
+        <p>The exchange ratio is the fulcrum of stock-for-stock M&A. Anchor it with market prices, test EPS neutrality, protect with collars when volatility is high, and validate against comps and accretion/dilution. Small tweaks materially shift value and controlâ€”model thoroughly before signing.</p>
       </section>
 
       <Card>

@@ -55,12 +55,12 @@ const faqs = [
   {
     question: 'What is loss ratio?',
     answer:
-      'Loss ratio represents the percentage of earned premiums paid out as claims. Formula: Loss Ratio = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums × 100. Lower loss ratios indicate better claims performance.',
+      'Loss ratio represents the percentage of earned premiums paid out as claims. Formula: Loss Ratio = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums Ã— 100. Lower loss ratios indicate better claims performance.',
   },
   {
     question: 'What is expense ratio?',
     answer:
-      'Expense ratio indicates the percentage of earned premiums used to cover underwriting expenses, such as commissions and administrative costs. Formula: Expense Ratio = Underwriting Expenses / Earned Premiums × 100. Lower expense ratios indicate better operational efficiency.',
+      'Expense ratio indicates the percentage of earned premiums used to cover underwriting expenses, such as commissions and administrative costs. Formula: Expense Ratio = Underwriting Expenses / Earned Premiums Ã— 100. Lower expense ratios indicate better operational efficiency.',
   },
   {
     question: 'What is a good combined ratio?',
@@ -75,7 +75,7 @@ const faqs = [
   {
     question: 'How is underwriting profit calculated?',
     answer:
-      'Underwriting profit is calculated as: Underwriting Profit = Earned Premiums × (100% - Combined Ratio) / 100. For example, if earned premiums are $1,000,000 and combined ratio is 95%, underwriting profit is $50,000 (5% of premiums).',
+      'Underwriting profit is calculated as: Underwriting Profit = Earned Premiums Ã— (100% - Combined Ratio) / 100. For example, if earned premiums are $1,000,000 and combined ratio is 95%, underwriting profit is $50,000 (5% of premiums).',
   },
   {
     question: 'What affects combined ratio?',
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/combined-ratio-insurance-profitability-calculator';
+const baseUrl = 'https://mycalculating.com/finance/combined-ratio-insurance-profitability-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Combined Ratio (Insurance Profitability) Calculator', item: baseUrl },
       ],
     },
@@ -153,16 +153,16 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const underwritingExpenses = values.underwritingExpenses;
   const earnedPremiums = values.earnedPremiums;
 
-  // Loss Ratio = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums × 100
+  // Loss Ratio = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums Ã— 100
   const lossRatio = earnedPremiums > 0 ? ((incurredLosses + lossAdjustmentExpenses) / earnedPremiums) * 100 : 0;
 
-  // Expense Ratio = Underwriting Expenses / Earned Premiums × 100
+  // Expense Ratio = Underwriting Expenses / Earned Premiums Ã— 100
   const expenseRatio = earnedPremiums > 0 ? (underwritingExpenses / earnedPremiums) * 100 : 0;
 
   // Combined Ratio = Loss Ratio + Expense Ratio
   const combinedRatio = lossRatio + expenseRatio;
 
-  // Underwriting Profit = Earned Premiums × (100% - Combined Ratio) / 100
+  // Underwriting Profit = Earned Premiums Ã— (100% - Combined Ratio) / 100
   const underwritingProfit = earnedPremiums * ((100 - combinedRatio) / 100);
 
   // Underwriting Profit Margin = (100% - Combined Ratio)
@@ -396,16 +396,16 @@ export default function CombinedRatioInsuranceProfitabilityCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Loss Ratio</strong> = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums × 100. The percentage of earned premiums paid out as claims.
+            <strong>Loss Ratio</strong> = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums Ã— 100. The percentage of earned premiums paid out as claims.
           </p>
           <p>
-            <strong>Expense Ratio</strong> = Underwriting Expenses / Earned Premiums × 100. The percentage of earned premiums used to cover underwriting expenses (commissions, administrative costs, etc.).
+            <strong>Expense Ratio</strong> = Underwriting Expenses / Earned Premiums Ã— 100. The percentage of earned premiums used to cover underwriting expenses (commissions, administrative costs, etc.).
           </p>
           <p>
             <strong>Combined Ratio</strong> = Loss Ratio + Expense Ratio. The sum of loss ratio and expense ratio, representing total costs relative to earned premiums.
           </p>
           <p>
-            <strong>Underwriting Profit</strong> = Earned Premiums × (100% - Combined Ratio) / 100. The profit from underwriting operations when combined ratio is below 100%.
+            <strong>Underwriting Profit</strong> = Earned Premiums Ã— (100% - Combined Ratio) / 100. The profit from underwriting operations when combined ratio is below 100%.
           </p>
           <p>
             <strong>Underwriting Profit Margin</strong> = 100% - Combined Ratio. The profit margin as a percentage of earned premiums.
@@ -536,10 +536,10 @@ export default function CombinedRatioInsuranceProfitabilityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Component Calculations</h3>
     
     <h4 className="text-lg font-semibold text-foreground mt-4">Loss Ratio</h4>
-    <p>Loss Ratio = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums × 100</p>
+    <p>Loss Ratio = (Incurred Losses + Loss Adjustment Expenses) / Earned Premiums Ã— 100</p>
 
     <h4 className="text-lg font-semibold text-foreground mt-4">Expense Ratio</h4>
-    <p>Expense Ratio = Underwriting Expenses / Earned Premiums × 100</p>
+    <p>Expense Ratio = Underwriting Expenses / Earned Premiums Ã— 100</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>Suppose an insurance company has:</p>
@@ -551,8 +551,8 @@ export default function CombinedRatioInsuranceProfitabilityCalculator() {
     </ul>
     <p>Calculations:</p>
     <ul>
-        <li>Loss Ratio = ($500,000 + $50,000) / $1,000,000 × 100 = <b>55%</b></li>
-        <li>Expense Ratio = $200,000 / $1,000,000 × 100 = <b>20%</b></li>
+        <li>Loss Ratio = ($500,000 + $50,000) / $1,000,000 Ã— 100 = <b>55%</b></li>
+        <li>Expense Ratio = $200,000 / $1,000,000 Ã— 100 = <b>20%</b></li>
         <li>Combined Ratio = 55% + 20% = <b>75%</b></li>
     </ul>
     <p>The combined ratio of 75% indicates that the insurer is spending 75 cents of every premium dollar on claims and expenses, leaving 25 cents as underwriting profit.</p>
@@ -635,12 +635,12 @@ export default function CombinedRatioInsuranceProfitabilityCalculator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Underwriting Profit Calculation</h3>
     <p>Underwriting profit is calculated as:</p>
-    <p className="text-lg font-semibold text-foreground">Underwriting Profit = Earned Premiums × (100% - Combined Ratio) / 100</p>
+    <p className="text-lg font-semibold text-foreground">Underwriting Profit = Earned Premiums Ã— (100% - Combined Ratio) / 100</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example</h3>
     <p>If earned premiums are $1,000,000 and combined ratio is 95%:</p>
     <ul>
-        <li>Underwriting Profit = $1,000,000 × (100% - 95%) / 100 = $50,000</li>
+        <li>Underwriting Profit = $1,000,000 Ã— (100% - 95%) / 100 = $50,000</li>
         <li>Profit Margin = 5% of earned premiums</li>
     </ul>
 

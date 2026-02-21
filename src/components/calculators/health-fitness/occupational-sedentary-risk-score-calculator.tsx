@@ -36,17 +36,17 @@ type ResultPayload = {
 
 const steps = [
   'Estimate total seated hours during a typical workday, including commute time.',
-  'Count how many purposeful standing or walking breaks you take (≥2 minutes).',
+  'Count how many purposeful standing or walking breaks you take (â‰¥2 minutes).',
   'Pull your current step average from a wearable or phone health app.',
   'Track structured workouts per week (strength, cardio, yoga).',
-  'Rate your workstation ergonomics—chair support, monitor height, alternate desk, etc.',
+  'Rate your workstation ergonomicsâ€”chair support, monitor height, alternate desk, etc.',
   'Run the calculator and pick one ergonomic improvement plus one movement habit to implement this week.',
 ];
 
 const faqs = [
   {
     question: 'What does the Occupational Sedentary Risk Score represent?',
-    answer: 'It translates your sitting hours, movement breaks, steps, exercise, and ergonomic quality into a 0–100 score that reflects cardiometabolic and musculoskeletal risk.',
+    answer: 'It translates your sitting hours, movement breaks, steps, exercise, and ergonomic quality into a 0â€“100 score that reflects cardiometabolic and musculoskeletal risk.',
   },
   {
     question: 'How many sitting hours are too many?',
@@ -54,7 +54,7 @@ const faqs = [
   },
   {
     question: 'Do brief walk breaks really help?',
-    answer: 'Yes—standing or walking for 2–3 minutes every 30–45 minutes improves circulation, glycemic control, and posture.',
+    answer: 'Yesâ€”standing or walking for 2â€“3 minutes every 30â€“45 minutes improves circulation, glycemic control, and posture.',
   },
   {
     question: 'How should I score ergonomics?',
@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     question: 'Can this apply to hybrid workers?',
-    answer: 'Absolutely—average your time between office and home setups to keep the score realistic.',
+    answer: 'Absolutelyâ€”average your time between office and home setups to keep the score realistic.',
   },
   {
     question: 'What about gig workers or drivers?',
@@ -74,15 +74,15 @@ const faqs = [
   },
   {
     question: 'How fast can I reduce the score?',
-    answer: 'You’ll see improvement within a week when you add breaks or workouts. Ergonomic upgrades offer instant relief.',
+    answer: 'Youâ€™ll see improvement within a week when you add breaks or workouts. Ergonomic upgrades offer instant relief.',
   },
   {
     question: 'Should I invest in a standing desk?',
-    answer: 'Standing desks help when paired with walking breaks and proper posture. It’s one of many levers; pick what fits your budget.',
+    answer: 'Standing desks help when paired with walking breaks and proper posture. Itâ€™s one of many levers; pick what fits your budget.',
   },
   {
     question: 'How often should I recalc?',
-    answer: 'Recalculate whenever your workload, commute, or workout schedule changes—monthly at minimum.',
+    answer: 'Recalculate whenever your workload, commute, or workout schedule changesâ€”monthly at minimum.',
   },
 ];
 
@@ -98,7 +98,7 @@ const relatedCalculators = [
     description: 'Proper hydration reduces joint stiffness during sedentary days.',
   },
   {
-    name: 'VO₂ Reserve Calculator',
+    name: 'VOâ‚‚ Reserve Calculator',
     slug: 'vo2-reserve-calculator',
     description: 'Set smarter cardio targets to complement desk life.',
   },
@@ -109,7 +109,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/occupational-sedentary-risk-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/occupational-sedentary-risk-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -118,7 +118,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Occupational Sedentary Risk Score Calculator', item: baseUrl },
       ],
     },
@@ -193,12 +193,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (riskScore >= 45) {
     classification = 'caution';
     interpretation =
-      'Your day includes quite a bit of sitting. Small changes—like more frequent short breaks or a few extra steps—may help your body feel better across the week.';
+      'Your day includes quite a bit of sitting. Small changesâ€”like more frequent short breaks or a few extra stepsâ€”may help your body feel better across the week.';
   }
   if (riskScore >= 70) {
     classification = 'high-risk';
     interpretation =
-      'These numbers point to a very sit‑heavy routine. You might find it helpful to experiment with more standing or walking breaks and, when possible, a more supportive work setup.';
+      'These numbers point to a very sitâ€‘heavy routine. You might find it helpful to experiment with more standing or walking breaks and, when possible, a more supportive work setup.';
   }
 
   const recommendations = [
@@ -207,7 +207,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'On days that involve more sitting, a short strength or mobility session can help your body feel more supported.',
   ];
   if (classification !== 'balanced') {
-    recommendations.push('Explore simple ergonomic tweaks—like lumbar support or monitor height—that your space and budget allow.');
+    recommendations.push('Explore simple ergonomic tweaksâ€”like lumbar support or monitor heightâ€”that your space and budget allow.');
   }
   if (classification === 'high-risk') {
     recommendations.push('You might aim for a few extra short walks spread across the day, especially earlier, to see how your energy responds.');
@@ -444,16 +444,16 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Risk Score</strong> = clamp(Sitting Hours × 6 − Standing Breaks × 1.5 − Daily Steps ÷ 800 − Workouts Per Week ×
-            3 − Ergonomic Factor + 30, 0, 100). Higher sitting hours increase risk; breaks, steps, workouts, and ergonomic
+            <strong>Risk Score</strong> = clamp(Sitting Hours Ã— 6 âˆ’ Standing Breaks Ã— 1.5 âˆ’ Daily Steps Ã· 800 âˆ’ Workouts Per Week Ã—
+            3 âˆ’ Ergonomic Factor + 30, 0, 100). Higher sitting hours increase risk; breaks, steps, workouts, and ergonomic
             improvements reduce it.
           </p>
           <p>
-            <strong>Movement Minutes</strong> = Workouts Per Week × 30 + Standing Breaks × 2. This estimates total daily movement
+            <strong>Movement Minutes</strong> = Workouts Per Week Ã— 30 + Standing Breaks Ã— 2. This estimates total daily movement
             time from structured exercise and breaks.
           </p>
           <p>
-            <strong>Step Gap</strong> = clamp(10,000 − Actual Steps, −5,000, 15,000). Negative values indicate exceeding the 10,000
+            <strong>Step Gap</strong> = clamp(10,000 âˆ’ Actual Steps, âˆ’5,000, 15,000). Negative values indicate exceeding the 10,000
             step target; positive values show steps needed to reach the target.
           </p>
           <p>
@@ -488,7 +488,7 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {(((form.getValues().standingBreaks ?? 0) / Math.max(form.getValues().sittingHours ?? 1, 1)) * 60).toFixed(1)} min between breaks
                 </p>
-                <p className="text-xs text-muted-foreground">Aim for ≤45 min.</p>
+                <p className="text-xs text-muted-foreground">Aim for â‰¤45 min.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Workouts buffer</p>
@@ -502,7 +502,7 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {ergonomicFactor[form.getValues().ergonomicScore ?? 'average']} pts
                 </p>
-                <p className="text-xs text-muted-foreground">Move toward “optimized” for max relief.</p>
+                <p className="text-xs text-muted-foreground">Move toward â€œoptimizedâ€ for max relief.</p>
               </div>
             </div>
           ) : (
@@ -808,7 +808,7 @@ export default function OccupationalSedentaryRiskScoreCalculator() {
           Reducing occupational sedentary risk is essential for maintaining physical health, preventing musculoskeletal problems,
           and supporting overall well-being in desk-based work environments. By understanding how prolonged sitting affects health,
           implementing movement breaks, optimizing ergonomic setups, and incorporating regular exercise, you can mitigate sedentary
-          risks while maintaining productivity. Remember that small, consistent changes accumulate over time—regular breaks, proper
+          risks while maintaining productivity. Remember that small, consistent changes accumulate over timeâ€”regular breaks, proper
           ergonomics, and increased daily movement create significant health benefits. Start with one strategy, track your progress,
           and gradually add more movement opportunities. If you experience persistent pain or health concerns related to sedentary
           behavior, consider consulting a healthcare provider or ergonomic specialist who can provide personalized guidance. This

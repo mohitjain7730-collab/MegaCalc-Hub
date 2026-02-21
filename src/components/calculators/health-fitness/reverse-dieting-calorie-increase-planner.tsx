@@ -110,7 +110,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/reverse-dieting-calorie-increase-planner';
+const baseUrl = 'https://mycalculating.com/health-fitness/reverse-dieting-calorie-increase-planner';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -119,7 +119,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Reverse Dieting Calorie Increase Planner', item: baseUrl },
       ],
     },
@@ -448,7 +448,7 @@ export default function ReverseDietingCalorieIncreasePlanner() {
             <strong>Weeks needed</strong> = total increase / weekly increase. This calculates how many weeks it will take to reach target calories at the specified weekly increase rate.
           </p>
           <p>
-            <strong>Weekly calorie plan</strong> = current calories + (weekly increase × week number). Each week, calories increase by the specified amount until reaching target.
+            <strong>Weekly calorie plan</strong> = current calories + (weekly increase Ã— week number). Each week, calories increase by the specified amount until reaching target.
           </p>
           <p>Reverse dieting gradually increases calories to restore metabolic rate after dieting. Typical increases are 50-150 calories per week, allowing metabolism to adapt without excessive fat gain.</p>
         </CardContent>

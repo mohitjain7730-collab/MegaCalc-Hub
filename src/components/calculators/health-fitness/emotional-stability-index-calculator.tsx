@@ -58,7 +58,7 @@ const faqs = [
   {
     question: 'Is emotional stability the same as suppressing emotions?',
     answer:
-      'No. Emotional stability involves healthy emotional regulation—acknowledging, understanding, and managing emotions appropriately. Suppression is unhealthy and different from stability.',
+      'No. Emotional stability involves healthy emotional regulationâ€”acknowledging, understanding, and managing emotions appropriately. Suppression is unhealthy and different from stability.',
   },
   {
     question: 'Can emotional stability be improved?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/emotional-stability-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/emotional-stability-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Emotional Stability Wellness Index Calculator', item: baseUrl },
       ],
     },
@@ -419,25 +419,25 @@ export default function EmotionalStabilityIndexCalculator() {
             <strong>Stability Index</strong> = Fluctuation Score + Reactivity Score + Resilience Score + Regulation Score + Recovery Score + Balance Score
           </p>
           <p>
-            <strong>Fluctuation Score</strong> = ((10 - Mood Fluctuation) / 10) × 20
+            <strong>Fluctuation Score</strong> = ((10 - Mood Fluctuation) / 10) Ã— 20
           </p>
           <p>
-            <strong>Reactivity Score</strong> = ((10 - Emotional Reactivity) / 10) × 20
+            <strong>Reactivity Score</strong> = ((10 - Emotional Reactivity) / 10) Ã— 20
           </p>
           <p>
-            <strong>Resilience Score</strong> = (Stress Resilience / 10) × 20
+            <strong>Resilience Score</strong> = (Stress Resilience / 10) Ã— 20
           </p>
           <p>
-            <strong>Regulation Score</strong> = (Emotional Regulation / 10) × 20
+            <strong>Regulation Score</strong> = (Emotional Regulation / 10) Ã— 20
           </p>
           <p>
-            <strong>Recovery Score</strong> = (Recovery Speed / 10) × 10
+            <strong>Recovery Score</strong> = (Recovery Speed / 10) Ã— 10
           </p>
           <p>
-            <strong>Balance Score</strong> = (Emotional Balance / 10) × 10
+            <strong>Balance Score</strong> = (Emotional Balance / 10) Ã— 10
           </p>
           <p>
-            <strong>Resilience Score</strong> = ((Stress Resilience + Emotional Regulation + Recovery Speed) / 3) × 10
+            <strong>Resilience Score</strong> = ((Stress Resilience + Emotional Regulation + Recovery Speed) / 3) Ã— 10
           </p>
           <p>Index ranges from 0-100, with higher scores indicating greater emotional stability.</p>
         </CardContent>

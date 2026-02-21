@@ -32,16 +32,16 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Estimate your average weekly work hours over the last 1–3 months.',
-  'Rate your perceived work stress on a 1–10 scale.',
+  'Estimate your average weekly work hours over the last 1â€“3 months.',
+  'Rate your perceived work stress on a 1â€“10 scale.',
   'Calculate approximate sleep debt by comparing actual vs ideal sleep over the past week.',
   'Enter how many full days off (with minimal work) you have planned in the next month.',
-  'Rate how supported you feel at work and outside (1–10), then review recovery time estimates.',
+  'Rate how supported you feel at work and outside (1â€“10), then review recovery time estimates.',
 ];
 
 const faqs = [
   {
-    question: 'What does “burnout” mean in this tool?',
+    question: 'What does â€œburnoutâ€ mean in this tool?',
     answer:
       'Here, burnout refers to sustained emotional exhaustion, cynicism, and reduced sense of effectiveness related to work demands.',
   },
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/work-burnout-recovery-time-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/work-burnout-recovery-time-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Work Burnout Recovery Time Wellness Estimator', item: baseUrl },
       ],
     },
@@ -206,26 +206,26 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'Consider protecting at least one small off‑duty block a week where work messages can wait, if that feels realistic.',
+    'Consider protecting at least one small offâ€‘duty block a week where work messages can wait, if that feels realistic.',
     'Short breaks for a drink of water, light movement, or a bit of daylight can make long stretches of focus feel gentler.',
-    'You might gently sort tasks into “essential for now” and “can wait” to give yourself a clearer sense of what truly matters today.',
+    'You might gently sort tasks into â€œessential for nowâ€ and â€œcan waitâ€ to give yourself a clearer sense of what truly matters today.',
   ];
 
   if (burnoutLevel !== 'low') {
     recommendations.push('Where it feels safe, you could explore options like shifting timelines, sharing tasks, or simplifying commitments.');
   }
   if (values.sleepDebtHours > 10) {
-    recommendations.push('If you notice you are often short on sleep, small tweaks to wind‑down time or bedtime might help your body and mind reset.');
+    recommendations.push('If you notice you are often short on sleep, small tweaks to windâ€‘down time or bedtime might help your body and mind reset.');
   }
 
   const plan = [
-    { label: 'Next 72 hours', detail: 'If possible, choose one small off‑duty window and one gentle check‑in about workload with someone you trust.' },
+    { label: 'Next 72 hours', detail: 'If possible, choose one small offâ€‘duty window and one gentle checkâ€‘in about workload with someone you trust.' },
     {
       label: 'Next 2 weeks',
       detail: 'Experiment with one or two small boundary changes (like a simple stop time) and notice how they feel over a couple of weeks.',
     },
     {
-      label: 'Next 1–3 months',
+      label: 'Next 1â€“3 months',
       detail: 'Over the next few months, you can watch how busy periods affect you and adjust your pacing and workload where you have influence.',
     },
   ];
@@ -295,7 +295,7 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
                   name="stressScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Work stress (1–10)</FormLabel>
+                      <FormLabel>Work stress (1â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -352,7 +352,7 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
                   name="supportScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Support level (1–10)</FormLabel>
+                      <FormLabel>Support level (1â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -448,11 +448,11 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Recovery time</strong> ≈ clamp\((weeklyHours − 35) × 0.8 + stress × 2.5 + sleepDebt × 0.8 − daysOff × 1.2 − (support −
-            5) × 1.5 + 7\) into a 3–60 day window.
+            <strong>Recovery time</strong> â‰ˆ clamp\((weeklyHours âˆ’ 35) Ã— 0.8 + stress Ã— 2.5 + sleepDebt Ã— 0.8 âˆ’ daysOff Ã— 1.2 âˆ’ (support âˆ’
+            5) Ã— 1.5 + 7\) into a 3â€“60 day window.
           </p>
           <p>Higher workload, stress, and sleep debt extend the estimated window, while more days off and stronger support shorten it.</p>
-          <p>This is an illustrative estimation framework, not a promise—use it for planning and negotiation, not as medical or psychological advice.</p>
+          <p>This is an illustrative estimation framework, not a promiseâ€”use it for planning and negotiation, not as medical or psychological advice.</p>
         </CardContent>
       </Card>
 
@@ -551,7 +551,7 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
         </h1>
         <p className="text-lg italic text-gray-700">
           This guide explains how to use a simple estimator to turn your current work, sleep, and support picture into a
-          rough recovery window—so you can advocate for kinder pacing without treating the numbers as a diagnosis.
+          rough recovery windowâ€”so you can advocate for kinder pacing without treating the numbers as a diagnosis.
         </p>
 
         {/* TABLE OF CONTENTS */}
@@ -590,13 +590,13 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
           Burnout, Overwork, and Why Language Matters
         </h2>
         <p>
-          People often use “burnout” to describe a range of experiences—from feeling very tired at the end of a busy
+          People often use â€œburnoutâ€ to describe a range of experiencesâ€”from feeling very tired at the end of a busy
           sprint to deep, long-lasting exhaustion and detachment. This estimator does not try to label where you fall on
           that spectrum. Instead, it focuses on workload and recovery space as levers you may be able to influence.
         </p>
         <p>
           Choosing language that feels accurate and kind to you is more important than matching any particular
-          definition here. The tool’s role is to support reflection and planning, not to assign a diagnosis.
+          definition here. The toolâ€™s role is to support reflection and planning, not to assign a diagnosis.
         </p>
 
         <h2 id="inputs-explained" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
@@ -608,19 +608,19 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>
-            <strong>Weekly hours</strong> – a rough sense of how much time work occupies.
+            <strong>Weekly hours</strong> â€“ a rough sense of how much time work occupies.
           </li>
           <li>
-            <strong>Stress rating</strong> – your own 1–10 impression of how pressured things feel.
+            <strong>Stress rating</strong> â€“ your own 1â€“10 impression of how pressured things feel.
           </li>
           <li>
-            <strong>Sleep debt</strong> – the gap between how much rest you aim for and what you actually got.
+            <strong>Sleep debt</strong> â€“ the gap between how much rest you aim for and what you actually got.
           </li>
           <li>
-            <strong>Days off planned</strong> – genuine off-duty days you expect in the next month.
+            <strong>Days off planned</strong> â€“ genuine off-duty days you expect in the next month.
           </li>
           <li>
-            <strong>Support score</strong> – how emotionally and practically backed you feel at work and outside of it.
+            <strong>Support score</strong> â€“ how emotionally and practically backed you feel at work and outside of it.
           </li>
         </ul>
         <p>
@@ -632,13 +632,13 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
           Reading the Recovery Window Without Self-Blame
         </h2>
         <p>
-          When the tool suggests a longer recovery window, it is reflecting how stretched the inputs appear—not how
+          When the tool suggests a longer recovery window, it is reflecting how stretched the inputs appearâ€”not how
           strong or resilient you are as a person. In many cases, systems, expectations, and constraints shape those
           inputs just as much as personal choices do.
         </p>
         <p>
-          You can use the results to ask: “Given this estimate, what is realistically possible in the next few weeks?
-          Are there tiny changes that could move things in a kinder direction?”
+          You can use the results to ask: â€œGiven this estimate, what is realistically possible in the next few weeks?
+          Are there tiny changes that could move things in a kinder direction?â€
         </p>
 
         <h2 id="using-estimates" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
@@ -646,7 +646,7 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
         </h2>
         <p>
           A concrete recovery-time estimate can sometimes make invisible strain easier to discuss. You might share a
-          summary—without details you prefer to keep private—as part of conversations about timelines, staffing, or
+          summaryâ€”without details you prefer to keep privateâ€”as part of conversations about timelines, staffing, or
           boundaries with managers and colleagues.
         </p>
         <p>
@@ -695,7 +695,7 @@ export default function WorkBurnoutRecoveryTimeEstimator() {
             view of how much recovery space you might appreciate.
           </p>
           <p>
-            The estimates are starting points for pacing and negotiation—not fixed predictions—so you can combine them
+            The estimates are starting points for pacing and negotiationâ€”not fixed predictionsâ€”so you can combine them
             with your own judgment, context, and professional advice where needed.
           </p>
         </CardContent>

@@ -45,22 +45,22 @@ const faqs = [
   {
     question: 'What is sweat rate and how do I estimate it?',
     answer:
-      'Sweat rate is liters lost per hour. Weigh yourself before and after exercise (nude, dry towel) to calculate: (pre-weight − post-weight + fluid consumed) / hours. Typical range: 0.5–2.5 L/hour.',
+      'Sweat rate is liters lost per hour. Weigh yourself before and after exercise (nude, dry towel) to calculate: (pre-weight âˆ’ post-weight + fluid consumed) / hours. Typical range: 0.5â€“2.5 L/hour.',
   },
   {
     question: 'How much should I drink during exercise?',
     answer:
-      'Aim to replace 50–75% of fluid loss during activity. For sessions under 60 minutes, 200–400 ml every 15–20 minutes is a good starting point.',
+      'Aim to replace 50â€“75% of fluid loss during activity. For sessions under 60 minutes, 200â€“400 ml every 15â€“20 minutes is a good starting point.',
   },
   {
     question: 'What if I feel thirsty after a workout?',
     answer:
-      'Thirst indicates dehydration. Drink 150% of fluid loss over 2–4 hours post-workout to account for ongoing losses.',
+      'Thirst indicates dehydration. Drink 150% of fluid loss over 2â€“4 hours post-workout to account for ongoing losses.',
   },
   {
     question: 'Does electrolyte replacement matter?',
     answer:
-      'Yes, especially for sessions over 60 minutes or in heat. Include sodium (500–700 mg/L) and some potassium/magnesium.',
+      'Yes, especially for sessions over 60 minutes or in heat. Include sodium (500â€“700 mg/L) and some potassium/magnesium.',
   },
   {
     question: 'Can I overhydrate?',
@@ -75,12 +75,12 @@ const faqs = [
   {
     question: 'Does caffeine affect hydration needs?',
     answer:
-      'Moderate caffeine (1–2 cups) has minimal diuretic effect during exercise. Excessive caffeine can increase fluid needs slightly.',
+      'Moderate caffeine (1â€“2 cups) has minimal diuretic effect during exercise. Excessive caffeine can increase fluid needs slightly.',
   },
   {
     question: 'Should I drink before bed after evening workouts?',
     answer:
-      'Yes, but finish most hydration 1–2 hours before sleep to avoid disrupting rest. Sip small amounts if still thirsty.',
+      'Yes, but finish most hydration 1â€“2 hours before sleep to avoid disrupting rest. Sip small amounts if still thirsty.',
   },
   {
     question: 'What about hydration for multiple daily sessions?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/hydration-recovery-after-workout-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/hydration-recovery-after-workout-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Hydration Recovery After Workout Calculator', item: baseUrl },
       ],
     },
@@ -179,8 +179,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'Immediate (0–30 min)', detail: 'Have a modest drink of water or a simple electrolyte beverage after finishing, especially if the session felt demanding.' },
-    { label: 'Next 2–4 hours', detail: 'Keep sipping fluids at a relaxed pace, paying attention to how your body feels rather than chasing an exact number.' },
+    { label: 'Immediate (0â€“30 min)', detail: 'Have a modest drink of water or a simple electrolyte beverage after finishing, especially if the session felt demanding.' },
+    { label: 'Next 2â€“4 hours', detail: 'Keep sipping fluids at a relaxed pace, paying attention to how your body feels rather than chasing an exact number.' },
     { label: 'Ongoing', detail: 'Use everyday cues like thirst and urine color to tune your usual hydration pattern around workouts.' },
   ];
 
@@ -370,10 +370,10 @@ export default function HydrationRecoveryAfterWorkoutCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Fluid loss</strong> = sweatRate (L/hour) × workoutDuration (hours) × 1000 (ml).</p>
-          <p><strong>Hydration gap</strong> = fluidLoss − (preWorkoutHydration + postWorkoutHydration), clamped to -500 to 2000 ml.</p>
+          <p><strong>Fluid loss</strong> = sweatRate (L/hour) Ã— workoutDuration (hours) Ã— 1000 (ml).</p>
+          <p><strong>Hydration gap</strong> = fluidLoss âˆ’ (preWorkoutHydration + postWorkoutHydration), clamped to -500 to 2000 ml.</p>
           <p><strong>Recovery time</strong> = hydrationGap / 200 (ml/hour absorption rate), clamped to 0-8 hours.</p>
-          <p>Aim to replace 150% of fluid loss over 2–4 hours post-workout to account for ongoing losses.</p>
+          <p>Aim to replace 150% of fluid loss over 2â€“4 hours post-workout to account for ongoing losses.</p>
         </CardContent>
       </Card>
 
@@ -448,7 +448,7 @@ export default function HydrationRecoveryAfterWorkoutCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Optimal hydration recovery after exercise requires replacing 150% of fluid loss over 2–4 hours, including electrolytes for longer sessions.</p>
+          <p>Optimal hydration recovery after exercise requires replacing 150% of fluid loss over 2â€“4 hours, including electrolytes for longer sessions.</p>
           <p>Use this calculator to track fluid losses, identify hydration gaps, and plan rehydration strategies for better recovery.</p>
         </CardContent>
       </Card>

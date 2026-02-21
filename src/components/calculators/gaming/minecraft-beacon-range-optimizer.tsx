@@ -40,7 +40,7 @@ const faqs = [
   {
     question: 'How do I calculate area coverage?',
     answer:
-      'Area Coverage = π × (Range)². This calculates the circular area covered by beacon effects. For example, 50 block range = 7,854 blocks², 100 block range = 31,416 blocks², 150 block range = 70,686 blocks². Range increases dramatically increase coverage area (area scales with range squared).',
+      'Area Coverage = Ï€ Ã— (Range)Â². This calculates the circular area covered by beacon effects. For example, 50 block range = 7,854 blocksÂ², 100 block range = 31,416 blocksÂ², 150 block range = 70,686 blocksÂ². Range increases dramatically increase coverage area (area scales with range squared).',
   },
   {
     question: 'What is the best pyramid level for beacons?',
@@ -91,7 +91,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Beacon Range Optimizer', item: baseUrl },
       ],
     },
@@ -197,7 +197,7 @@ export default function MinecraftBeaconRangeOptimizer() {
 
         <p>Base beacon range is 50 blocks in all directions without any pyramid. This provides basic coverage but may be insufficient for large bases. Building pyramids increases range dramatically: Level 1 pyramid = 75 blocks (1.5x), Level 2 = 100 blocks (2x), Level 3 = 125 blocks (2.5x), Level 4 = 150 blocks (3x maximum).</p>
 
-        <p>Range directly affects coverage area. Since coverage is circular (π × r²), range increases dramatically increase coverage area. For example, doubling range quadruples coverage area. Understanding this relationship helps players plan beacon setups for optimal coverage.</p>
+        <p>Range directly affects coverage area. Since coverage is circular (Ï€ Ã— rÂ²), range increases dramatically increase coverage area. For example, doubling range quadruples coverage area. Understanding this relationship helps players plan beacon setups for optimal coverage.</p>
 
         <p>Pyramid level also affects effect count. Level 1-2 pyramids allow 1 effect, Level 3-4 pyramids allow 2 effects. Multiple effects enable combining benefits like Speed + Haste or Regeneration + Resistance. Higher pyramid levels provide both more range and more effects.</p>
 
@@ -212,13 +212,13 @@ export default function MinecraftBeaconRangeOptimizer() {
 
         <p>Level 0 (No Pyramid): 50 blocks range (1x), 1 effect. No pyramid provides base range only. Suitable for small areas or temporary setups. Building even a small pyramid significantly increases range.</p>
 
-        <p>Level 1 Pyramid: 75 blocks range (1.5x), 1 effect, 9 blocks required (3×3). Small pyramid provides moderate range increase. Good starting point for beacon setups. Relatively low resource cost.</p>
+        <p>Level 1 Pyramid: 75 blocks range (1.5x), 1 effect, 9 blocks required (3Ã—3). Small pyramid provides moderate range increase. Good starting point for beacon setups. Relatively low resource cost.</p>
 
-        <p>Level 2 Pyramid: 100 blocks range (2x), 1 effect, 34 blocks required (5×5 + 3×3). Medium pyramid doubles base range. Provides good coverage for medium-sized bases. Moderate resource cost.</p>
+        <p>Level 2 Pyramid: 100 blocks range (2x), 1 effect, 34 blocks required (5Ã—5 + 3Ã—3). Medium pyramid doubles base range. Provides good coverage for medium-sized bases. Moderate resource cost.</p>
 
-        <p>Level 3 Pyramid: 125 blocks range (2.5x), 2 effects, 83 blocks required (7×7 + 5×5 + 3×3). Large pyramid provides excellent range and enables 2 effects. Great for large bases. Higher resource cost but enables effect combinations.</p>
+        <p>Level 3 Pyramid: 125 blocks range (2.5x), 2 effects, 83 blocks required (7Ã—7 + 5Ã—5 + 3Ã—3). Large pyramid provides excellent range and enables 2 effects. Great for large bases. Higher resource cost but enables effect combinations.</p>
 
-        <p>Level 4 Pyramid: 150 blocks range (3x), 2 effects, 164 blocks required (9×9 + 7×7 + 5×5 + 3×3). Maximum pyramid provides maximum range and 2 effects. Best for very large bases or maximum coverage. Highest resource cost but maximum benefits.</p>
+        <p>Level 4 Pyramid: 150 blocks range (3x), 2 effects, 164 blocks required (9Ã—9 + 7Ã—7 + 5Ã—5 + 3Ã—3). Maximum pyramid provides maximum range and 2 effects. Best for very large bases or maximum coverage. Highest resource cost but maximum benefits.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Pyramid Level Selection</h3>
         <p>Select pyramid level based on: coverage needs (larger areas need higher levels), resource availability (higher levels require more blocks), effect needs (Level 3+ for 2 effects), and base size (larger bases benefit from higher levels). Balance needs with resource costs for optimal selection.</p>
@@ -246,9 +246,9 @@ export default function MinecraftBeaconRangeOptimizer() {
 
         <p>Coverage area calculation determines how much area beacon effects cover. Understanding coverage helps players plan beacon placement and optimize coverage for bases.</p>
 
-        <p>Coverage formula: Area = π × (Range)². This calculates the circular area covered by beacon effects. Range increases dramatically increase coverage area because area scales with range squared. For example, doubling range quadruples coverage area.</p>
+        <p>Coverage formula: Area = Ï€ Ã— (Range)Â². This calculates the circular area covered by beacon effects. Range increases dramatically increase coverage area because area scales with range squared. For example, doubling range quadruples coverage area.</p>
 
-        <p>Coverage examples: 50 blocks range = 7,854 blocks², 75 blocks range = 17,671 blocks², 100 blocks range = 31,416 blocks², 125 blocks range = 49,087 blocks², 150 blocks range = 70,686 blocks². Higher ranges provide significantly larger coverage areas.</p>
+        <p>Coverage examples: 50 blocks range = 7,854 blocksÂ², 75 blocks range = 17,671 blocksÂ², 100 blocks range = 31,416 blocksÂ², 125 blocks range = 49,087 blocksÂ², 150 blocks range = 70,686 blocksÂ². Higher ranges provide significantly larger coverage areas.</p>
 
         <p>Coverage planning: Calculate coverage area for your base size, determine how many beacons are needed for full coverage, plan beacon placement for optimal coverage overlap, and consider coverage gaps when placing beacons. Coverage planning ensures effective beacon setups.</p>
 
@@ -344,8 +344,8 @@ export default function MinecraftBeaconRangeOptimizer() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool optimizes Minecraft beacon range and effect coverage based on pyramid level (0-4), beacon level (1-4), effect count (1-2), and optional base range (defaults to 50 blocks).</p>
-          <p>Outputs include effective range (base range × pyramid multiplier: Level 0 = 50, Level 1 = 75, Level 2 = 100, Level 3 = 125, Level 4 = 150 blocks), area coverage (π × range² in blocks²), blocks in range (approximate), pyramid blocks required (Level 1 = 9, Level 2 = 34, Level 3 = 83, Level 4 = 164), range multiplier (1x to 3x), status assessment (limited/moderate/good/excellent), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use range calculations: Base Range = 50 blocks, Range Multiplier = Pyramid Level Multiplier (Level 0 = 1x, Level 1 = 1.5x, Level 2 = 2x, Level 3 = 2.5x, Level 4 = 3x), Effective Range = Base Range × Multiplier, Area Coverage = π × (Range)². The guide covers pyramid levels, beacon effects, coverage calculation, optimization strategies, placement, and multiple beacons. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft beacon range optimization instantly.</p>
+          <p>Outputs include effective range (base range Ã— pyramid multiplier: Level 0 = 50, Level 1 = 75, Level 2 = 100, Level 3 = 125, Level 4 = 150 blocks), area coverage (Ï€ Ã— rangeÂ² in blocksÂ²), blocks in range (approximate), pyramid blocks required (Level 1 = 9, Level 2 = 34, Level 3 = 83, Level 4 = 164), range multiplier (1x to 3x), status assessment (limited/moderate/good/excellent), interpretation, recommendations, and action plan.</p>
+          <p>Formulas use range calculations: Base Range = 50 blocks, Range Multiplier = Pyramid Level Multiplier (Level 0 = 1x, Level 1 = 1.5x, Level 2 = 2x, Level 3 = 2.5x, Level 4 = 3x), Effective Range = Base Range Ã— Multiplier, Area Coverage = Ï€ Ã— (Range)Â². The guide covers pyramid levels, beacon effects, coverage calculation, optimization strategies, placement, and multiple beacons. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft beacon range optimization instantly.</p>
         </CardContent>
       </Card>
     </div>

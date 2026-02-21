@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/screen-to-sleep-time-impact-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/screen-to-sleep-time-impact-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Screen-to-Sleep Time Impact Wellness Estimator', item: baseUrl },
       ],
     },
@@ -403,19 +403,19 @@ export default function ScreenToSleepTimeImpactEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Time gap factor</strong> = 35 if Last Screen Time ≥ 2 hours, 25 if ≥ 1 hour, 15 if ≥ 0.5 hours, else 5. Contributes 5-35 points. More time between screen use and sleep reduces impact. 1-2 hours is optimal.
+            <strong>Time gap factor</strong> = 35 if Last Screen Time â‰¥ 2 hours, 25 if â‰¥ 1 hour, 15 if â‰¥ 0.5 hours, else 5. Contributes 5-35 points. More time between screen use and sleep reduces impact. 1-2 hours is optimal.
           </p>
           <p>
-            <strong>Sleep quality factor</strong> = (Sleep Quality / 5) × 30. Contributes 0-30 points. Higher sleep quality indicates less negative impact. Poor sleep quality suggests screen use is affecting sleep.
+            <strong>Sleep quality factor</strong> = (Sleep Quality / 5) Ã— 30. Contributes 0-30 points. Higher sleep quality indicates less negative impact. Poor sleep quality suggests screen use is affecting sleep.
           </p>
           <p>
-            <strong>Filter factor</strong> = (Blue Light Filter / 100) × 15. Contributes 0-15 points. Blue light filters reduce melatonin suppression. Higher filter usage reduces impact, though doesn't eliminate it.
+            <strong>Filter factor</strong> = (Blue Light Filter / 100) Ã— 15. Contributes 0-15 points. Blue light filters reduce melatonin suppression. Higher filter usage reduces impact, though doesn't eliminate it.
           </p>
           <p>
-            <strong>Brightness penalty</strong> = ((Screen Brightness - 1) / 4) × 10. Penalty of 0-10 points. Brighter screens suppress more melatonin and have greater impact on sleep. Dimmer screens reduce but don't eliminate impact.
+            <strong>Brightness penalty</strong> = ((Screen Brightness - 1) / 4) Ã— 10. Penalty of 0-10 points. Brighter screens suppress more melatonin and have greater impact on sleep. Dimmer screens reduce but don't eliminate impact.
           </p>
           <p>
-            <strong>Lighting penalty</strong> = ((Bedroom Lighting - 1) / 4) × 10. Penalty of 0-10 points. Bright bedroom lighting after screen use further suppresses melatonin. Dark bedrooms (1-2) support better sleep.
+            <strong>Lighting penalty</strong> = ((Bedroom Lighting - 1) / 4) Ã— 10. Penalty of 0-10 points. Bright bedroom lighting after screen use further suppresses melatonin. Dark bedrooms (1-2) support better sleep.
           </p>
           <p>
             <strong>Impact score</strong> = Time Gap Factor + Sleep Quality Factor + Filter Factor - Brightness Penalty - Lighting Penalty, normalized to 0-100 scale. Higher scores indicate less negative impact from screen use on sleep. Lower scores indicate significant disruption.
@@ -619,7 +619,7 @@ export default function ScreenToSleepTimeImpactEstimator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Bedroom Environment</h3>
     <ul>
         <li>Keep bedroom dark</li>
-        <li>Cool temperature (65-68°F)</li>
+        <li>Cool temperature (65-68Â°F)</li>
         <li>Comfortable mattress and bedding</li>
         <li>Minimize noise</li>
         <li>Reserve bed for sleep only</li>

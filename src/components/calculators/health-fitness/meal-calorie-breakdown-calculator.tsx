@@ -51,7 +51,7 @@ const faqs = [
   {
     question: 'How are macronutrients calculated from percentages?',
     answer:
-      'Macronutrient calories = total calories × percentage / 100. Grams are calculated using: protein = 4 cal/g, carbs = 4 cal/g, fat = 9 cal/g. Percentages should sum to approximately 100%.',
+      'Macronutrient calories = total calories Ã— percentage / 100. Grams are calculated using: protein = 4 cal/g, carbs = 4 cal/g, fat = 9 cal/g. Percentages should sum to approximately 100%.',
   },
   {
     question: 'What are typical macronutrient distributions?',
@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'How do I calculate macronutrient percentages?',
     answer:
-      'Calculate percentages from grams: protein % = (protein grams × 4 / total calories) × 100. Carb % = (carb grams × 4 / total calories) × 100. Fat % = (fat grams × 9 / total calories) × 100.',
+      'Calculate percentages from grams: protein % = (protein grams Ã— 4 / total calories) Ã— 100. Carb % = (carb grams Ã— 4 / total calories) Ã— 100. Fat % = (fat grams Ã— 9 / total calories) Ã— 100.',
   },
   {
     question: 'What is a balanced meal breakdown?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/meal-calorie-breakdown-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/meal-calorie-breakdown-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Meal Calorie Breakdown Calculator', item: baseUrl },
       ],
     },
@@ -389,7 +389,7 @@ export default function MealCalorieBreakdownCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Macronutrient calories</strong> = total calories × percentage / 100.
+            <strong>Macronutrient calories</strong> = total calories Ã— percentage / 100.
           </p>
           <p>
             <strong>Macronutrient grams</strong>: Protein = calories / 4, Carbohydrates = calories / 4, Fat = calories / 9.

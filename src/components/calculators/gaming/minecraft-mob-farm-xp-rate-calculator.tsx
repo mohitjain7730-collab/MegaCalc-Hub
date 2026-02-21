@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How do I calculate XP generation rate?',
     answer:
-      'XP Generation Rate = (Kill Rate × XP Per Mob) × (Farm Efficiency / 100). For example, 20 kills/minute × 5 XP/kill × 90% efficiency = 90 XP/minute. Multiply by 60 for hourly rate, by 1440 for daily rate. Higher kill rates and efficiency increase XP generation.',
+      'XP Generation Rate = (Kill Rate Ã— XP Per Mob) Ã— (Farm Efficiency / 100). For example, 20 kills/minute Ã— 5 XP/kill Ã— 90% efficiency = 90 XP/minute. Multiply by 60 for hourly rate, by 1440 for daily rate. Higher kill rates and efficiency increase XP generation.',
   },
   {
     question: 'What is farm efficiency?',
@@ -92,7 +92,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Mob Farm XP Rate Calculator', item: baseUrl },
       ],
     },
@@ -200,7 +200,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
 
         <p>Key factors affecting XP generation include: mob type (different mobs provide different XP), spawn rate (mobs spawning per minute), kill rate (mobs killed per minute), XP per mob (varies by mob type), and farm efficiency (percentage of spawned mobs successfully killed). Understanding these factors helps optimize XP generation.</p>
 
-        <p>XP generation calculation: XP Rate = (Kill Rate × XP Per Mob) × (Farm Efficiency / 100). This formula calculates effective XP generation accounting for kill rates, XP per mob, and farm efficiency. Higher values in all factors increase XP generation.</p>
+        <p>XP generation calculation: XP Rate = (Kill Rate Ã— XP Per Mob) Ã— (Farm Efficiency / 100). This formula calculates effective XP generation accounting for kill rates, XP per mob, and farm efficiency. Higher values in all factors increase XP generation.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why XP Generation Matters</h3>
         <p>XP generation matters because it enables leveling, enchanting, mending repairs, and efficient gameplay. Higher XP rates mean faster progression, more enchanting opportunities, and better resource management. Understanding XP generation helps players optimize farms for maximum efficiency.</p>
@@ -262,7 +262,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
 
         <p>Farm efficiency measures how effectively spawned mobs are killed. Higher efficiency means more XP generation from the same spawn rate. Understanding efficiency helps players optimize farms for maximum XP output.</p>
 
-        <p>Efficiency calculation: Efficiency = (Actual Kills / Spawned Mobs) × 100. 100% efficiency means all spawned mobs are killed. Lower efficiency accounts for mobs escaping, not being killed, or other inefficiencies. Real farms typically achieve 80-95% efficiency depending on design.</p>
+        <p>Efficiency calculation: Efficiency = (Actual Kills / Spawned Mobs) Ã— 100. 100% efficiency means all spawned mobs are killed. Lower efficiency accounts for mobs escaping, not being killed, or other inefficiencies. Real farms typically achieve 80-95% efficiency depending on design.</p>
 
         <p>Efficiency factors: Killing mechanism effectiveness (efficient mechanisms kill more mobs), mob pathfinding (proper paths ensure mobs reach kill area), escape prevention (prevent mobs from avoiding kills), timing optimization (proper timing ensures mobs are killed), and farm design (good design reduces inefficiencies).</p>
 
@@ -344,7 +344,7 @@ export default function MinecraftMobFarmXPRateCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Minecraft mob farm XP generation rates based on mob type (Zombie/Skeleton/Spider/Creeper/Enderman/Blaze/Guardian/Witch), spawn rate (mobs per minute), kill rate (kills per minute), optional custom XP per mob, and optional farm efficiency (0-100%).</p>
           <p>Outputs include XP per kill (varies by mob type: 5 XP for most, 10 XP for blaze/guardian), XP per minute/hour/day (calculated from effective kill rate and XP per mob), mobs per minute/hour (effective kill rate), farm efficiency percentage, status assessment (low-rate/moderate-rate/high-rate/very-high-rate), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use XP generation calculations: XP Per Kill = XP Per Mob, Effective Kill Rate = Kill Rate × (Efficiency / 100), XP Per Minute = Effective Kill Rate × XP Per Kill, XP Per Hour = XP Per Minute × 60, Mobs Per Hour = Effective Kill Rate × 60. The guide covers XP mechanics, mob types, spawn/kill rates, efficiency optimization, and farm design. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft mob farm XP rate calculations instantly.</p>
+          <p>Formulas use XP generation calculations: XP Per Kill = XP Per Mob, Effective Kill Rate = Kill Rate Ã— (Efficiency / 100), XP Per Minute = Effective Kill Rate Ã— XP Per Kill, XP Per Hour = XP Per Minute Ã— 60, Mobs Per Hour = Effective Kill Rate Ã— 60. The guide covers XP mechanics, mob types, spawn/kill rates, efficiency optimization, and farm design. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft mob farm XP rate calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

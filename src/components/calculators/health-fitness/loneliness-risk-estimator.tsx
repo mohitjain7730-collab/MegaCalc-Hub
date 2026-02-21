@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/loneliness-risk-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/loneliness-risk-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Loneliness Tendency Wellness Estimator', item: baseUrl },
       ],
     },
@@ -422,25 +422,25 @@ export default function LonelinessRiskEstimator() {
             <strong>Social Connection Score</strong> = Connection Quantity Score + Meaningful Relationships Score + Interaction Score + Quality Score + Support Score
           </p>
           <p>
-            <strong>Connection Quantity Score</strong> = Min((Social Connections / 15) × 15, 15)
+            <strong>Connection Quantity Score</strong> = Min((Social Connections / 15) Ã— 15, 15)
           </p>
           <p>
-            <strong>Meaningful Relationships Score</strong> = Min((Meaningful Relationships / 5) × 15, 15)
+            <strong>Meaningful Relationships Score</strong> = Min((Meaningful Relationships / 5) Ã— 15, 15)
           </p>
           <p>
-            <strong>Interaction Score</strong> = (Social Interaction Frequency / 10) × 15
+            <strong>Interaction Score</strong> = (Social Interaction Frequency / 10) Ã— 15
           </p>
           <p>
-            <strong>Quality Score</strong> = (Quality of Connections / 10) × 15
+            <strong>Quality Score</strong> = (Quality of Connections / 10) Ã— 15
           </p>
           <p>
-            <strong>Support Score</strong> = (Social Support Available / 10) × 20
+            <strong>Support Score</strong> = (Social Support Available / 10) Ã— 20
           </p>
           <p>
-            <strong>Loneliness Risk</strong> = Loneliness Contribution + (100 - Social Connection Score) × 0.5
+            <strong>Loneliness Risk</strong> = Loneliness Contribution + (100 - Social Connection Score) Ã— 0.5
           </p>
           <p>
-            <strong>Loneliness Contribution</strong> = (Feeling of Loneliness / 10) × 20
+            <strong>Loneliness Contribution</strong> = (Feeling of Loneliness / 10) Ã— 20
           </p>
           <p>Risk ranges from 0-100, with higher scores indicating greater loneliness risk.</p>
         </CardContent>

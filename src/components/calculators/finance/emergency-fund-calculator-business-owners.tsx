@@ -43,8 +43,8 @@ const schemaMarkup = {
       name: 'Emergency Fund Calculator for Business Owners',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'Calculate emergency fund target for business owners: recommended 6–12+ months of personal essential expenses given variable draw, business revenue risk, and no employer safety net.',
-      url: 'https://mycalculating.com/category/finance/emergency-fund-calculator-business-owners',
+      description: 'Calculate emergency fund target for business owners: recommended 6â€“12+ months of personal essential expenses given variable draw, business revenue risk, and no employer safety net.',
+      url: 'https://mycalculating.com/finance/emergency-fund-calculator-business-owners',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -118,14 +118,14 @@ export default function EmergencyFundCalculatorBusinessOwners() {
 
   const getRecommendation = (monthsCovered: number, recommendedMonths: number) => {
     if (monthsCovered >= recommendedMonths) return 'Business owner emergency fund is fully funded. Keep funds in a high-yield savings account for liquidity; consider a separate business reserve.';
-    if (monthsCovered >= 6) return 'You have a partial buffer. Continue building to the recommended 6–12+ months for business-owner security.';
+    if (monthsCovered >= 6) return 'You have a partial buffer. Continue building to the recommended 6â€“12+ months for business-owner security.';
     if (monthsCovered >= 3) return 'You have minimal coverage. Business owners face revenue and industry risk; prioritize reaching at least 6 months of personal expenses.';
-    return 'Immediate action required. Business owners have no employer safety net; build at least 3 months of personal expenses as a first milestone, then aim for 6–12+ months.';
+    return 'Immediate action required. Business owners have no employer safety net; build at least 3 months of personal expenses as a first milestone, then aim for 6â€“12+ months.';
   };
 
   const getInsights = (v: FormValues, recommendedMonths: number) => {
     const insights = [];
-    insights.push('Business owners often rely on draw or profit; income can drop when the business slows. A personal emergency fund (6–12+ months of personal essential expenses) is the standard recommendation.');
+    insights.push('Business owners often rely on draw or profit; income can drop when the business slows. A personal emergency fund (6â€“12+ months of personal essential expenses) is the standard recommendation.');
     if (v.incomeSource === 'mostly-draw' || v.incomeSource === 'all-draw') {
       insights.push('Income from draw or profit (vs salary) increases recommended months; business downturns can cut personal income sharply.');
     }
@@ -149,7 +149,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
     const warnings = [];
     if (monthsCovered < 1) warnings.push('Less than 1 month covered: extreme risk for business owners with variable income.');
     if (monthsCovered < 3) warnings.push('Below 3 months: minimal buffer; business owners should prioritize reaching at least 6 months of personal expenses.');
-    if (monthsCovered < recommendedMonths && monthsCovered >= 3) warnings.push('Below recommended business-owner target (6–12+ months).');
+    if (monthsCovered < recommendedMonths && monthsCovered >= 3) warnings.push('Below recommended business-owner target (6â€“12+ months).');
     return warnings;
   };
 
@@ -177,7 +177,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
             Business Owner Profile
           </CardTitle>
           <CardDescription>
-            Enter monthly personal essential expenses and business-owner risk factors. Business owners often rely on draw or profit; target is typically 6–12+ months of personal expenses. Keep business and personal reserves separate.
+            Enter monthly personal essential expenses and business-owner risk factors. Business owners often rely on draw or profit; target is typically 6â€“12+ months of personal expenses. Keep business and personal reserves separate.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -297,7 +297,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
                 <Wallet className="h-8 w-8 text-primary" />
                 <div>
                   <CardTitle>Emergency Fund Goal (Business Owner)</CardTitle>
-                  <CardDescription>Target based on 6–12+ months of personal essential expenses; income tied to business</CardDescription>
+                  <CardDescription>Target based on 6â€“12+ months of personal essential expenses; income tied to business</CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -392,7 +392,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
             <Info className="h-5 w-5" />
             Understanding Business Owner Emergency Funds
           </CardTitle>
-          <CardDescription>Why 6–12+ months for business owners</CardDescription>
+          <CardDescription>Why 6â€“12+ months for business owners</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -402,7 +402,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
                 Income Tied to Business & No Employer Safety Net
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Business owners often rely on draw or profit; when the business slows, personal income can drop. There is no employer paycheck or unemployment insurance. That is why the base target is 6 months of personal essential expenses and often 9–12+ months with draw-dependent income, revenue concentration, or cyclical industry.
+                Business owners often rely on draw or profit; when the business slows, personal income can drop. There is no employer paycheck or unemployment insurance. That is why the base target is 6 months of personal essential expenses and often 9â€“12+ months with draw-dependent income, revenue concentration, or cyclical industry.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -411,7 +411,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Draw-dependent income, revenue concentration, or cyclical/high-risk industry: add 3–6 months</span>
+                  <span>Draw-dependent income, revenue concentration, or cyclical/high-risk industry: add 3â€“6 months</span>
                 </li>
               </ul>
             </div>
@@ -438,14 +438,14 @@ export default function EmergencyFundCalculatorBusinessOwners() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Target Fund = Monthly Personal Essential Expenses × Recommended Months
+              Target Fund = Monthly Personal Essential Expenses Ã— Recommended Months
             </p>
             <p className="font-mono text-sm text-center">
-              Business owner base: 6 months. +3 for mostly draw, +6 for all draw; +3 for few/one-main customer; +3 cyclical, +6 high-risk; +3 dependents (capped 6–18 months).
+              Business owner base: 6 months. +3 for mostly draw, +6 for all draw; +3 for few/one-main customer; +3 cyclical, +6 high-risk; +3 dependents (capped 6â€“18 months).
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Months covered = Current personal savings ÷ Monthly personal expenses. Gap = Target fund − Current savings.
+            Months covered = Current personal savings Ã· Monthly personal expenses. Gap = Target fund âˆ’ Current savings.
           </p>
         </CardContent>
       </Card>
@@ -467,7 +467,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
                     <Shield className="h-5 w-5 text-blue-600" />
                     <div>
                       <p className="font-medium">Emergency Fund (Freelancers)</p>
-                      <p className="text-sm text-muted-foreground">6–12+ months, variable income</p>
+                      <p className="text-sm text-muted-foreground">6â€“12+ months, variable income</p>
                     </div>
                   </div>
                 </CardContent>
@@ -504,20 +504,20 @@ export default function EmergencyFundCalculatorBusinessOwners() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-        <meta itemProp="name" content="Emergency Fund for Business Owners: Why 6–12+ Months" />
-        <meta itemProp="description" content="How much emergency fund business owners need: income tied to business, no employer safety net. Recommended 6–12+ months of personal essential expenses, with risk adjustments." />
+        <meta itemProp="name" content="Emergency Fund for Business Owners: Why 6â€“12+ Months" />
+        <meta itemProp="description" content="How much emergency fund business owners need: income tied to business, no employer safety net. Recommended 6â€“12+ months of personal essential expenses, with risk adjustments." />
         <meta itemProp="keywords" content="emergency fund business owner, business owner emergency fund, how much emergency fund self employed business, 6 months expenses business owner" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
         <meta itemProp="url" content="/finance/emergency-fund-calculator-business-owners" />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Business Owners: Why 6–12+ Months</h1>
-        <p className="text-lg italic text-muted-foreground">Business owners often rely on draw or profit; when the business slows, personal income can drop. A larger personal emergency fund (6–12+ months of essential expenses) is the standard recommendation.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Business Owners: Why 6â€“12+ Months</h1>
+        <p className="text-lg italic text-muted-foreground">Business owners often rely on draw or profit; when the business slows, personal income can drop. A larger personal emergency fund (6â€“12+ months of essential expenses) is the standard recommendation.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
           <li><a href="#business-owner-risk" className="hover:underline">Why Business Owners Need More</a></li>
-          <li><a href="#months-target-business" className="hover:underline">Recommended Months (6–12+)</a></li>
+          <li><a href="#months-target-business" className="hover:underline">Recommended Months (6â€“12+)</a></li>
           <li><a href="#what-counts-business" className="hover:underline">What Counts as Personal Essential Expenses</a></li>
           <li><a href="#applications-business" className="hover:underline">Using the Emergency Fund Target</a></li>
           <li><a href="#conclusion-business" className="hover:underline">Conclusion</a></li>
@@ -525,23 +525,23 @@ export default function EmergencyFundCalculatorBusinessOwners() {
         <hr />
 
         <h2 id="business-owner-risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Business Owners Need More</h2>
-        <p>Business owners often depend on draw or profit for personal income. When revenue drops, personal income can drop with it. There is no employer paycheck or unemployment insurance. Financial advisors often recommend <strong>6 months</strong> of personal essential expenses as a minimum for business owners, and <strong>9–12+ months</strong> when income is mostly or entirely from the business, revenue is concentrated, or the industry is cyclical or high-risk.</p>
+        <p>Business owners often depend on draw or profit for personal income. When revenue drops, personal income can drop with it. There is no employer paycheck or unemployment insurance. Financial advisors often recommend <strong>6 months</strong> of personal essential expenses as a minimum for business owners, and <strong>9â€“12+ months</strong> when income is mostly or entirely from the business, revenue is concentrated, or the industry is cyclical or high-risk.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Income Tied to Business</h3>
-        <p>Unlike salaried employees, business owners do not have a steady employer paycheck. Draw or profit can vary with business performance. That is why the base target for business owners is 6 months of personal expenses and often 9–12+ months when income is draw-dependent or the business has revenue or industry risk.</p>
+        <p>Unlike salaried employees, business owners do not have a steady employer paycheck. Draw or profit can vary with business performance. That is why the base target for business owners is 6 months of personal expenses and often 9â€“12+ months when income is draw-dependent or the business has revenue or industry risk.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Personal vs Business Reserves</h3>
         <p>This calculator targets personal essential expenses only. Business owners should also maintain a separate business operating reserve for payroll, rent, and vendors. Do not rely on business cash to cover personal emergencies.</p>
 
         <hr />
 
-        <h2 id="months-target-business" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Recommended Months (6–12+)</h2>
-        <p>Base recommendation for business owners: <strong>6 months</strong> of personal essential expenses. Add 3 months for mostly draw, 6 for all draw; add 3 for few or one main customer; add 3 for cyclical industry, 6 for high-risk; add 3 for dependents. Cap at 6–18 months.</p>
+        <h2 id="months-target-business" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Recommended Months (6â€“12+)</h2>
+        <p>Base recommendation for business owners: <strong>6 months</strong> of personal essential expenses. Add 3 months for mostly draw, 6 for all draw; add 3 for few or one main customer; add 3 for cyclical industry, 6 for high-risk; add 3 for dependents. Cap at 6â€“18 months.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-lg text-destructive font-bold">
-            Target Fund = Monthly Personal Essential Expenses × Recommended Months
+            Target Fund = Monthly Personal Essential Expenses Ã— Recommended Months
           </p>
         </div>
 
@@ -567,7 +567,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
         <hr />
 
         <h2 id="conclusion-business" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Business owners have income tied to the business and no employer safety net; a target of 6–12+ months of personal essential expenses is the standard recommendation, with more months for draw-dependent income, revenue concentration, or industry risk. Use this calculator to set your personal target; keep business and personal reserves separate.</p>
+        <p>Business owners have income tied to the business and no employer safety net; a target of 6â€“12+ months of personal essential expenses is the standard recommendation, with more months for draw-dependent income, revenue concentration, or industry risk. Use this calculator to set your personal target; keep business and personal reserves separate.</p>
       </section>
 
       <Card>
@@ -584,7 +584,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Why is the emergency fund target higher for business owners?</h4>
             <p className="text-muted-foreground">
-              Business owners often rely on draw or profit for personal income; when the business slows, income can drop. There is no employer paycheck or unemployment insurance. So the base target is 6 months of personal expenses and often 9–12+ months when income is draw-dependent, revenue is concentrated, or the industry is cyclical or high-risk.
+              Business owners often rely on draw or profit for personal income; when the business slows, income can drop. There is no employer paycheck or unemployment insurance. So the base target is 6 months of personal expenses and often 9â€“12+ months when income is draw-dependent, revenue is concentrated, or the industry is cyclical or high-risk.
             </p>
           </div>
           <div>
@@ -596,7 +596,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
           <div>
             <h4 className="font-semibold text-lg mb-3">How many months should a business owner save?</h4>
             <p className="text-muted-foreground">
-              At least 6 months of personal essential expenses is the standard minimum. With mostly or all draw, revenue concentration, or cyclical/high-risk industry, 9–12+ months is often recommended. This calculator adjusts based on your income source, revenue concentration, industry risk, and dependents.
+              At least 6 months of personal essential expenses is the standard minimum. With mostly or all draw, revenue concentration, or cyclical/high-risk industry, 9â€“12+ months is often recommended. This calculator adjusts based on your income source, revenue concentration, industry risk, and dependents.
             </p>
           </div>
           <div>
@@ -614,7 +614,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
           <div>
             <h4 className="font-semibold text-lg mb-3">How does business-owner target compare to freelancer or employee?</h4>
             <p className="text-muted-foreground">
-              Business owners and freelancers both have income tied to performance (draw or project income), so base targets are similar (6–12+ months). Employees with stable salary typically aim for 3–6 months (dual income) or 6–12 months (single income). This calculator adjusts for business-specific risk (revenue concentration, industry).</p>
+              Business owners and freelancers both have income tied to performance (draw or project income), so base targets are similar (6â€“12+ months). Employees with stable salary typically aim for 3â€“6 months (dual income) or 6â€“12 months (single income). This calculator adjusts for business-specific risk (revenue concentration, industry).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Should I count business line of credit or savings?</h4>
@@ -653,7 +653,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Sole Proprietors & Small Business Owners</strong>
-                <span className="text-sm text-muted-foreground">To set a personal emergency fund target when income comes from the business (6–12+ months).</span>
+                <span className="text-sm text-muted-foreground">To set a personal emergency fund target when income comes from the business (6â€“12+ months).</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Partners & Draw-Dependent Owners</strong>
@@ -661,7 +661,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Startups & High-Risk Industries</strong>
-                <span className="text-sm text-muted-foreground">To target 9–12+ months when industry is cyclical or business is early-stage with variable revenue.</span>
+                <span className="text-sm text-muted-foreground">To target 9â€“12+ months when industry is cyclical or business is early-stage with variable revenue.</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Families with Dependents</strong>
@@ -686,7 +686,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Mixed income:</strong> If you have a stable salary plus business draw, you may use a lower target (e.g. 3–6 months) similar to dual income.</span>
+                <span><strong>Mixed income:</strong> If you have a stable salary plus business draw, you may use a lower target (e.g. 3â€“6 months) similar to dual income.</span>
               </li>
             </ul>
           </div>
@@ -722,7 +722,7 @@ export default function EmergencyFundCalculatorBusinessOwners() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Emergency Fund Calculator for Business Owners computes a target fund based on 6–12+ months of personal essential expenses, with income tied to the business and no employer safety net.</p>
+          <p>The Emergency Fund Calculator for Business Owners computes a target fund based on 6â€“12+ months of personal essential expenses, with income tied to the business and no employer safety net.</p>
           <p>Use it to set and track your personal emergency fund goal; keep business and personal reserves separate.</p>
         </CardContent>
       </Card>

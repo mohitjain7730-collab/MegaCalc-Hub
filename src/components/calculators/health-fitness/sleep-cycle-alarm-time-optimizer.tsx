@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-cycle-alarm-time-optimizer';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-cycle-alarm-time-optimizer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Cycle Wake-Up Comfort Planner', item: baseUrl },
       ],
     },
@@ -431,7 +431,7 @@ export default function SleepCycleAlarmTimeOptimizer() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Optimal wake time</strong> = Bedtime + Sleep latency (15 min) + (Number of cycles × Cycle length).
+            <strong>Optimal wake time</strong> = Bedtime + Sleep latency (15 min) + (Number of cycles Ã— Cycle length).
           </p>
           <p>
             <strong>Sleep cycle length</strong>: Default is 90 minutes (can range from 60-120 minutes depending on individual).

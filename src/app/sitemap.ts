@@ -32,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     }));
 
-  // Subcategory listing pages (e.g. /category/education/maths) - only for whitelisted categories
+  // Subcategory listing pages (e.g. /education/maths) - only for whitelisted categories
   const subcategoryPages: MetadataRoute.Sitemap = categories
     .filter((category) => indexableCategorySet.has(category.slug))
     .flatMap((category) =>

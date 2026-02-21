@@ -33,7 +33,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter platelet count (thousand/μL) from blood test.',
+  'Enter platelet count (thousand/Î¼L) from blood test.',
   'Rate bleeding symptoms severity (0 = none, 10 = severe).',
   'Enter your age (platelet ranges can vary by age).',
   'Indicate if you have had recent surgery (affects risk assessment).',
@@ -49,7 +49,7 @@ const faqs = [
   {
     question: 'What are normal platelet counts?',
     answer:
-      'Normal platelet count ranges from 150,000 to 450,000 platelets/μL (150-450 thousand/μL) for adults. Values outside this range may indicate bleeding or clotting risks.',
+      'Normal platelet count ranges from 150,000 to 450,000 platelets/Î¼L (150-450 thousand/Î¼L) for adults. Values outside this range may indicate bleeding or clotting risks.',
   },
   {
     question: 'What causes low platelet count?',
@@ -89,7 +89,7 @@ const faqs = [
   {
     question: 'When should I seek medical attention?',
     answer:
-      'Seek immediate medical attention if platelet count is very low (&lt;50,000/μL) with bleeding symptoms, or if you experience severe bleeding, bruising, or signs of clotting problems.',
+      'Seek immediate medical attention if platelet count is very low (&lt;50,000/Î¼L) with bleeding symptoms, or if you experience severe bleeding, bruising, or signs of clotting problems.',
   },
 ];
 
@@ -111,7 +111,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/platelet-count-risk-analyzer';
+const baseUrl = 'https://mycalculating.com/health-fitness/platelet-count-risk-analyzer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -120,7 +120,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Platelet Count Risk Analyzer', item: baseUrl },
       ],
     },
@@ -141,7 +141,7 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 const calculateResult = (values: FormValues): ResultPayload => {
   const plateletCount = values.plateletCount;
   
-  // Normal range: 150-450 thousand/μL
+  // Normal range: 150-450 thousand/Î¼L
   const minNormal = 150;
   const maxNormal = 450;
   const midNormal = 300;
@@ -258,7 +258,7 @@ export default function PlateletCountRiskAnalyzer() {
                   name="plateletCount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Platelet count (thousand/μL)</FormLabel>
+                      <FormLabel>Platelet count (thousand/Î¼L)</FormLabel>
                       <FormControl>
                         <Input type="number" step="1" placeholder="e.g., 250" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -334,7 +334,7 @@ export default function PlateletCountRiskAnalyzer() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Platelet count</p>
                 <p className="text-2xl font-semibold text-primary">{result.plateletCount.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Thousand/μL</p>
+                <p className="text-xs text-muted-foreground">Thousand/Î¼L</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Platelet percentage</p>
@@ -399,13 +399,13 @@ export default function PlateletCountRiskAnalyzer() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Platelet percentage</strong> = ((platelet count - 150) / (450 - 150)) × 100.
+            <strong>Platelet percentage</strong> = ((platelet count - 150) / (450 - 150)) Ã— 100.
           </p>
           <p>
-            <strong>Risk score</strong> = calculated from platelet count (normal range: 150-450 thousand/μL), bleeding symptoms severity, and recent surgery status.
+            <strong>Risk score</strong> = calculated from platelet count (normal range: 150-450 thousand/Î¼L), bleeding symptoms severity, and recent surgery status.
           </p>
           <p>
-            <strong>Normal range</strong>: 150,000 to 450,000 platelets/μL (150-450 thousand/μL) for adults. Values outside this range indicate increased bleeding or clotting risk.
+            <strong>Normal range</strong>: 150,000 to 450,000 platelets/Î¼L (150-450 thousand/Î¼L) for adults. Values outside this range indicate increased bleeding or clotting risk.
           </p>
           <p>Platelet count risk is affected by count level, bleeding symptoms, recent surgery, medications, and underlying health conditions.</p>
         </CardContent>
@@ -433,7 +433,7 @@ export default function PlateletCountRiskAnalyzer() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Target platelet count</p>
-                <p className="text-xl font-semibold text-primary">150-450 thousand/μL</p>
+                <p className="text-xl font-semibold text-primary">150-450 thousand/Î¼L</p>
                 <p className="text-xs text-muted-foreground">Normal range</p>
               </div>
               <div className="p-4 border rounded">
@@ -443,7 +443,7 @@ export default function PlateletCountRiskAnalyzer() {
                     const min = 150;
                     const diff = result.plateletCount - min;
                     return diff >= 0 ? `+${diff.toFixed(0)}` : `${diff.toFixed(0)}`;
-                  })()} thousand/μL
+                  })()} thousand/Î¼L
                 </p>
                 <p className="text-xs text-muted-foreground">Difference from minimum</p>
               </div>

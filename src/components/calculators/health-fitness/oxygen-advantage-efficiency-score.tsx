@@ -39,7 +39,7 @@ const steps = [
   'Enter your BOLT score (seconds) from the standard Oxygen Advantage test.',
   'Enter your walking breath-hold time (seconds) from the OA walking test, if you use it.',
   'Estimate what percentage of daily breathing (including low-effort activity) is through your nose.',
-  'Rate perceived breathlessness during everyday tasks or light exercise (0–10).',
+  'Rate perceived breathlessness during everyday tasks or light exercise (0â€“10).',
   'Review your Oxygen Advantage Efficiency Score and training readiness.',
 ];
 
@@ -52,7 +52,7 @@ const faqs = [
   {
     question: 'What is a BOLT score?',
     answer:
-      'The Body Oxygen Level Test (BOLT) measures the time between a normal exhale and the first urge to breathe, without forcing. Higher scores typically indicate better functional breathing and CO₂ tolerance.',
+      'The Body Oxygen Level Test (BOLT) measures the time between a normal exhale and the first urge to breathe, without forcing. Higher scores typically indicate better functional breathing and COâ‚‚ tolerance.',
   },
   {
     question: 'Why include nasal breathing percentage?',
@@ -98,9 +98,9 @@ const faqs = [
 
 const relatedCalculators = [
   {
-    name: 'Breath-Hold CO₂ Tolerance Calculator',
+    name: 'Breath-Hold COâ‚‚ Tolerance Calculator',
     slug: 'breath-hold-co2-tolerance-calculator',
-    description: 'Dig deeper into CO₂ tolerance that underpins OA work.',
+    description: 'Dig deeper into COâ‚‚ tolerance that underpins OA work.',
   },
   {
     name: 'HRV (Heart Rate Variability) Resilience Index',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/oxygen-advantage-efficiency-score';
+const baseUrl = 'https://mycalculating.com/health-fitness/oxygen-advantage-efficiency-score';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Oxygen Advantage Efficiency Score', item: baseUrl },
       ],
     },
@@ -180,7 +180,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   ];
 
   if (boltScore < 20) {
-    recommendations.push('Focus on building a BOLT score toward ~20–25 seconds before attempting more intense performance drills.');
+    recommendations.push('Focus on building a BOLT score toward ~20â€“25 seconds before attempting more intense performance drills.');
   }
 
   if (nasalBreathingPercent < 60) {
@@ -286,7 +286,7 @@ export default function OxygenAdvantageEfficiencyScore() {
                   name="perceivedBreathlessnessScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Perceived breathlessness (0–10)</FormLabel>
+                      <FormLabel>Perceived breathlessness (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -317,7 +317,7 @@ export default function OxygenAdvantageEfficiencyScore() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Efficiency score</p>
                 <p className="text-2xl font-semibold text-primary">{result.efficiencyScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Training readiness</p>
@@ -382,7 +382,7 @@ export default function OxygenAdvantageEfficiencyScore() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Efficiency score</strong> blends BOLT, walking hold, nasal breathing percentage, and a penalty for high breathlessness into a 0–100 index.
+            <strong>Efficiency score</strong> blends BOLT, walking hold, nasal breathing percentage, and a penalty for high breathlessness into a 0â€“100 index.
           </p>
           <p>
             <strong>Training readiness</strong> boosts efficiency when breathlessness is low, suggesting capacity for more advanced work.
@@ -487,7 +487,7 @@ export default function OxygenAdvantageEfficiencyScore() {
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Why BOLT Matters</h2>
         <p>
-          BOLT is a proxy for chemosensitivity to CO₂ and functional breathing efficiency. Higher scores usually reflect calmer, more economical breathing rather than just “lung capacity.”
+          BOLT is a proxy for chemosensitivity to COâ‚‚ and functional breathing efficiency. Higher scores usually reflect calmer, more economical breathing rather than just â€œlung capacity.â€
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. Building from Foundation to Performance</h2>
@@ -539,7 +539,7 @@ export default function OxygenAdvantageEfficiencyScore() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This calculator estimates an Oxygen Advantage Efficiency Score and training readiness from BOLT, walking holds, nasal breathing, and breathlessness.</p>
           <p>It returns scores, status, recommendations, an action plan, and extra metrics for informed breath training decisions.</p>
-          <p>The expanded guide and FAQs aim to support SEO, E‑E‑A‑T, and responsible use by humans and AI assistants.</p>
+          <p>The expanded guide and FAQs aim to support SEO, Eâ€‘Eâ€‘Aâ€‘T, and responsible use by humans and AI assistants.</p>
         </CardContent>
       </Card>
     </div>

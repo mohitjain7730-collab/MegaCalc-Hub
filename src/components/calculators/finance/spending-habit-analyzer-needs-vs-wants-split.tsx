@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/spending-habit-analyzer-needs-vs-wants-split';
+const baseUrl = 'https://mycalculating.com/finance/spending-habit-analyzer-needs-vs-wants-split';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Spending Habit Analyzer (Needs vs Wants Split)', item: baseUrl },
       ],
     },
@@ -441,13 +441,13 @@ export default function SpendingHabitAnalyzerNeedsVsWantsSplit() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Needs Percentage</strong> = (Needs Spending / Total Monthly Income) × 100
+            <strong>Needs Percentage</strong> = (Needs Spending / Total Monthly Income) Ã— 100
           </p>
           <p>
-            <strong>Wants Percentage</strong> = (Wants Spending / Total Monthly Income) × 100
+            <strong>Wants Percentage</strong> = (Wants Spending / Total Monthly Income) Ã— 100
           </p>
           <p>
-            <strong>Savings/Debt Percentage</strong> = (Savings & Debt Repayment / Total Monthly Income) × 100
+            <strong>Savings/Debt Percentage</strong> = (Savings & Debt Repayment / Total Monthly Income) Ã— 100
           </p>
           <p>
             <strong>50/30/20 Rule Targets:</strong>

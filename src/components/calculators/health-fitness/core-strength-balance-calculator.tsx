@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/core-strength-balance-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/core-strength-balance-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Core Strength Balance Wellness Calculator', item: baseUrl },
       ],
     },
@@ -410,10 +410,10 @@ export default function CoreStrengthBalanceCalculator() {
             <strong>Average core strength</strong> = (Anterior + Posterior + Lateral + Rotational) / 4.
           </p>
           <p>
-            <strong>Balance score</strong> = 100 - (Sum of absolute deviations from average × 3), clamped to 0-100.
+            <strong>Balance score</strong> = 100 - (Sum of absolute deviations from average Ã— 3), clamped to 0-100.
           </p>
           <p>
-            <strong>Balance ratio</strong> = (Weakest core component / Strongest core component) × 100%.
+            <strong>Balance ratio</strong> = (Weakest core component / Strongest core component) Ã— 100%.
           </p>
           <p>
             <strong>Score interpretation</strong>: 85-100 = Balanced, 70-85 = Good, 50-70 = Moderate, below 50 = Imbalanced.

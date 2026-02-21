@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/male-fertility-sperm-health-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/male-fertility-sperm-health-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Male Wellness Lifestyle Index Calculator', item: baseUrl },
       ],
     },
@@ -445,7 +445,7 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Wellness index</strong> = sleep (0-25) + stress (0-20) + exercise (0-20) + diet (0-15) + hydration (0-10) + alcohol (0-10), max 100.</p>
           <p><strong>Lifestyle score</strong> = wellness index (same calculation).</p>
-          <p><strong>General ranges</strong>: Sleep 7-9h, Stress ≤3, Exercise 3-5 days/week, Diet 7-10, Hydration 7-10, Alcohol 0-2 units/week.</p>
+          <p><strong>General ranges</strong>: Sleep 7-9h, Stress â‰¤3, Exercise 3-5 days/week, Diet 7-10, Hydration 7-10, Alcohol 0-2 units/week.</p>
           <p>This is a general wellness assessment based on lifestyle factors. It is not a medical evaluation.</p>
         </CardContent>
       </Card>
@@ -482,7 +482,7 @@ export default function MaleFertilitySpermHealthIndexCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().stressLevel ?? 0) <= 3 ? 'Good' : 'Could improve')}
                 </p>
-                <p className="text-xs text-muted-foreground">Target: ≤3</p>
+                <p className="text-xs text-muted-foreground">Target: â‰¤3</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Exercise consistency</p>

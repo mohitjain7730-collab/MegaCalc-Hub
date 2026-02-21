@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/insulin-response-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/insulin-response-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Insulin Response Estimator', item: baseUrl },
       ],
     },
@@ -507,7 +507,7 @@ export default function InsulinResponseEstimator() {
     <p>Insulin secretion from the pancreatic beta cells is a finely tuned process primarily triggered by elevated blood glucose levels, but also influenced by nerve signals and gut hormones.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Beta Cell Response</h3>
-    <p>When blood glucose rises after eating, the glucose enters the beta cells via transporters. This increase in intracellular glucose leads to a spike in ATP (cellular energy), which closes specific potassium channels. The resulting change in cell charge (depolarization) causes calcium channels to open. The influx of calcium triggers the release of pre-formed insulin vesicles into the bloodstream—a process known as the <b>first-phase insulin response</b>. 
+    <p>When blood glucose rises after eating, the glucose enters the beta cells via transporters. This increase in intracellular glucose leads to a spike in ATP (cellular energy), which closes specific potassium channels. The resulting change in cell charge (depolarization) causes calcium channels to open. The influx of calcium triggers the release of pre-formed insulin vesicles into the bloodstreamâ€”a process known as the <b>first-phase insulin response</b>. 
 
 [Image of the pancreatic beta cell showing glucose uptake and insulin vesicle release]
 </p>
@@ -525,7 +525,7 @@ export default function InsulinResponseEstimator() {
     <p>The <b>Glycemic Index (GI)</b> measures how much a specific food raises blood glucose relative to a standard (pure glucose or white bread). Foods with a high GI (e.g., refined sugars, white bread, processed snacks) are absorbed quickly, leading to a rapid, high glucose peak and thus a sharp <b>insulin spike</b>.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Glycemic Load (GL) for Real-World Estimation</h3>
-    <p>The <b>Glycemic Load (GL)</b> provides a more accurate real-world estimation of the total insulin response. GL accounts for both the food’s GI and the <b>quantity</b> consumed (GL = GI x (grams of carb / 100)). A high GL meal requires a significantly larger and more sustained insulin response than a low GL meal, regardless of the GI of the individual components.</p>
+    <p>The <b>Glycemic Load (GL)</b> provides a more accurate real-world estimation of the total insulin response. GL accounts for both the foodâ€™s GI and the <b>quantity</b> consumed (GL = GI x (grams of carb / 100)). A high GL meal requires a significantly larger and more sustained insulin response than a low GL meal, regardless of the GI of the individual components.</p>
 
 <hr />
 
@@ -558,7 +558,7 @@ export default function InsulinResponseEstimator() {
     <p>In metabolic diseases like type 2 diabetes and obesity, the normal physiological response to food is compromised, which significantly alters post-meal insulin secretion and action.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Insulin Resistance</h3>
-    <p>In <b>insulin resistance</b>, cells in the muscle, fat, and liver do not respond effectively to insulin. To compensate, the pancreatic beta cells are forced to produce and secrete far larger amounts of insulin after every meal to keep blood sugar stable—a state known as <b>hyperinsulinemia</b>. This chronic overproduction eventually leads to beta cell burnout and the clinical diagnosis of type 2 diabetes.</p>
+    <p>In <b>insulin resistance</b>, cells in the muscle, fat, and liver do not respond effectively to insulin. To compensate, the pancreatic beta cells are forced to produce and secrete far larger amounts of insulin after every meal to keep blood sugar stableâ€”a state known as <b>hyperinsulinemia</b>. This chronic overproduction eventually leads to beta cell burnout and the clinical diagnosis of type 2 diabetes.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Type 2 Diabetes</h3>
     <p>As the disease progresses, the first-phase insulin response (the rapid, initial burst of insulin) is often lost, leading to a delayed and insufficient insulin response. This is why post-meal blood sugar levels in diabetic patients remain high for extended periods, necessitating careful management of macronutrient timing and composition.</p>

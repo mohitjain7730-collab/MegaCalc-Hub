@@ -63,12 +63,12 @@ const faqs = [
   {
     question: 'Why do notifications and interruptions matter so much?',
     answer:
-      'Frequent notifications fragment attention, increase perceived workload, and prevent deep recovery between tasks. Even small interruptions can accumulate into cognitive fatigue and a sense of being “always on.”',
+      'Frequent notifications fragment attention, increase perceived workload, and prevent deep recovery between tasks. Even small interruptions can accumulate into cognitive fatigue and a sense of being â€œalways on.â€',
   },
   {
     question: 'How often should I take breaks from screens?',
     answer:
-      'Many ergonomics guidelines suggest looking away or standing briefly every 20–30 minutes, and taking a more substantial break every 60–90 minutes. Short, regular breaks help reset attention and reduce eye strain.',
+      'Many ergonomics guidelines suggest looking away or standing briefly every 20â€“30 minutes, and taking a more substantial break every 60â€“90 minutes. Short, regular breaks help reset attention and reduce eye strain.',
   },
   {
     question: 'Can this tool diagnose burnout or mental health conditions?',
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'Can small changes really reduce digital burnout risk?',
     answer:
-      'Yes. Even modest steps—batching notifications, adding 2–3 short breaks per day, creating a device-free wind-down period—can noticeably improve energy and mental clarity over a few weeks.',
+      'Yes. Even modest stepsâ€”batching notifications, adding 2â€“3 short breaks per day, creating a device-free wind-down periodâ€”can noticeably improve energy and mental clarity over a few weeks.',
   },
 ];
 
@@ -110,7 +110,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/digital-burnout-detector';
+const baseUrl = 'https://mycalculating.com/health-fitness/digital-burnout-detector';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -181,13 +181,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations: string[] = [
     'Batch non-urgent notifications and messages into specific check-in times instead of responding continuously.',
-    'Schedule brief, device-free breaks every 60–90 minutes of screen work to reset attention and posture.',
-    'Create a 30–60 minute “digital wind-down” window before bed with minimal screens and lower-stimulation activities.',
+    'Schedule brief, device-free breaks every 60â€“90 minutes of screen work to reset attention and posture.',
+    'Create a 30â€“60 minute â€œdigital wind-downâ€ window before bed with minimal screens and lower-stimulation activities.',
   ];
 
   if (afterWorkHours >= 3) {
     recommendations.push(
-      'Reduce evening recreational screen time by replacing at least 30–60 minutes with analog, relaxing activities a few nights per week.'
+      'Reduce evening recreational screen time by replacing at least 30â€“60 minutes with analog, relaxing activities a few nights per week.'
     );
   }
 
@@ -199,7 +199,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (breakFrequencyMinutes > 90) {
     recommendations.push(
-      'Aim to stand up, stretch, or step away from screens at least briefly every 60–90 minutes, even during busy days.'
+      'Aim to stand up, stretch, or step away from screens at least briefly every 60â€“90 minutes, even during busy days.'
     );
   }
 
@@ -212,7 +212,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'This Month',
       detail:
-        'Gradually tighten your work and personal screen boundaries—for example, no email in bed, or one social media check-in window daily.',
+        'Gradually tighten your work and personal screen boundariesâ€”for example, no email in bed, or one social media check-in window daily.',
     },
     {
       label: 'Ongoing',
@@ -367,7 +367,7 @@ export default function DigitalBurnoutDetector() {
                   name="digitalWorkStress"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Digital work stress (0–10)</FormLabel>
+                      <FormLabel>Digital work stress (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -474,7 +474,7 @@ export default function DigitalBurnoutDetector() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             The <strong>digital burnout risk score</strong> combines total and evening screen time, notification
-            interruptions, break frequency, and perceived digital work stress into a 0–100 index.
+            interruptions, break frequency, and perceived digital work stress into a 0â€“100 index.
           </p>
           <p>
             Higher screen load, more interruptions, fewer breaks, and higher perceived stress increase the score, while
@@ -548,7 +548,7 @@ export default function DigitalBurnoutDetector() {
           Digital Burnout: How to Recognize Screen-Induced Exhaustion and Reclaim Your Energy
         </h1>
         <p className="text-lg italic text-gray-700">
-          Learn how high screen loads, constant notifications, and blurred work-life boundaries drain your energy—and how
+          Learn how high screen loads, constant notifications, and blurred work-life boundaries drain your energyâ€”and how
           to design a more sustainable relationship with your devices.
         </p>
 
@@ -593,7 +593,7 @@ export default function DigitalBurnoutDetector() {
           What Is Digital Burnout?
         </h2>
         <p>
-          Digital burnout develops when constant digital demands outpace your brain and body’s capacity to recover.
+          Digital burnout develops when constant digital demands outpace your brain and bodyâ€™s capacity to recover.
           Instead of discrete workdays and rest periods, you feel tethered to screens, checking messages late at night and
           first thing in the morning. Over time, this can erode motivation, creativity, and emotional resilience.
         </p>
@@ -624,7 +624,7 @@ export default function DigitalBurnoutDetector() {
           Common Signs and Symptoms
         </h2>
         <p>
-          Early signs can be subtle: eye strain, headaches, or a sense that you are “always behind.” As burnout deepens,
+          Early signs can be subtle: eye strain, headaches, or a sense that you are â€œalways behind.â€ As burnout deepens,
           you may feel emotionally numb, irritable, or detached from work and hobbies. Sleep quality often suffers, and it
           may become hard to disconnect even when you want to.
         </p>
@@ -637,13 +637,13 @@ export default function DigitalBurnoutDetector() {
           Strategies to Prevent or Reverse Digital Burnout
         </h2>
         <p>
-          Prevention focuses on creating sustainable rhythms rather than eliminating technology. Simple changes—like batch
-          checking, scheduled breaks, clear “offline” hours, and deliberate leisure that does not involve screens—can
+          Prevention focuses on creating sustainable rhythms rather than eliminating technology. Simple changesâ€”like batch
+          checking, scheduled breaks, clear â€œofflineâ€ hours, and deliberate leisure that does not involve screensâ€”can
           substantially reduce risk.
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>Use do-not-disturb modes and focus filters during deep work or rest.</li>
-          <li>Protect at least one daily block of time that is fully offline, even if only 20–30 minutes.</li>
+          <li>Protect at least one daily block of time that is fully offline, even if only 20â€“30 minutes.</li>
           <li>Mix screen-based hobbies with offline ones (reading, walking, crafts, time in nature).</li>
         </ul>
 
@@ -655,8 +655,8 @@ export default function DigitalBurnoutDetector() {
           When to Seek Additional Help
         </h2>
         <p>
-          If setting boundaries and adjusting habits does not relieve symptoms—or if you experience severe stress,
-          persistent low mood, or functional impairment—consider speaking with a mental health professional. Digital
+          If setting boundaries and adjusting habits does not relieve symptomsâ€”or if you experience severe stress,
+          persistent low mood, or functional impairmentâ€”consider speaking with a mental health professional. Digital
           burnout often overlaps with anxiety, depression, or occupational burnout and may require a broader support plan.
         </p>
       </section>
@@ -685,7 +685,7 @@ export default function DigitalBurnoutDetector() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
             This tool provides general wellness insights about digital burnout tendency from screen time, interruptions, break patterns, and perceived stress
-            on a 0–100 scale. This is a personal lifestyle insight, not a medical evaluation.
+            on a 0â€“100 scale. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
             It provides interpretation, recommendations, an action plan, a supporting guide, related calculators, and FAQs

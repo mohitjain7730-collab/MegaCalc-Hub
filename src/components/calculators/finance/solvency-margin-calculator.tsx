@@ -59,7 +59,7 @@ const faqs = [
   {
     question: 'What is solvency ratio?',
     answer:
-      'Solvency ratio = (Available Solvency Margin / Required Solvency Margin) × 100. It measures how many times the available capital exceeds the minimum required. Ratios above 100% indicate compliance, with higher ratios providing greater safety margins.',
+      'Solvency ratio = (Available Solvency Margin / Required Solvency Margin) Ã— 100. It measures how many times the available capital exceeds the minimum required. Ratios above 100% indicate compliance, with higher ratios providing greater safety margins.',
   },
   {
     question: 'What is a good solvency ratio?',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/solvency-margin-calculator';
+const baseUrl = 'https://mycalculating.com/finance/solvency-margin-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Solvency Margin Calculator', item: baseUrl },
       ],
     },
@@ -149,7 +149,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Available Solvency Margin = Total Assets - Total Liabilities
   const availableSolvencyMargin = totalAssets - totalLiabilities;
   
-  // Solvency Ratio = (Available Solvency Margin / Required Solvency Margin) × 100
+  // Solvency Ratio = (Available Solvency Margin / Required Solvency Margin) Ã— 100
   const solvencyRatio = requiredSolvencyMargin > 0 ? (availableSolvencyMargin / requiredSolvencyMargin) * 100 : 0;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -298,7 +298,7 @@ export default function SolvencyMarginCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Solvency Ratio</p>
                 <p className="text-2xl font-semibold text-primary">{result.solvencyRatio.toFixed(2)}%</p>
-                <p className="text-xs text-muted-foreground">ASM / RSM × 100</p>
+                <p className="text-xs text-muted-foreground">ASM / RSM Ã— 100</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -356,7 +356,7 @@ export default function SolvencyMarginCalculator() {
             <strong>Available Solvency Margin (ASM)</strong> = Total Assets - Total Liabilities
           </p>
           <p>
-            <strong>Solvency Ratio</strong> = (Available Solvency Margin / Required Solvency Margin) × 100
+            <strong>Solvency Ratio</strong> = (Available Solvency Margin / Required Solvency Margin) Ã— 100
           </p>
           <p>
             <strong>Required Solvency Margin (RSM)</strong> = Minimum capital required by regulations, typically calculated as the higher of premium-based (e.g., 20% of premiums) or claims-based (e.g., 30% of claims) formulas.
@@ -476,14 +476,14 @@ export default function SolvencyMarginCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Premium-Based Method</h3>
     <p>RSM is calculated as a percentage of premiums written or earned:</p>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>RSM = Percentage × Gross (or Net) Premiums</strong></p>
+        <p className="font-mono"><strong>RSM = Percentage Ã— Gross (or Net) Premiums</strong></p>
     </div>
     <p>Common percentages range from 16% to 20% of premiums, with adjustments for discount factors and retention levels.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Claims-Based Method</h3>
     <p>RSM is calculated as a percentage of claims incurred:</p>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>RSM = Percentage × Gross (or Net) Incurred Claims</strong></p>
+        <p className="font-mono"><strong>RSM = Percentage Ã— Gross (or Net) Incurred Claims</strong></p>
     </div>
     <p>Common percentages range from 26% to 30% of claims, with similar adjustments as premium-based methods.</p>
 

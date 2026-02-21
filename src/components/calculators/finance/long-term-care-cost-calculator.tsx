@@ -98,7 +98,7 @@ const faqs = [
   {
     question: 'How do I estimate future care costs?',
     answer:
-      'Estimate future costs by: current monthly cost × (1 + inflation rate)^years until care. For example, $5,000/month today at 4% inflation becomes $7,400/month in 10 years. Plan for cost increases.',
+      'Estimate future costs by: current monthly cost Ã— (1 + inflation rate)^years until care. For example, $5,000/month today at 4% inflation becomes $7,400/month in 10 years. Plan for cost increases.',
   },
 ];
 
@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/long-term-care-cost-calculator';
+const baseUrl = 'https://mycalculating.com/finance/long-term-care-cost-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Long-Term Care Cost Calculator', item: baseUrl },
       ],
     },
@@ -447,10 +447,10 @@ export default function LongTermCareCostCalculator() {
             <strong>Years Until Care</strong> = Care Start Age - Current Age. Number of years until care is expected to begin.
           </p>
           <p>
-            <strong>Future Monthly Cost</strong> = Current Monthly Cost × (1 + Inflation Rate)^Years Until Care. Accounts for inflation increasing care costs over time.
+            <strong>Future Monthly Cost</strong> = Current Monthly Cost Ã— (1 + Inflation Rate)^Years Until Care. Accounts for inflation increasing care costs over time.
           </p>
           <p>
-            <strong>Total Care Cost</strong> = Future Monthly Cost × Care Duration Years × 12. Total cost over the expected care duration.
+            <strong>Total Care Cost</strong> = Future Monthly Cost Ã— Care Duration Years Ã— 12. Total cost over the expected care duration.
           </p>
           <p>
             <strong>Recommended Coverage</strong> = Total Care Cost. Coverage should match expected total care costs.
@@ -583,17 +583,17 @@ export default function LongTermCareCostCalculator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Future Monthly Cost = Current Monthly Cost × (1 + Inflation Rate)^Years Until Care</b></p>
+        <p className="text-lg font-mono"><b>Future Monthly Cost = Current Monthly Cost Ã— (1 + Inflation Rate)^Years Until Care</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Total Care Cost = Future Monthly Cost × Care Duration Years × 12</b></p>
+        <p className="text-lg font-mono"><b>Total Care Cost = Future Monthly Cost Ã— Care Duration Years Ã— 12</b></p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If current care costs $5,000/month, care starts in 20 years, and inflation is 4%:</p>
     <ul>
-        <li>Future monthly cost = $5,000 × (1.04)^20 = $10,960/month</li>
-        <li>If care lasts 3 years: Total cost = $10,960 × 3 × 12 = $394,560</li>
+        <li>Future monthly cost = $5,000 Ã— (1.04)^20 = $10,960/month</li>
+        <li>If care lasts 3 years: Total cost = $10,960 Ã— 3 Ã— 12 = $394,560</li>
     </ul>
 
 <hr />

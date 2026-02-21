@@ -20,7 +20,7 @@ const faqs = [
   {
     question: 'How is platform fee calculated?',
     answer:
-      'Platform fee is calculated as a percentage of trade value: Platform Fee Amount = Trade Value × (Platform Fee / 100). For example, a 10,000 Robux trade with 5% platform fee results in 500 Robux in fees. Higher trade values result in larger absolute fee amounts.',
+      'Platform fee is calculated as a percentage of trade value: Platform Fee Amount = Trade Value Ã— (Platform Fee / 100). For example, a 10,000 Robux trade with 5% platform fee results in 500 Robux in fees. Higher trade values result in larger absolute fee amounts.',
   },
   {
     question: 'What are additional fees?',
@@ -86,7 +86,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: '(Roblox) Trade Tax Calculator', item: baseUrl },
       ],
     },
@@ -161,7 +161,7 @@ export default function RobloxTradeTaxCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Platform Fee Amount</strong> = Trade Value × (Platform Fee / 100). This is the fee charged by the Roblox platform as a percentage of trade value. Typical platform fees range from 5% to 10%.
+            <strong>Platform Fee Amount</strong> = Trade Value Ã— (Platform Fee / 100). This is the fee charged by the Roblox platform as a percentage of trade value. Typical platform fees range from 5% to 10%.
           </p>
           <p>
             <strong>Total Fees</strong> = Platform Fee Amount + Additional Fees. This represents all fees associated with the trade, including platform fees and any additional service charges.
@@ -170,7 +170,7 @@ export default function RobloxTradeTaxCalculator() {
             <strong>Net Trade Value</strong> = Trade Value - Total Fees. This is the actual value you receive after all fees are deducted. Positive values mean you receive value, negative values mean fees exceed trade value.
           </p>
           <p>
-            <strong>Fee Percentage</strong> = (Total Fees / Trade Value) × 100. This shows total fees as a percentage of trade value. Lower percentages indicate more cost-effective trades. Typical fee percentages are 5-15% for standard trades.
+            <strong>Fee Percentage</strong> = (Total Fees / Trade Value) Ã— 100. This shows total fees as a percentage of trade value. Lower percentages indicate more cost-effective trades. Typical fee percentages are 5-15% for standard trades.
           </p>
           <p>
             <strong>Cost per Item</strong> = Total Fees / Number of Items. This shows the average fee cost per item in the trade. Useful for evaluating trades with multiple items and understanding fee distribution.
@@ -258,7 +258,7 @@ export default function RobloxTradeTaxCalculator() {
 
         <p>Platform fees are percentage-based charges on trade values. These fees typically range from 5% to 10%, depending on trade type, account status, and platform policies. Fees are deducted from trade proceeds, reducing the net value you receive.</p>
 
-        <p>Fee calculation is straightforward: Platform Fee Amount = Trade Value × (Platform Fee Percentage / 100). For example, a 10,000 Robux trade with 5% platform fee results in 500 Robux in fees. A 10% fee on the same trade results in 1,000 Robux in fees.</p>
+        <p>Fee calculation is straightforward: Platform Fee Amount = Trade Value Ã— (Platform Fee Percentage / 100). For example, a 10,000 Robux trade with 5% platform fee results in 500 Robux in fees. A 10% fee on the same trade results in 1,000 Robux in fees.</p>
 
         <p>Fee percentages may vary by trade type. Standard trades typically have 5-10% fees. Premium trades or special services may have different fee structures. Check current platform policies for exact fee percentages applicable to your trades.</p>
 
@@ -292,13 +292,13 @@ export default function RobloxTradeTaxCalculator() {
 
         <p>Fee calculations combine platform fees and additional fees to determine total costs. Understanding calculation methods helps accurately estimate trade costs and make informed decisions.</p>
 
-        <p>Platform fee calculation: Platform Fee Amount = Trade Value × (Platform Fee / 100). This calculates the percentage-based platform fee. Higher trade values result in larger absolute fee amounts, even with the same percentage.</p>
+        <p>Platform fee calculation: Platform Fee Amount = Trade Value Ã— (Platform Fee / 100). This calculates the percentage-based platform fee. Higher trade values result in larger absolute fee amounts, even with the same percentage.</p>
 
         <p>Total fee calculation: Total Fees = Platform Fee Amount + Additional Fees. This sums all fees to determine total trade costs. Always calculate total fees, not just platform fees, to understand complete costs.</p>
 
         <p>Net value calculation: Net Trade Value = Trade Value - Total Fees. This determines what you actually receive after all fees. Positive net values mean you receive value, negative net values mean fees exceed trade value (resulting in a loss).</p>
 
-        <p>Fee percentage calculation: Fee Percentage = (Total Fees / Trade Value) × 100. This shows total fees as a percentage of trade value. Lower percentages indicate more cost-effective trades. Compare fee percentages across trades to identify cost-efficient options.</p>
+        <p>Fee percentage calculation: Fee Percentage = (Total Fees / Trade Value) Ã— 100. This shows total fees as a percentage of trade value. Lower percentages indicate more cost-effective trades. Compare fee percentages across trades to identify cost-efficient options.</p>
 
         <p>Break-even calculation: Break-even Value = Total Fees / (Platform Fee / 100), or Additional Fees if platform fee is 0. This determines the minimum trade value needed to cover all fees. You must trade above break-even to receive any net value.</p>
 
@@ -394,7 +394,7 @@ export default function RobloxTradeTaxCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Roblox trade taxes and fees based on trade value (Robux), platform fee percentage (0-100), additional fees (Robux), and number of items in the trade.</p>
           <p>Outputs include platform fee amount (percentage of trade value), total fees (platform fee + additional fees), net trade value (after all fees), fee percentage (total fees as percentage of trade value), cost per item (average fee per item), break-even value (minimum trade value to cover fees), status assessment (low-cost/moderate-cost/high-cost/very-high-cost), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use standard fee calculations: Platform Fee = Trade Value × (Fee / 100), Total Fees = Platform Fee + Additional Fees, Net Value = Trade Value - Total Fees, Fee % = (Total Fees / Trade Value) × 100, Cost per Item = Total Fees / Items, Break-even = Total Fees / (Platform Fee / 100). The guide covers platform fees, additional costs, calculation methods, fee impact, optimization strategies, and fee management. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox trade tax calculations instantly.</p>
+          <p>Formulas use standard fee calculations: Platform Fee = Trade Value Ã— (Fee / 100), Total Fees = Platform Fee + Additional Fees, Net Value = Trade Value - Total Fees, Fee % = (Total Fees / Trade Value) Ã— 100, Cost per Item = Total Fees / Items, Break-even = Total Fees / (Platform Fee / 100). The guide covers platform fees, additional costs, calculation methods, fee impact, optimization strategies, and fee management. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox trade tax calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

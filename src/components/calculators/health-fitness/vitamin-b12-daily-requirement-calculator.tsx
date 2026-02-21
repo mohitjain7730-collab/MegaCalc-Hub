@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-b12-daily-requirement-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-b12-daily-requirement-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin B12 Daily Requirement Calculator', item: baseUrl },
       ],
     },
@@ -480,7 +480,7 @@ export default function VitaminB12DailyRequirementCalculator() {
             <strong>Absorption multiplier</strong>: None (0) = 1.0x, Mild (1-3) = 1.5x, Moderate (4-6) = 2.5x, Severe (7-10) = 5.0x.
           </p>
           <p>
-            <strong>Recommended intake</strong> = Base requirement × Diet multiplier × Absorption multiplier (rounded to practical supplement sizes).
+            <strong>Recommended intake</strong> = Base requirement Ã— Diet multiplier Ã— Absorption multiplier (rounded to practical supplement sizes).
           </p>
           <p>Vegans must supplement as B12 is only found in animal products. Those with absorption issues may need high-dose supplements (500-1000+ mcg).</p>
         </CardContent>

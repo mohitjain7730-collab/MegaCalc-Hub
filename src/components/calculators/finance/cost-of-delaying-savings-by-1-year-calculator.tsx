@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 const formSchema = z.object({
   monthlySavings: z.number().min(1, 'Enter monthly savings amount'),
-  annualReturnPct: z.number().min(0).max(100, 'Enter 0–100'),
+  annualReturnPct: z.number().min(0).max(100, 'Enter 0â€“100'),
   yearsUntilTarget: z.number().min(2, 'At least 2 years (delay = 1 year)'),
 });
 
@@ -31,7 +31,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'See how much less you end up with if you delay starting to save by one year. Compares future value starting now vs starting in 1 year.',
-      url: 'https://mycalculating.com/category/finance/cost-of-delaying-savings-by-1-year-calculator',
+      url: 'https://mycalculating.com/finance/cost-of-delaying-savings-by-1-year-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -248,9 +248,9 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Future Value (annuity) = PMT × [((1 + r)^n − 1) / r]</p>
+            <p className="font-mono text-sm text-center">Future Value (annuity) = PMT Ã— [((1 + r)^n âˆ’ 1) / r]</p>
             <p className="font-mono text-sm text-center">r = annual return / 12, n = number of months</p>
-            <p className="font-mono text-sm text-center">Cost of 1-year delay = FV(start now) − FV(start in 1 year)</p>
+            <p className="font-mono text-sm text-center">Cost of 1-year delay = FV(start now) âˆ’ FV(start in 1 year)</p>
           </div>
         </CardContent>
       </Card>
@@ -338,10 +338,10 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
         <hr />
 
         <h2 id="how-calculated-delay" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>We use the future value of an ordinary annuity: FV = PMT × [((1 + r)^n − 1) / r], where PMT is monthly savings, r is the monthly interest rate (annual rate / 12), and n is the number of months. &quot;Start now&quot; uses n = years × 12; &quot;start in 1 year&quot; uses n = (years − 1) × 12 for the same target date.</p>
+        <p>We use the future value of an ordinary annuity: FV = PMT Ã— [((1 + r)^n âˆ’ 1) / r], where PMT is monthly savings, r is the monthly interest rate (annual rate / 12), and n is the number of months. &quot;Start now&quot; uses n = years Ã— 12; &quot;start in 1 year&quot; uses n = (years âˆ’ 1) Ã— 12 for the same target date.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-          <p className="font-mono text-lg text-destructive font-bold">Cost of 1-year delay = FV(start now) − FV(start in 1 year)</p>
+          <p className="font-mono text-lg text-destructive font-bold">Cost of 1-year delay = FV(start now) âˆ’ FV(start in 1 year)</p>
         </div>
         <hr />
 
@@ -354,11 +354,11 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
         <h2 id="applications-delay" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
         <p>Enter your planned monthly savings, expected annual return (e.g. 7%), and years until your target date (e.g. retirement). The calculator shows future value if you start now, future value if you start in 1 year, and the cost of that 1-year delay in dollars and percent.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">What to Enter</h3>
-        <p>Use a realistic long-term return (e.g. 6–8% for a diversified portfolio). Years until target should be at least 2 so that &quot;start in 1 year&quot; still has at least one year of contributions.</p>
+        <p>Use a realistic long-term return (e.g. 6â€“8% for a diversified portfolio). Years until target should be at least 2 so that &quot;start in 1 year&quot; still has at least one year of contributions.</p>
         <hr />
 
         <h2 id="conclusion-delay" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Delaying savings by one year reduces your future balance by a meaningful amount. Use this calculator to see the cost, then start saving now—even a small monthly amount—to capture that extra year of contributions and growth.</p>
+        <p>Delaying savings by one year reduces your future balance by a meaningful amount. Use this calculator to see the cost, then start saving nowâ€”even a small monthly amountâ€”to capture that extra year of contributions and growth.</p>
       </section>
 
       <Card>
@@ -380,11 +380,11 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is the future value calculated?</h4>
-            <p className="text-muted-foreground">We use the future value of an ordinary annuity: FV = PMT × [((1 + r)^n − 1) / r], where PMT is monthly savings, r is the monthly interest rate (annual return / 12), and n is the number of months. &quot;Start now&quot; uses the full number of months; &quot;start in 1 year&quot; uses 12 fewer months.</p>
+            <p className="text-muted-foreground">We use the future value of an ordinary annuity: FV = PMT Ã— [((1 + r)^n âˆ’ 1) / r], where PMT is monthly savings, r is the monthly interest rate (annual return / 12), and n is the number of months. &quot;Start now&quot; uses the full number of months; &quot;start in 1 year&quot; uses 12 fewer months.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What return rate should I use?</h4>
-            <p className="text-muted-foreground">Use a long-term expected return for your asset mix (e.g. 6–8% for a diversified stock portfolio, before inflation). Higher assumed returns make the cost of delay larger because you lose more growth.</p>
+            <p className="text-muted-foreground">Use a long-term expected return for your asset mix (e.g. 6â€“8% for a diversified stock portfolio, before inflation). Higher assumed returns make the cost of delay larger because you lose more growth.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this account for inflation?</h4>
@@ -476,7 +476,7 @@ export default function CostOfDelayingSavingsBy1YearCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: $500/month, 7% return, 30 years</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">Start now: ~$566,000. Start in 1 year: ~$527,000. Cost of 1-year delay: ~$39,000 (about 7% less). That’s much more than the $6,000 you &quot;saved&quot; by not contributing in year one.</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">Start now: ~$566,000. Start in 1 year: ~$527,000. Cost of 1-year delay: ~$39,000 (about 7% less). Thatâ€™s much more than the $6,000 you &quot;saved&quot; by not contributing in year one.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: $200/month, 6% return, 20 years</h5>

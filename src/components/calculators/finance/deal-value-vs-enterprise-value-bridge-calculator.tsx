@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'How is deal value calculated?',
     answer:
-      'Deal Value = Enterprise Value + Cash and Cash Equivalents - Total Debt - Debt-Like Items ± Working Capital Adjustment. Working Capital Adjustment = Working Capital Actual - Working Capital Target. If actual working capital is below target, the adjustment reduces deal value. If above target, it increases deal value.',
+      'Deal Value = Enterprise Value + Cash and Cash Equivalents - Total Debt - Debt-Like Items Â± Working Capital Adjustment. Working Capital Adjustment = Working Capital Actual - Working Capital Target. If actual working capital is below target, the adjustment reduces deal value. If above target, it increases deal value.',
   },
   {
     question: 'What is working capital adjustment?',
@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/deal-value-vs-enterprise-value-bridge-calculator';
+const baseUrl = 'https://mycalculating.com/finance/deal-value-vs-enterprise-value-bridge-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Deal Value vs Enterprise Value Bridge Calculator', item: baseUrl },
       ],
     },
@@ -166,7 +166,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     workingCapitalAdjustment = workingCapitalActual - workingCapitalTarget;
   }
   
-  // Deal Value = Enterprise Value + Cash - Total Debt - Debt-Like Items ± Working Capital Adjustment
+  // Deal Value = Enterprise Value + Cash - Total Debt - Debt-Like Items Â± Working Capital Adjustment
   const dealValue = enterpriseValue + cashAndEquivalents - totalDebt - debtLikeItems + workingCapitalAdjustment;
   
   // Equity Value (simplified, without working capital adjustment) = EV - Net Debt
@@ -435,7 +435,7 @@ export default function DealValueVsEnterpriseValueBridgeCalculator() {
             <strong>Working Capital Adjustment</strong> = Working Capital Actual - Working Capital Target
           </p>
           <p>
-            <strong>Deal Value</strong> = Enterprise Value + Cash and Cash Equivalents - Total Debt - Debt-Like Items ± Working Capital Adjustment
+            <strong>Deal Value</strong> = Enterprise Value + Cash and Cash Equivalents - Total Debt - Debt-Like Items Â± Working Capital Adjustment
           </p>
           <p>
             <strong>Equity Value</strong> = Enterprise Value - Net Debt
@@ -551,7 +551,7 @@ export default function DealValueVsEnterpriseValueBridgeCalculator() {
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculation Steps</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Deal Value = EV + Cash - Debt - Debt-Like Items ± Working Capital Adjustment</strong></p>
+          <p className="font-mono text-lg"><strong>Deal Value = EV + Cash - Debt - Debt-Like Items Â± Working Capital Adjustment</strong></p>
         </div>
 
         <hr className="my-6" />

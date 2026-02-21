@@ -34,7 +34,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter your body weight in kilograms (or convert from pounds: lbs ÷ 2.2).',
+  'Enter your body weight in kilograms (or convert from pounds: lbs Ã· 2.2).',
   'Select goal: loading (saturate muscles quickly) or maintenance (sustain levels).',
   'Select creatine form: monohydrate (standard), HCL (more concentrated), or other.',
   'Enter training frequency (days per week) to adjust dosing if needed.',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/creatine-loading-maintenance-dose-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/creatine-loading-maintenance-dose-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Creatine Supplementation Guide', item: baseUrl },
       ],
     },
@@ -387,10 +387,10 @@ export default function CreatineLoadingMaintenanceDoseCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Loading dose</strong> = body weight (kg) × 0.3 × form multiplier, clamped to 15-30g/day.</p>
-          <p><strong>Maintenance dose</strong> = body weight (kg) × 0.03 × form multiplier × training factor, clamped to 3-10g/day.</p>
+          <p><strong>Loading dose</strong> = body weight (kg) Ã— 0.3 Ã— form multiplier, clamped to 15-30g/day.</p>
+          <p><strong>Maintenance dose</strong> = body weight (kg) Ã— 0.03 Ã— form multiplier Ã— training factor, clamped to 3-10g/day.</p>
           <p><strong>Form multipliers</strong>: Monohydrate 1.0, HCL 0.7 (more concentrated), Other 1.0.</p>
-          <p><strong>Training factor</strong>: 5+ days/week = 1.1×, otherwise 1.0×.</p>
+          <p><strong>Training factor</strong>: 5+ days/week = 1.1Ã—, otherwise 1.0Ã—.</p>
           <p>Loading phase: 5-7 days. Maintenance: ongoing daily dose.</p>
         </CardContent>
       </Card>
@@ -466,7 +466,7 @@ export default function CreatineLoadingMaintenanceDoseCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Creatine loading (20-25g/day for 5-7 days) quickly saturates muscle creatine stores, then switch to maintenance (3-5g/day). Loading is optional—you can start with maintenance and reach saturation in 3-4 weeks.</p>
+          <p>Creatine loading (20-25g/day for 5-7 days) quickly saturates muscle creatine stores, then switch to maintenance (3-5g/day). Loading is optionalâ€”you can start with maintenance and reach saturation in 3-4 weeks.</p>
           <p>Use this calculator to determine appropriate loading and maintenance doses based on body weight, creatine form, and training frequency.</p>
         </CardContent>
       </Card>

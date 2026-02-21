@@ -100,9 +100,8 @@ const categorySeoContent: Record<
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }: { params: Promise<{ categorySlug: string }> }): Promise<Metadata> {
-  const { categorySlug } = await params;
-  const category = categories.find((c) => c.slug === categorySlug);
+export async function generateCategoryMetadata(slug: string): Promise<Metadata> {
+  const category = categories.find((c) => c.slug === slug);
 
   if (!category) {
     return {
@@ -125,9 +124,8 @@ export async function generateMetadata({ params }: { params: Promise<{ categoryS
   };
 }
 
-export default async function CategoryPage({ params }: { params: Promise<{ categorySlug: string }> }) {
-  const { categorySlug } = await params;
-  const category = categories.find((c) => c.slug === categorySlug);
+export default async function CategoryView({ slug }: { slug: string }) {
+  const category = categories.find((c) => c.slug === slug);
 
   if (!category) {
     notFound();

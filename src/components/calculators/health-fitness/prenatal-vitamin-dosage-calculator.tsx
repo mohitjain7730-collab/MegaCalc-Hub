@@ -44,7 +44,7 @@ const interpret = (v: FormValues) => {
 
 const recommendations = (v: FormValues) => [
   'Keep a note or photo of your prenatal label so you can quickly share details with your care team.',
-  'If you try a new prenatal, pay attention to how you feel (energy, digestion, nausea) and share those observations at check‑ups.',
+  'If you try a new prenatal, pay attention to how you feel (energy, digestion, nausea) and share those observations at checkâ€‘ups.',
   'Use this snapshot as a starting point for questions; your care team can help tailor any supplement plan to your needs.',
 ];
 
@@ -66,7 +66,7 @@ const steps = [
 const faqs = [
   {
     question: 'How much folate is typically recommended?',
-    answer: 'Many guidelines suggest ~400–800 mcg dietary folate equivalents daily before and during early pregnancy; always follow clinician advice.',
+    answer: 'Many guidelines suggest ~400â€“800 mcg dietary folate equivalents daily before and during early pregnancy; always follow clinician advice.',
   },
   {
     question: 'Do I need extra iron?',
@@ -74,7 +74,7 @@ const faqs = [
   },
   {
     question: 'What about Vitamin D?',
-    answer: 'Target intakes vary widely; a common range is 600–2000 IU/day, individualized based on 25‑OH Vitamin D lab results.',
+    answer: 'Target intakes vary widely; a common range is 600â€“2000 IU/day, individualized based on 25â€‘OH Vitamin D lab results.',
   },
   {
     question: 'Can I take calcium with iron?',
@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/prenatal-vitamin-dosage-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/prenatal-vitamin-dosage-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Prenatal Vitamin Dosage Wellness Tracker', item: baseUrl },
       ],
     },
@@ -183,10 +183,10 @@ const schemaMarkup = {
     { week: 2, focus: 'Assess tolerance; adjust timing to reduce nausea' },
     { week: 3, focus: 'Discuss labs (ferritin, Vitamin D) with provider' },
     { week: 4, focus: 'Align dose forms (capsule/gummy/liquid) with tolerance' },
-    { week: 5, focus: 'Reinforce calcium spacing if using iron‑rich prenatal' },
+    { week: 5, focus: 'Reinforce calcium spacing if using ironâ€‘rich prenatal' },
     { week: 6, focus: 'Recheck symptoms; refine regimen' },
     { week: 7, focus: 'Confirm adequate DHA/iodine from diet/supplement' },
-    { week: 8, focus: 'Plan follow‑up labs if initially low' },
+    { week: 8, focus: 'Plan followâ€‘up labs if initially low' },
   ]);
 
   const onSubmit = (values: FormValues) => {

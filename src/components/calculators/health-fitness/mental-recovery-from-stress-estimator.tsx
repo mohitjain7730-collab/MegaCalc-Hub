@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate the intensity of a recent stressor (1–10), such as a work crunch, conflict, or health scare.',
+  'Rate the intensity of a recent stressor (1â€“10), such as a work crunch, conflict, or health scare.',
   'Enter how many days have passed since the peak of that stressful period.',
   'Estimate the average number of minutes per day you dedicate to deliberate recovery (rest, hobbies, therapy, nature, etc.).',
-  'Enter your average nightly sleep hours over the last 1–2 weeks.',
+  'Enter your average nightly sleep hours over the last 1â€“2 weeks.',
   'Review your recovery percentage and the estimated days remaining until baseline.',
 ];
 
@@ -55,14 +55,14 @@ const faqs = [
       'No. It is an educational planning tool, not a diagnostic instrument. Persistent distress or functional impairment should be evaluated by a licensed professional.',
   },
   {
-    question: 'What counts as a “stress event”?',
+    question: 'What counts as a â€œstress eventâ€?',
     answer:
-      'Anything that meaningfully strains your nervous system—major deadlines, caregiving spikes, grief, conflict, illness, or accumulated micro-stressors over weeks.',
+      'Anything that meaningfully strains your nervous systemâ€”major deadlines, caregiving spikes, grief, conflict, illness, or accumulated micro-stressors over weeks.',
   },
   {
     question: 'How is recovery percent calculated?',
     answer:
-      'The model assumes more intense events take longer to clear and that consistent sleep and daily recovery practices accelerate healing. It scales these factors into a 0–100% estimate.',
+      'The model assumes more intense events take longer to clear and that consistent sleep and daily recovery practices accelerate healing. It scales these factors into a 0â€“100% estimate.',
   },
   {
     question: 'Why does sleep matter so much?',
@@ -70,9 +70,9 @@ const faqs = [
       'Sleep is when emotional processing and nervous system repair are most active. Chronic sleep restriction slows recovery and can intensify anxiety or low mood.',
   },
   {
-    question: 'What are “recovery minutes”?',
+    question: 'What are â€œrecovery minutesâ€?',
     answer:
-      'Minutes spent in activities that lower arousal and restore you, such as walks, hobbies, therapy, journaling, time in nature, or mindful rest—not doomscrolling.',
+      'Minutes spent in activities that lower arousal and restore you, such as walks, hobbies, therapy, journaling, time in nature, or mindful restâ€”not doomscrolling.',
   },
   {
     question: 'Can multiple stress events be tracked?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mental-recovery-from-stress-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/mental-recovery-from-stress-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mental Recovery from Stress Estimator', item: baseUrl },
       ],
     },
@@ -170,7 +170,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (recoveryPercent < 60) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where you may feel partway through your recovery process. Continuing supportive routines—such as sleep, movement, and calming activities—may help you feel steadier over time.';
+      'This suggests a general lifestyle tendency where you may feel partway through your recovery process. Continuing supportive routinesâ€”such as sleep, movement, and calming activitiesâ€”may help you feel steadier over time.';
   } else if (recoveryPercent >= 100) {
     status = 'optimal';
     interpretation =
@@ -178,17 +178,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations: string[] = [
-    'Protect 7–9 hours of sleep where possible; consistent sleep is one of the fastest ways to restore emotional balance.',
-    'Schedule at least one deliberate recovery block per day (even 15–20 minutes) rather than waiting until you are exhausted.',
-    'Notice signs of overload—irritability, rumination, zoning out—and treat them as cues to pause rather than to push harder.',
+    'Protect 7â€“9 hours of sleep where possible; consistent sleep is one of the fastest ways to restore emotional balance.',
+    'Schedule at least one deliberate recovery block per day (even 15â€“20 minutes) rather than waiting until you are exhausted.',
+    'Notice signs of overloadâ€”irritability, rumination, zoning outâ€”and treat them as cues to pause rather than to push harder.',
   ];
 
   if (dailyRecoveryMinutes < 20) {
-    recommendations.push('Increase intentional recovery time by 10–20 minutes per day for the next week and observe changes in tension and focus.');
+    recommendations.push('Increase intentional recovery time by 10â€“20 minutes per day for the next week and observe changes in tension and focus.');
   }
 
   if (sleepHours < 6) {
-    recommendations.push('Experiment with moving your sleep window earlier by 15–30 minutes and reducing late-night screen use to improve quality.');
+    recommendations.push('Experiment with moving your sleep window earlier by 15â€“30 minutes and reducing late-night screen use to improve quality.');
   }
 
   if (daysSinceEvent > adjustedRecoveryDays && status !== 'optimal') {
@@ -255,7 +255,7 @@ export default function MentalRecoveryFromStressEstimator() {
                   name="stressEventIntensity"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Stress event intensity (1–10)</FormLabel>
+                      <FormLabel>Stress event intensity (1â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 8.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -335,7 +335,7 @@ export default function MentalRecoveryFromStressEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Event intensity</p>
                 <p className="text-2xl font-semibold text-primary">{result.stressEventIntensity}</p>
-                <p className="text-xs text-muted-foreground">1–10 scale</p>
+                <p className="text-xs text-muted-foreground">1â€“10 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -390,13 +390,13 @@ export default function MentalRecoveryFromStressEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base recovery days</strong> are set to roughly one week per intensity point (intensity × 7), then adjusted by sleep and recovery habits.
+            <strong>Base recovery days</strong> are set to roughly one week per intensity point (intensity Ã— 7), then adjusted by sleep and recovery habits.
           </p>
           <p>
             <strong>Effective recovery rate</strong> increases when you sleep more and practice more daily recovery, shortening estimated total recovery time.
           </p>
           <p>
-            <strong>Recovery percent</strong> is days since event divided by adjusted recovery days, scaled to 0–100%. Values above 100% suggest you may already be beyond the rough baseline.
+            <strong>Recovery percent</strong> is days since event divided by adjusted recovery days, scaled to 0â€“100%. Values above 100% suggest you may already be beyond the rough baseline.
           </p>
           <p>This simplified model is meant for planning and reflection and cannot replace individualized medical or psychological assessment.</p>
         </CardContent>
@@ -503,7 +503,7 @@ export default function MentalRecoveryFromStressEstimator() {
           Typical Time Course of Recovery
         </h2>
         <p>
-          Mild stressors may fade in days; more intense or repeated events can take weeks or months to fully integrate. Recovery is rarely linear—good days and bad days often alternate as your system recalibrates.
+          Mild stressors may fade in days; more intense or repeated events can take weeks or months to fully integrate. Recovery is rarely linearâ€”good days and bad days often alternate as your system recalibrates.
         </p>
 
         <h2 id="recovery-habits" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">

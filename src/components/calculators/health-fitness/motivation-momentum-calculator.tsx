@@ -38,8 +38,8 @@ type ResultPayload = {
 const steps = [
   'Enter how many days in the last 60 you took meaningful action toward a specific goal.',
   'Enter how many days have passed since your last action on that goal.',
-  'Rate your average sense of progress on active days (0–10).',
-  'Rate how meaningful the goal feels to you right now (0–10).',
+  'Rate your average sense of progress on active days (0â€“10).',
+  'Rate how meaningful the goal feels to you right now (0â€“10).',
   'Review your motivation momentum score, restart effort, and suggested next steps.',
 ];
 
@@ -52,12 +52,12 @@ const faqs = [
   {
     question: 'Why does time since last action matter?',
     answer:
-      'Long gaps increase friction and self-doubt, making it harder to restart even if the goal still matters. Small, recent actions keep the “flywheel” moving.',
+      'Long gaps increase friction and self-doubt, making it harder to restart even if the goal still matters. Small, recent actions keep the â€œflywheelâ€ moving.',
   },
   {
-    question: 'What counts as “meaningful action”?',
+    question: 'What counts as â€œmeaningful actionâ€?',
     answer:
-      'Any step that genuinely moves the goal forward: a workout for a fitness goal, an outreach email for a career goal, 20 minutes of focused study, etc.—not just thinking about it.',
+      'Any step that genuinely moves the goal forward: a workout for a fitness goal, an outreach email for a career goal, 20 minutes of focused study, etc.â€”not just thinking about it.',
   },
   {
     question: 'How often should I use this calculator?',
@@ -75,7 +75,7 @@ const faqs = [
       'Yes, but run the calculator separately for each major goal so you can see which ones are thriving and which need redesign.',
   },
   {
-    question: 'What is “restart effort”?',
+    question: 'What is â€œrestart effortâ€?',
     answer:
       'Restart effort is an estimate of how much push you will need to get going again. Higher values suggest simplifying actions and shrinking commitments to regain traction.',
   },
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/motivation-momentum-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/motivation-momentum-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Motivation Momentum Calculator', item: baseUrl },
       ],
     },
@@ -179,13 +179,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations: string[] = [
-    'Define the next step so small that you could complete it in 5–15 minutes without perfect conditions.',
+    'Define the next step so small that you could complete it in 5â€“15 minutes without perfect conditions.',
     'Attach that step to an existing routine (after breakfast, after work shutdown) and protect it in your calendar.',
     'Log your actions in a simple streak tracker to visualize progress and reduce all-or-nothing thinking.',
   ];
 
   if (daysSinceLastAction > 14) {
-    recommendations.push('Treat your next step as a “restart rep,” not a full comeback. Do one tiny action and celebrate the restart itself.');
+    recommendations.push('Treat your next step as a â€œrestart rep,â€ not a full comeback. Do one tiny action and celebrate the restart itself.');
   }
 
   if (perceivedMeaning < 5) {
@@ -282,7 +282,7 @@ export default function MotivationMomentumCalculator() {
                   name="averageDailyProgress"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Average progress per action (0–10)</FormLabel>
+                      <FormLabel>Average progress per action (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -295,7 +295,7 @@ export default function MotivationMomentumCalculator() {
                   name="perceivedMeaning"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Goal meaning (0–10)</FormLabel>
+                      <FormLabel>Goal meaning (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -326,7 +326,7 @@ export default function MotivationMomentumCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Momentum score</p>
                 <p className="text-2xl font-semibold text-primary">{result.momentumScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Restart effort</p>
@@ -336,7 +336,7 @@ export default function MotivationMomentumCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Meaning score</p>
                 <p className="text-2xl font-semibold text-primary">{result.perceivedMeaning}</p>
-                <p className="text-xs text-muted-foreground">0–10 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“10 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -397,10 +397,10 @@ export default function MotivationMomentumCalculator() {
             <strong>Decay factor</strong> reduces momentum as days since last action increase, reflecting the difficulty of restarting after long gaps.
           </p>
           <p>
-            <strong>Momentum score</strong> combines consistency, decay, perceived progress, and meaning into a 0–100 indicator of psychological momentum, while <strong>restart effort</strong> estimates how much push you will
+            <strong>Momentum score</strong> combines consistency, decay, perceived progress, and meaning into a 0â€“100 indicator of psychological momentum, while <strong>restart effort</strong> estimates how much push you will
             need to get going again.
           </p>
-          <p>Use these metrics as coaching prompts rather than strict judgments—focus on designing easier next steps, not blaming yourself for past gaps.</p>
+          <p>Use these metrics as coaching prompts rather than strict judgmentsâ€”focus on designing easier next steps, not blaming yourself for past gaps.</p>
         </CardContent>
       </Card>
 
@@ -435,7 +435,7 @@ export default function MotivationMomentumCalculator() {
                 <p className="text-xs text-muted-foreground">Days since last / 60</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Progress × meaning</p>
+                <p className="text-sm text-muted-foreground">Progress Ã— meaning</p>
                 <p className="text-xl font-semibold text-primary">
                   {((result.averageDailyProgress * result.perceivedMeaning) / 10).toFixed(1)}
                 </p>
@@ -509,21 +509,21 @@ export default function MotivationMomentumCalculator() {
           The Power of Tiny Steps
         </h2>
         <p>
-          Research on habit formation shows that ridiculously small actions—one push-up, opening the document, writing one sentence—can be enough to preserve identity and restart streaks without overwhelming you.
+          Research on habit formation shows that ridiculously small actionsâ€”one push-up, opening the document, writing one sentenceâ€”can be enough to preserve identity and restart streaks without overwhelming you.
         </p>
 
         <h2 id="meaning" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
           Meaning, Identity, and Sustainable Goals
         </h2>
         <p>
-          Goals anchored in values (“I am someone who takes care of my body”) tend to survive setbacks better than purely outcome-based ones. If meaning is low, it may be time to renegotiate the goal itself.
+          Goals anchored in values (â€œI am someone who takes care of my bodyâ€) tend to survive setbacks better than purely outcome-based ones. If meaning is low, it may be time to renegotiate the goal itself.
         </p>
 
         <h2 id="review" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
           Review Rituals and Course Corrections
         </h2>
         <p>
-          Weekly or monthly reviews keep goals connected to reality. Instead of judging yourself, ask: “What made action easier? What made it harder? What will I tweak next week?” This keeps momentum adaptive, not rigid.
+          Weekly or monthly reviews keep goals connected to reality. Instead of judging yourself, ask: â€œWhat made action easier? What made it harder? What will I tweak next week?â€ This keeps momentum adaptive, not rigid.
         </p>
 
         <hr />

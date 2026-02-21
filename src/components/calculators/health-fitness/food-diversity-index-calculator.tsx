@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/food-diversity-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/food-diversity-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Food Diversity Index Calculator', item: baseUrl },
       ],
     },
@@ -334,7 +334,7 @@ export default function FoodDiversityIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Diversity index</strong> = (food groups / 6) × 40 + (different foods / 30) × 60. Food groups contribute 40% and different foods contribute 60% to the index.
+            <strong>Diversity index</strong> = (food groups / 6) Ã— 40 + (different foods / 30) Ã— 60. Food groups contribute 40% and different foods contribute 60% to the index.
           </p>
           <p>
             <strong>Optimal ranges</strong>: Excellent: 80-100 (5-6+ food groups, 25-30+ foods), Good: 60-80 (4-5 food groups, 20-25 foods), Moderate: 40-60 (3-4 food groups, 15-20 foods), Low: &lt;40 (&lt;3 food groups, &lt;15 foods).

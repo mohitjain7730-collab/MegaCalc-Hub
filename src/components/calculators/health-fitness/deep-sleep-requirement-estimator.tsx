@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/deep-sleep-requirement-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/deep-sleep-requirement-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Deep Sleep Comfort Range Estimator', item: baseUrl },
       ],
     },
@@ -435,10 +435,10 @@ export default function DeepSleepRequirementEstimator() {
           <p>
             <strong>Base deep sleep %</strong>: &lt;30 years: 20%, 30-60 years: 15%, 60+ years: 10%.
           </p>
-          <p><strong>Required deep sleep %</strong> = base % × activity multiplier (1.0-1.2) × recovery multiplier (0.5-1.5), clamped to 10-25%.</p>
-          <p><strong>Required deep sleep</strong> = total sleep hours × 60 × required % / 100.</p>
-          <p><strong>Current deep sleep</strong> = provided deep sleep minutes, or estimated as base % × 0.8 (80% of optimal).</p>
-          <p><strong>Deep sleep gap</strong> = required − current.</p>
+          <p><strong>Required deep sleep %</strong> = base % Ã— activity multiplier (1.0-1.2) Ã— recovery multiplier (0.5-1.5), clamped to 10-25%.</p>
+          <p><strong>Required deep sleep</strong> = total sleep hours Ã— 60 Ã— required % / 100.</p>
+          <p><strong>Current deep sleep</strong> = provided deep sleep minutes, or estimated as base % Ã— 0.8 (80% of optimal).</p>
+          <p><strong>Deep sleep gap</strong> = required âˆ’ current.</p>
           <p>Higher activity and recovery needs increase required deep sleep. Age decreases both required and actual deep sleep.</p>
         </CardContent>
       </Card>

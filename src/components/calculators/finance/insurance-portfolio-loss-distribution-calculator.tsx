@@ -53,7 +53,7 @@ const faqs = [
   {
     question: 'How is loss distribution calculated?',
     answer:
-      'Loss distribution is calculated using compound distribution models, typically combining Poisson distribution for claim frequency with a severity distribution (e.g., normal, lognormal) for claim amounts. Expected loss = Frequency × Average Severity.',
+      'Loss distribution is calculated using compound distribution models, typically combining Poisson distribution for claim frequency with a severity distribution (e.g., normal, lognormal) for claim amounts. Expected loss = Frequency Ã— Average Severity.',
   },
   {
     question: 'What is expected claim frequency?',
@@ -68,12 +68,12 @@ const faqs = [
   {
     question: 'What is expected loss?',
     answer:
-      'Expected loss is the mean of the loss distribution, calculated as Expected Claim Frequency × Average Claim Severity. It represents the average total loss expected from the portfolio.',
+      'Expected loss is the mean of the loss distribution, calculated as Expected Claim Frequency Ã— Average Claim Severity. It represents the average total loss expected from the portfolio.',
   },
   {
     question: 'What is loss variance?',
     answer:
-      'Loss variance measures the variability of aggregate losses. For compound distributions, variance = Frequency × (Severity Variance + Severity Mean²). Higher variance indicates greater uncertainty in losses.',
+      'Loss variance measures the variability of aggregate losses. For compound distributions, variance = Frequency Ã— (Severity Variance + Severity MeanÂ²). Higher variance indicates greater uncertainty in losses.',
   },
   {
     question: 'What are limitations of this calculation?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/insurance-portfolio-loss-distribution-calculator';
+const baseUrl = 'https://mycalculating.com/finance/insurance-portfolio-loss-distribution-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Insurance Portfolio Loss Distribution Calculator', item: baseUrl },
       ],
     },
@@ -171,11 +171,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const claimSeverityStdDev = values.claimSeverityStdDev;
   const numberOfSimulations = values.numberOfSimulations || 1000;
 
-  // Expected loss = Frequency × Average Severity
+  // Expected loss = Frequency Ã— Average Severity
   const expectedLoss = expectedClaimFrequency * averageClaimSeverity;
 
   // For compound Poisson distribution:
-  // Variance = λ × (σ² + μ²) where λ is frequency, μ is mean severity, σ is std dev of severity
+  // Variance = Î» Ã— (ÏƒÂ² + Î¼Â²) where Î» is frequency, Î¼ is mean severity, Ïƒ is std dev of severity
   const severityVariance = claimSeverityStdDev * claimSeverityStdDev;
   const lossVariance = expectedClaimFrequency * (severityVariance + averageClaimSeverity * averageClaimSeverity);
   const lossStdDev = Math.sqrt(lossVariance);
@@ -200,7 +200,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    `Expected Loss: $${expectedLoss.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This represents the mean of the loss distribution (Frequency × Average Severity).`,
+    `Expected Loss: $${expectedLoss.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This represents the mean of the loss distribution (Frequency Ã— Average Severity).`,
     `Loss Standard Deviation: $${lossStdDev.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This measures the variability of aggregate losses, indicating uncertainty in loss outcomes.`,
     `Coefficient of Variation: ${coefficientOfVariation.toFixed(3)}. This ratio (Std Dev / Mean) measures relative variability. Lower values indicate more stable loss distribution.`,
   ];
@@ -418,13 +418,13 @@ export default function InsurancePortfolioLossDistributionCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Expected Loss</strong> = Expected Claim Frequency × Average Claim Severity. The mean of the loss distribution.
+            <strong>Expected Loss</strong> = Expected Claim Frequency Ã— Average Claim Severity. The mean of the loss distribution.
           </p>
           <p>
-            <strong>Loss Variance</strong> = Frequency × (Severity Variance + Severity Mean²). For compound Poisson distribution, this measures the variability of aggregate losses.
+            <strong>Loss Variance</strong> = Frequency Ã— (Severity Variance + Severity MeanÂ²). For compound Poisson distribution, this measures the variability of aggregate losses.
           </p>
           <p>
-            <strong>Loss Standard Deviation</strong> = √Loss Variance. The standard deviation of aggregate losses, representing uncertainty in loss outcomes.
+            <strong>Loss Standard Deviation</strong> = âˆšLoss Variance. The standard deviation of aggregate losses, representing uncertainty in loss outcomes.
           </p>
           <p>
             <strong>Coefficient of Variation</strong> = Loss Std Dev / Expected Loss. A measure of relative variability, with lower values indicating more stable loss distribution.
@@ -528,7 +528,7 @@ export default function InsurancePortfolioLossDistributionCalculator() {
     <ul>
         <li><b>Claim Frequency:</b> Number of claims expected per period, often modeled using Poisson distribution</li>
         <li><b>Claim Severity:</b> Amount of each claim, typically modeled using normal, lognormal, or gamma distributions</li>
-        <li><b>Expected Loss:</b> Mean of the loss distribution, calculated as Frequency × Average Severity</li>
+        <li><b>Expected Loss:</b> Mean of the loss distribution, calculated as Frequency Ã— Average Severity</li>
         <li><b>Loss Variance:</b> Variability of aggregate losses, measuring uncertainty in loss outcomes</li>
     </ul>
 
@@ -540,7 +540,7 @@ export default function InsurancePortfolioLossDistributionCalculator() {
     <p>Claim frequency is typically modeled using a Poisson distribution, which assumes:</p>
     <ul>
         <li>Claims occur randomly and independently</li>
-        <li>Average number of claims per period is known (λ)</li>
+        <li>Average number of claims per period is known (Î»)</li>
         <li>Probability of multiple claims in a short interval is negligible</li>
     </ul>
     <p>The Poisson distribution is well-suited for modeling claim frequency in insurance portfolios.</p>
@@ -571,8 +571,8 @@ export default function InsurancePortfolioLossDistributionCalculator() {
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Expected Loss and Variance</h3>
-    <p><b>Expected Loss</b> = Frequency × Average Severity</p>
-    <p><b>Loss Variance</b> = Frequency × (Severity Variance + Severity Mean²)</p>
+    <p><b>Expected Loss</b> = Frequency Ã— Average Severity</p>
+    <p><b>Loss Variance</b> = Frequency Ã— (Severity Variance + Severity MeanÂ²)</p>
     <p>These formulas provide insights into portfolio risk and potential loss scenarios.</p>
 
 <hr />

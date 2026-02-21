@@ -35,7 +35,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Compare two ways to boost monthly savings: cut expenses by $X (1:1) or increase income by the equivalent. Shows gross income needed if you enter marginal tax rate.',
-      url: 'https://mycalculating.com/category/finance/expense-reduction-vs-income-increase-calculator',
+      url: 'https://mycalculating.com/finance/expense-reduction-vs-income-increase-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -88,8 +88,8 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
     recommendation += ' Expense reduction is 1:1 (cut $1 = save $1); income increase requires earning more if taxes apply.';
 
     const insights: string[] = [];
-    insights.push(`Option A — Expense reduction: Cut spending by $${expenseCutNeeded.toFixed(0)}/month ($${(expenseCutNeeded * 12).toFixed(0)}/year) to add $${target.toFixed(0)}/month to savings.`);
-    insights.push(`Option B — Income increase: Increase take-home by $${takeHomeIncreaseNeeded.toFixed(0)}/month ($${(takeHomeIncreaseNeeded * 12).toFixed(0)}/year) and save it; same $${target.toFixed(0)}/month added to savings.`);
+    insights.push(`Option A â€” Expense reduction: Cut spending by $${expenseCutNeeded.toFixed(0)}/month ($${(expenseCutNeeded * 12).toFixed(0)}/year) to add $${target.toFixed(0)}/month to savings.`);
+    insights.push(`Option B â€” Income increase: Increase take-home by $${takeHomeIncreaseNeeded.toFixed(0)}/month ($${(takeHomeIncreaseNeeded * 12).toFixed(0)}/year) and save it; same $${target.toFixed(0)}/month added to savings.`);
     if (grossIncreaseNeeded != null) {
       insights.push(`With ${v.marginalTaxRatePct}% marginal tax: you need ~$${grossIncreaseNeeded.toFixed(0)}/month more gross ($${(grossIncreaseNeeded * 12).toFixed(0)}/year) to get $${target.toFixed(0)} more take-home.`);
     }
@@ -160,7 +160,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                 )} />
                 <FormField control={form.control} name="marginalTaxRatePct" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Marginal Tax Rate (%) — optional</FormLabel>
+                    <FormLabel>Marginal Tax Rate (%) â€” optional</FormLabel>
                     <FormControl>
                       <Input type="number" min={0} max={50} step={0.5} placeholder="e.g., 22" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) !== undefined && e.target.value !== '' ? parseFloat(e.target.value) : undefined)} />
                     </FormControl>
@@ -195,7 +195,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
                   <TrendingDown className="h-6 w-6 text-green-600 mb-2" />
                   <h4 className="font-semibold text-green-800 dark:text-green-300">Option A: Expense Reduction</h4>
                   <p className="text-2xl font-bold text-green-700 dark:text-green-400 mt-1">Cut $${result.expenseCutNeeded.toFixed(0)}/month</p>
-                  <p className="text-sm text-muted-foreground mt-1">${(result.expenseCutNeeded * 12).toFixed(0)}/year · 1:1 (cut $1 = save $1)</p>
+                  <p className="text-sm text-muted-foreground mt-1">${(result.expenseCutNeeded * 12).toFixed(0)}/year Â· 1:1 (cut $1 = save $1)</p>
                 </div>
                 <div className="p-4 rounded-lg border-2 border-blue-200 bg-blue-50 dark:bg-blue-900/10 dark:border-blue-800">
                   <TrendingUp className="h-6 w-6 text-blue-600 mb-2" />
@@ -243,7 +243,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Expense reduction is 1:1—every dollar cut becomes a dollar saved, with no tax.</span>
+                <span className="text-sm font-medium">Expense reduction is 1:1â€”every dollar cut becomes a dollar saved, with no tax.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -331,7 +331,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">Expense cut needed = Target additional monthly savings (1:1)</p>
             <p className="font-mono text-sm text-center">Take-home increase needed = Target additional monthly savings</p>
-            <p className="font-mono text-sm text-center">Gross income increase needed = Take-home increase ÷ (1 − Marginal tax rate)</p>
+            <p className="font-mono text-sm text-center">Gross income increase needed = Take-home increase Ã· (1 âˆ’ Marginal tax rate)</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
             The expense path is dollar-for-dollar with no tax. The income path converts a take-home target into the gross amount needed when you apply a single marginal tax rate to the extra income.
@@ -457,18 +457,18 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">The 1:1 Rule for Expense Reduction</h3>
         <p>Every dollar you reduce in expenses, without increasing spending elsewhere, becomes one dollar added to savings. There is no tax on &quot;not spending.&quot; This makes expense reduction mathematically efficient: to add $500/month to savings, cut expenses by exactly $500/month.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Income Increase and Tax</h3>
-        <p>To get $X more take-home, you need $X more after tax. If your marginal tax rate is T, you need gross increase = X ÷ (1 − T). For example, at 22% marginal rate, to add $500 take-home you need about $641 more gross per month. The higher your marginal rate, the larger the gross amount required for the same take-home target.</p>
+        <p>To get $X more take-home, you need $X more after tax. If your marginal tax rate is T, you need gross increase = X Ã· (1 âˆ’ T). For example, at 22% marginal rate, to add $500 take-home you need about $641 more gross per month. The higher your marginal rate, the larger the gross amount required for the same take-home target.</p>
         <ul className="list-disc ml-6 space-y-2 mt-4">
-          <li><strong>Expense path:</strong> Cut $500/month → save $500/month (1:1, no tax).</li>
-          <li><strong>Income path (22% marginal):</strong> Earn ~$641/month more gross → $500 more take-home → save $500/month.</li>
+          <li><strong>Expense path:</strong> Cut $500/month â†’ save $500/month (1:1, no tax).</li>
+          <li><strong>Income path (22% marginal):</strong> Earn ~$641/month more gross â†’ $500 more take-home â†’ save $500/month.</li>
         </ul>
         <hr />
 
         <h2 id="how-calculated-expense-vs-income" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Expense cut needed = Target additional monthly savings (same number). Take-home increase needed = Target additional monthly savings. Gross income increase = Take-home increase ÷ (1 − Marginal tax rate) when marginal rate is provided.</p>
+        <p>Expense cut needed = Target additional monthly savings (same number). Take-home increase needed = Target additional monthly savings. Gross income increase = Take-home increase Ã· (1 âˆ’ Marginal tax rate) when marginal rate is provided.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-          <p className="font-mono text-lg text-destructive font-bold">Expense cut = Target | Gross increase = Target ÷ (1 − Tax rate)</p>
+          <p className="font-mono text-lg text-destructive font-bold">Expense cut = Target | Gross increase = Target Ã· (1 âˆ’ Tax rate)</p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">What Each Path Delivers</h3>
         <p>Both paths deliver the same additional monthly savings. The calculator also shows your current savings rate and the rate after achieving the target via expense reduction vs income increase. With expense reduction, income is unchanged so the rate rises more; with income increase, income is higher so the rate rises less (but the dollar savings are identical).</p>
@@ -477,7 +477,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
         <h2 id="why-it-matters-expense-vs-income" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why It Matters</h2>
         <p>Seeing the two options side by side helps you choose: cutting $500/month may be easier than earning $641/month more gross, or vice versa depending on your job and lifestyle.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Combining Both</h3>
-        <p>You can mix both: cut $250 in expenses and increase take-home by $250 to achieve $500/month more in savings. The calculator focuses on &quot;all expense&quot; vs &quot;all income&quot; for a clear comparison. In practice, many people do a mix—e.g. trim subscriptions and put a raise toward savings.</p>
+        <p>You can mix both: cut $250 in expenses and increase take-home by $250 to achieve $500/month more in savings. The calculator focuses on &quot;all expense&quot; vs &quot;all income&quot; for a clear comparison. In practice, many people do a mixâ€”e.g. trim subscriptions and put a raise toward savings.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">When Expense Reduction Is Easier</h3>
         <p>If you have discretionary spending (subscriptions, dining, travel), cutting first is often faster and 1:1. If you&apos;re already lean, earning more (raise, side income) may be the only way to add meaningfully to savings.</p>
         <hr />
@@ -489,8 +489,8 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
         <hr />
 
         <h2 id="conclusion-expense-vs-income" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Expense reduction and income increase both can add the same amount to monthly savings. Expense reduction is 1:1—every dollar cut becomes a dollar saved, with no tax. Income increase may require a larger gross amount when taxes apply; the calculator shows the exact gross needed when you enter your marginal rate.</p>
-        <p>Use this calculator to see the exact numbers for your situation: the expense cut (1:1), the take-home increase, and the gross income increase if you pay tax. Then choose the path (or mix) that fits your life—cutting spending, earning more, or both.</p>
+        <p>Expense reduction and income increase both can add the same amount to monthly savings. Expense reduction is 1:1â€”every dollar cut becomes a dollar saved, with no tax. Income increase may require a larger gross amount when taxes apply; the calculator shows the exact gross needed when you enter your marginal rate.</p>
+        <p>Use this calculator to see the exact numbers for your situation: the expense cut (1:1), the take-home increase, and the gross income increase if you pay tax. Then choose the path (or mix) that fits your lifeâ€”cutting spending, earning more, or both.</p>
       </section>
 
       <Card>
@@ -504,11 +504,11 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
         <CardContent className="space-y-6">
           <div>
             <h4 className="font-semibold text-lg mb-3">Why is expense reduction 1:1?</h4>
-            <p className="text-muted-foreground">Because every dollar you don’t spend is a dollar you can save. There’s no tax on reducing expenses; the full amount adds to savings.</p>
+            <p className="text-muted-foreground">Because every dollar you donâ€™t spend is a dollar you can save. Thereâ€™s no tax on reducing expenses; the full amount adds to savings.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why do I need to earn more than my target to get the same savings from income?</h4>
-            <p className="text-muted-foreground">Taxes. If you want $500 more take-home to save, you need $500 more after tax. If your marginal rate is 22%, that last dollar of income leaves you with $0.78; so you need 500 ÷ 0.78 ≈ $641 gross to get $500 take-home.</p>
+            <p className="text-muted-foreground">Taxes. If you want $500 more take-home to save, you need $500 more after tax. If your marginal rate is 22%, that last dollar of income leaves you with $0.78; so you need 500 Ã· 0.78 â‰ˆ $641 gross to get $500 take-home.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What marginal tax rate should I use?</h4>
@@ -520,11 +520,11 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this account for lifestyle creep?</h4>
-            <p className="text-muted-foreground">No. It assumes you save 100% of the expense cut or the income increase. If you spend part of a raise, you’d need a larger income increase to hit the same savings target. The calculator is a direct comparison: same additional savings, two paths.</p>
+            <p className="text-muted-foreground">No. It assumes you save 100% of the expense cut or the income increase. If you spend part of a raise, youâ€™d need a larger income increase to hit the same savings target. The calculator is a direct comparison: same additional savings, two paths.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my expenses exceed my income?</h4>
-            <p className="text-muted-foreground">The form requires take-home ≥ expenses. If you’re in a deficit, focus first on cutting expenses or increasing income to reach balance; then use this tool to see how to add a target amount to savings.</p>
+            <p className="text-muted-foreground">The form requires take-home â‰¥ expenses. If youâ€™re in a deficit, focus first on cutting expenses or increasing income to reach balance; then use this tool to see how to add a target amount to savings.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why show savings rate before and after?</h4>
@@ -532,7 +532,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Is expense reduction always easier than earning more?</h4>
-            <p className="text-muted-foreground">Not always. It depends on your situation. Cutting $500 may be hard if you’re already lean; earning more may be easier with a raise or side income. The calculator gives you the numbers; you choose the path (or mix).</p>
+            <p className="text-muted-foreground">Not always. It depends on your situation. Cutting $500 may be hard if youâ€™re already lean; earning more may be easier with a raise or side income. The calculator gives you the numbers; you choose the path (or mix).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What counts as &quot;expenses&quot;?</h4>
@@ -591,7 +591,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>No lifestyle creep:</strong> Assumes 100% of expense cut or income increase goes to savings. If you spend part of a raise, you’d need a larger income increase.</span>
+                <span><strong>No lifestyle creep:</strong> Assumes 100% of expense cut or income increase goes to savings. If you spend part of a raise, youâ€™d need a larger income increase.</span>
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
@@ -612,7 +612,7 @@ export default function ExpenseReductionVsIncomeIncreaseCalculator() {
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Target: +$300/month, no tax entered</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">Option A: Cut $300/month. Option B: Increase take-home by $300/month. Without a tax rate, gross income needed isn’t shown; add marginal rate to see it.</p>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">Option A: Cut $300/month. Option B: Increase take-home by $300/month. Without a tax rate, gross income needed isnâ€™t shown; add marginal rate to see it.</p>
               </div>
             </div>
           </div>

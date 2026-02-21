@@ -43,7 +43,7 @@ const steps = [
 ];
 
 const faqs = [
-  { question: 'What is dilution?', answer: 'Dilution is the reduction in an existing owner’s percentage ownership when new shares are issued.' },
+  { question: 'What is dilution?', answer: 'Dilution is the reduction in an existing ownerâ€™s percentage ownership when new shares are issued.' },
   { question: 'How is dilution calculated?', answer: 'Dilution % = (Pre-round ownership - Post-round ownership) / Pre-round ownership.' },
   { question: 'What are typical dilution ranges?', answer: 'Seed 10-25%, Series A 15-25%, Series B 10-20%. Varies by market and traction.' },
   { question: 'How do option pools affect dilution?', answer: 'A pre-money pool expansion dilutes founders further. This calculator assumes no new pool; add separately if needed.' },
@@ -58,7 +58,7 @@ const relatedCalculators = [
   { name: 'LBO (Leveraged Buyout) Return Calculator', slug: 'lbo-leveraged-buyout-return-calculator', description: 'Compute MOIC and IRR for LBOs.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/founder-dilution-calculator';
+const baseUrl = 'https://mycalculating.com/finance/founder-dilution-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -67,7 +67,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Founder Dilution Calculator (by Funding Round)', item: baseUrl },
       ],
     },
@@ -295,7 +295,7 @@ export default function FounderDilutionCalculator() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Post-Money</strong> = Pre-Money + Investment</p>
           <p><strong>Investor Ownership %</strong> = Investment / Post-Money</p>
-          <p><strong>Founder Ownership After</strong> = Pre-Round Founder % × (1 - Investor %)</p>
+          <p><strong>Founder Ownership After</strong> = Pre-Round Founder % Ã— (1 - Investor %)</p>
           <p><strong>Dilution %</strong> = (Founder Before - Founder After) / Founder Before</p>
           <p>Assumes no option pool changes or convertibles; include those for full dilution modeling.</p>
         </CardContent>
@@ -357,7 +357,7 @@ export default function FounderDilutionCalculator() {
         <p>Dilution reduces existing ownership when new shares are issued. It is inevitable in fundraising but should be planned.</p>
 
         <h2 id="math" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dilution Math</h2>
-        <p>Investor % = Investment / Post-money. Founder After = Founder Before × (1 - Investor %). Dilution = (Before - After) / Before.</p>
+        <p>Investor % = Investment / Post-money. Founder After = Founder Before Ã— (1 - Investor %). Dilution = (Before - After) / Before.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Typical Dilution Ranges</h2>
         <p>Seed 10-25%, Series A 15-25%, Series B 10-20%. High dilution should be justified by capital and terms.</p>

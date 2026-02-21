@@ -56,7 +56,7 @@ const faqs = [
   {
     question: 'How is wealth projection calculated?',
     answer:
-      'Wealth projection uses compound interest: Future Value = Current Wealth × (1 + r)^n + Annual Contribution × [((1 + r)^n - 1) / r], where r is return rate and n is years. With behavior adjustment, contributions increase after a specified period, requiring separate calculations for before and after adjustment periods.',
+      'Wealth projection uses compound interest: Future Value = Current Wealth Ã— (1 + r)^n + Annual Contribution Ã— [((1 + r)^n - 1) / r], where r is return rate and n is years. With behavior adjustment, contributions increase after a specified period, requiring separate calculations for before and after adjustment periods.',
   },
   {
     question: 'What are common behavior adjustments?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/wealth-projection-with-behavior-adjustment-calculator';
+const baseUrl = 'https://mycalculating.com/finance/wealth-projection-with-behavior-adjustment-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Wealth Projection with Behavior Adjustment Calculator', item: baseUrl },
       ],
     },
@@ -156,7 +156,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const behaviorAdjustmentIncrease = values.behaviorAdjustmentIncrease ?? 0;
   const behaviorAdjustmentYears = values.behaviorAdjustmentYears ?? 0;
   
-  // Base projection: FV = PV × (1 + r)^n + PMT × [((1 + r)^n - 1) / r]
+  // Base projection: FV = PV Ã— (1 + r)^n + PMT Ã— [((1 + r)^n - 1) / r]
   let projectedWealthBase = currentWealth * Math.pow(1 + annualReturnRatePct, projectionYears);
   if (annualReturnRatePct > 0) {
     const annuityFactor = (Math.pow(1 + annualReturnRatePct, projectionYears) - 1) / annualReturnRatePct;
@@ -446,7 +446,7 @@ export default function WealthProjectionWithBehaviorAdjustmentCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base Projection</strong> = Current Wealth × (1 + r)^n + Annual Contribution × [((1 + r)^n - 1) / r]
+            <strong>Base Projection</strong> = Current Wealth Ã— (1 + r)^n + Annual Contribution Ã— [((1 + r)^n - 1) / r]
           </p>
           <p>
             <strong>Adjusted Projection</strong> = Project wealth to adjustment year, then project from that point with increased contribution
@@ -583,7 +583,7 @@ export default function WealthProjectionWithBehaviorAdjustmentCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Base Projection Formula</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>FV = PV × (1 + r)^n + PMT × [((1 + r)^n - 1) / r]</strong></p>
+        <p className="font-mono text-lg"><strong>FV = PV Ã— (1 + r)^n + PMT Ã— [((1 + r)^n - 1) / r]</strong></p>
     </div>
     <p>Where: FV = Future Value, PV = Present Value, r = return rate, n = years, PMT = annual contribution</p>
 

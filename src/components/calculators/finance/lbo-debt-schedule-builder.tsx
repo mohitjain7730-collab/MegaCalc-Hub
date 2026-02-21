@@ -77,7 +77,7 @@ const faqs = [
   {
     question: 'How is interest expense calculated?',
     answer:
-      'Interest expense = Interest Rate × Average Debt Balance. Average Debt Balance = (Beginning Balance + Ending Balance) / 2. This accounts for principal reductions during the period.',
+      'Interest expense = Interest Rate Ã— Average Debt Balance. Average Debt Balance = (Beginning Balance + Ending Balance) / 2. This accounts for principal reductions during the period.',
   },
   {
     question: 'How do I calculate ending balance?',
@@ -134,7 +134,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/lbo-debt-schedule-builder';
+const baseUrl = 'https://mycalculating.com/finance/lbo-debt-schedule-builder';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -143,7 +143,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'LBO Debt Schedule Builder', item: baseUrl },
       ],
     },
@@ -472,7 +472,7 @@ export default function LboDebtScheduleBuilder() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Mandatory Amortization</strong> = min(Initial Debt Balance × Amortization Rate, Beginning Balance)
+            <strong>Mandatory Amortization</strong> = min(Initial Debt Balance Ã— Amortization Rate, Beginning Balance)
           </p>
           <p>
             <strong>Optional Prepayment</strong> = min(Cash Available, Beginning Balance - Mandatory Amortization)
@@ -481,7 +481,7 @@ export default function LboDebtScheduleBuilder() {
             <strong>Total Payment</strong> = Mandatory Amortization + Optional Prepayment
           </p>
           <p>
-            <strong>Interest Expense</strong> = Interest Rate × Average Balance
+            <strong>Interest Expense</strong> = Interest Rate Ã— Average Balance
           </p>
           <p>
             <strong>Average Balance</strong> = (Beginning Balance + Ending Balance) / 2
@@ -565,7 +565,7 @@ export default function LboDebtScheduleBuilder() {
 
         <h2 id="amort" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Mandatory Amortization Mechanics</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Mandatory Amort = min(Initial Balance × Amort Rate, Beginning Balance)</strong></p>
+          <p className="font-mono text-lg"><strong>Mandatory Amort = min(Initial Balance Ã— Amort Rate, Beginning Balance)</strong></p>
         </div>
         <p>Set per tranche. In down cycles, test if mandatory paydowns are supportable by cash flow.</p>
 
@@ -574,7 +574,7 @@ export default function LboDebtScheduleBuilder() {
 
         <h2 id="interest" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interest Calculation on Average Balance</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>Interest = Rate × ((Beg Balance + End Balance) / 2)</strong></p>
+          <p className="font-mono text-lg"><strong>Interest = Rate Ã— ((Beg Balance + End Balance) / 2)</strong></p>
         </div>
         <p>Average balance captures intra-period principal reduction; using beginning balance overstates interest.</p>
 

@@ -44,12 +44,12 @@ const faqs = [
   {
     question: 'What is exit multiple IRR?',
     answer:
-      'Exit multiple IRR calculates the annualized return (IRR) based on the exit multiple and holding period. Exit multiple = Exit Value / Initial Investment. IRR ≈ (Exit Multiple)^(1/Holding Period) - 1.',
+      'Exit multiple IRR calculates the annualized return (IRR) based on the exit multiple and holding period. Exit multiple = Exit Value / Initial Investment. IRR â‰ˆ (Exit Multiple)^(1/Holding Period) - 1.',
   },
   {
     question: 'How is exit multiple IRR calculated?',
     answer:
-      'IRR ≈ (Exit Multiple)^(1/Holding Period) - 1. For example, if exit multiple is 3.0x over 5 years, IRR ≈ (3.0)^(1/5) - 1 = 0.2457 or 24.57%. This is an approximation assuming no intermediate cash flows.',
+      'IRR â‰ˆ (Exit Multiple)^(1/Holding Period) - 1. For example, if exit multiple is 3.0x over 5 years, IRR â‰ˆ (3.0)^(1/5) - 1 = 0.2457 or 24.57%. This is an approximation assuming no intermediate cash flows.',
   },
   {
     question: 'What is a good exit multiple?',
@@ -59,7 +59,7 @@ const faqs = [
   {
     question: 'How does holding period affect IRR?',
     answer:
-      'Longer holding periods require higher exit multiples to achieve the same IRR. For example, 2.0x exit multiple over 3 years ≈ 26% IRR, but over 7 years ≈ 10% IRR. Shorter holding periods are preferred for higher IRRs.',
+      'Longer holding periods require higher exit multiples to achieve the same IRR. For example, 2.0x exit multiple over 3 years â‰ˆ 26% IRR, but over 7 years â‰ˆ 10% IRR. Shorter holding periods are preferred for higher IRRs.',
   },
   {
     question: 'What is the difference between exit multiple and MOIC?',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/exit-multiple-irr-calculator';
+const baseUrl = 'https://mycalculating.com/finance/exit-multiple-irr-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Exit Multiple IRR Calculator', item: baseUrl },
       ],
     },
@@ -146,10 +146,10 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const exitMultiple = values.exitMultiple;
   const holdingPeriodYears = values.holdingPeriodYears;
   
-  // Exit Value = Initial Investment × Exit Multiple
+  // Exit Value = Initial Investment Ã— Exit Multiple
   const exitValue = initialInvestment * exitMultiple;
   
-  // IRR approximation: IRR ≈ (Exit Multiple)^(1/Holding Period) - 1
+  // IRR approximation: IRR â‰ˆ (Exit Multiple)^(1/Holding Period) - 1
   const irr = exitMultiple > 0 && holdingPeriodYears > 0 
     ? (Math.pow(exitMultiple, 1 / holdingPeriodYears) - 1) * 100 
     : 0;
@@ -171,7 +171,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     interpretation = 'Exit multiple 2.0-3.0x or IRR 20-25% represents solid PE/VC performance, typically above median fund returns.';
   } else {
     status = 'optimal';
-    interpretation = 'Exit multiple ≥3.0x or IRR ≥25% represents top quartile PE/VC performance, exceeding typical fund benchmarks.';
+    interpretation = 'Exit multiple â‰¥3.0x or IRR â‰¥25% represents top quartile PE/VC performance, exceeding typical fund benchmarks.';
   }
 
   const recommendations = [
@@ -189,7 +189,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   if (exitMultiple >= 3.0 && irr >= 25) {
-    recommendations.push('Excellent: Exit multiple ≥3.0x and IRR ≥25% represents top quartile performance. This indicates strong returns driven by EBITDA growth, multiple expansion, or operational improvements.');
+    recommendations.push('Excellent: Exit multiple â‰¥3.0x and IRR â‰¥25% represents top quartile performance. This indicates strong returns driven by EBITDA growth, multiple expansion, or operational improvements.');
   }
   
   recommendations.push('Validation: Compare exit multiple and IRR to similar transactions and fund benchmarks. Review exit assumptions and market multiples. Perform sensitivity analysis on exit multiple and holding period. Consider detailed cash flow IRR for more accuracy.');
@@ -367,7 +367,7 @@ export default function ExitMultipleIrrCalculator() {
             <strong>Exit Multiple</strong> = Exit Value / Initial Investment
           </p>
           <p>
-            <strong>Exit Value</strong> = Initial Investment × Exit Multiple
+            <strong>Exit Value</strong> = Initial Investment Ã— Exit Multiple
           </p>
           <p>
             <strong>IRR (Approximation)</strong> = (Exit Multiple)^(1/Holding Period) - 1
@@ -442,20 +442,20 @@ export default function ExitMultipleIrrCalculator() {
 
         <h2 id="math" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Approximate Math</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>IRR ≈ (Exit Multiple)^(1/Holding Period) - 1</strong></p>
+          <p className="font-mono text-lg"><strong>IRR â‰ˆ (Exit Multiple)^(1/Holding Period) - 1</strong></p>
         </div>
         <p>Assumes a single exit cash flow. If you have interim dividends or partial exits, move to full IRR/XIRR with dated cash flows.</p>
 
         <h2 id="timing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Timing Sensitivity</h2>
-        <p>Same multiple, longer hold → lower IRR. E.g., 2.0x over 3 years ≈ 26% IRR; over 7 years ≈ 10% IRR. Timing is as important as the multiple.</p>
+        <p>Same multiple, longer hold â†’ lower IRR. E.g., 2.0x over 3 years â‰ˆ 26% IRR; over 7 years â‰ˆ 10% IRR. Timing is as important as the multiple.</p>
 
         <h2 id="bench" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks by Strategy</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong>VC:</strong> 3–10x+ with wide dispersion.</li>
-          <li><strong>Growth:</strong> 2–5x common.</li>
-          <li><strong>Buyout:</strong> 2–3x typical.</li>
+          <li><strong>VC:</strong> 3â€“10x+ with wide dispersion.</li>
+          <li><strong>Growth:</strong> 2â€“5x common.</li>
+          <li><strong>Buyout:</strong> 2â€“3x typical.</li>
         </ul>
-        <p>Top quartile often starts at 3x+ for growth/VC; buyout top quartile near 2.5–3x with shorter holds.</p>
+        <p>Top quartile often starts at 3x+ for growth/VC; buyout top quartile near 2.5â€“3x with shorter holds.</p>
 
         <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Drivers of Higher Multiples</h2>
         <ul className="list-disc ml-6 space-y-2">
@@ -471,8 +471,8 @@ export default function ExitMultipleIrrCalculator() {
         <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Quick Playbook</h2>
         <ol className="list-decimal ml-6 space-y-2">
           <li>Estimate exit multiple from base case.</li>
-          <li>Apply IRR ≈ (multiple)^(1/years) - 1 for fast read.</li>
-          <li>Run sensitivities: ±0.5–1.0x multiple, ±1–2 years hold.</li>
+          <li>Apply IRR â‰ˆ (multiple)^(1/years) - 1 for fast read.</li>
+          <li>Run sensitivities: Â±0.5â€“1.0x multiple, Â±1â€“2 years hold.</li>
           <li>If interim dividends/recaps exist, switch to full cash flow IRR.</li>
           <li>Benchmark to strategy quartiles before go/no-go.</li>
         </ol>

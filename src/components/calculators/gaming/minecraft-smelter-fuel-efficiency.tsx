@@ -39,7 +39,7 @@ const faqs = [
   {
     question: 'How do I calculate total smelting capacity?',
     answer:
-      'Total Smelting Capacity = Fuel Amount × Items Per Fuel Unit. For example, 10 coal × 8 items/coal = 80 items. 1 lava bucket × 100 items/bucket = 100 items. Multiply fuel amount by fuel efficiency to get total capacity.',
+      'Total Smelting Capacity = Fuel Amount Ã— Items Per Fuel Unit. For example, 10 coal Ã— 8 items/coal = 80 items. 1 lava bucket Ã— 100 items/bucket = 100 items. Multiply fuel amount by fuel efficiency to get total capacity.',
   },
   {
     question: 'What is the best fuel for automated smelting?',
@@ -90,7 +90,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Smelter Fuel Efficiency', item: baseUrl },
       ],
     },
@@ -201,7 +201,7 @@ export default function MinecraftSmelterFuelEfficiency() {
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-6">
-          A quick real‑world style example
+          A quick realâ€‘world style example
         </h2>
         <p>
           When I explain this to friends, I usually compare it to a real budget
@@ -211,7 +211,7 @@ export default function MinecraftSmelterFuelEfficiency() {
           on property tax, insurance, and repairs.
         </p>
         <p>
-          They almost signed a 30‑year mortgage without leaving room for
+          They almost signed a 30â€‘year mortgage without leaving room for
           emergencies, upgrades, or even fun. The mistake wasn&apos;t the house
           itself. It was ignoring the hidden costs around it. Smelting in
           Minecraft is similar. Lava buckets look perfect because they do 100
@@ -260,20 +260,20 @@ export default function MinecraftSmelterFuelEfficiency() {
         <p>
           <strong>Blaze Rods (12 items each):</strong> These shine once you have
           a blaze farm. They&apos;re a bit more efficient than coal and fully
-          renewable if your farm is good. Perfect for long‑term bases where you
+          renewable if your farm is good. Perfect for longâ€‘term bases where you
           smelt a lot but don&apos;t want to mess with lava buckets.
         </p>
         <p>
           <strong>Lava Buckets (100 items each):</strong> That number is
           tempting, and for giant bulk smelts they&apos;re fantastic. The catch
           is that you lose the bucket. If you&apos;re early game or short on
-          iron, turning buckets into one‑time fuel is like over‑stretching for
+          iron, turning buckets into oneâ€‘time fuel is like overâ€‘stretching for
           that Denver mortgage payment every month. It &quot;works,&quot; but it
           hurts.
         </p>
         <p>
           <strong>Cactus (0.5 items each):</strong> On paper it&apos;s awful. In
-          practice, it&apos;s an endless, hands‑off trickle of fuel for automated
+          practice, it&apos;s an endless, handsâ€‘off trickle of fuel for automated
           setups. Think of cactus as slow, renewable background income, not your
           main paycheck.
         </p>
@@ -285,7 +285,7 @@ export default function MinecraftSmelterFuelEfficiency() {
           Most guides talk about the &quot;best fuel&quot; like you only ever
           use one. In real worlds, the smart move is mixing fuels by role. Use
           blaze rods or coal for steady work, and save lava buckets only for
-          those huge, one‑off jobs like cooking stacks of glass or stone before
+          those huge, oneâ€‘off jobs like cooking stacks of glass or stone before
           a big build.
         </p>
         <p>
@@ -306,7 +306,7 @@ export default function MinecraftSmelterFuelEfficiency() {
           A personal smelting story (and what I learned)
         </h2>
         <p>
-          In one survival world, I built a huge auto‑smelter under my base and
+          In one survival world, I built a huge autoâ€‘smelter under my base and
           proudly fed it with lava buckets. I felt clever because on paper,
           lava was the &quot;correct&quot; answer. A few weeks later, I noticed
           I was always short on iron for rails, hoppers, and tools.
@@ -337,13 +337,13 @@ export default function MinecraftSmelterFuelEfficiency() {
         <p>
           For example, say you want to smelt 160 items. Plug in &quot;lava
           bucket&quot; and you&apos;ll see one bucket covers it. Plug in
-          &quot;coal&quot; and you&apos;ll see you need 20 coal (160 ÷ 8). If
+          &quot;coal&quot; and you&apos;ll see you need 20 coal (160 Ã· 8). If
           iron is tight but coal is everywhere, coal wins, even if lava looks
           prettier in a chart.
         </p>
         <p>
           The goal isn&apos;t a perfect answer. The goal is to avoid wild
-          overkill—like tossing in three lava buckets when one and a handful of
+          overkillâ€”like tossing in three lava buckets when one and a handful of
           coal would do the same job with fewer hidden costs.
         </p>
 
@@ -374,8 +374,8 @@ export default function MinecraftSmelterFuelEfficiency() {
         </h2>
         <p>
           If you remember nothing else, remember this: match the fuel to the
-          job, don&apos;t waste stacks in half‑empty furnaces, and be honest
-          about what&apos;s really &quot;expensive&quot; in your world—coal,
+          job, don&apos;t waste stacks in halfâ€‘empty furnaces, and be honest
+          about what&apos;s really &quot;expensive&quot; in your worldâ€”coal,
           iron, or your own time.
         </p>
         <p>
@@ -414,8 +414,8 @@ export default function MinecraftSmelterFuelEfficiency() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool compares Minecraft smelter fuel efficiency based on fuel type (Coal/Charcoal/Lava Bucket/Cactus/Blaze Rod), fuel amount, and optional items to smelt to calculate fuel requirements.</p>
-          <p>Outputs include items per fuel unit (varies by type: Coal/Charcoal = 8, Lava = 100, Cactus = 0.5, Blaze Rod = 12), total smelting capacity (fuel amount × items per unit), fuel needed for target items (if specified), fuel efficiency comparison across all types, status assessment (low-efficiency/moderate-efficiency/high-efficiency/very-high-efficiency), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use fuel efficiency values: Items Per Fuel = Fuel Efficiency (varies by type), Total Capacity = Fuel Amount × Items Per Fuel, Fuel Needed = Items To Smelt / Items Per Fuel (rounded up). The guide covers fuel types, efficiency comparison, capacity calculation, optimization strategies, renewability, and automation. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft smelter fuel efficiency calculations instantly.</p>
+          <p>Outputs include items per fuel unit (varies by type: Coal/Charcoal = 8, Lava = 100, Cactus = 0.5, Blaze Rod = 12), total smelting capacity (fuel amount Ã— items per unit), fuel needed for target items (if specified), fuel efficiency comparison across all types, status assessment (low-efficiency/moderate-efficiency/high-efficiency/very-high-efficiency), interpretation, recommendations, and action plan.</p>
+          <p>Formulas use fuel efficiency values: Items Per Fuel = Fuel Efficiency (varies by type), Total Capacity = Fuel Amount Ã— Items Per Fuel, Fuel Needed = Items To Smelt / Items Per Fuel (rounded up). The guide covers fuel types, efficiency comparison, capacity calculation, optimization strategies, renewability, and automation. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft smelter fuel efficiency calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

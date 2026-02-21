@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/social-connection-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/social-connection-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Social Connection Wellness Score Calculator', item: baseUrl },
       ],
     },
@@ -422,25 +422,25 @@ export default function SocialConnectionScoreCalculator() {
             <strong>Connection Score</strong> = Relationship Score + Interaction Score + Quality Score + Support Score + Involvement Score + Belonging Score
           </p>
           <p>
-            <strong>Relationship Score</strong> = Min((Close Relationships / 5) × 20, 20)
+            <strong>Relationship Score</strong> = Min((Close Relationships / 5) Ã— 20, 20)
           </p>
           <p>
-            <strong>Interaction Score</strong> = Min((Social Interactions per Week / 14) × 20, 20)
+            <strong>Interaction Score</strong> = Min((Social Interactions per Week / 14) Ã— 20, 20)
           </p>
           <p>
-            <strong>Quality Score</strong> = (Relationship Quality / 10) × 20
+            <strong>Quality Score</strong> = (Relationship Quality / 10) Ã— 20
           </p>
           <p>
-            <strong>Support Score</strong> = (Social Support / 10) × 20
+            <strong>Support Score</strong> = (Social Support / 10) Ã— 20
           </p>
           <p>
-            <strong>Involvement Score</strong> = (Community Involvement / 10) × 10
+            <strong>Involvement Score</strong> = (Community Involvement / 10) Ã— 10
           </p>
           <p>
-            <strong>Belonging Score</strong> = (Sense of Belonging / 10) × 10
+            <strong>Belonging Score</strong> = (Sense of Belonging / 10) Ã— 10
           </p>
           <p>
-            <strong>Support Index</strong> = ((Social Support + Relationship Quality + Sense of Belonging) / 3) × 10
+            <strong>Support Index</strong> = ((Social Support + Relationship Quality + Sense of Belonging) / 3) Ã— 10
           </p>
           <p>Score ranges from 0-100, with higher scores indicating stronger social connections.</p>
         </CardContent>

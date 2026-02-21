@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cognitive-load-balance-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cognitive-load-balance-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cognitive Load Balance Wellness Calculator', item: baseUrl },
       ],
     },
@@ -394,7 +394,7 @@ export default function CognitiveLoadBalanceCalculator() {
             <strong>Total Cognitive Load</strong> = Intrinsic Load + Extraneous Load + Germane Load
           </p>
           <p>
-            <strong>Balance Index</strong> = (Total Load / (Cognitive Capacity × 3)) × 100
+            <strong>Balance Index</strong> = (Total Load / (Cognitive Capacity Ã— 3)) Ã— 100
           </p>
           <p>
             <strong>Intrinsic Load</strong> = Inherent difficulty of the material (1-10 scale)

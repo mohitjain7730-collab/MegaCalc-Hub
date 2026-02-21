@@ -35,22 +35,22 @@ type ResultPayload = {
 const steps = [
   'Rate your wake-up energy (cortisol) from 1 (groggy) to 10 (alert, calm).',
   'Rate evening sleepiness/melatonin from 1 (wired) to 10 (sleepy, relaxed).',
-  'Enter typical bedtime/wake-time using 24h clock (use 24–30 for post-midnight).',
-  'Log perceived stress (1–10).',
+  'Enter typical bedtime/wake-time using 24h clock (use 24â€“30 for post-midnight).',
+  'Log perceived stress (1â€“10).',
   'Review the balance index and follow the plan to realign your rhythm.',
 ];
 
 const faqs = [
   { question: 'Do I need lab tests for this?', answer: 'No. These scores are subjective cues to guide lifestyle tweaks. Use labs under medical supervision when needed.' },
   { question: 'How often should I track?', answer: 'Daily for a week to spot patterns, then weekly when rhythms feel steady.' },
-  { question: 'What if I’m a shift worker?', answer: 'Enter sleep/wake in your actual schedule; focus on consistent light cues after your wake time.' },
-  { question: 'Does caffeine matter?', answer: 'Yes—late caffeine lowers melatonin. Track it in your notes to interpret low evening scores.' },
+  { question: 'What if Iâ€™m a shift worker?', answer: 'Enter sleep/wake in your actual schedule; focus on consistent light cues after your wake time.' },
+  { question: 'Does caffeine matter?', answer: 'Yesâ€”late caffeine lowers melatonin. Track it in your notes to interpret low evening scores.' },
   { question: 'Why include stress?', answer: 'Chronic stress elevates cortisol at night, hurting sleep. Lower stress raises the balance index.' },
-  { question: 'What’s a good balance score?', answer: '80+ is great. 60–79 needs monitoring. Below 60 suggests deeper misalignment.' },
+  { question: 'Whatâ€™s a good balance score?', answer: '80+ is great. 60â€“79 needs monitoring. Below 60 suggests deeper misalignment.' },
   { question: 'Can exercise timing help?', answer: 'Morning or afternoon workouts support balance. Very late high-intensity sessions may suppress melatonin.' },
   { question: 'Should I use blue-light blockers?', answer: 'They help if you cannot dim screens at night. Combine them with warm lighting.' },
-  { question: 'How long until I feel better?', answer: 'Many people notice calmer evenings and easier mornings within 7–10 consistent days.' },
-  { question: 'Is this medical advice?', answer: 'No. It is an awareness tool only—consult healthcare professionals for treatment.' },
+  { question: 'How long until I feel better?', answer: 'Many people notice calmer evenings and easier mornings within 7â€“10 consistent days.' },
+  { question: 'Is this medical advice?', answer: 'No. It is an awareness tool onlyâ€”consult healthcare professionals for treatment.' },
 ];
 
 const relatedCalculators = [
@@ -60,7 +60,7 @@ const relatedCalculators = [
   { name: 'Memory Retention Percentage Calculator', slug: 'memory-retention-percentage-calculator', description: 'Balanced sleep hormones boost retention.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/stress-hormone-balance-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/stress-hormone-balance-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -69,7 +69,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Stress Hormone Balance Calculator', item: baseUrl },
       ],
     },
@@ -107,21 +107,21 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (balanceIndex < 80) {
     status = 'monitor';
     interpretation =
-      'This pattern hints that there may be a bit of drift between your energy, light, and wind‑down habits. Gentle tweaks to light, meals, or unwind time might feel supportive.';
+      'This pattern hints that there may be a bit of drift between your energy, light, and windâ€‘down habits. Gentle tweaks to light, meals, or unwind time might feel supportive.';
   }
   if (balanceIndex < 60) {
     status = 'misaligned';
     interpretation =
-      'These entries suggest your days and evenings may currently feel a little out of sync. Small experiments with steadier sleep windows and calmer evenings could be worth trying if you’d like.';
+      'These entries suggest your days and evenings may currently feel a little out of sync. Small experiments with steadier sleep windows and calmer evenings could be worth trying if youâ€™d like.';
   }
 
   const recommendations = [
     'When possible, let some natural light reach your eyes not too long after you wake up.',
     'Some people find it helpful to keep stimulating drinks earlier in the day so evenings feel more restful.',
-    'Softening lights and screens before bed—with warmer light or lower brightness—can make nighttime feel gentler.',
+    'Softening lights and screens before bedâ€”with warmer light or lower brightnessâ€”can make nighttime feel gentler.',
   ];
   if (status !== 'balanced') {
-    recommendations.push('You might explore calming evening rituals such as gentle stretching, relaxed breathing, or low‑key journaling.');
+    recommendations.push('You might explore calming evening rituals such as gentle stretching, relaxed breathing, or lowâ€‘key journaling.');
   }
   if (status === 'misaligned') {
     recommendations.push('If life allows, you could try keeping a similar sleep and wake window for a little while and see how that feels.');
@@ -313,8 +313,8 @@ export default function StressHormoneBalanceCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Balance index</strong> ≈ (wakeCortisol × 10 + melatonin × 12)/2 − perceivedStress × 3 + circadianScore × 0.3.</p>
-          <p><strong>Circadian score</strong> rewards earlier bedtimes, 7–9 hour sleep windows, and strong melatonin cues.</p>
+          <p><strong>Balance index</strong> â‰ˆ (wakeCortisol Ã— 10 + melatonin Ã— 12)/2 âˆ’ perceivedStress Ã— 3 + circadianScore Ã— 0.3.</p>
+          <p><strong>Circadian score</strong> rewards earlier bedtimes, 7â€“9 hour sleep windows, and strong melatonin cues.</p>
           <p>All values are clamped between 0 and 100.</p>
         </CardContent>
       </Card>
@@ -349,7 +349,7 @@ export default function StressHormoneBalanceCalculator() {
                     return duration.toFixed(1);
                   })()} hrs
                 </p>
-                <p className="text-xs text-muted-foreground">Many people feel better with roughly 7–9 hours, but your experience matters most.</p>
+                <p className="text-xs text-muted-foreground">Many people feel better with roughly 7â€“9 hours, but your experience matters most.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Wake energy gap</p>

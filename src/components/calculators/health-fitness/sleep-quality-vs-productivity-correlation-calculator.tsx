@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'How much sleep do I need for optimal productivity?',
     answer:
-      'Most adults need 7–9 hours of quality sleep. Individual needs vary, but consistently getting less than 6 hours typically reduces performance.',
+      'Most adults need 7â€“9 hours of quality sleep. Individual needs vary, but consistently getting less than 6 hours typically reduces performance.',
   },
   {
     question: 'Does sleep quality matter more than duration?',
@@ -80,7 +80,7 @@ const faqs = [
   {
     question: 'Can naps help productivity?',
     answer:
-      'Short naps (10–30 minutes) can boost alertness, but they do not fully replace nighttime sleep for cognitive recovery.',
+      'Short naps (10â€“30 minutes) can boost alertness, but they do not fully replace nighttime sleep for cognitive recovery.',
   },
   {
     question: 'What about caffeine to offset poor sleep?',
@@ -90,7 +90,7 @@ const faqs = [
   {
     question: 'How long does it take to see productivity improvements?',
     answer:
-      'Most people notice better focus and energy within 1–2 weeks of improving sleep duration and quality consistently.',
+      'Most people notice better focus and energy within 1â€“2 weeks of improving sleep duration and quality consistently.',
   },
 ];
 
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-quality-vs-productivity-correlation-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-quality-vs-productivity-correlation-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Quality vs Productivity Correlation Calculator', item: baseUrl },
       ],
     },
@@ -167,20 +167,20 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'If it fits your life, you can gently experiment with getting closer to 7–9 hours of sleep and see how that affects your days.',
+    'If it fits your life, you can gently experiment with getting closer to 7â€“9 hours of sleep and see how that affects your days.',
     'Keeping a fairly regular sleep and wake window often helps many people feel more settled and clear during the day.',
-    'A simple, calming wind‑down routine—such as dimmer lights, fewer screens, or quiet activities—can make it easier to ease into sleep.',
+    'A simple, calming windâ€‘down routineâ€”such as dimmer lights, fewer screens, or quiet activitiesâ€”can make it easier to ease into sleep.',
   ];
   if (status === 'moderate-link') {
     recommendations.push('You might track your sleep and daytime experience for a couple of weeks to notice small patterns that feel worth exploring.');
   }
   if (status === 'weak-link') {
-    recommendations.push('It may also be helpful to reflect on other pieces—like stress, food, movement, or workload—that could be shaping how your days feel.');
+    recommendations.push('It may also be helpful to reflect on other piecesâ€”like stress, food, movement, or workloadâ€”that could be shaping how your days feel.');
   }
 
   const plan = [
     { label: 'This Week', detail: 'Notice your sleep and daily focus/energy scores without trying to change much yet.' },
-    { label: 'Next 2 Weeks', detail: 'If you’d like, try one gentle change—like a slightly earlier wind‑down—and observe how your days feel.' },
+    { label: 'Next 2 Weeks', detail: 'If youâ€™d like, try one gentle changeâ€”like a slightly earlier windâ€‘downâ€”and observe how your days feel.' },
     { label: 'Ongoing', detail: 'Over time, keep only the sleep habits that genuinely help you feel better, and let go of what feels forced.' },
   ];
 
@@ -311,7 +311,7 @@ export default function SleepQualityVsProductivityCorrelationCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Correlation score</p>
                 <p className="text-2xl font-semibold text-primary">{result.correlationScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 view of how closely these particular sleep and day ratings move together.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 view of how closely these particular sleep and day ratings move together.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Sleep impact</p>
@@ -321,7 +321,7 @@ export default function SleepQualityVsProductivityCorrelationCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Productivity gap</p>
                 <p className="text-2xl font-semibold text-primary">{result.productivityGap.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A simple indication of how much “headroom” you feel there might be in your current days.</p>
+                <p className="text-xs text-muted-foreground">A simple indication of how much â€œheadroomâ€ you feel there might be in your current days.</p>
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -370,9 +370,9 @@ export default function SleepQualityVsProductivityCorrelationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Sleep score</strong> = (sleepHours / 9 × 40) + (sleepQuality / 10 × 40), max 80 points.</p>
-          <p><strong>Productivity score</strong> = (productivityScore / 10 × 30) + (focusLevel / 10 × 20) + (energyLevel / 10 × 20), max 70 points.</p>
-          <p><strong>Correlation score</strong> = (sleepScore × 0.6 + productivityScore × 0.4) × 1.2, clamped to 0-100.</p>
+          <p><strong>Sleep score</strong> = (sleepHours / 9 Ã— 40) + (sleepQuality / 10 Ã— 40), max 80 points.</p>
+          <p><strong>Productivity score</strong> = (productivityScore / 10 Ã— 30) + (focusLevel / 10 Ã— 20) + (energyLevel / 10 Ã— 20), max 70 points.</p>
+          <p><strong>Correlation score</strong> = (sleepScore Ã— 0.6 + productivityScore Ã— 0.4) Ã— 1.2, clamped to 0-100.</p>
           <p>Higher sleep duration, quality, and productivity metrics increase the correlation score.</p>
         </CardContent>
       </Card>
@@ -448,7 +448,7 @@ export default function SleepQualityVsProductivityCorrelationCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Sleep quality and duration strongly correlate with productivity, focus, and energy levels. Most adults need 7–9 hours of quality sleep for optimal performance.</p>
+          <p>Sleep quality and duration strongly correlate with productivity, focus, and energy levels. Most adults need 7â€“9 hours of quality sleep for optimal performance.</p>
           <p>Use this calculator to identify sleep patterns that may be limiting productivity and plan improvements.</p>
         </CardContent>
       </Card>

@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/deductible-vs-premium-comparison-calculator';
+const baseUrl = 'https://mycalculating.com/finance/deductible-vs-premium-comparison-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Deductible vs Premium Comparison Calculator', item: baseUrl },
       ],
     },
@@ -412,10 +412,10 @@ export default function DeductibleVsPremiumComparisonCalculator() {
             <strong>Break-Even Years</strong> = Deductible Increase / Annual Premium Savings. The number of years you need to remain claim-free for premium savings to offset the deductible increase.
           </p>
           <p>
-            <strong>Break-Even Months</strong> = Break-Even Years × 12. Break-even period expressed in months.
+            <strong>Break-Even Months</strong> = Break-Even Years Ã— 12. Break-even period expressed in months.
           </p>
           <p>
-            <strong>Total Savings After 5 Years</strong> = (Annual Premium Savings × 5) - Deductible Increase. Net savings after 5 years assuming no claims (premium savings minus deductible increase).
+            <strong>Total Savings After 5 Years</strong> = (Annual Premium Savings Ã— 5) - Deductible Increase. Net savings after 5 years assuming no claims (premium savings minus deductible increase).
           </p>
           <p>The break-even analysis helps determine if a higher deductible is cost-effective. Shorter break-even periods (under 2-3 years) favor higher deductibles if you can afford them and have low claim frequency.</p>
         </CardContent>

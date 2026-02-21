@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/manganese-requirement-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/manganese-requirement-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Manganese Requirement Calculator', item: baseUrl },
       ],
     },
@@ -394,7 +394,7 @@ export default function ManganeseRequirementCalculator() {
             <strong>Daily need</strong> = estimated from age and gender. Men 19+: 2.3 mg/day, Women 19+: 1.8 mg/day. Requirements are based on adequate intake (AI).
           </p>
           <p>
-            <strong>Intake percentage</strong> = (manganese intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (manganese intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
             <strong>Recommended intake</strong>: Men 19+: 2.3 mg/day, Women 19+: 1.8 mg/day. Upper limit: 11 mg/day for adults.
@@ -595,7 +595,7 @@ export default function ManganeseRequirementCalculator() {
 
     {/* MANGANESE TOXICITY: NEUROLOGICAL RISK (MANGANISM) */}
     <h2 id="toxicity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Manganese Toxicity: Neurological Risk (Manganism)</h2>
-    <p>Manganese toxicity is a much greater concern than deficiency. The body is highly efficient at regulating manganese through excretion in the bile, but exposure to excessive amounts—especially inhalation—can overwhelm these mechanisms, leading to severe, irreversible neurological damage.</p>
+    <p>Manganese toxicity is a much greater concern than deficiency. The body is highly efficient at regulating manganese through excretion in the bile, but exposure to excessive amountsâ€”especially inhalationâ€”can overwhelm these mechanisms, leading to severe, irreversible neurological damage.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Manganism: Occupational Exposure</h3>
     <p>The most common and dangerous form of toxicity is **Manganism**, which is typically seen in occupational settings, such as welders, miners, and smelters who inhale high concentrations of manganese dust over long periods. Inhaled manganese bypasses the tight regulatory control of the digestive system and is transported directly to the brain.</p>

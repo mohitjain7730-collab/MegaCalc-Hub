@@ -81,7 +81,7 @@ const faqs = [
   {
     question: 'Does cooking affect antioxidant content?',
     answer:
-      'Cooking methods vary in their effects. Some antioxidants are heat-stable, while others (like vitamin C) are reduced by cooking. Eating a mix of raw and cooked antioxidant-rich foods helps maximize intake. Light cooking (steaming, sautéing) preserves more than boiling.',
+      'Cooking methods vary in their effects. Some antioxidants are heat-stable, while others (like vitamin C) are reduced by cooking. Eating a mix of raw and cooked antioxidant-rich foods helps maximize intake. Light cooking (steaming, sautÃ©ing) preserves more than boiling.',
   },
   {
     question: 'How does antioxidant diversity affect aging?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/antioxidant-diversity-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/antioxidant-diversity-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Antioxidant Diversity Wellness Index', item: baseUrl },
       ],
     },
@@ -167,7 +167,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const averageIntake = categories.length > 0 ? totalIntake / categories.length : 0;
   
   // Diversity index: balances number of categories and average intake
-  // Max score: 7 categories × 10 servings × 2 = 140
+  // Max score: 7 categories Ã— 10 servings Ã— 2 = 140
   const diversityIndex = Math.min(100, (categoriesCovered / 7) * 50 + (averageIntake / 10) * 50);
   
   // Antioxidant score based on total intake
@@ -434,16 +434,16 @@ export default function AntioxidantDiversityIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Diversity Index</strong> = (Categories covered / 7) × 50 + (Average intake / 10) × 50, capped at 100.
+            <strong>Diversity Index</strong> = (Categories covered / 7) Ã— 50 + (Average intake / 10) Ã— 50, capped at 100.
           </p>
           <p>
-            <strong>Antioxidant Score</strong> = (Total weekly servings / 35) × 100, capped at 100.
+            <strong>Antioxidant Score</strong> = (Total weekly servings / 35) Ã— 100, capped at 100.
           </p>
           <p>
             <strong>Categories Covered</strong> = Count of antioxidant categories with intake &gt; 0 servings/week.
           </p>
           <p>
-            <strong>Protection Level</strong>: Excellent (≥75 index, ≥5 categories), Good (≥60 index or ≥4 categories), Moderate (≥40 index or ≥3 categories), Low (&lt;40 index, &lt;3 categories).
+            <strong>Protection Level</strong>: Excellent (â‰¥75 index, â‰¥5 categories), Good (â‰¥60 index or â‰¥4 categories), Moderate (â‰¥40 index or â‰¥3 categories), Low (&lt;40 index, &lt;3 categories).
           </p>
           <p>Diverse antioxidant intake provides comprehensive protection because different antioxidants protect different cell types and work through different mechanisms. Aim for 5-6 categories weekly for optimal protection.</p>
         </CardContent>

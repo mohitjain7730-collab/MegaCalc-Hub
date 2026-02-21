@@ -80,7 +80,7 @@ const relatedCalculators = [
   { name: 'LBO (Leveraged Buyout) Return Calculator', slug: 'lbo-leveraged-buyout-return-calculator', description: 'Compute MOIC and IRR for LBOs.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/startup-valuation-post-money-pre-money-calculator';
+const baseUrl = 'https://mycalculating.com/finance/startup-valuation-post-money-pre-money-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -89,7 +89,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Startup Valuation (Post-Money / Pre-Money) Calculator', item: baseUrl },
       ],
     },
@@ -356,21 +356,21 @@ export default function StartupValuationPostMoneyPreMoneyCalculator() {
           <p className="font-mono text-lg"><strong>Post = Pre + Investment</strong></p>
           <p className="font-mono text-lg"><strong>Investor % = Investment / Post</strong></p>
         </div>
-        <p>Check: If investment is 20% of pre, post = 1.2× pre and investor ownership ~16.7%.</p>
+        <p>Check: If investment is 20% of pre, post = 1.2Ã— pre and investor ownership ~16.7%.</p>
 
         <h2 id="dilution" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dilution Ranges by Round</h2>
-        <p>Typical ranges: Seed 10–25%, Series A 15–25%, Series B 10–20%. Outliers can be justified by large raises or strategic capital—ensure milestones warrant the dilution.</p>
+        <p>Typical ranges: Seed 10â€“25%, Series A 15â€“25%, Series B 10â€“20%. Outliers can be justified by large raises or strategic capitalâ€”ensure milestones warrant the dilution.</p>
 
         <h2 id="pool" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Option Pool Placement</h2>
         <p>Pre-money pools dilute founders and effectively reduce pre-money valuation. Negotiate whether the refresh is pre- or post-money, and model the true ownership impact.</p>
 
         <h2 id="convertibles" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">SAFE/Note and Convertible Impact</h2>
-        <p>SAFEs/notes convert at the priced round using caps/discounts, adding shares before calculating ownership. Include them—and any accrued interest—in a full cap table to avoid surprise dilution.</p>
+        <p>SAFEs/notes convert at the priced round using caps/discounts, adding shares before calculating ownership. Include themâ€”and any accrued interestâ€”in a full cap table to avoid surprise dilution.</p>
 
         <h2 id="validation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation and Negotiation Tips</h2>
         <ul className="list-disc ml-6 space-y-2">
           <li>Benchmark valuation to comps and stage-appropriate revenue multiples.</li>
-          <li>Size the round for 18–24 months runway and milestone delivery.</li>
+          <li>Size the round for 18â€“24 months runway and milestone delivery.</li>
           <li>Check cumulative dilution across planned rounds; avoid over-diluting early.</li>
           <li>Clarify who bears pool dilution and how convertibles slot in.</li>
         </ul>

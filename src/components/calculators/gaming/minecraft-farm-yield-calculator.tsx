@@ -17,7 +17,7 @@ const faqs = [
   {
     question: 'How is farm yield calculated in Minecraft?',
     answer:
-      'Farm yield is calculated based on: farm size (number of crop blocks), crop type (different crops have different base yields), growth time (time for crops to mature), bonemeal usage (speeds up growth), and Fortune enchantment (increases harvest yields). Total yield = (Farm Size × Base Yield × Fortune Multiplier) / Growth Time.',
+      'Farm yield is calculated based on: farm size (number of crop blocks), crop type (different crops have different base yields), growth time (time for crops to mature), bonemeal usage (speeds up growth), and Fortune enchantment (increases harvest yields). Total yield = (Farm Size Ã— Base Yield Ã— Fortune Multiplier) / Growth Time.',
   },
   {
     question: 'What are the base yields for different crops?',
@@ -93,7 +93,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Farm Yield Calculator', item: baseUrl },
       ],
     },
@@ -347,7 +347,7 @@ export default function MinecraftFarmYieldCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Minecraft farm yields based on farm size (number of crop blocks), crop type (Wheat/Carrot/Potato/Beetroot/Nether Wart), growth time (minutes), optional bonemeal usage (instant growth), optional Fortune enchantment level (0-3), and optional time period (hours).</p>
           <p>Outputs include base yield (per harvest), Fortune multiplier (1.0x-2.0x), total yield (per harvest with Fortune), yield per hour, yield per day (24 hours), efficiency (items per block per hour), status assessment (low-yield/moderate-yield/high-yield/very-high-yield), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use yield calculations: Base Yield = Farm Size × Base Yield Per Block, Fortune Multiplier = 1.0x-2.0x based on level, Total Yield = Base Yield × Fortune Multiplier, Cycles Per Hour = 60 / Growth Time, Yield Per Hour = Total Yield × Cycles Per Hour, Efficiency = Yield Per Hour / Farm Size. The guide covers crop types, growth time, Fortune enchantment, bonemeal usage, optimization strategies, and efficiency. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft farm yield calculations instantly.</p>
+          <p>Formulas use yield calculations: Base Yield = Farm Size Ã— Base Yield Per Block, Fortune Multiplier = 1.0x-2.0x based on level, Total Yield = Base Yield Ã— Fortune Multiplier, Cycles Per Hour = 60 / Growth Time, Yield Per Hour = Total Yield Ã— Cycles Per Hour, Efficiency = Yield Per Hour / Farm Size. The guide covers crop types, growth time, Fortune enchantment, bonemeal usage, optimization strategies, and efficiency. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft farm yield calculations instantly.</p>
         </CardContent>
       </Card>
     </div >

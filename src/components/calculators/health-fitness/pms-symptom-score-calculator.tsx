@@ -47,11 +47,11 @@ export default function PmsSymptomScoreCalculator() {
     
     if (averageScore < 3)
       msgs.push(
-        'Your ratings suggest that these pre‑period days feel relatively light overall. Small lifestyle supports may already be enough for you.'
+        'Your ratings suggest that these preâ€‘period days feel relatively light overall. Small lifestyle supports may already be enough for you.'
       );
     else if (averageScore < 6)
       msgs.push(
-        'Your scores point to a noticeable set of pre‑period changes. Gentle routines around rest, movement, and nutrition may help these days feel a bit easier.'
+        'Your scores point to a noticeable set of preâ€‘period changes. Gentle routines around rest, movement, and nutrition may help these days feel a bit easier.'
       );
     else if (averageScore < 8)
       msgs.push(
@@ -59,7 +59,7 @@ export default function PmsSymptomScoreCalculator() {
       );
     else
       msgs.push(
-        'Your scores reflect very strong pre‑period experiences. If you ever feel worried or overwhelmed, you may wish to speak with a qualified health professional who can look at your full picture.'
+        'Your scores reflect very strong preâ€‘period experiences. If you ever feel worried or overwhelmed, you may wish to speak with a qualified health professional who can look at your full picture.'
       );
     
     return msgs.join(' ');
@@ -67,8 +67,8 @@ export default function PmsSymptomScoreCalculator() {
 
   const recommendations = (v: FormValues) => [
     'Track how you feel across a few cycles to notice patterns in energy, mood, and physical sensations.',
-    'When possible, give yourself a bit more room for rest, kind self‑talk, and lighter plans on tougher days.',
-    'Experiment with gentle supports like movement you enjoy, calming wind‑down time, or simple comfort routines.',
+    'When possible, give yourself a bit more room for rest, kind selfâ€‘talk, and lighter plans on tougher days.',
+    'Experiment with gentle supports like movement you enjoy, calming windâ€‘down time, or simple comfort routines.',
   ];
 
   const warnings = (v: FormValues) => [
@@ -138,7 +138,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/pms-symptom-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/pms-symptom-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -147,7 +147,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'PMS Symptom Score Wellness Tracker', item: baseUrl },
       ],
     },
@@ -247,7 +247,7 @@ const schemaMarkup = {
             PMS Symptom Score Wellness Tracker
           </CardTitle>
           <CardDescription>
-            Check in on how pre‑period days feel for you using simple 0–10 ratings. This creates a personal wellness snapshot,
+            Check in on how preâ€‘period days feel for you using simple 0â€“10 ratings. This creates a personal wellness snapshot,
             not a diagnosis.
           </CardDescription>
         </CardHeader>
@@ -264,7 +264,7 @@ const schemaMarkup = {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <FormField control={form.control} name="moodSwings" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><Heart className="h-4 w-4" /> Mood changes (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><Heart className="h-4 w-4" /> Mood changes (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -273,7 +273,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="irritability" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Irritability or tension (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Irritability or tension (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -282,7 +282,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="fatigue" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><Activity className="h-4 w-4" /> Tiredness or low energy (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><Activity className="h-4 w-4" /> Tiredness or low energy (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -291,7 +291,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="bloating" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Bloating or body heaviness (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Bloating or body heaviness (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -300,7 +300,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="breastTenderness" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Chest or breast sensitivity (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Chest or breast sensitivity (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -309,7 +309,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="headaches" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Head or body aches (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><AlertTriangle className="h-4 w-4" /> Head or body aches (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -318,7 +318,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="foodCravings" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Shifts in appetite or cravings (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><HeartPulse className="h-4 w-4" /> Shifts in appetite or cravings (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -327,7 +327,7 @@ const schemaMarkup = {
             )} />
             <FormField control={form.control} name="sleepDisturbance" render={({ field }) => (
               <FormItem>
-                <FormLabel className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Sleep changes (0–10)</FormLabel>
+                <FormLabel className="flex items-center gap-2"><Calendar className="h-4 w-4" /> Sleep changes (0â€“10)</FormLabel>
                 <FormControl>
                   <Input type="number" step="1" min="0" max="10" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} />
                 </FormControl>
@@ -420,7 +420,7 @@ const schemaMarkup = {
             score across all symptoms entered.
           </p>
           <p>
-            <strong>Average Symptom Score</strong> = Total Symptom Score ÷ Number of Symptoms Rated. This calculates the average
+            <strong>Average Symptom Score</strong> = Total Symptom Score Ã· Number of Symptoms Rated. This calculates the average
             intensity across all rated symptoms.
           </p>
           <p>
@@ -711,7 +711,7 @@ const schemaMarkup = {
           <p>
             Understanding PMS symptoms and patterns helps you recognize and manage premenstrual changes effectively. By tracking
             symptoms, implementing lifestyle modifications, and seeking professional guidance when needed, you can improve your
-            experience throughout the menstrual cycle. Remember that PMS affects each person differently—what works for one may
+            experience throughout the menstrual cycle. Remember that PMS affects each person differentlyâ€”what works for one may
             not work for another. Be patient with yourself, track your patterns, and adjust strategies based on what helps you
             feel better. If symptoms significantly impact your daily life or don't respond to lifestyle changes, consider
             consulting a healthcare provider who can provide personalized guidance and treatment options. This tool is designed

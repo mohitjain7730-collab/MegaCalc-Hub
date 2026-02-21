@@ -46,12 +46,12 @@ const faqs = [
   {
     question: 'What are typical electrolyte losses in sweat?',
     answer:
-      'Sweat contains roughly 500–1000 mg/L sodium, 100–200 mg/L potassium, and 10–20 mg/L magnesium. Losses vary by individual and conditions.',
+      'Sweat contains roughly 500â€“1000 mg/L sodium, 100â€“200 mg/L potassium, and 10â€“20 mg/L magnesium. Losses vary by individual and conditions.',
   },
   {
     question: 'How much sodium do I need after exercise?',
     answer:
-      'Aim to replace 500–700 mg per liter of sweat lost. For intense or long sessions, include sodium in your recovery fluids.',
+      'Aim to replace 500â€“700 mg per liter of sweat lost. For intense or long sessions, include sodium in your recovery fluids.',
   },
   {
     question: 'Can I get electrolytes from food?',
@@ -66,7 +66,7 @@ const faqs = [
   {
     question: 'How quickly should I replace electrolytes?',
     answer:
-      'Replace most losses within 2–4 hours post-exercise. Spread intake to avoid gastrointestinal upset.',
+      'Replace most losses within 2â€“4 hours post-exercise. Spread intake to avoid gastrointestinal upset.',
   },
   {
     question: 'Do I need supplements?',
@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/electrolyte-balance-restoration-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/electrolyte-balance-restoration-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Electrolyte Balance Restoration Calculator', item: baseUrl },
       ],
     },
@@ -182,7 +182,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations = [
     'You can use this estimate as a loose guide for bringing in some sodium, potassium, and magnesium after heavier sweat days.',
-    'Everyday foods and drinks—like lightly salted meals, fruits, and nuts/seeds—can often help nudge things back toward balance.',
+    'Everyday foods and drinksâ€”like lightly salted meals, fruits, and nuts/seedsâ€”can often help nudge things back toward balance.',
     'If you use electrolyte drinks or mixes, you can choose options and amounts that feel comfortable for your body and context.',
   ];
   if (status === 'needs-sodium') {
@@ -193,8 +193,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'Immediate (0–2 hours)', detail: 'After heavier sweating, consider pairing fluids with a bit of sodium and some naturally mineral‑rich foods.' },
-    { label: 'Next 2–4 hours', detail: 'Spread any extra electrolyte intake over time so it feels easy on your stomach and overall energy.' },
+    { label: 'Immediate (0â€“2 hours)', detail: 'After heavier sweating, consider pairing fluids with a bit of sodium and some naturally mineralâ€‘rich foods.' },
+    { label: 'Next 2â€“4 hours', detail: 'Spread any extra electrolyte intake over time so it feels easy on your stomach and overall energy.' },
     { label: 'Ongoing', detail: 'Notice how your body feels (cramps, fatigue, general comfort) and gently adjust food and drink patterns around demanding days.' },
   ];
 
@@ -325,7 +325,7 @@ export default function ElectrolyteBalanceRestorationCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Balance score</p>
                 <p className="text-2xl font-semibold text-primary">{result.balanceScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 snapshot of how your current inputs fit this simple model.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 snapshot of how your current inputs fit this simple model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Sodium gap</p>
@@ -394,9 +394,9 @@ export default function ElectrolyteBalanceRestorationCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Sodium gap</strong> = (sweatLoss × 750 mg/L) − sodiumIntake, clamped to -500 to 3000 mg.</p>
-          <p><strong>Potassium gap</strong> = (sweatLoss × 150 mg/L) − potassiumIntake, clamped to -200 to 1000 mg.</p>
-          <p><strong>Magnesium gap</strong> = (sweatLoss × 15 mg/L) − magnesiumIntake, clamped to -50 to 200 mg.</p>
+          <p><strong>Sodium gap</strong> = (sweatLoss Ã— 750 mg/L) âˆ’ sodiumIntake, clamped to -500 to 3000 mg.</p>
+          <p><strong>Potassium gap</strong> = (sweatLoss Ã— 150 mg/L) âˆ’ potassiumIntake, clamped to -200 to 1000 mg.</p>
+          <p><strong>Magnesium gap</strong> = (sweatLoss Ã— 15 mg/L) âˆ’ magnesiumIntake, clamped to -50 to 200 mg.</p>
           <p><strong>Balance score</strong> = weighted average of individual electrolyte scores (sodium 50%, potassium 30%, magnesium 20%).</p>
           <p>Typical sweat contains ~750 mg/L sodium, ~150 mg/L potassium, and ~15 mg/L magnesium.</p>
         </CardContent>
@@ -473,7 +473,7 @@ export default function ElectrolyteBalanceRestorationCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Electrolyte balance restoration after sweat loss requires replacing sodium (500–700 mg/L), potassium (100–200 mg/L), and magnesium (10–20 mg/L).</p>
+          <p>Electrolyte balance restoration after sweat loss requires replacing sodium (500â€“700 mg/L), potassium (100â€“200 mg/L), and magnesium (10â€“20 mg/L).</p>
           <p>Use this calculator to identify gaps, prioritize replacement, and optimize recovery through balanced electrolyte intake.</p>
         </CardContent>
       </Card>

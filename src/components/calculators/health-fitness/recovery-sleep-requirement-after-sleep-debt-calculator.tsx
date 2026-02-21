@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'How do you calculate sleep debt?',
     answer:
-      'Sleep debt = (Target sleep hours - Actual sleep hours) × Number of days. For example, if you need 8 hours but only get 6 hours for 5 days, you have 10 hours of sleep debt.',
+      'Sleep debt = (Target sleep hours - Actual sleep hours) Ã— Number of days. For example, if you need 8 hours but only get 6 hours for 5 days, you have 10 hours of sleep debt.',
   },
   {
     question: 'Can you fully recover from sleep debt?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/recovery-sleep-requirement-after-sleep-debt-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/recovery-sleep-requirement-after-sleep-debt-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Debt Recovery Planner', item: baseUrl },
       ],
     },
@@ -150,7 +150,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Calculate daily sleep deficit (how much below target per night)
   const dailyDeficit = Math.max(0, targetSleep - currentSleep);
   
-  // Total recovery needed = sleep debt + (daily deficit × recovery days)
+  // Total recovery needed = sleep debt + (daily deficit Ã— recovery days)
   // But if user specified recovery days, calculate based on that
   let recoveryDays: number;
   let dailyRecoveryHours: number;
@@ -408,7 +408,7 @@ export default function RecoverySleepRequirementAfterSleepDebtCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Total recovery sleep</strong> = Sleep debt + (Target sleep hours × Recovery days).
+            <strong>Total recovery sleep</strong> = Sleep debt + (Target sleep hours Ã— Recovery days).
           </p>
           <p>
             <strong>Daily recovery hours</strong> = Total recovery sleep / Recovery days.
@@ -417,7 +417,7 @@ export default function RecoverySleepRequirementAfterSleepDebtCalculator() {
             <strong>Recovery days</strong> = Sleep debt / (Extra sleep per night - Daily deficit), where extra sleep is typically 1-2 hours above target.
           </p>
           <p>
-            <strong>Sleep debt</strong> = (Target sleep - Actual sleep) × Number of days with deficit.
+            <strong>Sleep debt</strong> = (Target sleep - Actual sleep) Ã— Number of days with deficit.
           </p>
           <p>Gradual recovery (1-2 extra hours per night over several days) is more effective than trying to recover all debt in one extended sleep session.</p>
         </CardContent>

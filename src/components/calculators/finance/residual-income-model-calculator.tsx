@@ -73,7 +73,7 @@ const faqs = [
   {
     question: 'How to forecast residual income?',
     answer:
-      'Forecast net income and book value for each period. Residual income = Net Income - (Beginning Book Equity × Required Return). Book value grows by retained earnings (Net Income - Dividends).',
+      'Forecast net income and book value for each period. Residual income = Net Income - (Beginning Book Equity Ã— Required Return). Book value grows by retained earnings (Net Income - Dividends).',
   },
   {
     question: 'What is terminal value in residual income model?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/residual-income-model-calculator';
+const baseUrl = 'https://mycalculating.com/finance/residual-income-model-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Residual Income Model Calculator', item: baseUrl },
       ],
     },
@@ -413,13 +413,13 @@ export default function ResidualIncomeModelCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Residual Income</strong> = Expected Net Income - (Book Value × Required Return). This represents earnings above the opportunity cost of capital.
+            <strong>Residual Income</strong> = Expected Net Income - (Book Value Ã— Required Return). This represents earnings above the opportunity cost of capital.
           </p>
           <p>
             <strong>Equity Value</strong> = Book Value + Present Value of Future Residual Income. For single period: Equity Value = Book Value + Residual Income / (1 + Required Return).
           </p>
           <p>
-            <strong>Multi-period with growth</strong>: Equity Value = Book Value + Residual Income × [1 - ((1 + Growth Rate) / (1 + Required Return))^Years] / (Required Return - Growth Rate).
+            <strong>Multi-period with growth</strong>: Equity Value = Book Value + Residual Income Ã— [1 - ((1 + Growth Rate) / (1 + Required Return))^Years] / (Required Return - Growth Rate).
           </p>
           <p>
             <strong>Premium to Book</strong> = Equity Value - Book Value. A positive premium indicates value creation above book value, while negative premium suggests value destruction.
@@ -527,7 +527,7 @@ export default function ResidualIncomeModelCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Core Concept</h3>
     <p>Residual income represents the <b>excess earnings</b> above the required return on invested capital. It answers the question: "After accounting for the opportunity cost of capital, how much value is the company creating?"</p>
-    <p>If a company has $1 million in book equity and investors require a 12% return, the company must earn at least $120,000 just to meet expectations. Any earnings above $120,000 represent <b>residual income</b>—value creation beyond the minimum required return.</p>
+    <p>If a company has $1 million in book equity and investors require a 12% return, the company must earn at least $120,000 just to meet expectations. Any earnings above $120,000 represent <b>residual income</b>â€”value creation beyond the minimum required return.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Why Residual Income Matters</h3>
     <p>Traditional valuation methods like DCF can be challenging when companies have negative or irregular cash flows, don't pay dividends, or operate in industries where book value is particularly meaningful (such as financial services). The residual income model addresses these limitations by:</p>
@@ -546,7 +546,7 @@ export default function ResidualIncomeModelCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Residual Income Formula</h3>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Residual Income = Net Income - (Book Value × Required Return)</b></p>
+        <p className="text-lg font-mono"><b>Residual Income = Net Income - (Book Value Ã— Required Return)</b></p>
     </div>
     <p>This formula calculates the excess earnings after accounting for the opportunity cost of capital. A positive residual income indicates value creation, while negative residual income suggests the company is earning less than investors require.</p>
 
@@ -562,7 +562,7 @@ export default function ResidualIncomeModelCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">3. Multi-Period Model with Growth</h3>
     <p>For multiple forecast periods with constant growth in residual income:</p>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Equity Value = Book Value + RI × [1 - ((1 + g) / (1 + r))^n] / (r - g)</b></p>
+        <p className="text-lg font-mono"><b>Equity Value = Book Value + RI Ã— [1 - ((1 + g) / (1 + r))^n] / (r - g)</b></p>
     </div>
     <p>Where:</p>
     <ul>
@@ -571,7 +571,7 @@ export default function ResidualIncomeModelCalculator() {
         <li><b>r</b> = Required return (cost of equity)</li>
         <li><b>n</b> = Number of forecast periods</li>
     </ul>
-    <p><b>Important:</b> This formula assumes growth rate (g) is less than required return (r). If g ≥ r, the model breaks down mathematically and alternative terminal value assumptions must be used.</p>
+    <p><b>Important:</b> This formula assumes growth rate (g) is less than required return (r). If g â‰¥ r, the model breaks down mathematically and alternative terminal value assumptions must be used.</p>
 
 <hr />
 
@@ -579,7 +579,7 @@ export default function ResidualIncomeModelCalculator() {
     <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Components: Book Value, Net Income, and Required Return</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Book Value of Equity</h3>
-    <p><b>Book value</b> represents the accounting value of shareholders' equity—total assets minus total liabilities. It serves as the foundation of the residual income model and provides a "floor" for valuation.</p>
+    <p><b>Book value</b> represents the accounting value of shareholders' equityâ€”total assets minus total liabilities. It serves as the foundation of the residual income model and provides a "floor" for valuation.</p>
     <p><b>Adjustments to book value:</b> For accurate valuation, book value should be "cleaned" to reflect economic reality:</p>
     <ul>
         <li><b>Remove goodwill impairments:</b> Goodwill may not reflect economic value</li>
@@ -601,7 +601,7 @@ export default function ResidualIncomeModelCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Required Return (Cost of Equity)</h3>
     <p><b>Required return</b> is the minimum return investors expect for bearing the risk of owning the company's equity. It represents the opportunity cost of capital and is typically estimated using:</p>
     <ul>
-        <li><b>Capital Asset Pricing Model (CAPM):</b> Required Return = Risk-Free Rate + Beta × Market Risk Premium</li>
+        <li><b>Capital Asset Pricing Model (CAPM):</b> Required Return = Risk-Free Rate + Beta Ã— Market Risk Premium</li>
         <li><b>Dividend Discount Model:</b> Required Return = (Dividend / Price) + Growth Rate</li>
         <li><b>Bond Yield Plus Risk Premium:</b> Required Return = Corporate Bond Yield + Equity Risk Premium (typically 3-5%)</li>
     </ul>

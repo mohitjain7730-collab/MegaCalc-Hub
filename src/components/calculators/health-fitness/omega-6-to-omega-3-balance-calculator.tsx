@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/omega-6-to-omega-3-balance-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/omega-6-to-omega-3-balance-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Omega-6 to Omega-3 Balance Wellness Calculator', item: baseUrl },
       ],
     },
@@ -193,19 +193,19 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (adjustedRatio <= 4) {
     inflammationRisk = 'Very Low';
     status = 'optimal';
-    interpretation = 'This suggests a general lifestyle tendency where your omega-6 to omega-3 ratio is excellent (≤4:1), indicating a lower tendency and good fatty acid balance.';
+    interpretation = 'This suggests a general lifestyle tendency where your omega-6 to omega-3 ratio is excellent (â‰¤4:1), indicating a lower tendency and good fatty acid balance.';
   } else if (adjustedRatio <= 8) {
     inflammationRisk = 'Low';
     status = 'good';
-    interpretation = 'This suggests a general lifestyle tendency where your ratio is good (≤8:1) with relatively lower tendency. Minor improvements may support wellness further.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is good (â‰¤8:1) with relatively lower tendency. Minor improvements may support wellness further.';
   } else if (adjustedRatio <= 12) {
     inflammationRisk = 'Moderate';
     status = 'moderate';
-    interpretation = 'This suggests a general lifestyle tendency where your ratio is moderate (≤12:1), indicating a moderate tendency. You may consider reducing omega-6 and increasing omega-3.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is moderate (â‰¤12:1), indicating a moderate tendency. You may consider reducing omega-6 and increasing omega-3.';
   } else if (adjustedRatio <= 20) {
     inflammationRisk = 'Higher';
     status = 'low';
-    interpretation = 'This suggests a general lifestyle tendency where your ratio is high (≤20:1), indicating a higher tendency. You may consider reducing omega-6 intake and increasing omega-3.';
+    interpretation = 'This suggests a general lifestyle tendency where your ratio is high (â‰¤20:1), indicating a higher tendency. You may consider reducing omega-6 intake and increasing omega-3.';
   } else {
     inflammationRisk = 'Very High';
     status = 'low';
@@ -443,7 +443,7 @@ export default function Omega6ToOmega3BalanceCalculator() {
             <strong>Adjusted omega-6</strong> = Base omega-6 + Hidden omega-6 from processed foods (0-5g) + Hidden omega-6 from vegetable oils (0-8g).
           </p>
           <p>
-            <strong>Balance score</strong>: ≤4:1 = 100 points, ≤8:1 = 80 points, ≤12:1 = 60 points, ≤20:1 = 40 points, &gt;20:1 = 20 points.
+            <strong>Balance score</strong>: â‰¤4:1 = 100 points, â‰¤8:1 = 80 points, â‰¤12:1 = 60 points, â‰¤20:1 = 40 points, &gt;20:1 = 20 points.
           </p>
           <p>
             <strong>Target ratio</strong> = 4:1 or lower (ideal is 1:1 to 4:1). Modern Western diets often have 15:1 to 20:1 ratios.
@@ -474,7 +474,7 @@ export default function Omega6ToOmega3BalanceCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Ideal ratio target</p>
-                <p className="text-xl font-semibold text-primary">≤4:1</p>
+                <p className="text-xl font-semibold text-primary">â‰¤4:1</p>
                 <p className="text-xs text-muted-foreground">Optimal range</p>
               </div>
               <div className="p-4 border rounded">

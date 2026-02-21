@@ -16,7 +16,7 @@ import Link from 'next/link';
 
 const formSchema = z.object({
   currentMonthlyRevenue: z.number().positive('Enter current monthly revenue'),
-  monthlyGrowthRatePct: z.number().min(0).max(50, 'Growth rate 0–50%'),
+  monthlyGrowthRatePct: z.number().min(0).max(50, 'Growth rate 0â€“50%'),
   targetMonthlyRevenue: z.number().positive('Enter target monthly revenue'),
   monthlyOperatingExpenses: z.number().min(0).optional(),
 }).refine((data) => data.targetMonthlyRevenue >= data.currentMonthlyRevenue, {
@@ -35,7 +35,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate bootstrapped startup growth: months to reach target revenue at compound monthly growth rate, revenue at 6/12/24 months, and optional profit and reinvestment capacity. No external funding.',
-      url: 'https://mycalculating.com/category/finance/bootstrapped-startup-growth-calculator',
+      url: 'https://mycalculating.com/finance/bootstrapped-startup-growth-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -130,7 +130,7 @@ export default function BootstrappedStartupGrowthCalculator() {
     }
     insights.push(`Revenue at 6 mo: $${r.revenueAt6Mo.toLocaleString(undefined, { maximumFractionDigits: 0 })} | 12 mo: $${r.revenueAt12Mo.toLocaleString(undefined, { maximumFractionDigits: 0 })} | 24 mo: $${r.revenueAt24Mo.toLocaleString(undefined, { maximumFractionDigits: 0 })}`);
     if (r.monthlyProfit !== null && v.monthlyOperatingExpenses != null && v.monthlyOperatingExpenses > 0) {
-      insights.push(`At 12-mo revenue, monthly profit ≈ $${r.monthlyProfit.toLocaleString(undefined, { maximumFractionDigits: 0 })} (reinvestable for bootstrapped growth)`);
+      insights.push(`At 12-mo revenue, monthly profit â‰ˆ $${r.monthlyProfit.toLocaleString(undefined, { maximumFractionDigits: 0 })} (reinvestable for bootstrapped growth)`);
     }
     insights.push('Bootstrapped growth is limited by retained earnings; compound growth rate must be sustained by product and retention.');
     return insights;
@@ -251,7 +251,7 @@ export default function BootstrappedStartupGrowthCalculator() {
                     <FormItem>
                       <FormLabel className="flex items-center gap-2">
                         <Zap className="h-4 w-4" />
-                        Monthly Operating Expenses ($) — Optional
+                        Monthly Operating Expenses ($) â€” Optional
                       </FormLabel>
                       <FormControl>
                         <Input
@@ -291,7 +291,7 @@ export default function BootstrappedStartupGrowthCalculator() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="text-center">
-                <p className="text-4xl font-bold text-primary">{result.monthsToTarget >= 999 ? '—' : `${result.monthsToTarget} mo`}</p>
+                <p className="text-4xl font-bold text-primary">{result.monthsToTarget >= 999 ? 'â€”' : `${result.monthsToTarget} mo`}</p>
                 <p className="text-lg text-muted-foreground mt-2">{result.monthsToTarget >= 999 ? 'Target not reachable at 0% growth' : 'Months to reach target revenue'}</p>
                 <p className="text-sm text-muted-foreground mt-1">{result.interpretation}</p>
               </div>
@@ -318,7 +318,7 @@ export default function BootstrappedStartupGrowthCalculator() {
                 <div className="p-4 bg-muted/50 rounded-lg">
                   <p className="font-semibold">Approx. monthly profit at 12-mo revenue</p>
                   <p className="text-xl font-bold">${result.monthlyProfit.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p>
-                  <p className="text-xs text-muted-foreground mt-1">Reinvestable for bootstrapped growth (revenue at 12 mo − operating expenses)</p>
+                  <p className="text-xs text-muted-foreground mt-1">Reinvestable for bootstrapped growth (revenue at 12 mo âˆ’ operating expenses)</p>
                 </div>
               )}
 
@@ -408,7 +408,7 @@ export default function BootstrappedStartupGrowthCalculator() {
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
-                  <span>Use trailing 3–6 month average if variable</span>
+                  <span>Use trailing 3â€“6 month average if variable</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-amber-500 mt-0.5 shrink-0" />
@@ -430,10 +430,10 @@ export default function BootstrappedStartupGrowthCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Revenue(n) = Current revenue × (1 + Monthly growth rate)^n
+              Revenue(n) = Current revenue Ã— (1 + Monthly growth rate)^n
             </p>
             <p className="font-mono text-sm text-center">
-              Months to target = log(Target ÷ Current) ÷ log(1 + Monthly growth rate)
+              Months to target = log(Target Ã· Current) Ã· log(1 + Monthly growth rate)
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
@@ -528,17 +528,17 @@ export default function BootstrappedStartupGrowthCalculator() {
         <hr />
 
         <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Compound Growth Formula</h2>
-        <p>Revenue after <em>n</em> months = Current monthly revenue × (1 + monthly growth rate)<sup>n</sup>. Months to reach target = log(Target ÷ Current) ÷ log(1 + growth rate). Growth rate is expressed as a decimal (e.g. 8% → 0.08).</p>
+        <p>Revenue after <em>n</em> months = Current monthly revenue Ã— (1 + monthly growth rate)<sup>n</sup>. Months to reach target = log(Target Ã· Current) Ã· log(1 + growth rate). Growth rate is expressed as a decimal (e.g. 8% â†’ 0.08).</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation Identity</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-lg text-destructive font-bold">
-            Months to target = log(Target ÷ Current) ÷ log(1 + Monthly growth rate)
+            Months to target = log(Target Ã· Current) Ã· log(1 + Monthly growth rate)
           </p>
         </div>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Compound Growth</h3>
-        <p>Each month revenue is multiplied by (1 + rate). So growth compounds: next month’s base is higher, and the same rate applies to a larger base. Small differences in monthly rate lead to large differences in months to reach a target.</p>
+        <p>Each month revenue is multiplied by (1 + rate). So growth compounds: next monthâ€™s base is higher, and the same rate applies to a larger base. Small differences in monthly rate lead to large differences in months to reach a target.</p>
 
         <hr />
 
@@ -582,7 +582,7 @@ export default function BootstrappedStartupGrowthCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">How is months to target calculated?</h4>
             <p className="text-muted-foreground">
-              Using compound growth: months = log(Target ÷ Current) ÷ log(1 + monthly growth rate). It assumes the same monthly growth rate every month until target is reached.
+              Using compound growth: months = log(Target Ã· Current) Ã· log(1 + monthly growth rate). It assumes the same monthly growth rate every month until target is reached.
             </p>
           </div>
           <div>
@@ -670,7 +670,7 @@ export default function BootstrappedStartupGrowthCalculator() {
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: Slower growth, longer timeline</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  At 3% monthly growth, reaching 2× current revenue takes about 24 months. Bootstrapped companies often face this tradeoff: slower growth with less reinvestment, or higher growth only if profit and efficiency allow more reinvestment.
+                  At 3% monthly growth, reaching 2Ã— current revenue takes about 24 months. Bootstrapped companies often face this tradeoff: slower growth with less reinvestment, or higher growth only if profit and efficiency allow more reinvestment.
                 </p>
               </div>
             </div>

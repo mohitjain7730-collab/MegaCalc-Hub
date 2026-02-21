@@ -54,7 +54,7 @@ const faqs = [
   {
     question: 'Is a higher score bad?',
     answer:
-      'No. Higher scores simply reflect that your days may feel more full or demanding. They are not "bad" but rather an opportunity to notice what might be helpful—such as breaks, movement, connection, or support. The goal is awareness, not achieving a low score.',
+      'No. Higher scores simply reflect that your days may feel more full or demanding. They are not "bad" but rather an opportunity to notice what might be helpfulâ€”such as breaks, movement, connection, or support. The goal is awareness, not achieving a low score.',
   },
   {
     question: 'How often should I use this check-in?',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-activity-points-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-activity-points-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Daily Stress Tendency Check-In', item: baseUrl },
       ],
     },
@@ -185,11 +185,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (total >= 14) {
     status = 'low';
     interpretation =
-      'Your days may be feeling quite full or demanding. Gentle supports—like short breaks, movement, or talking with someone you trust—may be helpful. This is a personal insight, not a medical evaluation.';
+      'Your days may be feeling quite full or demanding. Gentle supportsâ€”like short breaks, movement, or talking with someone you trustâ€”may be helpful. This is a personal insight, not a medical evaluation.';
   } else if (total >= 10) {
     status = 'moderate';
     interpretation =
-      'Your recent days show a mixed stress pattern—small, steady routines can help you feel more grounded. Consider what supports might feel helpful right now.';
+      'Your recent days show a mixed stress patternâ€”small, steady routines can help you feel more grounded. Consider what supports might feel helpful right now.';
   } else if (total >= 7) {
     status = 'good';
     interpretation =
@@ -203,7 +203,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations = [
     'Take small breaks during the day to stretch, breathe, or step outside.',
     'Add a short, calming ritual in the evening, like journaling or listening to gentle music.',
-    'Move your body in a way that feels good—such as walking, light exercise, or dancing.',
+    'Move your body in a way that feels goodâ€”such as walking, light exercise, or dancing.',
   ];
 
   if (total >= 10) {
@@ -397,7 +397,7 @@ export default function StressLevelSelfAssessmentCalculator() {
             (lowest stress tendency) to 20 (highest stress tendency).
           </p>
           <p>
-            <strong>Score Percentage</strong> = (Total Score / Maximum Score) × 100. This provides a normalized view of stress
+            <strong>Score Percentage</strong> = (Total Score / Maximum Score) Ã— 100. This provides a normalized view of stress
             tendency relative to the maximum possible score.
           </p>
           <p>

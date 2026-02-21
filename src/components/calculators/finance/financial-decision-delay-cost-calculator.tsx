@@ -54,7 +54,7 @@ const faqs = [
   {
     question: 'How is delay cost calculated?',
     answer:
-      'Delay cost = Future Value Without Delay - Future Value With Delay. Future Value = Present Value × (1 + r)^n, where r is return rate and n is time. The delay cost shows how much less you have due to starting later, capturing the lost compound growth from the delay period.',
+      'Delay cost = Future Value Without Delay - Future Value With Delay. Future Value = Present Value Ã— (1 + r)^n, where r is return rate and n is time. The delay cost shows how much less you have due to starting later, capturing the lost compound growth from the delay period.',
   },
   {
     question: 'Why does delaying financial decisions cost so much?',
@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/financial-decision-delay-cost-calculator';
+const baseUrl = 'https://mycalculating.com/finance/financial-decision-delay-cost-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Financial Decision Delay Cost Calculator', item: baseUrl },
       ],
     },
@@ -160,7 +160,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const periodWithoutDelay = totalPeriod;
   const periodWithDelay = totalPeriod - delayInYears;
   
-  // Future Value = PV × (1 + r)^n
+  // Future Value = PV Ã— (1 + r)^n
   const futureValueWithoutDelay = amountToInvest * Math.pow(1 + expectedReturnRatePct, periodWithoutDelay);
   const futureValueWithDelay = amountToInvest * Math.pow(1 + alternativeReturnRatePct, periodWithDelay);
   
@@ -384,17 +384,17 @@ export default function FinancialDecisionDelayCostCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Future Value Without Delay</strong> = Amount × (1 + r)^n₁
+            <strong>Future Value Without Delay</strong> = Amount Ã— (1 + r)^nâ‚
           </p>
           <p>
-            <strong>Future Value With Delay</strong> = Amount × (1 + r)^n₂
+            <strong>Future Value With Delay</strong> = Amount Ã— (1 + r)^nâ‚‚
           </p>
-          <p>Where: r = return rate (decimal), n₁ = full period, n₂ = period minus delay</p>
+          <p>Where: r = return rate (decimal), nâ‚ = full period, nâ‚‚ = period minus delay</p>
           <p>
             <strong>Delay Cost</strong> = Future Value Without Delay - Future Value With Delay
           </p>
           <p>
-            <strong>Delay Cost %</strong> = (Delay Cost / Original Amount) × 100
+            <strong>Delay Cost %</strong> = (Delay Cost / Original Amount) Ã— 100
           </p>
           <p>Financial decision delay cost calculates the opportunity cost of postponing financial decisions. It shows how delaying investments, savings, or other decisions impacts wealth accumulation through lost compound growth. Time is a critical factor in compound interest - earlier investments have more time to grow, making delays costly over long periods.</p>
         </CardContent>
@@ -514,14 +514,14 @@ export default function FinancialDecisionDelayCostCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Formula</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
         <p className="font-mono text-lg"><strong>Delay Cost = Future Value (No Delay) - Future Value (With Delay)</strong></p>
-        <p className="font-mono">Future Value = Amount × (1 + r)^n</p>
+        <p className="font-mono">Future Value = Amount Ã— (1 + r)^n</p>
     </div>
     <p>Where r = return rate, n = time period</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example</h3>
     <p>Delaying a $10,000 investment by 2 years at 7% return:</p>
-    <p>No delay (30 years): $10,000 × (1.07)^30 = $76,123</p>
-    <p>With delay (28 years): $10,000 × (1.07)^28 = $66,500</p>
+    <p>No delay (30 years): $10,000 Ã— (1.07)^30 = $76,123</p>
+    <p>With delay (28 years): $10,000 Ã— (1.07)^28 = $66,500</p>
     <p>Delay Cost: $76,123 - $66,500 = $9,623</p>
 
 <hr className="my-6" />

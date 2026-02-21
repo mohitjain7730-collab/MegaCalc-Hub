@@ -33,20 +33,20 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter your approximate weekly work hours, current stress level, sleep hours, and quick 1–10 reflections on support and balance.',
-  'Submit the form to see a workday strain score on a 0–100 scale with a simple pattern label.',
+  'Enter your approximate weekly work hours, current stress level, sleep hours, and quick 1â€“10 reflections on support and balance.',
+  'Submit the form to see a workday strain score on a 0â€“100 scale with a simple pattern label.',
   'Read the interpretation text as a gentle snapshot of how demanding your current week may feel.',
-  'Browse the recommendations and 8‑week plan for small ideas that might soften your load.',
+  'Browse the recommendations and 8â€‘week plan for small ideas that might soften your load.',
   'Use this as an occasional reflection tool rather than a formal assessment or diagnosis.',
 ];
 
 const baseUrl =
-  'https://mycalculating.com/category/health-fitness/burnout-risk-score-calculator';
+  'https://mycalculating.com/health-fitness/burnout-risk-score-calculator';
 
 const faqs: [string, string][] = [
   ['What is burnout?', 'Burnout is a state of emotional, physical, and mental exhaustion caused by prolonged stress. It often results from chronic workplace stress and can impact performance and well-being.'],
   ['How is the burnout risk score calculated?', 'The score considers work hours, stress levels, sleep quality, social support, and work-life balance. Higher scores indicate greater risk.'],
-  ['What is a high risk score?', 'Scores above 70 indicate high risk, 50–70 moderate risk, and below 50 lower risk. Context matters—individual resilience varies.'],
+  ['What is a high risk score?', 'Scores above 70 indicate high risk, 50â€“70 moderate risk, and below 50 lower risk. Context mattersâ€”individual resilience varies.'],
   ['Can I prevent burnout?', 'Yes. Setting boundaries, prioritizing sleep, maintaining social connections, and managing workload can help prevent burnout.'],
   ['How often should I reassess?', 'Reassess monthly or when work demands change significantly. Regular monitoring helps catch early warning signs.'],
   ['Does exercise help with burnout?', 'Yes, regular physical activity can reduce stress, improve sleep, and boost mood. Start with manageable intensity.'],
@@ -58,10 +58,10 @@ const faqs: [string, string][] = [
 
 const understandingInputs = [
   { label: 'Weekly Work Hours', description: 'Total hours worked per week, including overtime and work taken home.' },
-  { label: 'Stress Level (1–10)', description: 'Self-reported stress level where 1 is minimal and 10 is extreme.' },
+  { label: 'Stress Level (1â€“10)', description: 'Self-reported stress level where 1 is minimal and 10 is extreme.' },
   { label: 'Sleep Hours Per Night', description: 'Average hours of sleep per night over the past week.' },
-  { label: 'Support Network Score (1–10)', description: 'Quality of social support where 10 is excellent support and 1 is minimal.' },
-  { label: 'Work-Life Balance Score (1–10)', description: 'How well work and personal life are balanced, where 10 is excellent balance.' },
+  { label: 'Support Network Score (1â€“10)', description: 'Quality of social support where 10 is excellent support and 1 is minimal.' },
+  { label: 'Work-Life Balance Score (1â€“10)', description: 'How well work and personal life are balanced, where 10 is excellent balance.' },
 ];
 
 const interpret = (score: number): { level: string; message: string } => {
@@ -88,7 +88,7 @@ const interpret = (score: number): { level: string; message: string } => {
 
 const recommendations = (score: number) => {
   const base = [
-    'Notice one or two times during the week when you can step away briefly to reset—such as a short walk or quiet break.',
+    'Notice one or two times during the week when you can step away briefly to resetâ€”such as a short walk or quiet break.',
     'Gently protect a basic sleep window that feels realistic most nights, even if it is not perfect.',
     'Stay connected with at least one person you feel comfortable sharing your experience with.',
   ];
@@ -96,15 +96,15 @@ const recommendations = (score: number) => {
     return [
       ...base,
       'If it feels accessible, consider talking with a trusted professional or support person about how your days have been feeling.',
-      'Look for small ways to soften your workload or say “not now” to lower‑priority tasks when possible.',
+      'Look for small ways to soften your workload or say â€œnot nowâ€ to lowerâ€‘priority tasks when possible.',
       'Experiment with short, regular pauses during work to breathe, stretch, or simply look away from screens.',
     ];
   }
   if (score >= 50) {
     return [
       ...base,
-      'Try adding a few minutes of winding‑down time at the end of your workday before switching to personal time.',
-      'Schedule one or two low‑pressure activities that feel nourishing (hobbies, time outdoors, or creative play).',
+      'Try adding a few minutes of windingâ€‘down time at the end of your workday before switching to personal time.',
+      'Schedule one or two lowâ€‘pressure activities that feel nourishing (hobbies, time outdoors, or creative play).',
     ];
   }
   return [
@@ -122,10 +122,10 @@ const warningSigns = () => [
 const plan = (): { week: number; focus: string }[] => [
   { week: 1, focus: 'Assess current workload and identify non-essential tasks to reduce' },
   { week: 2, focus: 'Establish boundaries: set work hours, limit after-hours communication' },
-  { week: 3, focus: 'Prioritize sleep: aim for 7–9 hours with consistent bedtime routine' },
+  { week: 3, focus: 'Prioritize sleep: aim for 7â€“9 hours with consistent bedtime routine' },
   { week: 4, focus: 'Build support network: schedule regular check-ins with friends/family' },
-  { week: 5, focus: 'Introduce stress management: 10–15 minutes daily meditation or breathing' },
-  { week: 6, focus: 'Take regular breaks: 5–10 minutes every 90 minutes during work' },
+  { week: 5, focus: 'Introduce stress management: 10â€“15 minutes daily meditation or breathing' },
+  { week: 6, focus: 'Take regular breaks: 5â€“10 minutes every 90 minutes during work' },
   { week: 7, focus: 'Reassess workload and delegate where possible' },
   { week: 8, focus: 'Maintain new routines and continue monitoring stress levels' },
 ];
@@ -141,7 +141,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -154,7 +154,7 @@ const schemaMarkup = {
     {
       '@type': 'Article',
       headline: 'Workday Balance & Overload Tendency Score',
-      description: 'Reflect on how your work hours, sleep, stress, and support habits may influence feelings of workday overload in a gentle, wellness‑oriented way.',
+      description: 'Reflect on how your work hours, sleep, stress, and support habits may influence feelings of workday overload in a gentle, wellnessâ€‘oriented way.',
       author: { '@type': 'Organization', name: 'Mycalculating.com' },
       publisher: { '@type': 'Organization', name: 'Mycalculating.com', logo: { '@type': 'ImageObject', url: 'https://mycalculating.com/logo.png' } },
       url: baseUrl,
@@ -168,7 +168,7 @@ const schemaMarkup = {
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
-        'Reflect on how your work hours, sleep, stress, and support habits may influence feelings of workday overload in a gentle, wellness‑oriented way.',
+        'Reflect on how your work hours, sleep, stress, and support habits may influence feelings of workday overload in a gentle, wellnessâ€‘oriented way.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -278,7 +278,7 @@ export default function BurnoutRiskScoreCalculator() {
                 )} />
                 <FormField control={form.control} name="stressLevel" render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="flex items-center gap-2"><TrendingDown className="h-4 w-4" /> Stress Level (1–10)</FormLabel>
+                    <FormLabel className="flex items-center gap-2"><TrendingDown className="h-4 w-4" /> Stress Level (1â€“10)</FormLabel>
                     <FormControl>
                       <Input type="number" step="1" min="1" max="10" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
                     </FormControl>
@@ -296,7 +296,7 @@ export default function BurnoutRiskScoreCalculator() {
                 )} />
                 <FormField control={form.control} name="supportNetworkScore" render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="flex items-center gap-2"><Users className="h-4 w-4" /> Support Network Score (1–10)</FormLabel>
+                    <FormLabel className="flex items-center gap-2"><Users className="h-4 w-4" /> Support Network Score (1â€“10)</FormLabel>
                     <FormControl>
                       <Input type="number" step="1" min="1" max="10" placeholder="e.g., 6" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
                     </FormControl>
@@ -305,7 +305,7 @@ export default function BurnoutRiskScoreCalculator() {
                 )} />
                 <FormField control={form.control} name="workLifeBalanceScore" render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="flex items-center gap-2"><Clock className="h-4 w-4" /> Work-Life Balance Score (1–10)</FormLabel>
+                    <FormLabel className="flex items-center gap-2"><Clock className="h-4 w-4" /> Work-Life Balance Score (1â€“10)</FormLabel>
                     <FormControl>
                       <Input type="number" step="1" min="1" max="10" placeholder="e.g., 5" value={field.value ?? ''} onChange={(e)=>field.onChange(e.target.value===''?undefined:Number(e.target.value))} />
                     </FormControl>
@@ -327,7 +327,7 @@ export default function BurnoutRiskScoreCalculator() {
                 <Zap className="h-8 w-8 text-primary" />
                 <CardTitle>Burnout Strain Pattern Insight</CardTitle>
               </div>
-              <CardDescription>A wellness‑focused look at how demanding your current week feels.</CardDescription>
+              <CardDescription>A wellnessâ€‘focused look at how demanding your current week feels.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -354,7 +354,7 @@ export default function BurnoutRiskScoreCalculator() {
             </Card>
           </div>
           <Card>
-            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Burnout Prevention Plan</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8â€‘Week Burnout Prevention Plan</CardTitle></CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -370,7 +370,7 @@ export default function BurnoutRiskScoreCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Understanding the Inputs</CardTitle>
-          <CardDescription>Use these questions as a self‑check, not as a formal assessment.</CardDescription>
+          <CardDescription>Use these questions as a selfâ€‘check, not as a formal assessment.</CardDescription>
         </CardHeader>
         <CardContent>
           <ul className="space-y-2">{understandingInputs.map((it)=>(<li key={it.label}><span className="font-semibold text-foreground">{it.label}:</span><span className="text-sm text-muted-foreground"> {it.description}</span></li>))}</ul>
@@ -457,7 +457,7 @@ export default function BurnoutRiskScoreCalculator() {
         <p>
           Workday overload refers to a state where work demands consistently exceed your capacity to recover, leading to feelings
           of exhaustion, reduced effectiveness, and emotional depletion. While occasional busy periods are normal, chronic overload
-          can contribute to burnout—a state of physical, emotional, and mental exhaustion related to prolonged stress.
+          can contribute to burnoutâ€”a state of physical, emotional, and mental exhaustion related to prolonged stress.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Recognizing Overload Patterns</h3>
@@ -793,7 +793,7 @@ export default function BurnoutRiskScoreCalculator() {
           Maintaining workday balance and preventing overload requires ongoing attention to work patterns, personal habits, and
           recovery practices. By understanding the factors that contribute to overload, establishing healthy boundaries, managing
           stress effectively, and building support networks, you can create more sustainable work patterns that support both
-          professional success and personal well-being. Remember that workday balance is a dynamic process—what works at one time
+          professional success and personal well-being. Remember that workday balance is a dynamic processâ€”what works at one time
           may need adjustment as circumstances change. Be proactive in recognizing signs of overload, make adjustments early, and
           seek support when needed. If work stress is significantly affecting your health, mood, or safety, consider consulting a
           qualified healthcare or mental health professional who can provide personalized guidance. This tool is designed for
@@ -815,7 +815,7 @@ export default function BurnoutRiskScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Workload and stress:</strong> Higher work hours and higher self‑rated stress contribute more to the strain
+            <strong>Workload and stress:</strong> Higher work hours and higher selfâ€‘rated stress contribute more to the strain
             score, reflecting how demanding the week may feel.
           </p>
           <p>
@@ -823,8 +823,8 @@ export default function BurnoutRiskScoreCalculator() {
             since they can make heavy weeks feel even harder.
           </p>
           <p>
-            The combined result is scaled to a 0–100 range and grouped into pattern labels like “Lighter strain pattern” or
-            “Heavier strain pattern” to keep the tone focused on tendencies rather than labels.
+            The combined result is scaled to a 0â€“100 range and grouped into pattern labels like â€œLighter strain patternâ€ or
+            â€œHeavier strain patternâ€ to keep the tone focused on tendencies rather than labels.
           </p>
         </CardContent>
       </Card>
@@ -851,11 +851,11 @@ export default function BurnoutRiskScoreCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool offers a Workday Balance & Overload Tendency Score as a wellness‑focused snapshot of how demanding your
+            This tool offers a Workday Balance & Overload Tendency Score as a wellnessâ€‘focused snapshot of how demanding your
             current routines may feel. It is meant to encourage reflection and small supportive changes, not to label or diagnose.
           </p>
           <p>
-            Outputs include a 0–100 strain score, pattern label, interpretation text, recommendations, an 8‑week ideas plan, and
+            Outputs include a 0â€“100 strain score, pattern label, interpretation text, recommendations, an 8â€‘week ideas plan, and
             contextual guide content so both humans and AI assistants can understand the intent of the numbers at a glance.
           </p>
         </CardContent>

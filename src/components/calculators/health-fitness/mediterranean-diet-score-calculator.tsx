@@ -127,7 +127,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mediterranean-diet-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/mediterranean-diet-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -136,7 +136,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mediterranean Diet Score Calculator', item: baseUrl },
       ],
     },
@@ -513,7 +513,7 @@ export default function MediterraneanDietScoreCalculator() {
             <strong>Mediterranean diet score</strong> = sum of points from olive oil (0-2), vegetables (0-2), fruits (0-2), legumes (0-2), fish (0-2), red meat (0-2, inverted), and wine (0-2). Maximum score is 14 points. Higher scores indicate better adherence.
           </p>
           <p>
-            <strong>Scoring criteria:</strong> Olive oil: 3+ servings (2 points), 2 servings (1 point). Vegetables: 5+ servings (2 points), 3+ servings (1 point). Fruits: 3+ servings (2 points), 2+ servings (1 point). Legumes: 3+ servings (2 points), 2+ servings (1 point). Fish: 3+ servings (2 points), 2+ servings (1 point). Red meat: ≤1 serving (2 points), ≤2 servings (1 point). Wine: 1-2 servings (2 points), 0 or 0.5-1 serving (1 point).
+            <strong>Scoring criteria:</strong> Olive oil: 3+ servings (2 points), 2 servings (1 point). Vegetables: 5+ servings (2 points), 3+ servings (1 point). Fruits: 3+ servings (2 points), 2+ servings (1 point). Legumes: 3+ servings (2 points), 2+ servings (1 point). Fish: 3+ servings (2 points), 2+ servings (1 point). Red meat: â‰¤1 serving (2 points), â‰¤2 servings (1 point). Wine: 1-2 servings (2 points), 0 or 0.5-1 serving (1 point).
           </p>
           <p>The Mediterranean diet emphasizes whole foods, healthy fats from olive oil, plant-based foods, and fish, with limited red meat. Higher adherence is associated with reduced risk of heart disease, stroke, and improved longevity.</p>
         </CardContent>

@@ -48,7 +48,7 @@ const steps = [
 ];
 
 const faqs = [
-  { question: 'How is conversion price determined?', answer: 'Conversion price is the lower of: (1) cap price = valuation cap / pre-money shares, (2) discount price = round price × (1 - discount).' },
+  { question: 'How is conversion price determined?', answer: 'Conversion price is the lower of: (1) cap price = valuation cap / pre-money shares, (2) discount price = round price Ã— (1 - discount).' },
   { question: 'How many shares are issued?', answer: 'Shares = SAFE investment / conversion price.' },
   { question: 'How is ownership % calculated?', answer: 'Ownership % = SAFE shares / (pre-money shares + SAFE shares). This ignores new round shares for simplicity; include them in a full cap table for precision.' },
   { question: 'What if there is no discount or cap?', answer: 'If discount is 0 and cap is very high, conversion may default to round price. This calculator always picks the better of cap or discount for the investor.' },
@@ -63,7 +63,7 @@ const relatedCalculators = [
   { name: 'LBO (Leveraged Buyout) Return Calculator', slug: 'lbo-leveraged-buyout-return-calculator', description: 'Compute MOIC and IRR for LBOs.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/safe-convertible-note-conversion-calculator';
+const baseUrl = 'https://mycalculating.com/finance/safe-convertible-note-conversion-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -72,7 +72,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'SAFE / Convertible Note Conversion Calculator', item: baseUrl },
       ],
     },
@@ -333,7 +333,7 @@ export default function SafeConvertibleNoteConversionCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Cap Price</strong> = Valuation Cap / Pre-Money Shares</p>
-          <p><strong>Discount Price</strong> = Round Price × (1 - Discount)</p>
+          <p><strong>Discount Price</strong> = Round Price Ã— (1 - Discount)</p>
           <p><strong>Conversion Price</strong> = min(Cap Price, Discount Price)</p>
           <p><strong>Shares Issued</strong> = SAFE Investment / Conversion Price</p>
           <p><strong>Ownership % (simplified)</strong> = SAFE Shares / (Pre-Money Shares + SAFE Shares)</p>
@@ -394,7 +394,7 @@ export default function SafeConvertibleNoteConversionCalculator() {
         <hr className="my-6" />
 
         <h2 id="pricing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conversion Pricing</h2>
-        <p>Conversion price is the better of cap or discount for the investor. Cap price = cap / pre-money shares. Discount price = round price × (1 - discount).</p>
+        <p>Conversion price is the better of cap or discount for the investor. Cap price = cap / pre-money shares. Discount price = round price Ã— (1 - discount).</p>
 
         <h2 id="shares" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Shares and Ownership</h2>
         <p>Shares issued = investment / conversion price. Ownership (simplified) = SAFE shares / (pre-money shares + SAFE shares). Include priced-round shares in a full model.</p>

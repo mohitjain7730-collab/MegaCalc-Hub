@@ -42,7 +42,7 @@ const faqs = [
   {
     question: 'What is loss ratio?',
     answer:
-      'Loss ratio is a key metric in insurance that measures the proportion of incurred losses to earned premiums, expressed as a percentage. It indicates how much of the premium income is being used to pay claims. Formula: Loss Ratio = (Incurred Losses / Earned Premiums) × 100.',
+      'Loss ratio is a key metric in insurance that measures the proportion of incurred losses to earned premiums, expressed as a percentage. It indicates how much of the premium income is being used to pay claims. Formula: Loss Ratio = (Incurred Losses / Earned Premiums) Ã— 100.',
   },
   {
     question: 'What are incurred losses?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/loss-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/finance/loss-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Loss Ratio Calculator', item: baseUrl },
       ],
     },
@@ -143,7 +143,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const incurredLosses = values.incurredLosses;
   const earnedPremiums = values.earnedPremiums;
 
-  // Loss Ratio = (Incurred Losses / Earned Premiums) × 100
+  // Loss Ratio = (Incurred Losses / Earned Premiums) Ã— 100
   const lossRatio = earnedPremiums > 0 ? (incurredLosses / earnedPremiums) * 100 : 0;
 
   // Determine profitability
@@ -353,7 +353,7 @@ export default function LossRatioCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Loss Ratio</strong> = (Incurred Losses / Earned Premiums) × 100. The percentage of earned premiums used to pay claims. Lower loss ratios indicate better underwriting performance.
+            <strong>Loss Ratio</strong> = (Incurred Losses / Earned Premiums) Ã— 100. The percentage of earned premiums used to pay claims. Lower loss ratios indicate better underwriting performance.
           </p>
           <p>
             <strong>Incurred Losses</strong> = Total amount paid out in claims, including reserves for future claim payments and loss adjustment expenses. Represents all claims that have occurred during the period, whether paid or reserved.
@@ -464,7 +464,7 @@ export default function LossRatioCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Key Concepts</h3>
     <ul>
-        <li><b>Loss Ratio:</b> Percentage of earned premiums used to pay claims (Incurred Losses / Earned Premiums × 100)</li>
+        <li><b>Loss Ratio:</b> Percentage of earned premiums used to pay claims (Incurred Losses / Earned Premiums Ã— 100)</li>
         <li><b>Incurred Losses:</b> Total claims paid plus reserves for future payments and loss adjustment expenses</li>
         <li><b>Earned Premiums:</b> Portion of premiums corresponding to elapsed coverage period</li>
         <li><b>Underwriting Profitability:</b> Loss ratio below 100% indicates profit; above 100% indicates loss</li>
@@ -485,7 +485,7 @@ export default function LossRatioCalculator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
     <p>The loss ratio is calculated as:</p>
-    <p className="text-lg font-semibold text-foreground">Loss Ratio (%) = (Incurred Losses / Earned Premiums) × 100</p>
+    <p className="text-lg font-semibold text-foreground">Loss Ratio (%) = (Incurred Losses / Earned Premiums) Ã— 100</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Components Explained</h3>
     
@@ -513,7 +513,7 @@ export default function LossRatioCalculator() {
         <li>Incurred Losses: $500,000</li>
         <li>Earned Premiums: $1,000,000</li>
     </ul>
-    <p>Loss Ratio = ($500,000 / $1,000,000) × 100 = <b>50%</b></p>
+    <p>Loss Ratio = ($500,000 / $1,000,000) Ã— 100 = <b>50%</b></p>
     <p>This means 50% of earned premiums are being used to pay claims, leaving 50% available for expenses and profit.</p>
 
 <hr />

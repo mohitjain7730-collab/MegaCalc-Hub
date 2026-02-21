@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/startup-runway-calculator';
+const baseUrl = 'https://mycalculating.com/finance/startup-runway-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Startup Runway Calculator', item: baseUrl },
       ],
     },
@@ -404,7 +404,7 @@ export default function StartupRunwayCalculator() {
             <strong>Runway (Months)</strong> = Current Cash / Net Burn Rate. If net burn is negative (positive cash flow), runway is infinite assuming revenue continues.
           </p>
           <p>
-            <strong>Runway (Days)</strong> = Runway (Months) × 30. Approximate days until cash runs out.
+            <strong>Runway (Days)</strong> = Runway (Months) Ã— 30. Approximate days until cash runs out.
           </p>
           <p>
             <strong>Gross Burn Rate</strong> = Total monthly expenses (salaries, rent, marketing, etc.) regardless of revenue.

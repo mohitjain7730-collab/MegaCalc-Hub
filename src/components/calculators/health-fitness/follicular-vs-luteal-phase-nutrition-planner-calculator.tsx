@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/follicular-vs-luteal-phase-nutrition-planner-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/follicular-vs-luteal-phase-nutrition-planner-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Follicular vs Luteal Phase Nutrition Planner Calculator', item: baseUrl },
       ],
     },
@@ -181,7 +181,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'follicular-optimized';
   let interpretation =
-    'This pattern is tuned toward the early part of your cycle, with a gentle emphasis on iron‑supportive foods and steady energy.';
+    'This pattern is tuned toward the early part of your cycle, with a gentle emphasis on ironâ€‘supportive foods and steady energy.';
   
   if (values.phase === 'luteal') {
     status = 'luteal-optimized';
@@ -191,22 +191,22 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations = [
     values.phase === 'follicular'
-      ? 'You might lean a bit more on iron‑supportive foods you enjoy (like legumes, leafy greens, or fortified options) after your period.'
+      ? 'You might lean a bit more on ironâ€‘supportive foods you enjoy (like legumes, leafy greens, or fortified options) after your period.'
       : 'You might find that including more gentle, complex carbs (such as whole grains or root vegetables) feels supportive later in your cycle.',
     values.phase === 'follicular'
       ? 'Balancing carbs with protein and fats that sit well with you can help keep energy steadier through the day.'
-      : 'Many people like to add magnesium‑rich foods (nuts, seeds, cocoa, leafy greens) if they notice mood or tension shifts pre‑period.',
+      : 'Many people like to add magnesiumâ€‘rich foods (nuts, seeds, cocoa, leafy greens) if they notice mood or tension shifts preâ€‘period.',
     'Staying hydrated across the month can be helpful; some notice they appreciate a bit more fluid in the days before a period.',
   ];
   
   if (values.goals === 'lose') {
-    recommendations.push('If your goal involves weight change, a modest, sustainable shift in intake is usually kinder than large or strict changes—especially in the days before your period.');
+    recommendations.push('If your goal involves weight change, a modest, sustainable shift in intake is usually kinder than large or strict changesâ€”especially in the days before your period.');
   }
 
   const plan = [
     { label: 'This Week', detail: `Notice how eating in this way during your current phase feels in terms of comfort, energy, and mood.` },
     { label: 'Next Phase', detail: 'When your phase shifts, you can gently adjust portions and foods and see what feels most supportive.' },
-    { label: 'Ongoing', detail: 'Over time, keep only the phase‑based nutrition habits that genuinely help you feel better in your own body.' },
+    { label: 'Ongoing', detail: 'Over time, keep only the phaseâ€‘based nutrition habits that genuinely help you feel better in your own body.' },
   ];
 
   return { calorieTarget, proteinGrams, carbGrams, fatGrams, ironFocus, status, interpretation, recommendations, plan };
@@ -420,7 +420,7 @@ export default function FollicularVsLutealPhaseNutritionPlannerCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Calorie target</strong> = BMR × activity multiplier + phase adjustment (luteal +150 cal) + goal adjustment (±300 cal).</p>
+          <p><strong>Calorie target</strong> = BMR Ã— activity multiplier + phase adjustment (luteal +150 cal) + goal adjustment (Â±300 cal).</p>
           <p><strong>Follicular macros</strong>: 25% protein, 40% carbs, 35% fat. <strong>Luteal macros</strong>: 28% protein, 45% carbs, 27% fat.</p>
           <p><strong>Iron focus</strong>: Follicular 18 mg/day (post-period), Luteal 15 mg/day.</p>
           <p>Luteal phase requires more calories and carbs to support progesterone and mood stability.</p>
@@ -525,8 +525,8 @@ export default function FollicularVsLutealPhaseNutritionPlannerCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool suggests phase‑aware calorie and macro ranges based on your inputs, offering one way to reflect on how food and your cycle interact.</p>
-          <p>You can use the outputs as gentle ideas to try—always adjusting for your own comfort, preferences, cultural context, and any guidance from your care team.</p>
+          <p>This tool suggests phaseâ€‘aware calorie and macro ranges based on your inputs, offering one way to reflect on how food and your cycle interact.</p>
+          <p>You can use the outputs as gentle ideas to tryâ€”always adjusting for your own comfort, preferences, cultural context, and any guidance from your care team.</p>
         </CardContent>
       </Card>
 

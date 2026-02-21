@@ -24,7 +24,7 @@ const faqs = [
   {
     question: 'How do I convert nether to overworld coordinates?',
     answer:
-      'Overworld coordinates = Nether coordinates × 8 (for X and Z axes). Y coordinate stays the same. For example, nether (100, 64, 100) = overworld (800, 64, 800). Multiply nether coordinates by 8 to find corresponding overworld location.',
+      'Overworld coordinates = Nether coordinates Ã— 8 (for X and Z axes). Y coordinate stays the same. For example, nether (100, 64, 100) = overworld (800, 64, 800). Multiply nether coordinates by 8 to find corresponding overworld location.',
   },
   {
     question: 'What is portal search range?',
@@ -90,7 +90,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Nether Portal Linkage Estimator', item: baseUrl },
       ],
     },
@@ -196,7 +196,7 @@ export default function MinecraftNetherPortalLinkageEstimator() {
         <h2 id="conversion" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Coordinate Conversion</h2>
         <p>Coordinate conversion calculates corresponding coordinates between overworld and nether. Understanding conversion helps players place portals at correct locations.</p>
         <p>Overworld to nether: Nether X = Overworld X / 8, Nether Z = Overworld Z / 8, Nether Y = Overworld Y (Y stays the same). Divide overworld X and Z by 8 to find nether coordinates. Y coordinate remains unchanged.</p>
-        <p>Nether to overworld: Overworld X = Nether X × 8, Overworld Z = Nether Z × 8, Overworld Y = Nether Y (Y stays the same). Multiply nether X and Z by 8 to find overworld coordinates. Y coordinate remains unchanged.</p>
+        <p>Nether to overworld: Overworld X = Nether X Ã— 8, Overworld Z = Nether Z Ã— 8, Overworld Y = Nether Y (Y stays the same). Multiply nether X and Z by 8 to find overworld coordinates. Y coordinate remains unchanged.</p>
         <p>Conversion examples: Overworld (800, 64, 800) = Nether (100, 64, 100), Overworld (1600, 70, -400) = Nether (200, 70, -50), Nether (50, 64, 50) = Overworld (400, 64, 400). Understanding examples helps apply conversion to real coordinates.</p>
         <p>Y coordinate: Y coordinate stays the same in both dimensions. However, portal search includes vertical range, so Y differences can affect linkage. Match Y coordinates when possible for more reliable connections.</p>
 
@@ -288,8 +288,8 @@ export default function MinecraftNetherPortalLinkageEstimator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool estimates Minecraft nether portal linkage between overworld and nether coordinates based on coordinate conversion (8:1 ratio) and portal placement.</p>
-          <p>Inputs include overworld coordinates (X, optional Y, Z) and optional nether coordinates (X, optional Y, Z). Outputs include calculated nether coordinates (overworld / 8), calculated overworld coordinates (nether × 8), distance between actual and calculated portal positions, linkage accuracy (within 128-block search range), status assessment (exact/close/moderate/far/very-far), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use coordinate conversion: Nether Coordinates = Overworld Coordinates / 8 (X and Z, Y stays same), Overworld Coordinates = Nether Coordinates × 8 (X and Z, Y stays same), Distance = √((Nether X - Calculated X)² + (Nether Z - Calculated Z)²), Linkage Accuracy = 100 - (Distance / 128) × 100 (if ≤ 128 blocks). The guide covers coordinate conversion, search range (128 blocks), linkage mechanics, placement strategies, network planning, and troubleshooting. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft nether portal linkage calculations instantly.</p>
+          <p>Inputs include overworld coordinates (X, optional Y, Z) and optional nether coordinates (X, optional Y, Z). Outputs include calculated nether coordinates (overworld / 8), calculated overworld coordinates (nether Ã— 8), distance between actual and calculated portal positions, linkage accuracy (within 128-block search range), status assessment (exact/close/moderate/far/very-far), interpretation, recommendations, and action plan.</p>
+          <p>Formulas use coordinate conversion: Nether Coordinates = Overworld Coordinates / 8 (X and Z, Y stays same), Overworld Coordinates = Nether Coordinates Ã— 8 (X and Z, Y stays same), Distance = âˆš((Nether X - Calculated X)Â² + (Nether Z - Calculated Z)Â²), Linkage Accuracy = 100 - (Distance / 128) Ã— 100 (if â‰¤ 128 blocks). The guide covers coordinate conversion, search range (128 blocks), linkage mechanics, placement strategies, network planning, and troubleshooting. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft nether portal linkage calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

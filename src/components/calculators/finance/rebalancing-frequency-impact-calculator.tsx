@@ -19,7 +19,7 @@ const periodsPerYear: Record<string, number> = { annual: 1, 'semi-annual': 2, qu
 
 const formSchema = z.object({
   initialAmount: z.number().min(1, 'Enter initial amount'),
-  targetPctStocks: z.number().min(0).max(100, 'Enter 0–100'),
+  targetPctStocks: z.number().min(0).max(100, 'Enter 0â€“100'),
   returnStocksPct: z.number(),
   returnBondsPct: z.number(),
   years: z.number().min(1, 'Enter at least 1 year'),
@@ -37,7 +37,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Compare terminal value with rebalancing (annual, semi-annual, quarterly, monthly) vs without rebalancing. See the impact of rebalancing frequency on portfolio value.',
-      url: 'https://mycalculating.com/category/finance/rebalancing-frequency-impact-calculator',
+      url: 'https://mycalculating.com/finance/rebalancing-frequency-impact-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -362,7 +362,7 @@ export default function RebalancingFrequencyImpactCalculator() {
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Annual = 1× per year; semi-annual = 2×; quarterly = 4×; monthly = 12×.</span>
+                  <span>Annual = 1Ã— per year; semi-annual = 2Ã—; quarterly = 4Ã—; monthly = 12Ã—.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
@@ -413,12 +413,12 @@ export default function RebalancingFrequencyImpactCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Period return = (1 + annual return)^(1 / periods per year) − 1</p>
-            <p className="font-mono text-sm text-center">Each period: grow both sleeves, then (if rebalancing) set V_stocks = total × target % stocks, V_bonds = total × target % bonds</p>
-            <p className="font-mono text-sm text-center">CAGR = (Terminal / Initial)^(1 / years) − 1</p>
+            <p className="font-mono text-sm text-center">Period return = (1 + annual return)^(1 / periods per year) âˆ’ 1</p>
+            <p className="font-mono text-sm text-center">Each period: grow both sleeves, then (if rebalancing) set V_stocks = total Ã— target % stocks, V_bonds = total Ã— target % bonds</p>
+            <p className="font-mono text-sm text-center">CAGR = (Terminal / Initial)^(1 / years) âˆ’ 1</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            The simulation runs period by period. With rebalancing, after each period we reset weights to target. Without rebalancing, we only compound. Difference = terminal (rebalanced) − terminal (no rebalance).
+            The simulation runs period by period. With rebalancing, after each period we reset weights to target. Without rebalancing, we only compound. Difference = terminal (rebalanced) âˆ’ terminal (no rebalance).
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             With constant expected returns, when stocks outperform bonds, not rebalancing often leads to higher terminal value because you keep more in the higher-return asset. When bonds outperform or returns mean-revert, rebalancing can add value.
@@ -546,7 +546,7 @@ export default function RebalancingFrequencyImpactCalculator() {
         <hr />
 
         <h2 id="how-calculated-rebal-freq" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>We simulate two strategies over the same period: (1) rebalance at the chosen frequency—after each period, grow both sleeves at their period returns, then reset weights to target; (2) never rebalance—grow both sleeves, never reset. Terminal value (1) minus terminal value (2) = impact. Period return = (1 + annual return)^(1/periods per year) − 1.</p>
+        <p>We simulate two strategies over the same period: (1) rebalance at the chosen frequencyâ€”after each period, grow both sleeves at their period returns, then reset weights to target; (2) never rebalanceâ€”grow both sleeves, never reset. Terminal value (1) minus terminal value (2) = impact. Period return = (1 + annual return)^(1/periods per year) âˆ’ 1.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Frequency</h3>
         <p>Annual = 1 rebalance per year; semi-annual = 2; quarterly = 4; monthly = 12. More frequent rebalancing keeps allocation closer to target but is not always better for return; the outcome depends on the return path.</p>
         <hr />

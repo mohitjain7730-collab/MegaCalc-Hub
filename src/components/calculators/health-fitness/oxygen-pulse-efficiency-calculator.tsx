@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/oxygen-pulse-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/oxygen-pulse-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Oxygen Pulse Efficiency Calculator', item: baseUrl },
       ],
     },
@@ -154,7 +154,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     oxygenPulse = values.oxygenPulse;
   } else {
     // Estimate: assume average weight 70 kg for conversion
-    // VO2 in mL/min = VO2 (mL/kg/min) × weight (kg)
+    // VO2 in mL/min = VO2 (mL/kg/min) Ã— weight (kg)
     // Oxygen pulse = VO2 (mL/min) / HR
     const estimatedWeight = 70; // kg
     const vo2MlMin = oxygenUptake * estimatedWeight;

@@ -17,7 +17,7 @@ import Link from 'next/link';
 const formSchema = z.object({
   totalAmount: z.number().min(1, 'Enter total investment amount'),
   months: z.number().min(1, 'Enter number of months'),
-  annualReturnPct: z.number().min(0).max(100, 'Enter 0–100'),
+  annualReturnPct: z.number().min(0).max(100, 'Enter 0â€“100'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,7 +31,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Compare future value of investing the same total amount as a lump sum at start vs as equal monthly SIP. Same cash outlay, same period, same return; only timing differs.',
-      url: 'https://mycalculating.com/category/finance/sip-vs-lump-sum-return-difference-calculator',
+      url: 'https://mycalculating.com/finance/sip-vs-lump-sum-return-difference-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -76,16 +76,16 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
 
     let recommendation = '';
     if (winner === 'Lump Sum') {
-      recommendation = `With the same total invested ($${total.toLocaleString(undefined, { maximumFractionDigits: 0 })}), lump sum at the start yields $${lumpSumFV.toLocaleString(undefined, { maximumFractionDigits: 0 })} after ${n} months vs $${sipFV.toLocaleString(undefined, { maximumFractionDigits: 0 })} for monthly SIP—lump sum wins by $${difference.toLocaleString(undefined, { maximumFractionDigits: 0 })} (${differencePctOfTotal.toFixed(1)}% of amount invested). This assumes you have the full amount today and the return is positive.`;
+      recommendation = `With the same total invested ($${total.toLocaleString(undefined, { maximumFractionDigits: 0 })}), lump sum at the start yields $${lumpSumFV.toLocaleString(undefined, { maximumFractionDigits: 0 })} after ${n} months vs $${sipFV.toLocaleString(undefined, { maximumFractionDigits: 0 })} for monthly SIPâ€”lump sum wins by $${difference.toLocaleString(undefined, { maximumFractionDigits: 0 })} (${differencePctOfTotal.toFixed(1)}% of amount invested). This assumes you have the full amount today and the return is positive.`;
     } else if (winner === 'SIP') {
-      recommendation = `SIP yields $${sipFV.toLocaleString(undefined, { maximumFractionDigits: 0 })} vs lump sum $${lumpSumFV.toLocaleString(undefined, { maximumFractionDigits: 0 })}—SIP wins by $${Math.abs(difference).toLocaleString(undefined, { maximumFractionDigits: 0 })}. This can happen when the return is zero or very low (SIP effectively has the same or slightly different timing). With positive returns, lump sum typically wins; this result suggests a low or zero return.`;
+      recommendation = `SIP yields $${sipFV.toLocaleString(undefined, { maximumFractionDigits: 0 })} vs lump sum $${lumpSumFV.toLocaleString(undefined, { maximumFractionDigits: 0 })}â€”SIP wins by $${Math.abs(difference).toLocaleString(undefined, { maximumFractionDigits: 0 })}. This can happen when the return is zero or very low (SIP effectively has the same or slightly different timing). With positive returns, lump sum typically wins; this result suggests a low or zero return.`;
     } else {
       recommendation = `Lump sum and SIP produce nearly the same future value with these inputs.`;
     }
 
     const insights: string[] = [];
-    insights.push(`Lump sum: invest $${total.toLocaleString(undefined, { maximumFractionDigits: 0 })} at start → FV after ${n} months = $${lumpSumFV.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
-    insights.push(`SIP: invest $${monthlySipAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}/month for ${n} months (same total $${total.toLocaleString(undefined, { maximumFractionDigits: 0 })}) → FV = $${sipFV.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
+    insights.push(`Lump sum: invest $${total.toLocaleString(undefined, { maximumFractionDigits: 0 })} at start â†’ FV after ${n} months = $${lumpSumFV.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
+    insights.push(`SIP: invest $${monthlySipAmount.toLocaleString(undefined, { maximumFractionDigits: 0 })}/month for ${n} months (same total $${total.toLocaleString(undefined, { maximumFractionDigits: 0 })}) â†’ FV = $${sipFV.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
     insights.push(`Difference: ${winner === 'Lump Sum' ? 'Lump sum' : winner === 'SIP' ? 'SIP' : 'Tie'} by $${Math.abs(difference).toLocaleString(undefined, { maximumFractionDigits: 0 })} (${differencePctOfTotal.toFixed(1)}% of amount invested).`);
     if (rAnnual > 0) {
       insights.push('With positive expected return, lump sum usually wins because more money is in the market longer. SIP (dollar-cost averaging) spreads entry over time and can reduce volatility but often yields a lower FV in rising markets.');
@@ -232,7 +232,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">With positive expected return, lump sum usually wins—more money is in the market longer, so it compounds more.</span>
+                <span className="text-sm font-medium">With positive expected return, lump sum usually winsâ€”more money is in the market longer, so it compounds more.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -240,7 +240,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">If you don&apos;t have a lump sum today, SIP is the only option—save and invest each month. This calculator compares strategies when the same total is available either way.</span>
+                <span className="text-sm font-medium">If you don&apos;t have a lump sum today, SIP is the only optionâ€”save and invest each month. This calculator compares strategies when the same total is available either way.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -257,7 +257,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
             <Info className="h-5 w-5" />
             Understanding SIP vs Lump Sum Return Difference
           </CardTitle>
-          <CardDescription>Same cash outlay, same period, same return—only timing of investment differs</CardDescription>
+          <CardDescription>Same cash outlay, same period, same returnâ€”only timing of investment differs</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -279,7 +279,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>FV = Total × (1 + r_monthly)^n.</span>
+                  <span>FV = Total Ã— (1 + r_monthly)^n.</span>
                 </li>
               </ul>
             </div>
@@ -293,7 +293,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>No lump sum needed—save and invest each month.</span>
+                  <span>No lump sum neededâ€”save and invest each month.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -301,7 +301,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>FV = PMT × [((1 + r)^n − 1) / r], PMT = Total ÷ n.</span>
+                  <span>FV = PMT Ã— [((1 + r)^n âˆ’ 1) / r], PMT = Total Ã· n.</span>
                 </li>
               </ul>
             </div>
@@ -318,13 +318,13 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Lump Sum FV = Total × (1 + r_monthly)^n</p>
-            <p className="font-mono text-sm text-center">SIP FV = (Total ÷ n) × [((1 + r_monthly)^n − 1) ÷ r_monthly]</p>
-            <p className="font-mono text-sm text-center">r_monthly = annual return ÷ 12, n = number of months</p>
-            <p className="font-mono text-sm text-center">Difference = Lump Sum FV − SIP FV</p>
+            <p className="font-mono text-sm text-center">Lump Sum FV = Total Ã— (1 + r_monthly)^n</p>
+            <p className="font-mono text-sm text-center">SIP FV = (Total Ã· n) Ã— [((1 + r_monthly)^n âˆ’ 1) Ã· r_monthly]</p>
+            <p className="font-mono text-sm text-center">r_monthly = annual return Ã· 12, n = number of months</p>
+            <p className="font-mono text-sm text-center">Difference = Lump Sum FV âˆ’ SIP FV</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Lump sum invests the full amount at time zero; SIP invests equal monthly amounts at the end of each period (ordinary annuity). Same total cash outlay and same expected return—only the timing of each dollar&apos;s entry differs.
+            Lump sum invests the full amount at time zero; SIP invests equal monthly amounts at the end of each period (ordinary annuity). Same total cash outlay and same expected returnâ€”only the timing of each dollar&apos;s entry differs.
           </p>
         </CardContent>
       </Card>
@@ -443,7 +443,7 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         <hr />
 
         <h2 id="what-is-sip-vs-lump" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is SIP vs Lump Sum Return Difference?</h2>
-        <p>SIP (Systematic Investment Plan) means investing a fixed amount at regular intervals (e.g. monthly). Lump sum means investing the entire amount at once. The &quot;return difference&quot; is the difference in future value when you invest the same total amount over the same period with the same expected return—only the timing of each dollar&apos;s entry differs.</p>
+        <p>SIP (Systematic Investment Plan) means investing a fixed amount at regular intervals (e.g. monthly). Lump sum means investing the entire amount at once. The &quot;return difference&quot; is the difference in future value when you invest the same total amount over the same period with the same expected returnâ€”only the timing of each dollar&apos;s entry differs.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Lump Sum: All In at Start</h3>
         <p>Every dollar compounds for the full number of months. With a positive expected return, that usually produces a higher FV than spreading the same total over time. The lump sum strategy assumes you have the full amount today (e.g. from a bonus, inheritance, or sale) and invest it at once.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">SIP: Equal Installments</h3>
@@ -455,10 +455,10 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         <hr />
 
         <h2 id="how-calculated-sip-vs-lump" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Lump sum FV = Total × (1 + r_monthly)^n. SIP FV = (Total ÷ n) × [((1 + r_monthly)^n − 1) ÷ r_monthly], where r_monthly = annual return ÷ 12 and n = number of months. Difference = Lump sum FV − SIP FV. SIP installments are assumed at the end of each period (ordinary annuity).</p>
+        <p>Lump sum FV = Total Ã— (1 + r_monthly)^n. SIP FV = (Total Ã· n) Ã— [((1 + r_monthly)^n âˆ’ 1) Ã· r_monthly], where r_monthly = annual return Ã· 12 and n = number of months. Difference = Lump sum FV âˆ’ SIP FV. SIP installments are assumed at the end of each period (ordinary annuity).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-          <p className="font-mono text-lg text-destructive font-bold">Lump FV = P(1+r)^n &nbsp;|&nbsp; SIP FV = PMT × [((1+r)^n − 1) / r]</p>
+          <p className="font-mono text-lg text-destructive font-bold">Lump FV = P(1+r)^n &nbsp;|&nbsp; SIP FV = PMT Ã— [((1+r)^n âˆ’ 1) / r]</p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Lump Sum Usually Wins With Positive Return</h3>
         <p>With a constant positive return, more time in the market means more compounding. Lump sum has 100% of the money in from day one; SIP gradually builds exposure, so on average less capital is invested for less time. The calculator quantifies this: the difference is often a meaningful percentage of the amount invested, especially over long periods and higher returns.</p>
@@ -469,18 +469,18 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">When You Don&apos;t Have a Lump Sum</h3>
         <p>If you don&apos;t have the full amount today, SIP is the only option (save and invest each month). This tool is for comparing strategies when the same total is available either as lump sum or as a stream of contributions. It also helps you see the &quot;cost&quot; of spreading investment over time when you do have a lump sum but are considering DCA for psychological comfort.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Volatility and Real Markets</h3>
-        <p>This calculator uses a constant return. In real volatile markets, SIP (dollar-cost averaging) can sometimes beat lump sum if the market drops after you invest—you buy more shares when prices are lower. The tool shows the deterministic difference; actual outcomes depend on sequence of returns.</p>
+        <p>This calculator uses a constant return. In real volatile markets, SIP (dollar-cost averaging) can sometimes beat lump sum if the market drops after you investâ€”you buy more shares when prices are lower. The tool shows the deterministic difference; actual outcomes depend on sequence of returns.</p>
         <hr />
 
         <h2 id="applications-sip-vs-lump" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
         <p>Enter total amount to invest, number of months (investment period), and expected annual return. The calculator shows lump sum FV, SIP FV (equal monthly installments that sum to the same total), and the dollar and percentage difference.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">What to Enter</h3>
-        <p>Use a long-term expected return (e.g. 6–8% for equities). The comparison assumes the same return for the full period; real markets vary, but the math shows the structural difference between lump sum and SIP with the same total and return. Number of months should match your horizon (e.g. 60 for 5 years, 120 for 10 years).</p>
+        <p>Use a long-term expected return (e.g. 6â€“8% for equities). The comparison assumes the same return for the full period; real markets vary, but the math shows the structural difference between lump sum and SIP with the same total and return. Number of months should match your horizon (e.g. 60 for 5 years, 120 for 10 years).</p>
         <hr />
 
         <h2 id="conclusion-sip-vs-lump" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
         <p>SIP vs lump sum return difference compares the future value of the same total amount invested either at once or in equal monthly installments over the same period. With positive expected return, lump sum usually yields a higher FV because more money is in the market longer; this calculator gives the exact dollar and percentage difference for your inputs.</p>
-        <p>If you have a lump sum today, the numbers show the expected cost of spreading the investment over time (SIP/DCA). If you don&apos;t have a lump sum, SIP is the only option—save and invest each month. Use the calculator to see how much the timing of investment matters for your total, period, and return assumption.</p>
+        <p>If you have a lump sum today, the numbers show the expected cost of spreading the investment over time (SIP/DCA). If you don&apos;t have a lump sum, SIP is the only optionâ€”save and invest each month. Use the calculator to see how much the timing of investment matters for your total, period, and return assumption.</p>
       </section>
 
       <Card>
@@ -494,19 +494,19 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
         <CardContent className="space-y-6">
           <div>
             <h4 className="font-semibold text-lg mb-3">What is SIP?</h4>
-            <p className="text-muted-foreground">SIP (Systematic Investment Plan) means investing a fixed amount at regular intervals—e.g. monthly. Here we use equal monthly installments that add up to the same total as the lump sum, over the same number of months.</p>
+            <p className="text-muted-foreground">SIP (Systematic Investment Plan) means investing a fixed amount at regular intervalsâ€”e.g. monthly. Here we use equal monthly installments that add up to the same total as the lump sum, over the same number of months.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why does lump sum usually win with positive return?</h4>
-            <p className="text-muted-foreground">Because every dollar is in the market for the full period. In SIP, later installments are in the market for fewer months, so they compound less. Same total invested, same return assumption—lump sum has more &quot;time in market&quot; on average.</p>
+            <p className="text-muted-foreground">Because every dollar is in the market for the full period. In SIP, later installments are in the market for fewer months, so they compound less. Same total invested, same return assumptionâ€”lump sum has more &quot;time in market&quot; on average.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">When might SIP be preferred?</h4>
-            <p className="text-muted-foreground">When you don&apos;t have a lump sum (you save and invest each month). Or when you want to reduce timing risk (dollar-cost averaging)—you accept a lower expected FV in exchange for smoothing entry. This calculator doesn&apos;t model volatility; it assumes a constant return.</p>
+            <p className="text-muted-foreground">When you don&apos;t have a lump sum (you save and invest each month). Or when you want to reduce timing risk (dollar-cost averaging)â€”you accept a lower expected FV in exchange for smoothing entry. This calculator doesn&apos;t model volatility; it assumes a constant return.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is SIP FV calculated?</h4>
-            <p className="text-muted-foreground">We use the future value of an ordinary annuity: FV = PMT × [((1 + r)^n − 1) / r], where PMT = total ÷ n (monthly amount), r = monthly return (annual ÷ 12), n = number of months. Installments are at the end of each month.</p>
+            <p className="text-muted-foreground">We use the future value of an ordinary annuity: FV = PMT Ã— [((1 + r)^n âˆ’ 1) / r], where PMT = total Ã· n (monthly amount), r = monthly return (annual Ã· 12), n = number of months. Installments are at the end of each month.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this account for volatility?</h4>
@@ -517,12 +517,12 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
             <p className="text-muted-foreground">You can still use SIP (spread the investment over months) to reduce regret if the market drops right after you invest. The calculator shows the expected cost of that choice in terms of lower FV if the return is positive. The trade-off is psychological (smoothing) vs expected return (lump sum).</p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg mb-3">Same total invested—what does that mean?</h4>
+            <h4 className="font-semibold text-lg mb-3">Same total investedâ€”what does that mean?</h4>
             <p className="text-muted-foreground">Lump sum: you invest $X at month 0. SIP: you invest $X/n each month for n months, so total cash outlay is $X. We compare the future value of both strategies at the end of n months with the same annual return.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What return rate should I use?</h4>
-            <p className="text-muted-foreground">Use a long-term expected return for your asset (e.g. 6–8% for a diversified equity portfolio). The difference in FV is sensitive to the return: higher return widens the gap in favor of lump sum.</p>
+            <p className="text-muted-foreground">Use a long-term expected return for your asset (e.g. 6â€“8% for a diversified equity portfolio). The difference in FV is sensitive to the return: higher return widens the gap in favor of lump sum.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why is the difference shown as % of amount invested?</h4>
@@ -598,11 +598,11 @@ export default function SipVsLumpSumReturnDifferenceCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: $60,000 total, 60 months, 7% annual return</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">Lump sum FV ≈ $85,200. SIP ($1,000/month × 60) FV ≈ $71,600. Lump sum wins by ~$13,600 (about 23% of amount invested). Same total, same period, same return—lump sum wins because more money is in the market longer.</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">Lump sum FV â‰ˆ $85,200. SIP ($1,000/month Ã— 60) FV â‰ˆ $71,600. Lump sum wins by ~$13,600 (about 23% of amount invested). Same total, same period, same returnâ€”lump sum wins because more money is in the market longer.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: $12,000 total, 12 months, 6% annual return</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">Lump sum FV ≈ $12,735. SIP ($1,000/month × 12) FV ≈ $12,335. Lump sum wins by ~$400 (about 3.3% of amount invested). Shorter period and lower return reduce the gap.</p>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">Lump sum FV â‰ˆ $12,735. SIP ($1,000/month Ã— 12) FV â‰ˆ $12,335. Lump sum wins by ~$400 (about 3.3% of amount invested). Shorter period and lower return reduce the gap.</p>
               </div>
             </div>
           </div>

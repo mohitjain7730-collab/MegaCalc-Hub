@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-k-daily-needs-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-k-daily-needs-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin K Daily Needs Estimator', item: baseUrl },
       ],
     },
@@ -411,7 +411,7 @@ export default function VitaminKDailyNeedsEstimator() {
             <strong>Daily need</strong> = estimated from age and gender. Men 19+: 120 mcg/day, Women 19+: 90 mcg/day. Children and adolescents have lower requirements.
           </p>
           <p>
-            <strong>Intake percentage</strong> = (vitamin K intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (vitamin K intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
             <strong>Recommended intake</strong>: Men 19+: 120 mcg/day, Women 19+: 90 mcg/day. Requirements are based on adequate intake (AI) rather than RDA, as requirements vary.
@@ -535,7 +535,7 @@ export default function VitaminKDailyNeedsEstimator() {
     <p>Vitamin K is a group of compounds divided into two main naturally occurring forms, each with different primary dietary sources and distinct biological activities:</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Vitamin K1 (Phylloquinone)</h3>
-    <p><b>K1 (Phylloquinone)</b> is the predominant form in the human diet, accounting for 75% to 90% of total intake. It is synthesized by plants and is highly concentrated in green leafy vegetables. K1 is primarily directed by the liver to regulate the synthesis of the blood clotting factors (coagulation). However, K1 is tightly bound to plant chloroplasts, resulting in <b>low bioavailability</b> (only 10%–15% is typically absorbed).</p>
+    <p><b>K1 (Phylloquinone)</b> is the predominant form in the human diet, accounting for 75% to 90% of total intake. It is synthesized by plants and is highly concentrated in green leafy vegetables. K1 is primarily directed by the liver to regulate the synthesis of the blood clotting factors (coagulation). However, K1 is tightly bound to plant chloroplasts, resulting in <b>low bioavailability</b> (only 10%â€“15% is typically absorbed).</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Vitamin K2 (Menaquinones - MK-4 to MK-13)</h3>
     <p><b>K2 (Menaquinones)</b> are synthesized by bacteria (in the human gut and in fermented foods) and are found in animal products. Menaquinones, particularly the long-chain forms (like MK-7 found in Natto), have <b>higher bioavailability</b> and longer half-lives in the blood than K1. K2 is thought to be more effective at activating VKDPs outside the liver, specifically MGP and osteocalcin, linking it strongly to bone and cardiovascular health.</p>
@@ -570,7 +570,7 @@ export default function VitaminKDailyNeedsEstimator() {
                     <td className="border-b p-2">90 mcg</td>
                 </tr>
                 <tr>
-                    <td className="border-b p-2">Adolescents (14–18 years)</td>
+                    <td className="border-b p-2">Adolescents (14â€“18 years)</td>
                     <td className="border-b p-2">75 mcg</td>
                 </tr>
             </tbody>

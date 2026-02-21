@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/gut-microbiome-diversity-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/gut-microbiome-diversity-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Gut Microbiome Diversity Wellness Score', item: baseUrl },
       ],
     },
@@ -438,15 +438,15 @@ export default function GutMicrobiomeDiversityScoreCalculator() {
             <strong>Diversity Score</strong> = Fiber score (0-50) + Fermented foods score (0-20) + Prebiotic foods score (0-20) + Lifestyle score (0-10).
           </p>
           <p>
-            <strong>Fiber score</strong>: ≥30g = 50 points, 25-29g = 40 points, 20-24g = 30 points, 15-19g = 20 points, &lt;15g = 10 points.
+            <strong>Fiber score</strong>: â‰¥30g = 50 points, 25-29g = 40 points, 20-24g = 30 points, 15-19g = 20 points, &lt;15g = 10 points.
           </p>
           <p>
-            <strong>Fermented foods score</strong> = (Servings per week / 7) × 20. <strong>Prebiotic foods score</strong> = (Servings per week / 7) × 20.
+            <strong>Fermented foods score</strong> = (Servings per week / 7) Ã— 20. <strong>Prebiotic foods score</strong> = (Servings per week / 7) Ã— 20.
           </p>
           <p>
             <strong>Lifestyle score</strong>: Starts at 10. Subtracts points for antibiotic use (0-5 points) and high stress (0-3 points). Low stress adds 1 point.
           </p>
-          <p>Higher diversity scores indicate a more diverse and resilient gut microbiome. Aim for scores ≥65 for good diversity, ≥80 for excellent diversity.</p>
+          <p>Higher diversity scores indicate a more diverse and resilient gut microbiome. Aim for scores â‰¥65 for good diversity, â‰¥80 for excellent diversity.</p>
         </CardContent>
       </Card>
 

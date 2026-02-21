@@ -30,8 +30,8 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
-        { '@type': 'ListItem', position: 3, name: 'Startup Cash Flow Break-Even Calculator', item: 'https://mycalculating.com/category/finance/startup-cash-flow-break-even-calculator' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
+        { '@type': 'ListItem', position: 3, name: 'Startup Cash Flow Break-Even Calculator', item: 'https://mycalculating.com/finance/startup-cash-flow-break-even-calculator' },
       ],
     },
     {
@@ -40,7 +40,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate when your startup reaches cash flow break-even: revenue covers operating expenses. Uses current revenue and monthly growth rate.',
-      url: 'https://mycalculating.com/category/finance/startup-cash-flow-break-even-calculator',
+      url: 'https://mycalculating.com/finance/startup-cash-flow-break-even-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -132,7 +132,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
   const getConsiderations = () => [
     'Use consistent monthly figures; annualize only for comparison',
     'Operating expenses = opex only; exclude one-time and financing',
-    'Revenue growth is monthly; convert annual growth if needed (e.g. 10% annual ≈ 0.8% monthly)',
+    'Revenue growth is monthly; convert annual growth if needed (e.g. 10% annual â‰ˆ 0.8% monthly)',
     'Break-even ignores reinvestment; after break-even you may still burn if you invest in growth',
     'Pair with runway and burn rate calculators for full cash picture',
   ];
@@ -420,7 +420,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
               Break-even revenue = Monthly operating expenses
             </p>
             <p className="font-mono text-sm text-center mt-2">
-              Months to break-even = log(Opex ÷ Current revenue) ÷ log(1 + Monthly growth rate)
+              Months to break-even = log(Opex Ã· Current revenue) Ã· log(1 + Monthly growth rate)
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
@@ -556,14 +556,14 @@ export default function StartupCashFlowBreakEvenCalculator() {
           <p className="font-mono text-xl text-destructive font-bold">
             Break-even revenue = Monthly operating expenses
           </p>
-          <p className="font-mono text-sm mt-2">Months to break-even = log(Opex ÷ Current revenue) ÷ log(1 + Monthly growth % ÷ 100)</p>
+          <p className="font-mono text-sm mt-2">Months to break-even = log(Opex Ã· Current revenue) Ã· log(1 + Monthly growth % Ã· 100)</p>
         </div>
         <h3 className="text-xl font-semibold text-foreground mt-6">Defining Opex and Revenue</h3>
         <p>Opex = salaries, rent, software, marketing, and other monthly cash operating costs. Revenue = recurring or predictable monthly revenue. Growth rate is monthly (e.g. 5% per month).</p>
         <hr />
 
         <h2 id="be-interpretation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Interpreting Results and Benchmarks</h2>
-        <p>If you are already at or above break-even, net burn from operations is zero. If not, a shorter time to break-even (e.g. under 12–18 months) is generally better, assuming runway lasts that long.</p>
+        <p>If you are already at or above break-even, net burn from operations is zero. If not, a shorter time to break-even (e.g. under 12â€“18 months) is generally better, assuming runway lasts that long.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Runway Constraint</h3>
         <p>Ensure runway exceeds months to break-even; otherwise you run out of cash before reaching profitability. Pair this calculator with a runway calculator.</p>
         <hr />
@@ -615,7 +615,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Should I use monthly or annual growth?</h4>
             <p className="text-muted-foreground">
-              Use monthly growth for the formula. If you have annual growth, convert: e.g. 10% annual compound growth is roughly (1.10^(1/12) - 1) × 100 ≈ 0.8% per month.
+              Use monthly growth for the formula. If you have annual growth, convert: e.g. 10% annual compound growth is roughly (1.10^(1/12) - 1) Ã— 100 â‰ˆ 0.8% per month.
             </p>
           </div>
           <div>
@@ -633,7 +633,7 @@ export default function StartupCashFlowBreakEvenCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">What is a good time to break-even for a startup?</h4>
             <p className="text-muted-foreground">
-              It depends on sector and strategy. Many startups target 18–36 months to break-even; others stay growth-focused longer. Ensure runway exceeds time to break-even.
+              It depends on sector and strategy. Many startups target 18â€“36 months to break-even; others stay growth-focused longer. Ensure runway exceeds time to break-even.
             </p>
           </div>
           <div>
@@ -725,13 +725,13 @@ export default function StartupCashFlowBreakEvenCalculator() {
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: Early SaaS with strong growth</h5>
                 <p className="text-sm text-green-700/80 dark:text-green-400">
-                  Opex $40K, revenue $15K, growth 8%/month → break-even in ~13 months. With 18 months runway, the startup reaches break-even before cash runs out.
+                  Opex $40K, revenue $15K, growth 8%/month â†’ break-even in ~13 months. With 18 months runway, the startup reaches break-even before cash runs out.
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: Already at break-even</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  Opex $60K, revenue $65K → already at break-even. Net burn from operations is zero; any additional spend is growth reinvestment.
+                  Opex $60K, revenue $65K â†’ already at break-even. Net burn from operations is zero; any additional spend is growth reinvestment.
                 </p>
               </div>
             </div>

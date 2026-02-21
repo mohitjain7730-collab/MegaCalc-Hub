@@ -87,7 +87,7 @@ const faqs = [
   {
     question: 'How do I calculate replacement cost?',
     answer:
-      'Replacement cost = Square footage × Cost per square foot to rebuild in your area. Cost per square foot varies by location ($100-300+). Get estimates from contractors or use online calculators. Don\'t include land value.',
+      'Replacement cost = Square footage Ã— Cost per square foot to rebuild in your area. Cost per square foot varies by location ($100-300+). Get estimates from contractors or use online calculators. Don\'t include land value.',
   },
   {
     question: 'What about flood and earthquake insurance?',
@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/homeowners-insurance-coverage-estimator';
+const baseUrl = 'https://mycalculating.com/finance/homeowners-insurance-coverage-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Homeowners Insurance Coverage Estimator', item: baseUrl },
       ],
     },
@@ -199,7 +199,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     recommendations.push(`Coverage gap: ${coverageGap.toLocaleString(undefined, { maximumFractionDigits: 0 })} additional coverage needed for dwelling and personal property. Review policy to ensure adequate protection.`);
   }
   if (replacementCost < homeValue * 0.8) {
-    recommendations.push('Replacement cost consideration: Replacement cost appears low relative to home value. Verify replacement cost estimates—it should reflect cost to rebuild, not market value (which includes land).');
+    recommendations.push('Replacement cost consideration: Replacement cost appears low relative to home value. Verify replacement cost estimatesâ€”it should reflect cost to rebuild, not market value (which includes land).');
   }
 
   const plan = [
@@ -552,7 +552,7 @@ export default function HomeownersInsuranceCoverageEstimator() {
     <p>The 80% rule states you should insure your home for at least 80% of replacement cost to receive full coverage for partial losses. If insured for less than 80%, you may receive reduced payments for claims.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Calculating Replacement Cost</h3>
-    <p>Replacement cost = Square footage × Cost per square foot to rebuild in your area. Cost per square foot varies by location ($100-300+). Get estimates from contractors or use online calculators. Don't include land value.</p>
+    <p>Replacement cost = Square footage Ã— Cost per square foot to rebuild in your area. Cost per square foot varies by location ($100-300+). Get estimates from contractors or use online calculators. Don't include land value.</p>
 
 <hr />
 

@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/stress-testing-portfolio-shock-simulator';
+const baseUrl = 'https://mycalculating.com/finance/stress-testing-portfolio-shock-simulator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Stress Testing (Portfolio Shock) Simulator', item: baseUrl },
       ],
     },
@@ -155,13 +155,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Portfolio return under shock = Baseline Return + Shock Return
   const portfolioReturnUnderShock = baselineReturn + shockReturn;
 
-  // Portfolio value under shock = Portfolio Value × (1 + Portfolio Return Under Shock / 100)
+  // Portfolio value under shock = Portfolio Value Ã— (1 + Portfolio Return Under Shock / 100)
   const portfolioValueUnderShock = portfolioValue * (1 + portfolioReturnUnderShock / 100);
 
   // Loss amount = Portfolio Value - Portfolio Value Under Shock
   const lossAmount = portfolioValue - portfolioValueUnderShock;
 
-  // Loss percentage = (Loss Amount / Portfolio Value) × 100
+  // Loss percentage = (Loss Amount / Portfolio Value) Ã— 100
   const lossPercentage = (lossAmount / portfolioValue) * 100;
 
   // Shock magnitude = |Shock Return|
@@ -397,13 +397,13 @@ export default function StressTestingPortfolioShockSimulator() {
             <strong>Portfolio Return Under Shock</strong> = Baseline Return + Shock Return. The portfolio return under the stress scenario, combining baseline expected return with the shock impact.
           </p>
           <p>
-            <strong>Portfolio Value Under Shock</strong> = Portfolio Value × (1 + Portfolio Return Under Shock / 100). The portfolio value after applying the shock scenario return.
+            <strong>Portfolio Value Under Shock</strong> = Portfolio Value Ã— (1 + Portfolio Return Under Shock / 100). The portfolio value after applying the shock scenario return.
           </p>
           <p>
             <strong>Loss Amount</strong> = Portfolio Value - Portfolio Value Under Shock. The absolute dollar loss under the stress scenario.
           </p>
           <p>
-            <strong>Loss Percentage</strong> = (Loss Amount / Portfolio Value) × 100. The loss as a percentage of portfolio value, representing the impact of the stress scenario.
+            <strong>Loss Percentage</strong> = (Loss Amount / Portfolio Value) Ã— 100. The loss as a percentage of portfolio value, representing the impact of the stress scenario.
           </p>
           <p>
             <strong>Shock Magnitude</strong> = |Shock Return|. The absolute value of the shock return, representing the severity of the stress scenario. Larger magnitudes represent more severe shocks.
@@ -573,14 +573,14 @@ export default function StressTestingPortfolioShockSimulator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
     <p>Portfolio return under shock = Baseline Return + Shock Return</p>
-    <p>Portfolio value under shock = Portfolio Value × (1 + Portfolio Return Under Shock / 100)</p>
+    <p>Portfolio value under shock = Portfolio Value Ã— (1 + Portfolio Return Under Shock / 100)</p>
     <p>Loss = Portfolio Value - Portfolio Value Under Shock</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If portfolio value is $1,000,000, baseline return is 8%, and shock return is -20%:</p>
     <ul>
         <li>Portfolio Return Under Shock = 8% + (-20%) = -12%</li>
-        <li>Portfolio Value Under Shock = $1,000,000 × (1 - 0.12) = $880,000</li>
+        <li>Portfolio Value Under Shock = $1,000,000 Ã— (1 - 0.12) = $880,000</li>
         <li>Loss = $1,000,000 - $880,000 = $120,000 (12%)</li>
     </ul>
 

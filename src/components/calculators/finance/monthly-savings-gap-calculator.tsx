@@ -31,7 +31,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Calculate the gap between required monthly savings to reach a goal and your current monthly savings. See how much more to save per month or how long it will take at your current rate.',
-      url: 'https://mycalculating.com/category/finance/monthly-savings-gap-calculator',
+      url: 'https://mycalculating.com/finance/monthly-savings-gap-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -206,7 +206,7 @@ export default function MonthlySavingsGapCalculator() {
                 <div className="text-center p-4 bg-muted/50 rounded-lg">
                   <Target className="h-6 w-6 mx-auto mb-2 text-purple-600" />
                   <p className="font-semibold">Months at Current Rate</p>
-                  <p className="text-lg font-bold">{result.monthsAtCurrentRate >= 999 || result.monthsAtCurrentRate <= 0 ? '—' : Math.ceil(result.monthsAtCurrentRate)}</p>
+                  <p className="text-lg font-bold">{result.monthsAtCurrentRate >= 999 || result.monthsAtCurrentRate <= 0 ? 'â€”' : Math.ceil(result.monthsAtCurrentRate)}</p>
                 </div>
               </div>
 
@@ -254,7 +254,7 @@ export default function MonthlySavingsGapCalculator() {
                 Required vs Current
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Required monthly savings = Goal ÷ Months. The gap is required minus what you save now. A positive gap means you need to save more per month (or extend the timeline); a negative gap means you are ahead and could shorten the timeline or increase the goal.
+                Required monthly savings = Goal Ã· Months. The gap is required minus what you save now. A positive gap means you need to save more per month (or extend the timeline); a negative gap means you are ahead and could shorten the timeline or increase the goal.
               </p>
             </div>
             <div className="p-4 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
@@ -280,13 +280,13 @@ export default function MonthlySavingsGapCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Required Monthly Savings = Savings Goal ÷ Months to Goal
+              Required Monthly Savings = Savings Goal Ã· Months to Goal
             </p>
             <p className="font-mono text-sm text-center">
-              Monthly Gap = Required Monthly Savings − Current Monthly Savings
+              Monthly Gap = Required Monthly Savings âˆ’ Current Monthly Savings
             </p>
             <p className="font-mono text-sm text-center">
-              Months at Current Rate = Savings Goal ÷ Current Monthly Savings (if current &gt; 0)
+              Months at Current Rate = Savings Goal Ã· Current Monthly Savings (if current &gt; 0)
             </p>
           </div>
         </CardContent>
@@ -373,17 +373,17 @@ export default function MonthlySavingsGapCalculator() {
         <p>Knowing the gap helps you decide whether to increase savings, extend the timeline, or adjust the goal. Without it, you may miss the target date or save more than needed without realizing you could reach the goal sooner.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Required vs Current</h3>
-        <p>Required monthly savings = Goal ÷ Months to goal. Your current monthly savings may be higher or lower. The gap = Required − Current. If the gap is positive, you need to save that much more per month (or change timeline/goal).</p>
+        <p>Required monthly savings = Goal Ã· Months to goal. Your current monthly savings may be higher or lower. The gap = Required âˆ’ Current. If the gap is positive, you need to save that much more per month (or change timeline/goal).</p>
 
         <hr />
 
         <h2 id="how-calculated" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Required monthly savings = Savings goal ÷ Number of months to reach the goal. Monthly gap = Required monthly savings − Current monthly savings. Months at current rate = Goal ÷ Current monthly savings (shows how long it would take if you never change).</p>
+        <p>Required monthly savings = Savings goal Ã· Number of months to reach the goal. Monthly gap = Required monthly savings âˆ’ Current monthly savings. Months at current rate = Goal Ã· Current monthly savings (shows how long it would take if you never change).</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-lg text-destructive font-bold">
-            Required Monthly = Goal ÷ Months &nbsp;|&nbsp; Gap = Required − Current
+            Required Monthly = Goal Ã· Months &nbsp;|&nbsp; Gap = Required âˆ’ Current
           </p>
         </div>
 
@@ -438,13 +438,13 @@ export default function MonthlySavingsGapCalculator() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this account for interest?</h4>
             <p className="text-muted-foreground">
-              This calculator uses simple division (goal ÷ months). It does not compound interest. For goals in interest-bearing accounts, required monthly may be slightly lower; use a savings goal or compound-interest calculator if you want growth included.
+              This calculator uses simple division (goal Ã· months). It does not compound interest. For goals in interest-bearing accounts, required monthly may be slightly lower; use a savings goal or compound-interest calculator if you want growth included.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my current savings are zero?</h4>
             <p className="text-muted-foreground">
-              If you enter zero current monthly savings, the gap equals the required monthly amount and “months at current rate” is not defined (you would never reach the goal without saving). Start with any amount you can and increase over time.
+              If you enter zero current monthly savings, the gap equals the required monthly amount and â€œmonths at current rateâ€ is not defined (you would never reach the goal without saving). Start with any amount you can and increase over time.
             </p>
           </div>
           <div>
@@ -454,24 +454,24 @@ export default function MonthlySavingsGapCalculator() {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg mb-3">What if I can’t save the full gap?</h4>
+            <h4 className="font-semibold text-lg mb-3">What if I canâ€™t save the full gap?</h4>
             <p className="text-muted-foreground">
               Extend the timeline (more months) so required monthly drops, or reduce the goal. Saving something is better than nothing; you can increase savings later as income or budget allows.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Should I include windfalls or one-time savings?</h4>
             <p className="text-muted-foreground">
-              Use ongoing monthly savings for “current monthly savings.” One-time windfalls (bonus, tax refund) can close the gap faster but are not repeated monthly; if you get them regularly, you could annualize and divide by 12 to approximate a monthly equivalent.</p>
+              Use ongoing monthly savings for â€œcurrent monthly savings.â€ One-time windfalls (bonus, tax refund) can close the gap faster but are not repeated monthly; if you get them regularly, you could annualize and divide by 12 to approximate a monthly equivalent.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How does this differ from a savings goal timeline calculator?</h4>
             <p className="text-muted-foreground">
-              A timeline calculator often asks “how long to reach goal at current rate?” This calculator asks “how much must I save per month to reach the goal by a target date?” and shows the gap between that and what you save now. Both are useful: one fixes timeline, one fixes monthly amount.</p>
+              A timeline calculator often asks â€œhow long to reach goal at current rate?â€ This calculator asks â€œhow much must I save per month to reach the goal by a target date?â€ and shows the gap between that and what you save now. Both are useful: one fixes timeline, one fixes monthly amount.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my goal is in years, not months?</h4>
             <p className="text-muted-foreground">
-              Convert years to months (e.g. 2 years = 24 months) and enter that in “Months to reach goal.” The calculator then gives required monthly savings and the gap.</p>
+              Convert years to months (e.g. 2 years = 24 months) and enter that in â€œMonths to reach goal.â€ The calculator then gives required monthly savings and the gap.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">When should I revisit my savings gap?</h4>
@@ -547,13 +547,13 @@ export default function MonthlySavingsGapCalculator() {
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: Goal $24,000 in 12 months, current $1,200/month</h5>
                 <p className="text-sm text-green-700/80 dark:text-green-400">
-                  Required = $24,000 ÷ 12 = $2,000/month. Gap = $2,000 − $1,200 = $800 shortfall. You need to save $800 more per month, or extend to 20 months at $1,200/month.
+                  Required = $24,000 Ã· 12 = $2,000/month. Gap = $2,000 âˆ’ $1,200 = $800 shortfall. You need to save $800 more per month, or extend to 20 months at $1,200/month.
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: Goal $6,000 in 12 months, current $600/month</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
-                  Required = $500/month. Gap = $500 − $600 = −$100 (ahead). You could reach the goal in 10 months or increase the goal to $7,200 and still hit it in 12 months.
+                  Required = $500/month. Gap = $500 âˆ’ $600 = âˆ’$100 (ahead). You could reach the goal in 10 months or increase the goal to $7,200 and still hit it in 12 months.
                 </p>
               </div>
             </div>
@@ -569,7 +569,7 @@ export default function MonthlySavingsGapCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Monthly Savings Gap Calculator shows required monthly savings (goal ÷ months), the gap (required − current), and months to goal at your current rate. Use it to see how much more to save per month or how to adjust timeline or goal.</p>
+          <p>The Monthly Savings Gap Calculator shows required monthly savings (goal Ã· months), the gap (required âˆ’ current), and months to goal at your current rate. Use it to see how much more to save per month or how to adjust timeline or goal.</p>
           <p>Close a shortfall by increasing savings, extending the timeline, or reducing the goal.</p>
         </CardContent>
       </Card>

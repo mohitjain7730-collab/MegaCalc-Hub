@@ -51,12 +51,12 @@ const faqs = [
   {
     question: 'What is mental fatigue accumulation?',
     answer:
-      'Mental fatigue accumulation describes how cognitive load builds up across tasks and days when recovery is insufficient. It can lead to slower thinking, reduced focus, mistakes, and a sense of being mentally “drained.”',
+      'Mental fatigue accumulation describes how cognitive load builds up across tasks and days when recovery is insufficient. It can lead to slower thinking, reduced focus, mistakes, and a sense of being mentally â€œdrained.â€',
   },
   {
     question: 'How is this tracker different from a simple fatigue rating?',
     answer:
-      'Instead of a one-time rating, this tracker looks at how your schedule structure—block length, number of blocks, recovery time, sleep, and stress—interact to build or relieve fatigue throughout the day.',
+      'Instead of a one-time rating, this tracker looks at how your schedule structureâ€”block length, number of blocks, recovery time, sleep, and stressâ€”interact to build or relieve fatigue throughout the day.',
   },
   {
     question: 'Does more deep work always increase mental fatigue?',
@@ -66,7 +66,7 @@ const faqs = [
   {
     question: 'Can short breaks really make a difference?',
     answer:
-      'Yes. Even 5–10 minute breaks to move, hydrate, or rest your eyes can help reset attention and slow fatigue accumulation, especially when taken regularly between demanding blocks.',
+      'Yes. Even 5â€“10 minute breaks to move, hydrate, or rest your eyes can help reset attention and slow fatigue accumulation, especially when taken regularly between demanding blocks.',
   },
   {
     question: 'How does sleep affect mental fatigue?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
 ];
 
 const baseUrl =
-  'https://mycalculating.com/category/health-fitness/mental-fatigue-accumulation-tracker';
+  'https://mycalculating.com/health-fitness/mental-fatigue-accumulation-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -167,7 +167,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     recoveryMinutesBetweenBlocks / 60,
     0,
     1
-  ); // 0–60+ minutes between blocks
+  ); // 0â€“60+ minutes between blocks
   const sleepComponent = clamp((8 - sleepHoursLastNight) / 3, 0, 1); // deficit vs 8 hours
   const stressComponent = clamp(baselineStressLevel / 10, 0, 1);
 
@@ -176,7 +176,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     0.4 * loadComponent +
     0.25 * sleepComponent +
     0.2 * stressComponent +
-    0.15 * (1 - recoveryComponent); // 0–1
+    0.15 * (1 - recoveryComponent); // 0â€“1
   const fatigueScore = clamp(raw * 100, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
@@ -198,8 +198,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations: string[] = [
-    'Aim to cap most high-focus blocks at 60–90 minutes, followed by 5–15 minutes of genuine recovery away from demanding tasks.',
-    'Protect a consistent sleep window that provides roughly 7–9 hours of sleep opportunity each night.',
+    'Aim to cap most high-focus blocks at 60â€“90 minutes, followed by 5â€“15 minutes of genuine recovery away from demanding tasks.',
+    'Protect a consistent sleep window that provides roughly 7â€“9 hours of sleep opportunity each night.',
     'Mix cognitively heavy tasks with lighter administrative or physical tasks to avoid stacking too much load back-to-back.',
   ];
 
@@ -217,7 +217,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (sleepHoursLastNight < 7) {
     recommendations.push(
-      'Prioritize sleep for the next few nights—mental fatigue often drops significantly when sleep debt is repaid.'
+      'Prioritize sleep for the next few nightsâ€”mental fatigue often drops significantly when sleep debt is repaid.'
     );
   }
 
@@ -230,7 +230,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'This Week',
       detail:
-        'Experiment with a schedule that limits you to 3–5 deep work blocks on your heaviest days, each followed by a structured break.',
+        'Experiment with a schedule that limits you to 3â€“5 deep work blocks on your heaviest days, each followed by a structured break.',
     },
     {
       label: 'Ongoing',
@@ -385,7 +385,7 @@ export default function MentalFatigueAccumulationTracker() {
                   name="baselineStressLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Baseline stress level (0–10)</FormLabel>
+                      <FormLabel>Baseline stress level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -497,7 +497,7 @@ export default function MentalFatigueAccumulationTracker() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             The <strong>mental fatigue accumulation score</strong> reflects your daily cognitive load (total focus
-            minutes), sleep debt, baseline stress, and the strength of your between-block recovery on a 0–100 scale.
+            minutes), sleep debt, baseline stress, and the strength of your between-block recovery on a 0â€“100 scale.
           </p>
           <p>
             Higher scores indicate that mental fatigue is likely to build quickly across the day, while lower scores
@@ -567,7 +567,7 @@ export default function MentalFatigueAccumulationTracker() {
           Mental Fatigue Accumulation: How to Structure Your Day for Sustainable Focus
         </h1>
         <p className="text-lg italic text-gray-700">
-          Discover how workload, recovery, sleep, and stress interact to create mental fatigue—and how small structural
+          Discover how workload, recovery, sleep, and stress interact to create mental fatigueâ€”and how small structural
           changes to your day can dramatically improve energy and concentration.
         </p>
 
@@ -592,7 +592,7 @@ export default function MentalFatigueAccumulationTracker() {
           </li>
           <li>
             <a href="#designing-day" className="hover:underline">
-              Designing a Day That Respects Your Brain’s Limits
+              Designing a Day That Respects Your Brainâ€™s Limits
             </a>
           </li>
           <li>
@@ -625,8 +625,8 @@ export default function MentalFatigueAccumulationTracker() {
           Cognitive Load vs. Recovery: The Daily Balance
         </h2>
         <p>
-          Every demand you place on your attention adds to cognitive load. Recovery—through breaks, movement, and
-          low-demand activities—helps discharge that load. Problems arise when load accumulates faster than recovery, day
+          Every demand you place on your attention adds to cognitive load. Recoveryâ€”through breaks, movement, and
+          low-demand activitiesâ€”helps discharge that load. Problems arise when load accumulates faster than recovery, day
           after day, especially under tight deadlines or high stakes.
         </p>
 
@@ -648,7 +648,7 @@ export default function MentalFatigueAccumulationTracker() {
           className="text-2xl font-bold text-foreground pt-8"
           itemProp="articleSection"
         >
-          Designing a Day That Respects Your Brain’s Limits
+          Designing a Day That Respects Your Brainâ€™s Limits
         </h2>
         <p>
           Sustainable days usually combine a few high-focus blocks with meaningful breaks, lighter work, and movement.
@@ -666,7 +666,7 @@ export default function MentalFatigueAccumulationTracker() {
 
         <p>
           If your fatigue score remains high even after improving sleep and breaks, your workload may simply be too high
-          for one person—or physical or mental health factors may be involved. In those cases, discuss options with a
+          for one personâ€”or physical or mental health factors may be involved. In those cases, discuss options with a
           supervisor, mentor, or healthcare professional rather than assuming you just need more willpower.
         </p>
       </section>
@@ -694,7 +694,7 @@ export default function MentalFatigueAccumulationTracker() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tracker estimates mental fatigue accumulation on a 0–100 scale from workload, breaks, sleep, and stress
+            This tracker estimates mental fatigue accumulation on a 0â€“100 scale from workload, breaks, sleep, and stress
             inputs.
           </p>
           <p>

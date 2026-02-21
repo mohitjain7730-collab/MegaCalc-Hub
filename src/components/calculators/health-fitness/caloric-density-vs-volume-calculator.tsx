@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/caloric-density-vs-volume-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/caloric-density-vs-volume-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Caloric Density vs Volume Calculator', item: baseUrl },
       ],
     },
@@ -508,7 +508,7 @@ export default function CaloricDensityVsVolumeCalculator() {
     <p>Water is the ideal caloric diluent, contributing 0 kcal/g. Foods with very high water content, such as fruits (like melon and berries), most vegetables (like cucumber, lettuce), and broth-based soups, automatically have a very low caloric density. Preparing foods with water (e.g., boiling vegetables, making soups) is an effective way to lower the density of an entire meal.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Role of Fiber</h3>
-    <p>Fiber, being indigestible by human enzymes, contributes negligible calories (officially 0 kcal/g in the US). Fiber-rich foods—whole grains, legumes, and non-starchy vegetables—are low in density because the fiber provides bulk and slows digestion. This bulk adds volume without adding energy, thus decreasing the overall kcal/g ratio.</p>
+    <p>Fiber, being indigestible by human enzymes, contributes negligible calories (officially 0 kcal/g in the US). Fiber-rich foodsâ€”whole grains, legumes, and non-starchy vegetablesâ€”are low in density because the fiber provides bulk and slows digestion. This bulk adds volume without adding energy, thus decreasing the overall kcal/g ratio.</p>
 
 <hr />
 
@@ -516,7 +516,7 @@ export default function CaloricDensityVsVolumeCalculator() {
     <h2 id="categories" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Food Categorization by Energy Density</h2>
     <p>Nutritional guidelines typically divide foods into four main categories based on their caloric density, which serves as a guide for strategic eating.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Low Energy Density (0.0 – 1.5 kcal/g)</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Low Energy Density (0.0 â€“ 1.5 kcal/g)</h3>
     <p>These foods should form the foundation of a weight-management diet because they allow for large portions with minimal caloric impact. This category is dominated by water and fiber:</p>
     <ul>
         <li>Non-starchy vegetables (broccoli, leafy greens, peppers)</li>
@@ -525,7 +525,7 @@ export default function CaloricDensityVsVolumeCalculator() {
         <li>Skim milk, low-fat yogurt</li>
     </ul>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Medium Energy Density (1.5 – 4.0 kcal/g)</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Medium Energy Density (1.5 â€“ 4.0 kcal/g)</h3>
     <p>These foods are nutrient-dense and should be consumed in moderation. They include higher-protein and moderate-fat items:</p>
     <ul>
         <li>Whole grains (oatmeal, brown rice)</li>
@@ -564,7 +564,7 @@ export default function CaloricDensityVsVolumeCalculator() {
 
     {/* CONCLUSION */}
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>The concept of **Caloric Density (kcal/g)** is the key determinant of satiety and an effective tool for weight management. Foods low in caloric density are naturally high in <b>water and fiber</b>, allowing individuals to consume larger, more filling portions while simultaneously reducing calorie intake. By systematically applying the **Volumetrics strategy**—replacing high-density processed foods with low-density vegetables, fruits, and broth-based meals—individuals can harness the body's natural satiety signals to achieve sustainable weight loss without feeling deprived.</p>
+    <p>The concept of **Caloric Density (kcal/g)** is the key determinant of satiety and an effective tool for weight management. Foods low in caloric density are naturally high in <b>water and fiber</b>, allowing individuals to consume larger, more filling portions while simultaneously reducing calorie intake. By systematically applying the **Volumetrics strategy**â€”replacing high-density processed foods with low-density vegetables, fruits, and broth-based mealsâ€”individuals can harness the body's natural satiety signals to achieve sustainable weight loss without feeling deprived.</p>
 </section>
 
       <Card>

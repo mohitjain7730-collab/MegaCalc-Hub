@@ -54,7 +54,7 @@ const faqs = [
   {
     question: 'How is IRR calculated from MOIC?',
     answer:
-      'IRR ≈ (MOIC)^(1/holding period) - 1. For example, if MOIC is 2.5x over 5 years, IRR ≈ (2.5)^(1/5) - 1 = 0.20 or 20%. This is an approximation; precise IRR requires detailed cash flow analysis.',
+      'IRR â‰ˆ (MOIC)^(1/holding period) - 1. For example, if MOIC is 2.5x over 5 years, IRR â‰ˆ (2.5)^(1/5) - 1 = 0.20 or 20%. This is an approximation; precise IRR requires detailed cash flow analysis.',
   },
   {
     question: 'What is a good LBO return?',
@@ -64,7 +64,7 @@ const faqs = [
   {
     question: 'How does holding period affect returns?',
     answer:
-      'Longer holding periods generally require higher MOIC to achieve the same IRR. For example, 2.0x MOIC over 3 years ≈ 26% IRR, but over 7 years ≈ 10% IRR. Shorter holding periods are preferred for higher IRRs.',
+      'Longer holding periods generally require higher MOIC to achieve the same IRR. For example, 2.0x MOIC over 3 years â‰ˆ 26% IRR, but over 7 years â‰ˆ 10% IRR. Shorter holding periods are preferred for higher IRRs.',
   },
   {
     question: 'What factors drive LBO returns?',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/lbo-leveraged-buyout-return-calculator';
+const baseUrl = 'https://mycalculating.com/finance/lbo-leveraged-buyout-return-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'LBO (Leveraged Buyout) Return Calculator', item: baseUrl },
       ],
     },
@@ -149,7 +149,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // MOIC = Exit Value / Initial Investment
   const moic = initialInvestment > 0 ? exitValue / initialInvestment : 0;
   
-  // IRR approximation: IRR ≈ (MOIC)^(1/holding period) - 1
+  // IRR approximation: IRR â‰ˆ (MOIC)^(1/holding period) - 1
   const irr = moic > 0 && holdingPeriodYears > 0 ? (Math.pow(moic, 1 / holdingPeriodYears) - 1) * 100 : 0;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -169,7 +169,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     interpretation = 'Solid returns. MOIC 2.0-2.5x or IRR 20-25% represents good LBO performance, typically above median fund returns.';
   } else {
     status = 'optimal';
-    interpretation = 'Strong returns. MOIC ≥ 2.5x or IRR ≥ 25% represents top quartile LBO performance, exceeding typical fund benchmarks.';
+    interpretation = 'Strong returns. MOIC â‰¥ 2.5x or IRR â‰¥ 25% represents top quartile LBO performance, exceeding typical fund benchmarks.';
   }
 
   const recommendations = [
@@ -470,7 +470,7 @@ export default function LboLeveragedBuyoutReturnCalculator() {
         <h2 id="math" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Core Math and Approximations</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
           <p className="font-mono text-lg"><strong>MOIC = Exit Value / Initial Investment</strong></p>
-          <p className="font-mono text-lg"><strong>IRR ≈ (MOIC)^(1/Holding Period) - 1</strong></p>
+          <p className="font-mono text-lg"><strong>IRR â‰ˆ (MOIC)^(1/Holding Period) - 1</strong></p>
         </div>
         <p>The approximation works when cash flows are mostly at exit. For precise IRR, include interim cash flows (dividends, fees, partial exits) with IRR/XIRR.</p>
 
@@ -488,10 +488,10 @@ export default function LboLeveragedBuyoutReturnCalculator() {
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks and Quartiles</h2>
         <ul className="list-disc ml-6 space-y-2">
           <li><strong>Bottom quartile:</strong> &lt;15% IRR, &lt;1.5x MOIC</li>
-          <li><strong>Median:</strong> 15–20% IRR, 1.5–2.0x MOIC</li>
+          <li><strong>Median:</strong> 15â€“20% IRR, 1.5â€“2.0x MOIC</li>
           <li><strong>Top quartile:</strong> 25%+ IRR, 2.5x+ MOIC</li>
         </ul>
-        <p>Context matters: sector growth, leverage allowed, and cycle timing shift what is “good.”</p>
+        <p>Context matters: sector growth, leverage allowed, and cycle timing shift what is â€œgood.â€</p>
 
         <h2 id="stress" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Stress Testing and Sensitivities</h2>
         <p>Run downside cases on: lower exit multiple, slower EBITDA growth, delayed exit, higher interest. Small hits to multiple or timing can wipe out accretion; stress-test before committing capital.</p>
@@ -500,13 +500,13 @@ export default function LboLeveragedBuyoutReturnCalculator() {
         <ol className="list-decimal ml-6 space-y-2">
           <li>Baseline: compute MOIC and IRR for base exit and timing.</li>
           <li>Decompose returns: growth vs. multiple vs. deleveraging vs. ops.</li>
-          <li>Run sensitivities: ±1–2x EBITDA multiple, ±10–20% EBITDA, ±12–24 months exit.</li>
+          <li>Run sensitivities: Â±1â€“2x EBITDA multiple, Â±10â€“20% EBITDA, Â±12â€“24 months exit.</li>
           <li>Layer in interim distributions to see IRR uplift.</li>
           <li>Align with fund hurdle and quartile benchmarks before go/no-go.</li>
         </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Great LBOs mix sensible entry price, disciplined leverage, EBITDA growth, and at least modest multiple expansion. Translate MOIC to IRR, test timing rigorously, and stress every driver—returns are won or lost on a few key assumptions.</p>
+        <p>Great LBOs mix sensible entry price, disciplined leverage, EBITDA growth, and at least modest multiple expansion. Translate MOIC to IRR, test timing rigorously, and stress every driverâ€”returns are won or lost on a few key assumptions.</p>
       </section>
 
       <Card>

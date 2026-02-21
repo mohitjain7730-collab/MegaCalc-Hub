@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/attention-span-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/attention-span-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Attention Span Wellness Index', item: baseUrl },
       ],
     },
@@ -424,19 +424,19 @@ export default function AttentionSpanIndexCalculator() {
             <strong>Base attention span</strong> = Sustained attention time (minutes).
           </p>
           <p>
-            <strong>Distraction penalty</strong> = -(Distraction frequency / 10) × 5 minutes.
+            <strong>Distraction penalty</strong> = -(Distraction frequency / 10) Ã— 5 minutes.
           </p>
           <p>
-            <strong>Task switch penalty</strong> = -Task switch count × 2 minutes.
+            <strong>Task switch penalty</strong> = -Task switch count Ã— 2 minutes.
           </p>
           <p>
-            <strong>Age adjustment</strong> = Age &lt;20: ×0.9, Age ≥50: ×(1 - ((Age - 50) / 10) × 0.05).
+            <strong>Age adjustment</strong> = Age &lt;20: Ã—0.9, Age â‰¥50: Ã—(1 - ((Age - 50) / 10) Ã— 0.05).
           </p>
           <p>
-            <strong>Sleep quality adjustment</strong> = Quality &lt;5: ×0.7, 5-7: ×0.85, ≥8: ×1.1.
+            <strong>Sleep quality adjustment</strong> = Quality &lt;5: Ã—0.7, 5-7: Ã—0.85, â‰¥8: Ã—1.1.
           </p>
           <p>
-            <strong>Attention index</strong> = (Attention span / 60) × 100 (clamped 0-100).
+            <strong>Attention index</strong> = (Attention span / 60) Ã— 100 (clamped 0-100).
           </p>
           <p>Attention span reflects cognitive ability to maintain focus. Higher attention spans (40+ minutes) indicate better cognitive control and attention capacity. Factors like distractions, task switching, sleep, and age significantly affect attention span.</p>
         </CardContent>

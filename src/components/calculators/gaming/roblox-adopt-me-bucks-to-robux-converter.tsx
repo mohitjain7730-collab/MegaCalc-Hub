@@ -56,7 +56,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Adopt Me Bucks to Robux Converter', item: 'https://mycalculating.com/roblox-adopt-me-bucks-to-robux-converter' },
             ],
         },
@@ -141,7 +141,7 @@ export default function RobloxAdoptMeBucksConverter() {
                 <h2 className="text-2xl font-bold text-foreground pt-8">Method 1: The "Shop Rate" (The Whale Trap)</h2>
                 <p>If you open the in-game shop and click the "+" button next to your Bucks balance, you will see offers like "2,900 Bucks for 650 Robux".</p>
                 <p><strong>This is a terrible deal.</strong></p>
-                <p>In this scenario, you are paying roughly <strong>1 Robux for 4.5 Bucks</strong>. Experienced players almost never do this unless they are desperate for 50 bucks to buy an egg right now. It is considered a "Whale Trap"—designed for people with unlimited money who don't care about value.</p>
+                <p>In this scenario, you are paying roughly <strong>1 Robux for 4.5 Bucks</strong>. Experienced players almost never do this unless they are desperate for 50 bucks to buy an egg right now. It is considered a "Whale Trap"â€”designed for people with unlimited money who don't care about value.</p>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">Method 2: The "Ride Potion Standard" (The Smart Way)</h2>
                 <p>The smartest way to convert Robux into Adopt Me value is by purchasing <strong>Ride Potions</strong> (150 Robux each) or <strong>Fly Potions</strong> (295 Robux each).</p>
@@ -172,7 +172,7 @@ export default function RobloxAdoptMeBucksConverter() {
                 </ul>
 
                 <h2 className="text-2xl font-bold text-foreground pt-8">Summary</h2>
-                <p>If you have Robux and want Bucks, buy Ride Potions and trade them. If you have Bucks and want Robux, you are out of luck—there is no legitimate way to cash out. Enjoy the game, build your house, and hoard those Silk Bags for the next big update!</p>
+                <p>If you have Robux and want Bucks, buy Ride Potions and trade them. If you have Bucks and want Robux, you are out of luckâ€”there is no legitimate way to cash out. Enjoy the game, build your house, and hoard those Silk Bags for the next big update!</p>
             </section>
 
             <Card>

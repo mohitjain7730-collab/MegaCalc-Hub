@@ -39,7 +39,7 @@ const steps = [
   'Enter total hours of calls/meetings per week.',
   'Enter total hours of deep, focused work per week.',
   'Estimate average context switches per day (Slack pings, app changes, ad-hoc requests).',
-  'Enter average nightly sleep hours over the last 1–2 weeks.',
+  'Enter average nightly sleep hours over the last 1â€“2 weeks.',
   'Review predicted mental energy drain and buffer capacity.',
 ];
 
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'Can I run it for different weeks?',
     answer:
-      'Yes. Try a “normal” week, a crunch week, and a lighter week to compare patterns.',
+      'Yes. Try a â€œnormalâ€ week, a crunch week, and a lighter week to compare patterns.',
   },
   {
     question: 'Does this account for physical health?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mental-energy-drain-predictor';
+const baseUrl = 'https://mycalculating.com/health-fitness/mental-energy-drain-predictor';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mental Energy Drain Wellness Predictor', item: baseUrl },
       ],
     },
@@ -194,7 +194,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   if (sleepHours < 6.5) {
-    recommendations.push('Experiment with moving bedtime earlier by 15–30 minutes and limiting screens close to bed.');
+    recommendations.push('Experiment with moving bedtime earlier by 15â€“30 minutes and limiting screens close to bed.');
   }
 
   const plan = [
@@ -330,7 +330,7 @@ export default function MentalEnergyDrainPredictor() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Predicted drain</p>
                 <p className="text-2xl font-semibold text-primary">{result.predictedDrainScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 (higher = more drain)</p>
+                <p className="text-xs text-muted-foreground">0â€“100 (higher = more drain)</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Buffer capacity</p>
@@ -473,7 +473,7 @@ export default function MentalEnergyDrainPredictor() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-white p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/MedicalWebPage">
-        <meta itemProp="name" content="Mental Energy Drain: Designing Schedules That Don’t Exhaust You" />
+        <meta itemProp="name" content="Mental Energy Drain: Designing Schedules That Donâ€™t Exhaust You" />
         <meta itemProp="description" content="Estimate how draining your week may feel and learn practical ways to rebalance meetings, deep work, interruptions, and sleep." />
         <meta itemProp="keywords" content="mental energy drain predictor, fatigue, meetings load, deep work, context switching, sleep" />
         <meta itemProp="author" content="[Your Site's Health Team]" />
@@ -481,7 +481,7 @@ export default function MentalEnergyDrainPredictor() {
         <meta itemProp="url" content="/definitive-mental-energy-drain-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">
-          Mental Energy Drain: How Your Calendar and Sleep Shape Your Brain’s Fuel
+          Mental Energy Drain: How Your Calendar and Sleep Shape Your Brainâ€™s Fuel
         </h1>
         <p className="text-lg italic text-gray-700">
           Learn why some weeks feel surprisingly light and others crushing, and how to redesign your work environment for sustainable focus.
@@ -501,7 +501,7 @@ export default function MentalEnergyDrainPredictor() {
           Attention as a Finite Resource
         </h2>
         <p>
-          Your prefrontal cortex can only juggle so much at once. Treating attention as a limited resource encourages intentional use rather than assuming you can “just push harder.”
+          Your prefrontal cortex can only juggle so much at once. Treating attention as a limited resource encourages intentional use rather than assuming you can â€œjust push harder.â€
         </p>
 
         <h2 id="meetings" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -537,7 +537,7 @@ export default function MentalEnergyDrainPredictor() {
           Conclusion
         </h2>
         <p>
-          Mental energy is a key ingredient for productivity, creativity, and wellbeing. This predictor helps you see where it is being spent—and where you can protect it better.
+          Mental energy is a key ingredient for productivity, creativity, and wellbeing. This predictor helps you see where it is being spentâ€”and where you can protect it better.
         </p>
       </section>
 

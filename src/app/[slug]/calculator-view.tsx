@@ -20,15 +20,9 @@ import { CalculatorSeoArticle } from '@/components/calculator-seo-article';
 export const dynamic = 'force-dynamic';
 export const dynamicParams = true;
 
-export async function generateMetadata({
-    params
-}: {
-    params: Promise<{ calculatorSlug: string }>
-}): Promise<Metadata> {
-    const { calculatorSlug } = await params;
-
+export async function generateCalculatorMetadata(slug: string): Promise<Metadata> {
     // Find calculator from data
-    const calculator = calculators.find((c) => c.slug === calculatorSlug);
+    const calculator = calculators.find((c) => c.slug === slug);
     if (!calculator) {
         return {
             title: 'Calculator Not Found',
@@ -62,10 +56,8 @@ export async function generateMetadata({
     };
 }
 
-export default async function StandaloneCalculatorPage({ params }: { params: Promise<{ calculatorSlug: string }> }) {
-    const { calculatorSlug } = await params;
-
-    const calculator = calculators.find((c) => c.slug === calculatorSlug);
+export default async function CalculatorView({ slug }: { slug: string }) {
+    const calculator = calculators.find((c) => c.slug === slug);
     if (!calculator) notFound();
 
     const category = categories.find((c) => c.slug === calculator.category);

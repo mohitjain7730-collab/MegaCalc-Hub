@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/copper-intake-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/copper-intake-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Copper Intake Calculator', item: baseUrl },
       ],
     },
@@ -383,7 +383,7 @@ export default function CopperIntakeCalculator() {
             <strong>Daily need</strong> = estimated from age. Adults 19+: 0.9 mg/day (900 mcg/day), same for men and women. Children and adolescents have lower requirements.
           </p>
           <p>
-            <strong>Intake percentage</strong> = (copper intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (copper intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
             <strong>Recommended intake</strong>: Adults: 0.9 mg/day (900 mcg/day). Upper limit: 10 mg/day. Requirements are the same for men and women in adulthood.
@@ -482,7 +482,7 @@ export default function CopperIntakeCalculator() {
 
     {/* THE ESSENTIAL ROLE OF COPPER: ENERGY AND IRON METABOLISM */}
     <h2 id="function" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Essential Role of Copper: Energy and Iron Metabolism</h2>
-    <p>Copper (Cu) is an essential trace mineral that serves primarily as a <b>cofactor</b> for several vital oxidase enzymes (cuproenzymes). Unlike many other minerals, copper’s unique ability to switch between its two oxidation states (cuprous Cu<sup>+</sup> and cupric Cu<sup>2+</sup>) makes it indispensable for reactions involving oxygen transport and electron transfer within the body.</p>
+    <p>Copper (Cu) is an essential trace mineral that serves primarily as a <b>cofactor</b> for several vital oxidase enzymes (cuproenzymes). Unlike many other minerals, copperâ€™s unique ability to switch between its two oxidation states (cuprous Cu<sup>+</sup> and cupric Cu<sup>2+</sup>) makes it indispensable for reactions involving oxygen transport and electron transfer within the body.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">Energy Production and Cytochrome c Oxidase</h3>
 <p>Copper is absolutely critical for cellular energy production. It is a necessary component of the enzyme <b>cytochrome c oxidase</b>, which is the last enzyme in the electron transport chain (the process that generates ATP, the body's energy currency). Without sufficient copper, this process slows down, leading to compromised cellular respiration and lower energy output.</p>
@@ -502,7 +502,7 @@ export default function CopperIntakeCalculator() {
 
     {/* OFFICIAL RECOMMENDED DIETARY ALLOWANCE (RDA) */}
     <h2 id="rda" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Official Recommended Dietary Allowance (RDA)</h2>
-    <p>The **National Institutes of Health (NIH)** and the **Food and Nutrition Board (FNB)** set the RDA for copper, which is the daily intake level considered sufficient to meet the requirements of 97–98% of healthy individuals in each demographic group.</p>
+    <p>The **National Institutes of Health (NIH)** and the **Food and Nutrition Board (FNB)** set the RDA for copper, which is the daily intake level considered sufficient to meet the requirements of 97â€“98% of healthy individuals in each demographic group.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Copper RDA and Upper Limit (UL) in Micrograms (mcg) per Day</h3>
     <p>The therapeutic window for copper is relatively narrow, meaning both deficiency and excessive intake are causes for concern, especially regarding the Upper Limit (UL):</p>
@@ -545,7 +545,7 @@ export default function CopperIntakeCalculator() {
 
     {/* DIETARY SOURCES AND BIOAVAILABILITY */}
     <h2 id="sources" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dietary Sources and Bioavailability</h2>
-    <p>Copper is widely available in foods, with the highest concentrations found in specific food groups. Bioavailability—the fraction of the ingested mineral that is absorbed and utilized—is typically between 25% and 60%.</p>
+    <p>Copper is widely available in foods, with the highest concentrations found in specific food groups. Bioavailabilityâ€”the fraction of the ingested mineral that is absorbed and utilizedâ€”is typically between 25% and 60%.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Key Food Sources of Copper</h3>
     <p>The richest sources of copper include:</p>

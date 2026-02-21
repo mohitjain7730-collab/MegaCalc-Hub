@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-a-retinol-equivalent-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-a-retinol-equivalent-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin A Retinol Equivalent Calculator', item: baseUrl },
       ],
     },
@@ -158,7 +158,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   // Calculate total IU (International Units)
   // 1 mcg RAE = 3.33 IU from retinol, or approximately 20 IU from beta-carotene
-  // Simplified: 1 mcg RAE ≈ 3.33 IU (for retinol) or use weighted average
+  // Simplified: 1 mcg RAE â‰ˆ 3.33 IU (for retinol) or use weighted average
   const totalIU = retinol * 3.33 + betaCarotene * 0.167 + alphaCarotene * 0.083 + otherCarotenoids * 0.083;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -629,7 +629,7 @@ export default function VitaminARetinolEquivalentCalculator() {
 
     {/* CONCLUSION */}
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Vitamin A is an essential fat-soluble nutrient required for **vision, immune function, and cell differentiation**. Dietary intake must be measured using **Retinol Activity Equivalents (RAE)** to account for the low conversion efficiency of plant-based beta-carotene. The adult **RDA is 700–900 mcg RAE/day**. Deficiency is a global cause of preventable blindness, while excess intake of preformed retinol (above the **3,000 mcg RAE UL**) carries serious risks of toxicity and birth defects, necessitating careful management of supplements.</p>
+    <p>Vitamin A is an essential fat-soluble nutrient required for **vision, immune function, and cell differentiation**. Dietary intake must be measured using **Retinol Activity Equivalents (RAE)** to account for the low conversion efficiency of plant-based beta-carotene. The adult **RDA is 700â€“900 mcg RAE/day**. Deficiency is a global cause of preventable blindness, while excess intake of preformed retinol (above the **3,000 mcg RAE UL**) carries serious risks of toxicity and birth defects, necessitating careful management of supplements.</p>
 </section>
 
       <Card>

@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/habit-streak-tracker-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/habit-streak-tracker-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Meditation Time Progress Tracker', item: baseUrl },
       ],
     },
@@ -441,7 +441,7 @@ export default function MeditationTimeProgressTrackerCalculator() {
             <strong>Daily Average</strong> = Total Minutes / 7. This represents average minutes practiced per day.
           </p>
           <p>
-            <strong>Target Percentage</strong> = (Total Minutes / (Target Minutes × 7)) × 100. This shows how much of your
+            <strong>Target Percentage</strong> = (Total Minutes / (Target Minutes Ã— 7)) Ã— 100. This shows how much of your
             weekly goal you achieved.
           </p>
           <p>
@@ -703,7 +703,7 @@ export default function MeditationTimeProgressTrackerCalculator() {
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Open Monitoring Meditation</h3>
         <p>
-          Observe whatever arises in awareness—thoughts, feelings, sensations—without attachment or judgment. This practice
+          Observe whatever arises in awarenessâ€”thoughts, feelings, sensationsâ€”without attachment or judgment. This practice
           develops equanimity and insight.
         </p>
 
@@ -777,7 +777,7 @@ export default function MeditationTimeProgressTrackerCalculator() {
           Building a consistent meditation practice is a journey that offers profound benefits for mental well-being, stress
           resilience, and overall quality of life. By understanding meditation benefits, tracking progress effectively, building
           consistency, exploring different techniques, and overcoming common challenges, you can develop a sustainable practice
-          that serves your needs. Remember that consistency matters more than perfection—even brief, regular practice can yield
+          that serves your needs. Remember that consistency matters more than perfectionâ€”even brief, regular practice can yield
           meaningful benefits. Be patient with yourself, experiment with different approaches, and allow your practice to evolve
           naturally. If you have concerns about how meditation relates to your mental health or well-being, consider consulting
           a qualified mental health professional who can provide personalized guidance. This tool is designed to support a

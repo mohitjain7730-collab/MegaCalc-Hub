@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-quality-vs-screen-exposure-analyzer';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-quality-vs-screen-exposure-analyzer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep & Screen Time Wellness Analyzer', item: baseUrl },
       ],
     },
@@ -398,13 +398,13 @@ export default function SleepQualityVsScreenExposureAnalyzer() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Screen impact score</strong> = (Bedtime screen time × 25) + (Daily screen time × 1.5), capped at 100.
+            <strong>Screen impact score</strong> = (Bedtime screen time Ã— 25) + (Daily screen time Ã— 1.5), capped at 100.
           </p>
           <p>
-            <strong>Blue light exposure</strong> = (Bedtime screen time × blocking factor × 100) + (Daily screen time × blocking factor × 2).
+            <strong>Blue light exposure</strong> = (Bedtime screen time Ã— blocking factor Ã— 100) + (Daily screen time Ã— blocking factor Ã— 2).
           </p>
           <p>
-            <strong>Blocking factor</strong> = 1 - (Blue light blocking usage / 10) × 0.6 (reduces exposure up to 60%).
+            <strong>Blocking factor</strong> = 1 - (Blue light blocking usage / 10) Ã— 0.6 (reduces exposure up to 60%).
           </p>
           <p>Bedtime screen time (within 2 hours of sleep) has a much greater impact than general daily screen time due to melatonin suppression and mental stimulation.</p>
         </CardContent>

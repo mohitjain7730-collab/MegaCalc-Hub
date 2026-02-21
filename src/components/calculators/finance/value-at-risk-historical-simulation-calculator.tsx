@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'How is VaR calculated using historical simulation?',
     answer:
-      'Steps: 1) Collect historical returns, 2) Sort returns from worst to best, 3) Identify the return at the desired confidence level percentile (e.g., 5th percentile for 95% confidence), 4) Calculate VaR = Portfolio Value × |Percentile Return|. The percentile return represents the maximum expected loss.',
+      'Steps: 1) Collect historical returns, 2) Sort returns from worst to best, 3) Identify the return at the desired confidence level percentile (e.g., 5th percentile for 95% confidence), 4) Calculate VaR = Portfolio Value Ã— |Percentile Return|. The percentile return represents the maximum expected loss.',
   },
   {
     question: 'What confidence level should I use?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/value-at-risk-historical-simulation-calculator';
+const baseUrl = 'https://mycalculating.com/finance/value-at-risk-historical-simulation-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Value-at-Risk (Historical Simulation) Calculator', item: baseUrl },
       ],
     },
@@ -167,7 +167,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Get percentile return (worst return at confidence level)
   const percentileReturn = returns[adjustedIndex];
 
-  // VaR = Portfolio Value × |Percentile Return|
+  // VaR = Portfolio Value Ã— |Percentile Return|
   // Use absolute value since percentile return is typically negative
   const varValue = portfolioValue * Math.abs(percentileReturn);
   const varPercentage = Math.abs(percentileReturn) * 100;
@@ -400,16 +400,16 @@ export default function ValueAtRiskHistoricalSimulationCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Historical Simulation Method:</strong> 1) Collect historical returns, 2) Sort returns from worst to best, 3) Identify return at desired confidence level percentile, 4) Calculate VaR = Portfolio Value × |Percentile Return|.
+            <strong>Historical Simulation Method:</strong> 1) Collect historical returns, 2) Sort returns from worst to best, 3) Identify return at desired confidence level percentile, 4) Calculate VaR = Portfolio Value Ã— |Percentile Return|.
           </p>
           <p>
-            <strong>Percentile Index:</strong> For confidence level C%, percentile index = floor(Number of Returns × (100 - C) / 100). For 95% confidence with 100 returns, index = floor(100 × 0.05) = 5 (5th worst return).
+            <strong>Percentile Index:</strong> For confidence level C%, percentile index = floor(Number of Returns Ã— (100 - C) / 100). For 95% confidence with 100 returns, index = floor(100 Ã— 0.05) = 5 (5th worst return).
           </p>
           <p>
-            <strong>VaR Value:</strong> VaR = Portfolio Value × |Percentile Return|. The absolute value of the percentile return (typically negative) multiplied by portfolio value gives the maximum expected loss.
+            <strong>VaR Value:</strong> VaR = Portfolio Value Ã— |Percentile Return|. The absolute value of the percentile return (typically negative) multiplied by portfolio value gives the maximum expected loss.
           </p>
           <p>
-            <strong>VaR Percentage:</strong> VaR % = |Percentile Return| × 100. The VaR as a percentage of portfolio value, representing the maximum expected loss percentage.
+            <strong>VaR Percentage:</strong> VaR % = |Percentile Return| Ã— 100. The VaR as a percentage of portfolio value, representing the maximum expected loss percentage.
           </p>
           <p>
             <strong>Confidence Level:</strong> Common levels are 95% (5% tail risk) and 99% (1% tail risk). Higher confidence levels provide more conservative estimates but may be less practical. 95% is most commonly used.
@@ -571,7 +571,7 @@ export default function ValueAtRiskHistoricalSimulationCalculator() {
         <li>Sort 100 returns from worst to best</li>
         <li>For 95% confidence, identify the 5th worst return (5th percentile)</li>
         <li>If 5th worst return is -2.5% and portfolio value is $1,000,000:</li>
-        <li>VaR = $1,000,000 × 2.5% = $25,000</li>
+        <li>VaR = $1,000,000 Ã— 2.5% = $25,000</li>
     </ul>
     <p>This means with 95% confidence, losses will not exceed $25,000.</p>
 

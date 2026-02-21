@@ -59,7 +59,7 @@ const faqs = [
   {
     question: 'How do I calculate coverage needs?',
     answer:
-      'Coverage needs = Income replacement (annual income × years) + Debts + Final expenses + Education funds + Emergency fund - Existing life insurance. This ensures dependents can maintain their lifestyle and meet financial obligations.',
+      'Coverage needs = Income replacement (annual income Ã— years) + Debts + Final expenses + Education funds + Emergency fund - Existing life insurance. This ensures dependents can maintain their lifestyle and meet financial obligations.',
   },
   {
     question: 'How many years of coverage should I plan for?',
@@ -99,7 +99,7 @@ const faqs = [
   {
     question: 'What if I have no dependents?',
     answer:
-      'If you have no dependents, coverage needs may be minimal—just enough to cover final expenses and debts. However, consider future dependents, business partners, or estate planning needs when determining coverage.',
+      'If you have no dependents, coverage needs may be minimalâ€”just enough to cover final expenses and debts. However, consider future dependents, business partners, or estate planning needs when determining coverage.',
   },
 ];
 
@@ -126,7 +126,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/life-insurance-coverage-needs-calculator';
+const baseUrl = 'https://mycalculating.com/finance/life-insurance-coverage-needs-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -135,7 +135,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Life Insurance Coverage Needs Calculator', item: baseUrl },
       ],
     },
@@ -455,7 +455,7 @@ export default function LifeInsuranceCoverageNeedsCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Income Replacement</strong> = Annual Income × 75% × Years of Coverage. Uses 75% of income as dependents typically need less than full income (no longer saving for retirement, etc.).
+            <strong>Income Replacement</strong> = Annual Income Ã— 75% Ã— Years of Coverage. Uses 75% of income as dependents typically need less than full income (no longer saving for retirement, etc.).
           </p>
           <p>
             <strong>Total Needs</strong> = Income Replacement + Debts + Final Expenses + Education Funds + Emergency Fund. This represents total financial needs if the insured dies.
@@ -464,7 +464,7 @@ export default function LifeInsuranceCoverageNeedsCalculator() {
             <strong>Recommended Coverage</strong> = Total Needs - Existing Life Insurance. This is the additional coverage needed to meet all financial obligations.
           </p>
           <p>
-            <strong>Coverage Ratio</strong> = (Existing Coverage / Total Needs) × 100. Shows what percentage of needs are covered by existing insurance.
+            <strong>Coverage Ratio</strong> = (Existing Coverage / Total Needs) Ã— 100. Shows what percentage of needs are covered by existing insurance.
           </p>
           <p>Life insurance coverage needs ensure dependents can maintain their lifestyle, pay off debts, cover final expenses, fund education, and have emergency funds if the insured dies prematurely.</p>
         </CardContent>
@@ -593,7 +593,7 @@ export default function LifeInsuranceCoverageNeedsCalculator() {
     <h2 id="components" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Components of Coverage Needs</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Income Replacement</h3>
-    <p>Replace lost income for a specified period (typically 10-20 years). Calculate as: Annual Income × 75% × Years of Coverage. Plan until children reach adulthood or spouse can be self-sufficient.</p>
+    <p>Replace lost income for a specified period (typically 10-20 years). Calculate as: Annual Income Ã— 75% Ã— Years of Coverage. Plan until children reach adulthood or spouse can be self-sufficient.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Debts</h3>
     <p>Include all debts: mortgage, car loans, credit cards, personal loans, student loans. Life insurance should cover these to prevent dependents from inheriting debt burden.</p>

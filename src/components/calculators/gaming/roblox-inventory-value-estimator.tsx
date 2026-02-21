@@ -88,7 +88,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: '(Roblox) Inventory Value Estimator', item: baseUrl },
       ],
     },
@@ -166,13 +166,13 @@ export default function RobloxInventoryValueEstimator() {
             <strong>Gross Inventory Value</strong> = Pets Value + Limited Items Value + Collectibles Value + Gamepasses Value + Other Items Value. This is the sum of all item categories before accounting for depreciation.
           </p>
           <p>
-            <strong>Depreciation Amount</strong> = Gross Inventory Value × (Depreciation Factor / 100). This accounts for potential value loss due to market volatility, price fluctuations, and risk. Higher depreciation factors indicate higher volatility risk.
+            <strong>Depreciation Amount</strong> = Gross Inventory Value Ã— (Depreciation Factor / 100). This accounts for potential value loss due to market volatility, price fluctuations, and risk. Higher depreciation factors indicate higher volatility risk.
           </p>
           <p>
             <strong>Net Inventory Value</strong> = Gross Inventory Value - Depreciation Amount. This represents your realistic inventory value after accounting for market risk and potential value loss.
           </p>
           <p>
-            <strong>Category Percentage</strong> = (Category Value / Gross Inventory Value) × 100. This shows what percentage of your total inventory each category represents. Helps identify diversification opportunities.
+            <strong>Category Percentage</strong> = (Category Value / Gross Inventory Value) Ã— 100. This shows what percentage of your total inventory each category represents. Helps identify diversification opportunities.
           </p>
           <p>These formulas help you estimate total inventory value, account for market risk through depreciation, and understand value distribution across categories. Use depreciation factors to reflect realistic values that account for market volatility.</p>
         </CardContent>
@@ -380,7 +380,7 @@ export default function RobloxInventoryValueEstimator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool estimates Roblox inventory value based on pets value, limited items value, collectibles value, gamepasses value, other items value (all in Robux), and depreciation factor percentage (0-100) to account for market volatility.</p>
           <p>Outputs include gross inventory value (sum of all categories), depreciation amount (percentage of gross value), net inventory value (after depreciation), value breakdown by category with percentages, status assessment (low/moderate/high/very-high), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use simple aggregation: Gross Value = Sum of all categories, Depreciation = Gross × (Factor / 100), Net Value = Gross - Depreciation, Category % = (Category Value / Gross) × 100. The guide covers inventory categories, valuation methods, depreciation factors, category breakdown analysis, optimization strategies, and value tracking. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox inventory value estimation instantly.</p>
+          <p>Formulas use simple aggregation: Gross Value = Sum of all categories, Depreciation = Gross Ã— (Factor / 100), Net Value = Gross - Depreciation, Category % = (Category Value / Gross) Ã— 100. The guide covers inventory categories, valuation methods, depreciation factors, category breakdown analysis, optimization strategies, and value tracking. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Roblox inventory value estimation instantly.</p>
         </CardContent>
       </Card>
     </div>

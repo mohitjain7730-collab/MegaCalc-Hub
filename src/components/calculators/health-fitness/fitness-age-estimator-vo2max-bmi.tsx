@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'How often should I retest?',
     answer:
-      'Every 3–6 months to track progress. VO2max improvements typically take 8–12 weeks of consistent training.',
+      'Every 3â€“6 months to track progress. VO2max improvements typically take 8â€“12 weeks of consistent training.',
   },
   {
     question: 'Can age affect the calculation?',
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/fitness-age-estimator-vo2max-bmi';
+const baseUrl = 'https://mycalculating.com/health-fitness/fitness-age-estimator-vo2max-bmi';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Fitness Age Estimator (VO2max + BMI-based)', item: baseUrl },
       ],
     },
@@ -174,11 +174,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations = [
     'If it feels realistic, you can explore regular cardio or movement you enjoy to support your cardiovascular fitness.',
-    'Balanced, steady nutrition and day‑to‑day activity patterns often help your body feel more comfortable over time than quick, intense changes.',
+    'Balanced, steady nutrition and dayâ€‘toâ€‘day activity patterns often help your body feel more comfortable over time than quick, intense changes.',
     'Gentle strength training a couple of times per week can support how strong and stable you feel in everyday life.',
   ];
   if (status === 'older') {
-    recommendations.push('If you’re curious about changes, you might consider chatting with a fitness or health professional about a pace and approach that feel safe and kind to you.');
+    recommendations.push('If youâ€™re curious about changes, you might consider chatting with a fitness or health professional about a pace and approach that feel safe and kind to you.');
   }
   if (status === 'younger') {
     recommendations.push('You can keep leaning into the routines that already help you feel well, adjusting as needed when life shifts.');
@@ -186,7 +186,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Month', detail: 'Notice how your current activity, comfort, and energy feel, without pressure to change everything at once.' },
-    { label: 'Next 3 Months', detail: 'If you’d like, add small, repeatable changes—like extra walks or simple strength sessions—and see how your body responds.' },
+    { label: 'Next 3 Months', detail: 'If youâ€™d like, add small, repeatable changesâ€”like extra walks or simple strength sessionsâ€”and see how your body responds.' },
     { label: 'Ongoing', detail: 'Revisit this snapshot occasionally to reflect on trends and adjust in ways that support your everyday life.' },
   ];
 
@@ -303,14 +303,14 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fitness age</p>
                 <p className="text-2xl font-semibold text-primary">{result.fitnessAge.toFixed(0)} years</p>
-                <p className="text-xs text-muted-foreground">A rough fitness‑focused age estimate from this model.</p>
+                <p className="text-xs text-muted-foreground">A rough fitnessâ€‘focused age estimate from this model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Age difference</p>
                 <p className="text-2xl font-semibold text-primary">
                   {result.ageDifference > 0 ? '+' : ''}{result.ageDifference.toFixed(0)} years
                 </p>
-                <p className="text-xs text-muted-foreground">Shows how this estimate compares with your calendar age (positive = “younger” in the model).</p>
+                <p className="text-xs text-muted-foreground">Shows how this estimate compares with your calendar age (positive = â€œyoungerâ€ in the model).</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -364,9 +364,9 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Age-expected VO2max</strong> ≈ 50 − (age − 25) × 0.5 (declines ~0.5 per year after 25).</p>
-          <p><strong>Fitness age adjustment</strong> = (1 − (VO2 factor + BMI factor + activity factor)) × chronological age.</p>
-          <p><strong>Fitness age</strong> = chronological age − fitness age adjustment, clamped to 18-100.</p>
+          <p><strong>Age-expected VO2max</strong> â‰ˆ 50 âˆ’ (age âˆ’ 25) Ã— 0.5 (declines ~0.5 per year after 25).</p>
+          <p><strong>Fitness age adjustment</strong> = (1 âˆ’ (VO2 factor + BMI factor + activity factor)) Ã— chronological age.</p>
+          <p><strong>Fitness age</strong> = chronological age âˆ’ fitness age adjustment, clamped to 18-100.</p>
           <p>Higher VO2max, healthy BMI (18.5-25), and higher activity level lower fitness age.</p>
         </CardContent>
       </Card>
@@ -396,7 +396,7 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().vo2max ?? 0) > (50 - ((form.getValues().chronologicalAge ?? 0) - 25) * 0.5) ? 'Above' : 'Below')} expected
                 </p>
-                <p className="text-xs text-muted-foreground">Compared to a simple age‑based reference curve.</p>
+                <p className="text-xs text-muted-foreground">Compared to a simple ageâ€‘based reference curve.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">BMI category</p>
@@ -469,8 +469,8 @@ export default function FitnessAgeEstimatorVO2MaxBMI() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>This tool offers a fitness‑focused age estimate based on your VO2max, BMI, activity level, and chronological age within a simple model.</p>
-          <p>You can use the result as a lighthearted reflection on current habits, not as a medical measure of “biological age,” and adjust routines in ways that feel kind and sustainable.</p>
+          <p>This tool offers a fitnessâ€‘focused age estimate based on your VO2max, BMI, activity level, and chronological age within a simple model.</p>
+          <p>You can use the result as a lighthearted reflection on current habits, not as a medical measure of â€œbiological age,â€ and adjust routines in ways that feel kind and sustainable.</p>
         </CardContent>
       </Card>
 

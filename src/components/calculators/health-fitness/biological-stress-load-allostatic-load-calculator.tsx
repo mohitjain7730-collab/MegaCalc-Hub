@@ -37,7 +37,7 @@ type ResultPayload = {
 const steps = [
   'Enter stress level (1 = low, 10 = high) from self-assessment.',
   'Enter sleep quality (1 = poor, 10 = excellent) from sleep assessment.',
-  'Optionally enter cortisol level if measured (μg/dL) from blood test.',
+  'Optionally enter cortisol level if measured (Î¼g/dL) from blood test.',
   'Enter chronic disease burden (0 = none, 10 = severe) from health assessment.',
   'Review allostatic load, biological stress status, and recommendations.',
 ];
@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/biological-stress-load-allostatic-load-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/biological-stress-load-allostatic-load-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Biological Stress Load (Allostatic Load) Wellness Calculator', item: baseUrl },
       ],
     },
@@ -156,7 +156,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     cortisolLevel = values.cortisolLevel;
   } else {
     // Estimate based on stress and sleep
-    // Normal morning cortisol: 10-20 μg/dL
+    // Normal morning cortisol: 10-20 Î¼g/dL
     let baseline = 15;
     baseline += (stressLevel - 5) * 2; // Stress increases cortisol
     baseline -= (sleepQuality - 5) * 1.5; // Poor sleep increases cortisol
@@ -173,7 +173,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   allostaticLoad += (10 - sleepQuality) / 3;
   
   // Cortisol component (0-2 points)
-  // Normal: 10-20 μg/dL, elevated: >20
+  // Normal: 10-20 Î¼g/dL, elevated: >20
   if (cortisolLevel > 20) {
     allostaticLoad += 1.5;
   } else if (cortisolLevel > 15) {
@@ -290,7 +290,7 @@ export default function BiologicalStressLoadAllostaticLoadCalculator() {
                   name="cortisolLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cortisol level (μg/dL) (optional)</FormLabel>
+                      <FormLabel>Cortisol level (Î¼g/dL) (optional)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.1" placeholder="e.g., 15" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -402,7 +402,7 @@ export default function BiologicalStressLoadAllostaticLoadCalculator() {
             <strong>Allostatic load</strong> = calculated from stress level (0-3 points), sleep quality (0-3 points, inverted), cortisol level (0-2 points), and chronic disease burden (0-2 points).
           </p>
           <p>
-            <strong>If cortisol not provided</strong>: Estimated from stress level and sleep quality. Normal morning cortisol: 10-20 μg/dL.
+            <strong>If cortisol not provided</strong>: Estimated from stress level and sleep quality. Normal morning cortisol: 10-20 Î¼g/dL.
           </p>
           <p>
             <strong>Allostatic load scale</strong>: 0-10, with lower values indicating lower biological stress burden. Higher values indicate increased cumulative stress and health risk.
@@ -444,7 +444,7 @@ export default function BiologicalStressLoadAllostaticLoadCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Cortisol level</p>
                 <p className="text-xl font-semibold text-primary">{result.cortisolLevel.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">μg/dL</p>
+                <p className="text-xs text-muted-foreground">Î¼g/dL</p>
               </div>
             </div>
           ) : (

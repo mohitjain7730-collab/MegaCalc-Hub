@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/postpartum-hormonal-recovery-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/postpartum-hormonal-recovery-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Postpartum Hormonal Recovery Calculator', item: baseUrl },
       ],
     },
@@ -183,7 +183,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'early-recovery';
   let interpretation =
-    'These answers suggest you may be in an earlier part of the postpartum adjustment period; it’s very normal for hormones, sleep, and energy to still be finding a new rhythm.';
+    'These answers suggest you may be in an earlier part of the postpartum adjustment period; itâ€™s very normal for hormones, sleep, and energy to still be finding a new rhythm.';
 
   if (recoveryScore >= 80) {
     status = 'recovered';
@@ -196,24 +196,24 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (recoveryScore >= 40) {
     status = 'mid-recovery';
     interpretation =
-      'Your responses are similar to what many people notice somewhere in the middle of the postpartum adjustment period; it’s common for hormones, sleep, and energy to still feel uneven.';
+      'Your responses are similar to what many people notice somewhere in the middle of the postpartum adjustment period; itâ€™s common for hormones, sleep, and energy to still feel uneven.';
   }
 
   const recommendations = [
-    'When you’re able, giving yourself more opportunities for rest and sleep can be one of the kindest supports for your body in this season.',
-    'Simple, nutrient‑dense meals and snacks—like proteins, healthy fats, and fiber‑rich carbs—can help support your overall energy and well‑being.',
+    'When youâ€™re able, giving yourself more opportunities for rest and sleep can be one of the kindest supports for your body in this season.',
+    'Simple, nutrientâ€‘dense meals and snacksâ€”like proteins, healthy fats, and fiberâ€‘rich carbsâ€”can help support your overall energy and wellâ€‘being.',
     'Light movement, quiet moments, or connecting with supportive people can sometimes ease stress in ways that also support hormonal adjustment.',
   ];
   if (values.breastfeeding) {
-    recommendations.push('If you are breastfeeding, it is very common for your period and hormone pattern to look different or return later; this variation is usually normal, but you can always ask your clinician if you’re unsure.');
+    recommendations.push('If you are breastfeeding, it is very common for your period and hormone pattern to look different or return later; this variation is usually normal, but you can always ask your clinician if youâ€™re unsure.');
   }
   if (status === 'early-recovery' || status === 'mid-recovery') {
-    recommendations.push('Being gentle with yourself and easing back into activities at a pace that feels manageable can be more supportive than pushing to “bounce back.”');
+    recommendations.push('Being gentle with yourself and easing back into activities at a pace that feels manageable can be more supportive than pushing to â€œbounce back.â€');
   }
 
   const plan = [
-    { label: 'This Month', detail: 'If it feels helpful, briefly note how you’re sleeping, feeling, and functioning, without judging yourself for any of it.' },
-    { label: 'Next 3 Months', detail: 'As and when your energy allows, gently add or adjust one or two habits—like short walks or simple meals—that genuinely feel supportive.' },
+    { label: 'This Month', detail: 'If it feels helpful, briefly note how youâ€™re sleeping, feeling, and functioning, without judging yourself for any of it.' },
+    { label: 'Next 3 Months', detail: 'As and when your energy allows, gently add or adjust one or two habitsâ€”like short walks or simple mealsâ€”that genuinely feel supportive.' },
     { label: 'Ongoing', detail: 'Reach out to a trusted healthcare professional whenever something worries you or your symptoms feel heavy to carry alone.' },
   ];
 
@@ -374,12 +374,12 @@ export default function PostpartumHormonalRecoveryCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery score</p>
                 <p className="text-2xl font-semibold text-primary">{result.recoveryScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 snapshot from this model of how your current answers look overall.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 snapshot from this model of how your current answers look overall.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Hormonal balance</p>
                 <p className="text-2xl font-semibold text-primary">{result.hormonalBalance.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">The same score, framed as a general “how settled things feel” index.</p>
+                <p className="text-xs text-muted-foreground">The same score, framed as a general â€œhow settled things feelâ€ index.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Months to recovery</p>
@@ -438,7 +438,7 @@ export default function PostpartumHormonalRecoveryCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Recovery score</strong> = time score (0-40) − breastfeeding penalty (0-15) + sleep score (0-20) + energy score (0-15) + mood score (0-15) + period bonus (0-10), clamped to 0-100.</p>
+          <p><strong>Recovery score</strong> = time score (0-40) âˆ’ breastfeeding penalty (0-15) + sleep score (0-20) + energy score (0-15) + mood score (0-15) + period bonus (0-10), clamped to 0-100.</p>
           <p><strong>Hormonal balance</strong> = recovery score (same calculation).</p>
           <p><strong>Months to full recovery</strong>: Based on recovery score and breastfeeding status. Breastfeeding extends recovery timeline by ~6 months.</p>
           <p>More time postpartum, better sleep, higher energy, stable mood, and period return increase recovery score.</p>

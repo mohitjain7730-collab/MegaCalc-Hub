@@ -33,10 +33,10 @@ type ResultPayload = {
 
 const steps = [
   'Estimate how many meals per week are mostly plant-based (beans, whole grains, vegetables, fruits, nuts).',
-  'Log your average daily minutes of natural movement—walking, chores, gardening, light activity.',
+  'Log your average daily minutes of natural movementâ€”walking, chores, gardening, light activity.',
   'Estimate hours per week you regularly spend with supportive friends, family, or community.',
-  'Enter your average nightly sleep and how connected you feel to a sense of purpose (1–10).',
-  'Review your Blue Zone–inspired lifestyle score and small shifts that could move it upward.',
+  'Enter your average nightly sleep and how connected you feel to a sense of purpose (1â€“10).',
+  'Review your Blue Zoneâ€“inspired lifestyle score and small shifts that could move it upward.',
 ];
 
 const faqs = [
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/blue-zone-lifestyle-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/blue-zone-lifestyle-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Blue Zone Lifestyle Score Calculator', item: baseUrl },
       ],
     },
@@ -153,7 +153,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let category: ResultPayload['category'] = 'emerging';
   let interpretation =
-    'Your entries suggest you already have some Blue Zone–inspired habits in place, and small, kind tweaks over time can build on that.';
+    'Your entries suggest you already have some Blue Zoneâ€“inspired habits in place, and small, kind tweaks over time can build on that.';
 
   if (lifestyleScore >= 50 && lifestyleScore < 75) {
     category = 'on-the-way';
@@ -163,12 +163,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (lifestyleScore >= 75) {
     category = 'blue-zone-inspired';
     interpretation =
-      'Your current routine echoes many Blue Zone themes. Continuing in a flexible, self‑kind way is often more helpful than chasing perfection.';
+      'Your current routine echoes many Blue Zone themes. Continuing in a flexible, selfâ€‘kind way is often more helpful than chasing perfection.';
   }
 
   const recommendations = [
     'When it feels realistic, you can lean a bit more on meals built around beans, whole grains, vegetables, and other plant foods you enjoy.',
-    'Gentle, everyday movement—like walks, stairs, chores, or stretching—can be sprinkled through the day in ways that suit your life.',
+    'Gentle, everyday movementâ€”like walks, stairs, chores, or stretchingâ€”can be sprinkled through the day in ways that suit your life.',
     'Spending some intentional time with people who feel supportive or uplifting can be a meaningful pillar of your routine.',
   ];
 
@@ -176,11 +176,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
     recommendations.push('You might pick just one area (food, movement, connection, sleep, or purpose) and try tiny, repeatable changes there.');
   }
   if (values.sleepHoursPerNight < 7) {
-    recommendations.push('If sleep feels short, gentle wind‑down rituals and more regular bedtimes can be small experiments to try.');
+    recommendations.push('If sleep feels short, gentle windâ€‘down rituals and more regular bedtimes can be small experiments to try.');
   }
 
   const plan = [
-    { label: 'Today', detail: 'If it appeals to you, try one more plant‑forward meal or a short walk/stretch sometime in your day.' },
+    { label: 'Today', detail: 'If it appeals to you, try one more plantâ€‘forward meal or a short walk/stretch sometime in your day.' },
     {
       label: 'This Week',
       detail: 'See whether you can weave in at least one longer chat or shared meal with someone who feels supportive.',
@@ -311,7 +311,7 @@ export default function BlueZoneLifestyleScoreCalculator() {
                   name="purposeScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Sense of purpose (1–10)</FormLabel>
+                      <FormLabel>Sense of purpose (1â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -348,7 +348,7 @@ export default function BlueZoneLifestyleScoreCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Lifestyle score</p>
                 <p className="text-2xl font-semibold text-primary">{result.lifestyleScore}</p>
-                <p className="text-xs text-muted-foreground">A simple 0–100 snapshot based on the habits you entered.</p>
+                <p className="text-xs text-muted-foreground">A simple 0â€“100 snapshot based on the habits you entered.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Category</p>
@@ -407,11 +407,11 @@ export default function BlueZoneLifestyleScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Lifestyle score</strong> combines plant-based meals, movement, social time, sleep, and purpose into a 0–100 index using
+            <strong>Lifestyle score</strong> combines plant-based meals, movement, social time, sleep, and purpose into a 0â€“100 index using
             simple weighted percentages.
           </p>
           <p>Each pillar contributes a slice of the total score to encourage a balanced, multi-factor approach.</p>
-          <p>The model is heuristic—aimed at awareness and habit coaching, not precise risk prediction.</p>
+          <p>The model is heuristicâ€”aimed at awareness and habit coaching, not precise risk prediction.</p>
         </CardContent>
       </Card>
 
@@ -440,14 +440,14 @@ export default function BlueZoneLifestyleScoreCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().plantMealsPerWeek ?? 0) / 21 * 100).toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground">Rough share of your main weekly meals that are mostly plant‑based.</p>
+                <p className="text-xs text-muted-foreground">Rough share of your main weekly meals that are mostly plantâ€‘based.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Movement vs. 90-min target</p>
                 <p className="text-xl font-semibold text-primary">
                   {((form.getValues().movementMinutesPerDay ?? 0) / 90 * 100).toFixed(1)}%
                 </p>
-                <p className="text-xs text-muted-foreground">Shows how today’s movement compares with a 90‑minute daily reference.</p>
+                <p className="text-xs text-muted-foreground">Shows how todayâ€™s movement compares with a 90â€‘minute daily reference.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Social time vs. 14h/week</p>
@@ -487,7 +487,7 @@ export default function BlueZoneLifestyleScoreCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Blue Zone–inspired habits do not require moving abroad—they grow from everyday choices about food, movement, community, and
+            Blue Zoneâ€“inspired habits do not require moving abroadâ€”they grow from everyday choices about food, movement, community, and
             purpose.
           </p>
           <p>Use this calculator as a friendly pulse-check and experiment log for your long-term lifestyle direction.</p>

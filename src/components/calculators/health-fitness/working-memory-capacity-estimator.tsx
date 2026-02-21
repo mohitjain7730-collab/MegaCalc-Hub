@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'What is a good working memory capacity?',
     answer:
-      'Average digit spans: Forward (7±2 digits), Backward (5-6 digits). Excellent: Forward 9+, Backward 7+. Good: Forward 7-8, Backward 5-6. Moderate: Forward 5-6, Backward 3-4. Limited: Forward &lt;5, Backward &lt;3.',
+      'Average digit spans: Forward (7Â±2 digits), Backward (5-6 digits). Excellent: Forward 9+, Backward 7+. Good: Forward 7-8, Backward 5-6. Moderate: Forward 5-6, Backward 3-4. Limited: Forward &lt;5, Backward &lt;3.',
   },
   {
     question: 'How does age affect working memory?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/working-memory-capacity-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/working-memory-capacity-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Working Memory Capacity Wellness Estimator', item: baseUrl },
       ],
     },
@@ -150,7 +150,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   // Processing speed adjustment (faster processing = better capacity utilization)
   if (values.processingSpeed) {
-    const speedAdjustment = ((values.processingSpeed - 5) / 5) * 0.15; // ±15% based on processing speed
+    const speedAdjustment = ((values.processingSpeed - 5) / 5) * 0.15; // Â±15% based on processing speed
     memoryCapacity = memoryCapacity * (1 + speedAdjustment);
   }
   
@@ -413,16 +413,16 @@ export default function WorkingMemoryCapacityEstimator() {
             <strong>Base memory capacity</strong> = (Digit span forward + Digit span backward) / 2.
           </p>
           <p>
-            <strong>Processing speed adjustment</strong> = Capacity × (1 + ((Processing speed - 5) / 5) × 0.15).
+            <strong>Processing speed adjustment</strong> = Capacity Ã— (1 + ((Processing speed - 5) / 5) Ã— 0.15).
           </p>
           <p>
-            <strong>Age adjustment</strong> = Age ≥50: ×(1 - ((Age - 50) / 10) × 0.1), Age &lt;20: ×0.95.
+            <strong>Age adjustment</strong> = Age â‰¥50: Ã—(1 - ((Age - 50) / 10) Ã— 0.1), Age &lt;20: Ã—0.95.
           </p>
           <p>
-            <strong>Cognitive load adjustment</strong> = Capacity × (1 - ((Cognitive load - 5) / 5) × 0.2).
+            <strong>Cognitive load adjustment</strong> = Capacity Ã— (1 - ((Cognitive load - 5) / 5) Ã— 0.2).
           </p>
           <p>
-            <strong>Working memory score</strong> = (Memory capacity / 8) × 100 (clamped 0-100).
+            <strong>Working memory score</strong> = (Memory capacity / 8) Ã— 100 (clamped 0-100).
           </p>
           <p>
             <strong>Score interpretation</strong>: 85-100 = Excellent, 70-85 = Good, 50-70 = Moderate, below 50 = Limited.

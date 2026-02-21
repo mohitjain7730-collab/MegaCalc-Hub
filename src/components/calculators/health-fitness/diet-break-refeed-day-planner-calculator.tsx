@@ -68,7 +68,7 @@ const faqs = [
   {
     question: 'What should I eat on refeed days?',
     answer:
-      'Focus on higher carbohydrate intake to restore glycogen and leptin levels. Include complex carbs (rice, potatoes, oats), some simple carbs (fruits), adequate protein (maintain protein intake), and moderate fats. Don\'t use refeed days as an excuse for junk food binges—prioritize nutrient-dense foods.',
+      'Focus on higher carbohydrate intake to restore glycogen and leptin levels. Include complex carbs (rice, potatoes, oats), some simple carbs (fruits), adequate protein (maintain protein intake), and moderate fats. Don\'t use refeed days as an excuse for junk food bingesâ€”prioritize nutrient-dense foods.',
   },
   {
     question: 'Will refeed days slow my weight loss?',
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/diet-break-refeed-day-planner-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/diet-break-refeed-day-planner-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Diet Break Refeed Day Planner Calculator', item: baseUrl },
       ],
     },
@@ -148,11 +148,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const refeedCalorieIncrease = values.refeedCalorieIncrease || 0;
   const currentWeight = values.currentWeight;
   
-  // Estimate maintenance calories (rough estimate: weight in kg × 24-26 for sedentary, adjust for activity)
+  // Estimate maintenance calories (rough estimate: weight in kg Ã— 24-26 for sedentary, adjust for activity)
   const estimatedMaintenance = currentWeight * 25; // Simplified estimate
   const refeedCalories = estimatedMaintenance + refeedCalorieIncrease;
   
-  // Calculate weekly deficit: (daily deficit × 6 days) - (refeed surplus × 1 day) for weekly refeed
+  // Calculate weekly deficit: (daily deficit Ã— 6 days) - (refeed surplus Ã— 1 day) for weekly refeed
   const daysInCycle = refeedFrequency;
   const deficitDays = daysInCycle - 1;
   const weeklyDeficit = (dailyDeficit * deficitDays) - (refeedCalorieIncrease > 0 ? refeedCalorieIncrease : 0);
@@ -382,13 +382,13 @@ export default function DietBreakRefeedDayPlannerCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Weekly deficit</strong> = (Daily Deficit × Deficit Days) - Refeed Calorie Increase. Deficit days = Refeed Frequency - 1 (e.g., weekly refeed = 6 deficit days).
+            <strong>Weekly deficit</strong> = (Daily Deficit Ã— Deficit Days) - Refeed Calorie Increase. Deficit days = Refeed Frequency - 1 (e.g., weekly refeed = 6 deficit days).
           </p>
           <p>
-            <strong>Refeed calories</strong> = Estimated Maintenance + Refeed Calorie Increase. Maintenance is estimated as Weight (kg) × 25 for simplified calculation (adjust for activity level).
+            <strong>Refeed calories</strong> = Estimated Maintenance + Refeed Calorie Increase. Maintenance is estimated as Weight (kg) Ã— 25 for simplified calculation (adjust for activity level).
           </p>
           <p>
-            <strong>Average daily calories</strong> = Total Cycle Calories / Refeed Frequency. Total cycle calories = (Maintenance - Daily Deficit) × Deficit Days + Refeed Calories.
+            <strong>Average daily calories</strong> = Total Cycle Calories / Refeed Frequency. Total cycle calories = (Maintenance - Daily Deficit) Ã— Deficit Days + Refeed Calories.
           </p>
           <p>Refeed planning balances weekly deficit for fat loss with strategic calorie increases to prevent metabolic adaptation, restore hormones, and improve adherence. Frequency and calorie increases should be adjusted based on body fat percentage and deficit duration.</p>
         </CardContent>

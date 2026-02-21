@@ -42,8 +42,8 @@ const schemaMarkup = {
       name: 'Emergency Fund Calculator for Freelancers',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'Calculate emergency fund target for freelancers: recommended 6–12+ months of essential expenses given variable income, no employer benefits, and client concentration risk.',
-      url: 'https://mycalculating.com/category/finance/emergency-fund-calculator-freelancers',
+      description: 'Calculate emergency fund target for freelancers: recommended 6â€“12+ months of essential expenses given variable income, no employer benefits, and client concentration risk.',
+      url: 'https://mycalculating.com/finance/emergency-fund-calculator-freelancers',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -114,16 +114,16 @@ export default function EmergencyFundCalculatorFreelancers() {
 
   const getRecommendation = (monthsCovered: number, recommendedMonths: number) => {
     if (monthsCovered >= recommendedMonths) return 'Freelancer emergency fund is fully funded. Keep funds in a high-yield savings account for liquidity.';
-    if (monthsCovered >= 6) return 'You have a partial buffer. Continue building to the recommended 6–12+ months for freelancer security.';
+    if (monthsCovered >= 6) return 'You have a partial buffer. Continue building to the recommended 6â€“12+ months for freelancer security.';
     if (monthsCovered >= 3) return 'You have minimal coverage. Freelancers face variable income and client risk; prioritize reaching at least 6 months of expenses.';
-    return 'Immediate action required. Freelancers have no employer safety net; build at least 3 months of expenses as a first milestone, then aim for 6–12+ months.';
+    return 'Immediate action required. Freelancers have no employer safety net; build at least 3 months of expenses as a first milestone, then aim for 6â€“12+ months.';
   };
 
   const getInsights = (v: FormValues, recommendedMonths: number) => {
     const insights = [];
-    insights.push('Freelancers have variable income and no employer benefits (no paid leave, no unemployment). A larger emergency fund (6–12+ months) is the standard recommendation.');
+    insights.push('Freelancers have variable income and no employer benefits (no paid leave, no unemployment). A larger emergency fund (6â€“12+ months) is the standard recommendation.');
     if (v.incomeStability === 'variable' || v.incomeStability === 'feast-or-famine') {
-      insights.push('Variable or feast-or-famine income increases recommended months (9–12+ months).');
+      insights.push('Variable or feast-or-famine income increases recommended months (9â€“12+ months).');
     }
     if (v.clientConcentration === 'few-clients' || v.clientConcentration === 'one-main') {
       insights.push('Client concentration (few or one main client) increases risk; target includes additional months.');
@@ -142,7 +142,7 @@ export default function EmergencyFundCalculatorFreelancers() {
     const warnings = [];
     if (monthsCovered < 1) warnings.push('Less than 1 month covered: extreme risk for freelancers with variable income.');
     if (monthsCovered < 3) warnings.push('Below 3 months: minimal buffer; freelancers should prioritize reaching at least 6 months.');
-    if (monthsCovered < recommendedMonths && monthsCovered >= 3) warnings.push('Below recommended freelancer target (6–12+ months).');
+    if (monthsCovered < recommendedMonths && monthsCovered >= 3) warnings.push('Below recommended freelancer target (6â€“12+ months).');
     return warnings;
   };
 
@@ -170,7 +170,7 @@ export default function EmergencyFundCalculatorFreelancers() {
             Freelancer Profile
           </CardTitle>
           <CardDescription>
-            Enter monthly essential expenses and freelancer-specific risk factors. Freelancers have variable income and no employer safety net; target is typically 6–12+ months of expenses.
+            Enter monthly essential expenses and freelancer-specific risk factors. Freelancers have variable income and no employer safety net; target is typically 6â€“12+ months of expenses.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -242,7 +242,7 @@ export default function EmergencyFundCalculatorFreelancers() {
                         </FormControl>
                         <SelectContent>
                           <SelectItem value="diversified">Diversified (many clients)</SelectItem>
-                          <SelectItem value="few-clients">Few clients (2–5 main)</SelectItem>
+                          <SelectItem value="few-clients">Few clients (2â€“5 main)</SelectItem>
                           <SelectItem value="one-main">One main client</SelectItem>
                         </SelectContent>
                       </Select>
@@ -272,7 +272,7 @@ export default function EmergencyFundCalculatorFreelancers() {
                 <Wallet className="h-8 w-8 text-primary" />
                 <div>
                   <CardTitle>Emergency Fund Goal (Freelancer)</CardTitle>
-                  <CardDescription>Target based on 6–12+ months of essential expenses; variable income and no employer safety net</CardDescription>
+                  <CardDescription>Target based on 6â€“12+ months of essential expenses; variable income and no employer safety net</CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -367,7 +367,7 @@ export default function EmergencyFundCalculatorFreelancers() {
             <Info className="h-5 w-5" />
             Understanding Freelancer Emergency Funds
           </CardTitle>
-          <CardDescription>Why 6–12+ months for freelancers</CardDescription>
+          <CardDescription>Why 6â€“12+ months for freelancers</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -377,7 +377,7 @@ export default function EmergencyFundCalculatorFreelancers() {
                 Variable Income & No Employer Safety Net
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Freelancers often have lumpy income, no paid leave, and no unemployment insurance. Losing one major client can cut income sharply. That is why the base target is 6 months (higher than dual-income) and often 9–12+ months with variable income, client concentration, or dependents.
+                Freelancers often have lumpy income, no paid leave, and no unemployment insurance. Losing one major client can cut income sharply. That is why the base target is 6 months (higher than dual-income) and often 9â€“12+ months with variable income, client concentration, or dependents.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -386,7 +386,7 @@ export default function EmergencyFundCalculatorFreelancers() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>Variable income, client concentration, or dependents: add 3–6 months</span>
+                  <span>Variable income, client concentration, or dependents: add 3â€“6 months</span>
                 </li>
               </ul>
             </div>
@@ -413,14 +413,14 @@ export default function EmergencyFundCalculatorFreelancers() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Target Fund = Monthly Essential Expenses × Recommended Months
+              Target Fund = Monthly Essential Expenses Ã— Recommended Months
             </p>
             <p className="font-mono text-sm text-center">
-              Freelancer base: 6 months. +3 for variable income, +6 for feast-or-famine; +3 for few/one-main client; +3 for dependents (capped 6–18 months).
+              Freelancer base: 6 months. +3 for variable income, +6 for feast-or-famine; +3 for few/one-main client; +3 for dependents (capped 6â€“18 months).
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Months covered = Current savings ÷ Monthly expenses. Gap = Target fund − Current savings.
+            Months covered = Current savings Ã· Monthly expenses. Gap = Target fund âˆ’ Current savings.
           </p>
         </CardContent>
       </Card>
@@ -442,7 +442,7 @@ export default function EmergencyFundCalculatorFreelancers() {
                     <Shield className="h-5 w-5 text-blue-600" />
                     <div>
                       <p className="font-medium">Emergency Fund (Single Income)</p>
-                      <p className="text-sm text-muted-foreground">6–12 months, no backup earner</p>
+                      <p className="text-sm text-muted-foreground">6â€“12 months, no backup earner</p>
                     </div>
                   </div>
                 </CardContent>
@@ -455,7 +455,7 @@ export default function EmergencyFundCalculatorFreelancers() {
                     <Shield className="h-5 w-5 text-green-600" />
                     <div>
                       <p className="font-medium">Emergency Fund (Dual Income)</p>
-                      <p className="text-sm text-muted-foreground">3–9 months, one income backup</p>
+                      <p className="text-sm text-muted-foreground">3â€“9 months, one income backup</p>
                     </div>
                   </div>
                 </CardContent>
@@ -479,20 +479,20 @@ export default function EmergencyFundCalculatorFreelancers() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-        <meta itemProp="name" content="Emergency Fund for Freelancers: Why 6–12+ Months" />
-        <meta itemProp="description" content="How much emergency fund freelancers need: variable income, no employer benefits, client concentration risk. Recommended 6–12+ months of essential expenses, with risk adjustments." />
+        <meta itemProp="name" content="Emergency Fund for Freelancers: Why 6â€“12+ Months" />
+        <meta itemProp="description" content="How much emergency fund freelancers need: variable income, no employer benefits, client concentration risk. Recommended 6â€“12+ months of essential expenses, with risk adjustments." />
         <meta itemProp="keywords" content="emergency fund freelancer, freelancer emergency fund, how much emergency fund self-employed, 6 months expenses freelancer" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
         <meta itemProp="url" content="/finance/emergency-fund-calculator-freelancers" />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Freelancers: Why 6–12+ Months</h1>
-        <p className="text-lg italic text-muted-foreground">Freelancers have variable income and no employer safety net. A larger emergency fund (6–12+ months of essential expenses) is the standard recommendation.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Freelancers: Why 6â€“12+ Months</h1>
+        <p className="text-lg italic text-muted-foreground">Freelancers have variable income and no employer safety net. A larger emergency fund (6â€“12+ months of essential expenses) is the standard recommendation.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
           <li><a href="#freelancer-risk" className="hover:underline">Why Freelancers Need More</a></li>
-          <li><a href="#months-target-freelancer" className="hover:underline">Recommended Months (6–12+)</a></li>
+          <li><a href="#months-target-freelancer" className="hover:underline">Recommended Months (6â€“12+)</a></li>
           <li><a href="#what-counts-freelancer" className="hover:underline">What Counts as Essential Expenses</a></li>
           <li><a href="#applications-freelancer" className="hover:underline">Using the Emergency Fund Target</a></li>
           <li><a href="#conclusion-freelancer" className="hover:underline">Conclusion</a></li>
@@ -500,28 +500,28 @@ export default function EmergencyFundCalculatorFreelancers() {
         <hr />
 
         <h2 id="freelancer-risk" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Freelancers Need More</h2>
-        <p>Freelancers typically have variable or lumpy income, no paid leave, and no unemployment insurance. Losing one major client can cut income sharply. Financial advisors often recommend <strong>6 months</strong> of essential expenses as a minimum for freelancers, and <strong>9–12+ months</strong> for highly variable income, client concentration, or dependents.</p>
+        <p>Freelancers typically have variable or lumpy income, no paid leave, and no unemployment insurance. Losing one major client can cut income sharply. Financial advisors often recommend <strong>6 months</strong> of essential expenses as a minimum for freelancers, and <strong>9â€“12+ months</strong> for highly variable income, client concentration, or dependents.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Variable Income & No Employer Safety Net</h3>
-        <p>Unlike salaried employees, freelancers do not have a steady paycheck or employer benefits. Income can drop when projects end or clients leave. That is why the base target for freelancers is 6 months (similar to single income) and often 9–12+ months when income is variable or client concentration is high.</p>
+        <p>Unlike salaried employees, freelancers do not have a steady paycheck or employer benefits. Income can drop when projects end or clients leave. That is why the base target for freelancers is 6 months (similar to single income) and often 9â€“12+ months when income is variable or client concentration is high.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Client Concentration Risk</h3>
         <p>If one client represents a large share of income, losing that client can create a sudden income gap. The calculator adds months when you have few clients or one main client to reflect this risk.</p>
 
         <hr />
 
-        <h2 id="months-target-freelancer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Recommended Months (6–12+)</h2>
-        <p>Base recommendation for freelancers: <strong>6 months</strong>. Add 3 months for variable income, 6 for feast-or-famine; add 3 for few or one main client; add 3 for dependents. Cap at 6–18 months. This calculator applies these rules to your expense total and risk profile.</p>
+        <h2 id="months-target-freelancer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Recommended Months (6â€“12+)</h2>
+        <p>Base recommendation for freelancers: <strong>6 months</strong>. Add 3 months for variable income, 6 for feast-or-famine; add 3 for few or one main client; add 3 for dependents. Cap at 6â€“18 months. This calculator applies these rules to your expense total and risk profile.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-lg text-destructive font-bold">
-            Target Fund = Monthly Essential Expenses × Recommended Months
+            Target Fund = Monthly Essential Expenses Ã— Recommended Months
           </p>
         </div>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">When to Add More Months</h3>
-        <p>Variable or feast-or-famine income increases the chance of income gaps; add 3–6 months. Client concentration (few or one main client) adds 3 months. Dependents add 3 months. The calculator adjusts recommended months based on your income stability, client concentration, and number of dependents.</p>
+        <p>Variable or feast-or-famine income increases the chance of income gaps; add 3â€“6 months. Client concentration (few or one main client) adds 3 months. Dependents add 3 months. The calculator adjusts recommended months based on your income stability, client concentration, and number of dependents.</p>
 
         <hr />
 
@@ -534,7 +534,7 @@ export default function EmergencyFundCalculatorFreelancers() {
         <hr />
 
         <h2 id="applications-freelancer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using the Emergency Fund Target</h2>
-        <p>Use the target fund and gap to set a savings goal. If the gap is large, prioritize building at least 3 months first, then work toward 6, then 9–12+ if your risk profile warrants it. Keep the fund in a high-yield savings account (HYSA) for liquidity and some growth.</p>
+        <p>Use the target fund and gap to set a savings goal. If the gap is large, prioritize building at least 3 months first, then work toward 6, then 9â€“12+ if your risk profile warrants it. Keep the fund in a high-yield savings account (HYSA) for liquidity and some growth.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Where to Keep the Fund</h3>
         <p>Emergency funds should be liquid and low-risk. A HYSA or money market account is typical; avoid tying the fund to stocks or illiquid assets so you can access it quickly during income gaps or emergencies.</p>
@@ -542,7 +542,7 @@ export default function EmergencyFundCalculatorFreelancers() {
         <hr />
 
         <h2 id="conclusion-freelancer" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Freelancers have variable income and no employer safety net; a target of 6–12+ months of essential expenses is the standard recommendation, with more months for variable income, client concentration, or dependents. Use this calculator to set your target and track the gap; keep the fund in a liquid, low-risk account.</p>
+        <p>Freelancers have variable income and no employer safety net; a target of 6â€“12+ months of essential expenses is the standard recommendation, with more months for variable income, client concentration, or dependents. Use this calculator to set your target and track the gap; keep the fund in a liquid, low-risk account.</p>
       </section>
 
       <Card>
@@ -559,19 +559,19 @@ export default function EmergencyFundCalculatorFreelancers() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Why is the emergency fund target higher for freelancers?</h4>
             <p className="text-muted-foreground">
-              Freelancers have variable or lumpy income, no paid leave, and no unemployment insurance. Losing one major client can cut income sharply. So the base target is 6 months (similar to single income) and often 9–12+ months with variable income, client concentration, or dependents.
+              Freelancers have variable or lumpy income, no paid leave, and no unemployment insurance. Losing one major client can cut income sharply. So the base target is 6 months (similar to single income) and often 9â€“12+ months with variable income, client concentration, or dependents.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How many months should a freelancer save?</h4>
             <p className="text-muted-foreground">
-              At least 6 months of essential expenses is the standard minimum. With variable or feast-or-famine income, client concentration, or dependents, 9–12+ months is often recommended. This calculator adjusts recommended months based on your income stability, client concentration, and number of dependents.
+              At least 6 months of essential expenses is the standard minimum. With variable or feast-or-famine income, client concentration, or dependents, 9â€“12+ months is often recommended. This calculator adjusts recommended months based on your income stability, client concentration, and number of dependents.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if I have both freelance and salaried income?</h4>
             <p className="text-muted-foreground">
-              If you have a stable salaried job plus freelance side income, you might use a lower target (e.g. 3–6 months) similar to dual income. If freelance is your primary or only income, use the freelancer target (6–12+ months).
+              If you have a stable salaried job plus freelance side income, you might use a lower target (e.g. 3â€“6 months) similar to dual income. If freelance is your primary or only income, use the freelancer target (6â€“12+ months).
             </p>
           </div>
           <div>
@@ -608,7 +608,7 @@ export default function EmergencyFundCalculatorFreelancers() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Full-Time Freelancers</strong>
-                <span className="text-sm text-muted-foreground">To set an emergency fund target with variable income and no employer safety net (6–12+ months).</span>
+                <span className="text-sm text-muted-foreground">To set an emergency fund target with variable income and no employer safety net (6â€“12+ months).</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Contractors & Gig Workers</strong>
@@ -669,7 +669,7 @@ export default function EmergencyFundCalculatorFreelancers() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Emergency Fund Calculator for Freelancers computes a target fund based on 6–12+ months of essential expenses, with variable income and no employer safety net.</p>
+          <p>The Emergency Fund Calculator for Freelancers computes a target fund based on 6â€“12+ months of essential expenses, with variable income and no employer safety net.</p>
           <p>Use it to set and track your emergency fund goal and close the gap to the recommended freelancer target.</p>
         </CardContent>
       </Card>

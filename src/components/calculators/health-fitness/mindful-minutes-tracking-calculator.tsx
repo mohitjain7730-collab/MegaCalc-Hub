@@ -41,17 +41,17 @@ const steps = [
   'Enter the number of mindful minutes you spent on each day over the last week (it is okay to estimate).',
   'Submit the form to see your total minutes, daily average, a simple streak count, and a pattern label.',
   'Read the interpretation text as a gentle reflection on how your current rhythm may feel.',
-  'Browse the recommendations and 8‑week plan for ideas to make practice feel more sustainable.',
+  'Browse the recommendations and 8â€‘week plan for ideas to make practice feel more sustainable.',
   'Revisit when you are curious about your routine, not as something you must check every day.',
 ];
 
 const baseUrl =
-  'https://mycalculating.com/category/health-fitness/mindful-minutes-tracking-calculator';
+  'https://mycalculating.com/health-fitness/mindful-minutes-tracking-calculator';
 
 const faqs: [string, string][] = [
-  ['How much mindfulness practice do I need?', 'Start with 5–10 minutes daily. Consistency matters more than duration. Many people find 10–20 minutes daily beneficial.'],
+  ['How much mindfulness practice do I need?', 'Start with 5â€“10 minutes daily. Consistency matters more than duration. Many people find 10â€“20 minutes daily beneficial.'],
   ['What counts as mindful minutes?', 'Any time spent in focused awareness counts: meditation, mindful walking, body scan, breathing exercises, or mindful eating.'],
-  ['What is a good consistency score?', 'Aim for practicing most days of the week. Perfect consistency is not necessary—regular practice is more important than perfection.'],
+  ['What is a good consistency score?', 'Aim for practicing most days of the week. Perfect consistency is not necessaryâ€”regular practice is more important than perfection.'],
   ['How do I improve my consistency?', 'Set a specific time each day, start small (5 minutes), use reminders, and track your progress. Celebrate small wins.'],
   ['What if I miss a day?', 'Missing a day is normal. Simply resume your practice the next day. Consistency is about long-term patterns, not perfect streaks.'],
   ['Can I combine different mindfulness practices?', 'Yes, you can mix meditation, mindful movement, breathing exercises, and other practices. Variety can help maintain interest.'],
@@ -70,7 +70,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -126,50 +126,50 @@ const schemaMarkup = {
 };
 
 const plan = (): { week: number; focus: string }[] => [
-  { week: 1, focus: 'Start with 5–10 minutes daily. Focus on consistency over duration.' },
+  { week: 1, focus: 'Start with 5â€“10 minutes daily. Focus on consistency over duration.' },
   { week: 2, focus: 'Choose a consistent time and place for practice (morning or evening)' },
   { week: 3, focus: 'Try different types: focused attention, body scan, or loving-kindness meditation' },
   { week: 4, focus: 'Use guided meditations or apps if helpful for structure' },
-  { week: 5, focus: 'Gradually increase duration to 10–15 minutes as comfort improves' },
+  { week: 5, focus: 'Gradually increase duration to 10â€“15 minutes as comfort improves' },
   { week: 6, focus: 'Track your practice and celebrate consistency milestones' },
   { week: 7, focus: 'Integrate mindfulness into daily activities (walking, eating, working)' },
   { week: 8, focus: 'Maintain regular practice and adjust duration based on your schedule' },
 ];
 
 const understandingInputs = [
-  { label: 'Monday–Sunday (minutes)', description: 'Enter the number of minutes spent in mindfulness practice each day (0–480 minutes). Include formal meditation, breathing exercises, body scans, or mindful activities.' },
+  { label: 'Mondayâ€“Sunday (minutes)', description: 'Enter the number of minutes spent in mindfulness practice each day (0â€“480 minutes). Include formal meditation, breathing exercises, body scans, or mindful activities.' },
 ];
 
 const interpret = (avg: number, streak: number) => {
   if (avg >= 30)
-    return `You’re spending about ${avg.toFixed(
+    return `Youâ€™re spending about ${avg.toFixed(
       1
-    )} minutes per day with mindfulness and have a ${streak}-day streak—this is a very steady routine for many people.`;
+    )} minutes per day with mindfulness and have a ${streak}-day streakâ€”this is a very steady routine for many people.`;
   if (avg >= 15)
-    return `You’re averaging ${avg.toFixed(
+    return `Youâ€™re averaging ${avg.toFixed(
       1
     )} minutes per day with a ${streak}-day streak, which suggests a growing, supportive habit.`;
   if (avg >= 5)
-    return `You’re spending around ${avg.toFixed(
+    return `Youâ€™re spending around ${avg.toFixed(
       1
-    )} minutes per day on mindfulness with a ${streak}-day streak—this is a solid start you can gently build on.`;
-  return `You’re getting started with about ${avg.toFixed(
+    )} minutes per day on mindfulness with a ${streak}-day streakâ€”this is a solid start you can gently build on.`;
+  return `Youâ€™re getting started with about ${avg.toFixed(
     1
   )} minutes per day. Every few minutes of mindful time counts; you can focus on simple consistency over duration.`;
 };
 
 const recommendations = (avg: number, streak: number) => [
-  'Let consistency matter more than duration—even 3–5 minutes most days can be meaningful.',
+  'Let consistency matter more than durationâ€”even 3â€“5 minutes most days can be meaningful.',
   avg < 10
-    ? 'You might aim for 5–10 minutes on more days of the week and only increase when it feels natural.'
+    ? 'You might aim for 5â€“10 minutes on more days of the week and only increase when it feels natural.'
     : 'You can maintain your current practice and, if you like, gently add variety (different kinds of mindfulness).',
   'Choose a time and place that realistically fits your day so the habit feels kind and sustainable.',
   'Track your practice to notice patterns and celebrate what you are already doing, rather than to judge yourself.',
 ];
 
 const warningSigns = () => [
-  "Try not to force practice when you feel unwell or overwhelmed—gentle, self‑compassionate pauses are part of a sustainable habit.",
-  "Perfection isn’t required—missed days are normal. Simply returning to practice when you can is enough.",
+  "Try not to force practice when you feel unwell or overwhelmedâ€”gentle, selfâ€‘compassionate pauses are part of a sustainable habit.",
+  "Perfection isnâ€™t requiredâ€”missed days are normal. Simply returning to practice when you can is enough.",
   'If mindfulness ever feels distressing or increases anxiety, consider adjusting your approach and, if helpful, speaking with a mental health professional.',
 ];
 
@@ -243,8 +243,8 @@ export default function MindfulMinutesTrackingCalculator() {
             <Clock className="h-5 w-5" /> Mindful Minutes Consistency Tracker
           </CardTitle>
           <CardDescription>
-            Gently reflect on how much time you’re setting aside for mindfulness each week. This is a personal wellness
-            check‑in, not a performance score.
+            Gently reflect on how much time youâ€™re setting aside for mindfulness each week. This is a personal wellness
+            checkâ€‘in, not a performance score.
           </CardDescription>
         </CardHeader>
       </Card>
@@ -252,7 +252,7 @@ export default function MindfulMinutesTrackingCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Input your week of mindful minutes</CardTitle>
-          <CardDescription>Estimate is fine—this is about pattern awareness, not perfection.</CardDescription>
+          <CardDescription>Estimate is fineâ€”this is about pattern awareness, not perfection.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -478,7 +478,7 @@ export default function MindfulMinutesTrackingCalculator() {
             </Card>
           </div>
           <Card>
-            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Mindfulness Practice Plan</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8â€‘Week Mindfulness Practice Plan</CardTitle></CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -511,8 +511,8 @@ export default function MindfulMinutesTrackingCalculator() {
             daily average, and counts how many days in a row (from most recent backward) included some mindful time.
           </p>
           <p>
-            <strong>Pattern labels:</strong> The average is loosely grouped into descriptions like “Building habit” or
-            “Excellent commitment” so the numbers are easier to read as a gentle pattern rather than a score to chase.
+            <strong>Pattern labels:</strong> The average is loosely grouped into descriptions like â€œBuilding habitâ€ or
+            â€œExcellent commitmentâ€ so the numbers are easier to read as a gentle pattern rather than a score to chase.
           </p>
           <p>
             It is intentionally simple so you can focus more on how practice feels than on tracking exact numbers.
@@ -752,7 +752,7 @@ export default function MindfulMinutesTrackingCalculator() {
           return attention when the mind wanders. This practice builds concentration and awareness.
         </p>
         <p>
-          <b>Open monitoring meditation:</b> Observe whatever arises in awareness—thoughts, feelings, sensations—without attachment
+          <b>Open monitoring meditation:</b> Observe whatever arises in awarenessâ€”thoughts, feelings, sensationsâ€”without attachment
           or judgment. This practice develops equanimity and insight.
         </p>
         <p>
@@ -770,18 +770,18 @@ export default function MindfulMinutesTrackingCalculator() {
           breathing.
         </p>
         <p>
-          <b>Mindful eating:</b> Pay full attention to the experience of eating—tastes, textures, smells, and the act of
-          chewing—without distractions.
+          <b>Mindful eating:</b> Pay full attention to the experience of eatingâ€”tastes, textures, smells, and the act of
+          chewingâ€”without distractions.
         </p>
         <p>
           <b>Mindful walking:</b> Walk slowly and deliberately, noticing the sensations of movement, the ground beneath your feet,
           and your surroundings.
         </p>
         <p>
-          <b>Mindful listening:</b> Give full attention to sounds—music, nature, conversations—without judgment or analysis.
+          <b>Mindful listening:</b> Give full attention to soundsâ€”music, nature, conversationsâ€”without judgment or analysis.
         </p>
         <p>
-          <b>Mindful activities:</b> Bring present-moment awareness to any daily activity—washing dishes, brushing teeth, driving,
+          <b>Mindful activities:</b> Bring present-moment awareness to any daily activityâ€”washing dishes, brushing teeth, driving,
           or working.
         </p>
 
@@ -954,7 +954,7 @@ export default function MindfulMinutesTrackingCalculator() {
           Building a consistent mindfulness practice is a journey that offers profound benefits for mental well-being, stress
           resilience, and overall quality of life. By understanding the science of mindfulness, optimal practice duration, various
           techniques, and strategies for building consistency, you can develop a sustainable practice that serves your needs.
-          Remember that consistency matters more than perfection—even brief, regular practice can yield meaningful benefits. Be
+          Remember that consistency matters more than perfectionâ€”even brief, regular practice can yield meaningful benefits. Be
           patient with yourself, experiment with different approaches, and allow your practice to evolve naturally. If you have
           concerns about how mindfulness relates to your mental health or well-being, consider consulting a qualified mental health
           professional who can provide personalized guidance. This tool is designed to support a lifestyle-based practice, not to
@@ -986,11 +986,11 @@ export default function MindfulMinutesTrackingCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool offers a gentle look at how many mindful minutes you’ve been weaving into a week. It focuses on trends and
-            patterns rather than on “good” or “bad” scores.
+            This tool offers a gentle look at how many mindful minutes youâ€™ve been weaving into a week. It focuses on trends and
+            patterns rather than on â€œgoodâ€ or â€œbadâ€ scores.
           </p>
           <p>
-            Outputs include weekly totals, daily averages, a simple streak count, a pattern label, recommendations, an 8‑week
+            Outputs include weekly totals, daily averages, a simple streak count, a pattern label, recommendations, an 8â€‘week
             plan, and guide content so that people or AI assistants can quickly understand what the numbers mean in a wellness
             context.
           </p>

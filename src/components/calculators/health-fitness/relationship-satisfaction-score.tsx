@@ -36,8 +36,8 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate the quality of communication with your partner or key relationship (0–10).',
-  'Rate your overall trust level in this relationship (0–10).',
+  'Rate the quality of communication with your partner or key relationship (0â€“10).',
+  'Rate your overall trust level in this relationship (0â€“10).',
   'Estimate hours per week spent in shared, meaningful activities (not just co-existing in the same room).',
   'Estimate number of notable conflicts or arguments in an average month.',
   'Review the satisfaction score, connection index, and suggestions.',
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: 'What kind of relationship is this for?',
     answer:
-      'The calculator is designed for close relationships—romantic partners, very close friends, or family members. Use one entry per relationship for clarity.',
+      'The calculator is designed for close relationshipsâ€”romantic partners, very close friends, or family members. Use one entry per relationship for clarity.',
   },
   {
     question: 'Is this a replacement for couples therapy?',
@@ -65,7 +65,7 @@ const faqs = [
       'Count disagreements that feel emotionally significant or recurring, not tiny everyday differences of opinion.',
   },
   {
-    question: 'What is a “good” satisfaction score?',
+    question: 'What is a â€œgoodâ€ satisfaction score?',
     answer:
       'Scores above ~70 usually reflect solid, if imperfect, relationships in this heuristic model. Lower scores flag areas for conversation or support.',
   },
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/relationship-satisfaction-score';
+const baseUrl = 'https://mycalculating.com/health-fitness/relationship-satisfaction-score';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Relationship Satisfaction Score', item: baseUrl },
       ],
     },
@@ -173,7 +173,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (satisfactionScore > 80 && conflictFrequency <= 3) {
     status = 'optimal';
     interpretation =
-      'This suggests a general lifestyle tendency where you may feel strong satisfaction and connection overall. Continuing to invest intentionally—through appreciation, time together, and honest check-ins—may help maintain this pattern.';
+      'This suggests a general lifestyle tendency where you may feel strong satisfaction and connection overall. Continuing to invest intentionallyâ€”through appreciation, time together, and honest check-insâ€”may help maintain this pattern.';
   }
 
   const recommendations: string[] = [
@@ -183,7 +183,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   ];
 
   if (communicationQuality < 6) {
-    recommendations.push('Consider learning or practicing communication tools like active listening, “I” statements, or timeouts during heated moments.');
+    recommendations.push('Consider learning or practicing communication tools like active listening, â€œIâ€ statements, or timeouts during heated moments.');
   }
 
   if (trustLevel < 6) {
@@ -254,7 +254,7 @@ export default function RelationshipSatisfactionScore() {
                   name="communicationQuality"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Communication quality (0–10)</FormLabel>
+                      <FormLabel>Communication quality (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -267,7 +267,7 @@ export default function RelationshipSatisfactionScore() {
                   name="trustLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Trust level (0–10)</FormLabel>
+                      <FormLabel>Trust level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -324,7 +324,7 @@ export default function RelationshipSatisfactionScore() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Satisfaction score</p>
                 <p className="text-2xl font-semibold text-primary">{result.satisfactionScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Connection index</p>
@@ -389,7 +389,7 @@ export default function RelationshipSatisfactionScore() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Satisfaction score</strong> combines communication, trust, normalized shared time, and a penalty for conflict frequency, then scales results to 0–100 for easier interpretation.
+            <strong>Satisfaction score</strong> combines communication, trust, normalized shared time, and a penalty for conflict frequency, then scales results to 0â€“100 for easier interpretation.
           </p>
           <p>
             <strong>Connection index</strong> emphasizes trust and shared time as key predictors of relationship closeness.
@@ -435,7 +435,7 @@ export default function RelationshipSatisfactionScore() {
                 <p className="text-xl font-semibold text-primary">
                   {((result.communicationQuality + result.trustLevel) / 2).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Average (0–10)</p>
+                <p className="text-xs text-muted-foreground">Average (0â€“10)</p>
               </div>
             </div>
           ) : (
@@ -512,7 +512,7 @@ export default function RelationshipSatisfactionScore() {
           Using Scores for Conversation, Not Blame
         </h2>
         <p>
-          Share your reflections as observations (“I notice…”) and hopes (“I would love…”) rather than accusations. The goal is to understand each other, not to win a debate.
+          Share your reflections as observations (â€œI noticeâ€¦â€) and hopes (â€œI would loveâ€¦â€) rather than accusations. The goal is to understand each other, not to win a debate.
         </p>
 
         <h2 id="support" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">
@@ -527,7 +527,7 @@ export default function RelationshipSatisfactionScore() {
           Conclusion
         </h2>
         <p>
-          Relationships do not improve through guesswork alone. Simple, honest reflection—paired with compassionate conversation and support—can keep strong connections thriving and help struggling ones heal.
+          Relationships do not improve through guesswork alone. Simple, honest reflectionâ€”paired with compassionate conversation and supportâ€”can keep strong connections thriving and help struggling ones heal.
         </p>
       </section>
 

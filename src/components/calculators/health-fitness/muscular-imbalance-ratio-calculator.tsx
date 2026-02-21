@@ -75,7 +75,7 @@ const faqs = [
   {
     question: 'Should I train the stronger side less?',
     answer:
-      'No. Train both sides equally, but prioritize the weaker side slightly. Start workouts with weaker side exercises. Match volume and intensity. Avoid stopping when stronger side fatigues—continue with weaker side to create balance.',
+      'No. Train both sides equally, but prioritize the weaker side slightly. Start workouts with weaker side exercises. Match volume and intensity. Avoid stopping when stronger side fatiguesâ€”continue with weaker side to create balance.',
   },
   {
     question: 'How long does it take to correct imbalances?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/muscular-imbalance-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/muscular-imbalance-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Muscular Imbalance Ratio Wellness Calculator', item: baseUrl },
       ],
     },
@@ -405,10 +405,10 @@ export default function MuscularImbalanceRatioCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Left-right imbalance ratio</strong> = (Weaker side / Stronger side) × 100%.
+            <strong>Left-right imbalance ratio</strong> = (Weaker side / Stronger side) Ã— 100%.
           </p>
           <p>
-            <strong>Agonist-antagonist ratio</strong> = (Weaker muscle group / Stronger muscle group) × 100% (if provided).
+            <strong>Agonist-antagonist ratio</strong> = (Weaker muscle group / Stronger muscle group) Ã— 100% (if provided).
           </p>
           <p>
             <strong>Final imbalance ratio</strong> = Average of left-right and agonist-antagonist ratios (if both provided), or left-right ratio alone.

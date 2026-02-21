@@ -135,7 +135,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/accretion-dilution-eps-impact-calculator';
+const baseUrl = 'https://mycalculating.com/finance/accretion-dilution-eps-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -144,7 +144,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Accretion/Dilution (EPS Impact) Calculator', item: baseUrl },
       ],
     },

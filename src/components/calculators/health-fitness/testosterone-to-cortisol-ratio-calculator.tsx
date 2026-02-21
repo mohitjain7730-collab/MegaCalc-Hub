@@ -18,7 +18,7 @@ const formSchema = z.object({
   trainingLoad: z.number({ invalid_type_error: 'Enter recent training load' }).min(0).max(20),
   perceivedStress: z.number({ invalid_type_error: 'Enter how stressed you feel' }).min(0).max(10),
   sleepHours: z.number({ invalid_type_error: 'Enter average sleep hours' }).min(3).max(12),
-  recoveryTime: z.number({ invalid_type_error: 'Enter daily wind‑down time' }).min(0).max(6),
+  recoveryTime: z.number({ invalid_type_error: 'Enter daily windâ€‘down time' }).min(0).max(6),
   muscleTiredness: z.number({ invalid_type_error: 'Enter muscle tiredness level' }).min(0).max(10),
 });
 
@@ -37,7 +37,7 @@ const steps = [
   'Think about your typical week of movement, work, and general life load.',
   'Rate how intense your recent training or physical load has felt.',
   'Add a simple self-rating for stress, sleep, daily wind-down time, and how tired your muscles feel.',
-  'Review a gentle balance index that blends “push” and “recovery” habits into one simple snapshot.',
+  'Review a gentle balance index that blends â€œpushâ€ and â€œrecoveryâ€ habits into one simple snapshot.',
   'Use the insights as a starting point for adjusting training, rest, and stress-support habits if you wish.',
 ];
 
@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'Is this checking my testosterone-to-cortisol ratio or hormone levels?',
     answer:
-      'No. This tool does not measure or estimate actual hormone levels. It simply uses your answers about training, stress, and rest to create a lifestyle-pattern index inspired by the idea of balancing “push” and “recovery.”',
+      'No. This tool does not measure or estimate actual hormone levels. It simply uses your answers about training, stress, and rest to create a lifestyle-pattern index inspired by the idea of balancing â€œpushâ€ and â€œrecovery.â€',
   },
   {
     question: 'Can this tell me if my hormones are normal or medically balanced?',
@@ -65,7 +65,7 @@ const faqs = [
   {
     question: 'What if my score looks more strain-leaning?',
     answer:
-      'That can be a nudge to experiment with small changes, like extra rest, lighter sessions, or a bit more wind-down time. If you feel unwell or worried, it’s important to speak with a healthcare professional.',
+      'That can be a nudge to experiment with small changes, like extra rest, lighter sessions, or a bit more wind-down time. If you feel unwell or worried, itâ€™s important to speak with a healthcare professional.',
   },
   {
     question: 'Do I need lab tests to use this tool?',
@@ -75,7 +75,7 @@ const faqs = [
   {
     question: 'Will this tool change how I should train?',
     answer:
-      'It doesn’t prescribe a program. It simply offers ideas you can try, alongside listening to your body, your schedule, and any guidance from a coach or clinician.',
+      'It doesnâ€™t prescribe a program. It simply offers ideas you can try, alongside listening to your body, your schedule, and any guidance from a coach or clinician.',
   },
   {
     question: 'Can I use this instead of medical advice?',
@@ -108,7 +108,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/training-strain-vs-recovery-pattern-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/training-strain-vs-recovery-pattern-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -117,7 +117,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Training Strain vs Recovery Pattern Index', item: baseUrl },
       ],
     },
@@ -159,7 +159,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (rawIndex >= 70) {
     status = 'strain-leaning';
     interpretation =
-      'This looks like a more “full” season with relatively more push than recovery; it may be worth exploring where small extra pockets of rest or support could fit.';
+      'This looks like a more â€œfullâ€ season with relatively more push than recovery; it may be worth exploring where small extra pockets of rest or support could fit.';
   } else if (rawIndex <= 40) {
     status = 'ease-leaning';
     interpretation =
@@ -168,7 +168,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations: string[] = [
     'Notice how your current mix of training, work, and life responsibilities actually feels in your body across a typical week.',
-    'If you can, gently protect a few anchor habits—like a consistent bedtime or short wind-down—rather than trying to change everything at once.',
+    'If you can, gently protect a few anchor habitsâ€”like a consistent bedtime or short wind-downâ€”rather than trying to change everything at once.',
     'Consider chatting with a coach or professional if you are unsure how to balance training intensity with enough recovery time.',
   ];
 
@@ -192,7 +192,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'Next Month',
       detail:
-        'Experiment with one or two small tweaks—like one extra early night, a lighter session, or a short walk break—and see which changes feel most supportive.',
+        'Experiment with one or two small tweaksâ€”like one extra early night, a lighter session, or a short walk breakâ€”and see which changes feel most supportive.',
     },
     {
       label: 'Ongoing',
@@ -247,7 +247,7 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
                   name="trainingLoad"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Training or activity load this week (0–20)</FormLabel>
+                      <FormLabel>Training or activity load this week (0â€“20)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -266,7 +266,7 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
                   name="perceivedStress"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>How stressed have you felt lately? (0–10)</FormLabel>
+                      <FormLabel>How stressed have you felt lately? (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -285,7 +285,7 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
                   name="sleepHours"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Average sleep hours per night (3–12)</FormLabel>
+                      <FormLabel>Average sleep hours per night (3â€“12)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -304,7 +304,7 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
                   name="recoveryTime"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Wind-down or recovery time most days (hours, 0–6)</FormLabel>
+                      <FormLabel>Wind-down or recovery time most days (hours, 0â€“6)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -323,7 +323,7 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
                   name="muscleTiredness"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>How tired or heavy do your muscles feel? (0–10)</FormLabel>
+                      <FormLabel>How tired or heavy do your muscles feel? (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -360,12 +360,12 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Pattern index</p>
                 <p className="text-2xl font-semibold text-primary">{result.ratioScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">0–100 snapshot from this simple model.</p>
+                <p className="text-xs text-muted-foreground">0â€“100 snapshot from this simple model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Balance feel</p>
                 <p className="text-2xl font-semibold text-primary">{result.balanceIndex.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">Higher values lean toward a “fuller” push side.</p>
+                <p className="text-xs text-muted-foreground">Higher values lean toward a â€œfullerâ€ push side.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -420,18 +420,18 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
         </CardHeader>
           <CardContent className="text-sm text-muted-foreground space-y-2">
             <p>
-              <strong>Load side</strong> mixes your training/activity load, how stressed you feel, and how tired your muscles feel into a simple “push”
+              <strong>Load side</strong> mixes your training/activity load, how stressed you feel, and how tired your muscles feel into a simple â€œpushâ€
               number.
             </p>
             <p>
-              <strong>Recovery side</strong> blends your average sleep hours and daily wind-down or recovery time into a basic “rest and reset” number.
+              <strong>Recovery side</strong> blends your average sleep hours and daily wind-down or recovery time into a basic â€œrest and resetâ€ number.
             </p>
             <p>
-              <strong>Pattern index</strong> then gently compares these two sides and scales the result on a 0–100 line, where higher values lean more
+              <strong>Pattern index</strong> then gently compares these two sides and scales the result on a 0â€“100 line, where higher values lean more
               strain-leaning and lower values lean more ease-leaning.
             </p>
             <p>
-              This is a rough wellness-style framework only—it is not measuring hormones, injury risk, or any medical condition.
+              This is a rough wellness-style framework onlyâ€”it is not measuring hormones, injury risk, or any medical condition.
             </p>
         </CardContent>
       </Card>
@@ -538,7 +538,7 @@ export default function TrainingStrainVsRecoveryPatternIndexCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool combines self-rated training load, stress, sleep, recovery time, and muscle tiredness into a simple pattern index of how “full” your
+            This tool combines self-rated training load, stress, sleep, recovery time, and muscle tiredness into a simple pattern index of how â€œfullâ€ your
             current season feels.
           </p>
           <p>

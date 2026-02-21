@@ -16,9 +16,9 @@ import Link from 'next/link';
 
 const formSchema = z.object({
   incomeBefore: z.number().min(0.01, 'Enter income before raise'),
-  savingsRateBefore: z.number().min(0).max(100, 'Enter savings rate before (0–100%)'),
+  savingsRateBefore: z.number().min(0).max(100, 'Enter savings rate before (0â€“100%)'),
   incomeAfter: z.number().min(0.01, 'Enter income after raise'),
-  savingsRateAfter: z.number().min(0).max(100, 'Enter savings rate after (0–100%)'),
+  savingsRateAfter: z.number().min(0).max(100, 'Enter savings rate after (0â€“100%)'),
 }).refine((data) => data.incomeBefore > 0 && data.incomeAfter > 0, { message: 'Income must be positive', path: ['incomeBefore'] });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -31,8 +31,8 @@ const schemaMarkup = {
       name: 'Lifestyle Inflation Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'See how lifestyle inflation—spending more as income rises instead of saving the raise—impacts your savings. Compare income and savings rate before vs after a raise.',
-      url: 'https://mycalculating.com/category/finance/lifestyle-inflation-calculator',
+      description: 'See how lifestyle inflationâ€”spending more as income rises instead of saving the raiseâ€”impacts your savings. Compare income and savings rate before vs after a raise.',
+      url: 'https://mycalculating.com/finance/lifestyle-inflation-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -99,7 +99,7 @@ export default function LifestyleInflationCalculator() {
       insights.push(`Savings rate dropped ${r.savingsRateDrop.toFixed(1)} percentage points. Even a small drop on a higher income can mean thousands less saved per year.`);
     }
     if (r.lifestyleInflationAmount > 0) {
-      insights.push('Lifestyle inflation is the increase in spending when income rises. Resisting it—keeping spending flat and saving the raise—builds wealth faster.');
+      insights.push('Lifestyle inflation is the increase in spending when income rises. Resisting itâ€”keeping spending flat and saving the raiseâ€”builds wealth faster.');
     }
     if (r.savingsSacrificedPerYear > 0) {
       insights.push(`Over 10 years, $${r.savingsSacrificedPerYear.toLocaleString(undefined, { maximumFractionDigits: 0 })}/year not saved is $${(r.savingsSacrificedPerYear * 10).toLocaleString(undefined, { maximumFractionDigits: 0 })} in contributions alone (before investment growth).`);
@@ -282,7 +282,7 @@ export default function LifestyleInflationCalculator() {
                 What Is Lifestyle Inflation?
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                Lifestyle inflation is when you spend more as your income rises instead of saving the raise. A lower savings rate on a higher income means more spending and less wealth building. Resisting it—keeping spending flat and saving the raise—builds wealth faster.
+                Lifestyle inflation is when you spend more as your income rises instead of saving the raise. A lower savings rate on a higher income means more spending and less wealth building. Resisting itâ€”keeping spending flat and saving the raiseâ€”builds wealth faster.
               </p>
             </div>
             <div className="p-4 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
@@ -291,7 +291,7 @@ export default function LifestyleInflationCalculator() {
                 Savings Sacrificed
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                “Savings sacrificed” is how much more you would save per year if you kept your old savings rate on your new income. It is (income after × rate before) − (income after × rate after) = income after × (rate before − rate after).
+                â€œSavings sacrificedâ€ is how much more you would save per year if you kept your old savings rate on your new income. It is (income after Ã— rate before) âˆ’ (income after Ã— rate after) = income after Ã— (rate before âˆ’ rate after).
               </p>
             </div>
           </div>
@@ -308,13 +308,13 @@ export default function LifestyleInflationCalculator() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Spending = Income × (1 − Savings Rate)
+              Spending = Income Ã— (1 âˆ’ Savings Rate)
             </p>
             <p className="font-mono text-sm text-center">
-              Lifestyle Inflation ($/yr) = Spending After − Spending Before
+              Lifestyle Inflation ($/yr) = Spending After âˆ’ Spending Before
             </p>
             <p className="font-mono text-sm text-center">
-              Savings Sacrificed ($/yr) = Income After × (Rate Before − Rate After)
+              Savings Sacrificed ($/yr) = Income After Ã— (Rate Before âˆ’ Rate After)
             </p>
           </div>
         </CardContent>
@@ -398,7 +398,7 @@ export default function LifestyleInflationCalculator() {
         <p>Lifestyle inflation (sometimes called lifestyle creep) is when you spend more as your income rises. Instead of saving the raise, you upgrade housing, cars, or discretionary spending. The result: a lower savings rate on a higher income and slower wealth building.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why It Matters</h3>
-        <p>Even a small drop in savings rate after a raise can mean thousands less saved per year. Over decades, that compounds into a much smaller nest egg. Resisting lifestyle inflation—keeping spending flat and saving the raise—dramatically accelerates wealth building.</p>
+        <p>Even a small drop in savings rate after a raise can mean thousands less saved per year. Over decades, that compounds into a much smaller nest egg. Resisting lifestyle inflationâ€”keeping spending flat and saving the raiseâ€”dramatically accelerates wealth building.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Who Is Affected</h3>
         <p>Anyone whose spending rises with income: bigger apartment after a raise, new car when salary increases, more dining out. The calculator compares your income and savings rate before vs after a raise to show the increase in spending and the savings sacrificed.</p>
@@ -406,15 +406,15 @@ export default function LifestyleInflationCalculator() {
         <hr />
 
         <h2 id="how-calculated-li" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Spending = Income × (1 − Savings Rate). Lifestyle inflation (dollars per year) = Spending after − Spending before. Savings sacrificed = Income after × (Rate before − Rate after): how much more you would save per year if you kept the old rate on the new income.</p>
+        <p>Spending = Income Ã— (1 âˆ’ Savings Rate). Lifestyle inflation (dollars per year) = Spending after âˆ’ Spending before. Savings sacrificed = Income after Ã— (Rate before âˆ’ Rate after): how much more you would save per year if you kept the old rate on the new income.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-lg text-destructive font-bold">
-            Spending = Income × (1 − Savings Rate)
+            Spending = Income Ã— (1 âˆ’ Savings Rate)
           </p>
           <p className="font-mono text-sm mt-2">
-            Savings Sacrificed = Income After × (Rate Before − Rate After)
+            Savings Sacrificed = Income After Ã— (Rate Before âˆ’ Rate After)
           </p>
         </div>
 
@@ -424,7 +424,7 @@ export default function LifestyleInflationCalculator() {
         <p>When you get a raise, keep spending the same and save the difference. Automate the increase: raise your 401(k) or direct deposit to savings by the amount of the raise (after tax). If you never see the extra money in checking, you are less likely to spend it.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Save the Raise</h3>
-        <p>Commit to saving 50–100% of each raise. That way your savings rate rises over time and lifestyle inflation is minimized. You can still allow some spending increase, but the majority of the raise goes to savings.</p>
+        <p>Commit to saving 50â€“100% of each raise. That way your savings rate rises over time and lifestyle inflation is minimized. You can still allow some spending increase, but the majority of the raise goes to savings.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Track Spending</h3>
         <p>Track spending before and after raises. If spending rises in lockstep with income, you are inflating lifestyle. Aim to keep spending flat or growing more slowly than income so your savings rate climbs.</p>
@@ -435,7 +435,7 @@ export default function LifestyleInflationCalculator() {
         <p>Enter annual income and savings rate before the raise, then annual income and savings rate after the raise. The calculator shows spending before/after, lifestyle inflation (increase in spending), and savings sacrificed (how much more you could save per year with the old rate on the new income).</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">What Counts as Savings Rate</h3>
-        <p>Savings rate = savings ÷ income (before or after tax, but be consistent). Include 401(k), IRA, taxable savings, and other investments. Exclude one-off windfalls; use ongoing monthly or annual savings and income.</p>
+        <p>Savings rate = savings Ã· income (before or after tax, but be consistent). Include 401(k), IRA, taxable savings, and other investments. Exclude one-off windfalls; use ongoing monthly or annual savings and income.</p>
 
         <hr />
 
@@ -461,33 +461,33 @@ export default function LifestyleInflationCalculator() {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg mb-3">What is “savings sacrificed”?</h4>
+            <h4 className="font-semibold text-lg mb-3">What is â€œsavings sacrificedâ€?</h4>
             <p className="text-muted-foreground">
-              It is how much more you would save per year if you kept your old savings rate on your new income. Formula: Income after × (Rate before − Rate after). It shows the opportunity cost of lowering your savings rate after a raise.
+              It is how much more you would save per year if you kept your old savings rate on your new income. Formula: Income after Ã— (Rate before âˆ’ Rate after). It shows the opportunity cost of lowering your savings rate after a raise.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Should I use gross or net income?</h4>
             <p className="text-muted-foreground">
-              Use the same basis for both before and after (e.g. gross or take-home). Savings rate = savings ÷ income. If you use take-home income, use take-home-based savings (after tax); if gross, include pre-tax 401(k) and gross income.
+              Use the same basis for both before and after (e.g. gross or take-home). Savings rate = savings Ã· income. If you use take-home income, use take-home-based savings (after tax); if gross, include pre-tax 401(k) and gross income.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How do I avoid lifestyle inflation?</h4>
             <p className="text-muted-foreground">
-              When you get a raise, save the difference: increase 401(k), IRA, or direct deposit to savings by the amount of the raise (after tax). Automate it so the extra money never hits checking. Commit to saving 50–100% of each raise.
+              When you get a raise, save the difference: increase 401(k), IRA, or direct deposit to savings by the amount of the raise (after tax). Automate it so the extra money never hits checking. Commit to saving 50â€“100% of each raise.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my savings rate went up after the raise?</h4>
             <p className="text-muted-foreground">
-              If you entered a higher savings rate after the raise, “savings sacrificed” will be negative—meaning you are saving more per year than if you had kept the old rate. That is the opposite of lifestyle inflation and accelerates wealth building.
+              If you entered a higher savings rate after the raise, â€œsavings sacrificedâ€ will be negativeâ€”meaning you are saving more per year than if you had kept the old rate. That is the opposite of lifestyle inflation and accelerates wealth building.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How much of a raise should I save?</h4>
             <p className="text-muted-foreground">
-              A common rule is to save 50–100% of each raise. If you save 100%, your spending stays flat and your savings rate rises. Saving 50% still improves the rate while allowing some lifestyle increase. The calculator shows the cost of saving less.</p>
+              A common rule is to save 50â€“100% of each raise. If you save 100%, your spending stays flat and your savings rate rises. Saving 50% still improves the rate while allowing some lifestyle increase. The calculator shows the cost of saving less.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does lifestyle inflation affect retirement?</h4>
@@ -495,19 +495,19 @@ export default function LifestyleInflationCalculator() {
               Yes. If spending rises with every raise, you need a larger nest egg to maintain that spending in retirement. Resisting lifestyle inflation means a higher savings rate over time and a lower retirement spending target, so you need less to retire.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg mb-3">What if my “after” income is lower (job change, part-time)?</h4>
+            <h4 className="font-semibold text-lg mb-3">What if my â€œafterâ€ income is lower (job change, part-time)?</h4>
             <p className="text-muted-foreground">
-              You can still use the calculator: enter the higher income as “before” and the lower as “after.” If your savings rate stays the same or rises, you are cutting spending rather than inflating lifestyle—which is the right response to lower income.</p>
+              You can still use the calculator: enter the higher income as â€œbeforeâ€ and the lower as â€œafter.â€ If your savings rate stays the same or rises, you are cutting spending rather than inflating lifestyleâ€”which is the right response to lower income.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How do I track savings rate over time?</h4>
             <p className="text-muted-foreground">
-              Savings rate = savings ÷ income (both annual or both monthly; be consistent). Track in a spreadsheet or budget app: each month or year, sum savings (401(k), IRA, taxable, etc.) and divide by income. After each raise, compare new rate to old to see if you inflated lifestyle.</p>
+              Savings rate = savings Ã· income (both annual or both monthly; be consistent). Track in a spreadsheet or budget app: each month or year, sum savings (401(k), IRA, taxable, etc.) and divide by income. After each raise, compare new rate to old to see if you inflated lifestyle.</p>
           </div>
           <div>
-            <h4 className="font-semibold text-lg mb-3">What counts as “savings” for the savings rate?</h4>
+            <h4 className="font-semibold text-lg mb-3">What counts as â€œsavingsâ€ for the savings rate?</h4>
             <p className="text-muted-foreground">
-              Include 401(k), IRA, HSA, taxable brokerage, and savings account contributions—anything that increases net worth rather than spending. Use the same definition for before and after so the comparison is fair. Employer match can be included in both savings and income if you want to reflect total compensation.</p>
+              Include 401(k), IRA, HSA, taxable brokerage, and savings account contributionsâ€”anything that increases net worth rather than spending. Use the same definition for before and after so the comparison is fair. Employer match can be included in both savings and income if you want to reflect total compensation.</p>
           </div>
         </CardContent>
       </Card>
@@ -535,7 +535,7 @@ export default function LifestyleInflationCalculator() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Planners and Budgeters</strong>
-                <span className="text-sm text-muted-foreground">To quantify the cost of a lower savings rate after income increases and to plan “save the raise” strategy.</span>
+                <span className="text-sm text-muted-foreground">To quantify the cost of a lower savings rate after income increases and to plan â€œsave the raiseâ€ strategy.</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">High Earners & Career Climbers</strong>
@@ -560,11 +560,11 @@ export default function LifestyleInflationCalculator() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>One raise:</strong> Calculator compares one “before” and one “after” snapshot. For multiple raises, re-run with new before = old after.</span>
+                <span><strong>One raise:</strong> Calculator compares one â€œbeforeâ€ and one â€œafterâ€ snapshot. For multiple raises, re-run with new before = old after.</span>
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>No investment growth:</strong> “Savings sacrificed” is contributions only; compound growth over time would increase the gap further.</span>
+                <span><strong>No investment growth:</strong> â€œSavings sacrificedâ€ is contributions only; compound growth over time would increase the gap further.</span>
               </li>
             </ul>
           </div>
@@ -576,13 +576,13 @@ export default function LifestyleInflationCalculator() {
             </h4>
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
-                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: $60k at 20% savings → $75k at 15% savings</h5>
+                <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Case A: $60k at 20% savings â†’ $75k at 15% savings</h5>
                 <p className="text-sm text-green-700/80 dark:text-green-400">
-                  Spending before $48k, after $63.75k. Lifestyle inflation $15,750/yr. Savings sacrificed = $75k × (20% − 15%) = $3,750/yr. Keeping 20% on $75k would save $15k/yr (vs $11.25k at 15%).
+                  Spending before $48k, after $63.75k. Lifestyle inflation $15,750/yr. Savings sacrificed = $75k Ã— (20% âˆ’ 15%) = $3,750/yr. Keeping 20% on $75k would save $15k/yr (vs $11.25k at 15%).
                 </p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
-                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: $50k at 10% → $65k at 20% (save the raise)</h5>
+                <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Case B: $50k at 10% â†’ $65k at 20% (save the raise)</h5>
                 <p className="text-sm text-blue-700/80 dark:text-blue-400">
                   Savings rate increased. Spending before $45k, after $52k. Savings sacrificed is negative: you are saving $6,500 more per year than if you had kept 10% on $65k. You saved the raise and more.
                 </p>

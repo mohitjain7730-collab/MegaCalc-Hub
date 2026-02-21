@@ -37,11 +37,11 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate your current skill level for the task you want to work on (1–10).',
-  'Rate how challenging the task feels relative to your skill (1–10).',
-  'Rate your current distraction level (0–10), including internal and external distractions.',
-  'Rate your current physical and mental energy level (0–10).',
-  'Rate how clear your goals and next steps are for this session (0–10), then review your readiness score.',
+  'Rate your current skill level for the task you want to work on (1â€“10).',
+  'Rate how challenging the task feels relative to your skill (1â€“10).',
+  'Rate your current distraction level (0â€“10), including internal and external distractions.',
+  'Rate your current physical and mental energy level (0â€“10).',
+  'Rate how clear your goals and next steps are for this session (0â€“10), then review your readiness score.',
 ];
 
 const faqs = [
@@ -63,7 +63,7 @@ const faqs = [
   {
     question: 'How often can I realistically expect to experience flow?',
     answer:
-      'For most people, deep flow is not an all-day state. Even a few sessions per week can be powerful. Shorter “deep focus” periods that share some features of flow are more common and still highly valuable.',
+      'For most people, deep flow is not an all-day state. Even a few sessions per week can be powerful. Shorter â€œdeep focusâ€ periods that share some features of flow are more common and still highly valuable.',
   },
   {
     question: 'Can I train myself to enter flow more often?',
@@ -78,12 +78,12 @@ const faqs = [
   {
     question: 'Is flow always good?',
     answer:
-      'Flow is powerful but neutral—you can experience it in both healthy and unhealthy activities. The key is to aim for flow in activities that support your long-term goals, learning, and well-being.',
+      'Flow is powerful but neutralâ€”you can experience it in both healthy and unhealthy activities. The key is to aim for flow in activities that support your long-term goals, learning, and well-being.',
   },
   {
-    question: 'Should I worry if I rarely feel “in the zone”?',
+    question: 'Should I worry if I rarely feel â€œin the zoneâ€?',
     answer:
-      'Not necessarily. Many people have demanding contexts that make deep focus difficult. Start by improving one or two ingredients—like reducing distractions or clarifying goals—and build from there. If you struggle with attention broadly, consider discussing it with a professional.',
+      'Not necessarily. Many people have demanding contexts that make deep focus difficult. Start by improving one or two ingredientsâ€”like reducing distractions or clarifying goalsâ€”and build from there. If you struggle with attention broadly, consider discussing it with a professional.',
   },
 ];
 
@@ -110,7 +110,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/flow-state-readiness-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/flow-state-readiness-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -151,13 +151,13 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 const calculateResult = (values: FormValues): ResultPayload => {
   const { skillLevel, challengeLevel, distractionLevel, energyLevel, clearGoalClarity } = values;
 
-  const balance = 10 - Math.abs(skillLevel - challengeLevel); // 0–10
-  const focusComponent = 10 - distractionLevel; // 0–10
-  const energyComponent = energyLevel; // 0–10
-  const clarityComponent = clearGoalClarity; // 0–10
+  const balance = 10 - Math.abs(skillLevel - challengeLevel); // 0â€“10
+  const focusComponent = 10 - distractionLevel; // 0â€“10
+  const energyComponent = energyLevel; // 0â€“10
+  const clarityComponent = clearGoalClarity; // 0â€“10
 
   const raw =
-    0.35 * balance + 0.25 * focusComponent + 0.2 * energyComponent + 0.2 * clarityComponent; // 0–10
+    0.35 * balance + 0.25 * focusComponent + 0.2 * energyComponent + 0.2 * clarityComponent; // 0â€“10
   const readinessScore = clamp((raw / 10) * 100, 0, 100);
 
   let status: ResultPayload['status'] = 'optimal';
@@ -190,13 +190,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   if (distractionLevel >= 5) {
     recommendations.push(
-      'Create a physical and digital focus zone—close unrelated tabs, put your phone away, and let others know you are unavailable for a set period.'
+      'Create a physical and digital focus zoneâ€”close unrelated tabs, put your phone away, and let others know you are unavailable for a set period.'
     );
   }
 
   if (energyLevel <= 4) {
     recommendations.push(
-      'Take a short restorative break—light movement, hydration, or a brief walk—before attempting a deep focus block.'
+      'Take a short restorative breakâ€”light movement, hydration, or a brief walkâ€”before attempting a deep focus block.'
     );
   }
 
@@ -210,12 +210,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'This Session',
       detail:
-        'Set a 25–60 minute focus block with a clear task, limited distractions, and a short review at the end of what you accomplished.',
+        'Set a 25â€“60 minute focus block with a clear task, limited distractions, and a short review at the end of what you accomplished.',
     },
     {
       label: 'This Week',
       detail:
-        'Experiment with 2–4 planned deep work blocks at times when your energy is naturally higher, and track which conditions most support flow.',
+        'Experiment with 2â€“4 planned deep work blocks at times when your energy is naturally higher, and track which conditions most support flow.',
     },
     {
       label: 'Ongoing',
@@ -286,7 +286,7 @@ export default function FlowStateReadinessCalculator() {
                   name="skillLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Skill level for this task (1–10)</FormLabel>
+                      <FormLabel>Skill level for this task (1â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -307,7 +307,7 @@ export default function FlowStateReadinessCalculator() {
                   name="challengeLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Challenge level of this task (1–10)</FormLabel>
+                      <FormLabel>Challenge level of this task (1â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -328,7 +328,7 @@ export default function FlowStateReadinessCalculator() {
                   name="distractionLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Current distraction level (0–10)</FormLabel>
+                      <FormLabel>Current distraction level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -349,7 +349,7 @@ export default function FlowStateReadinessCalculator() {
                   name="energyLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Current energy level (0–10)</FormLabel>
+                      <FormLabel>Current energy level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -370,7 +370,7 @@ export default function FlowStateReadinessCalculator() {
                   name="clearGoalClarity"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Goal and next-step clarity (0–10)</FormLabel>
+                      <FormLabel>Goal and next-step clarity (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -412,7 +412,7 @@ export default function FlowStateReadinessCalculator() {
                 <p className="text-xs text-muted-foreground">Out of 100</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Challenge–skill balance</p>
+                <p className="text-sm text-muted-foreground">Challengeâ€“skill balance</p>
                 <p className="text-2xl font-semibold text-primary">
                   {(10 - Math.abs(result.skillLevel - result.challengeLevel)).toFixed(1)}
                 </p>
@@ -478,8 +478,8 @@ export default function FlowStateReadinessCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            The <strong>flow state readiness score</strong> combines challenge–skill balance, distraction level, energy,
-            and goal clarity into a 0–100 scale. Higher scores reflect conditions that are more supportive of deep focus
+            The <strong>flow state readiness score</strong> combines challengeâ€“skill balance, distraction level, energy,
+            and goal clarity into a 0â€“100 scale. Higher scores reflect conditions that are more supportive of deep focus
             and potential flow.
           </p>
           <p>
@@ -550,8 +550,8 @@ export default function FlowStateReadinessCalculator() {
           Flow State Readiness: How to Set Up Your Environment for Deep, Satisfying Work
         </h1>
         <p className="text-lg italic text-gray-700">
-          Learn the key ingredients that make flow more likely—challenge-skill balance, focus, energy, and clarity—and how
-          to design work sessions that help you get “in the zone” more often.
+          Learn the key ingredients that make flow more likelyâ€”challenge-skill balance, focus, energy, and clarityâ€”and how
+          to design work sessions that help you get â€œin the zoneâ€ more often.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
@@ -622,8 +622,8 @@ export default function FlowStateReadinessCalculator() {
         </h2>
         <p>
           Physical and digital environments strongly influence flow. Noise, visual clutter, and constant notifications all
-          compete for attention. Simple adjustments—like designating a focus space, using noise reduction, or scheduling
-          communication windows—can dramatically increase your odds of entering a flow-like state.
+          compete for attention. Simple adjustmentsâ€”like designating a focus space, using noise reduction, or scheduling
+          communication windowsâ€”can dramatically increase your odds of entering a flow-like state.
         </p>
 
         <h2
@@ -648,7 +648,7 @@ export default function FlowStateReadinessCalculator() {
         </h2>
         <p>
           Not everyone will experience flow in the same way or at the same frequency, and that is normal. Attention,
-          energy, and life circumstances vary. Treat your readiness score as a guide to experiment with conditions—not a
+          energy, and life circumstances vary. Treat your readiness score as a guide to experiment with conditionsâ€”not a
           standard you must meet every day. If you struggle significantly with focus across many contexts, a professional
           evaluation may be helpful.
         </p>
@@ -677,7 +677,7 @@ export default function FlowStateReadinessCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This calculator provides general wellness insights about flow state readiness on a 0–100 scale based on challenge-skill balance,
+            This calculator provides general wellness insights about flow state readiness on a 0â€“100 scale based on challenge-skill balance,
             distractions, energy, and goal clarity. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>

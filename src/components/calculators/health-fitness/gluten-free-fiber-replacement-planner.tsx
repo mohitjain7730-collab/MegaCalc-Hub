@@ -128,7 +128,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/gluten-free-fiber-replacement-planner';
+const baseUrl = 'https://mycalculating.com/health-fitness/gluten-free-fiber-replacement-planner';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -137,7 +137,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Gluten-Free Fiber Replacement Planner', item: baseUrl },
       ],
     },
@@ -543,7 +543,7 @@ export default function GlutenFreeFiberReplacementPlanner() {
             <strong>Gluten-free fiber replacement score</strong> = sum of points from current fiber relative to target (0-40), fruits (0-15), vegetables (0-20), legumes (0-10), nuts/seeds (0-8), and gluten-free grains (0-7). Maximum score is 100 points. Higher scores indicate better fiber replacement.
           </p>
           <p>
-            <strong>Scoring criteria:</strong> Current fiber: ≥target (40 points), ≥80% target (30 points), ≥60% target (20 points), ≥40% target (10 points). Fruits: 7+ servings (15 points), 5+ servings (12 points), 3+ servings (8 points), 1+ servings (4 points). Vegetables: 7+ servings (20 points), 5+ servings (15 points), 3+ servings (10 points), 1+ servings (5 points). Legumes: 0.7+ servings (10 points), 0.5+ servings (7 points), 0.3+ servings (4 points). Nuts/seeds: 1.5+ servings (8 points), 1+ servings (6 points), 0.5+ servings (3 points). Gluten-free grains: 4+ servings (7 points), 3+ servings (5 points), 2+ servings (3 points), 1+ servings (1 point).
+            <strong>Scoring criteria:</strong> Current fiber: â‰¥target (40 points), â‰¥80% target (30 points), â‰¥60% target (20 points), â‰¥40% target (10 points). Fruits: 7+ servings (15 points), 5+ servings (12 points), 3+ servings (8 points), 1+ servings (4 points). Vegetables: 7+ servings (20 points), 5+ servings (15 points), 3+ servings (10 points), 1+ servings (5 points). Legumes: 0.7+ servings (10 points), 0.5+ servings (7 points), 0.3+ servings (4 points). Nuts/seeds: 1.5+ servings (8 points), 1+ servings (6 points), 0.5+ servings (3 points). Gluten-free grains: 4+ servings (7 points), 3+ servings (5 points), 2+ servings (3 points), 1+ servings (1 point).
           </p>
           <p>On a gluten-free diet, replacing fiber from removed gluten-containing foods is essential. Aim for 25-35g fiber daily from diverse gluten-free sources including fruits, vegetables, legumes, nuts, seeds, and gluten-free whole grains.</p>
         </CardContent>

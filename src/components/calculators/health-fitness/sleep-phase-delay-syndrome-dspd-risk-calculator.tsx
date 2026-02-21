@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-phase-delay-syndrome-dspd-risk-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-phase-delay-syndrome-dspd-risk-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Delayed Sleep Phase Tendency Estimator', item: baseUrl },
       ],
     },
@@ -446,10 +446,10 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
             <strong>Delayed Sleep Phase Tendency Score</strong> = Phase delay (0-40 points) + Sleep misalignment (0-30 points) + Difficulty waking (0-20 points) + Sleep onset time (0-10 points).
           </p>
           <p>
-            <strong>Phase delay</strong> = Hours after 10 PM for natural bedtime (≥4 hours = 40 points, 2-4 hours = 30 points, 1-2 hours = 20 points).
+            <strong>Phase delay</strong> = Hours after 10 PM for natural bedtime (â‰¥4 hours = 40 points, 2-4 hours = 30 points, 1-2 hours = 20 points).
           </p>
           <p>
-            <strong>Sleep misalignment</strong> = Difference between natural and social bedtime (≥3 hours = 30 points, 2-3 hours = 20 points, 1-2 hours = 10 points).
+            <strong>Sleep misalignment</strong> = Difference between natural and social bedtime (â‰¥3 hours = 30 points, 2-3 hours = 20 points, 1-2 hours = 10 points).
           </p>
           <p>
             <strong>Difficulty waking</strong> = Scaled 1-10 to 0-20 points. <strong>Sleep onset time</strong> = &gt;60 min = 10 points, &gt;30 min = 5 points.
@@ -493,7 +493,7 @@ export default function SleepPhaseDelaySyndromeDSPDRiskCalculator() {
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Typical threshold</p>
-                <p className="text-xl font-semibold text-primary">≥2 hours</p>
+                <p className="text-xl font-semibold text-primary">â‰¥2 hours</p>
                 <p className="text-xs text-muted-foreground">Phase delay pattern</p>
               </div>
               <div className="p-4 border rounded">

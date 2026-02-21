@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vo2-kinetics-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vo2-kinetics-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'VO2 Kinetics Calculator', item: baseUrl },
       ],
     },
@@ -401,7 +401,7 @@ export default function Vo2KineticsCalculator() {
             <strong>Time constant (tau)</strong> = time for VO2 to reach 63% of steady state increase. Faster kinetics (shorter time) indicate better cardiovascular fitness.
           </p>
           <p>
-            <strong>Normal ranges</strong>: Time to steady state: 30-60 seconds for moderate exercise. Faster kinetics (≤30 seconds) indicate better fitness. Slower kinetics (&gt;60 seconds) may indicate reduced fitness.
+            <strong>Normal ranges</strong>: Time to steady state: 30-60 seconds for moderate exercise. Faster kinetics (â‰¤30 seconds) indicate better fitness. Slower kinetics (&gt;60 seconds) may indicate reduced fitness.
           </p>
           <p>VO2 kinetics are affected by cardiovascular fitness, age, training status, exercise intensity, and cardiovascular health. Regular exercise improves kinetics.</p>
         </CardContent>

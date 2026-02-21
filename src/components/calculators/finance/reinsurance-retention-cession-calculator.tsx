@@ -68,7 +68,7 @@ const faqs = [
   {
     question: 'How is retention calculated in quota share?',
     answer:
-      'In quota share, retention amount = Total Sum Insured × Retention Percentage. For example, $1M policy with 60% retention = $600K retention, $400K cession.',
+      'In quota share, retention amount = Total Sum Insured Ã— Retention Percentage. For example, $1M policy with 60% retention = $600K retention, $400K cession.',
   },
   {
     question: 'How is retention calculated in surplus share?',
@@ -78,7 +78,7 @@ const faqs = [
   {
     question: 'What is cession ratio?',
     answer:
-      'Cession ratio = (Reinsurance Premiums Ceded / Total Premiums Written) × 100. It indicates what percentage of premiums are transferred to reinsurers. Higher ratios indicate greater reliance on reinsurance.',
+      'Cession ratio = (Reinsurance Premiums Ceded / Total Premiums Written) Ã— 100. It indicates what percentage of premiums are transferred to reinsurers. Higher ratios indicate greater reliance on reinsurance.',
   },
   {
     question: 'How do I choose between quota share and surplus share?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/reinsurance-retention-cession-calculator';
+const baseUrl = 'https://mycalculating.com/finance/reinsurance-retention-cession-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Reinsurance Retention & Cession Calculator', item: baseUrl },
       ],
     },
@@ -153,7 +153,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   let cessionAmount = 0;
   
   if (treatyType === 'quota') {
-    // Quota share: Retention = Sum Insured × Retention Percentage
+    // Quota share: Retention = Sum Insured Ã— Retention Percentage
     const retentionPct = values.retentionPercentage || 0;
     retentionAmount = totalSumInsured * (retentionPct / 100);
     cessionAmount = totalSumInsured - retentionAmount;
@@ -403,7 +403,7 @@ export default function ReinsuranceRetentionCessionCalculator() {
           <p>
             <strong>Quota Share:</strong>
           </p>
-          <p>Retention Amount = Total Sum Insured × Retention Percentage</p>
+          <p>Retention Amount = Total Sum Insured Ã— Retention Percentage</p>
           <p>Cession Amount = Total Sum Insured - Retention Amount</p>
           <p>
             <strong>Surplus Share:</strong>
@@ -411,7 +411,7 @@ export default function ReinsuranceRetentionCessionCalculator() {
           <p>Retention Amount = Minimum of (Total Sum Insured, Retention Limit)</p>
           <p>Cession Amount = Total Sum Insured - Retention Amount</p>
           <p>
-            <strong>Cession Percentage</strong> = (Cession Amount / Total Sum Insured) × 100
+            <strong>Cession Percentage</strong> = (Cession Amount / Total Sum Insured) Ã— 100
           </p>
           <p>Retention is the portion of risk kept by the insurer; cession is the portion transferred to reinsurers. Quota share uses proportional percentages; surplus share uses fixed retention limits with excess ceded.</p>
         </CardContent>
@@ -589,11 +589,11 @@ export default function ReinsuranceRetentionCessionCalculator() {
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Quota Share Calculation</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>Retention Amount = Total Sum Insured × Retention Percentage</strong></p>
+        <p className="font-mono"><strong>Retention Amount = Total Sum Insured Ã— Retention Percentage</strong></p>
         <p className="font-mono"><strong>Cession Amount = Total Sum Insured - Retention Amount</strong></p>
     </div>
     <p>Example: $1,000,000 policy with 60% retention</p>
-    <p>Retention = $1,000,000 × 60% = $600,000</p>
+    <p>Retention = $1,000,000 Ã— 60% = $600,000</p>
     <p>Cession = $1,000,000 - $600,000 = $400,000</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Surplus Share Calculation</h3>
@@ -607,7 +607,7 @@ export default function ReinsuranceRetentionCessionCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Cession Ratio</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono"><strong>Cession Ratio = (Reinsurance Premiums Ceded / Total Premiums Written) × 100</strong></p>
+        <p className="font-mono"><strong>Cession Ratio = (Reinsurance Premiums Ceded / Total Premiums Written) Ã— 100</strong></p>
     </div>
     <p>This ratio indicates what percentage of total premiums are transferred to reinsurers.</p>
 

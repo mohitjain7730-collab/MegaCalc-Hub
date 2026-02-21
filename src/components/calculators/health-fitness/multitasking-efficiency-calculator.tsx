@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/multitasking-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/multitasking-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Multitasking Efficiency Wellness Calculator', item: baseUrl },
       ],
     },
@@ -418,22 +418,22 @@ export default function MultitaskingEfficiencyCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Efficiency Score</strong> = (Accuracy Score × 0.4) + (Time Efficiency × 0.3) + ((100 - Error Penalty) × 0.2) + ((100 - Switch Penalty) × 0.1)
+            <strong>Efficiency Score</strong> = (Accuracy Score Ã— 0.4) + (Time Efficiency Ã— 0.3) + ((100 - Error Penalty) Ã— 0.2) + ((100 - Switch Penalty) Ã— 0.1)
           </p>
           <p>
-            <strong>Accuracy Score</strong> = Multitask Accuracy - (Accuracy Loss × 0.5)
+            <strong>Accuracy Score</strong> = Multitask Accuracy - (Accuracy Loss Ã— 0.5)
           </p>
           <p>
-            <strong>Time Efficiency</strong> = (1 / Completion Time Multiplier) × 100
+            <strong>Time Efficiency</strong> = (1 / Completion Time Multiplier) Ã— 100
           </p>
           <p>
-            <strong>Error Penalty</strong> = Error Rate × 0.5
+            <strong>Error Penalty</strong> = Error Rate Ã— 0.5
           </p>
           <p>
             <strong>Switch Penalty</strong> = Min(Task Switch Frequency / 10, 20)
           </p>
           <p>
-            <strong>Productivity Loss</strong> = Accuracy Loss + ((Completion Time Multiplier - 1) × 50) + (Error Rate × 0.3)
+            <strong>Productivity Loss</strong> = Accuracy Loss + ((Completion Time Multiplier - 1) Ã— 50) + (Error Rate Ã— 0.3)
           </p>
           <p>Efficiency score ranges from 0-100, with higher scores indicating more efficient task-switching (though still less efficient than single-tasking).</p>
         </CardContent>
@@ -476,7 +476,7 @@ export default function MultitaskingEfficiencyCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Multitasking, or more accurately "task-switching," may involve rapidly alternating attention between multiple tasks. Research may suggest that multitasking may reduce productivity, increase errors, slow completion time, and impair learning. The brain may not truly focus on multiple complex tasks simultaneously—it may switch between them, creating "switching costs" that may reduce efficiency. This tool provides general wellness insights, not a medical evaluation.
+            Multitasking, or more accurately "task-switching," may involve rapidly alternating attention between multiple tasks. Research may suggest that multitasking may reduce productivity, increase errors, slow completion time, and impair learning. The brain may not truly focus on multiple complex tasks simultaneouslyâ€”it may switch between them, creating "switching costs" that may reduce efficiency. This tool provides general wellness insights, not a medical evaluation.
           </p>
           <p>
             This tool provides general wellness insights about multitasking efficiency by comparing single-task performance (accuracy, completion time) with multitask performance. Understanding your multitasking efficiency may help you make informed decisions about when to focus on one task versus attempting multiple tasks, potentially improving productivity and work quality.

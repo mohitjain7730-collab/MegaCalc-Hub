@@ -37,9 +37,9 @@ const steps = [
   'List how many meaningful tasks you planned today (no micro tasks).',
   'Log how many you actually finished or advanced substantially.',
   'Count major distractions (Slack fire drills, unexpected calls, urgent requests).',
-  'Track flow minutes—time you felt immersed and productive.',
+  'Track flow minutesâ€”time you felt immersed and productive.',
   'Estimate the percentage of time you were multitasking or context switching.',
-  'Use the output to tighten boundaries and improve tomorrow’s game plan.',
+  'Use the output to tighten boundaries and improve tomorrowâ€™s game plan.',
 ];
 
 const faqs = [
@@ -48,8 +48,8 @@ const faqs = [
     answer: 'It blends task completion, flow time, distractions, and multitasking to show how efficiently you convert time into meaningful output.',
   },
   {
-    question: 'How accurate is “flow minutes”?',
-    answer: 'It’s subjective. Use journaling, wearable focus modes, or apps like RescueTime to refine the estimate.',
+    question: 'How accurate is â€œflow minutesâ€?',
+    answer: 'Itâ€™s subjective. Use journaling, wearable focus modes, or apps like RescueTime to refine the estimate.',
   },
   {
     question: 'Can I include meetings as tasks?',
@@ -73,15 +73,15 @@ const faqs = [
   },
   {
     question: 'Is a high score sustainable?',
-    answer: 'Yes if you also monitor the Mental Fatigue Index and recovery habits so you don’t overextend.',
+    answer: 'Yes if you also monitor the Mental Fatigue Index and recovery habits so you donâ€™t overextend.',
   },
   {
-    question: 'What’s a good benchmark?',
-    answer: 'Scores ≥70 signal strong focus. 50–69 is fragile—tighten boundaries. Under 50 indicates fragmentation.',
+    question: 'Whatâ€™s a good benchmark?',
+    answer: 'Scores â‰¥70 signal strong focus. 50â€“69 is fragileâ€”tighten boundaries. Under 50 indicates fragmentation.',
   },
   {
     question: 'Can teams use this?',
-    answer: 'Absolutely—compare averages to identify process bottlenecks or meeting overload.',
+    answer: 'Absolutelyâ€”compare averages to identify process bottlenecks or meeting overload.',
   },
 ];
 
@@ -91,7 +91,7 @@ const relatedCalculators = [
   { name: 'Caffeine Cutoff Sleep Impact Calculator', slug: 'caffeine-cutoff-sleep-impact-calculator', description: 'Dial in stimulant timing to boost next-day clarity.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cognitive-focus-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cognitive-focus-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -100,7 +100,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cognitive Focus Efficiency Calculator', item: baseUrl },
       ],
     },
@@ -161,12 +161,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let state: ResultPayload['state'] = 'focused';
   let interpretation =
-    'Your entries suggest today’s focus and follow-through felt relatively smooth overall. You can keep leaning on the habits that supported that.';
+    'Your entries suggest todayâ€™s focus and follow-through felt relatively smooth overall. You can keep leaning on the habits that supported that.';
 
   if (efficiencyScore < 70) {
     state = 'fragile';
     interpretation =
-      'You’re getting meaningful things done, and there also seems to be room to soften interruptions or multitasking a bit.';
+      'Youâ€™re getting meaningful things done, and there also seems to be room to soften interruptions or multitasking a bit.';
   }
   if (efficiencyScore < 50) {
     state = 'fragmented';
@@ -175,12 +175,12 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'Try choosing a small number of “nice-to-finish” tasks so your day feels more realistic and spacious.',
-    'When possible, soften non‑essential notifications during focus moments so you can stay with one thing at a time.',
+    'Try choosing a small number of â€œnice-to-finishâ€ tasks so your day feels more realistic and spacious.',
+    'When possible, soften nonâ€‘essential notifications during focus moments so you can stay with one thing at a time.',
     'Noting distractions as they happen can gently highlight patterns you might want to adjust later.',
   ];
   if (state === 'fragile') {
-    recommendations.push('You might experiment with turning one recurring meeting or check‑in into a written update instead.');
+    recommendations.push('You might experiment with turning one recurring meeting or checkâ€‘in into a written update instead.');
   }
   if (state === 'fragmented') {
     recommendations.push('A short weekly review to look at commitments and pick one simple guiding priority can make future days feel lighter.');
@@ -188,8 +188,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'Pre-focus moment', detail: 'Take a few minutes to outline what would feel good to complete and gently tidy your workspace or tabs.' },
-    { label: 'Midday check‑in', detail: 'Pause around the middle of the day to notice what helped or pulled your attention away.' },
-    { label: 'End-of-day wind‑down', detail: 'Note a few wins, park loose ideas for tomorrow, and pick one or two priorities for next time.' },
+    { label: 'Midday checkâ€‘in', detail: 'Pause around the middle of the day to notice what helped or pulled your attention away.' },
+    { label: 'End-of-day windâ€‘down', detail: 'Note a few wins, park loose ideas for tomorrow, and pick one or two priorities for next time.' },
   ];
 
   return { efficiencyScore, completionRate, flowConsistency, state, interpretation, recommendations, plan };
@@ -414,16 +414,16 @@ export default function CognitiveFocusEfficiencyCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Completion Rate</strong> = clamp(Completed Tasks ÷ Planned Tasks × 100, 0, 150%). Values above 100% indicate
+            <strong>Completion Rate</strong> = clamp(Completed Tasks Ã· Planned Tasks Ã— 100, 0, 150%). Values above 100% indicate
             completing more than planned; values below 100% suggest over-planning.
           </p>
           <p>
-            <strong>Efficiency Score</strong> = clamp((Completion Rate + Flow Minutes ÷ 2 − Major Distractions × 2 − Multitask
-            Percent × 0.6) ÷ 1.2, 0, 100). Higher completion rates and flow time increase efficiency; distractions and multitasking
+            <strong>Efficiency Score</strong> = clamp((Completion Rate + Flow Minutes Ã· 2 âˆ’ Major Distractions Ã— 2 âˆ’ Multitask
+            Percent Ã— 0.6) Ã· 1.2, 0, 100). Higher completion rates and flow time increase efficiency; distractions and multitasking
             reduce it.
           </p>
           <p>
-            <strong>Flow Consistency</strong> = clamp(Flow Minutes ÷ (Planned Tasks × 30) × 100, 0, 200%). This measures how much
+            <strong>Flow Consistency</strong> = clamp(Flow Minutes Ã· (Planned Tasks Ã— 30) Ã— 100, 0, 200%). This measures how much
             flow time you achieved relative to a target of 30 minutes per planned task.
           </p>
           <p>
@@ -747,7 +747,7 @@ export default function CognitiveFocusEfficiencyCalculator() {
           Improving cognitive focus efficiency is essential for productivity, creativity, and overall performance. By understanding
           how attention works, creating conditions for flow state, managing distractions, and developing focus skills, you can
           enhance your ability to concentrate and produce meaningful work. Remember that focus is a skill that improves with
-          practice—start with small changes, protect focused work time, and gradually build your capacity for sustained attention.
+          practiceâ€”start with small changes, protect focused work time, and gradually build your capacity for sustained attention.
           Track your progress, experiment with different strategies, and adjust based on what works for your unique situation. If
           focus difficulties significantly impact your work or daily functioning, consider consulting a healthcare provider or
           mental health professional who can provide personalized support. This tool is designed for wellness reflection and is

@@ -33,7 +33,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Assign honest 1–10 scores for mood, energy, connection, purpose, and stress.',
+  'Assign honest 1â€“10 scores for mood, energy, connection, purpose, and stress.',
   'Keep inputs blank-free so the tool can calculate indices properly.',
   'Submit to see wellbeing vs stress balance plus resilience capacity.',
   'Review recommendations and plan items to boost the lowest levers.',
@@ -43,9 +43,9 @@ const steps = [
 const faqs = [
   { question: 'Is this a diagnostic mental health test?', answer: 'No. It is an awareness snapshot to spark reflection and conversations with licensed professionals if needed.' },
   { question: 'How often should I track?', answer: 'Weekly tracking shows patterns. Log more frequently during stressful seasons for tighter feedback.' },
-  { question: 'What is a good wellbeing index?', answer: 'Scores ≥75 indicate flourishing. 55–74 is steady. Below 55 suggests you should prioritize more support.' },
+  { question: 'What is a good wellbeing index?', answer: 'Scores â‰¥75 indicate flourishing. 55â€“74 is steady. Below 55 suggests you should prioritize more support.' },
   { question: 'Why include purpose?', answer: 'Purpose buffers stress and fuels motivation. Tracking it highlights when you need more meaningful activities.' },
-  { question: 'Can I use this with my therapist?', answer: 'Yes—export or share your scores and notes to guide sessions with objective data.' },
+  { question: 'Can I use this with my therapist?', answer: 'Yesâ€”export or share your scores and notes to guide sessions with objective data.' },
   { question: 'Does stress automatically lower the score?', answer: 'Yes. Higher stress subtracts from wellbeing and resilience so you can see how rest and boundaries help.' },
   { question: 'What if I experience extreme swings?', answer: 'Use the notes area outside this tool to record context, then seek professional care for persistent swings.' },
   { question: 'Can teams use it?', answer: 'Teams can collect anonymized averages to plan wellness initiatives or decompressing rituals.' },
@@ -60,7 +60,7 @@ const relatedCalculators = [
   { name: 'Reaction Time Improvement Wellness Tracker', slug: 'reaction-time-improvement-tracker', description: 'Watch cognitive sharpness trends evolve as wellbeing shifts.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/emotional-wellbeing-index-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/emotional-wellbeing-index-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -69,7 +69,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Emotional Wellbeing Index Wellness Tracker', item: baseUrl },
       ],
     },
@@ -137,7 +137,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (wellbeingIndex < 70) {
     status = 'steady';
     interpretation =
-      'This pattern looks fairly steady, with a bit of room for extra care. You might gently strengthen one small habit or check‑in that supports you this week.';
+      'This pattern looks fairly steady, with a bit of room for extra care. You might gently strengthen one small habit or checkâ€‘in that supports you this week.';
   }
   if (wellbeingIndex < 55) {
     status = 'support needed';
@@ -154,13 +154,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
     recommendations.push('A few minutes of light reflection or journaling on what matters to you this month can help reconnect you with a sense of direction.');
   }
   if (status === 'support needed') {
-    recommendations.push('You might consider reaching out to a trusted person or a professional space where you can talk about what’s on your mind.');
+    recommendations.push('You might consider reaching out to a trusted person or a professional space where you can talk about whatâ€™s on your mind.');
   }
 
   const plan = [
-    { label: 'Morning check‑in', detail: 'Gently name one feeling you notice and one small action that could support you today.' },
-    { label: 'Midday pause', detail: 'If you remember, take a short moment mid‑day to notice your energy and stress, and see whether a brief breath or stretch might feel good.' },
-    { label: 'Evening reflection', detail: 'Before bed, you might jot down a few gratitudes, moments, or lessons from the day—only if it feels helpful, not forced.' },
+    { label: 'Morning checkâ€‘in', detail: 'Gently name one feeling you notice and one small action that could support you today.' },
+    { label: 'Midday pause', detail: 'If you remember, take a short moment midâ€‘day to notice your energy and stress, and see whether a brief breath or stretch might feel good.' },
+    { label: 'Evening reflection', detail: 'Before bed, you might jot down a few gratitudes, moments, or lessons from the dayâ€”only if it feels helpful, not forced.' },
   ];
 
   return { wellbeingIndex, resilienceScore, status, interpretation, recommendations, plan };
@@ -249,7 +249,7 @@ export default function EmotionalWellbeingIndexTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Wellbeing index</p>
                 <p className="text-2xl font-semibold text-primary">{result.wellbeingIndex.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A simple 0–100 snapshot based on how today’s inputs feel to you.</p>
+                <p className="text-xs text-muted-foreground">A simple 0â€“100 snapshot based on how todayâ€™s inputs feel to you.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Resilience score</p>
@@ -308,9 +308,9 @@ export default function EmotionalWellbeingIndexTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Wellbeing index</strong> = clamp(((mood + energy + connection + purpose)/4 × 10) − stress × 2).</p>
-          <p><strong>Resilience score</strong> = clamp((positiveAverage × 8) − stress × 3 + 20).</p>
-          <p>All values are normalized 0–100 for easy trend comparisons.</p>
+          <p><strong>Wellbeing index</strong> = clamp(((mood + energy + connection + purpose)/4 Ã— 10) âˆ’ stress Ã— 2).</p>
+          <p><strong>Resilience score</strong> = clamp((positiveAverage Ã— 8) âˆ’ stress Ã— 3 + 20).</p>
+          <p>All values are normalized 0â€“100 for easy trend comparisons.</p>
         </CardContent>
       </Card>
 
@@ -339,7 +339,7 @@ export default function EmotionalWellbeingIndexTracker() {
                 <p className="text-xl font-semibold text-primary">
                   {(8 - (form.getValues().connectionScore ?? 0)).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Shows how today’s sense of connection compares with a fuller, more supported day for you.</p>
+                <p className="text-xs text-muted-foreground">Shows how todayâ€™s sense of connection compares with a fuller, more supported day for you.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Purpose gap</p>
@@ -408,7 +408,7 @@ export default function EmotionalWellbeingIndexTracker() {
           Emotional Wellbeing Index Wellness Tracker: A Gentle Way to Notice How You Are Doing
         </h1>
         <p className="text-lg italic text-gray-700">
-          This guide walks through using a simple five-part check-in—mood, energy, connection, purpose, and stress—to
+          This guide walks through using a simple five-part check-inâ€”mood, energy, connection, purpose, and stressâ€”to
           create a non-diagnostic snapshot of your emotional landscape.
         </p>
 
@@ -427,7 +427,7 @@ export default function EmotionalWellbeingIndexTracker() {
           </li>
           <li>
             <a href="#status-labels" className="hover:underline">
-              Understanding “Flourishing,” “Steady,” and “Support Needed”
+              Understanding â€œFlourishing,â€ â€œSteady,â€ and â€œSupport Neededâ€
             </a>
           </li>
           <li>
@@ -448,8 +448,8 @@ export default function EmotionalWellbeingIndexTracker() {
           Why Track Emotional Wellbeing as a Lifestyle Signal?
         </h2>
         <p>
-          Emotional states naturally ebb and flow. Rather than labeling those shifts as “good” or “bad,” a tracker like
-          this simply helps you see patterns more clearly—such as when long days, disrupted sleep, or isolation start to
+          Emotional states naturally ebb and flow. Rather than labeling those shifts as â€œgoodâ€ or â€œbad,â€ a tracker like
+          this simply helps you see patterns more clearlyâ€”such as when long days, disrupted sleep, or isolation start to
           stack up.
         </p>
         <p>
@@ -461,41 +461,41 @@ export default function EmotionalWellbeingIndexTracker() {
           The Five Pillars: Mood, Energy, Connection, Purpose, and Stress
         </h2>
         <p>
-          The tracker invites you to rate five areas on a simple 1–10 scale. None of these numbers are right or wrong;
-          they are just one day’s impression.
+          The tracker invites you to rate five areas on a simple 1â€“10 scale. None of these numbers are right or wrong;
+          they are just one dayâ€™s impression.
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>
-            <strong>Mood</strong> – how your emotional tone feels overall today.
+            <strong>Mood</strong> â€“ how your emotional tone feels overall today.
           </li>
           <li>
-            <strong>Energy</strong> – how resourced or depleted your body and mind feel.
+            <strong>Energy</strong> â€“ how resourced or depleted your body and mind feel.
           </li>
           <li>
-            <strong>Connection</strong> – your sense of being supported, seen, or accompanied.
+            <strong>Connection</strong> â€“ your sense of being supported, seen, or accompanied.
           </li>
           <li>
-            <strong>Purpose</strong> – how connected you feel to things that matter to you.
+            <strong>Purpose</strong> â€“ how connected you feel to things that matter to you.
           </li>
           <li>
-            <strong>Stress</strong> – how full or overwhelmed this moment in time feels.
+            <strong>Stress</strong> â€“ how full or overwhelmed this moment in time feels.
           </li>
         </ul>
         <p>
-          Looking at these side by side often reveals which small lever might be easiest to support next—maybe checking
+          Looking at these side by side often reveals which small lever might be easiest to support nextâ€”maybe checking
           in with a friend, lightening a commitment, or revisiting something meaningful to you.
         </p>
 
         <h2 id="status-labels" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
-          Understanding “Flourishing,” “Steady,” and “Support Needed”
+          Understanding â€œFlourishing,â€ â€œSteady,â€ and â€œSupport Neededâ€
         </h2>
         <p>
-          Status labels in this tracker summarize your entries but are not diagnoses. “Flourishing” usually means your
-          ratings suggest a relatively supportive moment. “Steady” reflects a mixed or middle space. “Support needed”
+          Status labels in this tracker summarize your entries but are not diagnoses. â€œFlourishingâ€ usually means your
+          ratings suggest a relatively supportive moment. â€œSteadyâ€ reflects a mixed or middle space. â€œSupport neededâ€
           can be a gentle cue to invite extra care, support, or rest into your week.
         </p>
         <p>
-          If you consistently see “support needed,” or if you feel worried about your wellbeing, those patterns can be a
+          If you consistently see â€œsupport needed,â€ or if you feel worried about your wellbeing, those patterns can be a
           helpful starting point for conversations with a trusted person or a licensed professional.
         </p>
 
@@ -503,13 +503,13 @@ export default function EmotionalWellbeingIndexTracker() {
           How to Use Results for Reflection, Not Self-Judgment
         </h2>
         <p>
-          It can be tempting to treat every number as an evaluation of how well you are “coping.” The intention here is
+          It can be tempting to treat every number as an evaluation of how well you are â€œcoping.â€ The intention here is
           different: to give you language and structure so you can care for yourself with more information and less
           guesswork.
         </p>
         <p>
-          You might use results to choose one tiny experiment—like a wind-down ritual, a walk with a friend, or an
-          honest boundaries conversation—rather than trying to overhaul everything at once.
+          You might use results to choose one tiny experimentâ€”like a wind-down ritual, a walk with a friend, or an
+          honest boundaries conversationâ€”rather than trying to overhaul everything at once.
         </p>
 
         <h2 id="bringing-to-support" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">

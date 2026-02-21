@@ -53,12 +53,12 @@ const faqs = [
   {
     question: 'How is blended GI calculated?',
     answer:
-      'Blended GI = Σ(GI × carbs) / Σ(carbs) for all foods in the meal. It\'s a weighted average based on carbohydrate content. Foods with more carbs have greater influence on the blended GI.',
+      'Blended GI = Î£(GI Ã— carbs) / Î£(carbs) for all foods in the meal. It\'s a weighted average based on carbohydrate content. Foods with more carbs have greater influence on the blended GI.',
   },
   {
     question: 'What is glycemic load (GL)?',
     answer:
-      'Glycemic load = (GI × total carbs) / 100. It accounts for both GI and portion size. GL &lt;10 is low, 10-20 is medium, &gt;20 is high. GL provides a better measure of blood sugar impact than GI alone.',
+      'Glycemic load = (GI Ã— total carbs) / 100. It accounts for both GI and portion size. GL &lt;10 is low, 10-20 is medium, &gt;20 is high. GL provides a better measure of blood sugar impact than GI alone.',
   },
   {
     question: 'How does blending affect GI?',
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/glycemic-index-meal-blender-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/glycemic-index-meal-blender-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Glycemic Index Meal Blender Calculator', item: baseUrl },
       ],
     },
@@ -395,10 +395,10 @@ export default function GlycemicIndexMealBlenderCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Blended GI</strong> = Σ(GI × carbs) / Σ(carbs) for all foods in the meal. Weighted average based on carbohydrate content.
+            <strong>Blended GI</strong> = Î£(GI Ã— carbs) / Î£(carbs) for all foods in the meal. Weighted average based on carbohydrate content.
           </p>
           <p>
-            <strong>Glycemic load (GL)</strong> = (blended GI × total carbs) / 100. Accounts for both GI and portion size.
+            <strong>Glycemic load (GL)</strong> = (blended GI Ã— total carbs) / 100. Accounts for both GI and portion size.
           </p>
           <p>
             <strong>GI ranges</strong>: Low: &lt;55, Medium: 55-70, High: &gt;70. GL ranges: Low: &lt;10, Medium: 10-20, High: &gt;20.

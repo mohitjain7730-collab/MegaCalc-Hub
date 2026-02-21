@@ -62,7 +62,7 @@ const faqs = [
   {
     question: 'What counts as recovery practices?',
     answer:
-      'Recovery includes quality sleep routines, therapy or coaching, exercise, breaks, time off, creative outlets, boundaries, social support, and nutrition—rate overall consistency.',
+      'Recovery includes quality sleep routines, therapy or coaching, exercise, breaks, time off, creative outlets, boundaries, social support, and nutritionâ€”rate overall consistency.',
   },
   {
     question: 'Why is sleep included separately?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/emotional-burnout-recovery-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/emotional-burnout-recovery-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Emotional Burnout Recovery Wellness Calculator', item: baseUrl },
       ],
     },
@@ -379,13 +379,13 @@ export default function EmotionalBurnoutRecoveryCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Burnout index</strong> = Workload load (≤35) + Sleep load (≤20) + Emotional load (≤30) − Recovery relief (≤25). Each component is scaled to emphasize its contribution.
+            <strong>Burnout index</strong> = Workload load (â‰¤35) + Sleep load (â‰¤20) + Emotional load (â‰¤30) âˆ’ Recovery relief (â‰¤25). Each component is scaled to emphasize its contribution.
           </p>
           <p>
-            <strong>Recovery weeks</strong> = Clamp(burnout index ÷ 8, 2-20). Higher burnout requires longer consistent recovery behaviors to restore baseline nervous system regulation.
+            <strong>Recovery weeks</strong> = Clamp(burnout index Ã· 8, 2-20). Higher burnout requires longer consistent recovery behaviors to restore baseline nervous system regulation.
           </p>
           <p>
-            <strong>Sleep debt</strong> is calculated as (8 − sleep hours) × 7. Addressing sleep debt is one of the fastest levers for reducing the index.
+            <strong>Sleep debt</strong> is calculated as (8 âˆ’ sleep hours) Ã— 7. Addressing sleep debt is one of the fastest levers for reducing the index.
           </p>
           <p>Use these formulas to monitor incremental improvements as you adjust workload, sleep, and recovery habits.</p>
         </CardContent>
@@ -482,10 +482,10 @@ export default function EmotionalBurnoutRecoveryCalculator() {
         <p>Beyond hours worked, burnout accelerates when values clash, recognition is missing, psychological safety is low, or support systems erode. Leaders should review role clarity, decision rights, and resource access, not just individual resilience.</p>
 
         <h2 id="rest" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Seven Types of Rest</h2>
-        <p>Dr. Saundra Dalton-Smith’s framework highlights physical, mental, sensory, creative, emotional, social, and spiritual rest. Audit which types you regularly practice and schedule the missing ones. For example, sensory rest = silent walks; creative rest = art, music, nature immersion.</p>
+        <p>Dr. Saundra Dalton-Smithâ€™s framework highlights physical, mental, sensory, creative, emotional, social, and spiritual rest. Audit which types you regularly practice and schedule the missing ones. For example, sensory rest = silent walks; creative rest = art, music, nature immersion.</p>
 
         <h2 id="conversation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Boundaries and Conversations</h2>
-        <p>Scripts help: “I can keep this timeline if we pause Project B or add support.” Practice boundary statements ahead of time and align requests with team outcomes to reduce guilt.</p>
+        <p>Scripts help: â€œI can keep this timeline if we pause Project B or add support.â€ Practice boundary statements ahead of time and align requests with team outcomes to reduce guilt.</p>
 
         <h2 id="tracking" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Tracking Metrics</h2>
         <p>Key indicators: burnout index, sleep hours, HRV, mood ratings, and number of true recovery blocks per week. If any two trend downward for more than 14 days, intervene early.</p>

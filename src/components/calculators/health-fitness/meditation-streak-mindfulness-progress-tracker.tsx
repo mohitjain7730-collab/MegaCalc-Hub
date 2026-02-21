@@ -37,30 +37,30 @@ const steps = [
   'Log the average minutes per session this week.',
   'Score quality from 1 (mind wandering) to 5 (deep presence).',
   'Count mindful check-ins during the day (breath resets, body scans).',
-  'Rate stress on a 1–10 scale; the tracker will show if mindfulness offsets it.',
+  'Rate stress on a 1â€“10 scale; the tracker will show if mindfulness offsets it.',
 ];
 
 const faqs = [
-  { question: 'What counts as a mindful check-in?', answer: '30–90 second pauses to breathe, feel sensations, or label thoughts between tasks.' },
-  { question: 'Do I need to meditate daily?', answer: 'A streak helps build identity, but intentional rest days are fine—log zero minutes honestly.' },
+  { question: 'What counts as a mindful check-in?', answer: '30â€“90 second pauses to breathe, feel sensations, or label thoughts between tasks.' },
+  { question: 'Do I need to meditate daily?', answer: 'A streak helps build identity, but intentional rest days are fineâ€”log zero minutes honestly.' },
   { question: 'How is quality scored?', answer: 'Use subjective feel: 1 = distracted, 3 = mostly present, 5 = deeply aware/compassionate.' },
   { question: 'Can I include yoga nidra or breathwork?', answer: 'Yes, as long as the intention is mindfulness, not just relaxation.' },
-  { question: 'What if my streak resets?', answer: 'The tracker will shift to “restart gently” and prioritize shorter sessions + mindful moments.' },
+  { question: 'What if my streak resets?', answer: 'The tracker will shift to â€œrestart gentlyâ€ and prioritize shorter sessions + mindful moments.' },
   { question: 'How do I raise the balance index?', answer: 'Pair daily sits with micro-check-ins and supportive sleep so stress drops faster.' },
-  { question: 'Is journaling part of this?', answer: 'Journaling after sessions helps integrate insights—log it under mindful moments if helpful.' },
-  { question: 'Can teams use this?', answer: 'Yes—collect anonymized scores to support workplace mindfulness challenges.' },
+  { question: 'Is journaling part of this?', answer: 'Journaling after sessions helps integrate insightsâ€”log it under mindful moments if helpful.' },
+  { question: 'Can teams use this?', answer: 'Yesâ€”collect anonymized scores to support workplace mindfulness challenges.' },
   { question: 'Does caffeine or alcohol affect scores?', answer: 'Track them separately; noticeable spikes in stress will show up in the index.' },
-  { question: 'How soon will I notice benefits?', answer: 'Most consistent practitioners feel calmer within 10–14 days of steady streaks.' },
+  { question: 'How soon will I notice benefits?', answer: 'Most consistent practitioners feel calmer within 10â€“14 days of steady streaks.' },
 ];
 
 const relatedCalculators = [
   { name: 'Reaction Time Improvement Tracker', slug: 'reaction-time-improvement-tracker', description: 'See how mindfulness streaks improve neural sharpness.' },
   { name: 'Stress Hormone Balance Calculator', slug: 'stress-hormone-balance-calculator', description: 'Track cortisol vs melatonin alongside meditation.' },
   { name: 'Emotional Wellbeing Index Calculator', slug: 'emotional-wellbeing-index-calculator', description: 'Check mood trends as your streak grows.' },
-  { name: 'Memory Retention Percentage Calculator', slug: 'memory-retention-percentage-calculator', description: 'Mindfulness can boost study retention—monitor both.' },
+  { name: 'Memory Retention Percentage Calculator', slug: 'memory-retention-percentage-calculator', description: 'Mindfulness can boost study retentionâ€”monitor both.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/meditation-streak-mindfulness-progress-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/meditation-streak-mindfulness-progress-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -69,7 +69,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Meditation Streak Mindfulness Progress Tracker', item: baseUrl },
       ],
     },
@@ -147,19 +147,19 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (momentumScore < 40) {
     status = 'restart gently';
     interpretation =
-      'It looks like practice has been lighter or more on‑and‑off lately. You might choose very small, kind moments of mindfulness as a way back in, if and when you feel ready.';
+      'It looks like practice has been lighter or more onâ€‘andâ€‘off lately. You might choose very small, kind moments of mindfulness as a way back in, if and when you feel ready.';
   }
 
   const recommendations = [
     'If it feels helpful, you can anchor a short pause or sit to something you already do, like morning coffee or winding down at night.',
-    'Gentle reminders—digital or on paper—can support you in noticing a few mindful check‑ins across the day.',
+    'Gentle remindersâ€”digital or on paperâ€”can support you in noticing a few mindful checkâ€‘ins across the day.',
     'On busier days, it is completely okay to lean on very short practices instead of trying to fit in a long session.',
   ];
   if (status === 'steady') {
-    recommendations.push('You might enjoy occasionally exploring different styles such as a brief body scan or a loving‑kindness practice.');
+    recommendations.push('You might enjoy occasionally exploring different styles such as a brief body scan or a lovingâ€‘kindness practice.');
   }
   if (status === 'restart gently') {
-    recommendations.push('Some people like to pair a few mindful breaths with a short, non‑judgmental journaling note to reconnect with the practice.');
+    recommendations.push('Some people like to pair a few mindful breaths with a short, nonâ€‘judgmental journaling note to reconnect with the practice.');
   }
 
   const plan = [
@@ -348,9 +348,9 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Momentum score</strong> = streakFactor×30 + timeFactor×25 + qualityFactor×25 + mindfulFactor×20.</p>
-          <p><strong>Balance index</strong> = momentumScore×0.7 + stressRelief×30.</p>
-          <p>stressRelief = clamp((10 − stressScale) ÷ 10)</p>
+          <p><strong>Momentum score</strong> = streakFactorÃ—30 + timeFactorÃ—25 + qualityFactorÃ—25 + mindfulFactorÃ—20.</p>
+          <p><strong>Balance index</strong> = momentumScoreÃ—0.7 + stressReliefÃ—30.</p>
+          <p>stressRelief = clamp((10 âˆ’ stressScale) Ã· 10)</p>
         </CardContent>
       </Card>
 
@@ -377,14 +377,14 @@ export default function MeditationStreakMindfulnessProgressTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Streak to 30 days</p>
                 <p className="text-xl font-semibold text-primary">{Math.max(0, 30 - (form.getValues().streakDays ?? 0))} days</p>
-                <p className="text-xs text-muted-foreground">You can treat 30‑day stretches as gentle milestones if that feels motivating.</p>
+                <p className="text-xs text-muted-foreground">You can treat 30â€‘day stretches as gentle milestones if that feels motivating.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Daily mindful coverage</p>
                 <p className="text-xl font-semibold text-primary">
                   {Math.min(100, ((form.getValues().mindfulMoments ?? 0) / 6) * 100).toFixed(0)}%
                 </p>
-                <p className="text-xs text-muted-foreground">You can play with how many tiny check‑ins feel natural for you on a typical day.</p>
+                <p className="text-xs text-muted-foreground">You can play with how many tiny checkâ€‘ins feel natural for you on a typical day.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stress relief gap</p>
@@ -447,7 +447,7 @@ export default function MeditationStreakMindfulnessProgressTracker() {
         </h1>
         <p className="text-lg italic text-gray-700">
           This guide shows you how to use streaks, session minutes, and tiny mindful pauses as a gentle reflection of
-          how your practice feels—rather than a strict performance scoreboard.
+          how your practice feelsâ€”rather than a strict performance scoreboard.
         </p>
 
         {/* TABLE OF CONTENTS */}
@@ -470,7 +470,7 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           </li>
           <li>
             <a href="#interpreting-status" className="hover:underline">
-              Interpreting “Thriving,” “Steady,” and “Restart Gently”
+              Interpreting â€œThriving,â€ â€œSteady,â€ and â€œRestart Gentlyâ€
             </a>
           </li>
           <li>
@@ -486,12 +486,12 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           Why Track Meditation and Mindfulness at All?
         </h2>
         <p>
-          Many people notice that mindfulness supports mood, sleep, and decision-making—but it can be hard to remember
+          Many people notice that mindfulness supports mood, sleep, and decision-makingâ€”but it can be hard to remember
           that on hectic days. A simple tracker makes your efforts and small wins more visible, especially when life
           gets busier.
         </p>
         <p>
-          Here, the goal is not to “hit perfect streaks” forever. Instead, it is to notice trends, celebrate any amount
+          Here, the goal is not to â€œhit perfect streaksâ€ forever. Instead, it is to notice trends, celebrate any amount
           of practice, and gently reconnect when things go quiet for a while.
         </p>
 
@@ -499,25 +499,25 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           Key Signals in the Tracker: Streaks, Minutes, Quality, and Stress
         </h2>
         <p>
-          The momentum and balance scores combine a few simple ingredients—how many days in a row you have practiced,
+          The momentum and balance scores combine a few simple ingredientsâ€”how many days in a row you have practiced,
           how long sessions last on average, how present they feel, how many micro check-ins you remember, and your own
           sense of stress.
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>
-            <strong>Streak days</strong> – show how often you have been returning to the cushion or practice.
+            <strong>Streak days</strong> â€“ show how often you have been returning to the cushion or practice.
           </li>
           <li>
-            <strong>Average minutes</strong> – reflect overall time invested, whether sessions are short or long.
+            <strong>Average minutes</strong> â€“ reflect overall time invested, whether sessions are short or long.
           </li>
           <li>
-            <strong>Quality score</strong> – captures your personal sense of presence, not any objective “grade.”
+            <strong>Quality score</strong> â€“ captures your personal sense of presence, not any objective â€œgrade.â€
           </li>
           <li>
-            <strong>Mindful moments</strong> – tiny check-ins scattered across your day.
+            <strong>Mindful moments</strong> â€“ tiny check-ins scattered across your day.
           </li>
           <li>
-            <strong>Stress rating</strong> – offers context for how full your current season feels.
+            <strong>Stress rating</strong> â€“ offers context for how full your current season feels.
           </li>
         </ul>
 
@@ -525,7 +525,7 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           The Power of Micro Check-ins Throughout the Day
         </h2>
         <p>
-          Short pauses—like a few breaths before opening messages or noticing your feet on the ground during a commute—can
+          Short pausesâ€”like a few breaths before opening messages or noticing your feet on the ground during a commuteâ€”can
           support you just as meaningfully as longer sits. Logging them encourages you to see your day as full of small
           practice opportunities.
         </p>
@@ -535,11 +535,11 @@ export default function MeditationStreakMindfulnessProgressTracker() {
         </p>
 
         <h2 id="interpreting-status" className="text-2xl font-bold text-foreground pt-6" itemProp="articleSection">
-          Interpreting “Thriving,” “Steady,” and “Restart Gently”
+          Interpreting â€œThriving,â€ â€œSteady,â€ and â€œRestart Gentlyâ€
         </h2>
         <p>
-          Status labels in this tracker are meant to feel like friendly signposts, not scores. “Thriving” often means
-          your inputs suggest a supportive rhythm. “Steady” reflects a base you can build on. “Restart gently” is an
+          Status labels in this tracker are meant to feel like friendly signposts, not scores. â€œThrivingâ€ often means
+          your inputs suggest a supportive rhythm. â€œSteadyâ€ reflects a base you can build on. â€œRestart gentlyâ€ is an
           invitation to re-enter practice in very small, kind steps when life has been heavy or busy.
         </p>
         <p>
@@ -557,7 +557,7 @@ export default function MeditationStreakMindfulnessProgressTracker() {
         </p>
         <p>
           You can use this tracker as a soft accountability partner: a place to notice stories you are telling yourself
-          about “success,” and an anchor for practicing more self-kindness over time.
+          about â€œsuccess,â€ and an anchor for practicing more self-kindness over time.
         </p>
       </section>
 

@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/glycogen-replenishment-estimator-post-workout';
+const baseUrl = 'https://mycalculating.com/health-fitness/glycogen-replenishment-estimator-post-workout';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Glycogen Replenishment Estimator (post-workout)', item: baseUrl },
       ],
     },
@@ -538,10 +538,10 @@ export default function GlycogenReplenishmentEstimatorPostWorkout() {
             <strong>Glycogen depletion</strong> = estimated from workout duration, intensity, and type. High-intensity and longer-duration workouts deplete more glycogen (up to 40-50% of total stores).
           </p>
           <p>
-            <strong>Glycogen needed</strong> = (body weight in kg × glycogen depletion %) × 15-20g per kg bodyweight. Total body glycogen stores are approximately 400-600g in trained individuals.
+            <strong>Glycogen needed</strong> = (body weight in kg Ã— glycogen depletion %) Ã— 15-20g per kg bodyweight. Total body glycogen stores are approximately 400-600g in trained individuals.
           </p>
           <p>
-            <strong>Hours to replenish</strong> = glycogen needed / (carb intake per hour × 0.7). Glycogen synthesis rate is approximately 5-7% per hour with adequate carb intake.
+            <strong>Hours to replenish</strong> = glycogen needed / (carb intake per hour Ã— 0.7). Glycogen synthesis rate is approximately 5-7% per hour with adequate carb intake.
           </p>
           <p>Glycogen replenishment is fastest in the first 2 hours post-workout (the "glycogen window"). Consuming 1-1.2g carbs per kg bodyweight within 2 hours optimizes recovery.</p>
         </CardContent>

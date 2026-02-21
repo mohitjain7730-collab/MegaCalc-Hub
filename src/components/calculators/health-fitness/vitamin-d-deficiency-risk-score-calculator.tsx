@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-d-deficiency-risk-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-d-deficiency-risk-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin D Deficiency Risk Score Calculator', item: baseUrl },
       ],
     },
@@ -158,7 +158,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     // Sun exposure impact (0-10 scale, each point adds ~3 ng/mL)
     const sunImpact = values.sunExposure * 3;
     
-    // Dietary intake impact (600 IU = ~15 ng/mL, so each 100 IU ≈ 2.5 ng/mL)
+    // Dietary intake impact (600 IU = ~15 ng/mL, so each 100 IU â‰ˆ 2.5 ng/mL)
     const dietaryImpact = (values.dietaryIntake / 100) * 2.5;
     
     // Age adjustment (older adults may have lower levels)
@@ -424,7 +424,7 @@ export default function VitaminDDeficiencyRiskScoreCalculator() {
             <strong>Risk score</strong> = calculated from vitamin D level (normal: 30-100 ng/mL, optimal: 40-60 ng/mL), sun exposure (0-10 scale), and dietary intake (recommended: 600-800 IU/day).
           </p>
           <p>
-            <strong>If vitamin D level not provided</strong>: Estimated from sun exposure (each point adds ~3 ng/mL), dietary intake (100 IU ≈ 2.5 ng/mL), and age adjustments.
+            <strong>If vitamin D level not provided</strong>: Estimated from sun exposure (each point adds ~3 ng/mL), dietary intake (100 IU â‰ˆ 2.5 ng/mL), and age adjustments.
           </p>
           <p>
             <strong>Normal ranges</strong>: 30-100 ng/mL. Levels below 20 ng/mL indicate deficiency, 20-30 ng/mL indicate insufficiency. Optimal levels are typically 40-60 ng/mL.

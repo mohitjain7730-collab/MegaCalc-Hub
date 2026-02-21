@@ -76,7 +76,7 @@ const faqs = [
   {
     question: 'How long should microbreaks be?',
     answer:
-      'Microbreaks can be as short as 30 seconds to 2 minutes for basic movement and eye rest. Longer breaks (3-5 minutes) every 1-2 hours allow for more comprehensive stretching and movement. The key is frequency rather than duration—frequent short breaks are better than infrequent long breaks.',
+      'Microbreaks can be as short as 30 seconds to 2 minutes for basic movement and eye rest. Longer breaks (3-5 minutes) every 1-2 hours allow for more comprehensive stretching and movement. The key is frequency rather than durationâ€”frequent short breaks are better than infrequent long breaks.',
   },
   {
     question: 'Can I use software reminders for microbreaks?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/microbreak-frequency-calculator-for-desk-jobs';
+const baseUrl = 'https://mycalculating.com/health-fitness/microbreak-frequency-calculator-for-desk-jobs';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Microbreak Frequency Calculator for Desk Jobs', item: baseUrl },
       ],
     },
@@ -446,10 +446,10 @@ export default function MicrobreakFrequencyCalculatorForDeskJobs() {
             <strong>Recommended break frequency</strong> is calculated based on: base frequency (30 minutes), adjusted for ergonomic issues (severe: 15 min, moderate: 20 min, mild: 25 min), activity level (sedentary: -5 min, moderate: +5 min), and work hours (10+ hours: -5 min).
           </p>
           <p>
-            <strong>Break score</strong> compares current break frequency to recommended frequency. Score = 100 × (Recommended / Current) ratio, adjusted for how close current frequency is to recommended. Higher scores indicate better break frequency alignment.
+            <strong>Break score</strong> compares current break frequency to recommended frequency. Score = 100 Ã— (Recommended / Current) ratio, adjusted for how close current frequency is to recommended. Higher scores indicate better break frequency alignment.
           </p>
           <p>
-            <strong>Breaks per day</strong> = (Daily Work Hours × 60) / Recommended Frequency. This shows how many breaks you should take at the recommended frequency.
+            <strong>Breaks per day</strong> = (Daily Work Hours Ã— 60) / Recommended Frequency. This shows how many breaks you should take at the recommended frequency.
           </p>
           <p>Optimal break frequency prevents musculoskeletal disorders, reduces eye strain, improves circulation, and maintains productivity. More frequent breaks are needed with ergonomic issues, sedentary lifestyle, or extended work hours.</p>
         </CardContent>
@@ -698,7 +698,7 @@ export default function MicrobreakFrequencyCalculatorForDeskJobs() {
 <hr />
 
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Regular microbreaks are essential for desk workers to prevent musculoskeletal disorders, reduce eye strain, and maintain long-term health. Use this calculator to determine your optimal break frequency, implement reminder systems, and establish consistent break routines. Remember: prevention through regular microbreaks is far more effective than treating problems after they develop. Prioritize your health by taking breaks—your body and productivity will thank you.</p>
+    <p>Regular microbreaks are essential for desk workers to prevent musculoskeletal disorders, reduce eye strain, and maintain long-term health. Use this calculator to determine your optimal break frequency, implement reminder systems, and establish consistent break routines. Remember: prevention through regular microbreaks is far more effective than treating problems after they develop. Prioritize your health by taking breaksâ€”your body and productivity will thank you.</p>
 </section>
       <Card>
         <CardHeader>

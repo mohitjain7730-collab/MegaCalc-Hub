@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/optimal-insurance-deductible-calculator';
+const baseUrl = 'https://mycalculating.com/finance/optimal-insurance-deductible-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Optimal Insurance Deductible Calculator', item: baseUrl },
       ],
     },
@@ -158,7 +158,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Break-Even Years = Increase in Deductible / Annual Premium Savings
   const breakEvenYears = annualPremiumSavings > 0 ? deductibleIncrease / annualPremiumSavings : 0;
   
-  // 5-Year Savings = (Annual Premium Savings × 5) - Deductible Increase
+  // 5-Year Savings = (Annual Premium Savings Ã— 5) - Deductible Increase
   const fiveYearSavings = (annualPremiumSavings * 5) - deductibleIncrease;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -385,7 +385,7 @@ export default function OptimalInsuranceDeductibleCalculator() {
             <strong>Annual Premium Savings</strong> = Current Annual Premium - Proposed Annual Premium
           </p>
           <p>
-            <strong>5-Year Net Savings</strong> = (Annual Premium Savings × 5) - Deductible Increase
+            <strong>5-Year Net Savings</strong> = (Annual Premium Savings Ã— 5) - Deductible Increase
           </p>
           <p>The break-even analysis determines how many years without a claim are needed for premium savings to offset the increased deductible. Shorter break-even periods indicate the higher deductible is more beneficial, assuming adequate emergency funds to cover the deductible if needed.</p>
         </CardContent>

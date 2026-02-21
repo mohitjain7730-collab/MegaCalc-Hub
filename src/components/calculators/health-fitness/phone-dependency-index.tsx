@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/phone-dependency-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/phone-dependency-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Phone Dependency Index', item: baseUrl },
       ],
     },
@@ -168,7 +168,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (dependencyIndex >= 60) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where phone use may sometimes feel a bit heavy. You may find that adding gentle boundaries—especially around mornings, evenings, or deep-focus blocks—helps you feel more settled.';
+      'This suggests a general lifestyle tendency where phone use may sometimes feel a bit heavy. You may find that adding gentle boundariesâ€”especially around mornings, evenings, or deep-focus blocksâ€”helps you feel more settled.';
   } else if (dependencyIndex >= 40) {
     status = 'good';
     interpretation =
@@ -190,7 +190,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   if (purposefulUsePercent < 50) {
-    recommendations.push('Define “purposeful” categories and move distracting apps off the home screen or uninstall them during weekdays.');
+    recommendations.push('Define â€œpurposefulâ€ categories and move distracting apps off the home screen or uninstall them during weekdays.');
   }
 
   const plan = [
@@ -388,10 +388,10 @@ export default function PhoneDependencyIndex() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Dependency index</strong> = Screen load (≤40) + Pickup load (≤30) + Anxiety load (≤30) − Purposeful relief (≤25). Each component is scaled to highlight its contribution to compulsive use.
+            <strong>Dependency index</strong> = Screen load (â‰¤40) + Pickup load (â‰¤30) + Anxiety load (â‰¤30) âˆ’ Purposeful relief (â‰¤25). Each component is scaled to highlight its contribution to compulsive use.
           </p>
           <p>
-            <strong>Digital balance score</strong> = 100 − Dependency index. Use it as a quick indicator of how balanced your digital life feels.
+            <strong>Digital balance score</strong> = 100 âˆ’ Dependency index. Use it as a quick indicator of how balanced your digital life feels.
           </p>
           <p>
             <strong>Screen load</strong> uses 8 hours as a saturation point; pickup load uses 120 unlocks as a high-interruption baseline.

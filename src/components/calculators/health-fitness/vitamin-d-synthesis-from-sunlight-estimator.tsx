@@ -92,7 +92,7 @@ const faqs = [
   {
     question: 'What about vitamin D in winter or high latitudes?',
     answer:
-      'At latitudes above 35° (north or south), UVB rays are too weak for vitamin D synthesis during winter months (November-February in northern hemisphere). During this time, vitamin D supplements or dietary sources are necessary.',
+      'At latitudes above 35Â° (north or south), UVB rays are too weak for vitamin D synthesis during winter months (November-February in northern hemisphere). During this time, vitamin D supplements or dietary sources are necessary.',
   },
   {
     question: 'Should I rely solely on sun exposure for vitamin D?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-d-synthesis-from-sunlight-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-d-synthesis-from-sunlight-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin D Synthesis from Sunlight Estimator', item: baseUrl },
       ],
     },
@@ -163,7 +163,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const skinExposed = values.skinExposed;
   const latitude = values.latitude;
   
-  // Base synthesis: UV Index × Exposure Time × Skin Efficiency × Skin Area
+  // Base synthesis: UV Index Ã— Exposure Time Ã— Skin Efficiency Ã— Skin Area
   const skinEfficiency = skinTypeEfficiency[skinType] || 1.0;
   const skinAreaFactor = skinExposed / 100; // Percentage to factor
   
@@ -431,15 +431,15 @@ export default function VitaminDSynthesisFromSunlightEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Vitamin D synthesis</strong> = UV Index × Exposure Time × Skin Efficiency × Skin Area Factor × Latitude Factor × Scale Factor. Skin efficiency varies by skin type (Type I: 100%, Type VI: 25%). Skin area factor = Percentage Exposed / 100.
+            <strong>Vitamin D synthesis</strong> = UV Index Ã— Exposure Time Ã— Skin Efficiency Ã— Skin Area Factor Ã— Latitude Factor Ã— Scale Factor. Skin efficiency varies by skin type (Type I: 100%, Type VI: 25%). Skin area factor = Percentage Exposed / 100.
           </p>
           <p>
-            <strong>Latitude factor</strong> adjusts for UVB availability: latitudes above 50° = 0.5, 35-50° = 0.75, below 35° = 1.0. Higher latitudes have weaker UVB, especially in winter.
+            <strong>Latitude factor</strong> adjusts for UVB availability: latitudes above 50Â° = 0.5, 35-50Â° = 0.75, below 35Â° = 1.0. Higher latitudes have weaker UVB, especially in winter.
           </p>
           <p>
-            <strong>Synthesis score</strong> = (Vitamin D Synthesized / Target Synthesis) × 100, normalized to 0-100 scale where target is 1500 IU per session.
+            <strong>Synthesis score</strong> = (Vitamin D Synthesized / Target Synthesis) Ã— 100, normalized to 0-100 scale where target is 1500 IU per session.
           </p>
-          <p>Vitamin D synthesis requires direct UVB exposure without sunscreen. Balance synthesis needs with sun protection—get adequate exposure for vitamin D, then protect skin from excessive UV damage.</p>
+          <p>Vitamin D synthesis requires direct UVB exposure without sunscreen. Balance synthesis needs with sun protectionâ€”get adequate exposure for vitamin D, then protect skin from excessive UV damage.</p>
         </CardContent>
       </Card>
 
@@ -571,7 +571,7 @@ export default function VitaminDSynthesisFromSunlightEstimator() {
     <p>More skin exposed = more synthesis. Exposing face, arms, and legs (about 25% of body) is typically sufficient. Exposing more area allows shorter exposure time.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">5. Latitude</h3>
-    <p>At higher latitudes (above 35°), UVB rays are weaker, especially in winter. During winter months at high latitudes, UVB may be insufficient for synthesis, requiring supplements.</p>
+    <p>At higher latitudes (above 35Â°), UVB rays are weaker, especially in winter. During winter months at high latitudes, UVB may be insufficient for synthesis, requiring supplements.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">6. Time of Day</h3>
     <p>Midday (10am-3pm) has strongest UVB. Early morning and late afternoon have less UVB, requiring longer exposure for the same synthesis.</p>
@@ -634,13 +634,13 @@ export default function VitaminDSynthesisFromSunlightEstimator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Latitude Effects</h3>
     <p>At higher latitudes, the sun's angle is lower, and UVB rays must travel through more atmosphere, reducing their strength:</p>
     <ul>
-        <li><b>Below 35° latitude:</b> UVB available year-round, efficient synthesis</li>
-        <li><b>35-50° latitude:</b> UVB available most of year, reduced in winter</li>
-        <li><b>Above 50° latitude:</b> UVB very weak in winter, may be insufficient for synthesis</li>
+        <li><b>Below 35Â° latitude:</b> UVB available year-round, efficient synthesis</li>
+        <li><b>35-50Â° latitude:</b> UVB available most of year, reduced in winter</li>
+        <li><b>Above 50Â° latitude:</b> UVB very weak in winter, may be insufficient for synthesis</li>
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Winter Considerations</h3>
-    <p>During winter months (November-February in northern hemisphere, May-August in southern hemisphere) at latitudes above 35°:</p>
+    <p>During winter months (November-February in northern hemisphere, May-August in southern hemisphere) at latitudes above 35Â°:</p>
     <ul>
         <li>UVB rays are too weak for significant vitamin D synthesis</li>
         <li>Even extended sun exposure may be insufficient</li>

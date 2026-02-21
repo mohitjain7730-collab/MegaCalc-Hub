@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/satiety-vs-energy-density-graph-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/satiety-vs-energy-density-graph-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Satiety vs Energy Density Graph Calculator', item: baseUrl },
       ],
     },
@@ -504,10 +504,10 @@ export default function SatietyVsEnergyDensityGraphCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Energy density</strong> = (calories / weight) × 100. Values represent calories per 100g. Lower energy density (&lt; 150 cal/100g) typically provides better satiety per calorie.
+            <strong>Energy density</strong> = (calories / weight) Ã— 100. Values represent calories per 100g. Lower energy density (&lt; 150 cal/100g) typically provides better satiety per calorie.
           </p>
           <p>
-            <strong>Satiety value</strong> = calculated from protein (0-35 points), fiber (0-30 points), volume (0-20 points), and energy density adjustment (0-15 points). Higher values (≥75) indicate better satiety per calorie.
+            <strong>Satiety value</strong> = calculated from protein (0-35 points), fiber (0-30 points), volume (0-20 points), and energy density adjustment (0-15 points). Higher values (â‰¥75) indicate better satiety per calorie.
           </p>
           <p>
             <strong>Satiety ratio</strong> = satiety value / energy density. Higher ratios indicate better satiety per unit of energy density, supporting appetite control and weight management.

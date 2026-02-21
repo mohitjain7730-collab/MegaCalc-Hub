@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/critical-illness-insurance-benefit-calculator';
+const baseUrl = 'https://mycalculating.com/finance/critical-illness-insurance-benefit-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Critical Illness Insurance Benefit Calculator', item: baseUrl },
       ],
     },
@@ -437,16 +437,16 @@ export default function CriticalIllnessInsuranceBenefitCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Income Replacement</strong> = (Annual Income / 12) × Recovery Months. Income needed during recovery period.
+            <strong>Income Replacement</strong> = (Annual Income / 12) Ã— Recovery Months. Income needed during recovery period.
           </p>
           <p>
-            <strong>Living Expenses</strong> = Monthly Expenses × Recovery Months. Essential expenses during recovery.
+            <strong>Living Expenses</strong> = Monthly Expenses Ã— Recovery Months. Essential expenses during recovery.
           </p>
           <p>
             <strong>Total Financial Need</strong> = Treatment Cost + Income Replacement + Living Expenses - Existing Savings. Total amount needed during critical illness.
           </p>
           <p>
-            <strong>Recommended Benefit</strong> = Max(Total Financial Need, 1.5 × Annual Income). Typically 1-2 years of income, but at least total financial need.
+            <strong>Recommended Benefit</strong> = Max(Total Financial Need, 1.5 Ã— Annual Income). Typically 1-2 years of income, but at least total financial need.
           </p>
           <p>
             <strong>Coverage Gap</strong> = Recommended Benefit - Existing Critical Illness Coverage. Additional coverage needed.
@@ -564,7 +564,7 @@ export default function CriticalIllnessInsuranceBenefitCalculator() {
         <p className="text-lg font-mono"><b>Total Financial Need = Treatment Cost + Income Replacement + Living Expenses - Existing Savings</b></p>
     </div>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg">
-        <p className="text-lg font-mono"><b>Recommended Benefit = Max(Total Financial Need, 1.5 × Annual Income)</b></p>
+        <p className="text-lg font-mono"><b>Recommended Benefit = Max(Total Financial Need, 1.5 Ã— Annual Income)</b></p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Key Components</h3>

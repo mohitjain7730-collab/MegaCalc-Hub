@@ -37,7 +37,7 @@ type ResultPayload = {
 
 const steps = [
   'Count your approximate number of meaningful (emotionally real) interactions per week.',
-  'Rate your sense of belonging or being “part of” at least one group (0–10).',
+  'Rate your sense of belonging or being â€œpart ofâ€ at least one group (0â€“10).',
   'Estimate hours per week spent mostly alone (not counting sleep).',
   'Estimate what percentage of your social connections are primarily digital/online.',
   'Review loneliness risk score, protection score, and suggested connection experiments.',
@@ -87,7 +87,7 @@ const faqs = [
   {
     question: 'Can online communities reduce loneliness?',
     answer:
-      'Yes, especially when they involve sustained, authentic interactions and ideally some voice or video contact—not just scrolling or likes.',
+      'Yes, especially when they involve sustained, authentic interactions and ideally some voice or video contactâ€”not just scrolling or likes.',
   },
   {
     question: 'What if my risk score is high?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/loneliness-risk-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/loneliness-risk-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Loneliness Tendency Wellness Index', item: baseUrl },
       ],
     },
@@ -192,7 +192,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   ];
 
   if (meaningfulInteractionsPerWeek < 5) {
-    recommendations.push('Aim to add 1–2 meaningful interactions per week through reach-outs, calls, or joining activities you care about.');
+    recommendations.push('Aim to add 1â€“2 meaningful interactions per week through reach-outs, calls, or joining activities you care about.');
   }
 
   if (perceivedBelonging < 5) {
@@ -279,7 +279,7 @@ export default function LonelinessRiskIndex() {
                   name="perceivedBelonging"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Belonging (0–10)</FormLabel>
+                      <FormLabel>Belonging (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 5.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -336,7 +336,7 @@ export default function LonelinessRiskIndex() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Loneliness risk</p>
                 <p className="text-2xl font-semibold text-primary">{result.lonelinessRiskScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 (higher = greater risk)</p>
+                <p className="text-xs text-muted-foreground">0â€“100 (higher = greater risk)</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Protection score</p>
@@ -346,7 +346,7 @@ export default function LonelinessRiskIndex() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Belonging</p>
                 <p className="text-2xl font-semibold text-primary">{result.perceivedBelonging}</p>
-                <p className="text-xs text-muted-foreground">0–10 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“10 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -401,13 +401,13 @@ export default function LonelinessRiskIndex() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Loneliness risk score</strong> blends low interaction frequency, low belonging, high time alone, and high digital skew into a 0–100 indicator.
+            <strong>Loneliness risk score</strong> blends low interaction frequency, low belonging, high time alone, and high digital skew into a 0â€“100 indicator.
           </p>
           <p>
             <strong>Protection score</strong> rewards higher belonging, more meaningful interactions, and a greater share of in-person or deeper connections.
           </p>
           <p>
-            The goal is not to prescribe a “correct” lifestyle but to highlight patterns that might influence how lonely you feel.
+            The goal is not to prescribe a â€œcorrectâ€ lifestyle but to highlight patterns that might influence how lonely you feel.
           </p>
         </CardContent>
       </Card>
@@ -490,7 +490,7 @@ export default function LonelinessRiskIndex() {
           Loneliness Risk: A Gentle Check-In on Your Social Health
         </h1>
         <p className="text-lg italic text-gray-700">
-          Learn how connection frequency, belonging, alone time, and digital patterns combine to influence loneliness—and what you can do about it.
+          Learn how connection frequency, belonging, alone time, and digital patterns combine to influence lonelinessâ€”and what you can do about it.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
@@ -521,7 +521,7 @@ export default function LonelinessRiskIndex() {
           Loneliness in the Digital Age
         </h2>
         <p>
-          Social media can connect and isolate. Intentional use—messaging friends, joining interest groups, or video calls—tends to help more than endless scrolling.
+          Social media can connect and isolate. Intentional useâ€”messaging friends, joining interest groups, or video callsâ€”tends to help more than endless scrolling.
         </p>
 
         <h2 id="building-belonging" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">

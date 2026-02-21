@@ -17,8 +17,8 @@ import Link from 'next/link';
 const formSchema = z.object({
   costBasis: z.number().min(0, 'Enter cost basis'),
   salePrice: z.number().min(0, 'Enter sale price'),
-  shortTermRatePct: z.number().min(0).max(100, 'Enter 0–100'),
-  longTermRatePct: z.number().min(0).max(100, 'Enter 0–100'),
+  shortTermRatePct: z.number().min(0).max(100, 'Enter 0â€“100'),
+  longTermRatePct: z.number().min(0).max(100, 'Enter 0â€“100'),
 }).refine((data) => data.salePrice > 0 || data.costBasis > 0, {
   message: 'Enter cost basis and sale price',
   path: ['salePrice'],
@@ -35,7 +35,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'Compare after-tax proceeds from selling an asset as long-term vs short-term capital gain. See how much more you keep with long-term rates.',
-      url: 'https://mycalculating.com/category/finance/long-term-vs-short-term-capital-gain-comparison-calculator',
+      url: 'https://mycalculating.com/finance/long-term-vs-short-term-capital-gain-comparison-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -79,19 +79,19 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
 
     let recommendation = '';
     if (gain <= 0) {
-      recommendation = `You have a capital loss of $${Math.abs(gain).toLocaleString(undefined, { maximumFractionDigits: 0 })}. Losses can offset gains; consult a tax advisor. This calculator compares tax on gains—when there is a gain, long-term rates usually save you money.`;
+      recommendation = `You have a capital loss of $${Math.abs(gain).toLocaleString(undefined, { maximumFractionDigits: 0 })}. Losses can offset gains; consult a tax advisor. This calculator compares tax on gainsâ€”when there is a gain, long-term rates usually save you money.`;
     } else {
       recommendation = `Long-term treatment saves you $${benefitOfLongTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })} in tax (you keep $${afterTaxLongTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })} vs $${afterTaxShortTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })} if short-term). If you are close to the long-term holding period (e.g. 1 year), consider waiting to qualify for long-term rates.`;
     }
 
     const insights: string[] = [];
-    insights.push(`Capital gain = Sale price − Cost basis = $${gain.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
+    insights.push(`Capital gain = Sale price âˆ’ Cost basis = $${gain.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
     if (gain > 0) {
       insights.push(`Short-term tax at ${v.shortTermRatePct}%: $${taxShortTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })}. After-tax (short-term): $${afterTaxShortTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
       insights.push(`Long-term tax at ${v.longTermRatePct}%: $${taxLongTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })}. After-tax (long-term): $${afterTaxLongTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
-      insights.push(`Benefit of long-term: $${benefitOfLongTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })} (${((benefitOfLongTerm / gain) * 100).toFixed(0)}% of the gain). Long-term rates are typically lower than ordinary income rates—holding until you qualify can save significant tax.`);
+      insights.push(`Benefit of long-term: $${benefitOfLongTerm.toLocaleString(undefined, { maximumFractionDigits: 0 })} (${((benefitOfLongTerm / gain) * 100).toFixed(0)}% of the gain). Long-term rates are typically lower than ordinary income ratesâ€”holding until you qualify can save significant tax.`);
     } else {
-      insights.push('No gain—capital loss. Losses may offset gains or income (subject to limits); this calculator focuses on comparing tax when you have a gain.');
+      insights.push('No gainâ€”capital loss. Losses may offset gains or income (subject to limits); this calculator focuses on comparing tax when you have a gain.');
     }
 
     return {
@@ -249,7 +249,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Benefit of long-term = (After-tax long-term) − (After-tax short-term). The higher your ordinary income rate and the lower the long-term rate, the larger the benefit of waiting to qualify for long-term.</span>
+                <span className="text-sm font-medium">Benefit of long-term = (After-tax long-term) âˆ’ (After-tax short-term). The higher your ordinary income rate and the lower the long-term rate, the larger the benefit of waiting to qualify for long-term.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -257,7 +257,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Use your marginal tax rate for short-term (ordinary income) and your applicable long-term capital gain rate (e.g. 0%, 15%, or 20% federally in the US). State and local taxes may apply—add them to get total rate.</span>
+                <span className="text-sm font-medium">Use your marginal tax rate for short-term (ordinary income) and your applicable long-term capital gain rate (e.g. 0%, 15%, or 20% federally in the US). State and local taxes may applyâ€”add them to get total rate.</span>
               </div>
             </CardContent>
           </Card>
@@ -273,7 +273,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
             <CardContent className="space-y-4">
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">This calculator uses a single rate for short-term and long-term. In practice, marginal rates and brackets (e.g. 0%, 15%, 20% long-term) depend on income—use your effective rate for the gain.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">This calculator uses a single rate for short-term and long-term. In practice, marginal rates and brackets (e.g. 0%, 15%, 20% long-term) depend on incomeâ€”use your effective rate for the gain.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
@@ -281,7 +281,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Net investment income tax (NIIT) and other surtaxes can apply. This tool does not model those—use your all-in rate if you know it.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Net investment income tax (NIIT) and other surtaxes can apply. This tool does not model thoseâ€”use your all-in rate if you know it.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
@@ -330,7 +330,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>Lower tax rate—you keep more of the gain.</span>
+                  <span>Lower tax rateâ€”you keep more of the gain.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -359,10 +359,10 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Capital gain = Sale price − Cost basis</p>
-            <p className="font-mono text-sm text-center">Tax (short-term) = Gain × Short-term rate</p>
-            <p className="font-mono text-sm text-center">Tax (long-term) = Gain × Long-term rate</p>
-            <p className="font-mono text-sm text-center">After-tax = Gain − Tax. Benefit of long-term = After-tax (long-term) − After-tax (short-term)</p>
+            <p className="font-mono text-sm text-center">Capital gain = Sale price âˆ’ Cost basis</p>
+            <p className="font-mono text-sm text-center">Tax (short-term) = Gain Ã— Short-term rate</p>
+            <p className="font-mono text-sm text-center">Tax (long-term) = Gain Ã— Long-term rate</p>
+            <p className="font-mono text-sm text-center">After-tax = Gain âˆ’ Tax. Benefit of long-term = After-tax (long-term) âˆ’ After-tax (short-term)</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
             Short-term gains are taxed as ordinary income; long-term gains at preferential rates. The same dollar gain produces different after-tax amounts depending on which rate applies. This calculator shows the exact difference for your gain and rates.
@@ -489,17 +489,17 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
         <h2 id="what-is-lt-st" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Are Long-Term vs Short-Term Gains?</h2>
         <p>Capital gain = sale price minus cost basis. If you held the asset one year or less, the gain is short-term and usually taxed as ordinary income. If you held more than one year, the gain is long-term and taxed at preferential rates (e.g. 0%, 15%, or 20% federally in the US). The same dollar gain can produce very different after-tax amounts.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Holding Period</h3>
-        <p>In the US, long-term typically means more than one year from the date of purchase (or from the date of each lot if you have multiple purchases). State rules may differ. This calculator does not determine your holding period—it compares the tax outcome if your gain is taxed as short-term vs long-term at the rates you enter.</p>
+        <p>In the US, long-term typically means more than one year from the date of purchase (or from the date of each lot if you have multiple purchases). State rules may differ. This calculator does not determine your holding periodâ€”it compares the tax outcome if your gain is taxed as short-term vs long-term at the rates you enter.</p>
         <hr />
 
         <h2 id="how-calculated-lt-st" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Gain = Sale price − Cost basis. Tax (short-term) = Gain × Short-term rate. Tax (long-term) = Gain × Long-term rate. After-tax short-term = Gain − Tax (short-term). After-tax long-term = Gain − Tax (long-term). Benefit of long-term = After-tax long-term − After-tax short-term.</p>
+        <p>Gain = Sale price âˆ’ Cost basis. Tax (short-term) = Gain Ã— Short-term rate. Tax (long-term) = Gain Ã— Long-term rate. After-tax short-term = Gain âˆ’ Tax (short-term). After-tax long-term = Gain âˆ’ Tax (long-term). Benefit of long-term = After-tax long-term âˆ’ After-tax short-term.</p>
         <hr />
 
         <h2 id="why-it-matters-lt-st" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why It Matters</h2>
         <p>If you are close to the long-term holding period, waiting to sell can save a significant amount in tax. The benefit depends on the size of the gain and the spread between your short-term and long-term rates. Use this calculator to see the exact dollar benefit and to decide whether to delay the sale (weighing tax savings against market risk).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Weighing Tax vs Market Risk</h3>
-        <p>If you are a few weeks from the long-term date, the tax savings of waiting can be large. But if the market drops in the meantime, you could lose more than you save in tax. There is no one-size-fits-all answer—use this calculator to see the dollar benefit of long-term treatment and then decide based on your risk tolerance and view of the asset.</p>
+        <p>If you are a few weeks from the long-term date, the tax savings of waiting can be large. But if the market drops in the meantime, you could lose more than you save in tax. There is no one-size-fits-all answerâ€”use this calculator to see the dollar benefit of long-term treatment and then decide based on your risk tolerance and view of the asset.</p>
         <hr />
 
         <h2 id="using-lt-st" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
@@ -529,7 +529,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is the benefit of long-term calculated?</h4>
-            <p className="text-muted-foreground">Benefit = (After-tax long-term) − (After-tax short-term). That is the extra amount you keep by having the gain taxed at the long-term rate instead of the short-term rate.</p>
+            <p className="text-muted-foreground">Benefit = (After-tax long-term) âˆ’ (After-tax short-term). That is the extra amount you keep by having the gain taxed at the long-term rate instead of the short-term rate.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What rate should I use for short-term?</h4>
@@ -549,7 +549,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What is cost basis?</h4>
-            <p className="text-muted-foreground">What you paid for the asset (plus certain adjustments like commissions, reinvested dividends for some accounts). Sale price − Cost basis = Capital gain (or loss).</p>
+            <p className="text-muted-foreground">What you paid for the asset (plus certain adjustments like commissions, reinvested dividends for some accounts). Sale price âˆ’ Cost basis = Capital gain (or loss).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Should I wait to sell to get long-term rates?</h4>

@@ -92,12 +92,12 @@ const faqs = [
   {
     question: 'Should I use median or mean multiples?',
     answer:
-      'Median multiples are less affected by outliers and often preferred. Mean multiples can be skewed by extreme values. Consider both and understand why outliers exist—they may represent valid comparables or should be excluded.',
+      'Median multiples are less affected by outliers and often preferred. Mean multiples can be skewed by extreme values. Consider both and understand why outliers existâ€”they may represent valid comparables or should be excluded.',
   },
   {
     question: 'How does this compare to DCF valuation?',
     answer:
-      'Comparable company valuation is market-based and reflects current market sentiment, while DCF is intrinsic value based on fundamentals. Use both methods and triangulate—they should yield similar results if assumptions are consistent. Comps are faster but less detailed.',
+      'Comparable company valuation is market-based and reflects current market sentiment, while DCF is intrinsic value based on fundamentals. Use both methods and triangulateâ€”they should yield similar results if assumptions are consistent. Comps are faster but less detailed.',
   },
 ];
 
@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/comparable-company-valuation-multiples-calculator';
+const baseUrl = 'https://mycalculating.com/finance/comparable-company-valuation-multiples-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Comparable Company Valuation (Multiples) Calculator', item: baseUrl },
       ],
     },
@@ -438,13 +438,13 @@ export default function ComparableCompanyValuationMultiplesCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Enterprise Value from Revenue</strong> = Revenue × EV/Revenue Multiple. Used for companies with low or negative profitability.
+            <strong>Enterprise Value from Revenue</strong> = Revenue Ã— EV/Revenue Multiple. Used for companies with low or negative profitability.
           </p>
           <p>
-            <strong>Enterprise Value from EBITDA</strong> = EBITDA × EV/EBITDA Multiple. Accounts for operating efficiency and is less affected by capital structure.
+            <strong>Enterprise Value from EBITDA</strong> = EBITDA Ã— EV/EBITDA Multiple. Accounts for operating efficiency and is less affected by capital structure.
           </p>
           <p>
-            <strong>Equity Value from P/E</strong> = Net Income × P/E Multiple. Direct equity valuation based on earnings.
+            <strong>Equity Value from P/E</strong> = Net Income Ã— P/E Multiple. Direct equity valuation based on earnings.
           </p>
           <p>
             <strong>Average Valuation</strong> = Mean of all valid valuation estimates. Provides a balanced estimate when multiple methods are used.
@@ -570,15 +570,15 @@ export default function ComparableCompanyValuationMultiplesCalculator() {
     <h2 id="multiples" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Common Valuation Multiples</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">EV/Revenue Multiple</h3>
-    <p><b>Enterprise Value to Revenue</b> is useful for companies with negative or low profitability, early-stage companies, or when EBITDA is not meaningful. Formula: EV = Revenue × EV/Revenue Multiple.</p>
+    <p><b>Enterprise Value to Revenue</b> is useful for companies with negative or low profitability, early-stage companies, or when EBITDA is not meaningful. Formula: EV = Revenue Ã— EV/Revenue Multiple.</p>
     <p><b>When to use:</b> Companies with negative EBITDA, high-growth startups, or when revenue is the primary value driver.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">EV/EBITDA Multiple</h3>
-    <p><b>Enterprise Value to EBITDA</b> accounts for operating efficiency and is less affected by capital structure differences. It's the most commonly used multiple for profitable companies. Formula: EV = EBITDA × EV/EBITDA Multiple.</p>
+    <p><b>Enterprise Value to EBITDA</b> accounts for operating efficiency and is less affected by capital structure differences. It's the most commonly used multiple for profitable companies. Formula: EV = EBITDA Ã— EV/EBITDA Multiple.</p>
     <p><b>When to use:</b> Profitable companies, mature businesses, or when comparing companies with different capital structures.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">P/E Multiple</h3>
-    <p><b>Price to Earnings</b> directly values equity based on earnings. Formula: Equity Value = Net Income × P/E Multiple. Note: P/E is an equity multiple, while EV multiples are enterprise-level.</p>
+    <p><b>Price to Earnings</b> directly values equity based on earnings. Formula: Equity Value = Net Income Ã— P/E Multiple. Note: P/E is an equity multiple, while EV multiples are enterprise-level.</p>
     <p><b>When to use:</b> When focusing on equity value, comparing dividend-paying companies, or when earnings are stable and predictable.</p>
 
 <hr />

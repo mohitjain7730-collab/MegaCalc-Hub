@@ -45,17 +45,17 @@ const faqs = [
   {
     question: 'What is cardiac output?',
     answer:
-      'Cardiac output (Q) is the volume of blood the heart pumps per minute. It is calculated as stroke volume × heart rate. Normal range is approximately 4-8 L/min at rest.',
+      'Cardiac output (Q) is the volume of blood the heart pumps per minute. It is calculated as stroke volume Ã— heart rate. Normal range is approximately 4-8 L/min at rest.',
   },
   {
     question: 'How is cardiac output calculated?',
     answer:
-      'Cardiac output = stroke volume (mL/beat) × heart rate (beats/min) / 1000. Stroke volume is the amount of blood pumped per heartbeat. Heart rate is beats per minute.',
+      'Cardiac output = stroke volume (mL/beat) Ã— heart rate (beats/min) / 1000. Stroke volume is the amount of blood pumped per heartbeat. Heart rate is beats per minute.',
   },
   {
     question: 'What are normal cardiac output values?',
     answer:
-      'Normal cardiac output at rest: 4-8 L/min for adults. Cardiac index (cardiac output per body surface area) is typically 2.5-4.0 L/min/m². Values vary with activity level and individual factors.',
+      'Normal cardiac output at rest: 4-8 L/min for adults. Cardiac index (cardiac output per body surface area) is typically 2.5-4.0 L/min/mÂ². Values vary with activity level and individual factors.',
   },
   {
     question: 'What is stroke volume?',
@@ -70,7 +70,7 @@ const faqs = [
   {
     question: 'What is cardiac index?',
     answer:
-      'Cardiac index is cardiac output normalized to body surface area (BSA). It accounts for body size differences. Normal range is 2.5-4.0 L/min/m². It is calculated as cardiac output / BSA.',
+      'Cardiac index is cardiac output normalized to body surface area (BSA). It accounts for body size differences. Normal range is 2.5-4.0 L/min/mÂ². It is calculated as cardiac output / BSA.',
   },
   {
     question: 'Does age affect cardiac output?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cardiac-output-q-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cardiac-output-q-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cardiac Output (Q) Calculator', item: baseUrl },
       ],
     },
@@ -166,8 +166,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
     cardiacOutput = (strokeVolume * heartRate) / 1000; // Convert to L/min
   }
   
-  // Estimate body surface area for cardiac index (simplified: average 1.7 m²)
-  const bsa = 1.7; // m²
+  // Estimate body surface area for cardiac index (simplified: average 1.7 mÂ²)
+  const bsa = 1.7; // mÂ²
   const cardiacIndex = cardiacOutput / bsa;
 
   let status: ResultPayload['status'] = 'optimal';
@@ -383,10 +383,10 @@ export default function CardiacOutputQCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Cardiac output (Q)</strong> = stroke volume (mL/beat) × heart rate (beats/min) / 1000.
+            <strong>Cardiac output (Q)</strong> = stroke volume (mL/beat) Ã— heart rate (beats/min) / 1000.
           </p>
           <p>
-            <strong>Cardiac index</strong> = cardiac output (L/min) / body surface area (m²). Normal range: 2.5-4.0 L/min/m².
+            <strong>Cardiac index</strong> = cardiac output (L/min) / body surface area (mÂ²). Normal range: 2.5-4.0 L/min/mÂ².
           </p>
           <p>
             <strong>Normal ranges</strong>: Cardiac output at rest: 4-8 L/min. Stroke volume: 60-100 mL/beat. Heart rate: 60-100 beats/min. Values vary with activity and individual factors.
@@ -423,7 +423,7 @@ export default function CardiacOutputQCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Cardiac index</p>
                 <p className="text-xl font-semibold text-primary">{result.cardiacIndex.toFixed(2)}</p>
-                <p className="text-xs text-muted-foreground">L/min/m²</p>
+                <p className="text-xs text-muted-foreground">L/min/mÂ²</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Cardiac index status</p>
@@ -462,7 +462,7 @@ export default function CardiacOutputQCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Cardiac output (Q) is the volume of blood the heart pumps per minute, calculated as stroke volume × heart rate. Normal range at rest is approximately 4-8 L/min. Cardiac index (normalized to body surface area) is typically 2.5-4.0 L/min/m².</p>
+          <p>Cardiac output (Q) is the volume of blood the heart pumps per minute, calculated as stroke volume Ã— heart rate. Normal range at rest is approximately 4-8 L/min. Cardiac index (normalized to body surface area) is typically 2.5-4.0 L/min/mÂ².</p>
           <p>Use this calculator to assess cardiac output from stroke volume (optional), heart rate, cardiac output (optional), and age.</p>
         </CardContent>
       </Card>

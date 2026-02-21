@@ -52,12 +52,12 @@ const faqs = [
   {
     question: 'How is probability of ruin calculated?',
     answer:
-      'Probability of ruin is calculated using the Cramér-Lundberg model approximation: ψ(u) ≈ (λμ/c)^(u/μ), where u is initial surplus, λ is claim arrival rate, μ is average claim size, and c is premium rate. This assumes positive safety loading (c > λμ).',
+      'Probability of ruin is calculated using the CramÃ©r-Lundberg model approximation: Ïˆ(u) â‰ˆ (Î»Î¼/c)^(u/Î¼), where u is initial surplus, Î» is claim arrival rate, Î¼ is average claim size, and c is premium rate. This assumes positive safety loading (c > Î»Î¼).',
   },
   {
     question: 'What is safety loading?',
     answer:
-      'Safety loading is the excess of premium rate over expected claims cost (c - λμ). Positive safety loading ensures premiums exceed expected claims, providing a buffer against ruin. Higher safety loading reduces probability of ruin.',
+      'Safety loading is the excess of premium rate over expected claims cost (c - Î»Î¼). Positive safety loading ensures premiums exceed expected claims, providing a buffer against ruin. Higher safety loading reduces probability of ruin.',
   },
   {
     question: 'What is a good probability of ruin?',
@@ -85,9 +85,9 @@ const faqs = [
       'Reduce probability of ruin by: increasing initial surplus/capital, maintaining positive safety loading in premiums, purchasing reinsurance, diversifying risk exposure, and implementing effective risk management controls.',
   },
   {
-    question: 'What is the Cramér-Lundberg model?',
+    question: 'What is the CramÃ©r-Lundberg model?',
     answer:
-      'The Cramér-Lundberg model is a classical actuarial model for insurance risk. It assumes claims arrive according to a Poisson process with known arrival rate, claim sizes are independent and identically distributed, and premiums are collected at a constant rate.',
+      'The CramÃ©r-Lundberg model is a classical actuarial model for insurance risk. It assumes claims arrive according to a Poisson process with known arrival rate, claim sizes are independent and identically distributed, and premiums are collected at a constant rate.',
   },
   {
     question: 'When should I consult an actuary?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/probability-of-ruin-calculator';
+const baseUrl = 'https://mycalculating.com/finance/probability-of-ruin-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Probability of Ruin Calculator', item: baseUrl },
       ],
     },
@@ -156,9 +156,9 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Calculate safety loading (premium rate - expected claims cost)
   const safetyLoading = premiumRate - expectedClaimsCost;
 
-  // Calculate probability of ruin using Cramér-Lundberg approximation
-  // ψ(u) ≈ (λμ/c)^(u/μ) where u is initial surplus, λ is claim arrival rate, μ is average claim size, c is premium rate
-  // This approximation requires positive safety loading (c > λμ)
+  // Calculate probability of ruin using CramÃ©r-Lundberg approximation
+  // Ïˆ(u) â‰ˆ (Î»Î¼/c)^(u/Î¼) where u is initial surplus, Î» is claim arrival rate, Î¼ is average claim size, c is premium rate
+  // This approximation requires positive safety loading (c > Î»Î¼)
   let probabilityOfRuin = 0;
   if (premiumRate > expectedClaimsCost && averageClaimSize > 0) {
     const ratio = expectedClaimsCost / premiumRate;
@@ -408,18 +408,18 @@ export default function ProbabilityOfRuinCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Expected Claims Cost</strong> = Claim Arrival Rate × Average Claim Size. The expected cost of claims per unit time.
+            <strong>Expected Claims Cost</strong> = Claim Arrival Rate Ã— Average Claim Size. The expected cost of claims per unit time.
           </p>
           <p>
             <strong>Safety Loading</strong> = Premium Rate - Expected Claims Cost. The excess of premiums over expected claims, providing a buffer against ruin.
           </p>
           <p>
-            <strong>Probability of Ruin</strong> ≈ (Expected Claims Cost / Premium Rate)^(Initial Surplus / Average Claim Size). This is the Cramér-Lundberg approximation, valid when Premium Rate &gt; Expected Claims Cost (positive safety loading).
+            <strong>Probability of Ruin</strong> â‰ˆ (Expected Claims Cost / Premium Rate)^(Initial Surplus / Average Claim Size). This is the CramÃ©r-Lundberg approximation, valid when Premium Rate &gt; Expected Claims Cost (positive safety loading).
           </p>
           <p>
-            <strong>Condition:</strong> If Premium Rate ≤ Expected Claims Cost, ruin is certain over the long term (probability = 100%).
+            <strong>Condition:</strong> If Premium Rate â‰¤ Expected Claims Cost, ruin is certain over the long term (probability = 100%).
           </p>
-          <p>The Cramér-Lundberg model assumes claims arrive according to a Poisson process, claim sizes are independent and identically distributed, and premiums are collected at a constant rate. Higher initial surplus and positive safety loading reduce probability of ruin.</p>
+          <p>The CramÃ©r-Lundberg model assumes claims arrive according to a Poisson process, claim sizes are independent and identically distributed, and premiums are collected at a constant rate. Higher initial surplus and positive safety loading reduce probability of ruin.</p>
         </CardContent>
       </Card>
 
@@ -494,7 +494,7 @@ export default function ProbabilityOfRuinCalculator() {
       >
     <meta itemProp="name" content="The Definitive Guide to Probability of Ruin: Assessing Insurance Financial Stability" />
     <meta itemProp="description" content="A comprehensive guide to calculating and understanding probability of ruin for insurance companies, a critical metric for assessing financial stability and risk of insolvency." />
-    <meta itemProp="keywords" content="probability of ruin, insurance solvency, Cramér-Lundberg model, financial stability, actuarial risk, insurance capital" />
+    <meta itemProp="keywords" content="probability of ruin, insurance solvency, CramÃ©r-Lundberg model, financial stability, actuarial risk, insurance capital" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-01-02" />
     <meta itemProp="url" content="/definitive-probability-of-ruin-guide" />
@@ -527,26 +527,26 @@ export default function ProbabilityOfRuinCalculator() {
 
     <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Calculation Methods</h2>
     
-    <h3 className="text-xl font-semibold text-foreground mt-6">Cramér-Lundberg Model</h3>
-    <p>The Cramér-Lundberg model is a classical actuarial model for insurance risk. It assumes:</p>
+    <h3 className="text-xl font-semibold text-foreground mt-6">CramÃ©r-Lundberg Model</h3>
+    <p>The CramÃ©r-Lundberg model is a classical actuarial model for insurance risk. It assumes:</p>
     <ul>
-        <li>Claims arrive according to a Poisson process with rate λ</li>
-        <li>Claim sizes are independent and identically distributed with mean μ</li>
+        <li>Claims arrive according to a Poisson process with rate Î»</li>
+        <li>Claim sizes are independent and identically distributed with mean Î¼</li>
         <li>Premiums are collected at constant rate c</li>
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Approximation Formula</h3>
     <p>For practical purposes, probability of ruin is approximated as:</p>
-    <p><b>ψ(u) ≈ (λμ/c)^(u/μ)</b></p>
+    <p><b>Ïˆ(u) â‰ˆ (Î»Î¼/c)^(u/Î¼)</b></p>
     <p>Where:</p>
     <ul>
-        <li>ψ(u) = Probability of ruin</li>
+        <li>Ïˆ(u) = Probability of ruin</li>
         <li>u = Initial surplus</li>
-        <li>λ = Claim arrival rate</li>
-        <li>μ = Average claim size</li>
+        <li>Î» = Claim arrival rate</li>
+        <li>Î¼ = Average claim size</li>
         <li>c = Premium rate</li>
     </ul>
-    <p>This approximation requires positive safety loading (c &gt; λμ). If c ≤ λμ, ruin is certain over the long term.</p>
+    <p>This approximation requires positive safety loading (c &gt; Î»Î¼). If c â‰¤ Î»Î¼, ruin is certain over the long term.</p>
 
 <hr />
 

@@ -46,7 +46,7 @@ const faqs = [
   {
     question: 'How is dilution calculated?',
     answer:
-      'Dilution = Investment / Post-Money Valuation. New founder ownership = Current founder ownership × (1 - Dilution). Investor ownership = Dilution percentage.',
+      'Dilution = Investment / Post-Money Valuation. New founder ownership = Current founder ownership Ã— (1 - Dilution). Investor ownership = Dilution percentage.',
   },
   {
     question: 'What is post-money valuation?',
@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'What is a typical dilution range per round?',
     answer:
-      'Typical ranges: Seed 10–25%, Series A 20–25%, Series B 15–20%, later rounds 10–15%. Actual dilution depends on capital needs and valuation.',
+      'Typical ranges: Seed 10â€“25%, Series A 20â€“25%, Series B 15â€“20%, later rounds 10â€“15%. Actual dilution depends on capital needs and valuation.',
   },
   {
     question: 'How does option pool expansion affect dilution?',
@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/founder-dilution-calculator-by-funding-round';
+const baseUrl = 'https://mycalculating.com/finance/founder-dilution-calculator-by-funding-round';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Founder Dilution Calculator (by Funding Round)', item: baseUrl },
       ],
     },
@@ -166,7 +166,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     interpretation = 'Dilution below 10% may indicate a small round or high valuation. Ensure capital raised meets runway needs.';
   } else {
     status = 'optimal';
-    interpretation = 'Dilution within common ranges for many early-stage rounds (10–30%).';
+    interpretation = 'Dilution within common ranges for many early-stage rounds (10â€“30%).';
   }
 
   const recommendations = [
@@ -350,8 +350,8 @@ export default function FounderDilutionCalculatorByFundingRound() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Post-Money</strong> = Pre-Money + Investment</p>
           <p><strong>Dilution</strong> = Investment / Post-Money</p>
-          <p><strong>New Founder Ownership %</strong> = Current Founder % × (1 - Dilution)</p>
-          <p><strong>Investor Ownership %</strong> = Dilution × 100</p>
+          <p><strong>New Founder Ownership %</strong> = Current Founder % Ã— (1 - Dilution)</p>
+          <p><strong>Investor Ownership %</strong> = Dilution Ã— 100</p>
           <p>Ownership percentages are on a fully diluted, post-money basis.</p>
         </CardContent>
       </Card>
@@ -418,12 +418,12 @@ export default function FounderDilutionCalculatorByFundingRound() {
         <hr className="my-6" />
 
         <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Dilution Calculation</h2>
-        <p>Post-money = Pre-money + Investment. Dilution = Investment / Post-money. New founder ownership = Current founder % × (1 - Dilution).</p>
+        <p>Post-money = Pre-money + Investment. Dilution = Investment / Post-money. New founder ownership = Current founder % Ã— (1 - Dilution).</p>
 
         <hr className="my-6" />
 
         <h2 id="ranges" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Typical Dilution Ranges</h2>
-        <p>Seed 10–25%, Series A 20–25%, Series B 15–20%, later rounds 10–15%. Actual ranges vary by capital needs and valuation.</p>
+        <p>Seed 10â€“25%, Series A 20â€“25%, Series B 15â€“20%, later rounds 10â€“15%. Actual ranges vary by capital needs and valuation.</p>
 
         <hr className="my-6" />
 
@@ -438,7 +438,7 @@ export default function FounderDilutionCalculatorByFundingRound() {
         <hr className="my-6" />
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Model each round’s dilution to preserve clarity on ownership. Align valuation, round size, and option pool needs to keep founder and investor interests balanced.</p>
+        <p>Model each roundâ€™s dilution to preserve clarity on ownership. Align valuation, round size, and option pool needs to keep founder and investor interests balanced.</p>
       </section>
 
       <Card>

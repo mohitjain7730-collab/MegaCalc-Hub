@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vo2-recovery-half-time-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vo2-recovery-half-time-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'VO2 Recovery Half-Time Wellness Estimator', item: baseUrl },
       ],
     },
@@ -433,16 +433,16 @@ export default function VO2RecoveryHalfTimeCalculator() {
             <strong>Recovery rate</strong> = VO2 drop / Recovery time (ml/kg/min per minute).
           </p>
           <p>
-            <strong>Halfway VO2</strong> = (Peak VO2 + Baseline VO2) / 2, where Baseline ≈ 3.5 ml/kg/min.
+            <strong>Halfway VO2</strong> = (Peak VO2 + Baseline VO2) / 2, where Baseline â‰ˆ 3.5 ml/kg/min.
           </p>
           <p>
             <strong>Recovery half-time</strong> = Time to reach halfway VO2, calculated from recovery rate and current drop, adjusted for fitness level and age.
           </p>
           <p>
-            <strong>Fitness adjustment</strong> = Beginner: ×1.2, Intermediate: ×1.0, Advanced: ×0.85, Elite: ×0.7.
+            <strong>Fitness adjustment</strong> = Beginner: Ã—1.2, Intermediate: Ã—1.0, Advanced: Ã—0.85, Elite: Ã—0.7.
           </p>
           <p>
-            <strong>Age adjustment</strong> = ×(1 + (Age - 30) / 100) for ages over 30.
+            <strong>Age adjustment</strong> = Ã—(1 + (Age - 30) / 100) for ages over 30.
           </p>
           <p>Faster recovery half-time (shorter time) indicates better cardiovascular fitness and recovery capacity. Elite athletes typically recover in 30-60 seconds, while beginners may take 2-3+ minutes.</p>
         </CardContent>

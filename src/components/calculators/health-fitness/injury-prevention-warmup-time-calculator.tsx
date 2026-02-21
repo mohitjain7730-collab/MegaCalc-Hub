@@ -37,7 +37,7 @@ const steps = [
   'Select activity type (strength, cardio, sports, flexibility, or mixed).',
   'Enter intensity level (1 = very light, 10 = maximum effort).',
   'Enter your age (older individuals may need longer warmups).',
-  'Optionally enter environmental temperature (°F).',
+  'Optionally enter environmental temperature (Â°F).',
   'Optionally select injury history level.',
   'Review recommended warmup time, components, and recommendations.',
 ];
@@ -66,7 +66,7 @@ const faqs = [
   {
     question: 'Does environmental temperature matter?',
     answer:
-      'Yes. Cold conditions require longer, more gradual warmups (add 5-10 minutes). Hot conditions may need shorter warmups but more hydration. Ideal temperature (65-75°F) allows standard warmup duration.',
+      'Yes. Cold conditions require longer, more gradual warmups (add 5-10 minutes). Hot conditions may need shorter warmups but more hydration. Ideal temperature (65-75Â°F) allows standard warmup duration.',
   },
   {
     question: 'What about injury history?',
@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/injury-prevention-warmup-time-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/injury-prevention-warmup-time-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Warmup Time Wellness Planner', item: baseUrl },
       ],
     },
@@ -332,7 +332,7 @@ export default function InjuryPreventionWarmupTimeCalculator() {
                   name="environmentalTemp"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Environmental temperature (°F, optional)</FormLabel>
+                      <FormLabel>Environmental temperature (Â°F, optional)</FormLabel>
                       <FormControl>
                         <Input type="number" step="1" placeholder="e.g., 65" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -453,13 +453,13 @@ export default function InjuryPreventionWarmupTimeCalculator() {
             <strong>Base warmup time</strong> = Activity type baseline (Strength: 10 min, Cardio: 8 min, Sports: 12 min, Flexibility: 10 min, Mixed: 12 min).
           </p>
           <p>
-            <strong>Intensity adjustment</strong> = ((Intensity level - 5) / 5) × 8 minutes (-8 to +8 min based on intensity).
+            <strong>Intensity adjustment</strong> = ((Intensity level - 5) / 5) Ã— 8 minutes (-8 to +8 min based on intensity).
           </p>
           <p>
             <strong>Age adjustment</strong> = +3 minutes per decade over age 50.
           </p>
           <p>
-            <strong>Temperature adjustment</strong> = Cold (&lt;50°F): +8 min, Cool (50-60°F): +5 min, Hot (&gt;85°F): +2 min.
+            <strong>Temperature adjustment</strong> = Cold (&lt;50Â°F): +8 min, Cool (50-60Â°F): +5 min, Hot (&gt;85Â°F): +2 min.
           </p>
           <p>
             <strong>Injury history adjustment</strong> = None: 0 min, Minor: +3 min, Moderate: +6 min, Severe: +10 min.

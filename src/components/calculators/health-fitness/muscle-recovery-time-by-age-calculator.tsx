@@ -110,7 +110,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/muscle-recovery-time-by-age-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/muscle-recovery-time-by-age-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -119,7 +119,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Muscle Recovery Time Estimator', item: baseUrl },
       ],
     },
@@ -425,8 +425,8 @@ export default function MuscleRecoveryTimeByAgeCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Base recovery</strong>: Small muscles 24h, Medium 48h, Large 72h.</p>
-          <p><strong>Recovery hours</strong> = base × age multiplier (1 + (age − 25) / 100) × intensity (0.8-1.2) × experience (0.9-1.2) × sleep (1.0-1.3) × nutrition (0.8-1.0), clamped to 12-120 hours.</p>
-          <p><strong>Age factor</strong> = ((age − 25) / 100) × 100% (percentage increase from age 25 baseline).</p>
+          <p><strong>Recovery hours</strong> = base Ã— age multiplier (1 + (age âˆ’ 25) / 100) Ã— intensity (0.8-1.2) Ã— experience (0.9-1.2) Ã— sleep (1.0-1.3) Ã— nutrition (0.8-1.0), clamped to 12-120 hours.</p>
+          <p><strong>Age factor</strong> = ((age âˆ’ 25) / 100) Ã— 100% (percentage increase from age 25 baseline).</p>
           <p>Older age, higher intensity, larger muscles, less experience, poor sleep, and poor nutrition increase recovery time.</p>
         </CardContent>
       </Card>

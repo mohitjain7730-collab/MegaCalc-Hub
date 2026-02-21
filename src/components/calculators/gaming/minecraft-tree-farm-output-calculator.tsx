@@ -26,7 +26,7 @@ const faqs = [
   {
     question: 'How do I calculate tree farm output?',
     answer:
-      'Tree Farm Output = (Sapling Count × Growth Rate × Farm Efficiency / 100) × Logs Per Tree. For example, 10 saplings, 80% growth rate, 90% efficiency, 4 logs/tree = (10 × 0.8 × 0.9) × 4 = 28.8 logs. Understanding calculation helps plan farm size and production.',
+      'Tree Farm Output = (Sapling Count Ã— Growth Rate Ã— Farm Efficiency / 100) Ã— Logs Per Tree. For example, 10 saplings, 80% growth rate, 90% efficiency, 4 logs/tree = (10 Ã— 0.8 Ã— 0.9) Ã— 4 = 28.8 logs. Understanding calculation helps plan farm size and production.',
   },
   {
     question: 'What is sapling sustainability?',
@@ -87,7 +87,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Minecraft Tree Farm Output Calculator', item: baseUrl },
       ],
     },
@@ -186,7 +186,7 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <p>Key factors affecting output include: sapling type (different trees produce different logs and saplings), sapling count (more saplings = more potential production), growth rate (higher rate = more trees grow), farm efficiency (higher efficiency = more successful growths), and bone meal usage (accelerates growth). Understanding these factors helps optimize output.</p>
 
-        <p>Output calculation: Total Logs = (Sapling Count × Growth Rate × Farm Efficiency / 100) × Logs Per Tree. This formula calculates logs produced per cycle. Understanding calculation helps plan farm size and production expectations.</p>
+        <p>Output calculation: Total Logs = (Sapling Count Ã— Growth Rate Ã— Farm Efficiency / 100) Ã— Logs Per Tree. This formula calculates logs produced per cycle. Understanding calculation helps plan farm size and production expectations.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Why Tree Farm Output Matters</h3>
         <p>Tree farm output matters because it determines wood availability, affects building and crafting capabilities, influences farm sustainability, and impacts overall resource management. Understanding output helps players optimize wood production and ensure continuous farm operation.</p>
@@ -222,18 +222,18 @@ export default function MinecraftTreeFarmOutputCalculator() {
 
         <p>Production calculation determines logs and saplings produced by tree farms. Understanding calculation helps players plan farm size and production expectations.</p>
 
-        <p>Trees grown: Trees Grown = Sapling Count × (Growth Rate / 100) × (Farm Efficiency / 100). This calculates how many trees actually grow per cycle. Higher values mean more production potential.</p>
+        <p>Trees grown: Trees Grown = Sapling Count Ã— (Growth Rate / 100) Ã— (Farm Efficiency / 100). This calculates how many trees actually grow per cycle. Higher values mean more production potential.</p>
 
-        <p>Total logs: Total Logs = Trees Grown × Logs Per Tree. This calculates logs produced per cycle. Logs per tree varies by tree type. Higher logs per tree means more wood production.</p>
+        <p>Total logs: Total Logs = Trees Grown Ã— Logs Per Tree. This calculates logs produced per cycle. Logs per tree varies by tree type. Higher logs per tree means more wood production.</p>
 
-        <p>Total saplings: Total Saplings = Trees Grown × Saplings Per Tree. This calculates saplings produced per cycle. Saplings per tree varies by tree type. Higher sapling yields improve sustainability.</p>
+        <p>Total saplings: Total Saplings = Trees Grown Ã— Saplings Per Tree. This calculates saplings produced per cycle. Saplings per tree varies by tree type. Higher sapling yields improve sustainability.</p>
 
-        <p>Production rates: Logs Per Hour = (Total Logs × Growth Cycles Per Hour). Growth cycles depend on bone meal usage and natural growth rates. Higher cycles per hour mean more production over time.</p>
+        <p>Production rates: Logs Per Hour = (Total Logs Ã— Growth Cycles Per Hour). Growth cycles depend on bone meal usage and natural growth rates. Higher cycles per hour mean more production over time.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Calculation Examples</h3>
-        <p>Example 1: 20 oak saplings, 80% growth rate, 90% efficiency. Trees Grown = 20 × 0.8 × 0.9 = 14.4 trees. Total Logs = 14.4 × 4 = 57.6 logs. Total Saplings = 14.4 × 2 = 28.8 saplings. Net Saplings = 28.8 - 20 = +8.8 (sustainable).</p>
+        <p>Example 1: 20 oak saplings, 80% growth rate, 90% efficiency. Trees Grown = 20 Ã— 0.8 Ã— 0.9 = 14.4 trees. Total Logs = 14.4 Ã— 4 = 57.6 logs. Total Saplings = 14.4 Ã— 2 = 28.8 saplings. Net Saplings = 28.8 - 20 = +8.8 (sustainable).</p>
 
-        <p>Example 2: 50 spruce saplings, 100% growth rate, 95% efficiency. Trees Grown = 50 × 1.0 × 0.95 = 47.5 trees. Total Logs = 47.5 × 6 = 285 logs. Total Saplings = 47.5 × 2 = 95 saplings. Net Saplings = 95 - 50 = +45 (highly sustainable).</p>
+        <p>Example 2: 50 spruce saplings, 100% growth rate, 95% efficiency. Trees Grown = 50 Ã— 1.0 Ã— 0.95 = 47.5 trees. Total Logs = 47.5 Ã— 6 = 285 logs. Total Saplings = 47.5 Ã— 2 = 95 saplings. Net Saplings = 95 - 50 = +45 (highly sustainable).</p>
 
         <hr />
 
@@ -334,7 +334,7 @@ export default function MinecraftTreeFarmOutputCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tool calculates Minecraft tree farm output based on sapling type (Oak/Spruce/Birch/Jungle/Acacia/Dark Oak/Cherry/Mangrove), sapling count, optional bone meal per sapling, optional growth rate (0-100%), and optional farm efficiency (0-100%).</p>
           <p>Outputs include logs per tree (varies by type: 4-6 logs), saplings per tree (varies by type: 1-2 saplings), trees grown per cycle (accounting for growth rate and efficiency), total logs per cycle, total saplings per cycle, net saplings (sustainability indicator), logs per hour/day (production rates), sustainability status (sustainable/unsustainable), status assessment (low-output/moderate-output/good-output/high-output), interpretation, recommendations, and action plan.</p>
-          <p>Formulas use production calculations: Effective Growth Rate = Base Growth Rate + Bone Meal Bonus, Trees Grown = Sapling Count × (Growth Rate / 100) × (Efficiency / 100), Total Logs = Trees Grown × Logs Per Tree, Total Saplings = Trees Grown × Saplings Per Tree, Net Saplings = Total Saplings - Sapling Count. The guide covers tree types, production calculation, sustainability, optimization, bone meal, and automation. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft tree farm output calculations instantly.</p>
+          <p>Formulas use production calculations: Effective Growth Rate = Base Growth Rate + Bone Meal Bonus, Trees Grown = Sapling Count Ã— (Growth Rate / 100) Ã— (Efficiency / 100), Total Logs = Trees Grown Ã— Logs Per Tree, Total Saplings = Trees Grown Ã— Saplings Per Tree, Net Saplings = Total Saplings - Sapling Count. The guide covers tree types, production calculation, sustainability, optimization, bone meal, and automation. Related tools, FAQs, and comprehensive content ensure humans or AI assistants can interpret the methodology and understand Minecraft tree farm output calculations instantly.</p>
         </CardContent>
       </Card>
     </div>

@@ -165,7 +165,7 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
     "@type": "CollectionPage",
     "name": `${category.name} Calculators`,
     "description": `Free online ${category.name.toLowerCase()} calculators. ${category.description}`,
-    "url": `${baseUrl}/category/${category.slug}`,
+    "url": `${baseUrl}/${category.slug}`,
     "mainEntity": {
       "@type": "ItemList",
       "name": `${category.name} Calculators`,
@@ -211,7 +211,7 @@ export function generateSubCategorySchema(category: Category, subcategory: { nam
     "@type": "CollectionPage",
     "name": `${subcategory.name} Calculators - ${category.name}`,
     "description": `Free online ${subcategory.name.toLowerCase()} calculators. ${subcategory.description}`,
-    "url": `${baseUrl}/category/${category.slug}/${subcategory.slug}`,
+    "url": `${baseUrl}/${category.slug}/${subcategory.slug}`,
     "mainEntity": {
       "@type": "ItemList",
       "name": `${subcategory.name} Calculators`,
@@ -225,7 +225,7 @@ export function generateSubCategorySchema(category: Category, subcategory: { nam
           "name": calc.name,
           "description": calc.description,
           // Requirement: "point to 4 random calculators within the new education/maths path".
-          // The paths are /category/education/maths/[slug].
+          // The paths are /${slug}/${subSlug}.
           // So URL should include subcategory.
           "url": `${baseUrl}/${calc.slug}`,
           "applicationCategory": "Calculator"
@@ -251,7 +251,7 @@ export function generateSubCategorySchema(category: Category, subcategory: { nam
           "@type": "ListItem",
           "position": 3,
           "name": subcategory.name,
-          "item": `${baseUrl}/category/${category.slug}/${subcategory.slug}`
+          "item": `${baseUrl}/${category.slug}/${subcategory.slug}`
         }
       ]
     }

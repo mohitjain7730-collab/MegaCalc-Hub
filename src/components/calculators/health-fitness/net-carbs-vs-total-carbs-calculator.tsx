@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/net-carbs-vs-total-carbs-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/net-carbs-vs-total-carbs-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Net Carbs vs Total Carbs Calculator', item: baseUrl },
       ],
     },
@@ -361,7 +361,7 @@ export default function NetCarbsVsTotalCarbsCalculator() {
             <strong>Net carbs</strong> = total carbohydrates - dietary fiber - sugar alcohols (if applicable).
           </p>
           <p>
-            <strong>Net carbs percentage</strong> = (net carbs / total carbs) × 100. Lower percentages indicate more fiber/sugar alcohols relative to total carbs.
+            <strong>Net carbs percentage</strong> = (net carbs / total carbs) Ã— 100. Lower percentages indicate more fiber/sugar alcohols relative to total carbs.
           </p>
           <p>
             <strong>Note</strong>: Some calculations subtract 50% of sugar alcohols rather than 100%. Individual sugar alcohols have variable effects on blood sugar. This calculator subtracts all sugar alcohols for simplicity.
@@ -496,7 +496,7 @@ export default function NetCarbsVsTotalCarbsCalculator() {
     <p>The calculation is straightforward, but the subtraction of sugar alcohols requires knowledge of their individual absorption rates. The basic formula is:</p>
     <div className="overflow-x-auto my-6 p-4 bg-gray-50 border rounded-lg text-center">
         <p className="font-mono text-xl text-blue-700 font-bold">
-            Net Carbs = Total Carbs – Fiber – (Absorbed Sugar Alcohols)
+            Net Carbs = Total Carbs â€“ Fiber â€“ (Absorbed Sugar Alcohols)
         </p>
     </div>
     <p>The two primary components subtracted from the Total Carb count are Dietary Fiber and Sugar Alcohols, each for a different physiological reason.</p>

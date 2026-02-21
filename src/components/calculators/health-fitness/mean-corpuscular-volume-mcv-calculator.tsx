@@ -32,7 +32,7 @@ type ResultPayload = {
 
 const steps = [
   'Enter hematocrit (%) from your complete blood count (CBC) results.',
-  'Enter red blood cell count (million cells/μL) from your CBC results.',
+  'Enter red blood cell count (million cells/Î¼L) from your CBC results.',
   'Review MCV, status, and recommendations.',
 ];
 
@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mean-corpuscular-volume-mcv-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/mean-corpuscular-volume-mcv-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mean Corpuscular Volume (MCV) Calculator', item: baseUrl },
       ],
     },
@@ -141,9 +141,9 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 
 const calculateResult = (values: FormValues): ResultPayload => {
   const hematocrit = values.hematocrit; // %
-  const redBloodCellCount = values.redBloodCellCount; // million cells/μL
+  const redBloodCellCount = values.redBloodCellCount; // million cells/Î¼L
   
-  // Calculate MCV: (Hematocrit / Red Blood Cell Count) × 10
+  // Calculate MCV: (Hematocrit / Red Blood Cell Count) Ã— 10
   // Result in fL (femtoliters)
   const mcv = redBloodCellCount > 0 ? (hematocrit / redBloodCellCount) * 10 : 0;
   
@@ -244,7 +244,7 @@ export default function MeanCorpuscularVolumeMCVCalculator() {
                   name="redBloodCellCount"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Red Blood Cell Count (million cells/μL)</FormLabel>
+                      <FormLabel>Red Blood Cell Count (million cells/Î¼L)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.01" placeholder="e.g., 4.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -335,7 +335,7 @@ export default function MeanCorpuscularVolumeMCVCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>MCV (fL)</strong> = (Hematocrit (%) / Red Blood Cell Count (million cells/μL)) × 10
+            <strong>MCV (fL)</strong> = (Hematocrit (%) / Red Blood Cell Count (million cells/Î¼L)) Ã— 10
           </p>
           <p>
             MCV measures the average size of red blood cells. It helps classify anemia: microcytic (MCV &lt;80 fL, small cells), normocytic (MCV 80-100 fL, normal size), or macrocytic (MCV &gt;100 fL, large cells).
@@ -376,7 +376,7 @@ export default function MeanCorpuscularVolumeMCVCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Red Blood Cell Count</p>
                 <p className="text-xl font-semibold text-primary">
-                  {result.redBloodCellCount.toFixed(2)} million/μL
+                  {result.redBloodCellCount.toFixed(2)} million/Î¼L
                 </p>
                 <p className="text-xs text-muted-foreground">From CBC results</p>
               </div>

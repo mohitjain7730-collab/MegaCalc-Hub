@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/risk-profile-assessment-calculator';
+const baseUrl = 'https://mycalculating.com/finance/risk-profile-assessment-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Risk Profile Assessment Calculator', item: baseUrl },
       ],
     },
@@ -470,12 +470,12 @@ export default function RiskProfileAssessmentCalculator() {
           <p>
             <strong>Overall Risk Profile</strong> = Base Risk Profile adjusted for Risk Need and Time Horizon
           </p>
-          <p>If Risk Need ≤ Base Profile: Use Risk Need</p>
-          <p>If Risk Need &gt; Base Profile × 1.2: Use Base Profile (don't exceed capacity/tolerance)</p>
+          <p>If Risk Need â‰¤ Base Profile: Use Risk Need</p>
+          <p>If Risk Need &gt; Base Profile Ã— 1.2: Use Base Profile (don't exceed capacity/tolerance)</p>
           <p>Otherwise: Weighted average of Base and Need</p>
           <p>Time Horizon Adjustment:</p>
-          <p>≥ 20 years: +10%</p>
-          <p>≥ 10 years: +5%</p>
+          <p>â‰¥ 20 years: +10%</p>
+          <p>â‰¥ 10 years: +5%</p>
           <p>&lt; 3 years: -10%</p>
           <p>Risk profile assessment balances three critical dimensions: capacity (ability), tolerance (willingness), and need (requirements). The overall profile uses the minimum of capacity and tolerance as the risk ceiling, adjusted by need and time horizon. Never exceed risk capacity or tolerance even if need is high - instead, adjust goals.</p>
         </CardContent>
@@ -657,7 +657,7 @@ export default function RiskProfileAssessmentCalculator() {
     <h2 id="alignment" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Profile Alignment</h2>
     <p>Profile alignment indicates how well risk capacity, tolerance, and need align with each other.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Excellent Alignment (Difference ≤ 1.5)</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Excellent Alignment (Difference â‰¤ 1.5)</h3>
     <p>All three dimensions are well-aligned, allowing consistent investment strategy. No major adjustments needed.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Good Alignment (Difference 1.5-3)</h3>

@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'How is blood flow velocity calculated?',
     answer:
-      'Flow velocity can be estimated using: velocity = (4 × flow rate) / (π × diameter²). For blood flow: velocity ≈ (cardiac output × 1000) / (cross-sectional area × 60), where area = π × (diameter/2)².',
+      'Flow velocity can be estimated using: velocity = (4 Ã— flow rate) / (Ï€ Ã— diameterÂ²). For blood flow: velocity â‰ˆ (cardiac output Ã— 1000) / (cross-sectional area Ã— 60), where area = Ï€ Ã— (diameter/2)Â².',
   },
   {
     question: 'What are normal blood flow velocities?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/blood-flow-velocity-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/blood-flow-velocity-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Blood Flow Velocity Estimator', item: baseUrl },
       ],
     },
@@ -154,13 +154,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
     flowVelocity = values.flowVelocity;
   } else {
     // Estimate flow velocity
-    // Flow velocity = (4 × flow rate) / (π × diameter²)
-    // For blood: flow rate in mL/s = (cardiac output × 1000) / 60
+    // Flow velocity = (4 Ã— flow rate) / (Ï€ Ã— diameterÂ²)
+    // For blood: flow rate in mL/s = (cardiac output Ã— 1000) / 60
     const flowRateMlS = (cardiacOutput * 1000) / 60; // mL/s
     const radius = vesselDiameter / 2; // cm
-    const crossSectionalArea = Math.PI * radius * radius; // cm²
+    const crossSectionalArea = Math.PI * radius * radius; // cmÂ²
     flowVelocity = (4 * flowRateMlS) / (Math.PI * vesselDiameter * vesselDiameter);
-    // Simplified: velocity ≈ flow rate / area
+    // Simplified: velocity â‰ˆ flow rate / area
     flowVelocity = flowRateMlS / crossSectionalArea;
   }
   
@@ -395,10 +395,10 @@ export default function BloodFlowVelocityEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Flow velocity</strong> = flow rate (mL/s) / cross-sectional area (cm²).
+            <strong>Flow velocity</strong> = flow rate (mL/s) / cross-sectional area (cmÂ²).
           </p>
           <p>
-            <strong>Flow rate</strong> = (cardiac output × 1000) / 60 (mL/s). Cross-sectional area = π × (diameter/2)².
+            <strong>Flow rate</strong> = (cardiac output Ã— 1000) / 60 (mL/s). Cross-sectional area = Ï€ Ã— (diameter/2)Â².
           </p>
           <p>
             <strong>Normal ranges</strong>: Vary by vessel type. Large arteries: 50-100 cm/s, Aorta: 100-150 cm/s, Small arteries: 20-50 cm/s. Values vary with cardiac output and vessel size.
@@ -440,7 +440,7 @@ export default function BloodFlowVelocityEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Cross-sectional area</p>
                 <p className="text-xl font-semibold text-primary">
-                  {(Math.PI * (result.vesselDiameter / 2) * (result.vesselDiameter / 2)).toFixed(2)} cm²
+                  {(Math.PI * (result.vesselDiameter / 2) * (result.vesselDiameter / 2)).toFixed(2)} cmÂ²
                 </p>
                 <p className="text-xs text-muted-foreground">Vessel area</p>
               </div>

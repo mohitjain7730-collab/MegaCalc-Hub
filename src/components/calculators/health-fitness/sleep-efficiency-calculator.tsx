@@ -42,7 +42,7 @@ const faqs = [
   {
     question: 'What is sleep efficiency?',
     answer:
-      'Sleep efficiency is the percentage of time in bed that you actually spend sleeping. It is calculated as (Time Asleep / Time in Bed) × 100. Higher percentages indicate more time in bed is spent sleeping rather than awake.',
+      'Sleep efficiency is the percentage of time in bed that you actually spend sleeping. It is calculated as (Time Asleep / Time in Bed) Ã— 100. Higher percentages indicate more time in bed is spent sleeping rather than awake.',
   },
   {
     question: 'What is a good sleep efficiency percentage?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Time in Bed Wellness Index', item: baseUrl },
       ],
     },
@@ -187,7 +187,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (efficiency < 85) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where your sleep efficiency may be in a middle range. Small shifts—like a calmer wind-down, fewer screens close to bedtime, or adjusting when you get into bed—may help you drift off more smoothly.';
+      'This suggests a general lifestyle tendency where your sleep efficiency may be in a middle range. Small shiftsâ€”like a calmer wind-down, fewer screens close to bedtime, or adjusting when you get into bedâ€”may help you drift off more smoothly.';
   } else if (efficiency < 95) {
     status = 'good';
     interpretation =
@@ -415,7 +415,7 @@ export default function SleepEfficiencyCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Sleep Efficiency</strong> = (Time Asleep / Time in Bed) × 100. This percentage shows how much of your time in
+            <strong>Sleep Efficiency</strong> = (Time Asleep / Time in Bed) Ã— 100. This percentage shows how much of your time in
             bed is spent actually sleeping.
           </p>
           <p>
@@ -565,17 +565,17 @@ export default function SleepEfficiencyCalculator() {
           How to Calculate and Interpret Sleep Efficiency
         </h2>
         <p>
-          Sleep efficiency is calculated using a simple formula: <strong>(Time Asleep / Time in Bed) × 100</strong>. This gives you
+          Sleep efficiency is calculated using a simple formula: <strong>(Time Asleep / Time in Bed) Ã— 100</strong>. This gives you
           a percentage representing how much of your time in bed is spent sleeping.
         </p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculations</h3>
         <p>
-          <b>Example 1:</b> If you spend 8 hours in bed and sleep 7.2 hours, your efficiency is (7.2 / 8) × 100 = 90%. This is
+          <b>Example 1:</b> If you spend 8 hours in bed and sleep 7.2 hours, your efficiency is (7.2 / 8) Ã— 100 = 90%. This is
           considered excellent efficiency.
         </p>
         <p>
-          <b>Example 2:</b> If you spend 9 hours in bed but only sleep 6.5 hours, your efficiency is (6.5 / 9) × 100 = 72%. This
+          <b>Example 2:</b> If you spend 9 hours in bed but only sleep 6.5 hours, your efficiency is (6.5 / 9) Ã— 100 = 72%. This
           suggests room for improvement.
         </p>
 
@@ -682,7 +682,7 @@ export default function SleepEfficiencyCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">3. Optimize Sleep Environment</h3>
         <ul>
           <li>
-            <b>Temperature:</b> Keep bedroom cool (around 65-68°F or 18-20°C)
+            <b>Temperature:</b> Keep bedroom cool (around 65-68Â°F or 18-20Â°C)
           </li>
           <li>
             <b>Darkness:</b> Use blackout curtains or eye masks to block light
@@ -801,7 +801,7 @@ export default function SleepEfficiencyCalculator() {
           Sleep efficiency is a valuable metric for understanding how effectively you use your time in bed for sleep. By
           understanding how to calculate efficiency, recognizing factors that affect it, and implementing strategies to improve it,
           you can optimize your sleep patterns and overall rest quality. Remember that efficiency is one piece of the sleep
-          puzzle—total sleep duration, sleep quality, and how you feel during the day are equally important. Focus on creating
+          puzzleâ€”total sleep duration, sleep quality, and how you feel during the day are equally important. Focus on creating
           sustainable sleep habits that support both efficiency and overall well-being. If you have persistent sleep concerns or
           low efficiency despite lifestyle adjustments, consider consulting a healthcare provider or sleep specialist who can
           provide personalized evaluation and guidance. This tool is designed for wellness reflection and is not a substitute for

@@ -17,7 +17,7 @@ import Link from 'next/link';
 const formSchema = z.object({
   currentMonthlySavings: z.number().min(0, 'Enter current monthly savings'),
   sideIncomePerMonth: z.number().min(0, 'Enter side income per month'),
-  pctOfSideIncomeToSave: z.number().min(0).max(100, 'Enter 0–100'),
+  pctOfSideIncomeToSave: z.number().min(0).max(100, 'Enter 0â€“100'),
   savingsGoal: z.number().min(0).optional(),
   currentBalance: z.number().min(0).optional(),
 });
@@ -33,7 +33,7 @@ const schemaMarkup = {
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
       description: 'See how side income boosts your savings. Enter current savings, side income, and % to save; get additional monthly and annual savings and months sooner to goal.',
-      url: 'https://mycalculating.com/category/finance/side-income-impact-on-savings-calculator',
+      url: 'https://mycalculating.com/finance/side-income-impact-on-savings-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -99,7 +99,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
     insights.push(`Additional monthly savings from side income: $${additionalMonthlySavings.toFixed(0)} ($${additionalPerYear.toFixed(0)}/year).`);
     insights.push(`New total monthly savings: $${newTotalMonthlySavings.toFixed(0)} (was $${current.toFixed(0)}).`);
     if (monthsToGoalBefore != null && monthsToGoalAfter != null && remaining > 0) {
-      insights.push(`Months to goal at current rate: ${monthsToGoalBefore < 999 ? Math.ceil(monthsToGoalBefore) : '—'}. With side income: ${monthsToGoalAfter < 999 ? Math.ceil(monthsToGoalAfter) : '—'}.`);
+      insights.push(`Months to goal at current rate: ${monthsToGoalBefore < 999 ? Math.ceil(monthsToGoalBefore) : 'â€”'}. With side income: ${monthsToGoalAfter < 999 ? Math.ceil(monthsToGoalAfter) : 'â€”'}.`);
       if (monthsSooner != null && monthsSooner > 0) {
         insights.push(`You could reach your goal about ${monthsSooner} month(s) sooner by saving ${(pct * 100).toFixed(0)}% of side income.`);
       }
@@ -174,7 +174,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <FormField control={form.control} name="savingsGoal" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Savings Goal ($) — optional</FormLabel>
+                    <FormLabel>Savings Goal ($) â€” optional</FormLabel>
                     <FormControl>
                       <Input type="number" min={0} placeholder="e.g., 24000" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
                     </FormControl>
@@ -183,7 +183,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
                 )} />
                 <FormField control={form.control} name="currentBalance" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Current Balance ($) — optional</FormLabel>
+                    <FormLabel>Current Balance ($) â€” optional</FormLabel>
                     <FormControl>
                       <Input type="number" min={0} placeholder="e.g., 5000" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || 0)} />
                     </FormControl>
@@ -295,9 +295,9 @@ export default function SideIncomeImpactOnSavingsCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Additional Monthly Savings = Side Income per Month × (% to Save ÷ 100)</p>
+            <p className="font-mono text-sm text-center">Additional Monthly Savings = Side Income per Month Ã— (% to Save Ã· 100)</p>
             <p className="font-mono text-sm text-center">New Total Monthly Savings = Current Monthly Savings + Additional Monthly Savings</p>
-            <p className="font-mono text-sm text-center">Months to Goal = (Savings Goal − Current Balance) ÷ Monthly Savings</p>
+            <p className="font-mono text-sm text-center">Months to Goal = (Savings Goal âˆ’ Current Balance) Ã· Monthly Savings</p>
           </div>
         </CardContent>
       </Card>
@@ -377,18 +377,18 @@ export default function SideIncomeImpactOnSavingsCalculator() {
         <hr />
 
         <h2 id="what-is-side-income-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Side Income Impact on Savings?</h2>
-        <p>Side income (freelance, gig, part-time job, hobby income) can be used for spending or saving. If you save a percentage of it—ideally 100%—you add that amount to your monthly savings. The impact is the extra amount you save each month and each year, and how much sooner you can reach a savings goal.</p>
+        <p>Side income (freelance, gig, part-time job, hobby income) can be used for spending or saving. If you save a percentage of itâ€”ideally 100%â€”you add that amount to your monthly savings. The impact is the extra amount you save each month and each year, and how much sooner you can reach a savings goal.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Additional Monthly and Annual Savings</h3>
-        <p>Additional monthly savings = Side income per month × (% to save ÷ 100). Additional per year = that amount × 12. The higher the percentage you save, the larger the impact.</p>
+        <p>Additional monthly savings = Side income per month Ã— (% to save Ã· 100). Additional per year = that amount Ã— 12. The higher the percentage you save, the larger the impact.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Months Sooner to Goal</h3>
-        <p>If you have a savings goal and current balance, months to goal = (Goal − Balance) ÷ Monthly savings. With side income saved, your monthly savings increase, so the number of months to reach the goal drops. The difference is how many months sooner you could get there.</p>
+        <p>If you have a savings goal and current balance, months to goal = (Goal âˆ’ Balance) Ã· Monthly savings. With side income saved, your monthly savings increase, so the number of months to reach the goal drops. The difference is how many months sooner you could get there.</p>
         <hr />
 
         <h2 id="how-calculated-side" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>Additional monthly savings = Side income per month × (Percent to save / 100). New total monthly savings = Current monthly savings + Additional monthly savings. Months to goal = (Savings goal − Current balance) ÷ Monthly savings (before or after adding side income).</p>
+        <p>Additional monthly savings = Side income per month Ã— (Percent to save / 100). New total monthly savings = Current monthly savings + Additional monthly savings. Months to goal = (Savings goal âˆ’ Current balance) Ã· Monthly savings (before or after adding side income).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
-          <p className="font-mono text-lg text-destructive font-bold">Additional = Side Income × % to Save &nbsp;|&nbsp; Months to Goal = (Goal − Balance) ÷ Monthly Savings</p>
+          <p className="font-mono text-lg text-destructive font-bold">Additional = Side Income Ã— % to Save &nbsp;|&nbsp; Months to Goal = (Goal âˆ’ Balance) Ã· Monthly Savings</p>
         </div>
         <hr />
 
@@ -423,11 +423,11 @@ export default function SideIncomeImpactOnSavingsCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What percent of side income should I save?</h4>
-            <p className="text-muted-foreground">Many people aim for 100% so that side income doesn't inflate lifestyle. If you need some for expenses, save at least 50–80%. The calculator lets you try any percentage to see the impact.</p>
+            <p className="text-muted-foreground">Many people aim for 100% so that side income doesn't inflate lifestyle. If you need some for expenses, save at least 50â€“80%. The calculator lets you try any percentage to see the impact.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is additional monthly savings calculated?</h4>
-            <p className="text-muted-foreground">Additional monthly savings = Side income per month × (Percent to save ÷ 100). For example, $500 side income and 100% to save = $500 additional per month ($6,000 per year).</p>
+            <p className="text-muted-foreground">Additional monthly savings = Side income per month Ã— (Percent to save Ã· 100). For example, $500 side income and 100% to save = $500 additional per month ($6,000 per year).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if my side income varies?</h4>
@@ -506,7 +506,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Months to goal:</strong> Uses simple division (remaining ÷ monthly savings). No interest or growth on the balance; for long goals use a compound-growth calculator for the balance.</span>
+                <span><strong>Months to goal:</strong> Uses simple division (remaining Ã· monthly savings). No interest or growth on the balance; for long goals use a compound-growth calculator for the balance.</span>
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
@@ -523,7 +523,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: $500 current, $400 side, 100% to save</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">Additional: $400/month ($4,800/year). New total: $900/month. If goal is $18,000 and balance $3,000: at $500/mo you need 30 months; at $900/mo you need 17 months—about 13 months sooner.</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">Additional: $400/month ($4,800/year). New total: $900/month. If goal is $18,000 and balance $3,000: at $500/mo you need 30 months; at $900/mo you need 17 monthsâ€”about 13 months sooner.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: $1,000 current, $300 side, 50% to save</h5>

@@ -72,7 +72,7 @@ const faqs = [
   {
     question: 'What is standard deviation?',
     answer:
-      'Standard deviation measures volatility or risk, expressed as a percentage. Higher standard deviation indicates greater variability in returns. For example, 15% standard deviation means returns typically vary by ±15% around the mean.',
+      'Standard deviation measures volatility or risk, expressed as a percentage. Higher standard deviation indicates greater variability in returns. For example, 15% standard deviation means returns typically vary by Â±15% around the mean.',
   },
   {
     question: 'How many simulations do I need?',
@@ -129,7 +129,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/scenario-analysis-tool-monte-carlo-for-losses';
+const baseUrl = 'https://mycalculating.com/finance/scenario-analysis-tool-monte-carlo-for-losses';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -138,7 +138,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Scenario Analysis Tool (Monte Carlo for Losses)', item: baseUrl },
       ],
     },
@@ -489,10 +489,10 @@ export default function ScenarioAnalysisToolMonteCarloForLosses() {
             <strong>Monte Carlo Simulation:</strong> For each simulation, generate random returns from normal distribution N(mean, stdDev) for each period, apply returns sequentially to calculate final value, repeat for specified number of simulations.
           </p>
           <p>
-            <strong>Random Return Generation:</strong> Using Box-Muller transform: z = sqrt(-2 × ln(u1)) × cos(2π × u2), where u1 and u2 are uniform random numbers. Return = mean + stdDev × z.
+            <strong>Random Return Generation:</strong> Using Box-Muller transform: z = sqrt(-2 Ã— ln(u1)) Ã— cos(2Ï€ Ã— u2), where u1 and u2 are uniform random numbers. Return = mean + stdDev Ã— z.
           </p>
           <p>
-            <strong>Final Value Calculation:</strong> For each period: Value(t) = Value(t-1) × (1 + RandomReturn). Final value after all periods is the simulation outcome.
+            <strong>Final Value Calculation:</strong> For each period: Value(t) = Value(t-1) Ã— (1 + RandomReturn). Final value after all periods is the simulation outcome.
           </p>
           <p>
             <strong>Mean Final Value:</strong> Average of all simulation final values. Represents expected outcome based on mean return and volatility assumptions.
@@ -669,7 +669,7 @@ export default function ScenarioAnalysisToolMonteCarloForLosses() {
     <h3 className="text-xl font-semibold text-foreground mt-6">For Each Simulation</h3>
     <ol>
         <li>Generate random return from normal distribution N(mean, stdDev) for each period</li>
-        <li>Apply return to current value: Value(t) = Value(t-1) × (1 + RandomReturn)</li>
+        <li>Apply return to current value: Value(t) = Value(t-1) Ã— (1 + RandomReturn)</li>
         <li>Repeat for all periods in time horizon</li>
         <li>Record final value as simulation outcome</li>
     </ol>

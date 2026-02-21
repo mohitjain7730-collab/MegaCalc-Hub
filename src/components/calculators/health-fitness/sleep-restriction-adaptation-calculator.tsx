@@ -37,7 +37,7 @@ type ResultPayload = {
 
 const steps = [
   'Enter your current average sleep time per night (hours).',
-  'Enter your current sleep efficiency percentage (time asleep / time in bed × 100).',
+  'Enter your current sleep efficiency percentage (time asleep / time in bed Ã— 100).',
   'Enter your target bedtime (when you want to go to bed).',
   'Enter your target wake time (when you want to wake up).',
   'Review restricted sleep schedule, adaptation timeline, and recommendations.',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sleep-restriction-adaptation-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/sleep-restriction-adaptation-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sleep Schedule Adaptation Planner', item: baseUrl },
       ],
     },
@@ -419,7 +419,7 @@ export default function SleepRestrictionAdaptationCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Restricted sleep time</strong> = Maximum of (average sleep time × 0.85) or (average sleep time × efficiency / 100), with a minimum of 5.5 hours.
+            <strong>Restricted sleep time</strong> = Maximum of (average sleep time Ã— 0.85) or (average sleep time Ã— efficiency / 100), with a minimum of 5.5 hours.
           </p>
           <p>
             <strong>Time in bed</strong> = Restricted sleep time + 15 minutes (buffer for falling asleep).

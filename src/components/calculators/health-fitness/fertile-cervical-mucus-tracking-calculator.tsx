@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/fertile-cervical-mucus-tracking-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/fertile-cervical-mucus-tracking-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Fertile Cervical Mucus Tracking Calculator', item: baseUrl },
       ],
     },
@@ -174,7 +174,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'not-fertile';
   let interpretation =
-    'These observations point to mucus that is less typical of the higher‑fertility part of the cycle. Continuing to track can help you learn your own patterns over time.';
+    'These observations point to mucus that is less typical of the higherâ€‘fertility part of the cycle. Continuing to track can help you learn your own patterns over time.';
 
   if (fertilityScore >= 60 && (values.consistency === 'watery' || values.consistency === 'egg-white')) {
     status = 'fertile';
@@ -195,7 +195,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     recommendations.push('If you are exploring conception, you might choose to pay extra attention to this part of your cycle while remembering timing is never guaranteed.');
   }
   if (status === 'approaching-fertile') {
-    recommendations.push('If you like, this may be a time to begin or continue using OPKs or other methods you’re comfortable with, alongside mucus tracking.');
+    recommendations.push('If you like, this may be a time to begin or continue using OPKs or other methods youâ€™re comfortable with, alongside mucus tracking.');
   }
 
   const plan = [
@@ -350,12 +350,12 @@ export default function FertileCervicalMucusTrackingCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fertility score</p>
                 <p className="text-2xl font-semibold text-primary">{result.fertilityScore.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 pattern score from this model, based on the mucus details you entered.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 pattern score from this model, based on the mucus details you entered.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Ovulation proximity</p>
                 <p className="text-2xl font-semibold text-primary">{result.ovulationProximity.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A rough indication of how “ovulation‑like” this snapshot appears in the model.</p>
+                <p className="text-xs text-muted-foreground">A rough indication of how â€œovulationâ€‘likeâ€ this snapshot appears in the model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -410,7 +410,7 @@ export default function FertileCervicalMucusTrackingCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Fertility score</strong> = mucus score (0-40) + consistency points (0-40) + amount points (0-15) + stretchiness points (0-5), max 100.</p>
-          <p><strong>Ovulation proximity</strong> = (fertility score × 0.7) + (day proximity × 0.3), clamped to 0-100.</p>
+          <p><strong>Ovulation proximity</strong> = (fertility score Ã— 0.7) + (day proximity Ã— 0.3), clamped to 0-100.</p>
           <p>Egg-white consistency, abundant amount, and high stretchiness (8-10) indicate peak fertility and approaching ovulation.</p>
         </CardContent>
       </Card>
@@ -447,7 +447,7 @@ export default function FertileCervicalMucusTrackingCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {result.status === 'fertile' ? 'Now' : result.status === 'approaching-fertile' ? '1-3 days' : 'Continue tracking'}
                 </p>
-                <p className="text-xs text-muted-foreground">An approximate window only—your body’s actual timing may differ.</p>
+                <p className="text-xs text-muted-foreground">An approximate window onlyâ€”your bodyâ€™s actual timing may differ.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Tracking accuracy</p>

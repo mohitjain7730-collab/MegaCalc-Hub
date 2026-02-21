@@ -40,7 +40,7 @@ type ResultPayload = {
 
 const steps = [
   'Enter your body weight (kg) for baseline hydration needs.',
-  'Enter average daily temperature (°C) in your environment.',
+  'Enter average daily temperature (Â°C) in your environment.',
   'Select your activity level (sedentary to very active).',
   'Enter humidity percentage if known (optional).',
   'Review daily water need, hydration score, and recommendations.',
@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'How does temperature affect hydration?',
     answer:
-      'Higher temperatures increase water loss through sweating and respiration. Hot weather (above 25°C) can increase hydration needs by 20-50%. Very hot conditions (above 35°C) may require 50-100% more water than baseline needs.',
+      'Higher temperatures increase water loss through sweating and respiration. Hot weather (above 25Â°C) can increase hydration needs by 20-50%. Very hot conditions (above 35Â°C) may require 50-100% more water than baseline needs.',
   },
   {
     question: 'What role does activity level play?',
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/hydration-tracker-by-climate-weight-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/hydration-tracker-by-climate-weight-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Hydration Tracker by Climate & Weight', item: baseUrl },
       ],
     },
@@ -197,7 +197,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // Total daily water need
   const dailyWaterNeed = (baseWaterNeed * temperatureMultiplier) + humidityAdjustment + activityAddition;
   
-  // Hydration score: compare to reference (70kg, 20°C, moderate activity = ~2.5L)
+  // Hydration score: compare to reference (70kg, 20Â°C, moderate activity = ~2.5L)
   const referenceNeed = 70 * 32.5 * 1.2 + 600; // ~2.5L
   const hydrationScore = clamp((dailyWaterNeed / referenceNeed) * 100, 0, 200);
   const hydrationPercent = (dailyWaterNeed / referenceNeed) * 100;
@@ -299,7 +299,7 @@ export default function HydrationTrackerByClimateWeightCalculator() {
                   name="temperature"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Temperature (°C)</FormLabel>
+                      <FormLabel>Temperature (Â°C)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.1" placeholder="e.g., 25" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -432,19 +432,19 @@ export default function HydrationTrackerByClimateWeightCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base water need</strong> = Body Weight (kg) × 32.5 ml/kg. This provides baseline hydration needs (average of 30-35ml per kg recommendations).
+            <strong>Base water need</strong> = Body Weight (kg) Ã— 32.5 ml/kg. This provides baseline hydration needs (average of 30-35ml per kg recommendations).
           </p>
           <p>
-            <strong>Temperature adjustment</strong> = Base × Temperature Multiplier. Multipliers: &lt;10°C: 0.9, 10-20°C: 1.0, 20-25°C: 1.2, 25-30°C: 1.4, 30-35°C: 1.7, &gt;35°C: 2.0. Higher temperatures significantly increase needs.
+            <strong>Temperature adjustment</strong> = Base Ã— Temperature Multiplier. Multipliers: &lt;10Â°C: 0.9, 10-20Â°C: 1.0, 20-25Â°C: 1.2, 25-30Â°C: 1.4, 30-35Â°C: 1.7, &gt;35Â°C: 2.0. Higher temperatures significantly increase needs.
           </p>
           <p>
-            <strong>Humidity adjustment</strong> = Base × 0.1 (high humidity &gt;70%) or Base × 0.15 (low humidity &lt;30%). High humidity reduces cooling efficiency, low humidity increases respiratory loss.
+            <strong>Humidity adjustment</strong> = Base Ã— 0.1 (high humidity &gt;70%) or Base Ã— 0.15 (low humidity &lt;30%). High humidity reduces cooling efficiency, low humidity increases respiratory loss.
           </p>
           <p>
             <strong>Activity addition</strong> = Activity-specific addition: Sedentary: 0ml, Light: 300ml, Moderate: 600ml, Active: 1200ml, Very Active: 2000ml per day.
           </p>
           <p>
-            <strong>Total daily water need</strong> = (Base × Temperature Multiplier) + Humidity Adjustment + Activity Addition. Hydration score compares to reference needs (70kg, 20°C, moderate activity ≈ 2.5L).
+            <strong>Total daily water need</strong> = (Base Ã— Temperature Multiplier) + Humidity Adjustment + Activity Addition. Hydration score compares to reference needs (70kg, 20Â°C, moderate activity â‰ˆ 2.5L).
           </p>
         </CardContent>
       </Card>
@@ -595,11 +595,11 @@ export default function HydrationTrackerByClimateWeightCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Temperature and Water Loss</h3>
     <p>As temperature increases, water loss increases:</p>
     <ul>
-        <li><b>Cool (10-20°C):</b> Minimal additional needs</li>
-        <li><b>Moderate (20-25°C):</b> +20% water needs</li>
-        <li><b>Warm (25-30°C):</b> +40% water needs</li>
-        <li><b>Hot (30-35°C):</b> +70% water needs</li>
-        <li><b>Very hot (&gt;35°C):</b> +100% or more water needs</li>
+        <li><b>Cool (10-20Â°C):</b> Minimal additional needs</li>
+        <li><b>Moderate (20-25Â°C):</b> +20% water needs</li>
+        <li><b>Warm (25-30Â°C):</b> +40% water needs</li>
+        <li><b>Hot (30-35Â°C):</b> +70% water needs</li>
+        <li><b>Very hot (&gt;35Â°C):</b> +100% or more water needs</li>
     </ul>
     <p>In extreme heat, hydration needs can double or triple compared to moderate temperatures.</p>
 
@@ -661,7 +661,7 @@ export default function HydrationTrackerByClimateWeightCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Drink Consistently</h3>
     <ul>
-        <li>Don't wait until you're thirsty—thirst indicates mild dehydration</li>
+        <li>Don't wait until you're thirstyâ€”thirst indicates mild dehydration</li>
         <li>Drink water every 1-2 hours throughout the day</li>
         <li>Start the day with water</li>
         <li>Drink before meals (aids digestion)</li>

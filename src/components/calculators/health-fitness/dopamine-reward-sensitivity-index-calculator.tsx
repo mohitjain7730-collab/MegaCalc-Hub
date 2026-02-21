@@ -35,10 +35,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate your tendency to seek new, exciting experiences on a 0–10 scale.',
-  'Rate how strongly you respond to rewards (praise, money, points, progress bars) on a 0–10 scale.',
-  'Rate your tendency to act impulsively or chase quick rewards on a 0–10 scale.',
-  'Rate your baseline motivation to pursue long‑term goals, even without immediate rewards, on a 0–10 scale.',
+  'Rate your tendency to seek new, exciting experiences on a 0â€“10 scale.',
+  'Rate how strongly you respond to rewards (praise, money, points, progress bars) on a 0â€“10 scale.',
+  'Rate your tendency to act impulsively or chase quick rewards on a 0â€“10 scale.',
+  'Rate your baseline motivation to pursue longâ€‘term goals, even without immediate rewards, on a 0â€“10 scale.',
   'Review your dopamine reward sensitivity index, profile, and recommendations.',
 ];
 
@@ -51,17 +51,17 @@ const faqs = [
   {
     question: 'Is this calculator measuring my actual brain dopamine levels?',
     answer:
-      'No. This tool does not measure neurotransmitter levels and cannot diagnose any condition. It uses self‑report questions about behavior and preferences to approximate how reward‑sensitive your daily decision‑making might be.',
+      'No. This tool does not measure neurotransmitter levels and cannot diagnose any condition. It uses selfâ€‘report questions about behavior and preferences to approximate how rewardâ€‘sensitive your daily decisionâ€‘making might be.',
   },
   {
     question: 'Why does novelty seeking matter for dopamine?',
     answer:
-      'Novelty seeking is partly driven by how your brain responds to new, uncertain, or exciting stimuli. People who are highly novelty‑seeking often feel a stronger dopamine response to new experiences, which can be channelled into exploration or, in some cases, risk‑taking.',
+      'Novelty seeking is partly driven by how your brain responds to new, uncertain, or exciting stimuli. People who are highly noveltyâ€‘seeking often feel a stronger dopamine response to new experiences, which can be channelled into exploration or, in some cases, riskâ€‘taking.',
   },
   {
     question: 'How does impulsivity affect reward sensitivity?',
     answer:
-      'High impulsivity often means a strong pull toward immediate rewards, even when they conflict with long‑term goals. Understanding this tendency helps you design environments and routines that reduce temptations and make desired behaviors easier.',
+      'High impulsivity often means a strong pull toward immediate rewards, even when they conflict with longâ€‘term goals. Understanding this tendency helps you design environments and routines that reduce temptations and make desired behaviors easier.',
   },
   {
     question: 'Can I change my dopamine reward sensitivity?',
@@ -71,7 +71,7 @@ const faqs = [
   {
     question: 'Is a high sensitivity score good or bad?',
     answer:
-      'Neither. High sensitivity can mean strong motivation, enthusiasm, and responsiveness to positive feedback—but also vulnerability to distraction, over‑stimulation, or addictive patterns. Lower sensitivity can mean steadiness and patience but sometimes less drive. Context matters more than the score alone.',
+      'Neither. High sensitivity can mean strong motivation, enthusiasm, and responsiveness to positive feedbackâ€”but also vulnerability to distraction, overâ€‘stimulation, or addictive patterns. Lower sensitivity can mean steadiness and patience but sometimes less drive. Context matters more than the score alone.',
   },
   {
     question: 'Should I change my medication or treatment based on this score?',
@@ -81,7 +81,7 @@ const faqs = [
   {
     question: 'When should I seek professional help?',
     answer:
-      'Consider seeking support if reward‑seeking or impulsive behaviors are causing significant problems in work, school, relationships, or health—for example, compulsive gambling, risky substance use, or persistent difficulty following through on responsibilities.',
+      'Consider seeking support if rewardâ€‘seeking or impulsive behaviors are causing significant problems in work, school, relationships, or healthâ€”for example, compulsive gambling, risky substance use, or persistent difficulty following through on responsibilities.',
   },
 ];
 
@@ -109,7 +109,7 @@ const relatedCalculators = [
 ];
 
 const baseUrl =
-  'https://mycalculating.com/category/health-fitness/dopamine-reward-sensitivity-index-calculator';
+  'https://mycalculating.com/health-fitness/dopamine-reward-sensitivity-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -122,7 +122,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -161,7 +161,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'This suggests a general lifestyle tendency where your reward sensitivity may appear balanced. You may likely respond to positive feedback and novelty while still being able to pursue long‑term goals.';
+    'This suggests a general lifestyle tendency where your reward sensitivity may appear balanced. You may likely respond to positive feedback and novelty while still being able to pursue longâ€‘term goals.';
 
   if (sensitivityScore >= 75) {
     // Map "high" into our allowed types as "moderate" for labeling but keep language descriptive
@@ -171,22 +171,22 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (sensitivityScore <= 35) {
     status = 'low';
     interpretation =
-      'This suggests a general lifestyle tendency where your self‑ratings may suggest relatively lower reward sensitivity. You may be steady and less impulsive but might need stronger cues or structures to feel motivated.';
+      'This suggests a general lifestyle tendency where your selfâ€‘ratings may suggest relatively lower reward sensitivity. You may be steady and less impulsive but might need stronger cues or structures to feel motivated.';
   } else if (sensitivityScore <= 55) {
     status = 'good';
     interpretation =
-      'This suggests a general lifestyle tendency where your reward sensitivity may be in a moderate range. You may likely experience some pull toward rewards and novelty while still maintaining control over long‑term priorities.';
+      'This suggests a general lifestyle tendency where your reward sensitivity may be in a moderate range. You may likely experience some pull toward rewards and novelty while still maintaining control over longâ€‘term priorities.';
   }
 
   const recommendations: string[] = [
     'Notice which kinds of rewards (social, financial, progress markers) most strongly influence your behavior and use them intentionally for important goals.',
-    'Break long‑term projects into small, visible milestones so your brain receives more frequent feedback and “wins.”',
-    'Reduce exposure to high‑dopamine distractions (endless feeds, notifications) during focused work blocks.',
+    'Break longâ€‘term projects into small, visible milestones so your brain receives more frequent feedback and â€œwins.â€',
+    'Reduce exposure to highâ€‘dopamine distractions (endless feeds, notifications) during focused work blocks.',
   ];
 
   if (sensitivityScore >= 70) {
     recommendations.push(
-      'Create “friction” for impulsive behaviors by adding small delays or extra steps before engaging—for example, keeping tempting apps off your home screen or using website blockers during key hours.'
+      'Create â€œfrictionâ€ for impulsive behaviors by adding small delays or extra steps before engagingâ€”for example, keeping tempting apps off your home screen or using website blockers during key hours.'
     );
   }
 
@@ -210,7 +210,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'Ongoing',
       detail:
-        'Use your understanding of reward sensitivity to design sustainable systems—clear goals, visible progress, supportive social context—that work with your brain, not against it.',
+        'Use your understanding of reward sensitivity to design sustainable systemsâ€”clear goals, visible progress, supportive social contextâ€”that work with your brain, not against it.',
     },
   ];
 
@@ -275,7 +275,7 @@ export default function DopamineRewardSensitivityIndexCalculator() {
                   name="noveltySeeking"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Novelty seeking (0–10)</FormLabel>
+                      <FormLabel>Novelty seeking (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -296,7 +296,7 @@ export default function DopamineRewardSensitivityIndexCalculator() {
                   name="rewardResponsiveness"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Reward responsiveness (0–10)</FormLabel>
+                      <FormLabel>Reward responsiveness (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -317,7 +317,7 @@ export default function DopamineRewardSensitivityIndexCalculator() {
                   name="impulsivity"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Impulsivity (0–10)</FormLabel>
+                      <FormLabel>Impulsivity (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -338,7 +338,7 @@ export default function DopamineRewardSensitivityIndexCalculator() {
                   name="baselineMotivation"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Baseline long‑term motivation (0–10)</FormLabel>
+                      <FormLabel>Baseline longâ€‘term motivation (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -384,12 +384,12 @@ export default function DopamineRewardSensitivityIndexCalculator() {
                 <p className="text-2xl font-semibold text-primary">
                   {((result.noveltySeeking + result.rewardResponsiveness) / 2).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Average 0–10</p>
+                <p className="text-xs text-muted-foreground">Average 0â€“10</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Impulsivity</p>
                 <p className="text-2xl font-semibold text-primary">{result.impulsivity.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">0–10 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“10 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -445,15 +445,15 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             <strong>Sensitivity score</strong> combines novelty seeking, reward responsiveness, impulsivity, and baseline
-            motivation into a single 0–100 index. Higher scores reflect stronger responsiveness to rewards and novelty,
+            motivation into a single 0â€“100 index. Higher scores reflect stronger responsiveness to rewards and novelty,
             particularly when impulsivity is also high.
           </p>
           <p>
-            The index is a simplified, educational measure—it does not represent clinical diagnosis or brain chemistry but
-            summarizes self‑reported tendencies that influence motivation and habit formation.
+            The index is a simplified, educational measureâ€”it does not represent clinical diagnosis or brain chemistry but
+            summarizes selfâ€‘reported tendencies that influence motivation and habit formation.
           </p>
           <p>
-            Use the score together with qualitative insights and professional guidance rather than as a stand‑alone measure
+            Use the score together with qualitative insights and professional guidance rather than as a standâ€‘alone measure
             of mental health or treatment needs.
           </p>
         </CardContent>
@@ -509,14 +509,14 @@ export default function DopamineRewardSensitivityIndexCalculator() {
                     10
                   ).toFixed(2)}
                 </p>
-                <p className="text-xs text-muted-foreground">Higher = more approach‑driven</p>
+                <p className="text-xs text-muted-foreground">Higher = more approachâ€‘driven</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Self‑control buffer</p>
+                <p className="text-sm text-muted-foreground">Selfâ€‘control buffer</p>
                 <p className="text-xl font-semibold text-primary">
                   {(result.baselineMotivation - result.impulsivity).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">Positive = stronger long‑term focus</p>
+                <p className="text-xs text-muted-foreground">Positive = stronger longâ€‘term focus</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Profile</p>
@@ -532,7 +532,7 @@ export default function DopamineRewardSensitivityIndexCalculator() {
             </div>
           ) : (
             <p className="text-sm text-muted-foreground">
-              Enter your self‑ratings to see derived metrics that describe your reward style.
+              Enter your selfâ€‘ratings to see derived metrics that describe your reward style.
             </p>
           )}
         </CardContent>
@@ -544,11 +544,11 @@ export default function DopamineRewardSensitivityIndexCalculator() {
       >
         <meta
           itemProp="name"
-          content="Dopamine Reward Sensitivity: Understanding Motivation, Habits, and Reward‑Driven Behavior"
+          content="Dopamine Reward Sensitivity: Understanding Motivation, Habits, and Rewardâ€‘Driven Behavior"
         />
         <meta
           itemProp="description"
-          content="An educational guide explaining how dopamine‑related reward sensitivity, novelty seeking, and impulsivity influence motivation, focus, and habits—with practical strategies to work with your brain, not against it."
+          content="An educational guide explaining how dopamineâ€‘related reward sensitivity, novelty seeking, and impulsivity influence motivation, focus, and habitsâ€”with practical strategies to work with your brain, not against it."
         />
         <meta
           itemProp="keywords"
@@ -562,11 +562,11 @@ export default function DopamineRewardSensitivityIndexCalculator() {
           className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
           itemProp="headline"
         >
-          Dopamine Reward Sensitivity: How Your Brain’s Reward System Shapes Motivation and Habits
+          Dopamine Reward Sensitivity: How Your Brainâ€™s Reward System Shapes Motivation and Habits
         </h1>
         <p className="text-lg italic text-gray-700">
           Explore how sensitivity to rewards, novelty, and impulses can drive both productive focus and unhelpful
-          distraction—and how to design environments and routines that suit your unique profile.
+          distractionâ€”and how to design environments and routines that suit your unique profile.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">
@@ -575,7 +575,7 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         <ul className="list-disc ml-6 space-y-2 text-blue-600">
           <li>
             <a href="#reward-system" className="hover:underline">
-              The Brain’s Reward System in Everyday Life
+              The Brainâ€™s Reward System in Everyday Life
             </a>
           </li>
           <li>
@@ -607,11 +607,11 @@ export default function DopamineRewardSensitivityIndexCalculator() {
           className="text-2xl font-bold text-foreground pt-8"
           itemProp="articleSection"
         >
-          The Brain’s Reward System in Everyday Life
+          The Brainâ€™s Reward System in Everyday Life
         </h2>
         <p>
           Dopamine is one of several neurotransmitters involved in how the brain predicts rewards, learns from outcomes,
-          and chooses actions. It is not simply a “pleasure chemical”—instead, it helps signal that something is important,
+          and chooses actions. It is not simply a â€œpleasure chemicalâ€â€”instead, it helps signal that something is important,
           surprising, or better than expected, which strengthens learning around that event.
         </p>
         <p>
@@ -629,12 +629,12 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         </h2>
         <p>
           People differ naturally in how strongly they respond to rewards and cues. Some feel highly energized by points,
-          scores, and external recognition. Others care more about internal satisfaction or long‑term outcomes than
+          scores, and external recognition. Others care more about internal satisfaction or longâ€‘term outcomes than
           immediate feedback.
         </p>
         <p>
           This spectrum is influenced by genetics, development, environment, and learning history. High sensitivity is not
-          inherently “good” or “bad”—its effects depend on context, coping skills, and whether your environment contains
+          inherently â€œgoodâ€ or â€œbadâ€â€”its effects depend on context, coping skills, and whether your environment contains
           mostly healthy or unhealthy rewards.
         </p>
 
@@ -647,12 +647,12 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         </h2>
         <p>
           Novelty seeking reflects how drawn you are to new experiences, uncertain outcomes, and stimulation. Impulsivity
-          reflects how quickly you act on urges without considering long‑term consequences. Together with baseline
+          reflects how quickly you act on urges without considering longâ€‘term consequences. Together with baseline
           motivation, these traits shape your reward sensitivity profile.
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>High novelty seeking can fuel exploration, creativity, and entrepreneurship.</li>
-          <li>High impulsivity can increase risk‑taking, procrastination, or difficulties with self‑control.</li>
+          <li>High impulsivity can increase riskâ€‘taking, procrastination, or difficulties with selfâ€‘control.</li>
           <li>Strong baseline motivation helps you stick with goals even when immediate rewards are weak.</li>
         </ul>
 
@@ -665,13 +665,13 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         </h2>
         <p>
           Rather than trying to change your wiring overnight, it is usually more effective to design your routines and
-          environments to align with your profile. For example, highly reward‑sensitive people benefit from clear,
+          environments to align with your profile. For example, highly rewardâ€‘sensitive people benefit from clear,
           frequent feedback and visible progress, while those with lower sensitivity may benefit from stronger structure
           and accountability.
         </p>
         <ul className="list-disc ml-6 space-y-1">
           <li>Use checklists, streak trackers, or progress bars to make success visible.</li>
-          <li>Batch or limit exposure to high‑dopamine distractions during times that require focus.</li>
+          <li>Batch or limit exposure to highâ€‘dopamine distractions during times that require focus.</li>
           <li>Pair boring but important tasks with modest, healthy rewards (breaks, music, or social time).</li>
         </ul>
 
@@ -685,10 +685,10 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         <p>
           This calculator is an educational reflection tool only. It cannot diagnose ADHD, addiction, mood disorders, or
           any other medical or psychiatric condition. If you are concerned about your mood, behavior, or ability to
-          function day‑to‑day, speak with a qualified healthcare professional.
+          function dayâ€‘toâ€‘day, speak with a qualified healthcare professional.
         </p>
         <p>
-          When used appropriately, understanding your reward style can complement—not replace—evidence‑based assessment
+          When used appropriately, understanding your reward style can complementâ€”not replaceâ€”evidenceâ€‘based assessment
           and treatment by helping you build more supportive habits and environments.
         </p>
       </section>
@@ -716,8 +716,8 @@ export default function DopamineRewardSensitivityIndexCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool provides general wellness insights about dopamine reward sensitivity index from four self‑rated traits and summarizes your
-            motivation and reward‑response profile on a 0–100 scale. This is a personal lifestyle insight, not a medical evaluation.
+            This tool provides general wellness insights about dopamine reward sensitivity index from four selfâ€‘rated traits and summarizes your
+            motivation and rewardâ€‘response profile on a 0â€“100 scale. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>
             It provides qualitative interpretation, recommendations, an action plan, supporting calculations, and a

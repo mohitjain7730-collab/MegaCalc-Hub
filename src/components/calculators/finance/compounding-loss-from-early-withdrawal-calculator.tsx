@@ -30,8 +30,8 @@ const schemaMarkup = {
       name: 'Compounding Loss from Early Withdrawal Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'See how much future growth you give up by withdrawing money early. Enter amount withdrawn, expected return, and years remaining—get the compounding loss in dollars.',
-      url: 'https://mycalculating.com/category/finance/compounding-loss-from-early-withdrawal-calculator',
+      description: 'See how much future growth you give up by withdrawing money early. Enter amount withdrawn, expected return, and years remainingâ€”get the compounding loss in dollars.',
+      url: 'https://mycalculating.com/finance/compounding-loss-from-early-withdrawal-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -69,7 +69,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
     recommendation = `Withdrawing $${P.toLocaleString(undefined, { maximumFractionDigits: 0 })} now costs you $${compoundingLossDollars.toLocaleString(undefined, { maximumFractionDigits: 0 })} in future growth (${compoundingLossPct.toFixed(0)}% more) if that money would have earned ${v.annualReturnPct}% for ${N} years. Leaving it invested would have grown to $${fvIfLeftInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}. Consider avoiding early withdrawal when possible, or use a lower-return source (e.g. cash) first.`;
 
     const insights: string[] = [];
-    insights.push(`If left invested: $${P.toLocaleString(undefined, { maximumFractionDigits: 0 })} × (1 + ${v.annualReturnPct}%)^${N} = $${fvIfLeftInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
+    insights.push(`If left invested: $${P.toLocaleString(undefined, { maximumFractionDigits: 0 })} Ã— (1 + ${v.annualReturnPct}%)^${N} = $${fvIfLeftInvested.toLocaleString(undefined, { maximumFractionDigits: 0 })}.`);
     insights.push(`Compounding loss: $${compoundingLossDollars.toLocaleString(undefined, { maximumFractionDigits: 0 })} (${compoundingLossPct.toFixed(0)}% of the amount withdrawn). You give up this future growth by withdrawing now.`);
     insights.push(`The longer the time horizon (years remaining) and the higher the return, the larger the compounding loss. Withdrawing from a high-return account (e.g. equities) costs more than withdrawing from cash.`);
     insights.push('Use this to compare the cost of pulling money from retirement or investment accounts early versus using other sources (e.g. emergency fund, taxable account, or reducing spending).');
@@ -99,7 +99,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
             Compounding Loss from Early Withdrawal
           </CardTitle>
           <CardDescription>
-            See how much future growth you give up by withdrawing money early. Enter the amount withdrawn, expected annual return, and years the money would have stayed invested—get the compounding loss in dollars and percentage.
+            See how much future growth you give up by withdrawing money early. Enter the amount withdrawn, expected annual return, and years the money would have stayed investedâ€”get the compounding loss in dollars and percentage.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -212,7 +212,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">Formula: FV if left invested = Amount × (1 + return)^years. Compounding loss = FV − Amount. The longer the horizon and higher the return, the larger the loss.</span>
+                <span className="text-sm font-medium">Formula: FV if left invested = Amount Ã— (1 + return)^years. Compounding loss = FV âˆ’ Amount. The longer the horizon and higher the return, the larger the loss.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -220,7 +220,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">This calculator assumes a constant return; real returns vary. The structural point holds: early withdrawal gives up future compounding. Use expected long-term return (e.g. 6–8% for a diversified portfolio).</span>
+                <span className="text-sm font-medium">This calculator assumes a constant return; real returns vary. The structural point holds: early withdrawal gives up future compounding. Use expected long-term return (e.g. 6â€“8% for a diversified portfolio).</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -228,11 +228,11 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">When you must withdraw, run the calculator for each potential source (e.g. Roth IRA vs taxable brokerage vs cash) with that account&apos;s expected return to see which has the smallest compounding loss—withdraw from that source first when possible.</span>
+                <span className="text-sm font-medium">When you must withdraw, run the calculator for each potential source (e.g. Roth IRA vs taxable brokerage vs cash) with that account&apos;s expected return to see which has the smallest compounding lossâ€”withdraw from that source first when possible.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">The compounding loss as a percentage (e.g. 200%, 400%) shows how many multiples of the withdrawal you give up in future growth—use it to compare across different amounts and horizons.</span>
+                <span className="text-sm font-medium">The compounding loss as a percentage (e.g. 200%, 400%) shows how many multiples of the withdrawal you give up in future growthâ€”use it to compare across different amounts and horizons.</span>
               </div>
             </CardContent>
           </Card>
@@ -252,7 +252,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Taxes and penalties (e.g. 10% early withdrawal penalty on IRA before 59½) are not included. The compounding loss is in addition to any tax or penalty.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Taxes and penalties (e.g. 10% early withdrawal penalty on IRA before 59Â½) are not included. The compounding loss is in addition to any tax or penalty.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
@@ -268,7 +268,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-amber-50 dark:bg-amber-900/10 rounded-lg border border-amber-100 dark:border-amber-900/20">
                 <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400 mt-0.5 shrink-0" />
-                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Taxes and penalties (e.g. 10% early-withdrawal penalty on IRA before 59½) are in addition to the compounding loss—the total cost of early withdrawal is the sum of all three.</span>
+                <span className="text-sm font-medium text-amber-800 dark:text-amber-300">Taxes and penalties (e.g. 10% early-withdrawal penalty on IRA before 59Â½) are in addition to the compounding lossâ€”the total cost of early withdrawal is the sum of all three.</span>
               </div>
             </CardContent>
           </Card>
@@ -287,7 +287,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-100 dark:border-green-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-green-700 dark:text-green-300">Leave invested</h4>
-              <p className="text-sm text-muted-foreground mb-3">If you do not withdraw, the amount compounds at the expected return for the remaining years. FV = Amount × (1 + r)^years.</p>
+              <p className="text-sm text-muted-foreground mb-3">If you do not withdraw, the amount compounds at the expected return for the remaining years. FV = Amount Ã— (1 + r)^years.</p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -295,7 +295,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>Longer horizon and higher return → much larger FV.</span>
+                  <span>Longer horizon and higher return â†’ much larger FV.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -313,7 +313,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
             </div>
             <div className="p-4 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-100 dark:border-red-900/20">
               <h4 className="font-semibold mb-2 flex items-center gap-2 text-red-700 dark:text-red-300">Early withdrawal</h4>
-              <p className="text-sm text-muted-foreground mb-3">When you withdraw, you give up the future compounding on that amount. The compounding loss = FV (if left invested) − amount withdrawn.</p>
+              <p className="text-sm text-muted-foreground mb-3">When you withdraw, you give up the future compounding on that amount. The compounding loss = FV (if left invested) âˆ’ amount withdrawn.</p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
@@ -321,7 +321,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
-                  <span>Taxes and penalties (e.g. IRA before 59½) add to the cost.</span>
+                  <span>Taxes and penalties (e.g. IRA before 59Â½) add to the cost.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-red-500 mt-0.5 shrink-0" />
@@ -350,15 +350,15 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">FV if left invested = Amount × (1 + annual return)^years remaining</p>
-            <p className="font-mono text-sm text-center">Compounding loss ($) = FV − Amount</p>
-            <p className="font-mono text-sm text-center">Compounding loss (%) = (Compounding loss ÷ Amount) × 100</p>
+            <p className="font-mono text-sm text-center">FV if left invested = Amount Ã— (1 + annual return)^years remaining</p>
+            <p className="font-mono text-sm text-center">Compounding loss ($) = FV âˆ’ Amount</p>
+            <p className="font-mono text-sm text-center">Compounding loss (%) = (Compounding loss Ã· Amount) Ã— 100</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            The amount withdrawn would have grown at the expected annual return for the remaining years. The compounding loss is the difference between that future value and the amount you withdrew—i.e. the growth you give up.
+            The amount withdrawn would have grown at the expected annual return for the remaining years. The compounding loss is the difference between that future value and the amount you withdrewâ€”i.e. the growth you give up.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
-            Example: Withdraw $10,000 that would have earned 7% for 20 years. FV = $10,000 × 1.07^20 ≈ $38,700. Compounding loss ≈ $28,700 (287% of the amount withdrawn). The longer the horizon and higher the return, the larger the loss.
+            Example: Withdraw $10,000 that would have earned 7% for 20 years. FV = $10,000 Ã— 1.07^20 â‰ˆ $38,700. Compounding loss â‰ˆ $28,700 (287% of the amount withdrawn). The longer the horizon and higher the return, the larger the loss.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             The compounding loss as a percentage of the amount withdrawn shows how many &quot;multiples&quot; of the withdrawal you give up in future growth. A 200% loss means you give up twice the amount in future growth; a 400% loss means you give up four times the amount.
@@ -460,7 +460,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
         <meta itemProp="name" content="Compounding Loss from Early Withdrawal Calculator" />
-        <meta itemProp="description" content="See how much future growth you give up by withdrawing money early. Enter amount withdrawn, expected return, and years remaining—get the compounding loss in dollars." />
+        <meta itemProp="description" content="See how much future growth you give up by withdrawing money early. Enter amount withdrawn, expected return, and years remainingâ€”get the compounding loss in dollars." />
         <meta itemProp="keywords" content="early withdrawal cost, compounding loss, retirement withdrawal, cost of withdrawing early" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
@@ -481,19 +481,19 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
 
         <h2 id="what-is-comp-loss" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Compounding Loss from Early Withdrawal?</h2>
         <p>When you withdraw money from an investment (e.g. a retirement account) before you had planned, you give up the future growth that amount would have earned. The compounding loss is the difference between (1) the future value that amount would have become if left invested and (2) the amount you withdrew. It is the growth you give up by pulling the money out early.</p>
-        <p>This concept is especially important for retirement accounts (401(k), IRA, etc.) where you may face taxes and a 10% early-withdrawal penalty before age 59½. Even without penalties, the compounding loss alone can be many times the amount withdrawn when the horizon is long and the expected return is moderate or high.</p>
+        <p>This concept is especially important for retirement accounts (401(k), IRA, etc.) where you may face taxes and a 10% early-withdrawal penalty before age 59Â½. Even without penalties, the compounding loss alone can be many times the amount withdrawn when the horizon is long and the expected return is moderate or high.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Why It&apos;s More Than the Amount</h3>
         <p>You might think withdrawing $10,000 &quot;costs&quot; $10,000. But if that $10,000 would have grown to $30,000 in 20 years at 6% return, the true cost is also the $20,000 in future growth you give up. This calculator quantifies that compounding loss.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Retirement and Emergency Context</h3>
-        <p>Early withdrawal from a 401(k) or IRA before age 59½ typically incurs a 10% penalty plus income tax. On top of that, you lose the compounding on the amount for the years it would have stayed invested. Building an emergency fund and using taxable accounts first can help you avoid tapping retirement early and incurring both the penalty and the compounding loss.</p>
+        <p>Early withdrawal from a 401(k) or IRA before age 59Â½ typically incurs a 10% penalty plus income tax. On top of that, you lose the compounding on the amount for the years it would have stayed invested. Building an emergency fund and using taxable accounts first can help you avoid tapping retirement early and incurring both the penalty and the compounding loss.</p>
         <hr />
 
         <h2 id="how-calculated-comp-loss" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>FV if left invested = Amount withdrawn × (1 + annual return)^years remaining. Compounding loss ($) = FV − Amount. Compounding loss (%) = (Compounding loss ÷ Amount) × 100. You need the amount withdrawn, expected annual return (%), and years the money would have stayed invested (years remaining).</p>
+        <p>FV if left invested = Amount withdrawn Ã— (1 + annual return)^years remaining. Compounding loss ($) = FV âˆ’ Amount. Compounding loss (%) = (Compounding loss Ã· Amount) Ã— 100. You need the amount withdrawn, expected annual return (%), and years the money would have stayed invested (years remaining).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Years Remaining</h3>
         <p>Years remaining = how long the money would have stayed in the account if you had not withdrawn. E.g. if you are 40 and would have left it until 65, years remaining = 25. The longer the horizon, the larger the compounding loss.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Compounding Loss as Percentage</h3>
-        <p>Compounding loss (%) = (FV − Amount) ÷ Amount × 100. So a 200% loss means you give up twice the amount in future growth; a 500% loss means you give up five times the amount. Over long horizons at moderate returns, the percentage can be very high—this calculator makes that visible.</p>
+        <p>Compounding loss (%) = (FV âˆ’ Amount) Ã· Amount Ã— 100. So a 200% loss means you give up twice the amount in future growth; a 500% loss means you give up five times the amount. Over long horizons at moderate returns, the percentage can be very highâ€”this calculator makes that visible.</p>
         <hr />
 
         <h2 id="why-it-matters-comp-loss" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why It Matters</h2>
@@ -501,11 +501,11 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
         <h3 className="text-xl font-semibold text-foreground mt-6">Prioritizing Sources</h3>
         <p>When you need money, the order of withdrawal matters. Withdraw from taxable or cash first (lower expected return, so smaller compounding loss) before tapping tax-advantaged retirement accounts (higher expected return, so larger compounding loss). This calculator helps you quantify the cost of each source so you can choose the least costly option when you must withdraw.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Emergency Fund and Buffer</h3>
-        <p>Building an emergency fund (e.g. 3–6 months of expenses in cash or a high-yield savings account) reduces the chance you will need to withdraw from retirement or long-term investments. When you do need to withdraw, having a buffer means you can withdraw from the account with the smallest compounding loss first (e.g. cash) and leave higher-return accounts intact longer.</p>
+        <p>Building an emergency fund (e.g. 3â€“6 months of expenses in cash or a high-yield savings account) reduces the chance you will need to withdraw from retirement or long-term investments. When you do need to withdraw, having a buffer means you can withdraw from the account with the smallest compounding loss first (e.g. cash) and leave higher-return accounts intact longer.</p>
         <hr />
 
         <h2 id="using-comp-loss" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
-        <p>Enter the amount you are considering withdrawing (or have withdrawn), the expected annual return for that account (e.g. 6–8% for a diversified portfolio), and the years the money would have stayed invested. The calculator shows FV if left invested, compounding loss in dollars, and compounding loss as a percentage of the amount withdrawn.</p>
+        <p>Enter the amount you are considering withdrawing (or have withdrawn), the expected annual return for that account (e.g. 6â€“8% for a diversified portfolio), and the years the money would have stayed invested. The calculator shows FV if left invested, compounding loss in dollars, and compounding loss as a percentage of the amount withdrawn.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">What to Enter</h3>
         <p>Use the expected long-term return for the account (e.g. 7% for a 60/40 portfolio). Years remaining = from now until when you would have used the money (e.g. retirement age minus current age). For already-withdrawn amounts, use the same logic to see what you gave up.</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Sensitivity to Horizon and Return</h3>
@@ -515,7 +515,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
         <hr />
 
         <h2 id="conclusion-comp-loss" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Early withdrawal from an investment costs more than the amount withdrawn—it costs the future compounding on that amount. This calculator gives the exact compounding loss in dollars and percentage so you can make informed decisions about tapping retirement or other accounts. Use it to prioritize other sources and to understand the true cost of early withdrawal.</p>
+        <p>Early withdrawal from an investment costs more than the amount withdrawnâ€”it costs the future compounding on that amount. This calculator gives the exact compounding loss in dollars and percentage so you can make informed decisions about tapping retirement or other accounts. Use it to prioritize other sources and to understand the true cost of early withdrawal.</p>
         <p>Pair it with the Sequence of Returns Risk calculator for retirement withdrawal planning and with emergency fund tools to build a buffer so you don&apos;t have to withdraw early.</p>
         <p>In summary: early withdrawal from an investment costs the amount plus the future compounding on it. This calculator quantifies that compounding loss in dollars and percentage so you can make informed decisions about tapping retirement or other accounts and prioritize other sources when possible.</p>
         <p>When you must withdraw, use it to compare the cost of tapping different accounts (e.g. Roth vs taxable vs 401(k)) and to choose the source with the smallest compounding loss. Building an emergency fund and using taxable or cash first can help you avoid the largest compounding losses from early retirement withdrawal.</p>
@@ -533,19 +533,19 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
         <CardContent className="space-y-6">
           <div>
             <h4 className="font-semibold text-lg mb-3">What is compounding loss from early withdrawal?</h4>
-            <p className="text-muted-foreground">The future value you give up by withdrawing money from an investment early. It is (FV if left invested) − (amount withdrawn). You lose not only the amount but the growth it would have earned.</p>
+            <p className="text-muted-foreground">The future value you give up by withdrawing money from an investment early. It is (FV if left invested) âˆ’ (amount withdrawn). You lose not only the amount but the growth it would have earned.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How is it calculated?</h4>
-            <p className="text-muted-foreground">FV = Amount × (1 + annual return)^years remaining. Compounding loss = FV − Amount. You need the amount withdrawn, expected return (%), and years the money would have stayed invested.</p>
+            <p className="text-muted-foreground">FV = Amount Ã— (1 + annual return)^years remaining. Compounding loss = FV âˆ’ Amount. You need the amount withdrawn, expected return (%), and years the money would have stayed invested.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why does it matter?</h4>
-            <p className="text-muted-foreground">Because early withdrawal from a high-return account (e.g. retirement) costs much more than the amount—you give up decades of compounding. Use this to decide whether to tap other sources first (emergency fund, taxable).</p>
+            <p className="text-muted-foreground">Because early withdrawal from a high-return account (e.g. retirement) costs much more than the amountâ€”you give up decades of compounding. Use this to decide whether to tap other sources first (emergency fund, taxable).</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What return should I use?</h4>
-            <p className="text-muted-foreground">Use the expected long-term return for the account you are withdrawing from (e.g. 6–8% for a diversified portfolio). Withdrawing from equities has a larger compounding loss than withdrawing from cash.</p>
+            <p className="text-muted-foreground">Use the expected long-term return for the account you are withdrawing from (e.g. 6â€“8% for a diversified portfolio). Withdrawing from equities has a larger compounding loss than withdrawing from cash.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What are &quot;years remaining&quot;?</h4>
@@ -553,11 +553,11 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this include taxes and penalties?</h4>
-            <p className="text-muted-foreground">No. The calculator shows only the compounding loss (future growth given up). Taxes and early-withdrawal penalties (e.g. 10% on IRA before 59½) are additional costs.</p>
+            <p className="text-muted-foreground">No. The calculator shows only the compounding loss (future growth given up). Taxes and early-withdrawal penalties (e.g. 10% on IRA before 59Â½) are additional costs.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">When should I still withdraw early?</h4>
-            <p className="text-muted-foreground">When you have no other option (emergency, hardship). This calculator shows the cost so you can minimize early withdrawal when possible—e.g. build an emergency fund so you don&apos;t need to tap retirement.</p>
+            <p className="text-muted-foreground">When you have no other option (emergency, hardship). This calculator shows the cost so you can minimize early withdrawal when possibleâ€”e.g. build an emergency fund so you don&apos;t need to tap retirement.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How does this relate to sequence of returns risk?</h4>
@@ -569,7 +569,7 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How do I compare withdrawing from different accounts?</h4>
-            <p className="text-muted-foreground">Run the calculator once for each account: use the amount you would withdraw, the expected return for that account (e.g. 7% for equities, 3% for bonds, 0.5% for cash), and the same years remaining. The account with the lower expected return has a smaller compounding loss—prioritize withdrawing from that account when you must tap savings.</p>
+            <p className="text-muted-foreground">Run the calculator once for each account: use the amount you would withdraw, the expected return for that account (e.g. 7% for equities, 3% for bonds, 0.5% for cash), and the same years remaining. The account with the lower expected return has a smaller compounding lossâ€”prioritize withdrawing from that account when you must tap savings.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if I withdraw a lump sum vs multiple smaller amounts?</h4>
@@ -581,11 +581,11 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Why is the loss so large for long horizons?</h4>
-            <p className="text-muted-foreground">Because compound growth is exponential. A 7% return for 25 years multiplies the amount by about 5.4×; for 30 years by about 7.6×. So withdrawing $10,000 that would have stayed 25 years at 7% gives up about $44,000 in future growth (340% of the amount). The longer the horizon and higher the return, the larger the multiple and the larger the compounding loss.</p>
+            <p className="text-muted-foreground">Because compound growth is exponential. A 7% return for 25 years multiplies the amount by about 5.4Ã—; for 30 years by about 7.6Ã—. So withdrawing $10,000 that would have stayed 25 years at 7% gives up about $44,000 in future growth (340% of the amount). The longer the horizon and higher the return, the larger the multiple and the larger the compounding loss.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Is the loss in addition to taxes and penalties?</h4>
-            <p className="text-muted-foreground">Yes. The compounding loss is the future growth you give up. Taxes on the withdrawal and any early-withdrawal penalty (e.g. 10% on IRA before 59½) are separate costs. The total cost of early withdrawal = amount + taxes + penalty + compounding loss.</p>
+            <p className="text-muted-foreground">Yes. The compounding loss is the future growth you give up. Taxes on the withdrawal and any early-withdrawal penalty (e.g. 10% on IRA before 59Â½) are separate costs. The total cost of early withdrawal = amount + taxes + penalty + compounding loss.</p>
           </div>
         </CardContent>
       </Card>
@@ -665,15 +665,15 @@ export default function CompoundingLossFromEarlyWithdrawalCalculator() {
             <div className="space-y-3">
               <div className="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/20">
                 <h5 className="font-semibold text-green-800 dark:text-green-300 mb-1">Example: $10,000 withdrawn, 7% return, 20 years remaining</h5>
-                <p className="text-sm text-green-700/80 dark:text-green-400">FV if left invested ≈ $38,700. Compounding loss ≈ $28,700 (287%). Withdrawing $10k now costs you almost $29k in future growth.</p>
+                <p className="text-sm text-green-700/80 dark:text-green-400">FV if left invested â‰ˆ $38,700. Compounding loss â‰ˆ $28,700 (287%). Withdrawing $10k now costs you almost $29k in future growth.</p>
               </div>
               <div className="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-100 dark:border-blue-900/20">
                 <h5 className="font-semibold text-blue-800 dark:text-blue-300 mb-1">Example: $50,000 withdrawn, 6% return, 25 years remaining</h5>
-                <p className="text-sm text-blue-700/80 dark:text-blue-400">FV ≈ $214,600. Compounding loss ≈ $164,600 (329%). Early withdrawal from a large sum with long horizon has a very large cost.</p>
+                <p className="text-sm text-blue-700/80 dark:text-blue-400">FV â‰ˆ $214,600. Compounding loss â‰ˆ $164,600 (329%). Early withdrawal from a large sum with long horizon has a very large cost.</p>
               </div>
               <div className="p-4 rounded-lg bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20">
                 <h5 className="font-semibold text-amber-800 dark:text-amber-300 mb-1">Example: Short horizon, low return</h5>
-                <p className="text-sm text-amber-700/80 dark:text-amber-400">$5,000 withdrawn, 3% return, 5 years: FV ≈ $5,800, loss ≈ $800 (16%). The cost is smaller when horizon and return are lower—but you still give up growth.</p>
+                <p className="text-sm text-amber-700/80 dark:text-amber-400">$5,000 withdrawn, 3% return, 5 years: FV â‰ˆ $5,800, loss â‰ˆ $800 (16%). The cost is smaller when horizon and return are lowerâ€”but you still give up growth.</p>
               </div>
               <div className="p-4 rounded-lg bg-muted/50 border border-border/50">
                 <h5 className="font-semibold text-foreground mb-1">Takeaway</h5>

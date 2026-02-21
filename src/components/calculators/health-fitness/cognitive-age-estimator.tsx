@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cognitive-age-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cognitive-age-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cognitive Age Wellness Estimator', item: baseUrl },
       ],
     },
@@ -439,7 +439,7 @@ export default function CognitiveAgeEstimator() {
             <strong>Average Cognitive Score</strong> = (Processing Speed + Memory + Attention + Executive Function) / 4
           </p>
           <p>
-            <strong>Expected Score for Age</strong> = 100 - ((Chronological Age - 20) × 0.8)
+            <strong>Expected Score for Age</strong> = 100 - ((Chronological Age - 20) Ã— 0.8)
           </p>
           <p>
             <strong>Performance Difference</strong> = Average Cognitive Score - Expected Score

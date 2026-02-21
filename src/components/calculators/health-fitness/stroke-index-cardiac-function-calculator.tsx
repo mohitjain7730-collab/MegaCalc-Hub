@@ -37,7 +37,7 @@ const steps = [
   'Enter stroke volume (mL/beat) from cardiac assessment.',
   'Enter weight (kg) for body surface area calculation.',
   'Enter height (cm) for body surface area calculation.',
-  'Optionally enter body surface area if calculated (m²).',
+  'Optionally enter body surface area if calculated (mÂ²).',
   'Review stroke index, cardiac function status, and recommendations.',
 ];
 
@@ -45,17 +45,17 @@ const faqs = [
   {
     question: 'What is stroke index?',
     answer:
-      'Stroke index is stroke volume normalized to body surface area (BSA). It accounts for body size differences and provides a standardized measure of cardiac function. Normal range: 30-65 mL/beat/m².',
+      'Stroke index is stroke volume normalized to body surface area (BSA). It accounts for body size differences and provides a standardized measure of cardiac function. Normal range: 30-65 mL/beat/mÂ².',
   },
   {
     question: 'How is stroke index calculated?',
     answer:
-      'Stroke index = stroke volume (mL/beat) / body surface area (m²). BSA can be calculated using formulas like Du Bois: BSA = 0.007184 × weight^0.425 × height^0.725.',
+      'Stroke index = stroke volume (mL/beat) / body surface area (mÂ²). BSA can be calculated using formulas like Du Bois: BSA = 0.007184 Ã— weight^0.425 Ã— height^0.725.',
   },
   {
     question: 'What are normal stroke index values?',
     answer:
-      'Normal stroke index: 30-65 mL/beat/m². Values below 30 may indicate reduced cardiac function, while values above 65 may indicate excellent cardiac function or specific conditions.',
+      'Normal stroke index: 30-65 mL/beat/mÂ². Values below 30 may indicate reduced cardiac function, while values above 65 may indicate excellent cardiac function or specific conditions.',
   },
   {
     question: 'What affects stroke index?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/stroke-index-cardiac-function-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/stroke-index-cardiac-function-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Stroke Index (Cardiac Function) Calculator', item: baseUrl },
       ],
     },
@@ -152,7 +152,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (values.bodySurfaceArea) {
     bodySurfaceArea = values.bodySurfaceArea;
   } else {
-    // Du Bois formula: BSA = 0.007184 × weight^0.425 × height^0.725
+    // Du Bois formula: BSA = 0.007184 Ã— weight^0.425 Ã— height^0.725
     const weightKg = values.weight;
     const heightCm = values.height;
     bodySurfaceArea = 0.007184 * Math.pow(weightKg, 0.425) * Math.pow(heightCm, 0.725);
@@ -160,7 +160,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   const strokeIndex = strokeVolume / bodySurfaceArea;
   
-  // Normal range: 30-65 mL/beat/m²
+  // Normal range: 30-65 mL/beat/mÂ²
   const minNormal = 30;
   const maxNormal = 65;
   const midNormal = 47.5;
@@ -296,7 +296,7 @@ export default function StrokeIndexCardiacFunctionCalculator() {
                   name="bodySurfaceArea"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Body surface area (m²) (optional)</FormLabel>
+                      <FormLabel>Body surface area (mÂ²) (optional)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.01" placeholder="e.g., 1.8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -332,12 +332,12 @@ export default function StrokeIndexCardiacFunctionCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Body surface area</p>
                 <p className="text-2xl font-semibold text-primary">{result.bodySurfaceArea.toFixed(2)}</p>
-                <p className="text-xs text-muted-foreground">m²</p>
+                <p className="text-xs text-muted-foreground">mÂ²</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Stroke index</p>
                 <p className="text-2xl font-semibold text-primary">{result.strokeIndex.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">mL/beat/m²</p>
+                <p className="text-xs text-muted-foreground">mL/beat/mÂ²</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -392,13 +392,13 @@ export default function StrokeIndexCardiacFunctionCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Stroke index</strong> = stroke volume (mL/beat) / body surface area (m²).
+            <strong>Stroke index</strong> = stroke volume (mL/beat) / body surface area (mÂ²).
           </p>
           <p>
-            <strong>Body surface area (Du Bois)</strong> = 0.007184 × weight^0.425 × height^0.725.
+            <strong>Body surface area (Du Bois)</strong> = 0.007184 Ã— weight^0.425 Ã— height^0.725.
           </p>
           <p>
-            <strong>Normal ranges</strong>: 30-65 mL/beat/m². Values below 30 may indicate reduced cardiac function. Values above 65 may indicate excellent cardiac function.
+            <strong>Normal ranges</strong>: 30-65 mL/beat/mÂ². Values below 30 may indicate reduced cardiac function. Values above 65 may indicate excellent cardiac function.
           </p>
           <p>Stroke index accounts for body size differences and provides a standardized measure of cardiac function. It is affected by stroke volume, body size, cardiovascular fitness, and cardiac health.</p>
         </CardContent>
@@ -426,7 +426,7 @@ export default function StrokeIndexCardiacFunctionCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Target stroke index</p>
-                <p className="text-xl font-semibold text-primary">30-65 mL/beat/m²</p>
+                <p className="text-xl font-semibold text-primary">30-65 mL/beat/mÂ²</p>
                 <p className="text-xs text-muted-foreground">Normal range</p>
               </div>
               <div className="p-4 border rounded">
@@ -471,7 +471,7 @@ export default function StrokeIndexCardiacFunctionCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Stroke index is stroke volume normalized to body surface area, providing a standardized measure of cardiac function. Normal range: 30-65 mL/beat/m². It accounts for body size differences and reflects cardiac efficiency.</p>
+          <p>Stroke index is stroke volume normalized to body surface area, providing a standardized measure of cardiac function. Normal range: 30-65 mL/beat/mÂ². It accounts for body size differences and reflects cardiac efficiency.</p>
           <p>Use this calculator to assess stroke index from stroke volume, body surface area (calculated from weight and height), and optional measured BSA.</p>
         </CardContent>
       </Card>

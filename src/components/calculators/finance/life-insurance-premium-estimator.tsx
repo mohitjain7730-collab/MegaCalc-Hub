@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/life-insurance-premium-estimator';
+const baseUrl = 'https://mycalculating.com/finance/life-insurance-premium-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Life Insurance Premium Estimator', item: baseUrl },
       ],
     },
@@ -481,19 +481,19 @@ export default function LifeInsurancePremiumEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base Rate per $1,000</strong> = Age-based rate × Gender multiplier × Term length multiplier. Base rates increase with age and are higher for males and longer terms.
+            <strong>Base Rate per $1,000</strong> = Age-based rate Ã— Gender multiplier Ã— Term length multiplier. Base rates increase with age and are higher for males and longer terms.
           </p>
           <p>
-            <strong>Adjusted Rate</strong> = Base Rate × Health Status Multiplier × Smoking Status Multiplier. Health and smoking significantly affect premiums.
+            <strong>Adjusted Rate</strong> = Base Rate Ã— Health Status Multiplier Ã— Smoking Status Multiplier. Health and smoking significantly affect premiums.
           </p>
           <p>
-            <strong>Annual Premium</strong> = (Coverage Amount / 1,000) × Adjusted Rate per $1,000. This represents yearly premium cost.
+            <strong>Annual Premium</strong> = (Coverage Amount / 1,000) Ã— Adjusted Rate per $1,000. This represents yearly premium cost.
           </p>
           <p>
             <strong>Monthly Premium</strong> = Annual Premium / 12. Monthly payment amount.
           </p>
           <p>
-            <strong>Total Cost Over Term</strong> = Annual Premium × Term Years. Total premiums paid over policy duration.
+            <strong>Total Cost Over Term</strong> = Annual Premium Ã— Term Years. Total premiums paid over policy duration.
           </p>
           <p>
             <strong>Cost per Thousand</strong> = Annual Premium / (Coverage Amount / 1,000). Standard metric for comparing policies.
@@ -591,7 +591,7 @@ export default function LifeInsurancePremiumEstimator() {
 <hr />
 
     <h2 id="overview" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Overview: How Life Insurance Premiums Work</h2>
-    <p><b>Life insurance premiums</b> are based on mortality risk—the likelihood the insurer will pay a death benefit. Premiums are calculated using actuarial tables that consider age, gender, health, lifestyle, and coverage amount.</p>
+    <p><b>Life insurance premiums</b> are based on mortality riskâ€”the likelihood the insurer will pay a death benefit. Premiums are calculated using actuarial tables that consider age, gender, health, lifestyle, and coverage amount.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Key Principles</h3>
     <ul>
@@ -625,7 +625,7 @@ export default function LifeInsurancePremiumEstimator() {
     <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Premium Calculation</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Base Rate Structure</h3>
-    <p>Premiums are calculated as: <b>Annual Premium = (Coverage Amount / 1,000) × Rate per $1,000</b>. The rate per thousand varies by age, gender, term length, health, and smoking status.</p>
+    <p>Premiums are calculated as: <b>Annual Premium = (Coverage Amount / 1,000) Ã— Rate per $1,000</b>. The rate per thousand varies by age, gender, term length, health, and smoking status.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Cost per Thousand</h3>
     <p>Cost per thousand is a standard metric for comparing policies. Excellent health non-smokers typically pay $0.50-$2.00 per thousand annually. Higher rates indicate higher risk or older age.</p>

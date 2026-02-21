@@ -49,7 +49,7 @@ const relatedCalculators = [
 const faqs = [
     {
         question: 'How is "Net RR" calculated?',
-        answer: 'Net RR is the average amount of rank rating you gain per match played, factoring in both wins and losses. Formula: (Win% × WinRR) - (Loss% × LossRR). If you win 50% of games gaining 20 and losing 20, your Net RR is 0 (you will not climb).',
+        answer: 'Net RR is the average amount of rank rating you gain per match played, factoring in both wins and losses. Formula: (Win% Ã— WinRR) - (Loss% Ã— LossRR). If you win 50% of games gaining 20 and losing 20, your Net RR is 0 (you will not climb).',
     },
     {
         question: 'Why does the result say "Infinity" games?',
@@ -86,7 +86,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Valorant Rank Progression Calculator', item: baseUrl },
             ],
         },
@@ -141,7 +141,7 @@ export default function ValorantRankProgression() {
 
                 <h2 id="mathematics" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">The Mathematics of the Grind</h2>
                 <p>Ranking up in Valorant is fundamentally a function of <strong>Net RR</strong> over time. Many players believe that if they simply "play enough," they will rank up. This is statistically false.</p>
-                <p>Your Net RR is calculated as: <code>(Win % × Avg Win RR) - (Loss % × Avg Loss RR)</code>.</p>
+                <p>Your Net RR is calculated as: <code>(Win % Ã— Avg Win RR) - (Loss % Ã— Avg Loss RR)</code>.</p>
                 <p>If you lose as much RR as you gain (e.g., +20 / -20) and have a 50% win rate, your Net RR is exactly 0. You will stay in Silver 2 forever, regardless of whether you play 10 games or 1,000 games. To climb, you must break this equilibrium by either (a) increasing your Win Rate above 50%, or (b) increasing your MMR so you gain more per win.</p>
 
                 <h2 id="winrate-impact" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Win Rate vs. Volume (The Exponential Curve)</h2>
@@ -157,7 +157,7 @@ export default function ValorantRankProgression() {
                 <h2 id="variance" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Variance and Streaks (The "Losers Queue" Myth)</h2>
                 <p>A 55% win rate does not mean you win 5.5 games out of every 10 consistently. True randomness involves "clumping," or streaks.</p>
                 <p>Over a 100-game sample with a 55% win rate, there is a statistical certainty that you will experience a <strong>5-game losing streak</strong>. Most players interpret this as "The system is rigged" or "Losers Queue." It isn't. It is standard variance.</p>
-                <p>The "Expected Losses" figure in our calculator is crucial. If you are projected to play 300 games to reach Immortal, you <em>will</em> lose approximately 135 of them. Accepting that you are going to lose 135 games—and that some of them will be 13-0 stomps or have AFK teammates—is the key to mental resilience.</p>
+                <p>The "Expected Losses" figure in our calculator is crucial. If you are projected to play 300 games to reach Immortal, you <em>will</em> lose approximately 135 of them. Accepting that you are going to lose 135 gamesâ€”and that some of them will be 13-0 stomps or have AFK teammatesâ€”is the key to mental resilience.</p>
 
                 <h2 id="strategy" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Optimizing Your Climb</h2>
                 <h3 className="text-xl font-semibold mt-4">1. Duo Queue vs Solo Queue</h3>
@@ -241,7 +241,7 @@ export default function ValorantRankProgression() {
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm text-muted-foreground">
                     <p>The Valorant Rank Progression Calculator estimates the total number of competitive matches required to reach a specific target rank. By inputting Current Rank, Target Rank, Win Rate, and Average RR Gains/Losses, users can see the "Total Games" count and "Estimated Hours" required.</p>
-                    <p>The tool highlights the critical relationship between Win Rate and climbing speed—improving win rate by just a few percentage points typically reduces the required grind time exponentially. It serves as a reality check for players setting long-term ranking goals.</p>
+                    <p>The tool highlights the critical relationship between Win Rate and climbing speedâ€”improving win rate by just a few percentage points typically reduces the required grind time exponentially. It serves as a reality check for players setting long-term ranking goals.</p>
                 </CardContent>
             </Card>
         </div>

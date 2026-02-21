@@ -50,7 +50,7 @@ const faqs = [
   {
     question: 'How is expected loss calculated?',
     answer:
-      'Expected loss = Expected Loss Frequency × Expected Loss Severity. This formula multiplies the number of expected loss events by the average cost per event to estimate total expected losses over a period.',
+      'Expected loss = Expected Loss Frequency Ã— Expected Loss Severity. This formula multiplies the number of expected loss events by the average cost per event to estimate total expected losses over a period.',
   },
   {
     question: 'Why analyze frequency and severity separately?',
@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/expected-loss-frequency-severity-calculator';
+const baseUrl = 'https://mycalculating.com/finance/expected-loss-frequency-severity-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Expected Loss Frequency/Severity Calculator', item: baseUrl },
       ],
     },
@@ -141,7 +141,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const lossFrequency = values.lossFrequency;
   const averageSeverity = values.averageSeverity;
   
-  // Expected loss = Frequency × Severity
+  // Expected loss = Frequency Ã— Severity
   const expectedLoss = lossFrequency * averageSeverity;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -260,7 +260,7 @@ export default function ExpectedLossFrequencySeverityCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Expected Loss</p>
                 <p className="text-2xl font-semibold text-primary">{result.expectedLoss.toLocaleString()}</p>
-                <p className="text-xs text-muted-foreground">Frequency × Severity</p>
+                <p className="text-xs text-muted-foreground">Frequency Ã— Severity</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Loss Frequency</p>
@@ -320,7 +320,7 @@ export default function ExpectedLossFrequencySeverityCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Expected Loss</strong> = Loss Frequency × Average Severity
+            <strong>Expected Loss</strong> = Loss Frequency Ã— Average Severity
           </p>
           <p>
             <strong>Loss Frequency</strong> = Expected number of loss events per period (e.g., claims per year, claims per 100 policies).
@@ -436,7 +436,7 @@ export default function ExpectedLossFrequencySeverityCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
     <p>The expected loss formula is straightforward:</p>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>Expected Loss = Loss Frequency × Average Severity</strong></p>
+        <p className="font-mono text-lg"><strong>Expected Loss = Loss Frequency Ã— Average Severity</strong></p>
     </div>
     <p>Where:</p>
     <ul className="list-disc ml-6 space-y-1">
@@ -501,7 +501,7 @@ export default function ExpectedLossFrequencySeverityCalculator() {
         <li>Loss frequency: 5 claims per 100 policies per year</li>
         <li>Average severity: $10,000 per claim</li>
     </ul>
-    <p>Expected loss per 100 policies = 5 × $10,000 = $50,000 per year.</p>
+    <p>Expected loss per 100 policies = 5 Ã— $10,000 = $50,000 per year.</p>
     <p>For pricing, if the insurer has 1,000 policies, expected loss = $500,000 per year. Premiums must exceed this plus expenses and profit margin.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Why Separate Frequency and Severity?</h3>

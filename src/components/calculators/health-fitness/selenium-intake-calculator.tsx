@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/selenium-intake-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/selenium-intake-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Selenium Intake Calculator', item: baseUrl },
       ],
     },
@@ -383,7 +383,7 @@ export default function SeleniumIntakeCalculator() {
             <strong>Daily need</strong> = estimated from age. Adults 19+: 55 mcg/day (same for men and women). Children and adolescents have lower requirements.
           </p>
           <p>
-            <strong>Intake percentage</strong> = (selenium intake / daily need) × 100. Values ≥100% indicate adequate intake relative to recommendations.
+            <strong>Intake percentage</strong> = (selenium intake / daily need) Ã— 100. Values â‰¥100% indicate adequate intake relative to recommendations.
           </p>
           <p>
             <strong>Recommended intake</strong>: Adults: 55 mcg/day. Upper limit: 400 mcg/day. Requirements are the same for men and women in adulthood.
@@ -485,7 +485,7 @@ export default function SeleniumIntakeCalculator() {
     <p>Selenium (Se) is an essential trace element that is incorporated into the body's proteins in the form of **selenocysteine**, often called the "21st amino acid." The proteins that contain selenocysteine are known as **selenoproteins**, and they are responsible for mediating all of selenium's major biological functions.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Glutathione Peroxidase (GPX) and Antioxidant Defense</h3>
-    <p>The most well-known function of selenium is its role as a cofactor in the enzyme **Glutathione Peroxidase (GPX)**. GPX is a critical component of the body’s primary antioxidant defense system. It works to neutralize harmful reactive oxygen species (free radicals), particularly by converting toxic hydrogen peroxide into water. By protecting cells from oxidative stress, selenium supports the health of all tissues, including the heart and immune system.</p>
+    <p>The most well-known function of selenium is its role as a cofactor in the enzyme **Glutathione Peroxidase (GPX)**. GPX is a critical component of the bodyâ€™s primary antioxidant defense system. It works to neutralize harmful reactive oxygen species (free radicals), particularly by converting toxic hydrogen peroxide into water. By protecting cells from oxidative stress, selenium supports the health of all tissues, including the heart and immune system.</p>
     
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Thyroid Hormone Metabolism</h3>
@@ -585,7 +585,7 @@ export default function SeleniumIntakeCalculator() {
 
     {/* SELENIUM TOXICITY (SELENOSIS) AND UPPER LIMIT (UL) */}
     <h2 id="toxicity" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Selenium Toxicity (Selenosis) and Upper Limit (UL)</h2>
-    <p>Due to the narrow window between the RDA (55 mcg) and the UL (400 mcg), chronic excessive intake—known as **selenosis**—is a real risk, typically caused by overuse of supplements or, less commonly, consumption of extremely high-selenium foods.</p>
+    <p>Due to the narrow window between the RDA (55 mcg) and the UL (400 mcg), chronic excessive intakeâ€”known as **selenosis**â€”is a real risk, typically caused by overuse of supplements or, less commonly, consumption of extremely high-selenium foods.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Symptoms of Selenosis</h3>
     <p>Chronic consumption of selenium above the UL can lead to:</p>

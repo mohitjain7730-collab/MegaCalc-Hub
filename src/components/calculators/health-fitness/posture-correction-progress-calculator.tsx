@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/posture-correction-progress-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/posture-correction-progress-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Posture Progress Wellness Tracker', item: baseUrl },
       ],
     },
@@ -419,16 +419,16 @@ export default function PostureCorrectionProgressCalculator() {
             <strong>Improvement</strong> = Current posture score - Initial posture score.
           </p>
           <p>
-            <strong>Progress percentage</strong> = (Improvement / Potential improvement) × 100%, where Potential = 10 - Initial score.
+            <strong>Progress percentage</strong> = (Improvement / Potential improvement) Ã— 100%, where Potential = 10 - Initial score.
           </p>
           <p>
             <strong>Progress rate</strong> = Improvement / Weeks of training (score improvement per week).
           </p>
           <p>
-            <strong>Improvement score</strong> = Improvement × 10, adjusted for training duration, pain reduction, and flexibility improvements (clamped 0-100).
+            <strong>Improvement score</strong> = Improvement Ã— 10, adjusted for training duration, pain reduction, and flexibility improvements (clamped 0-100).
           </p>
           <p>
-            <strong>Progress rate categories</strong>: Excellent (≥0.15/week or ≥50%), Good (≥0.08/week or ≥30%), Moderate (≥0.04/week or ≥15%), Slow (&lt;0.04/week or &lt;15%).
+            <strong>Progress rate categories</strong>: Excellent (â‰¥0.15/week or â‰¥50%), Good (â‰¥0.08/week or â‰¥30%), Moderate (â‰¥0.04/week or â‰¥15%), Slow (&lt;0.04/week or &lt;15%).
           </p>
           <p>Posture correction is gradual. Consistent training (4-5x/week) targeting muscle imbalances and daily habit changes typically show noticeable improvements in 4-8 weeks.</p>
         </CardContent>

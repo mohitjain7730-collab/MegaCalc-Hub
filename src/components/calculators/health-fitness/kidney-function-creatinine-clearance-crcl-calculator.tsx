@@ -65,7 +65,7 @@ const faqs = [
   {
     question: 'How is creatinine clearance calculated?',
     answer:
-      'CrCl is calculated using the Cockcroft-Gault equation: CrCl = ((140 - age) × weight × gender factor) / (72 × creatinine). Gender factor: 1.0 for men, 0.85 for women.',
+      'CrCl is calculated using the Cockcroft-Gault equation: CrCl = ((140 - age) Ã— weight Ã— gender factor) / (72 Ã— creatinine). Gender factor: 1.0 for men, 0.85 for women.',
   },
   {
     question: 'Does age affect creatinine clearance?',
@@ -85,7 +85,7 @@ const faqs = [
   {
     question: 'What about kidney disease stages?',
     answer:
-      'Kidney disease is staged by eGFR/CrCl: Stage 1 (≥90), Stage 2 (60-89), Stage 3 (30-59), Stage 4 (15-29), Stage 5 (&lt;15). Lower stages indicate more severe disease.',
+      'Kidney disease is staged by eGFR/CrCl: Stage 1 (â‰¥90), Stage 2 (60-89), Stage 3 (30-59), Stage 4 (15-29), Stage 5 (&lt;15). Lower stages indicate more severe disease.',
   },
   {
     question: 'When should I consult a healthcare provider?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/kidney-function-creatinine-clearance-crcl-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/kidney-function-creatinine-clearance-crcl-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Kidney Function Creatinine Clearance (CrCl) Calculator', item: baseUrl },
       ],
     },
@@ -383,7 +383,7 @@ export default function KidneyFunctionCreatinineClearanceCrclCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Creatinine clearance (Cockcroft-Gault)</strong> = ((140 - age) × weight × gender factor) / (72 × creatinine).
+            <strong>Creatinine clearance (Cockcroft-Gault)</strong> = ((140 - age) Ã— weight Ã— gender factor) / (72 Ã— creatinine).
           </p>
           <p>
             <strong>Gender factor</strong>: 1.0 for males, 0.85 for females.

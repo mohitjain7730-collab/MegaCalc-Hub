@@ -37,22 +37,22 @@ const steps = [
   'Enter your age, current meditation experience level, and a simple goal for your practice.',
   'Submit the form to see a suggested breathing rate and interval in seconds.',
   'Read the interpretation text to understand how this rhythm may feel in your body.',
-  'Review the recommendations and 8‑week practice plan for gentle habit ideas.',
+  'Review the recommendations and 8â€‘week practice plan for gentle habit ideas.',
   'Treat the suggested rate as a starting point you can adjust based on comfort, not a strict target.',
 ];
 
 const baseUrl =
-  'https://mycalculating.com/category/health-fitness/meditation-breathing-rate-calculator';
+  'https://mycalculating.com/health-fitness/meditation-breathing-rate-calculator';
 
 const faqs: [string, string][] = [
-  ['What is the optimal breathing rate for meditation?', 'Optimal rate varies by individual, age, experience, and goal. Generally, 4–8 breaths per minute promotes relaxation, while 8–12 breaths per minute is balanced for daily practice.'],
+  ['What is the optimal breathing rate for meditation?', 'Optimal rate varies by individual, age, experience, and goal. Generally, 4â€“8 breaths per minute promotes relaxation, while 8â€“12 breaths per minute is balanced for daily practice.'],
   ['How is breathing rate calculated?', 'The calculator considers your age, meditation experience level, and goal (relaxation, focus, energy, balance) to recommend a personalized breathing rate.'],
   ['What is box breathing?', 'Box breathing involves inhaling for 4 seconds, holding for 4 seconds, exhaling for 4 seconds, and holding for 4 seconds. It promotes calm and focus.'],
   ['What is 4-7-8 breathing?', '4-7-8 breathing involves inhaling for 4 seconds, holding for 7 seconds, and exhaling for 8 seconds. It\'s effective for relaxation and sleep.'],
   ['Does age affect breathing rate?', 'Yes, younger individuals typically have slightly higher resting breathing rates. The calculator adjusts recommendations based on age.'],
-  ['Can I use this for stress relief?', 'Yes, slower breathing rates (4–6 breaths per minute) are particularly effective for stress reduction and relaxation.'],
+  ['Can I use this for stress relief?', 'Yes, slower breathing rates (4â€“6 breaths per minute) are particularly effective for stress reduction and relaxation.'],
   ['What if the suggested rate feels uncomfortable?', 'Adjust to a rate that feels natural. The calculator provides a starting point, but comfort and ease are most important.'],
-  ['How long should I practice?', 'Start with 5–10 minutes daily. Gradually increase to 10–20 minutes as you become more comfortable with the practice.'],
+  ['How long should I practice?', 'Start with 5â€“10 minutes daily. Gradually increase to 10â€“20 minutes as you become more comfortable with the practice.'],
 ];
 
 const schemaMarkup = {
@@ -66,7 +66,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -122,39 +122,39 @@ const schemaMarkup = {
 };
 
 const plan = (): { week: number; focus: string }[] => [
-  { week: 1, focus: 'Start with 5–10 minutes daily practice at your calculated breathing rate' },
+  { week: 1, focus: 'Start with 5â€“10 minutes daily practice at your calculated breathing rate' },
   { week: 2, focus: 'Practice box breathing (4-4-4-4) or equal breathing for relaxation goals' },
   { week: 3, focus: 'Try 4-7-8 breathing technique for deeper relaxation and stress reduction' },
   { week: 4, focus: 'Experiment with different breathing patterns to find what works best' },
-  { week: 5, focus: 'Increase practice duration to 10–15 minutes as comfort improves' },
+  { week: 5, focus: 'Increase practice duration to 10â€“15 minutes as comfort improves' },
   { week: 6, focus: 'Focus on smooth, natural breathing without forcing or straining' },
   { week: 7, focus: 'Integrate breathing practice into daily routine (morning, evening, or both)' },
   { week: 8, focus: 'Maintain consistent practice and adjust rate based on your experience' },
 ];
 
 const understandingInputs = [
-  { label: 'Age (years)', description: 'Your age in years (18–100). Younger individuals may naturally have slightly higher breathing rates.' },
+  { label: 'Age (years)', description: 'Your age in years (18â€“100). Younger individuals may naturally have slightly higher breathing rates.' },
   { label: 'Experience Level', description: 'Your meditation experience: Beginner (new to meditation), Intermediate (some practice), or Advanced (regular practitioner).' },
   { label: 'Meditation Goal', description: 'Your primary goal: Relaxation (deep calm), Focus (mental clarity), Energy (alertness), or Balance (general well-being).' },
 ];
 
 const interpret = (rate: number, goal: string) => {
   if (rate <= 6) {
-    return `Very gentle breathing (${rate} breaths/min) is often experienced as deeply calming and grounding for many people, especially for ${goal}‑oriented sessions.`;
+    return `Very gentle breathing (${rate} breaths/min) is often experienced as deeply calming and grounding for many people, especially for ${goal}â€‘oriented sessions.`;
   }
   if (rate <= 8) {
     return `Slow breathing (${rate} breaths/min) can support a calm, relaxed state and may feel soothing for ${goal} practice.`;
   }
   if (rate <= 12) {
-    return `Moderate breathing (${rate} breaths/min) tends to feel steady and balanced for many people and can work well for ${goal}‑focused sessions.`;
+    return `Moderate breathing (${rate} breaths/min) tends to feel steady and balanced for many people and can work well for ${goal}â€‘focused sessions.`;
   }
   return `Slightly quicker breathing (${rate} breaths/min) can feel more enlivening and may support ${goal} sessions when you want to stay alert.`;
 };
 
 const recommendations = (rate: number, experience: string) => [
-  'Start with 5–10 minutes daily practice and gradually increase duration as comfort improves.',
+  'Start with 5â€“10 minutes daily practice and gradually increase duration as comfort improves.',
   experience === 'beginner'
-    ? 'If you are newer to this, you might begin with moderate rates (around 8–12 breaths/min) before exploring very slow breathing.'
+    ? 'If you are newer to this, you might begin with moderate rates (around 8â€“12 breaths/min) before exploring very slow breathing.'
     : 'Experiment with different rates on different days and notice which ones feel most natural for you.',
   'Use a timer or counting app to help keep a relaxed, steady rhythm.',
   'Keep your breathing smooth and natural; if anything feels strained, gently return toward your usual rhythm.',
@@ -365,7 +365,7 @@ export default function MeditationBreathingRateCalculator() {
             </Card>
           </div>
           <Card>
-            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8‑Week Breathing Practice Plan</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="flex items-center gap-2"><Calendar className="h-5 w-5" /> 8â€‘Week Breathing Practice Plan</CardTitle></CardHeader>
             <CardContent>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -399,7 +399,7 @@ export default function MeditationBreathingRateCalculator() {
           </p>
           <p>
             <strong>Interval:</strong> The interval in seconds is simply 60 divided by the suggested breaths per minute, so you
-            can time inhales and exhales more easily if you want a metronome‑style guide.
+            can time inhales and exhales more easily if you want a metronomeâ€‘style guide.
           </p>
           <p>
             This is meant as a friendly starting point, not a precision prescription. You can always speed up or slow down to
@@ -545,7 +545,7 @@ export default function MeditationBreathingRateCalculator() {
           The Science of Breathing and Autonomic Balance
         </h2>
         <p>
-          Breathing is unique among bodily functions—it operates both automatically (controlled by the brainstem) and voluntarily
+          Breathing is unique among bodily functionsâ€”it operates both automatically (controlled by the brainstem) and voluntarily
           (controlled by conscious intention). This dual nature makes breathing a powerful bridge between the conscious mind and the
           autonomic nervous system, allowing you to influence your body's stress response, heart rate, and overall state of
           relaxation or alertness.
@@ -555,7 +555,7 @@ export default function MeditationBreathingRateCalculator() {
         <p>
           Slow, controlled breathing (typically 4-8 breaths per minute) activates the parasympathetic nervous system, promoting
           relaxation, reducing heart rate, and lowering stress hormones like cortisol. Faster breathing (12-20 breaths per minute)
-          can increase alertness and energy. The key is matching your breathing rhythm to your intended goal—relaxation, focus,
+          can increase alertness and energy. The key is matching your breathing rhythm to your intended goalâ€”relaxation, focus,
           energy, or balance.
         </p>
 
@@ -814,7 +814,7 @@ export default function MeditationBreathingRateCalculator() {
           Meditation breathing is a powerful, accessible tool for supporting relaxation, focus, and overall well-being. By
           understanding the science of breathing, optimal rates for different goals, and individual factors that influence your
           practice, you can develop a personalized approach that serves your needs. Remember that breathing rhythms are highly
-          individual—what works for one person may not work for another, and your optimal rate may change over time. Treat suggested
+          individualâ€”what works for one person may not work for another, and your optimal rate may change over time. Treat suggested
           rates as starting points, listen to your body, and adjust based on comfort and effectiveness. If you experience persistent
           discomfort, dizziness, or concerns about your breathing or health, consider consulting a qualified healthcare professional.
           This tool is designed to support a mindful, lifestyle-based practice, not to replace medical or therapeutic guidance.
@@ -846,10 +846,10 @@ export default function MeditationBreathingRateCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
             This tool suggests a meditation breathing rhythm from age, experience, and goal to offer a gentle starting point for
-            your practice. It is a wellness‑oriented helper, not a medical, psychological, or performance test.
+            your practice. It is a wellnessâ€‘oriented helper, not a medical, psychological, or performance test.
           </p>
           <p>
-            Outputs include breaths per minute, interval length, a pattern label, interpretation text, recommendations, an 8‑week
+            Outputs include breaths per minute, interval length, a pattern label, interpretation text, recommendations, an 8â€‘week
             practice plan, and contextual guidance so that humans or AI assistants can understand the idea at a glance.
           </p>
         </CardContent>

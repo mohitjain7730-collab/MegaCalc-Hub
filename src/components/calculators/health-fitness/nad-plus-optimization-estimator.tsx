@@ -39,7 +39,7 @@ const steps = [
   'Enter your age.',
   'Enter your average weekly minutes of moderate-to-vigorous exercise.',
   'Enter your typical fasting window per day (hours between last meal and first meal next day).',
-  'Rate your NAD+-targeted supplementation approach (if any) from 0–10.',
+  'Rate your NAD+-targeted supplementation approach (if any) from 0â€“10.',
   'Review NAD+ support score and lifestyle contribution index.',
 ];
 
@@ -109,7 +109,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/nad-plus-optimization-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/nad-plus-optimization-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -118,7 +118,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'NAD+ Support Wellness Estimator', item: baseUrl },
       ],
     },
@@ -141,7 +141,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const { age, exerciseMinutes, fastingHoursPerDay, supplementScore } = values;
 
   const exerciseFactor = clamp(exerciseMinutes / 150, 0, 2); // up to double guideline
-  const fastingFactor = clamp(fastingHoursPerDay / 16, 0, 1.5); // typical 12–16h window
+  const fastingFactor = clamp(fastingHoursPerDay / 16, 0, 1.5); // typical 12â€“16h window
   const supplementFactor = supplementScore / 10;
 
   const lifestyleContribution = clamp((exerciseFactor * 0.5 + fastingFactor * 0.3 + 0.2) * 100, 0, 100);
@@ -151,25 +151,25 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'good';
   let interpretation =
-    'This suggests a general lifestyle tendency where your current routine may offer a reasonable level of NAD+‑supportive behavior in this heuristic model.';
+    'This suggests a general lifestyle tendency where your current routine may offer a reasonable level of NAD+â€‘supportive behavior in this heuristic model.';
 
   if (nadSupportScore >= 80) {
     status = 'optimal';
     interpretation =
-      'This suggests a general lifestyle tendency where you may have many NAD+‑supportive patterns in place. You may consider focusing on safety, monitoring, and sustainability with any strategies you choose. This is a personal insight, not a medical evaluation.';
+      'This suggests a general lifestyle tendency where you may have many NAD+â€‘supportive patterns in place. You may consider focusing on safety, monitoring, and sustainability with any strategies you choose. This is a personal insight, not a medical evaluation.';
   } else if (nadSupportScore < 50) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where there may be room to gently strengthen NAD+‑related lifestyle pillars—such as movement, recovery, or nutrition—before adding more intensive approaches.';
+      'This suggests a general lifestyle tendency where there may be room to gently strengthen NAD+â€‘related lifestyle pillarsâ€”such as movement, recovery, or nutritionâ€”before adding more intensive approaches.';
   } else if (nadSupportScore < 35) {
     status = 'low';
     interpretation =
-      'This suggests a general lifestyle tendency where NAD+‑supportive signals in this simple model may appear softer. Improving fundamentals like movement, rest, and metabolic health may feel like meaningful next steps over time.';
+      'This suggests a general lifestyle tendency where NAD+â€‘supportive signals in this simple model may appear softer. Improving fundamentals like movement, rest, and metabolic health may feel like meaningful next steps over time.';
   }
 
   const recommendations: string[] = [
     'Prioritize regular, age-appropriate exercise (aerobic plus some resistance) to support mitochondrial and metabolic health.',
-    'Consider a gentle overnight fasting window (12–14 hours) if safe for you and cleared by your clinician.',
+    'Consider a gentle overnight fasting window (12â€“14 hours) if safe for you and cleared by your clinician.',
     'Discuss any NAD+-targeted supplements with a healthcare professional familiar with your history.',
   ];
 
@@ -187,7 +187,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Month', detail: 'Stabilize sleep, exercise, and basic nutrition before altering fasting or supplements.' },
-    { label: 'Next 3–6 Months', detail: 'Consider periodic check-ins with a clinician about markers influenced by NAD+-related interventions.' },
+    { label: 'Next 3â€“6 Months', detail: 'Consider periodic check-ins with a clinician about markers influenced by NAD+-related interventions.' },
     { label: 'Ongoing', detail: 'Re-evaluate NAD+ support as your age, goals, and medical context evolve.' },
   ];
 
@@ -229,7 +229,7 @@ export default function NadPlusOptimizationEstimator() {
             NAD+ Support Wellness Estimator
           </CardTitle>
           <CardDescription>
-            Get general wellness insights about how NAD+‑supportive your current lifestyle and supplement strategy may
+            Get general wellness insights about how NAD+â€‘supportive your current lifestyle and supplement strategy may
             be. This is a personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
@@ -287,7 +287,7 @@ export default function NadPlusOptimizationEstimator() {
                   name="supplementScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>NAD+-targeted supplement strategy (0–10)</FormLabel>
+                      <FormLabel>NAD+-targeted supplement strategy (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 4" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -318,7 +318,7 @@ export default function NadPlusOptimizationEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">NAD+ support score</p>
                 <p className="text-2xl font-semibold text-primary">{result.nadSupportScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Lifestyle contribution</p>
@@ -328,7 +328,7 @@ export default function NadPlusOptimizationEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Supplement score</p>
                 <p className="text-2xl font-semibold text-primary">{result.supplementScore}</p>
-                <p className="text-xs text-muted-foreground">Self-rated 0–10</p>
+                <p className="text-xs text-muted-foreground">Self-rated 0â€“10</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -383,7 +383,7 @@ export default function NadPlusOptimizationEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Lifestyle contribution</strong> scales exercise and fasting relative to commonly discussed ranges in NAD+-adjacent research, then normalizes to 0–100.
+            <strong>Lifestyle contribution</strong> scales exercise and fasting relative to commonly discussed ranges in NAD+-adjacent research, then normalizes to 0â€“100.
           </p>
           <p>
             <strong>NAD+ support score</strong> adjusts lifestyle contribution for age-related headwinds and adds a modest boost based on self-rated supplement strategy.
@@ -431,7 +431,7 @@ export default function NadPlusOptimizationEstimator() {
                 <p className="text-xl font-semibold text-primary">
                   {clamp((result.age - 30) / 50, 0, 1).toFixed(2)}
                 </p>
-                <p className="text-xs text-muted-foreground">0–1 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“1 scale</p>
               </div>
             </div>
           ) : (
@@ -516,7 +516,7 @@ export default function NadPlusOptimizationEstimator() {
           Conclusion
         </h2>
         <p>
-          NAD+ optimization is best approached as part of a broader longevity strategy, not a magic bullet. Focus on fundamentals, consult professionals, and use estimators like this as conversation aids—not prescriptions.
+          NAD+ optimization is best approached as part of a broader longevity strategy, not a magic bullet. Focus on fundamentals, consult professionals, and use estimators like this as conversation aidsâ€”not prescriptions.
         </p>
       </section>
 
@@ -543,7 +543,7 @@ export default function NadPlusOptimizationEstimator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This estimator provides general wellness insights about how NAD+‑supportive your current lifestyle and
+            This estimator provides general wellness insights about how NAD+â€‘supportive your current lifestyle and
             supplement patterns may be. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>Outputs include a NAD+ support score, lifestyle contribution index, qualitative status, recommendations, an action plan, and supporting metrics.</p>

@@ -40,7 +40,7 @@ const steps = [
   'Rate your average mood (1-10) over the same period.',
   'Rate perceived stress (1-10) for context.',
   'Rate reflection depth (1 = quick list, 5 = rich detail/emotion).',
-  'Review the gratitude–mood correlation score, insights, and next actions.',
+  'Review the gratitudeâ€“mood correlation score, insights, and next actions.',
 ];
 
 const faqs = [
@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'How often should I log gratitude entries?',
     answer:
-      'Most studies show three entries per week is the minimum helpful dose, while daily reflections can double the positive impact—especially when detailed.',
+      'Most studies show three entries per week is the minimum helpful dose, while daily reflections can double the positive impactâ€”especially when detailed.',
   },
   {
     question: 'Why include stress level?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/gratitude-mood-correlation-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/gratitude-mood-correlation-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Gratitude & Mood Correlation Tracker', item: baseUrl },
       ],
     },
@@ -172,7 +172,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations: string[] = [
     'Use multi-sensory prompts (sights, sounds, textures) to deepen each gratitude reflection.',
     'Pair gratitude with savoring: pause 60 seconds to relive the positive experience as you write.',
-    'Close entries with “because” statements to anchor meaning and values alignment.',
+    'Close entries with â€œbecauseâ€ statements to anchor meaning and values alignment.',
   ];
 
   if (gratitudeEntries < 7) {
@@ -296,7 +296,7 @@ export default function GratitudeMoodCorrelationTracker() {
                 />
               </div>
               <Button type="submit" className="w-full md:w-auto">
-                Calculate gratitude–mood correlation
+                Calculate gratitudeâ€“mood correlation
               </Button>
             </form>
           </Form>
@@ -382,10 +382,10 @@ export default function GratitudeMoodCorrelationTracker() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Correlation score</strong> = (Frequency factor × 0.5) + (Reflection depth × 0.5), then multiplied by the stress modifier and by 100 to express it as a percentage. Frequency factor is entries ÷ 21, depth is ÷ 5, and the stress modifier protects against high cortisol dampening.
+            <strong>Correlation score</strong> = (Frequency factor Ã— 0.5) + (Reflection depth Ã— 0.5), then multiplied by the stress modifier and by 100 to express it as a percentage. Frequency factor is entries Ã· 21, depth is Ã· 5, and the stress modifier protects against high cortisol dampening.
           </p>
           <p>
-            <strong>Mood delta</strong> ≈ Actual mood − Expected mood from stress baseline (stress ÷ 2 + 3). Positive deltas indicate resilience; negative deltas highlight stress dominance.
+            <strong>Mood delta</strong> â‰ˆ Actual mood âˆ’ Expected mood from stress baseline (stress Ã· 2 + 3). Positive deltas indicate resilience; negative deltas highlight stress dominance.
           </p>
           <p>
             <strong>Status</strong> thresholds: 0-35 low, 36-60 moderate, 61-80 good, 81+ optimal correlation.
@@ -479,7 +479,7 @@ export default function GratitudeMoodCorrelationTracker() {
         <p>Gratitude activates dopamine and serotonin pathways, calms the amygdala, and strengthens the prefrontal cortex. Over time, it rewires attention to notice positive cues, balancing negativity bias.</p>
 
         <h2 id="prompts" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Prompts and Depth</h2>
-        <p>Best prompts include sensory detail, people-focused appreciation, and “because” statements. Shallow lists offer short bursts; depth sustains benefits.</p>
+        <p>Best prompts include sensory detail, people-focused appreciation, and â€œbecauseâ€ statements. Shallow lists offer short bursts; depth sustains benefits.</p>
 
         <h2 id="stress" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Stress Management</h2>
         <p>When stress is high, gratitude must be paired with nervous system regulation. Practices like breathing, walking, or therapy clear space for gratitude to land.</p>
@@ -492,7 +492,7 @@ export default function GratitudeMoodCorrelationTracker() {
 
         <hr />
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Gratitude is a low-cost, high-impact intervention when it’s consistent, detailed, and paired with stress care. Use this tracker to keep rituals intentional and data-informed.</p>
+        <p>Gratitude is a low-cost, high-impact intervention when itâ€™s consistent, detailed, and paired with stress care. Use this tracker to keep rituals intentional and data-informed.</p>
       </section>
 
       <Card>

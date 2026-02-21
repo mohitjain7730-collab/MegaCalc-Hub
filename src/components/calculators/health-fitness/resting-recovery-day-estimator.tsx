@@ -71,7 +71,7 @@ const faqs = [
   {
     question: 'How does stress affect recovery needs?',
     answer:
-      'High stress (work, life, emotional) increases cortisol, impairs recovery, and requires more recovery time. Stress and training stress are cumulative—high life stress plus high training stress significantly increases recovery needs. Managing stress is essential for optimal recovery.',
+      'High stress (work, life, emotional) increases cortisol, impairs recovery, and requires more recovery time. Stress and training stress are cumulativeâ€”high life stress plus high training stress significantly increases recovery needs. Managing stress is essential for optimal recovery.',
   },
   {
     question: 'What are signs I need more recovery?',
@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/resting-recovery-day-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/resting-recovery-day-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Resting Recovery Day Estimator', item: baseUrl },
       ],
     },
@@ -227,7 +227,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations = [
     `Schedule ${clampedRecoveryDays} recovery days per week: plan rest or very light activity days to allow muscle repair, glycogen restoration, and nervous system recovery. Recovery is as important as training for progress.`,
-    'Prioritize sleep: aim for 7-9 hours of quality sleep per night. Sleep is when most recovery occurs—muscle repair, hormone production, and glycogen restoration. Inadequate sleep significantly impairs recovery.',
+    'Prioritize sleep: aim for 7-9 hours of quality sleep per night. Sleep is when most recovery occursâ€”muscle repair, hormone production, and glycogen restoration. Inadequate sleep significantly impairs recovery.',
   ];
   
   if (sleepHours < 7) {
@@ -445,7 +445,7 @@ export default function RestingRecoveryDayEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base recovery days</strong> = Training Days × Intensity Multiplier × 0.4. Intensity multipliers: low = 0.5, moderate = 1.0, high = 1.5, very high = 2.0. Higher intensity requires more recovery.
+            <strong>Base recovery days</strong> = Training Days Ã— Intensity Multiplier Ã— 0.4. Intensity multipliers: low = 0.5, moderate = 1.0, high = 1.5, very high = 2.0. Higher intensity requires more recovery.
           </p>
           <p>
             <strong>Sleep adjustment</strong> adds recovery days: less than 6 hours = +1.5 days, 6-7 hours = +1.0 day, 7-8 hours = +0.5 days, 8+ hours = 0 days. Inadequate sleep significantly impairs recovery.
@@ -545,7 +545,7 @@ export default function RestingRecoveryDayEstimator() {
 <hr />
 
     <h2 id="what-is-recovery" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What Is Recovery and Why It Matters</h2>
-    <p>**Recovery** is the process by which your body repairs, adapts, and restores itself after training stress. Recovery days are periods of rest or very light activity that allow these processes to occur. Recovery is not the absence of training—it's an essential component of the training process itself.</p>
+    <p>**Recovery** is the process by which your body repairs, adapts, and restores itself after training stress. Recovery days are periods of rest or very light activity that allow these processes to occur. Recovery is not the absence of trainingâ€”it's an essential component of the training process itself.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">Why Recovery Is Essential</h3>
 <p>Recovery enables:</p>
@@ -560,7 +560,7 @@ export default function RestingRecoveryDayEstimator() {
 <p>Without adequate recovery, training stress accumulates, leading to overtraining, injury, and stalled progress.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">The Recovery-Adaptation Cycle</h3>
-<p>Training creates stress → Recovery allows repair → Adaptation occurs (strength/fitness gains) → Ready for next training session. This cycle requires adequate recovery time between sessions.</p>
+<p>Training creates stress â†’ Recovery allows repair â†’ Adaptation occurs (strength/fitness gains) â†’ Ready for next training session. This cycle requires adequate recovery time between sessions.</p>
 
 <hr />
 
@@ -666,10 +666,10 @@ export default function RestingRecoveryDayEstimator() {
     <p>Optimize recovery through multiple strategies:</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Schedule Recovery Days</h3>
-    <p>Plan recovery days as part of your training program. Don't wait until you're exhausted—proactive recovery prevents problems.</p>
+    <p>Plan recovery days as part of your training program. Don't wait until you're exhaustedâ€”proactive recovery prevents problems.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">2. Prioritize Sleep</h3>
-    <p>Aim for 7-9 hours of quality sleep. Sleep is when most recovery occurs—muscle repair, hormone production, and glycogen restoration.</p>
+    <p>Aim for 7-9 hours of quality sleep. Sleep is when most recovery occursâ€”muscle repair, hormone production, and glycogen restoration.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">3. Manage Stress</h3>
     <p>Implement stress management strategies. High stress impairs recovery and increases recovery needs.</p>
@@ -683,7 +683,7 @@ export default function RestingRecoveryDayEstimator() {
 <hr />
 
     <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-    <p>Recovery days are essential for training progress, injury prevention, and long-term health. Understanding your recovery needs based on training volume, intensity, sleep, and stress helps you optimize your training program. Use this calculator to estimate your recovery needs, and remember: recovery is not optional—it's an essential part of the training process. Prioritize adequate rest, sleep, and stress management to maximize your training results.</p>
+    <p>Recovery days are essential for training progress, injury prevention, and long-term health. Understanding your recovery needs based on training volume, intensity, sleep, and stress helps you optimize your training program. Use this calculator to estimate your recovery needs, and remember: recovery is not optionalâ€”it's an essential part of the training process. Prioritize adequate rest, sleep, and stress management to maximize your training results.</p>
 </section>
       <Card>
         <CardHeader>

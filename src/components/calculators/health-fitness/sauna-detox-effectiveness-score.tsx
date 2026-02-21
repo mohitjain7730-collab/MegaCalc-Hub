@@ -38,8 +38,8 @@ type ResultPayload = {
 const steps = [
   'Enter how many sauna sessions you do per week.',
   'Enter the typical minutes spent per session.',
-  'Enter the average sauna temperature in °C.',
-  'Rate your hydration and electrolyte practices around sessions (0–10).',
+  'Enter the average sauna temperature in Â°C.',
+  'Rate your hydration and electrolyte practices around sessions (0â€“10).',
   'Review the detox effectiveness score, thermal load index, and guidance.',
 ];
 
@@ -50,9 +50,9 @@ const faqs = [
       'It estimates how sauna frequency, duration, intensity, and hydration practices may support detox-related processes like sweating and circulation.',
   },
   {
-    question: 'Does this mean my body is “full of toxins”?',
+    question: 'Does this mean my body is â€œfull of toxinsâ€?',
     answer:
-      'No. The term “detox” here focuses on supporting natural elimination routes (sweat, circulation) rather than implying a specific toxin burden.',
+      'No. The term â€œdetoxâ€ here focuses on supporting natural elimination routes (sweat, circulation) rather than implying a specific toxin burden.',
   },
   {
     question: 'Is sauna safe for everyone?',
@@ -82,17 +82,17 @@ const faqs = [
   {
     question: 'How often should I adjust my protocol?',
     answer:
-      'Change slowly—especially temperature and time—while monitoring how you feel during and after sessions.',
+      'Change slowlyâ€”especially temperature and timeâ€”while monitoring how you feel during and after sessions.',
   },
   {
     question: 'Is there an ideal weekly dose?',
     answer:
-      'Some observational studies suggest 3–7 sessions per week with moderate durations may support cardiovascular health; individual needs vary.',
+      'Some observational studies suggest 3â€“7 sessions per week with moderate durations may support cardiovascular health; individual needs vary.',
   },
   {
     question: 'Should I fast before sauna?',
     answer:
-      'Light meals are often better than heavy meals or alcohol beforehand; follow your clinician’s guidance for your situation.',
+      'Light meals are often better than heavy meals or alcohol beforehand; follow your clinicianâ€™s guidance for your situation.',
   },
 ];
 
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/sauna-detox-effectiveness-score';
+const baseUrl = 'https://mycalculating.com/health-fitness/sauna-detox-effectiveness-score';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Sauna Detox Effectiveness Score', item: baseUrl },
       ],
     },
@@ -178,7 +178,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   ];
 
   if (sessionsPerWeek === 0 || minutesPerSession === 0) {
-    recommendations.push('If you are just starting, begin with 1–2 shorter sessions per week and listen to your body.');
+    recommendations.push('If you are just starting, begin with 1â€“2 shorter sessions per week and listen to your body.');
   }
 
   if (averageTempC > 90 && minutesPerSession > 20) {
@@ -275,7 +275,7 @@ export default function SaunaDetoxEffectivenessScore() {
                   name="averageTempC"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Average temperature (°C)</FormLabel>
+                      <FormLabel>Average temperature (Â°C)</FormLabel>
                       <FormControl>
                         <Input type="number" step="1" placeholder="e.g., 80" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -288,7 +288,7 @@ export default function SaunaDetoxEffectivenessScore() {
                   name="hydrationScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Hydration & electrolytes (0–10)</FormLabel>
+                      <FormLabel>Hydration & electrolytes (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 7.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -319,7 +319,7 @@ export default function SaunaDetoxEffectivenessScore() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Detox effectiveness</p>
                 <p className="text-2xl font-semibold text-primary">{result.detoxEffectivenessScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Thermal load index</p>
@@ -386,7 +386,7 @@ export default function SaunaDetoxEffectivenessScore() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Thermal load index</strong> approximates total heat stress as (sessions × minutes) × temperature factor, giving a sense of cumulative exposure.
+            <strong>Thermal load index</strong> approximates total heat stress as (sessions Ã— minutes) Ã— temperature factor, giving a sense of cumulative exposure.
           </p>
           <p>
             <strong>Detox effectiveness score</strong> combines session dose, temperature, and hydration quality, then subtracts penalties for very high total time.
@@ -488,13 +488,13 @@ export default function SaunaDetoxEffectivenessScore() {
           Sauna Detox and Heat Therapy: How to Use Heat Wisely for Healthspan
         </h1>
         <p className="text-lg italic text-gray-700">
-          Learn what current research says about sauna use, “detox,” cardiovascular benefits, and how to design a routine that fits your goals and medical context.
+          Learn what current research says about sauna use, â€œdetox,â€ cardiovascular benefits, and how to design a routine that fits your goals and medical context.
         </p>
 
-        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. What “Detox” Really Means in Sauna Context</h2>
+        <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. What â€œDetoxâ€ Really Means in Sauna Context</h2>
         <p>
           Your liver, kidneys, lungs, gut, and skin continuously process and eliminate compounds. Sauna supports this system indirectly by increasing circulation, sweating, and sometimes influencing blood pressure and heart rate.
-          It does not “flush out” specific toxins on its own, but it can be one helpful input in overall metabolic health.
+          It does not â€œflush outâ€ specific toxins on its own, but it can be one helpful input in overall metabolic health.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. Evidence on Sauna and Cardiovascular/Longevity Outcomes</h2>
@@ -506,12 +506,12 @@ export default function SaunaDetoxEffectivenessScore() {
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Individual Risk and Contraindications</h2>
         <p>
           People with unstable cardiovascular disease, severe hypotension, pregnancy, or certain neurological or dermatologic conditions may face higher risk. Always discuss sauna use with a clinician familiar with your
-          history—especially if you take medications that affect blood pressure, fluid balance, or thermoregulation.
+          historyâ€”especially if you take medications that affect blood pressure, fluid balance, or thermoregulation.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">4. Designing a Practical Sauna Routine</h2>
         <p>
-          Many people do well starting with 1–2 sessions per week of 10–15 minutes at moderate temperatures, then adjusting based on tolerance. Hydration, cooling down gradually, and listening to fatigue signals are essential
+          Many people do well starting with 1â€“2 sessions per week of 10â€“15 minutes at moderate temperatures, then adjusting based on tolerance. Hydration, cooling down gradually, and listening to fatigue signals are essential
           parts of a safe protocol.
         </p>
 

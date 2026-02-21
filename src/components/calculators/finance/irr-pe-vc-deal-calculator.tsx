@@ -53,7 +53,7 @@ const faqs = [
   {
     question: 'How is IRR calculated?',
     answer:
-      'IRR is the discount rate r that satisfies: NPV = Σ(Cash Flow_t / (1 + r)^t) = 0. Cash flows include initial investment (negative), annual distributions (positive), and exit proceeds (positive). IRR is solved iteratively using Excel IRR or XIRR functions.',
+      'IRR is the discount rate r that satisfies: NPV = Î£(Cash Flow_t / (1 + r)^t) = 0. Cash flows include initial investment (negative), annual distributions (positive), and exit proceeds (positive). IRR is solved iteratively using Excel IRR or XIRR functions.',
   },
   {
     question: 'What cash flows are included?',
@@ -68,7 +68,7 @@ const faqs = [
   {
     question: 'How does timing affect IRR?',
     answer:
-      'IRR is highly sensitive to timing. Earlier exits and distributions increase IRR, while later exits reduce IRR. For example, 2.0x MOIC over 3 years ≈ 26% IRR, but over 7 years ≈ 10% IRR. Timing is critical for IRR calculation.',
+      'IRR is highly sensitive to timing. Earlier exits and distributions increase IRR, while later exits reduce IRR. For example, 2.0x MOIC over 3 years â‰ˆ 26% IRR, but over 7 years â‰ˆ 10% IRR. Timing is critical for IRR calculation.',
   },
   {
     question: 'What is the difference between gross and net IRR?',
@@ -93,7 +93,7 @@ const faqs = [
   {
     question: 'What is the relationship between IRR and MOIC?',
     answer:
-      'IRR and MOIC are related but different. MOIC measures total return multiple, while IRR accounts for timing. Higher MOIC generally means higher IRR, but timing matters. IRR ≈ (MOIC)^(1/holding period) - 1 is a useful approximation.',
+      'IRR and MOIC are related but different. MOIC measures total return multiple, while IRR accounts for timing. Higher MOIC generally means higher IRR, but timing matters. IRR â‰ˆ (MOIC)^(1/holding period) - 1 is a useful approximation.',
   },
 ];
 
@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/irr-pe-vc-deal-calculator';
+const baseUrl = 'https://mycalculating.com/finance/irr-pe-vc-deal-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Internal Rate of Return (IRR) for PE/VC Deal Calculator', item: baseUrl },
       ],
     },
@@ -246,7 +246,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     interpretation = 'IRR 20-30% represents solid PE/VC performance, typically above median fund returns.';
   } else {
     status = 'optimal';
-    interpretation = 'IRR ≥30% represents top quartile PE/VC performance, exceeding typical fund benchmarks.';
+    interpretation = 'IRR â‰¥30% represents top quartile PE/VC performance, exceeding typical fund benchmarks.';
   }
 
   const recommendations = [
@@ -260,7 +260,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
   
   if (irr >= 30) {
-    recommendations.push('Excellent: IRR ≥30% represents top quartile performance. This indicates strong returns driven by successful exit, early distributions, or operational improvements.');
+    recommendations.push('Excellent: IRR â‰¥30% represents top quartile performance. This indicates strong returns driven by successful exit, early distributions, or operational improvements.');
   }
   
   recommendations.push('Validation: Compare IRR to fund benchmarks and similar transactions. Review exit assumptions and cash flow projections. Perform sensitivity analysis on key variables. Consider gross vs. net IRR (deducting fees and carry).');
@@ -486,13 +486,13 @@ export default function IrrPeVcDealCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>IRR</strong> is the discount rate r that satisfies: NPV = Σ(Cash Flow_t / (1 + r)^t) = 0
+            <strong>IRR</strong> is the discount rate r that satisfies: NPV = Î£(Cash Flow_t / (1 + r)^t) = 0
           </p>
           <p>
             Cash flows include: initial investment (negative, Year 0), annual distributions (positive, Years 1-N), and exit proceeds (positive, final year).
           </p>
           <p>
-            <strong>NPV</strong> = Σ(Cash Flow_t / (1 + Discount Rate)^t)
+            <strong>NPV</strong> = Î£(Cash Flow_t / (1 + Discount Rate)^t)
           </p>
           <p>IRR is solved iteratively using Newton-Raphson method or Excel IRR/XIRR functions. IRR accounts for the timing of cash flows and is the primary return metric for PE/VC investments.</p>
           <p>Target IRRs vary by strategy: VC 25-40%+, Growth Equity 20-30%, Buyout 20-25%. Top quartile funds achieve 30%+ IRR.</p>
@@ -547,7 +547,7 @@ export default function IrrPeVcDealCalculator() {
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600 dark:text-blue-400">
-          <li><a href="#what" className="hover:underline">What IRR Measures (and Doesn’t)</a></li>
+          <li><a href="#what" className="hover:underline">What IRR Measures (and Doesnâ€™t)</a></li>
           <li><a href="#cashflows" className="hover:underline">Building the Cash Flow Timeline</a></li>
           <li><a href="#solve" className="hover:underline">How IRR is Solved (Iteration/XIRR)</a></li>
           <li><a href="#bench" className="hover:underline">Strategy Benchmarks and Quartiles</a></li>
@@ -557,37 +557,37 @@ export default function IrrPeVcDealCalculator() {
         </ul>
         <hr className="my-6" />
 
-        <h2 id="what" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What IRR Measures (and Doesn’t)</h2>
-        <p>IRR annualizes your return, capturing timing. It does not capture scale (that’s MOIC) or risk. A high IRR on a tiny check may be less meaningful than a solid IRR on meaningful dollars.</p>
+        <h2 id="what" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What IRR Measures (and Doesnâ€™t)</h2>
+        <p>IRR annualizes your return, capturing timing. It does not capture scale (thatâ€™s MOIC) or risk. A high IRR on a tiny check may be less meaningful than a solid IRR on meaningful dollars.</p>
 
         <h2 id="cashflows" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Building the Cash Flow Timeline</h2>
         <ul className="list-disc ml-6 space-y-2">
           <li><strong>Year 0:</strong> Initial investment (negative).</li>
-          <li><strong>Years 1–N:</strong> Dividends/distributions/partial exits (positive). Fees (negative if modeled).</li>
+          <li><strong>Years 1â€“N:</strong> Dividends/distributions/partial exits (positive). Fees (negative if modeled).</li>
           <li><strong>Exit year:</strong> Final proceeds (positive), sometimes plus last distribution.</li>
         </ul>
-        <p>Use after-tax numbers for comparability. Irregular timing → use XIRR with specific dates.</p>
+        <p>Use after-tax numbers for comparability. Irregular timing â†’ use XIRR with specific dates.</p>
 
         <h2 id="solve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How IRR is Solved (Iteration/XIRR)</h2>
         <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-          <p className="font-mono text-lg"><strong>IRR solves for r where Σ(CF_t / (1 + r)^t) = 0</strong></p>
+          <p className="font-mono text-lg"><strong>IRR solves for r where Î£(CF_t / (1 + r)^t) = 0</strong></p>
         </div>
         <p>Solvers iterate (Newton-Raphson). Multiple sign changes can create multiple IRRs; check for sensible results and compare to NPV at hurdle rates.</p>
 
         <h2 id="bench" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategy Benchmarks and Quartiles</h2>
         <ul className="list-disc ml-6 space-y-2">
-          <li><strong>VC:</strong> 25–40%+ (high dispersion).</li>
-          <li><strong>Growth Equity:</strong> 20–30%.</li>
-          <li><strong>Buyout:</strong> 20–25%.</li>
-          <li><strong>Distressed:</strong> 15–25%.</li>
+          <li><strong>VC:</strong> 25â€“40%+ (high dispersion).</li>
+          <li><strong>Growth Equity:</strong> 20â€“30%.</li>
+          <li><strong>Buyout:</strong> 20â€“25%.</li>
+          <li><strong>Distressed:</strong> 15â€“25%.</li>
         </ul>
         <p>Top quartile often starts near 30%+ IRR; always calibrate to sector and cycle.</p>
 
         <h2 id="timing" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Timing Sensitivity and MOIC Link</h2>
-        <p>IRR ≈ (MOIC)^(1/years) - 1. Same MOIC over a longer hold → lower IRR. Early distributions punch up IRR; back-loaded exits drag it down.</p>
+        <p>IRR â‰ˆ (MOIC)^(1/years) - 1. Same MOIC over a longer hold â†’ lower IRR. Early distributions punch up IRR; back-loaded exits drag it down.</p>
 
         <h2 id="net" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Gross vs. Net IRR (Fees and Carry)</h2>
-        <p>Gross IRR ignores fees/carry. Net IRR subtracts management fees and carried interest—often 3–5 percentage points lower. LPs benchmark net; GPs often cite gross.</p>
+        <p>Gross IRR ignores fees/carry. Net IRR subtracts management fees and carried interestâ€”often 3â€“5 percentage points lower. LPs benchmark net; GPs often cite gross.</p>
 
         <h2 id="playbook" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Validation Playbook</h2>
         <ol className="list-decimal ml-6 space-y-2">
@@ -599,7 +599,7 @@ export default function IrrPeVcDealCalculator() {
         </ol>
 
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>IRR is the timing-aware scorecard for PE/VC. Build clean cash flows, use XIRR for irregular dates, benchmark to strategy norms, and stress timing—small shifts in exit date or value can swing returns dramatically.</p>
+        <p>IRR is the timing-aware scorecard for PE/VC. Build clean cash flows, use XIRR for irregular dates, benchmark to strategy norms, and stress timingâ€”small shifts in exit date or value can swing returns dramatically.</p>
       </section>
 
       <Card>

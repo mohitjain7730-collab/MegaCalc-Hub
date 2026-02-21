@@ -32,7 +32,7 @@ export async function generateMetadata({
 
     if (!category) return { title: 'Not Found' };
 
-    // CHECK SUBCATEGORY: /category/[slug]/[sub]
+    // CHECK SUBCATEGORY: /[slug]/[sub]
     if (path.length === 1) {
         const subSlug = path[0];
         const subcategory = category.subcategories?.find((s) => s.slug === subSlug);

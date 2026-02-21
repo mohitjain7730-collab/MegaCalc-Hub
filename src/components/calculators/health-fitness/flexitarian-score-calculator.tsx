@@ -128,7 +128,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/flexitarian-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/flexitarian-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -137,7 +137,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Flexitarian Score Calculator', item: baseUrl },
       ],
     },
@@ -540,13 +540,13 @@ export default function FlexitarianScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Plant-based ratio</strong> = (plant-based meals / total meals) × 100. Higher ratios (70-80%) indicate better flexitarian adherence.
+            <strong>Plant-based ratio</strong> = (plant-based meals / total meals) Ã— 100. Higher ratios (70-80%) indicate better flexitarian adherence.
           </p>
           <p>
             <strong>Flexitarian score</strong> = sum of points from plant-based meal ratio (0-30), vegetables (0-20), fruits (0-15), legumes (0-15), whole grains (0-10), and red meat (0-10, inverted). Maximum score is 100 points. Higher scores indicate better adherence.
           </p>
           <p>
-            <strong>Scoring criteria:</strong> Plant-based ratio: 75-85% (30 points), 65%+ (25 points), 50%+ (15 points), 30%+ (8 points). Vegetables: 7+ servings (20 points), 5+ servings (15 points), 3+ servings (10 points), 1+ servings (5 points). Fruits: 4-6 servings (15 points), 3+ servings (12 points), 2+ servings (8 points), 1+ servings (4 points). Legumes: 0.7+ servings (15 points), 0.5+ servings (12 points), 0.3+ servings (8 points), 0.1+ servings (4 points). Whole grains: 4+ servings (10 points), 3+ servings (8 points), 2+ servings (5 points), 1+ servings (2 points). Red meat: ≤1 serving/week (10 points), ≤2 servings (7 points), ≤4 servings (4 points), ≤6 servings (1 point).
+            <strong>Scoring criteria:</strong> Plant-based ratio: 75-85% (30 points), 65%+ (25 points), 50%+ (15 points), 30%+ (8 points). Vegetables: 7+ servings (20 points), 5+ servings (15 points), 3+ servings (10 points), 1+ servings (5 points). Fruits: 4-6 servings (15 points), 3+ servings (12 points), 2+ servings (8 points), 1+ servings (4 points). Legumes: 0.7+ servings (15 points), 0.5+ servings (12 points), 0.3+ servings (8 points), 0.1+ servings (4 points). Whole grains: 4+ servings (10 points), 3+ servings (8 points), 2+ servings (5 points), 1+ servings (2 points). Red meat: â‰¤1 serving/week (10 points), â‰¤2 servings (7 points), â‰¤4 servings (4 points), â‰¤6 servings (1 point).
           </p>
           <p>The flexitarian diet emphasizes plant-based foods while allowing flexibility for occasional animal products. Higher adherence (70-80% plant-based meals, abundant plant foods, limited red meat) supports health, sustainability, and long-term dietary adherence.</p>
         </CardContent>

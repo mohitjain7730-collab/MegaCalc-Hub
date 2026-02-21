@@ -113,7 +113,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/blood-sugar-spike-estimator-by-meal-type';
+const baseUrl = 'https://mycalculating.com/health-fitness/blood-sugar-spike-estimator-by-meal-type';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -122,7 +122,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Energy Fluctuation Estimator (by meal type)', item: baseUrl },
       ],
     },
@@ -199,7 +199,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     'You may consider increasing fiber intake (10-15g per meal) from vegetables, whole grains, and legumes to slow carbohydrate absorption.',
   ];
   if (values.mealType === 'high-gi') {
-    recommendations.push('You may consider replacing high-GI foods with lower-GI alternatives (e.g., white rice → brown rice, white bread → whole grain).');
+    recommendations.push('You may consider replacing high-GI foods with lower-GI alternatives (e.g., white rice â†’ brown rice, white bread â†’ whole grain).');
   }
   if (values.carbohydrateGrams > 60) {
     recommendations.push('You may consider reducing carbohydrate portion size or splitting into smaller meals throughout the day.');
@@ -429,7 +429,7 @@ export default function BloodSugarSpikeEstimatorByMealType() {
             <strong>Base spike</strong> = Meal type baseline (low-GI: ~20 mg/dL, medium-GI: ~40 mg/dL, high-GI: ~70 mg/dL, mixed: ~35 mg/dL).
           </p>
           <p>
-            <strong>Carbohydrate adjustment</strong> = Base spike × (1 + ((carb grams / 50) - 1) × 0.3).
+            <strong>Carbohydrate adjustment</strong> = Base spike Ã— (1 + ((carb grams / 50) - 1) Ã— 0.3).
           </p>
           <p>
             <strong>Protein reduction</strong> = Up to 40% reduction (protein grams / 30, capped at 0.4).

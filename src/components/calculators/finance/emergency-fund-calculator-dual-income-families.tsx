@@ -41,8 +41,8 @@ const schemaMarkup = {
       name: 'Emergency Fund Calculator for Dual Income Families',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'Calculate emergency fund target for dual-income families: recommended 3–9 months of essential expenses when one income can cover while the other searches. Includes housing, food, utilities, debt, insurance, and risk factors.',
-      url: 'https://mycalculating.com/category/finance/emergency-fund-calculator-dual-income-families',
+      description: 'Calculate emergency fund target for dual-income families: recommended 3â€“9 months of essential expenses when one income can cover while the other searches. Includes housing, food, utilities, debt, insurance, and risk factors.',
+      url: 'https://mycalculating.com/finance/emergency-fund-calculator-dual-income-families',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -110,16 +110,16 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
 
   const getRecommendation = (monthsCovered: number, recommendedMonths: number) => {
     if (monthsCovered >= recommendedMonths) return 'Dual-income emergency fund is fully funded. Keep funds in a high-yield savings account for liquidity.';
-    if (monthsCovered >= 3) return 'You have a partial buffer. Continue building to the recommended 3–9 months for dual-income security.';
+    if (monthsCovered >= 3) return 'You have a partial buffer. Continue building to the recommended 3â€“9 months for dual-income security.';
     if (monthsCovered >= 2) return 'You have minimal coverage. Dual-income families have one earner as backup; prioritize reaching at least 3 months of expenses.';
-    return 'Immediate action required. Build at least 2–3 months of expenses so one income loss does not put the household at risk.';
+    return 'Immediate action required. Build at least 2â€“3 months of expenses so one income loss does not put the household at risk.';
   };
 
   const getInsights = (v: FormValues, recommendedMonths: number) => {
     const insights = [];
-    insights.push('Dual-income families have a backup earner; if one loses a job, the other income can cover expenses while the first searches. Base target is typically 3–6 months (vs 6–12 for single income).');
+    insights.push('Dual-income families have a backup earner; if one loses a job, the other income can cover expenses while the first searches. Base target is typically 3â€“6 months (vs 6â€“12 for single income).');
     if (v.earnerStability === 'one-variable' || v.earnerStability === 'both-variable') {
-      insights.push('Variable income for one or both earners increases recommended months (6–9+ months).');
+      insights.push('Variable income for one or both earners increases recommended months (6â€“9+ months).');
     }
     if (v.dependents > 0) {
       insights.push('Dependents increase financial responsibility; target includes additional months.');
@@ -135,7 +135,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
     const warnings = [];
     if (monthsCovered < 1) warnings.push('Less than 1 month covered: high risk even with two incomes (e.g. if both jobs are at risk).');
     if (monthsCovered < 2) warnings.push('Below 2 months: minimal buffer; dual-income families should aim for at least 3 months.');
-    if (monthsCovered < recommendedMonths && monthsCovered >= 2) warnings.push('Below recommended dual-income target (3–9 months).');
+    if (monthsCovered < recommendedMonths && monthsCovered >= 2) warnings.push('Below recommended dual-income target (3â€“9 months).');
     return warnings;
   };
 
@@ -163,7 +163,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
             Dual-Income Family Profile
           </CardTitle>
           <CardDescription>
-            Enter monthly essential expenses and risk factors. Dual-income families have a backup earner; target is typically 3–9 months of expenses.
+            Enter monthly essential expenses and risk factors. Dual-income families have a backup earner; target is typically 3â€“9 months of expenses.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -247,7 +247,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                 <Wallet className="h-8 w-8 text-primary" />
                 <div>
                   <CardTitle>Emergency Fund Goal (Dual Income)</CardTitle>
-                  <CardDescription>Target based on 3–9 months of essential expenses; one income can cover while the other searches</CardDescription>
+                  <CardDescription>Target based on 3â€“9 months of essential expenses; one income can cover while the other searches</CardDescription>
                 </div>
               </div>
             </CardHeader>
@@ -342,7 +342,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
             <Info className="h-5 w-5" />
             Understanding Dual-Income Emergency Funds
           </CardTitle>
-          <CardDescription>Why 3–9 months for dual-income families</CardDescription>
+          <CardDescription>Why 3â€“9 months for dual-income families</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -352,7 +352,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                 Backup Earner
               </h4>
               <p className="text-sm text-muted-foreground mb-3">
-                With two incomes, if one earner loses a job the other income can cover essential expenses while the first searches. That is why the base target is 3–6 months (lower than single income), with more months if one or both have variable income or there are dependents.
+                With two incomes, if one earner loses a job the other income can cover essential expenses while the first searches. That is why the base target is 3â€“6 months (lower than single income), with more months if one or both have variable income or there are dependents.
               </p>
               <ul className="space-y-2">
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -361,7 +361,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-blue-500 mt-0.5 shrink-0" />
-                  <span>One or both variable income, or dependents: add 3–6 months</span>
+                  <span>One or both variable income, or dependents: add 3â€“6 months</span>
                 </li>
               </ul>
             </div>
@@ -388,14 +388,14 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
             <p className="font-mono text-sm text-center">
-              Target Fund = Monthly Essential Expenses × Recommended Months
+              Target Fund = Monthly Essential Expenses Ã— Recommended Months
             </p>
             <p className="font-mono text-sm text-center">
-              Dual-income base: 3 months. +3 for one variable earner, +6 for both variable, +3 for dependents (capped 3–12 months).
+              Dual-income base: 3 months. +3 for one variable earner, +6 for both variable, +3 for dependents (capped 3â€“12 months).
             </p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Months covered = Current savings ÷ Monthly expenses. Gap = Target fund − Current savings.
+            Months covered = Current savings Ã· Monthly expenses. Gap = Target fund âˆ’ Current savings.
           </p>
         </CardContent>
       </Card>
@@ -417,7 +417,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                     <Shield className="h-5 w-5 text-blue-600" />
                     <div>
                       <p className="font-medium">Emergency Fund (Single Income)</p>
-                      <p className="text-sm text-muted-foreground">6–12 months, no backup earner</p>
+                      <p className="text-sm text-muted-foreground">6â€“12 months, no backup earner</p>
                     </div>
                   </div>
                 </CardContent>
@@ -430,7 +430,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
                     <Shield className="h-5 w-5 text-green-600" />
                     <div>
                       <p className="font-medium">Emergency Fund (Freelancers)</p>
-                      <p className="text-sm text-muted-foreground">9–12+ months, variable income</p>
+                      <p className="text-sm text-muted-foreground">9â€“12+ months, variable income</p>
                     </div>
                   </div>
                 </CardContent>
@@ -454,20 +454,20 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
       </Card>
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
-        <meta itemProp="name" content="Emergency Fund for Dual Income Families: Why 3–9 Months" />
-        <meta itemProp="description" content="How much emergency fund dual-income families need: one income can cover while the other searches. Recommended 3–9 months of essential expenses, with risk adjustments." />
+        <meta itemProp="name" content="Emergency Fund for Dual Income Families: Why 3â€“9 Months" />
+        <meta itemProp="description" content="How much emergency fund dual-income families need: one income can cover while the other searches. Recommended 3â€“9 months of essential expenses, with risk adjustments." />
         <meta itemProp="keywords" content="emergency fund dual income, dual income family emergency fund, how much emergency fund two incomes, 3 months expenses dual income" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
         <meta itemProp="url" content="/finance/emergency-fund-calculator-dual-income-families" />
 
-        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Dual Income Families: Why 3–9 Months</h1>
-        <p className="text-lg italic text-muted-foreground">Dual-income families have a backup earner; if one loses a job, the other income can cover expenses. A target of 3–9 months of essential expenses is the standard recommendation.</p>
+        <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Emergency Fund for Dual Income Families: Why 3â€“9 Months</h1>
+        <p className="text-lg italic text-muted-foreground">Dual-income families have a backup earner; if one loses a job, the other income can cover expenses. A target of 3â€“9 months of essential expenses is the standard recommendation.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-primary">
           <li><a href="#dual-income-benefit" className="hover:underline">Why Dual Income Needs Less Than Single Income</a></li>
-          <li><a href="#months-target-dual" className="hover:underline">Recommended Months (3–9)</a></li>
+          <li><a href="#months-target-dual" className="hover:underline">Recommended Months (3â€“9)</a></li>
           <li><a href="#what-counts-dual" className="hover:underline">What Counts as Essential Expenses</a></li>
           <li><a href="#applications-dual" className="hover:underline">Using the Emergency Fund Target</a></li>
           <li><a href="#conclusion-dual" className="hover:underline">Conclusion</a></li>
@@ -475,28 +475,28 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
         <hr />
 
         <h2 id="dual-income-benefit" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why Dual Income Needs Less Than Single Income</h2>
-        <p>When two earners contribute to the household, losing one job does not remove 100% of income. The remaining earner can cover essential expenses while the other searches. That is why the base target for dual-income families is <strong>3–6 months</strong> (vs 6–12 for single income).</p>
+        <p>When two earners contribute to the household, losing one job does not remove 100% of income. The remaining earner can cover essential expenses while the other searches. That is why the base target for dual-income families is <strong>3â€“6 months</strong> (vs 6â€“12 for single income).</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Backup Earner</h3>
         <p>One income can often cover mortgage/rent, utilities, food, and minimum debt payments while the other earner looks for work. That reduces the months of expenses you need in reserve compared to a single-income household.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">When to Target More Months</h3>
-        <p>If one or both earners have variable income (freelance, commission), or if there are dependents, financial advisors often recommend 6–9 months. The calculator adds months based on earner stability and dependents.</p>
+        <p>If one or both earners have variable income (freelance, commission), or if there are dependents, financial advisors often recommend 6â€“9 months. The calculator adds months based on earner stability and dependents.</p>
 
         <hr />
 
-        <h2 id="months-target-dual" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Recommended Months (3–9)</h2>
-        <p>Base recommendation for dual income: <strong>3 months</strong>. Add 3 months if one earner has variable income, 6 months if both have variable income, and 3 months for dependents. Cap at 3–12 months.</p>
+        <h2 id="months-target-dual" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Recommended Months (3â€“9)</h2>
+        <p>Base recommendation for dual income: <strong>3 months</strong>. Add 3 months if one earner has variable income, 6 months if both have variable income, and 3 months for dependents. Cap at 3â€“12 months.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">The Calculation</h3>
         <div className="overflow-x-auto my-6 p-4 bg-muted border rounded-lg text-center">
           <p className="font-mono text-lg text-destructive font-bold">
-            Target Fund = Monthly Essential Expenses × Recommended Months
+            Target Fund = Monthly Essential Expenses Ã— Recommended Months
           </p>
         </div>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">When to Add More Months</h3>
-        <p>If one or both earners have variable income (freelance, commission) or there are dependents, add 3–6 months to the base. The calculator adjusts recommended months based on earner stability and number of dependents.</p>
+        <p>If one or both earners have variable income (freelance, commission) or there are dependents, add 3â€“6 months to the base. The calculator adjusts recommended months based on earner stability and number of dependents.</p>
 
         <hr />
 
@@ -517,7 +517,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
         <hr />
 
         <h2 id="conclusion-dual" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Dual-income families have a backup earner; a target of 3–9 months of essential expenses is the standard recommendation, with more months for variable income or dependents. Use this calculator to set your target and track the gap.</p>
+        <p>Dual-income families have a backup earner; a target of 3â€“9 months of essential expenses is the standard recommendation, with more months for variable income or dependents. Use this calculator to set your target and track the gap.</p>
       </section>
 
       <Card>
@@ -534,19 +534,19 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
           <div>
             <h4 className="font-semibold text-lg mb-3">Why is the emergency fund target lower for dual-income families?</h4>
             <p className="text-muted-foreground">
-              With two incomes, if one earner loses a job the other income can cover essential expenses while the first searches. So the base target is typically 3–6 months (vs 6–12 for single income). You still add months if one or both have variable income or there are dependents.
+              With two incomes, if one earner loses a job the other income can cover essential expenses while the first searches. So the base target is typically 3â€“6 months (vs 6â€“12 for single income). You still add months if one or both have variable income or there are dependents.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How many months should a dual-income family save?</h4>
             <p className="text-muted-foreground">
-              At least 3 months of essential expenses when both earners have stable income. With one or both variable income, or dependents, 6–9 months (or more) is often recommended. This calculator adjusts based on earner stability and number of dependents.
+              At least 3 months of essential expenses when both earners have stable income. With one or both variable income, or dependents, 6â€“9 months (or more) is often recommended. This calculator adjusts based on earner stability and number of dependents.
             </p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What if both earners work in the same industry?</h4>
             <p className="text-muted-foreground">
-              If both jobs could be at risk in the same downturn (e.g. same company or industry), consider targeting the higher end of the range (6–9 months) or treating the household more like a single-income scenario for emergency fund purposes.
+              If both jobs could be at risk in the same downturn (e.g. same company or industry), consider targeting the higher end of the range (6â€“9 months) or treating the household more like a single-income scenario for emergency fund purposes.
             </p>
           </div>
           <div>
@@ -583,7 +583,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Dual-Income Couples</strong>
-                <span className="text-sm text-muted-foreground">To set an emergency fund target when one income can cover while the other searches (3–9 months).</span>
+                <span className="text-sm text-muted-foreground">To set an emergency fund target when one income can cover while the other searches (3â€“9 months).</span>
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Families with Dependents</strong>
@@ -604,7 +604,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
-                <span><strong>Both jobs at risk:</strong> If both earners could lose income in the same event (same employer or industry), consider a higher target (6–9 months).</span>
+                <span><strong>Both jobs at risk:</strong> If both earners could lose income in the same event (same employer or industry), consider a higher target (6â€“9 months).</span>
               </li>
               <li className="flex gap-2">
                 <CheckCircle2 className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
@@ -644,7 +644,7 @@ export default function EmergencyFundCalculatorDualIncomeFamilies() {
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
-          <p>The Emergency Fund Calculator for Dual Income Families computes a target fund based on 3–9 months of essential expenses, with one income as backup.</p>
+          <p>The Emergency Fund Calculator for Dual Income Families computes a target fund based on 3â€“9 months of essential expenses, with one income as backup.</p>
           <p>Use it to set and track your emergency fund goal and close the gap to the recommended dual-income target.</p>
         </CardContent>
       </Card>

@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/rem-sleep-percentage-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/rem-sleep-percentage-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'REM Sleep Balance Wellness Estimator', item: baseUrl },
       ],
     },
@@ -391,7 +391,7 @@ export default function REMSleepPercentageCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>REM percentage</strong> = (REM minutes / total sleep minutes) × 100.
+            <strong>REM percentage</strong> = (REM minutes / total sleep minutes) Ã— 100.
           </p>
           <p>
             <strong>If REM minutes not provided</strong>: Estimated based on age (young adults ~22%, middle-aged ~18%, older ~13%) adjusted for sleep quality.

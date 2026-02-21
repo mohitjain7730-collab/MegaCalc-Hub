@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/hydration-balance-with-alcohol-intake-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/hydration-balance-with-alcohol-intake-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Hydration Balance with Alcohol Intake Calculator', item: baseUrl },
       ],
     },
@@ -213,7 +213,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    'Drink water before, during, and after alcohol consumption: follow the "one-to-one" rule—one glass of water per alcoholic drink to maintain hydration balance.',
+    'Drink water before, during, and after alcohol consumption: follow the "one-to-one" ruleâ€”one glass of water per alcoholic drink to maintain hydration balance.',
     'Increase daily water intake: aim for 30-35ml per kg body weight, adjusted for activity level, plus additional water to compensate for alcohol-induced dehydration.',
     'Consume electrolyte-rich foods or drinks: alcohol disrupts electrolyte balance, so include sodium, potassium, and magnesium sources when drinking alcohol.',
   ];
@@ -439,19 +439,19 @@ export default function HydrationBalanceWithAlcoholIntakeCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base water need</strong> = Body Weight (kg) × 32.5 ml/kg (average of 30-35ml/kg range). This represents the baseline daily water requirement.
+            <strong>Base water need</strong> = Body Weight (kg) Ã— 32.5 ml/kg (average of 30-35ml/kg range). This represents the baseline daily water requirement.
           </p>
           <p>
-            <strong>Activity-adjusted need</strong> = Base Water Need × Activity Level Multiplier. Multipliers: Sedentary 1.0, Light 1.2, Moderate 1.4, Active 1.6, Very Active 1.8.
+            <strong>Activity-adjusted need</strong> = Base Water Need Ã— Activity Level Multiplier. Multipliers: Sedentary 1.0, Light 1.2, Moderate 1.4, Active 1.6, Very Active 1.8.
           </p>
           <p>
-            <strong>Alcohol dehydration</strong> = Alcohol Consumed (standard drinks) × 150 ml/drink. Each standard drink causes approximately 150ml of additional fluid loss through increased urine production.
+            <strong>Alcohol dehydration</strong> = Alcohol Consumed (standard drinks) Ã— 150 ml/drink. Each standard drink causes approximately 150ml of additional fluid loss through increased urine production.
           </p>
           <p>
             <strong>Total water need</strong> = Activity-Adjusted Need + Alcohol Dehydration. This represents the total daily water requirement to maintain hydration balance.
           </p>
           <p>
-            <strong>Hydration score</strong> = (Daily Water Intake / Total Water Need) × 100, normalized to 0-100 scale. Higher scores indicate better hydration balance relative to needs.
+            <strong>Hydration score</strong> = (Daily Water Intake / Total Water Need) Ã— 100, normalized to 0-100 scale. Higher scores indicate better hydration balance relative to needs.
           </p>
           <p>Hydration balance is affected by body weight, activity level, alcohol consumption (which increases fluid loss), and electrolyte intake. Proper hydration requires compensating for alcohol-induced dehydration with additional water intake.</p>
         </CardContent>
@@ -657,8 +657,8 @@ export default function HydrationBalanceWithAlcoholIntakeCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Alcohol Dehydration Compensation</h3>
     <p>Each standard drink causes approximately <b>150ml of additional fluid loss</b> through increased urine production. To maintain hydration balance, this lost fluid must be replaced with additional water intake. The formula is:</p>
-    <p><b>Total Water Need = (Base Water Need × Activity Multiplier) + (Alcohol Consumed × 150ml)</b></p>
-    <p>For example, a 70kg person with moderate activity (1.4x multiplier) consuming 3 drinks needs: (70 × 32.5 × 1.4) + (3 × 150) = 3,185ml + 450ml = 3,635ml (approximately 3.6 liters) of water daily.</p>
+    <p><b>Total Water Need = (Base Water Need Ã— Activity Multiplier) + (Alcohol Consumed Ã— 150ml)</b></p>
+    <p>For example, a 70kg person with moderate activity (1.4x multiplier) consuming 3 drinks needs: (70 Ã— 32.5 Ã— 1.4) + (3 Ã— 150) = 3,185ml + 450ml = 3,635ml (approximately 3.6 liters) of water daily.</p>
 
 <hr />
 

@@ -59,7 +59,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Adopt Me Age-Up Time Calculator', item: baseUrl },
             ],
         },
@@ -247,7 +247,7 @@ export default function RobloxAdoptMeAgeUpTime() {
 
                 <h2 id="summary" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Summary: The 110-Hour Mega Grind</h2>
                 <p>To create a <strong>Mega Neon Legendary</strong> from scratch, you need to level 16 Legendaries to Full Grown, then 4 Neons to Luminous.</p>
-                <p><strong>The Math:</strong> (16 pets × 6 hours) + (4 Neons × 4 hours) ≈ <strong>112 Hours</strong> of active gameplay.</p>
+                <p><strong>The Math:</strong> (16 pets Ã— 6 hours) + (4 Neons Ã— 4 hours) â‰ˆ <strong>112 Hours</strong> of active gameplay.</p>
                 <p>This explains why high-tier Mega Neons are valued so highly. You are not paying for pixels; you are paying for the seller's month of work. Use this calculator to plan your schedule realisticlly and avoid burnout.</p>
                 <p className="mt-8 font-medium">Use this calculator to set realistic goals. If you only play 1 hour a day, don't expect to make a Mega Shadow Dragon in a week! Patience and consistency are key to growing your inventory value.</p>
             </section>

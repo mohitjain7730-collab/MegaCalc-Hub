@@ -113,7 +113,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/oxidative-stress-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/oxidative-stress-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -122,7 +122,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Oxidative Stress Wellness Index Calculator', item: baseUrl },
       ],
     },

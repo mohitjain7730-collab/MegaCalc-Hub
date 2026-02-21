@@ -59,7 +59,7 @@ const schemaMarkup = {
             '@type': 'BreadcrumbList',
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+                { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
                 { '@type': 'ListItem', position: 3, name: 'Adopt Me Mega Neon Value Calculator', item: baseUrl },
             ],
         },
@@ -188,7 +188,7 @@ export default function RobloxAdoptMeMegaNeonValue() {
                 <p>To really respect the value of a Mega, you must understand the labor involved. To create ONE Mega Legendary from scratch:</p>
                 <ol className="list-decimal pl-6 space-y-2 my-4">
                     <li><strong>Step 1:</strong> Obtain 16 Legendary Pets. (Hardest part for many).</li>
-                    <li><strong>Step 2:</strong> Grow 16 Newborns to Full Grown. (189 tasks × 16 = 3,024 tasks).</li>
+                    <li><strong>Step 2:</strong> Grow 16 Newborns to Full Grown. (189 tasks Ã— 16 = 3,024 tasks).</li>
                     <li><strong>Step 3:</strong> Mere 4 Full Growns into 4 Neons.</li>
                     <li><strong>Step 4:</strong> Grow 4 Reborn Neons to Luminous. (Similar grind again).</li>
                     <li><strong>Step 5:</strong> Merge 4 Luminous Neons into 1 Mega.</li>

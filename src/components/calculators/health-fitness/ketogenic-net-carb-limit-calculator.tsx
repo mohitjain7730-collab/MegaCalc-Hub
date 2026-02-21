@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/ketogenic-net-carb-limit-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/ketogenic-net-carb-limit-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Ketogenic Net Carb Limit Calculator', item: baseUrl },
       ],
     },
@@ -153,7 +153,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const sugarAlcohols = values.sugarAlcohols;
   const targetNetCarbs = values.targetNetCarbs || 30; // Default target
   
-  // Calculate net carbs: total carbs - fiber - (sugar alcohols × 0.5)
+  // Calculate net carbs: total carbs - fiber - (sugar alcohols Ã— 0.5)
   const netCarbs = totalCarbs - fiber - (sugarAlcohols * 0.5);
   const remainingNetCarbs = targetNetCarbs - netCarbs;
   
@@ -425,7 +425,7 @@ export default function KetogenicNetCarbLimitCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Net carbs</strong> = total carbohydrates - fiber - (sugar alcohols × 0.5). Net carbs represent carbohydrates that impact blood sugar and ketosis, as fiber and sugar alcohols have minimal metabolic impact.
+            <strong>Net carbs</strong> = total carbohydrates - fiber - (sugar alcohols Ã— 0.5). Net carbs represent carbohydrates that impact blood sugar and ketosis, as fiber and sugar alcohols have minimal metabolic impact.
           </p>
           <p>
             <strong>Remaining net carbs</strong> = target net carbs - net carbs. Positive values indicate remaining allowance, zero or negative values indicate target met or exceeded.

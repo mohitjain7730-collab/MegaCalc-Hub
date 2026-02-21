@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/inter-meal-spacing-impact-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/inter-meal-spacing-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Inter-Meal Spacing Impact Calculator', item: baseUrl },
       ],
     },
@@ -409,10 +409,10 @@ export default function InterMealSpacingImpactCalculator() {
             <strong>Average spacing</strong> = sum of all spacing intervals / number of intervals. Optimal: 3-5 hours.
           </p>
           <p>
-            <strong>Minimum spacing</strong> = shortest interval between any two consecutive meals. Optimal: ≥2.5 hours.
+            <strong>Minimum spacing</strong> = shortest interval between any two consecutive meals. Optimal: â‰¥2.5 hours.
           </p>
           <p>
-            <strong>Maximum spacing</strong> = longest interval between any two consecutive meals. Optimal: ≤6 hours.
+            <strong>Maximum spacing</strong> = longest interval between any two consecutive meals. Optimal: â‰¤6 hours.
           </p>
           <p>
             <strong>Spacing quality</strong>: Optimal: 3-5 hour average, 2.5-6 hour range. Good: 2.5-6 hour average, 2-7 hour range. Needs improvement: &lt;2 hour min or &gt;8 hour max.

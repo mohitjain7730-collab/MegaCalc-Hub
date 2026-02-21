@@ -88,7 +88,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
+        { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/gaming' },
         { '@type': 'ListItem', position: 3, name: 'Fortnite XP Per Match Optimizer', item: baseUrl },
       ],
     },
@@ -213,7 +213,7 @@ export default function FortniteXPPerMatchOptimizer() {
         <p>Special Bonuses provide significant XP boosts for achieving milestones. First Blood (first elimination) typically provides 25 XP bonus. Victory Royale (match win) typically provides 300 XP bonus. These bonuses significantly increase total XP for achieving specific goals.</p>
 
         <h3 className="text-xl font-semibold text-foreground mt-6">XP Calculation Example</h3>
-        <p>Example: 8 eliminations, 5th place, 15 minutes survival, 800 damage, first blood, no victory. Elimination XP: 400 (8 × 50). Placement XP: 140 (top 10). Survival XP: 75 (15 × 5). Damage XP: 80 (800 / 10). Bonus XP: 25 (first blood). Total XP: 720 XP. This demonstrates how multiple sources combine for total XP.</p>
+        <p>Example: 8 eliminations, 5th place, 15 minutes survival, 800 damage, first blood, no victory. Elimination XP: 400 (8 Ã— 50). Placement XP: 140 (top 10). Survival XP: 75 (15 Ã— 5). Damage XP: 80 (800 / 10). Bonus XP: 25 (first blood). Total XP: 720 XP. This demonstrates how multiple sources combine for total XP.</p>
 
         <hr />
 

@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/satiety-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/satiety-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Satiety Index Calculator', item: baseUrl },
       ],
     },
@@ -509,7 +509,7 @@ export default function SatietyIndexCalculator() {
     <meta itemProp="url" content="/definitive-satiety-index-guide" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Satiety: Principles of Fullness and Effective Meal Planning</h1>
-    <p className="text-lg italic text-gray-700">Understanding the key nutritional components—protein, fiber, and volume—that control hunger and sustain fullness for successful weight management.</p>
+    <p className="text-lg italic text-gray-700">Understanding the key nutritional componentsâ€”protein, fiber, and volumeâ€”that control hunger and sustain fullness for successful weight management.</p>
 
 
     {/* TABLE OF CONTENTS (INTERNAL LINKS FOR UX AND SEO) */}
@@ -548,7 +548,7 @@ export default function SatietyIndexCalculator() {
     <p>Protein has the highest **Thermic Effect of Food (TEF)**, meaning the body expends more energy (calories) to digest, absorb, and metabolize protein than it does for carbohydrates or fats. This metabolic cost adds to the feeling of satisfaction and reduces the net calories absorbed from the meal.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">PYY and CCK Release</h3>
-    <p>The ingestion of amino acids triggers a robust release of **PYY** and **Cholecystokinin (CCK)**—hormones that act on the hypothalamus to reduce food intake. Research published in the <b>American Journal of Clinical Nutrition</b> consistently shows that diets higher in lean protein are superior for reducing caloric intake and supporting weight loss compared to diets relying on fat or carbohydrates for satiety.</p>
+    <p>The ingestion of amino acids triggers a robust release of **PYY** and **Cholecystokinin (CCK)**â€”hormones that act on the hypothalamus to reduce food intake. Research published in the <b>American Journal of Clinical Nutrition</b> consistently shows that diets higher in lean protein are superior for reducing caloric intake and supporting weight loss compared to diets relying on fat or carbohydrates for satiety.</p>
 
 <hr />
 
@@ -557,7 +557,7 @@ export default function SatietyIndexCalculator() {
     <p>Dietary fiber, particularly soluble fiber, contributes substantially to satiety through physical and mechanical mechanisms within the digestive tract.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Increasing Viscosity</h3>
-    <p>Soluble fiber (found in oats, legumes, and apples) forms a viscous, gel-like matrix when mixed with water in the stomach. This gel physically slows the rate at which food leaves the stomach and enters the small intestine—a process known as **delayed gastric emptying**. By slowing down digestion, fiber prolongs the physical presence of food in the stomach, thereby extending the satiety signals.</p>
+    <p>Soluble fiber (found in oats, legumes, and apples) forms a viscous, gel-like matrix when mixed with water in the stomach. This gel physically slows the rate at which food leaves the stomach and enters the small intestineâ€”a process known as **delayed gastric emptying**. By slowing down digestion, fiber prolongs the physical presence of food in the stomach, thereby extending the satiety signals.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Role in Blood Sugar Control</h3>
     <p>Fiber also lowers the **glycemic index** of a meal by slowing down the absorption of glucose. This prevents the rapid spike and subsequent crash in blood sugar that often leads to renewed hunger signals shortly after eating. Foods naturally high in fiber (e.g., whole grains, beans) offer significantly more sustained fullness than refined, low-fiber counterparts (e.g., white bread, sugary snacks).</p>

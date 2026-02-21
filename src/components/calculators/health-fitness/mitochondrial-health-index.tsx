@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate your average daily fatigue on a 0–10 scale (0 = none, 10 = maximal exhaustion).',
-  'Rate your current exercise tolerance on a 0–10 scale (0 = cannot exercise, 10 = excellent capacity).',
-  'Rate your usual sleep quality on a 0–10 scale, considering depth, continuity, and refreshment.',
-  'Rate how “in-range” or optimized your key metabolic markers feel overall (labs + symptoms) on a 0–10 scale.',
+  'Rate your average daily fatigue on a 0â€“10 scale (0 = none, 10 = maximal exhaustion).',
+  'Rate your current exercise tolerance on a 0â€“10 scale (0 = cannot exercise, 10 = excellent capacity).',
+  'Rate your usual sleep quality on a 0â€“10 scale, considering depth, continuity, and refreshment.',
+  'Rate how â€œin-rangeâ€ or optimized your key metabolic markers feel overall (labs + symptoms) on a 0â€“10 scale.',
   'Review your mitochondrial health index, recovery capacity score, and targeted guidance.',
 ];
 
@@ -72,7 +72,7 @@ const faqs = [
   {
     question: 'How often should I repeat this assessment?',
     answer:
-      'Many people check monthly while implementing new routines, then every 3–6 months as patterns stabilize. Use the same rating approach each time for better comparisons.',
+      'Many people check monthly while implementing new routines, then every 3â€“6 months as patterns stabilize. Use the same rating approach each time for better comparisons.',
   },
   {
     question: 'Does a low score mean my mitochondria are permanently damaged?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mitochondrial-health-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/mitochondrial-health-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mitochondrial Health Index', item: baseUrl },
       ],
     },
@@ -178,7 +178,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations: string[] = [
-    'Track your fatigue, sleep quality, and exercise tolerance for at least 1–2 weeks to capture patterns rather than individual “off days.”',
+    'Track your fatigue, sleep quality, and exercise tolerance for at least 1â€“2 weeks to capture patterns rather than individual â€œoff days.â€',
     'Discuss your ratings and scores with a healthcare professional, especially if fatigue is persistent or progressive.',
     'Prioritize foundational inputs for mitochondria: nutrient-dense meals, adequate protein, hydration, movement, and restorative sleep.',
   ];
@@ -215,7 +215,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'Ongoing',
       detail:
-        'Recalculate your mitochondrial health index every 1–3 months as you implement changes, watching for slow, sustainable improvements.',
+        'Recalculate your mitochondrial health index every 1â€“3 months as you implement changes, watching for slow, sustainable improvements.',
     },
   ];
 
@@ -280,7 +280,7 @@ export default function MitochondrialHealthIndex() {
                   name="fatigueLevel"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Average fatigue level (0–10)</FormLabel>
+                      <FormLabel>Average fatigue level (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -299,7 +299,7 @@ export default function MitochondrialHealthIndex() {
                   name="exerciseTolerance"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Exercise tolerance (0–10)</FormLabel>
+                      <FormLabel>Exercise tolerance (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -318,7 +318,7 @@ export default function MitochondrialHealthIndex() {
                   name="sleepQuality"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Sleep quality (0–10)</FormLabel>
+                      <FormLabel>Sleep quality (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -337,7 +337,7 @@ export default function MitochondrialHealthIndex() {
                   name="metabolicMarkersScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Metabolic markers & balance (0–10)</FormLabel>
+                      <FormLabel>Metabolic markers & balance (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -374,7 +374,7 @@ export default function MitochondrialHealthIndex() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Mitochondrial health index</p>
                 <p className="text-2xl font-semibold text-primary">{result.mitochondrialHealthIndex}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Recovery capacity</p>
@@ -440,7 +440,7 @@ export default function MitochondrialHealthIndex() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             <strong>Mitochondrial health index</strong> blends inverse fatigue, exercise tolerance, sleep quality, and
-            metabolic balance into a 0–100 score. Higher values suggest more robust energy production and recovery in
+            metabolic balance into a 0â€“100 score. Higher values suggest more robust energy production and recovery in
             everyday life.
           </p>
           <p>
@@ -580,7 +580,7 @@ export default function MitochondrialHealthIndex() {
           1. Mitochondria 101: Why Cellular Powerhouses Matter
         </h2>
         <p>
-          Mitochondria are often described as the “power plants” of your cells because they generate most of the
+          Mitochondria are often described as the â€œpower plantsâ€ of your cells because they generate most of the
           adenosine triphosphate (ATP) used for cellular work. They are especially dense in tissues with high energy
           demand: brain, heart, skeletal muscle, and liver. When mitochondrial networks are stressed, fragmented, or
           under-supported, people may notice symptoms like fatigue, exercise intolerance, brain fog, and slower
@@ -589,7 +589,7 @@ export default function MitochondrialHealthIndex() {
         <p>
           Clinical mitochondrial disease is rare and requires specialized evaluation, but milder mitochondrial
           dysfunction can show up across many chronic conditions, from metabolic syndrome to neurodegenerative
-          disorders. This calculator does not attempt to diagnose those conditions—it simply organizes subjective
+          disorders. This calculator does not attempt to diagnose those conditionsâ€”it simply organizes subjective
           signals that relate to energy and recovery.
         </p>
 
@@ -604,7 +604,7 @@ export default function MitochondrialHealthIndex() {
         <p>
           For example, people with relatively healthy mitochondrial function often describe steady daytime energy,
           predictable recovery from physical activity, and sleep that leaves them refreshed. In contrast, those with
-          strained energy systems may report “energy crashes,” delayed-onset fatigue after exertion, or feeling wired
+          strained energy systems may report â€œenergy crashes,â€ delayed-onset fatigue after exertion, or feeling wired
           but tired at night. Tracking these patterns over time can help clinicians decide when to investigate further.
         </p>
 
@@ -628,7 +628,7 @@ export default function MitochondrialHealthIndex() {
           4. Lifestyle Inputs that Support or Strain Mitochondria
         </h2>
         <p>
-          Mitochondria thrive when the environment is “challenging but manageable.” Too little stimulus (sedentary
+          Mitochondria thrive when the environment is â€œchallenging but manageable.â€ Too little stimulus (sedentary
           living) and too much unbuffered stress (overtraining, sleep deprivation, chronic inflammation) can both
           degrade function. The most impactful levers are usually fundamental: regular movement, strength training
           matched to your capacity, nutrient-dense meals, circadian-friendly light exposure, and structured stress
@@ -690,7 +690,7 @@ export default function MitochondrialHealthIndex() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This calculator estimates a mitochondrial health index and recovery capacity score using simple 0–10
+            This calculator estimates a mitochondrial health index and recovery capacity score using simple 0â€“10
             self-ratings.
           </p>
           <p>

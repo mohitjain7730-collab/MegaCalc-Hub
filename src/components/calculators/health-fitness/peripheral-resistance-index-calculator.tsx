@@ -36,7 +36,7 @@ type ResultPayload = {
 const steps = [
   'Enter mean arterial pressure (MAP) (mmHg) from blood pressure measurement.',
   'Enter cardiac output (L/min) from cardiac assessment.',
-  'Optionally enter peripheral resistance if calculated (mmHg·min/L).',
+  'Optionally enter peripheral resistance if calculated (mmHgÂ·min/L).',
   'Enter your age (peripheral resistance can change with age).',
   'Review peripheral resistance index, cardiovascular status, and recommendations.',
 ];
@@ -50,12 +50,12 @@ const faqs = [
   {
     question: 'How is peripheral resistance calculated?',
     answer:
-      'Peripheral resistance = (mean arterial pressure - central venous pressure) / cardiac output. Simplified: SVR ≈ (MAP × 80) / CO (assuming CVP is small). Normal range: 800-1600 dynes·s/cm⁵ or 10-20 mmHg·min/L.',
+      'Peripheral resistance = (mean arterial pressure - central venous pressure) / cardiac output. Simplified: SVR â‰ˆ (MAP Ã— 80) / CO (assuming CVP is small). Normal range: 800-1600 dynesÂ·s/cmâµ or 10-20 mmHgÂ·min/L.',
   },
   {
     question: 'What are normal peripheral resistance values?',
     answer:
-      'Normal peripheral resistance: 800-1600 dynes·s/cm⁵ or approximately 10-20 mmHg·min/L. Values vary with age, fitness, and cardiovascular conditions. Higher resistance indicates increased vascular resistance.',
+      'Normal peripheral resistance: 800-1600 dynesÂ·s/cmâµ or approximately 10-20 mmHgÂ·min/L. Values vary with age, fitness, and cardiovascular conditions. Higher resistance indicates increased vascular resistance.',
   },
   {
     question: 'What causes high peripheral resistance?',
@@ -75,7 +75,7 @@ const faqs = [
   {
     question: 'How does peripheral resistance affect blood pressure?',
     answer:
-      'Peripheral resistance is a major determinant of blood pressure. Higher resistance increases blood pressure (hypertension), while lower resistance decreases blood pressure. Blood pressure = cardiac output × peripheral resistance.',
+      'Peripheral resistance is a major determinant of blood pressure. Higher resistance increases blood pressure (hypertension), while lower resistance decreases blood pressure. Blood pressure = cardiac output Ã— peripheral resistance.',
   },
   {
     question: 'Does age affect peripheral resistance?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/peripheral-resistance-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/peripheral-resistance-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Peripheral Resistance Index Calculator', item: baseUrl },
       ],
     },
@@ -155,13 +155,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
     peripheralResistance = values.peripheralResistance;
   } else {
     // Calculate from MAP and CO
-    // SVR ≈ (MAP × 80) / CO (simplified, assuming CVP is small)
+    // SVR â‰ˆ (MAP Ã— 80) / CO (simplified, assuming CVP is small)
     peripheralResistance = (meanArterialPressure * 80) / cardiacOutput;
-    // Convert to mmHg·min/L (divide by 80)
+    // Convert to mmHgÂ·min/L (divide by 80)
     peripheralResistance = peripheralResistance / 80;
   }
   
-  // Normal range: 10-20 mmHg·min/L
+  // Normal range: 10-20 mmHgÂ·min/L
   const minNormal = 10;
   const maxNormal = 20;
   const midNormal = 15;
@@ -270,7 +270,7 @@ export default function PeripheralResistanceIndexCalculator() {
                   name="peripheralResistance"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Peripheral resistance (mmHg·min/L) (optional)</FormLabel>
+                      <FormLabel>Peripheral resistance (mmHgÂ·min/L) (optional)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.1" placeholder="e.g., 15" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -324,7 +324,7 @@ export default function PeripheralResistanceIndexCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Peripheral resistance</p>
                 <p className="text-2xl font-semibold text-primary">{result.peripheralResistance.toFixed(1)}</p>
-                <p className="text-xs text-muted-foreground">mmHg·min/L</p>
+                <p className="text-xs text-muted-foreground">mmHgÂ·min/L</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -379,15 +379,15 @@ export default function PeripheralResistanceIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Peripheral resistance</strong> = (mean arterial pressure × 80) / cardiac output / 80 = MAP / CO (mmHg·min/L).
+            <strong>Peripheral resistance</strong> = (mean arterial pressure Ã— 80) / cardiac output / 80 = MAP / CO (mmHgÂ·min/L).
           </p>
           <p>
             <strong>If resistance not provided</strong>: Calculated from mean arterial pressure and cardiac output. Simplified formula assumes central venous pressure is small.
           </p>
           <p>
-            <strong>Normal ranges</strong>: 10-20 mmHg·min/L or 800-1600 dynes·s/cm⁵. Values vary with age, fitness, and cardiovascular conditions.
+            <strong>Normal ranges</strong>: 10-20 mmHgÂ·min/L or 800-1600 dynesÂ·s/cmâµ. Values vary with age, fitness, and cardiovascular conditions.
           </p>
-          <p>Peripheral resistance is a major determinant of blood pressure. Higher resistance increases blood pressure, while lower resistance decreases it. Blood pressure = cardiac output × peripheral resistance.</p>
+          <p>Peripheral resistance is a major determinant of blood pressure. Higher resistance increases blood pressure, while lower resistance decreases it. Blood pressure = cardiac output Ã— peripheral resistance.</p>
         </CardContent>
       </Card>
 
@@ -413,7 +413,7 @@ export default function PeripheralResistanceIndexCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Target resistance</p>
-                <p className="text-xl font-semibold text-primary">10-20 mmHg·min/L</p>
+                <p className="text-xl font-semibold text-primary">10-20 mmHgÂ·min/L</p>
                 <p className="text-xs text-muted-foreground">Normal range</p>
               </div>
               <div className="p-4 border rounded">
@@ -458,7 +458,7 @@ export default function PeripheralResistanceIndexCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Peripheral resistance (systemic vascular resistance) is the resistance to blood flow in the systemic circulation. Normal range: 10-20 mmHg·min/L. It is a major determinant of blood pressure and is calculated from mean arterial pressure and cardiac output.</p>
+          <p>Peripheral resistance (systemic vascular resistance) is the resistance to blood flow in the systemic circulation. Normal range: 10-20 mmHgÂ·min/L. It is a major determinant of blood pressure and is calculated from mean arterial pressure and cardiac output.</p>
           <p>Use this calculator to assess peripheral resistance index from mean arterial pressure, cardiac output, peripheral resistance (optional), and age.</p>
         </CardContent>
       </Card>

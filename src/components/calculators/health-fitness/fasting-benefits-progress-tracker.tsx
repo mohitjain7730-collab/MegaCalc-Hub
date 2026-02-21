@@ -39,7 +39,7 @@ const steps = [
   'Enter your average fasting window length per day (hours).',
   'Enter how many days per week you follow this fasting pattern.',
   'Enter how many weeks you have been on this protocol.',
-  'Rate your current metabolic health or lab trends (weight, glucose, lipids, etc.) from 0–10.',
+  'Rate your current metabolic health or lab trends (weight, glucose, lipids, etc.) from 0â€“10.',
   'Review your fasting benefits progress and adaptation stage.',
 ];
 
@@ -92,7 +92,7 @@ const faqs = [
   {
     question: 'Should I stop fasting if I feel worse?',
     answer:
-      'Yes—pause and consult a professional if fasting worsens mood, sleep, energy, or health markers.',
+      'Yesâ€”pause and consult a professional if fasting worsens mood, sleep, energy, or health markers.',
   },
 ];
 
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/fasting-benefits-progress-tracker';
+const baseUrl = 'https://mycalculating.com/health-fitness/fasting-benefits-progress-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Fasting Benefits Progress Tracker', item: baseUrl },
       ],
     },
@@ -149,7 +149,7 @@ const clamp = (value: number, min: number, max: number) => Math.min(max, Math.ma
 const calculateResult = (values: FormValues): ResultPayload => {
   const { fastingHoursPerDay, fastingDaysPerWeek, weeksOnProtocol, metabolicHealthScore } = values;
 
-  const windowFactor = clamp((fastingHoursPerDay - 10) / 6, 0, 1.5); // moderate–long windows
+  const windowFactor = clamp((fastingHoursPerDay - 10) / 6, 0, 1.5); // moderateâ€“long windows
   const frequencyFactor = clamp(fastingDaysPerWeek / 5, 0, 1.2); // 5+ days/wk as reference
   const durationFactor = clamp(weeksOnProtocol / 8, 0, 1.5); // 8 weeks as early adaptation
   const metabolicFactor = metabolicHealthScore / 10;
@@ -198,7 +198,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Month', detail: 'Track fasting windows, energy, hunger, mood, and (if available) basic labs to see early patterns.' },
-    { label: 'Next 3–6 Months', detail: 'Refine fasting schedule and nutrition with professional input, avoiding yo-yo patterns.' },
+    { label: 'Next 3â€“6 Months', detail: 'Refine fasting schedule and nutrition with professional input, avoiding yo-yo patterns.' },
     { label: 'Ongoing', detail: 'Revisit fasting regularly as life stage, goals, and medical context evolve; fasting may not be needed indefinitely.' },
   ];
 
@@ -295,7 +295,7 @@ export default function FastingBenefitsProgressTracker() {
                   name="metabolicHealthScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Metabolic health / lab trend (0–10)</FormLabel>
+                      <FormLabel>Metabolic health / lab trend (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -326,7 +326,7 @@ export default function FastingBenefitsProgressTracker() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Benefits progress</p>
                 <p className="text-2xl font-semibold text-primary">{result.benefitsProgressScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 estimate</p>
+                <p className="text-xs text-muted-foreground">0â€“100 estimate</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Adaptation stage</p>
@@ -391,7 +391,7 @@ export default function FastingBenefitsProgressTracker() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Benefits progress score</strong> blends four factors—window length, frequency, duration, and metabolic response—into a 0–100 index.
+            <strong>Benefits progress score</strong> blends four factorsâ€”window length, frequency, duration, and metabolic responseâ€”into a 0â€“100 index.
           </p>
           <p>
             <strong>Adaptation stage score</strong> emphasizes duration and schedule (how long and how often), indicating how established your fasting practice is.
@@ -491,29 +491,29 @@ export default function FastingBenefitsProgressTracker() {
           Fasting Benefits Progress: Looking Beyond the Scale
         </h1>
         <p className="text-lg italic text-gray-700">
-          Fasting can influence weight, insulin sensitivity, and subjective energy—but not always in simple, linear ways. This guide offers a balanced, safety-aware view.
+          Fasting can influence weight, insulin sensitivity, and subjective energyâ€”but not always in simple, linear ways. This guide offers a balanced, safety-aware view.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Types of Fasting and Their Goals</h2>
         <p>
-          Time-restricted eating, alternate-day fasting, and periodic extended fasts each have different risk–benefit profiles. Clarifying your goals (e.g., glucose control vs. weight vs. schedule simplicity) helps you choose
+          Time-restricted eating, alternate-day fasting, and periodic extended fasts each have different riskâ€“benefit profiles. Clarifying your goals (e.g., glucose control vs. weight vs. schedule simplicity) helps you choose
           appropriate structures.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. How Adaptation Unfolds Over Time</h2>
         <p>
-          Early weeks often involve hunger swings, energy variability, and habit friction. Over months, many people find hunger becomes more predictable and metabolic markers stabilize—if the protocol suits their physiology and
+          Early weeks often involve hunger swings, energy variability, and habit friction. Over months, many people find hunger becomes more predictable and metabolic markers stabilizeâ€”if the protocol suits their physiology and
           lifestyle.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Warning Signs to Watch For</h2>
         <p>
-          Persistent fatigue, mood disturbances, menstrual cycle changes, binge–restrict cycles, or worsening labs signal that your fasting approach may be too aggressive or misaligned with your needs.
+          Persistent fatigue, mood disturbances, menstrual cycle changes, bingeâ€“restrict cycles, or worsening labs signal that your fasting approach may be too aggressive or misaligned with your needs.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">4. Combining Fasting with Other Interventions</h2>
         <p>
-          Fasting works best as part of a whole system—paired with high-quality nutrition, movement, sleep, and appropriate medical care. Treat it as one tool in a toolkit, not the entire strategy.
+          Fasting works best as part of a whole systemâ€”paired with high-quality nutrition, movement, sleep, and appropriate medical care. Treat it as one tool in a toolkit, not the entire strategy.
         </p>
 
         <hr />
@@ -550,7 +550,7 @@ export default function FastingBenefitsProgressTracker() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>This tracker estimates fasting benefits progress and adaptation stage using fasting schedule, duration, and metabolic response inputs.</p>
           <p>It includes scores, qualitative interpretation, recommendations, a monthly/long-term plan, and extra calculations.</p>
-          <p>The extended guide focuses on safety, evidence, and practical decision-making, supporting SEO and E‑E‑A‑T goals.</p>
+          <p>The extended guide focuses on safety, evidence, and practical decision-making, supporting SEO and Eâ€‘Eâ€‘Aâ€‘T goals.</p>
         </CardContent>
       </Card>
     </div>

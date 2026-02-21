@@ -42,7 +42,7 @@ const faqs = [
   {
     question: 'What is expected loss?',
     answer:
-      'Expected loss is the anticipated financial loss from potential claims, calculated by multiplying the probability of a loss event by the severity of the loss. Formula: Expected Loss = Probability of Loss Event × Loss Severity.',
+      'Expected loss is the anticipated financial loss from potential claims, calculated by multiplying the probability of a loss event by the severity of the loss. Formula: Expected Loss = Probability of Loss Event Ã— Loss Severity.',
   },
   {
     question: 'What is probability of loss?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/expected-loss-insurance-risk-calculator';
+const baseUrl = 'https://mycalculating.com/finance/expected-loss-insurance-risk-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Expected Loss (Insurance Risk) Calculator', item: baseUrl },
       ],
     },
@@ -143,7 +143,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const probabilityOfLoss = values.probabilityOfLoss; // percentage
   const lossSeverity = values.lossSeverity;
 
-  // Expected Loss = Probability of Loss Event × Loss Severity
+  // Expected Loss = Probability of Loss Event Ã— Loss Severity
   // Probability is in percentage, so divide by 100
   const expectedLoss = (probabilityOfLoss / 100) * lossSeverity;
 
@@ -179,7 +179,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    `Expected Loss: $${expectedLoss.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This is the anticipated annual financial loss, calculated as probability (${probabilityOfLoss}%) × severity ($${lossSeverity.toLocaleString(undefined, { maximumFractionDigits: 2 })}).`,
+    `Expected Loss: $${expectedLoss.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This is the anticipated annual financial loss, calculated as probability (${probabilityOfLoss}%) Ã— severity ($${lossSeverity.toLocaleString(undefined, { maximumFractionDigits: 2 })}).`,
     `Risk Level: ${riskLevel}. ${riskLevel === 'Very High' || riskLevel === 'High' ? 'High risk requires insurance coverage to protect against substantial financial impact.' : riskLevel === 'Moderate' ? 'Moderate risk may benefit from insurance coverage if premiums are reasonable.' : 'Low risk may be manageable through self-insurance or higher deductibles.'}`,
     `Compare expected loss to insurance premiums. If expected loss is $${expectedLoss.toLocaleString(undefined, { maximumFractionDigits: 2 })}/year, consider insurance if premiums are reasonable relative to expected loss. If premiums significantly exceed expected loss, consider self-insurance or higher deductibles.`,
   ];
@@ -368,7 +368,7 @@ export default function ExpectedLossInsuranceRiskCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Expected Loss</strong> = (Probability of Loss Event / 100) × Loss Severity. The anticipated financial loss from potential claims, calculated by multiplying probability by severity.
+            <strong>Expected Loss</strong> = (Probability of Loss Event / 100) Ã— Loss Severity. The anticipated financial loss from potential claims, calculated by multiplying probability by severity.
           </p>
           <p>
             <strong>Probability of Loss Event</strong> = Likelihood that a loss will occur, expressed as percentage (0-100%). For example, 5% probability means 5% chance (0.05 probability) of loss occurring.
@@ -477,7 +477,7 @@ export default function ExpectedLossInsuranceRiskCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Key Concepts</h3>
     <ul>
-        <li><b>Expected Loss:</b> Anticipated financial loss = Probability × Severity</li>
+        <li><b>Expected Loss:</b> Anticipated financial loss = Probability Ã— Severity</li>
         <li><b>Probability of Loss:</b> Likelihood that a loss will occur (0-100%)</li>
         <li><b>Loss Severity:</b> Average monetary amount of loss if event occurs</li>
     </ul>
@@ -487,12 +487,12 @@ export default function ExpectedLossInsuranceRiskCalculator() {
     <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Expected Loss Formula</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Basic Formula</h3>
-    <p>Expected loss is calculated as: <b>Expected Loss = Probability of Loss Event × Loss Severity</b></p>
+    <p>Expected loss is calculated as: <b>Expected Loss = Probability of Loss Event Ã— Loss Severity</b></p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If there's a 5% chance (0.05 probability) of a loss event, and the average loss amount is $10,000:</p>
     <ul>
-        <li>Expected Loss = 0.05 × $10,000 = $500</li>
+        <li>Expected Loss = 0.05 Ã— $10,000 = $500</li>
     </ul>
     <p>This means the insurer anticipates an average loss of $500 per policyholder under these conditions.</p>
 
@@ -534,7 +534,7 @@ export default function ExpectedLossInsuranceRiskCalculator() {
     <p>Insurers use expected loss to set premiums. Premiums should exceed expected loss to cover expenses, profit, and risk margin. Premium = Expected Loss + Expenses + Profit Margin.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Reserve Setting</h3>
-    <p>Expected loss helps insurers set reserves. Reserves should be sufficient to cover expected losses plus a margin for uncertainty. Reserves = Expected Loss × Reserve Factor.</p>
+    <p>Expected loss helps insurers set reserves. Reserves should be sufficient to cover expected losses plus a margin for uncertainty. Reserves = Expected Loss Ã— Reserve Factor.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Risk Management</h3>
     <p>Policyholders can use expected loss to evaluate insurance affordability. Compare expected loss to insurance premiums. If premiums significantly exceed expected loss, consider self-insurance or higher deductibles.</p>

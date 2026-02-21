@@ -96,7 +96,7 @@ const faqs = [
   {
     question: 'How should I set discount rate and growth rate ranges?',
     answer:
-      'Set ranges based on: reasonable parameter bounds (WACC typically 7-15%, terminal growth 1-4%), company and industry characteristics, historical data, and sensitivity of results. Common ranges: ±2-3% around base discount rate, ±1-2% around base terminal growth rate. Wider ranges show more sensitivity but may be less practical.',
+      'Set ranges based on: reasonable parameter bounds (WACC typically 7-15%, terminal growth 1-4%), company and industry characteristics, historical data, and sensitivity of results. Common ranges: Â±2-3% around base discount rate, Â±1-2% around base terminal growth rate. Wider ranges show more sensitivity but may be less practical.',
   },
   {
     question: 'Which assumptions are most critical?',
@@ -133,7 +133,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/discounted-cash-flow-dcf-sensitivity-grid-calculator';
+const baseUrl = 'https://mycalculating.com/finance/discounted-cash-flow-dcf-sensitivity-grid-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -142,7 +142,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Discounted Cash Flow (DCF) Sensitivity Grid Calculator', item: baseUrl },
       ],
     },
@@ -182,7 +182,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const gridRange = gridSize; // Number of steps in each direction
   
   // Calculate terminal value with different growth rates using perpetuity formula
-  // TV = Final Year FCF × (1 + g) / (WACC - g)
+  // TV = Final Year FCF Ã— (1 + g) / (WACC - g)
   // For sensitivity, we'll approximate by adjusting the base terminal value
   // Simplification: assume terminal value scales with growth rate adjustments
   
@@ -543,7 +543,7 @@ export default function DiscountedCashFlowDcfSensitivityGridCalculator() {
           </p>
           <p>Where n = forecast period (typically 5 years)</p>
           <p>
-            <strong>Terminal Value</strong> = Final Year FCF × (1 + g) / (WACC - g)
+            <strong>Terminal Value</strong> = Final Year FCF Ã— (1 + g) / (WACC - g)
           </p>
           <p>Where g = terminal growth rate, WACC = discount rate</p>
           <p>The sensitivity grid recalculates DCF value for different combinations of discount rate (WACC) and terminal growth rate, showing how valuation changes as assumptions vary. This helps assess valuation sensitivity, identify critical assumptions, and present valuation ranges rather than single point estimates.</p>
@@ -579,8 +579,8 @@ export default function DiscountedCashFlowDcfSensitivityGridCalculator() {
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Grid Size</p>
-                <p className="text-xl font-semibold text-primary">{result.gridSize}×{result.gridSize}</p>
-                <p className="text-xs text-muted-foreground">Rows × Columns</p>
+                <p className="text-xl font-semibold text-primary">{result.gridSize}Ã—{result.gridSize}</p>
+                <p className="text-xs text-muted-foreground">Rows Ã— Columns</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Base Discount Rate</p>
@@ -675,10 +675,10 @@ export default function DiscountedCashFlowDcfSensitivityGridCalculator() {
     <p>DCF sensitivity typically focuses on the most uncertain assumptions.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Discount Rate (WACC)</h3>
-    <p>Variations in discount rate significantly affect valuation. Typical sensitivity ranges: ±2-3% around base WACC.</p>
+    <p>Variations in discount rate significantly affect valuation. Typical sensitivity ranges: Â±2-3% around base WACC.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Terminal Growth Rate</h3>
-    <p>Terminal growth rate affects terminal value substantially. Typical sensitivity ranges: ±1-2% around base growth rate.</p>
+    <p>Terminal growth rate affects terminal value substantially. Typical sensitivity ranges: Â±1-2% around base growth rate.</p>
 
 <hr className="my-6" />
 

@@ -55,7 +55,7 @@ const faqs = [
   {
     question: 'How is sleep balance calculated?',
     answer:
-      'Sleep balance compares your total weekly sleep (sum of all 7 days) to your weekly target (target per night × 7). A positive balance means you slept more than your target; negative means less. The balance percentage shows how close you were to your target.',
+      'Sleep balance compares your total weekly sleep (sum of all 7 days) to your weekly target (target per night Ã— 7). A positive balance means you slept more than your target; negative means less. The balance percentage shows how close you were to your target.',
   },
   {
     question: 'What if I slept more than my target?',
@@ -70,7 +70,7 @@ const faqs = [
   {
     question: 'Should I track sleep perfectly every week?',
     answer:
-      'This tool is meant for occasional reflection, not daily tracking. Use it when you are curious about patterns or want to check in on your routines. Approximate times are fine—focus on trends rather than perfect accuracy.',
+      'This tool is meant for occasional reflection, not daily tracking. Use it when you are curious about patterns or want to check in on your routines. Approximate times are fineâ€”focus on trends rather than perfect accuracy.',
   },
   {
     question: 'What factors affect sleep balance?',
@@ -85,7 +85,7 @@ const faqs = [
   {
     question: 'How often should I check my sleep balance?',
     answer:
-      'You may find it helpful to check in occasionally—perhaps weekly or monthly—to notice patterns. Avoid checking daily, as day-to-day variation is normal and focusing too much on numbers can increase stress.',
+      'You may find it helpful to check in occasionallyâ€”perhaps weekly or monthlyâ€”to notice patterns. Avoid checking daily, as day-to-day variation is normal and focusing too much on numbers can increase stress.',
   },
   {
     question: 'What if my sleep varies a lot day to day?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/habit-streak-tracker-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/habit-streak-tracker-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
           '@type': 'ListItem',
           position: 2,
           name: 'Health & Fitness',
-          item: 'https://mycalculating.com/category/health-fitness',
+          item: 'https://mycalculating.com/health-fitness',
         },
         {
           '@type': 'ListItem',
@@ -584,7 +584,7 @@ export default function SleepBalanceCheckInCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Weekly target</strong> = Target sleep per night × 7 days. This represents your ideal total sleep for the
+            <strong>Weekly target</strong> = Target sleep per night Ã— 7 days. This represents your ideal total sleep for the
             week.
           </p>
           <p>
@@ -592,11 +592,11 @@ export default function SleepBalanceCheckInCalculator() {
             Sunday.
           </p>
           <p>
-            <strong>Sleep balance</strong> = Total slept − Weekly target. Positive values indicate you slept more than your
+            <strong>Sleep balance</strong> = Total slept âˆ’ Weekly target. Positive values indicate you slept more than your
             target; negative values indicate less.
           </p>
           <p>
-            <strong>Balance percentage</strong> = (Total slept / Weekly target) × 100, clamped to 0-200% range. Values near 100%
+            <strong>Balance percentage</strong> = (Total slept / Weekly target) Ã— 100, clamped to 0-200% range. Values near 100%
             indicate you met your target; values below 100% indicate a sleep deficit; values above 100% indicate surplus sleep.
           </p>
           <p>
@@ -785,7 +785,7 @@ export default function SleepBalanceCheckInCalculator() {
         <ul>
           <li>How many hours of sleep leave you feeling refreshed and alert?</li>
           <li>Do you need an alarm clock, or do you wake naturally?</li>
-          <li>How do you feel during the day—energetic or tired?</li>
+          <li>How do you feel during the dayâ€”energetic or tired?</li>
           <li>Do you need caffeine to function, or can you maintain energy naturally?</li>
         </ul>
         <p>
@@ -832,7 +832,7 @@ export default function SleepBalanceCheckInCalculator() {
             <b>Light exposure:</b> Bright lights, especially blue light from screens, can suppress melatonin and delay sleep.
           </li>
           <li>
-            <b>Room temperature:</b> Most people sleep best in a cool room (around 65-68°F or 18-20°C).
+            <b>Room temperature:</b> Most people sleep best in a cool room (around 65-68Â°F or 18-20Â°C).
           </li>
           <li>
             <b>Noise:</b> Consistent or sudden noises can disrupt sleep, even if you do not fully wake.

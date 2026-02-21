@@ -120,7 +120,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-testosterone-boosting-habits-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-testosterone-boosting-habits-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -129,7 +129,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Hormone Support Lifestyle Score Calculator', item: baseUrl },
       ],
     },
@@ -540,8 +540,8 @@ export default function DailyTestosteroneBoostingHabitsScoreCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Habits score</strong> = sleep (0-20) + resistance training (0-20) + cardio (0-10) + stress (0-15) + alcohol (0-10) + sunlight (0-10) + protein (0-10) + zinc (0-5) + vitamin D (0-5), max 100.</p>
-          <p><strong>Wellness boost estimate</strong> = (habits score / 100) × 30% (general estimate from lifestyle factors).</p>
-          <p><strong>Optimal ranges</strong>: Sleep 7-9h, Resistance training 3-5 days/week, Cardio 60-150 min/week, Stress ≤3, Alcohol 0-2 units/week, Sunlight 15-30 min/day, Protein 1.6-2.2 g/kg.</p>
+          <p><strong>Wellness boost estimate</strong> = (habits score / 100) Ã— 30% (general estimate from lifestyle factors).</p>
+          <p><strong>Optimal ranges</strong>: Sleep 7-9h, Resistance training 3-5 days/week, Cardio 60-150 min/week, Stress â‰¤3, Alcohol 0-2 units/week, Sunlight 15-30 min/day, Protein 1.6-2.2 g/kg.</p>
           <p>Higher scores indicate better habits for testosterone support. Consistency is key for long-term benefits.</p>
         </CardContent>
       </Card>

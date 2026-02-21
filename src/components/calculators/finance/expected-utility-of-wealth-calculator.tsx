@@ -61,7 +61,7 @@ const faqs = [
   {
     question: 'How is expected utility calculated?',
     answer:
-      'Expected Utility = Σ [Probability(Outcome) × Utility(Outcome)]. For two outcomes: EU = P1 × U(W1) + P2 × U(W2). Each outcome\'s utility is calculated using the chosen utility function, then weighted by probability.',
+      'Expected Utility = Î£ [Probability(Outcome) Ã— Utility(Outcome)]. For two outcomes: EU = P1 Ã— U(W1) + P2 Ã— U(W2). Each outcome\'s utility is calculated using the chosen utility function, then weighted by probability.',
   },
   {
     question: 'What does risk-averse mean?',
@@ -86,7 +86,7 @@ const faqs = [
   {
     question: 'What are common utility functions?',
     answer:
-      'Square-root: U(W) = √W (moderate risk aversion). Logarithmic: U(W) = ln(W) (constant relative risk aversion). Linear: U(W) = W (risk neutral). Quadratic: U(W) = W² (risk seeking). Each reflects different risk preferences.',
+      'Square-root: U(W) = âˆšW (moderate risk aversion). Logarithmic: U(W) = ln(W) (constant relative risk aversion). Linear: U(W) = W (risk neutral). Quadratic: U(W) = WÂ² (risk seeking). Each reflects different risk preferences.',
   },
   {
     question: 'When should I accept a risky prospect?',
@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/expected-utility-of-wealth-calculator';
+const baseUrl = 'https://mycalculating.com/finance/expected-utility-of-wealth-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Expected Utility of Wealth Calculator', item: baseUrl },
       ],
     },
@@ -457,16 +457,16 @@ export default function ExpectedUtilityOfWealthCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Expected Utility</strong> = Σ [Probability(Outcome) × Utility(Outcome)]
+            <strong>Expected Utility</strong> = Î£ [Probability(Outcome) Ã— Utility(Outcome)]
           </p>
-          <p>For two outcomes: EU = P₁ × U(W₁) + P₂ × U(W₂)</p>
+          <p>For two outcomes: EU = Pâ‚ Ã— U(Wâ‚) + Pâ‚‚ Ã— U(Wâ‚‚)</p>
           <p>
             <strong>Utility Functions:</strong>
           </p>
-          <p>Square-Root: U(W) = √W (risk-averse, DARA)</p>
+          <p>Square-Root: U(W) = âˆšW (risk-averse, DARA)</p>
           <p>Logarithmic: U(W) = ln(W) (risk-averse, CRRA)</p>
           <p>Linear: U(W) = W (risk-neutral)</p>
-          <p>Quadratic: U(W) = W² (risk-seeking)</p>
+          <p>Quadratic: U(W) = WÂ² (risk-seeking)</p>
           <p>Expected utility theory evaluates decisions under uncertainty by comparing the weighted average utility of outcomes to the utility of a certain alternative. Risk preferences are reflected in the shape of the utility function.</p>
         </CardContent>
       </Card>
@@ -569,13 +569,13 @@ export default function ExpectedUtilityOfWealthCalculator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">The Formula</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>E[U(W)] = Σ P(xᵢ) × U(xᵢ)</strong></p>
+        <p className="font-mono text-lg"><strong>E[U(W)] = Î£ P(xáµ¢) Ã— U(xáµ¢)</strong></p>
     </div>
     <p>Where:</p>
     <ul className="list-disc ml-6 space-y-1">
         <li>E[U(W)] = Expected utility</li>
-        <li>P(xᵢ) = Probability of outcome i</li>
-        <li>U(xᵢ) = Utility of outcome i</li>
+        <li>P(xáµ¢) = Probability of outcome i</li>
+        <li>U(xáµ¢) = Utility of outcome i</li>
     </ul>
 
 <hr className="my-6" />
@@ -583,7 +583,7 @@ export default function ExpectedUtilityOfWealthCalculator() {
     <h2 id="functions" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Utility Functions</h2>
     <p>Utility functions map wealth levels to utility values, reflecting an individual's preferences and risk attitudes.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Square-Root Utility: U(W) = √W</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Square-Root Utility: U(W) = âˆšW</h3>
     <p>This function exhibits <b>decreasing absolute risk aversion (DARA)</b>. Risk aversion decreases as wealth increases, meaning individuals become more willing to take absolute risks as they become wealthier. Commonly used for moderate risk aversion.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Logarithmic Utility: U(W) = ln(W)</h3>
@@ -592,7 +592,7 @@ export default function ExpectedUtilityOfWealthCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Linear Utility: U(W) = W</h3>
     <p>This function represents <b>risk neutrality</b>. Individuals value all increments of wealth equally and make decisions based solely on expected value. They are indifferent between certain outcomes and gambles with the same expected value.</p>
 
-    <h3 className="text-xl font-semibold text-foreground mt-6">Quadratic Utility: U(W) = W²</h3>
+    <h3 className="text-xl font-semibold text-foreground mt-6">Quadratic Utility: U(W) = WÂ²</h3>
     <p>This function represents <b>risk-seeking</b> behavior. Individuals have increasing marginal utility of wealth and prefer gambles over certain outcomes with the same expected value. Less commonly observed in practice.</p>
 
 <hr className="my-6" />
@@ -610,11 +610,11 @@ export default function ExpectedUtilityOfWealthCalculator() {
     </ul>
     <p>Utilities:</p>
     <ul className="list-disc ml-6 space-y-1">
-        <li>U($200,000) = √200,000 = 447.21</li>
-        <li>U($50,000) = √50,000 = 223.61</li>
-        <li>U($100,000) = √100,000 = 316.23</li>
+        <li>U($200,000) = âˆš200,000 = 447.21</li>
+        <li>U($50,000) = âˆš50,000 = 223.61</li>
+        <li>U($100,000) = âˆš100,000 = 316.23</li>
     </ul>
-    <p>Expected Utility = 0.5 × 447.21 + 0.5 × 223.61 = 335.41</p>
+    <p>Expected Utility = 0.5 Ã— 447.21 + 0.5 Ã— 223.61 = 335.41</p>
     <p>Since expected utility (335.41) &gt; current utility (316.23), the gamble is preferred for a risk-averse individual with square-root utility.</p>
 
 <hr className="my-6" />

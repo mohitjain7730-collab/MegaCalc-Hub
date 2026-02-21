@@ -118,7 +118,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/mental-processing-speed-test-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/mental-processing-speed-test-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -127,7 +127,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Mental Processing Speed Wellness Estimator', item: baseUrl },
       ],
     },
@@ -398,7 +398,7 @@ export default function MentalProcessingSpeedTestCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Processing Speed Score</strong> = (Reaction Time Component × 0.4) + (Accuracy Component × 0.4) + (Time Component × 0.2)
+            <strong>Processing Speed Score</strong> = (Reaction Time Component Ã— 0.4) + (Accuracy Component Ã— 0.4) + (Time Component Ã— 0.2)
           </p>
           <p>
             <strong>Reaction Time Component</strong> = Average of normalized simple and choice reaction times (faster = higher score)
@@ -453,7 +453,7 @@ export default function MentalProcessingSpeedTestCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Mental processing speed is a fundamental cognitive ability that determines how quickly you can perceive, process, and respond to information. It influences reaction time, decision-making efficiency, and overall cognitive performance. This calculator combines multiple measures—simple and choice reaction times, processing accuracy, and task completion speed—to provide a comprehensive assessment of your mental processing speed.
+            Mental processing speed is a fundamental cognitive ability that determines how quickly you can perceive, process, and respond to information. It influences reaction time, decision-making efficiency, and overall cognitive performance. This calculator combines multiple measuresâ€”simple and choice reaction times, processing accuracy, and task completion speedâ€”to provide a comprehensive assessment of your mental processing speed.
           </p>
           <p>
             Regular assessment of processing speed helps track cognitive health, monitor the effects of brain training, and identify areas for improvement. Understanding your processing speed relative to your age group provides valuable insights into cognitive aging and the effectiveness of interventions.

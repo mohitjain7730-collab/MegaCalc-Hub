@@ -38,7 +38,7 @@ const steps = [
   'Enter your average cycle length (days from period start to next period start).',
   'Optionally enter the start date of your last period for calendar-based prediction.',
   'Log if you detected an LH surge (luteinizing hormone peak).',
-  'Enter basal body temperature (BBT) if tracking (typically 97-98°F pre-ovulation, 97.5-99°F post-ovulation).',
+  'Enter basal body temperature (BBT) if tracking (typically 97-98Â°F pre-ovulation, 97.5-99Â°F post-ovulation).',
   'Rate cervical mucus quality (1 = dry, 5 = egg-white consistency).',
   'Review ovulation day estimate, fertile window, and probability score.',
 ];
@@ -62,7 +62,7 @@ const faqs = [
   {
     question: 'How does BBT help?',
     answer:
-      'Basal body temperature rises 0.5-1°F after ovulation due to progesterone. Tracking BBT confirms ovulation occurred but does not predict it.',
+      'Basal body temperature rises 0.5-1Â°F after ovulation due to progesterone. Tracking BBT confirms ovulation occurred but does not predict it.',
   },
   {
     question: 'What is fertile cervical mucus?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/ovulation-window-probability-advanced-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/ovulation-window-probability-advanced-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Ovulation Window Probability (Advanced) Calculator', item: baseUrl },
       ],
     },
@@ -175,26 +175,26 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   let status: ResultPayload['status'] = 'moderate-probability';
   let interpretation =
-    'Based on your entries, this model suggests a moderate level of confidence in the estimated ovulation window—adding more tracking signals can clarify the picture.';
+    'Based on your entries, this model suggests a moderate level of confidence in the estimated ovulation windowâ€”adding more tracking signals can clarify the picture.';
 
   if (finalProbability >= 80) {
     status = 'high-probability';
     interpretation =
-      'Multiple signs you entered line up, so this estimate may be a relatively stronger candidate for your likely ovulation window—still as an approximation, not a guarantee.';
+      'Multiple signs you entered line up, so this estimate may be a relatively stronger candidate for your likely ovulation windowâ€”still as an approximation, not a guarantee.';
   }
   if (finalProbability < 50) {
     status = 'low-probability';
     interpretation =
-      'There is limited or mixed input data here, so this estimate should be treated as very rough—more tracking over several cycles can make patterns clearer.';
+      'There is limited or mixed input data here, so this estimate should be treated as very roughâ€”more tracking over several cycles can make patterns clearer.';
   }
 
   const recommendations = [
-    'If you enjoy tracking, you can use ovulation predictor kits (OPKs) to notice LH changes around your expected mid‑cycle days.',
+    'If you enjoy tracking, you can use ovulation predictor kits (OPKs) to notice LH changes around your expected midâ€‘cycle days.',
     'Daily basal body temperature and cervical mucus notes, if you choose to track them, can help you understand your own patterns over time.',
     'Remember that cycles can shift from month to month; treat any single estimate as one reference point rather than a precise prediction.',
   ];
   if (status === 'moderate-probability') {
-    recommendations.push('Combining calendar estimates with at least one body sign you’re comfortable tracking can make your personal pattern feel more visible.');
+    recommendations.push('Combining calendar estimates with at least one body sign youâ€™re comfortable tracking can make your personal pattern feel more visible.');
   }
   if (status === 'low-probability') {
     recommendations.push('If it feels helpful, you could log a few different signs (OPKs, BBT, mucus) across several cycles to gently learn how your body tends to behave.');
@@ -284,7 +284,7 @@ export default function OvulationWindowProbabilityAdvancedCalculator() {
                   name="basalBodyTemp"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Basal body temp (°F)</FormLabel>
+                      <FormLabel>Basal body temp (Â°F)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.1" placeholder="e.g., 97.8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -333,12 +333,12 @@ export default function OvulationWindowProbabilityAdvancedCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Fertile window</p>
                 <p className="text-2xl font-semibold text-primary">Days {result.fertileWindowStart}-{result.fertileWindowEnd}</p>
-                <p className="text-xs text-muted-foreground">A typical 5–6 day span often considered more likely to be fertile.</p>
+                <p className="text-xs text-muted-foreground">A typical 5â€“6 day span often considered more likely to be fertile.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Probability score</p>
                 <p className="text-2xl font-semibold text-primary">{result.probabilityScore}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 confidence-style score from this model only.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 confidence-style score from this model only.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -392,8 +392,8 @@ export default function OvulationWindowProbabilityAdvancedCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Ovulation day</strong> ≈ cycle length − 14 days (range: 12-16 days before next period).</p>
-          <p><strong>Fertile window</strong> = ovulation day − 5 to ovulation day (5-6 days total).</p>
+          <p><strong>Ovulation day</strong> â‰ˆ cycle length âˆ’ 14 days (range: 12-16 days before next period).</p>
+          <p><strong>Fertile window</strong> = ovulation day âˆ’ 5 to ovulation day (5-6 days total).</p>
           <p><strong>Probability score</strong> = 60 (calendar base) + 25 (LH surge) + 10 (elevated BBT) + 15 (fertile mucus), max 100.</p>
           <p>Combining multiple tracking methods (OPKs, BBT, mucus) increases accuracy significantly.</p>
         </CardContent>

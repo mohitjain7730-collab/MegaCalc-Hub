@@ -37,8 +37,8 @@ type ResultPayload = {
 
 const steps = [
   'Enter your age (BMR decreases ~2-3% per decade after 30).',
-  'Enter weight in kilograms (or convert from pounds: lbs ÷ 2.2).',
-  'Enter height in centimeters (or convert from inches: inches × 2.54).',
+  'Enter weight in kilograms (or convert from pounds: lbs Ã· 2.2).',
+  'Enter height in centimeters (or convert from inches: inches Ã— 2.54).',
   'Select gender (metabolic rates differ by gender).',
   'Optionally enter muscle mass percentage if known (for general wellness estimation only).',
   'Select activity level to estimate total daily energy expenditure (TDEE).',
@@ -79,7 +79,7 @@ const faqs = [
   {
     question: 'How do I calculate TDEE?',
     answer:
-      'TDEE (Total Daily Energy Expenditure) = BMR × activity multiplier. Sedentary 1.2, Light 1.375, Moderate 1.55, Active 1.725, Very Active 1.9.',
+      'TDEE (Total Daily Energy Expenditure) = BMR Ã— activity multiplier. Sedentary 1.2, Light 1.375, Moderate 1.55, Active 1.725, Very Active 1.9.',
   },
   {
     question: 'Does diet affect BMR?',
@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/bmr-adjustment-for-age-muscle-loss-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/bmr-adjustment-for-age-muscle-loss-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Metabolic Wellness Estimator', item: baseUrl },
       ],
     },
@@ -445,10 +445,10 @@ export default function BMRAdjustmentForAgeMuscleLossCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Base BMR</strong> (Mifflin-St Jeor): Men = 10 × weight + 6.25 × height − 5 × age + 5; Women = 10 × weight + 6.25 × height − 5 × age − 161.</p>
-          <p><strong>Age adjustment</strong> = base BMR × (decades over 30 × 2.5%) / 100. BMR decreases ~2.5% per decade after age 30.</p>
-          <p><strong>Muscle loss adjustment</strong> = base BMR × (muscle loss % × 0.5%) / 100. Each 1% muscle loss reduces BMR by ~0.5%.</p>
-          <p><strong>Adjusted BMR</strong> = base BMR − age adjustment − muscle loss adjustment.</p>
+          <p><strong>Base BMR</strong> (Mifflin-St Jeor): Men = 10 Ã— weight + 6.25 Ã— height âˆ’ 5 Ã— age + 5; Women = 10 Ã— weight + 6.25 Ã— height âˆ’ 5 Ã— age âˆ’ 161.</p>
+          <p><strong>Age adjustment</strong> = base BMR Ã— (decades over 30 Ã— 2.5%) / 100. BMR decreases ~2.5% per decade after age 30.</p>
+          <p><strong>Muscle loss adjustment</strong> = base BMR Ã— (muscle loss % Ã— 0.5%) / 100. Each 1% muscle loss reduces BMR by ~0.5%.</p>
+          <p><strong>Adjusted BMR</strong> = base BMR âˆ’ age adjustment âˆ’ muscle loss adjustment.</p>
           <p>Older age and lower muscle mass reduce BMR. Resistance training and adequate protein help maintain muscle and slow decline.</p>
         </CardContent>
       </Card>

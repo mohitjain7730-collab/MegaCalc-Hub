@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 
-// Lifestyle‑focused, non‑diagnostic inputs
+// Lifestyleâ€‘focused, nonâ€‘diagnostic inputs
 const formSchema = z.object({
   weightBearingDays: z.number().min(0).max(7),
   strengthTrainingDays: z.number().min(0).max(7),
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/bone-density-t-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/bone-density-t-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Bone Strength Lifestyle Insight Tool', item: baseUrl },
       ],
     },
@@ -177,7 +177,7 @@ const schemaMarkup = {
 };
 
 function calculateBoneWellness(values: FormValues): BoneWellnessResult {
-  // Simple lifestyle‑based wellness scoring (0–100), non‑diagnostic
+  // Simple lifestyleâ€‘based wellness scoring (0â€“100), nonâ€‘diagnostic
   let score = 0;
 
   // Movement & loading
@@ -193,36 +193,36 @@ function calculateBoneWellness(values: FormValues): BoneWellnessResult {
 
   // Sedentary time (less sitting = more points)
   const sedentaryPenalty = Math.max(0, values.sedentaryHoursPerDay - 4); // hours beyond 4
-  score += Math.max(0, 20 - sedentaryPenalty * 4); // between 0–20
+  score += Math.max(0, 20 - sedentaryPenalty * 4); // between 0â€“20
 
-  // Clamp between 0–100
+  // Clamp between 0â€“100
   const wellnessScore = Math.max(0, Math.min(100, Math.round(score)));
 
-  let levelText = 'Gently building bone‑supportive habits';
+  let levelText = 'Gently building boneâ€‘supportive habits';
   let summary =
     'You have some helpful routines in place, and there is room to add small habits that support bone strength over time.';
 
   if (wellnessScore >= 75) {
-    levelText = 'Strong foundation of bone‑supportive habits';
+    levelText = 'Strong foundation of boneâ€‘supportive habits';
     summary =
       'Your current routine includes many habits that can support bone strength, such as movement, nourishing meals, and time on your feet.';
   } else if (wellnessScore >= 50) {
-    levelText = 'Growing bone‑supportive lifestyle';
+    levelText = 'Growing boneâ€‘supportive lifestyle';
     summary =
       'You have a mix of helpful habits. Small, steady adjustments over time can further support your bones and overall movement.';
   } else {
     levelText = 'Plenty of room for gentle lifestyle support';
     summary =
-      'This score simply reflects that there is space to experiment with supportive habits like more movement, standing breaks, or bone‑friendly meals.';
+      'This score simply reflects that there is space to experiment with supportive habits like more movement, standing breaks, or boneâ€‘friendly meals.';
   }
 
   const suggestions: string[] = [];
 
   if (values.weightBearingDays < 3) {
-    suggestions.push('Consider adding short walks or other weight‑bearing activities on a few more days each week.');
+    suggestions.push('Consider adding short walks or other weightâ€‘bearing activities on a few more days each week.');
   }
   if (values.strengthTrainingDays < 2) {
-    suggestions.push('Light strength or resistance exercises 1–2 times per week can gently support muscles and bones.');
+    suggestions.push('Light strength or resistance exercises 1â€“2 times per week can gently support muscles and bones.');
   }
   if (values.calciumRichMealsPerDay < 2) {
     suggestions.push('You might include more foods that naturally contain calcium, if this fits your preferences and needs.');
@@ -333,7 +333,7 @@ export default function BoneDensityTScoreCalculator() {
               name="weightBearingDays"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Days per week you do weight‑bearing movement (walking, dancing, etc.)</FormLabel>
+                  <FormLabel>Days per week you do weightâ€‘bearing movement (walking, dancing, etc.)</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -369,7 +369,7 @@ export default function BoneDensityTScoreCalculator() {
               name="calciumRichMealsPerDay"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Meals or snacks per day that include bone‑supportive foods</FormLabel>
+                  <FormLabel>Meals or snacks per day that include boneâ€‘supportive foods</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -836,7 +836,7 @@ export default function BoneDensityTScoreCalculator() {
           Bone strength is supported by a combination of weight-bearing exercise, strength training, adequate nutrition
           (especially calcium and vitamin D), sunlight exposure, and an active lifestyle. By understanding how these factors
           influence bone health and implementing comprehensive strategies, you can support bone strength throughout life. Remember
-          that bone health is a long-term investment—consistent habits over time matter more than short-term changes. If you have
+          that bone health is a long-term investmentâ€”consistent habits over time matter more than short-term changes. If you have
           concerns about bone health, risk factors for osteoporosis, or want personalized guidance, consult a healthcare provider
           who can assess your situation and recommend appropriate testing and interventions. This tool is designed for wellness
           reflection and is not a substitute for professional medical evaluation or bone density testing.

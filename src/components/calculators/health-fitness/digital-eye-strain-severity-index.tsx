@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/digital-eye-strain-severity-index';
+const baseUrl = 'https://mycalculating.com/health-fitness/digital-eye-strain-severity-index';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Digital Eye Strain Severity Index', item: baseUrl },
       ],
     },
@@ -403,16 +403,16 @@ export default function DigitalEyeStrainSeverityIndex() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Screen time factor</strong> = (Screen Time / 16) × 40. Contributes 0-40 points based on daily screen hours. More screen time increases strain risk.
+            <strong>Screen time factor</strong> = (Screen Time / 16) Ã— 40. Contributes 0-40 points based on daily screen hours. More screen time increases strain risk.
           </p>
           <p>
-            <strong>Strain level factor</strong> = ((Eye Strain Level - 1) / 4) × 30. Contributes 0-30 points based on self-reported strain (1-5 scale). Higher self-reported strain increases index.
+            <strong>Strain level factor</strong> = ((Eye Strain Level - 1) / 4) Ã— 30. Contributes 0-30 points based on self-reported strain (1-5 scale). Higher self-reported strain increases index.
           </p>
           <p>
-            <strong>Blink rate factor</strong> = (10 - Blink Rate) / 5 × 15, if Blink Rate &lt; 10, else 0. Penalty of 0-15 points for reduced blinking. Normal blink rate is 15-20/min, screen use reduces this significantly.
+            <strong>Blink rate factor</strong> = (10 - Blink Rate) / 5 Ã— 15, if Blink Rate &lt; 10, else 0. Penalty of 0-15 points for reduced blinking. Normal blink rate is 15-20/min, screen use reduces this significantly.
           </p>
           <p>
-            <strong>Lighting factor</strong> = ((5 - Lighting Conditions) / 4) × 10. Penalty of 0-10 points for poor lighting (1-5 scale). Optimal lighting reduces glare and contrast issues.
+            <strong>Lighting factor</strong> = ((5 - Lighting Conditions) / 4) Ã— 10. Penalty of 0-10 points for poor lighting (1-5 scale). Optimal lighting reduces glare and contrast issues.
           </p>
           <p>
             <strong>Distance factor</strong> = 5 if Screen Distance &lt; 18 or &gt; 30 inches, else 0. Penalty for suboptimal screen distance. Optimal distance is 20-26 inches.

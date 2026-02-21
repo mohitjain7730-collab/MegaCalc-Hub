@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/nutrient-absorption-efficiency-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/nutrient-absorption-efficiency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Nutrient Absorption Wellness Efficiency Calculator', item: baseUrl },
       ],
     },
@@ -466,10 +466,10 @@ export default function NutrientAbsorptionEfficiencyCalculator() {
             <strong>Cofactor enhancement</strong> = Up to 40% boost for iron, calcium, zinc when cofactors present.
           </p>
           <p>
-            <strong>Digestive health adjustment</strong> = Base rate × (1 + ((digestive health - 5) / 5) × 0.2).
+            <strong>Digestive health adjustment</strong> = Base rate Ã— (1 + ((digestive health - 5) / 5) Ã— 0.2).
           </p>
           <p>
-            <strong>Absorbed amount</strong> = Intake amount × (absorption efficiency / 100).
+            <strong>Absorbed amount</strong> = Intake amount Ã— (absorption efficiency / 100).
           </p>
           <p>Absorption efficiency varies significantly by nutrient type, food source, meal timing, cofactors, and digestive health. Animal sources typically have higher bioavailability than plant sources.</p>
         </CardContent>

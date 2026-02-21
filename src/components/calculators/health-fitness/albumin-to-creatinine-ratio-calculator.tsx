@@ -85,7 +85,7 @@ const faqs = [
   {
     question: 'When should I consult a healthcare provider?',
     answer:
-      'Consult a healthcare provider if your ACR is elevated (≥30 mg/g), if you have diabetes or hypertension with elevated ACR, if ACR is increasing over time, or if you have symptoms of kidney disease (swelling, fatigue, changes in urination).',
+      'Consult a healthcare provider if your ACR is elevated (â‰¥30 mg/g), if you have diabetes or hypertension with elevated ACR, if ACR is increasing over time, or if you have symptoms of kidney disease (swelling, fatigue, changes in urination).',
   },
 ];
 
@@ -112,7 +112,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/albumin-to-creatinine-ratio-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/albumin-to-creatinine-ratio-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -121,7 +121,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Albumin-to-Creatinine Ratio Calculator', item: baseUrl },
       ],
     },
@@ -143,7 +143,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const urineAlbumin = values.urineAlbumin; // mg/dL
   const urineCreatinine = values.urineCreatinine; // mg/dL
   
-  // Calculate ACR: (Urine Albumin / Urine Creatinine) × 1000 (converts to mg/g)
+  // Calculate ACR: (Urine Albumin / Urine Creatinine) Ã— 1000 (converts to mg/g)
   const acr = urineCreatinine > 0 ? (urineAlbumin / urineCreatinine) * 1000 : 0;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -179,7 +179,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'This Week', detail: `If ACR is elevated (≥30 mg/g), schedule an appointment with your healthcare provider for evaluation and treatment planning. Monitor blood pressure and blood sugar if applicable.` },
+    { label: 'This Week', detail: `If ACR is elevated (â‰¥30 mg/g), schedule an appointment with your healthcare provider for evaluation and treatment planning. Monitor blood pressure and blood sugar if applicable.` },
     { label: 'This Month', detail: 'Follow up with healthcare provider as recommended. Implement lifestyle changes including diet modifications, regular exercise, and medication adherence if prescribed.' },
     { label: 'Ongoing', detail: 'Maintain regular ACR monitoring as recommended by your healthcare provider (typically annually for diabetes, or more frequently if elevated). Continue managing underlying conditions (diabetes, hypertension) and follow treatment plan to preserve kidney function.' },
   ];
@@ -329,7 +329,7 @@ export default function AlbuminToCreatinineRatioCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>ACR (mg/g)</strong> = (Urine Albumin (mg/dL) / Urine Creatinine (mg/dL)) × 1000
+            <strong>ACR (mg/g)</strong> = (Urine Albumin (mg/dL) / Urine Creatinine (mg/dL)) Ã— 1000
           </p>
           <p>
             The ACR normalizes urine albumin concentration by urine creatinine, accounting for urine concentration variations. This makes ACR more reliable than measuring albumin alone.

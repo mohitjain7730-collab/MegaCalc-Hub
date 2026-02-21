@@ -34,7 +34,7 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Count daily servings of fruits and vegetables (1 serving ≈ 1 cup or medium piece).',
+  'Count daily servings of fruits and vegetables (1 serving â‰ˆ 1 cup or medium piece).',
   'Log whole grain servings (bread, rice, oats, quinoa).',
   'Count protein sources (meat, fish, eggs, legumes, nuts).',
   'Note dairy or fortified alternatives (milk, yogurt, plant milks).',
@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'How many fruit/vegetable servings should I aim for?',
     answer:
-      'Most guidelines recommend 5–9 servings daily (2–4 fruits, 3–5 vegetables) for adequate vitamins, minerals, and fiber.',
+      'Most guidelines recommend 5â€“9 servings daily (2â€“4 fruits, 3â€“5 vegetables) for adequate vitamins, minerals, and fiber.',
   },
   {
     question: 'Do I need supplements if I eat well?',
@@ -67,7 +67,7 @@ const faqs = [
   {
     question: 'How much sun exposure for vitamin D?',
     answer:
-      '10–30 minutes of midday sun on arms/legs, 2–3 times per week, can support vitamin D synthesis. Darker skin or northern latitudes may need more.',
+      '10â€“30 minutes of midday sun on arms/legs, 2â€“3 times per week, can support vitamin D synthesis. Darker skin or northern latitudes may need more.',
   },
   {
     question: 'What if I am vegan or vegetarian?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-deficiency-risk-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-deficiency-risk-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin Deficiency Risk Estimator', item: baseUrl },
       ],
     },
@@ -164,17 +164,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (deficiencyRisk > 30) {
     status = 'moderate-risk';
     interpretation =
-      'This snapshot suggests there may be some gentle room to increase variety or frequency of nutrient‑rich foods, or to explore supportive habits with a professional.';
+      'This snapshot suggests there may be some gentle room to increase variety or frequency of nutrientâ€‘rich foods, or to explore supportive habits with a professional.';
   }
   if (deficiencyRisk > 50) {
     status = 'high-risk';
     interpretation =
-      'Here, your entries point to a pattern that may be lighter on certain nutrient sources. It could be a good moment to focus on more nutrient‑dense foods and to consider talking with a clinician about testing if you have concerns.';
+      'Here, your entries point to a pattern that may be lighter on certain nutrient sources. It could be a good moment to focus on more nutrientâ€‘dense foods and to consider talking with a clinician about testing if you have concerns.';
   }
 
   const recommendations = [
     'When possible, you can lean toward more fruits and vegetables you enjoy to support a wider mix of vitamins.',
-    'Including some whole‑grain choices and varied protein sources can gently boost many B vitamins and minerals.',
+    'Including some wholeâ€‘grain choices and varied protein sources can gently boost many B vitamins and minerals.',
     'If it fits your life and is safe for you, a bit of regular daylight on skin can complement food and/or supplements for vitamin D.',
   ];
   if (status === 'moderate-risk') {
@@ -186,7 +186,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const plan = [
     { label: 'This Week', detail: 'Gently notice what you are already eating and how much daylight you tend to get, without judgment.' },
-    { label: 'Next 2 Weeks', detail: 'If it feels realistic, add small, enjoyable boosts—like an extra serving of produce or a slightly more varied protein or grain choice.' },
+    { label: 'Next 2 Weeks', detail: 'If it feels realistic, add small, enjoyable boostsâ€”like an extra serving of produce or a slightly more varied protein or grain choice.' },
     { label: 'Ongoing', detail: 'If certain concerns or symptoms stay on your mind, you can bring this snapshot to a clinician for a more specific conversation.' },
   ];
 
@@ -331,7 +331,7 @@ export default function VitaminDeficiencyRiskEstimator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Deficiency risk</p>
                 <p className="text-2xl font-semibold text-primary">{result.deficiencyRisk.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 pattern score in this model (lower means more nutrient‑dense entries).</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 pattern score in this model (lower means more nutrientâ€‘dense entries).</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Vitamin score</p>
@@ -391,7 +391,7 @@ export default function VitaminDeficiencyRiskEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p><strong>Vitamin score</strong> = fruitVegScore (0-30) + grainScore (0-15) + proteinScore (0-15) + dairyScore (0-10) + sunScore (0-15) + supplementScore (0-15), max 100.</p>
-          <p><strong>Deficiency risk</strong> = 100 − vitaminScore, clamped to 0-100.</p>
+          <p><strong>Deficiency risk</strong> = 100 âˆ’ vitaminScore, clamped to 0-100.</p>
           <p>Higher fruit/vegetable intake, whole grains, protein, dairy, sun exposure, and supplements raise the score and lower risk.</p>
         </CardContent>
       </Card>

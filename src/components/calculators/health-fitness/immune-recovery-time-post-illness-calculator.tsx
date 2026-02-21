@@ -55,12 +55,12 @@ const faqs = [
   {
     question: 'How does sleep affect recovery?',
     answer:
-      'Sleep is critical for immune function. Aim for 7–9 hours nightly. Poor sleep can extend recovery time significantly.',
+      'Sleep is critical for immune function. Aim for 7â€“9 hours nightly. Poor sleep can extend recovery time significantly.',
   },
   {
     question: 'What nutrition score should I target?',
     answer:
-      'Aim for 7–10: whole foods, adequate protein, fruits/vegetables, hydration, and minimal processed foods or excess sugar.',
+      'Aim for 7â€“10: whole foods, adequate protein, fruits/vegetables, hydration, and minimal processed foods or excess sugar.',
   },
   {
     question: 'Can stress delay recovery?',
@@ -117,7 +117,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/immune-recovery-time-post-illness-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/immune-recovery-time-post-illness-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -126,7 +126,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Immune Recovery Time Post-Illness Calculator', item: baseUrl },
       ],
     },
@@ -165,7 +165,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (immuneStrength < 60 || recoveryDays > 10) {
     status = 'needs-support';
     interpretation =
-      'This snapshot suggests your body might appreciate some extra care—like a bit more sleep, easier days, or simple, nourishing meals.';
+      'This snapshot suggests your body might appreciate some extra careâ€”like a bit more sleep, easier days, or simple, nourishing meals.';
   }
   if (immuneStrength < 40 || recoveryDays > 20) {
     status = 'seek-guidance';
@@ -176,10 +176,10 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations = [
     'When you can, give yourself permission for more and better-quality sleep, as it often supports how your body recovers.',
     'Simple, easy-to-digest whole foods and regular fluids can feel kinder on your system than heavy or highly processed options.',
-    'Gentle activities—like light stretching, calm music, or a quiet walk if tolerated—can sometimes help with stress while you recover.',
+    'Gentle activitiesâ€”like light stretching, calm music, or a quiet walk if toleratedâ€”can sometimes help with stress while you recover.',
   ];
   if (status === 'needs-support') {
-    recommendations.push('You might add small things that feel soothing to you—such as broths, warm drinks, or a bit more colorful produce—while easing back on ultra‑processed foods if possible.');
+    recommendations.push('You might add small things that feel soothing to youâ€”such as broths, warm drinks, or a bit more colorful produceâ€”while easing back on ultraâ€‘processed foods if possible.');
   }
   if (status === 'seek-guidance') {
     recommendations.push('If your symptoms are lingering or worrying you, consider reaching out to a healthcare provider for specific advice for your situation.');
@@ -323,7 +323,7 @@ export default function ImmuneRecoveryTimePostIllnessCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Immune strength</p>
                 <p className="text-2xl font-semibold text-primary">{result.immuneStrength.toFixed(0)}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 pattern score based on the inputs you shared.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 pattern score based on the inputs you shared.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -377,8 +377,8 @@ export default function ImmuneRecoveryTimePostIllnessCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Recovery days</strong> = baseRecovery (severity × 2) − daysElapsed + sleepBonus + nutritionBonus + stressPenalty, clamped to 0-30.</p>
-          <p><strong>Immune strength</strong> = 100 − (severity × 8) + (sleep − 6) × 5 + (nutrition − 5) × 4 − (stress − 3) × 3, clamped to 0-100.</p>
+          <p><strong>Recovery days</strong> = baseRecovery (severity Ã— 2) âˆ’ daysElapsed + sleepBonus + nutritionBonus + stressPenalty, clamped to 0-30.</p>
+          <p><strong>Immune strength</strong> = 100 âˆ’ (severity Ã— 8) + (sleep âˆ’ 6) Ã— 5 + (nutrition âˆ’ 5) Ã— 4 âˆ’ (stress âˆ’ 3) Ã— 3, clamped to 0-100.</p>
           <p>Better sleep, nutrition, and lower stress support faster recovery and higher immune strength.</p>
         </CardContent>
       </Card>

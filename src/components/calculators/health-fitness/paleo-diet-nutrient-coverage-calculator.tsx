@@ -127,7 +127,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/paleo-diet-nutrient-coverage-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/paleo-diet-nutrient-coverage-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -136,7 +136,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Paleo Diet Nutrient Coverage Calculator', item: baseUrl },
       ],
     },

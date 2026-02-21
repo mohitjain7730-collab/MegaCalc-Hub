@@ -35,8 +35,8 @@ const schemaMarkup = {
       name: 'Sequence of Returns Risk Calculator',
       applicationCategory: 'FinanceApplication',
       operatingSystem: 'Web Browser',
-      description: 'See how the order of returns affects a portfolio with withdrawals. Compare bad years first vs good years first—same average return, different outcome.',
-      url: 'https://mycalculating.com/category/finance/sequence-of-returns-risk-calculator',
+      description: 'See how the order of returns affects a portfolio with withdrawals. Compare bad years first vs good years firstâ€”same average return, different outcome.',
+      url: 'https://mycalculating.com/finance/sequence-of-returns-risk-calculator',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
   ],
@@ -101,11 +101,11 @@ export default function SequenceOfReturnsRiskCalculator() {
 
     let recommendation = '';
     if (depletedBadFirst != null && depletedGoodFirst == null) {
-      recommendation = `Sequence of returns risk: with bad years first, your portfolio is depleted in year ${depletedBadFirst}. With good years first, you still have $${terminalGoodFirst.toLocaleString(undefined, { maximumFractionDigits: 0 })} after ${years} years. The order of returns matters greatly when you withdraw—protect against early bad returns (e.g. with a cash buffer or lower initial withdrawal).`;
+      recommendation = `Sequence of returns risk: with bad years first, your portfolio is depleted in year ${depletedBadFirst}. With good years first, you still have $${terminalGoodFirst.toLocaleString(undefined, { maximumFractionDigits: 0 })} after ${years} years. The order of returns matters greatly when you withdrawâ€”protect against early bad returns (e.g. with a cash buffer or lower initial withdrawal).`;
     } else if (difference > 0) {
       recommendation = `Good years first leaves you with $${difference.toLocaleString(undefined, { maximumFractionDigits: 0 })} more after ${years} years than bad years first ($${terminalGoodFirst.toLocaleString(undefined, { maximumFractionDigits: 0 })} vs $${terminalBadFirst.toLocaleString(undefined, { maximumFractionDigits: 0 })}). Sequence of returns risk: bad returns early hurt more when you are withdrawing. Consider a withdrawal buffer or reducing withdrawals after a down year.`;
     } else if (difference < 0) {
-      recommendation = `Bad years first leaves you with $${Math.abs(difference).toLocaleString(undefined, { maximumFractionDigits: 0 })} more in this scenario. That can happen when good returns early grow the portfolio enough to absorb later bad years. In practice, you cannot control return order—plan for the risk of bad years early.`;
+      recommendation = `Bad years first leaves you with $${Math.abs(difference).toLocaleString(undefined, { maximumFractionDigits: 0 })} more in this scenario. That can happen when good returns early grow the portfolio enough to absorb later bad years. In practice, you cannot control return orderâ€”plan for the risk of bad years early.`;
     } else {
       recommendation = `Terminal values are the same for both sequences with these inputs. Vary withdrawal or returns to see the typical sequence-of-returns effect.`;
     }
@@ -113,8 +113,8 @@ export default function SequenceOfReturnsRiskCalculator() {
     const insights: string[] = [];
     insights.push(`Bad years first: ${nBad} year(s) at ${v.badYearReturnPct}%, then ${nGood} at ${v.goodYearReturnPct}%. Terminal: $${terminalBadFirst.toLocaleString(undefined, { maximumFractionDigits: 0 })}${depletedBadFirst != null ? ` (depleted in year ${depletedBadFirst})` : ''}.`);
     insights.push(`Good years first: ${nGood} year(s) at ${v.goodYearReturnPct}%, then ${nBad} at ${v.badYearReturnPct}%. Terminal: $${terminalGoodFirst.toLocaleString(undefined, { maximumFractionDigits: 0 })}${depletedGoodFirst != null ? ` (depleted in year ${depletedGoodFirst})` : ''}.`);
-    insights.push(`Difference: $${difference.toLocaleString(undefined, { maximumFractionDigits: 0 })}. Same average return over the period—only the order differs. When you withdraw each year, bad returns early shrink the base for future growth and can deplete the portfolio faster.`);
-    insights.push('Sequence of returns risk is especially relevant in retirement: early bad years can permanently reduce portfolio sustainability. Consider a cash buffer (e.g. 1–2 years of spending) or flexible spending to reduce this risk.');
+    insights.push(`Difference: $${difference.toLocaleString(undefined, { maximumFractionDigits: 0 })}. Same average return over the periodâ€”only the order differs. When you withdraw each year, bad returns early shrink the base for future growth and can deplete the portfolio faster.`);
+    insights.push('Sequence of returns risk is especially relevant in retirement: early bad years can permanently reduce portfolio sustainability. Consider a cash buffer (e.g. 1â€“2 years of spending) or flexible spending to reduce this risk.');
 
     return {
       terminalBadFirst,
@@ -143,7 +143,7 @@ export default function SequenceOfReturnsRiskCalculator() {
             Sequence of Returns Risk
           </CardTitle>
           <CardDescription>
-            See how the order of returns affects a portfolio with withdrawals. Compare &quot;bad years first&quot; vs &quot;good years first&quot;—same average return, different outcome. Critical for retirement planning.
+            See how the order of returns affects a portfolio with withdrawals. Compare &quot;bad years first&quot; vs &quot;good years first&quot;â€”same average return, different outcome. Critical for retirement planning.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -285,7 +285,7 @@ export default function SequenceOfReturnsRiskCalculator() {
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                <span className="text-sm font-medium">You cannot control the order of returns. Mitigate by holding a cash buffer (1–2 years of spending), reducing withdrawals after a down year, or using a flexible spending rule.</span>
+                <span className="text-sm font-medium">You cannot control the order of returns. Mitigate by holding a cash buffer (1â€“2 years of spending), reducing withdrawals after a down year, or using a flexible spending rule.</span>
               </div>
               <div className="flex items-start gap-3 p-3 bg-primary/5 rounded-lg border border-primary/10">
                 <CheckCircle2 className="h-5 w-5 text-primary mt-0.5 shrink-0" />
@@ -370,7 +370,7 @@ export default function SequenceOfReturnsRiskCalculator() {
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
-                  <span>You cannot control the order—plan for the worst sequence.</span>
+                  <span>You cannot control the orderâ€”plan for the worst sequence.</span>
                 </li>
                 <li className="flex items-start gap-2 text-sm text-muted-foreground">
                   <CheckCircle2 className="h-4 w-4 text-green-500 mt-0.5 shrink-0" />
@@ -391,12 +391,12 @@ export default function SequenceOfReturnsRiskCalculator() {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="p-4 bg-muted rounded-lg overflow-x-auto space-y-2">
-            <p className="font-mono text-sm text-center">Each year: Portfolio = (Portfolio − Withdrawal) × (1 + return)</p>
+            <p className="font-mono text-sm text-center">Each year: Portfolio = (Portfolio âˆ’ Withdrawal) Ã— (1 + return)</p>
             <p className="font-mono text-sm text-center">Bad first: half the years at &quot;bad&quot; return, then half at &quot;good&quot; return</p>
             <p className="font-mono text-sm text-center">Good first: half at &quot;good&quot; return, then half at &quot;bad&quot; return</p>
           </div>
           <p className="text-sm text-muted-foreground mt-2">
-            Withdrawal is taken at the start of each year, then return is applied to the remaining balance. If balance after withdrawal is zero or negative, the portfolio is depleted. Same set of returns, different order—terminal value and depletion risk differ.
+            Withdrawal is taken at the start of each year, then return is applied to the remaining balance. If balance after withdrawal is zero or negative, the portfolio is depleted. Same set of returns, different orderâ€”terminal value and depletion risk differ.
           </p>
           <p className="text-sm text-muted-foreground mt-2">
             The average return over the period is the same for both sequences; only the order changes. When you withdraw, order matters because losses early reduce the base for future growth.
@@ -498,7 +498,7 @@ export default function SequenceOfReturnsRiskCalculator() {
 
       <section className="space-y-6 text-muted-foreground leading-relaxed bg-card p-6 md:p-10 rounded-lg shadow-lg" itemScope itemType="https://schema.org/FinanceSummary">
         <meta itemProp="name" content="Sequence of Returns Risk Calculator: Why Order of Returns Matters" />
-        <meta itemProp="description" content="See how the order of returns affects a portfolio with withdrawals. Compare bad years first vs good years first—same average return, different outcome." />
+        <meta itemProp="description" content="See how the order of returns affects a portfolio with withdrawals. Compare bad years first vs good years firstâ€”same average return, different outcome." />
         <meta itemProp="keywords" content="sequence of returns risk, retirement withdrawal, order of returns, portfolio depletion risk" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
@@ -524,13 +524,13 @@ export default function SequenceOfReturnsRiskCalculator() {
         <hr />
 
         <h2 id="how-calculated-sorr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">How It Is Calculated</h2>
-        <p>We simulate two sequences over the same number of years: (1) bad years first—half the years at the &quot;bad&quot; return, then half at the &quot;good&quot; return; (2) good years first—half at good return, then half at bad. Each year we subtract the withdrawal, then apply the return to the remaining balance. We compare terminal values (or year of depletion if the portfolio runs out).</p>
+        <p>We simulate two sequences over the same number of years: (1) bad years firstâ€”half the years at the &quot;bad&quot; return, then half at the &quot;good&quot; return; (2) good years firstâ€”half at good return, then half at bad. Each year we subtract the withdrawal, then apply the return to the remaining balance. We compare terminal values (or year of depletion if the portfolio runs out).</p>
         <h3 className="text-xl font-semibold text-foreground mt-6">Withdrawal Timing</h3>
-        <p>Withdrawal is taken at the start of each year; then the return is applied. So after a bad year, you have less to withdraw from the next year—and if you keep withdrawing the same amount, you can deplete the portfolio sooner when bad years come first.</p>
+        <p>Withdrawal is taken at the start of each year; then the return is applied. So after a bad year, you have less to withdraw from the next yearâ€”and if you keep withdrawing the same amount, you can deplete the portfolio sooner when bad years come first.</p>
         <hr />
 
         <h2 id="why-it-matters-sorr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Why It Matters</h2>
-        <p>You cannot control the order of returns. Planning for sequence risk means: holding a cash buffer (e.g. 1–2 years of spending) so you do not have to sell in a down year, using a lower initial withdrawal rate, or reducing spending after a bad year. This calculator shows how much difference the order can make so you can stress-test your plan.</p>
+        <p>You cannot control the order of returns. Planning for sequence risk means: holding a cash buffer (e.g. 1â€“2 years of spending) so you do not have to sell in a down year, using a lower initial withdrawal rate, or reducing spending after a bad year. This calculator shows how much difference the order can make so you can stress-test your plan.</p>
         <hr />
 
         <h2 id="using-sorr" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Using This Calculator</h2>
@@ -568,7 +568,7 @@ export default function SequenceOfReturnsRiskCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">What can I do to reduce sequence risk?</h4>
-            <p className="text-muted-foreground">Hold a cash buffer (1–2 years of spending) so you don&apos;t have to sell in a down year; use a lower initial withdrawal rate (e.g. 4% or less); or reduce spending after a bad year. Some retirees use a flexible spending rule tied to portfolio performance.</p>
+            <p className="text-muted-foreground">Hold a cash buffer (1â€“2 years of spending) so you don&apos;t have to sell in a down year; use a lower initial withdrawal rate (e.g. 4% or less); or reduce spending after a bad year. Some retirees use a flexible spending rule tied to portfolio performance.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Does this apply only to retirement?</h4>
@@ -588,7 +588,7 @@ export default function SequenceOfReturnsRiskCalculator() {
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">How does this relate to early withdrawal?</h4>
-            <p className="text-muted-foreground">Sequence risk is about the order of returns when you withdraw regularly. Early withdrawal (pulling a lump sum out) loses the future compounding on that amount—see the Compounding Loss from Early Withdrawal calculator. Both concepts matter for retirement and decumulation.</p>
+            <p className="text-muted-foreground">Sequence risk is about the order of returns when you withdraw regularly. Early withdrawal (pulling a lump sum out) loses the future compounding on that amountâ€”see the Compounding Loss from Early Withdrawal calculator. Both concepts matter for retirement and decumulation.</p>
           </div>
           <div>
             <h4 className="font-semibold text-lg mb-3">Who should use this calculator?</h4>
@@ -630,7 +630,7 @@ export default function SequenceOfReturnsRiskCalculator() {
               </div>
               <div className="p-3 bg-muted/50 rounded-lg border border-border/50">
                 <strong className="block text-primary mb-1">Anyone Withdrawing From a Portfolio</strong>
-                <span className="text-sm text-muted-foreground">Trusts, endowments, or decumulation phases—whenever you withdraw regularly, order of returns matters.</span>
+                <span className="text-sm text-muted-foreground">Trusts, endowments, or decumulation phasesâ€”whenever you withdraw regularly, order of returns matters.</span>
               </div>
             </div>
           </div>

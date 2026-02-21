@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'How is risk exposure calculated?',
     answer:
-      'Risk Exposure = Z-score × Standard Deviation × √Time Horizon × Portfolio Value. The Z-score corresponds to the confidence level (e.g., 1.645 for 95%, 2.33 for 99%).',
+      'Risk Exposure = Z-score Ã— Standard Deviation Ã— âˆšTime Horizon Ã— Portfolio Value. The Z-score corresponds to the confidence level (e.g., 1.645 for 95%, 2.33 for 99%).',
   },
   {
     question: 'What is a Z-score?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/risk-exposure-by-confidence-level-calculator';
+const baseUrl = 'https://mycalculating.com/finance/risk-exposure-by-confidence-level-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Risk Exposure by Confidence Level Calculator', item: baseUrl },
       ],
     },
@@ -163,7 +163,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   const zScore = getZScore(confidenceLevel);
   
-  // VaR = Z × σ × √t × V
+  // VaR = Z Ã— Ïƒ Ã— âˆšt Ã— V
   const riskExposure = zScore * standardDeviation * Math.sqrt(timeHorizon) * portfolioValue;
   
   let status: ResultPayload['status'] = 'optimal';
@@ -378,7 +378,7 @@ export default function RiskExposureByConfidenceLevelCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Risk Exposure (VaR)</strong> = Z-score × Standard Deviation × √Time Horizon × Portfolio Value
+            <strong>Risk Exposure (VaR)</strong> = Z-score Ã— Standard Deviation Ã— âˆšTime Horizon Ã— Portfolio Value
           </p>
           <p>
             <strong>Z-score</strong> corresponds to confidence level: 1.645 (95%), 2.33 (99%), etc.
@@ -555,13 +555,13 @@ export default function RiskExposureByConfidenceLevelCalculator() {
     <p>The parametric (variance-covariance) method assumes normal distribution of returns and calculates VaR using the formula:</p>
     
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>VaR = Z × σ × √t × V</strong></p>
+        <p className="font-mono text-lg"><strong>VaR = Z Ã— Ïƒ Ã— âˆšt Ã— V</strong></p>
     </div>
     
     <p>Where:</p>
     <ul className="list-disc ml-6 space-y-1">
         <li><b>Z:</b> Z-score corresponding to confidence level</li>
-        <li><b>σ:</b> Standard deviation (volatility) of portfolio returns</li>
+        <li><b>Ïƒ:</b> Standard deviation (volatility) of portfolio returns</li>
         <li><b>t:</b> Time horizon in days</li>
         <li><b>V:</b> Current portfolio value</li>
     </ul>
@@ -571,7 +571,7 @@ export default function RiskExposureByConfidenceLevelCalculator() {
     <p>Daily volatility: 2% (0.02)</p>
     <p>Time horizon: 1 day</p>
     <p>Confidence level: 95% (Z = 1.645)</p>
-    <p>VaR = 1.645 × 0.02 × √1 × 1,000,000 = $32,900</p>
+    <p>VaR = 1.645 Ã— 0.02 Ã— âˆš1 Ã— 1,000,000 = $32,900</p>
     <p>Interpretation: There is a 5% chance of losing more than $32,900 in one day.</p>
 
 <hr className="my-6" />

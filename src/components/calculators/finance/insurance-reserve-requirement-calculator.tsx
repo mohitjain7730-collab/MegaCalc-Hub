@@ -69,7 +69,7 @@ const faqs = [
   {
     question: 'How is ultimate losses calculated?',
     answer:
-      'Ultimate losses are calculated as: Ultimate Losses = Earned Premium × Expected Loss Ratio. This represents the total expected losses for the period, including paid losses and future losses.',
+      'Ultimate losses are calculated as: Ultimate Losses = Earned Premium Ã— Expected Loss Ratio. This represents the total expected losses for the period, including paid losses and future losses.',
   },
   {
     question: 'How is total reserve calculated?',
@@ -121,7 +121,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/insurance-reserve-requirement-calculator';
+const baseUrl = 'https://mycalculating.com/finance/insurance-reserve-requirement-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -130,7 +130,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Insurance Reserve Requirement Calculator', item: baseUrl },
       ],
     },
@@ -152,7 +152,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const paidLosses = values.paidLosses;
   const caseReserve = values.caseReserve;
 
-  // Ultimate Losses = Earned Premium × Expected Loss Ratio
+  // Ultimate Losses = Earned Premium Ã— Expected Loss Ratio
   // Expected loss ratio is in percentage, so divide by 100
   const ultimateLosses = earnedPremium * (expectedLossRatio / 100);
 
@@ -162,7 +162,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   // IBNR Reserve = Total Reserve - Case Reserve
   const ibnrReserve = totalReserve - caseReserve;
 
-  // Reserve Adequacy = (Total Reserve / Ultimate Losses) × 100
+  // Reserve Adequacy = (Total Reserve / Ultimate Losses) Ã— 100
   // Represents reserve adequacy as percentage of ultimate losses
   const reserveAdequacy = ultimateLosses > 0 ? (totalReserve / ultimateLosses) * 100 : 0;
 
@@ -187,7 +187,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const recommendations = [
-    `Ultimate Losses: $${ultimateLosses.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This is the total expected losses for the period, calculated as earned premium × expected loss ratio (${expectedLossRatio}%).`,
+    `Ultimate Losses: $${ultimateLosses.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This is the total expected losses for the period, calculated as earned premium Ã— expected loss ratio (${expectedLossRatio}%).`,
     `Total Reserve: $${totalReserve.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This is the total amount needed to pay all future claims, calculated as ultimate losses minus paid losses.`,
     `IBNR Reserve: $${ibnrReserve.toLocaleString(undefined, { maximumFractionDigits: 2 })}. This is the reserve for claims that have been incurred but not yet reported, calculated as total reserve minus case reserve.`,
   ];
@@ -408,7 +408,7 @@ export default function InsuranceReserveRequirementCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Ultimate Losses</strong> = Earned Premium × (Expected Loss Ratio / 100). The total expected losses for the period, including paid losses and future losses.
+            <strong>Ultimate Losses</strong> = Earned Premium Ã— (Expected Loss Ratio / 100). The total expected losses for the period, including paid losses and future losses.
           </p>
           <p>
             <strong>Total Reserve</strong> = Ultimate Losses - Paid Losses. The total amount needed to pay all future claims, including both case reserves and IBNR reserves.
@@ -417,7 +417,7 @@ export default function InsuranceReserveRequirementCalculator() {
             <strong>IBNR Reserve</strong> = Total Reserve - Case Reserve. The reserve for claims that have been incurred but not yet reported to the insurer.
           </p>
           <p>
-            <strong>Reserve Adequacy</strong> = (Total Reserve / Ultimate Losses) × 100. The reserve adequacy as a percentage of ultimate losses. Values above 100% indicate reserves exceed expected losses, while values below 100% indicate potential reserve deficiency.
+            <strong>Reserve Adequacy</strong> = (Total Reserve / Ultimate Losses) Ã— 100. The reserve adequacy as a percentage of ultimate losses. Values above 100% indicate reserves exceed expected losses, while values below 100% indicate potential reserve deficiency.
           </p>
           <p>
             <strong>Expected Loss Ratio</strong> = Percentage of earned premiums expected to be paid as losses (0-100%). Varies by line of business and risk profile. Typical ranges: 50-70% for property, 60-80% for liability, 70-90% for workers compensation.
@@ -544,7 +544,7 @@ export default function InsuranceReserveRequirementCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">ELR Method Steps</h3>
     <p>The ELR method estimates reserves as follows:</p>
     <ol>
-        <li><b>Calculate Ultimate Losses:</b> Ultimate Losses = Earned Premium × Expected Loss Ratio</li>
+        <li><b>Calculate Ultimate Losses:</b> Ultimate Losses = Earned Premium Ã— Expected Loss Ratio</li>
         <li><b>Determine Total Reserve:</b> Total Reserve = Ultimate Losses - Paid Losses</li>
         <li><b>Compute IBNR Reserve:</b> IBNR Reserve = Total Reserve - Case Reserve</li>
     </ol>
@@ -552,7 +552,7 @@ export default function InsuranceReserveRequirementCalculator() {
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If earned premium is $10,000,000, expected loss ratio is 60%, paid losses are $750,000, and case reserves are $900,000:</p>
     <ul>
-        <li>Ultimate Losses: $10,000,000 × 60% = $6,000,000</li>
+        <li>Ultimate Losses: $10,000,000 Ã— 60% = $6,000,000</li>
         <li>Total Reserve: $6,000,000 - $750,000 = $5,250,000</li>
         <li>IBNR Reserve: $5,250,000 - $900,000 = $4,350,000</li>
     </ul>
@@ -562,7 +562,7 @@ export default function InsuranceReserveRequirementCalculator() {
     <h2 id="adequacy" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Reserve Adequacy</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Adequacy Assessment</h3>
-    <p>Reserve adequacy is calculated as: <b>Reserve Adequacy = (Total Reserve / Ultimate Losses) × 100</b></p>
+    <p>Reserve adequacy is calculated as: <b>Reserve Adequacy = (Total Reserve / Ultimate Losses) Ã— 100</b></p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Adequacy Levels</h3>
     <ul>

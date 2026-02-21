@@ -38,14 +38,14 @@ const steps = [
   'Estimate personal/leisure screen hours (streaming, gaming, social apps).',
   'Pull your notification count from Screen Time, Digital Wellbeing, or wearable dashboards.',
   'Log synchronous meeting hours (video calls, webinars, live classes).',
-  'Count how many intentional micro-breaks (≥30 seconds) you take per hour, such as stretches or breath resets.',
+  'Count how many intentional micro-breaks (â‰¥30 seconds) you take per hour, such as stretches or breath resets.',
   'Plug the data into the calculator to benchmark your stress index and choose the easiest lever to adjust.',
 ];
 
 const faqs = [
   {
     question: 'What is the Daily Screen Exposure Stress Index?',
-    answer: 'It combines screen duration, notification load, meeting density, and break cadence into a single 0–100 score that reflects digital overstimulation risk.',
+    answer: 'It combines screen duration, notification load, meeting density, and break cadence into a single 0â€“100 score that reflects digital overstimulation risk.',
   },
   {
     question: 'How often should I recalculate?',
@@ -53,7 +53,7 @@ const faqs = [
   },
   {
     question: 'What are micro-breaks?',
-    answer: 'Micro-breaks are short, intentional pauses every 20–30 minutes (looking away, standing, breathing). They disrupt continuous focus before stress hormones spike.',
+    answer: 'Micro-breaks are short, intentional pauses every 20â€“30 minutes (looking away, standing, breathing). They disrupt continuous focus before stress hormones spike.',
   },
   {
     question: 'Do audio-only calls count as screen time?',
@@ -65,7 +65,7 @@ const faqs = [
   },
   {
     question: 'Can I apply this to teens or students?',
-    answer: 'Absolutely—swap work hours for study/school hours and meetings for classes to guide healthier digital habits.',
+    answer: 'Absolutelyâ€”swap work hours for study/school hours and meetings for classes to guide healthier digital habits.',
   },
   {
     question: 'What if I work night shifts?',
@@ -81,7 +81,7 @@ const faqs = [
   },
   {
     question: 'Is 0 stress realistic?',
-    answer: 'Not really. The goal is to sit in the “steady” range where stress is productive, not overwhelming.',
+    answer: 'Not really. The goal is to sit in the â€œsteadyâ€ range where stress is productive, not overwhelming.',
   },
 ];
 
@@ -108,7 +108,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-screen-exposure-stress-index-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-screen-exposure-stress-index-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -117,7 +117,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Daily Screen Exposure Stress Index', item: baseUrl },
       ],
     },
@@ -184,18 +184,18 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (stressIndex >= 45) {
     status = 'strained';
     interpretation =
-      'Your responses point to a fairly full digital day. It may help to gently buffer notifications, batch some tasks, or add a few more small off‑screen pauses.';
+      'Your responses point to a fairly full digital day. It may help to gently buffer notifications, batch some tasks, or add a few more small offâ€‘screen pauses.';
   }
   if (stressIndex >= 70) {
     status = 'overloaded';
     interpretation =
-      'These numbers suggest your day may feel quite packed with screens and pings. You might experiment with protected off‑screen windows, trimming notifications, or lightening meetings where possible.';
+      'These numbers suggest your day may feel quite packed with screens and pings. You might experiment with protected offâ€‘screen windows, trimming notifications, or lightening meetings where possible.';
   }
 
   const recommendations = [
-    'Try silencing non‑essential alerts for parts of the day so you can focus or rest more easily.',
+    'Try silencing nonâ€‘essential alerts for parts of the day so you can focus or rest more easily.',
     'Group similar tasks together when you can, instead of switching apps and contexts constantly.',
-    'Add one or two short, screen‑free breaks in the middle of your day to reset your body and attention.',
+    'Add one or two short, screenâ€‘free breaks in the middle of your day to reset your body and attention.',
   ];
   if (status === 'strained') {
     recommendations.push('Where possible, swap some live meetings for written updates to create more breathing room.');
@@ -205,9 +205,9 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'Morning block', detail: 'If it fits your life, begin the day with a short screen‑lighter period for sunlight, stretching, or planning on paper.' },
-    { label: 'Midday reset', detail: 'Aim for at least one walking, stretching, or off‑screen break around the middle of your day.' },
-    { label: 'Evening boundary', detail: 'Experiment with a simple “digital sunset” before bed that feels realistic for your schedule.' },
+    { label: 'Morning block', detail: 'If it fits your life, begin the day with a short screenâ€‘lighter period for sunlight, stretching, or planning on paper.' },
+    { label: 'Midday reset', detail: 'Aim for at least one walking, stretching, or offâ€‘screen break around the middle of your day.' },
+    { label: 'Evening boundary', detail: 'Experiment with a simple â€œdigital sunsetâ€ before bed that feels realistic for your schedule.' },
   ];
 
   return { stressIndex, status, interpretation, totalScreen, attentionBudget, recommendations, plan };
@@ -244,7 +244,7 @@ export default function DailyScreenExposureStressIndexCalculator() {
       <Card>
         <CardHeader>
           <CardTitle>Input your data</CardTitle>
-          <CardDescription>Leave blanks until you’re ready—everything customizes after submit.</CardDescription>
+          <CardDescription>Leave blanks until youâ€™re readyâ€”everything customizes after submit.</CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -367,11 +367,11 @@ export default function DailyScreenExposureStressIndexCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Stress Index</strong> = clamp((Work Hours + Personal Hours) × 7 + Notifications × 0.15 + Meeting Hours × 6 −
-            Micro-breaks × 12, 0, 100). Higher screen time, notifications, and meetings increase stress; micro-breaks reduce it.
+            <strong>Stress Index</strong> = clamp((Work Hours + Personal Hours) Ã— 7 + Notifications Ã— 0.15 + Meeting Hours Ã— 6 âˆ’
+            Micro-breaks Ã— 12, 0, 100). Higher screen time, notifications, and meetings increase stress; micro-breaks reduce it.
           </p>
           <p>
-            <strong>Attention Budget</strong> = clamp(480 − Total Screen Hours × 18 − Notifications × 0.4 + Micro-breaks × 10, 0,
+            <strong>Attention Budget</strong> = clamp(480 âˆ’ Total Screen Hours Ã— 18 âˆ’ Notifications Ã— 0.4 + Micro-breaks Ã— 10, 0,
             480). This represents remaining mental capacity for focused work or recovery.
           </p>
           <p>
@@ -744,7 +744,7 @@ export default function DailyScreenExposureStressIndexCalculator() {
             Managing screen exposure stress is essential for maintaining mental well-being, productivity, and overall health in our
             digital age. By understanding how screen time, notifications, and meetings contribute to digital stress, and implementing
             comprehensive strategies to reduce exposure and create boundaries, you can enjoy technology's benefits while protecting
-            your well-being. Remember that digital wellness is an ongoing practice—regular monitoring, boundary setting, and
+            your well-being. Remember that digital wellness is an ongoing practiceâ€”regular monitoring, boundary setting, and
             intentional breaks help maintain balance. Start with small changes, track your progress, and adjust strategies based on
             what works for your lifestyle. If digital stress significantly impacts your mental health or daily functioning, consider
             consulting a mental health professional who can provide personalized support. This tool is designed for wellness

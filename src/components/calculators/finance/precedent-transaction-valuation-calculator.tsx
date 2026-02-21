@@ -77,7 +77,7 @@ const faqs = [
   {
     question: 'How is estimated enterprise value calculated?',
     answer:
-      'Estimated EV = Target Financial Metric × Median Transaction Multiple. For example: Estimated EV = Target Revenue × Median Transaction EV/Revenue, or Estimated EV = Target EBITDA × Median Transaction EV/EBITDA. Multiple estimates are averaged or a range is used for triangulation.',
+      'Estimated EV = Target Financial Metric Ã— Median Transaction Multiple. For example: Estimated EV = Target Revenue Ã— Median Transaction EV/Revenue, or Estimated EV = Target EBITDA Ã— Median Transaction EV/EBITDA. Multiple estimates are averaged or a range is used for triangulation.',
   },
   {
     question: 'What is a control premium?',
@@ -124,7 +124,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/precedent-transaction-valuation-calculator';
+const baseUrl = 'https://mycalculating.com/finance/precedent-transaction-valuation-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -133,7 +133,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Precedent Transaction Valuation Calculator', item: baseUrl },
       ],
     },
@@ -436,13 +436,13 @@ export default function PrecedentTransactionValuationCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Estimated EV from Revenue</strong> = Target Revenue × Median Transaction EV/Revenue Multiple
+            <strong>Estimated EV from Revenue</strong> = Target Revenue Ã— Median Transaction EV/Revenue Multiple
           </p>
           <p>
-            <strong>Estimated EV from EBITDA</strong> = Target EBITDA × Median Transaction EV/EBITDA Multiple
+            <strong>Estimated EV from EBITDA</strong> = Target EBITDA Ã— Median Transaction EV/EBITDA Multiple
           </p>
           <p>
-            <strong>Estimated EV from EBIT</strong> = Target EBIT × Median Transaction EV/EBIT Multiple
+            <strong>Estimated EV from EBIT</strong> = Target EBIT Ã— Median Transaction EV/EBIT Multiple
           </p>
           <p>
             <strong>Average Estimated EV</strong> = Average of Available Estimates
@@ -576,7 +576,7 @@ export default function PrecedentTransactionValuationCalculator() {
 
     <h2 id="calculation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Valuation Calculation</h2>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg"><strong>Estimated EV = Target Metric × Median Transaction Multiple</strong></p>
+        <p className="font-mono text-lg"><strong>Estimated EV = Target Metric Ã— Median Transaction Multiple</strong></p>
     </div>
 
 <hr className="my-6" />

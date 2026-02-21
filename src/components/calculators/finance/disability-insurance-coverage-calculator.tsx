@@ -125,7 +125,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/disability-insurance-coverage-calculator';
+const baseUrl = 'https://mycalculating.com/finance/disability-insurance-coverage-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -134,7 +134,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Disability Insurance Coverage Calculator', item: baseUrl },
       ],
     },
@@ -444,13 +444,13 @@ export default function DisabilityInsuranceCoverageCalculator() {
             <strong>Monthly Income Need</strong> = Monthly Expenses - Spouse Monthly Income. Amount needed to cover expenses if disabled.
           </p>
           <p>
-            <strong>Maximum Benefit from Income</strong> = Monthly Income × (Benefit Percentage / 100). Most policies cap benefits at 60-70% of income.
+            <strong>Maximum Benefit from Income</strong> = Monthly Income Ã— (Benefit Percentage / 100). Most policies cap benefits at 60-70% of income.
           </p>
           <p>
             <strong>Recommended Monthly Benefit</strong> = Max(Monthly Income Need, Min(Maximum Benefit from Income, 70% of Income)). Should cover expenses but typically capped at 60-70% of income.
           </p>
           <p>
-            <strong>Recommended Coverage</strong> = Recommended Monthly Benefit × 12. Annual benefit amount.
+            <strong>Recommended Coverage</strong> = Recommended Monthly Benefit Ã— 12. Annual benefit amount.
           </p>
           <p>
             <strong>Coverage Gap</strong> = Recommended Monthly Benefit - Existing Disability Insurance. Additional coverage needed.

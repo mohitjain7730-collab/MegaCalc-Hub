@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'What about natural blue light from sunlight?',
     answer:
-      'Natural blue light from sunlight during daytime is beneficial—it helps regulate circadian rhythms, boost alertness, and improve mood. The concern is artificial blue light from screens, especially in the evening when it conflicts with natural sleep-wake cycles.',
+      'Natural blue light from sunlight during daytime is beneficialâ€”it helps regulate circadian rhythms, boost alertness, and improve mood. The concern is artificial blue light from screens, especially in the evening when it conflicts with natural sleep-wake cycles.',
   },
   {
     question: 'Can I reduce blue light exposure?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/blue-light-exposure-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/blue-light-exposure-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Blue Light Exposure Wellness Calculator', item: baseUrl },
       ],
     },
@@ -184,7 +184,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const screenBrightness = values.screenBrightness;
   const filterReduction = values.filterReduction;
   
-  // Calculate base exposure: Screen Hours × Brightness Factor × Night Penalty
+  // Calculate base exposure: Screen Hours Ã— Brightness Factor Ã— Night Penalty
   const brightnessFactor = screenBrightness / 100; // 0.1 to 1.0
   const nightPenalty = 1 + (nightHours / screenHours) * 0.5; // Night exposure is worse
   const baseExposure = screenHours * brightnessFactor * nightPenalty;
@@ -201,47 +201,47 @@ const calculateResult = (values: FormValues): ResultPayload => {
   
   let status: ResultPayload['status'] = 'optimal';
   let interpretation =
-    'This suggests a general lifestyle tendency where your current blue‑light pattern may look relatively gentle based on the numbers you entered. You may consider continuing to notice which screen habits feel most supportive for your eyes and sleep.';
+    'This suggests a general lifestyle tendency where your current blueâ€‘light pattern may look relatively gentle based on the numbers you entered. You may consider continuing to notice which screen habits feel most supportive for your eyes and sleep.';
 
   if (exposureScore >= 70 || nightHours >= 4) {
     status = 'low';
     interpretation =
-      'This suggests a general lifestyle tendency where your numbers may suggest a relatively heavy screen pattern, especially later in the day. You might like to experiment with gentler evening habits—such as shorter sessions, dimmer screens, or more off‑screen winding‑down time—and see how your eyes and sleep feel. This is a personal insight, not a medical evaluation.';
+      'This suggests a general lifestyle tendency where your numbers may suggest a relatively heavy screen pattern, especially later in the day. You might like to experiment with gentler evening habitsâ€”such as shorter sessions, dimmer screens, or more offâ€‘screen windingâ€‘down timeâ€”and see how your eyes and sleep feel. This is a personal insight, not a medical evaluation.';
   } else if (exposureScore >= 50 || nightHours >= 2) {
     status = 'moderate';
     interpretation =
-      'This suggests a general lifestyle tendency where your entries may point to a fair amount of screen time, particularly in the evening. Small shifts—like softer brightness, enabling night modes, or bringing screens to an earlier time—may help evenings feel calmer.';
+      'This suggests a general lifestyle tendency where your entries may point to a fair amount of screen time, particularly in the evening. Small shiftsâ€”like softer brightness, enabling night modes, or bringing screens to an earlier timeâ€”may help evenings feel calmer.';
   } else if (exposureScore >= 30) {
     status = 'good';
     interpretation =
-      'This suggests a general lifestyle tendency where your blue‑light pattern may look moderate. With a few simple supports (breaks, lower evening brightness, or wind‑down time away from devices), many people find this feels workable.';
+      'This suggests a general lifestyle tendency where your blueâ€‘light pattern may look moderate. With a few simple supports (breaks, lower evening brightness, or windâ€‘down time away from devices), many people find this feels workable.';
   } else {
     status = 'optimal';
     interpretation =
-      'This suggests a general lifestyle tendency where your blue‑light pattern may look quite light based on these inputs. You may consider continuing to lean on the habits that already feel good for your eyes and rest.';
+      'This suggests a general lifestyle tendency where your blueâ€‘light pattern may look quite light based on these inputs. You may consider continuing to lean on the habits that already feel good for your eyes and rest.';
   }
 
   const recommendations = [
-    'Try night‑mode or blue‑shifted display settings on your devices in the evening if they feel easier on your eyes.',
-    'Notice how it feels to gently shorten late‑evening screen time and add a little more off‑screen wind‑down before bed.',
+    'Try nightâ€‘mode or blueâ€‘shifted display settings on your devices in the evening if they feel easier on your eyes.',
+    'Notice how it feels to gently shorten lateâ€‘evening screen time and add a little more offâ€‘screen windâ€‘down before bed.',
     'Lowering brightness, especially at night, can make screens feel softer and may ease eye tiredness for some people.',
   ];
   
   if (nightHours >= 2) {
     recommendations.push(
-      'If a lot of your screen time happens later in the evening, you might experiment with a simple “screen pause” before bed and swap in calm activities like reading or stretching.'
+      'If a lot of your screen time happens later in the evening, you might experiment with a simple â€œscreen pauseâ€ before bed and swap in calm activities like reading or stretching.'
     );
   }
   
   if (!filterReduction || filterReduction < 30) {
     recommendations.push(
-      'If you rarely use filters, you could try enabling built‑in night modes or a light blue‑shift and see whether your eyes feel more comfortable.'
+      'If you rarely use filters, you could try enabling builtâ€‘in night modes or a light blueâ€‘shift and see whether your eyes feel more comfortable.'
     );
   }
   
   if (screenHours >= 10) {
     recommendations.push(
-      'On long screen days, brief movement or “look‑away” breaks can help your eyes and body feel less locked to the screen.'
+      'On long screen days, brief movement or â€œlookâ€‘awayâ€ breaks can help your eyes and body feel less locked to the screen.'
     );
   }
 
@@ -429,13 +429,13 @@ export default function BlueLightExposureCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Base exposure</strong> = Screen Hours × (Brightness / 100) × Night Penalty Factor. Night penalty = 1 + (Night Hours / Screen Hours) × 0.5, as evening exposure is more harmful.
+            <strong>Base exposure</strong> = Screen Hours Ã— (Brightness / 100) Ã— Night Penalty Factor. Night penalty = 1 + (Night Hours / Screen Hours) Ã— 0.5, as evening exposure is more harmful.
           </p>
           <p>
-            <strong>Effective exposure</strong> = Base Exposure × (1 - Filter Reduction / 100). Blue light filters reduce exposure by their percentage (e.g., 40% filter = 60% of base exposure).
+            <strong>Effective exposure</strong> = Base Exposure Ã— (1 - Filter Reduction / 100). Blue light filters reduce exposure by their percentage (e.g., 40% filter = 60% of base exposure).
           </p>
           <p>
-            <strong>Exposure score</strong> = (Effective Exposure / Reference Exposure) × 100, normalized to 0-100 scale where reference is 8 hours, 80% brightness, 3 night hours, no filter.
+            <strong>Exposure score</strong> = (Effective Exposure / Reference Exposure) Ã— 100, normalized to 0-100 scale where reference is 8 hours, 80% brightness, 3 night hours, no filter.
           </p>
           <p>Blue light exposure increases with longer screen time, higher brightness, more evening/night use, and lack of protective filters. Reducing evening exposure and using filters significantly decreases risk.</p>
         </CardContent>
@@ -533,7 +533,7 @@ export default function BlueLightExposureCalculator() {
 
     {/* WHAT IS BLUE LIGHT */}
     <h2 id="what-is-blue-light" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">What is Blue Light and Where Does It Come From</h2>
-    <p>**Blue light** is a high-energy visible (HEV) light with wavelengths between 400-500 nanometers, making it one of the shortest, highest-energy wavelengths in the visible light spectrum. While blue light is naturally present in sunlight and beneficial during daytime, artificial sources—especially digital screens—have raised concerns about excessive exposure, particularly in the evening.</p>
+    <p>**Blue light** is a high-energy visible (HEV) light with wavelengths between 400-500 nanometers, making it one of the shortest, highest-energy wavelengths in the visible light spectrum. While blue light is naturally present in sunlight and beneficial during daytime, artificial sourcesâ€”especially digital screensâ€”have raised concerns about excessive exposure, particularly in the evening.</p>
 
 <h3 className="text-xl font-semibold text-foreground mt-6">Natural vs. Artificial Blue Light</h3>
 <p>Blue light exists in nature and serves important functions:</p>
@@ -713,7 +713,7 @@ export default function BlueLightExposureCalculator() {
         </CardHeader>
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
-            This tool gives a simple numerical snapshot of the blue‑tinted screen time you entered so you can reflect on your
+            This tool gives a simple numerical snapshot of the blueâ€‘tinted screen time you entered so you can reflect on your
             own habits.
           </p>
           <p>

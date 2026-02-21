@@ -52,7 +52,7 @@ const relatedCalculators = [
   { name: 'MRR (Monthly Recurring Revenue) Calculator', slug: 'mrr-calculator', description: 'Translate customer counts and ARPU into MRR.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/arr-growth-calculator';
+const baseUrl = 'https://mycalculating.com/finance/arr-growth-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -61,7 +61,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'ARR Growth Calculator', item: baseUrl },
       ],
     },
@@ -209,7 +209,7 @@ export default function ArrGrowthCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Net new ARR</p>
                 <p className="text-2xl font-semibold text-primary">${result.netNewARR.toLocaleString()}</p>
-                <p className="text-xs text-muted-foreground">Ending − starting</p>
+                <p className="text-xs text-muted-foreground">Ending âˆ’ starting</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Growth %</p>
@@ -273,10 +273,10 @@ export default function ArrGrowthCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Net new ARR</strong> = ending ARR − starting ARR.</p>
-          <p><strong>Growth %</strong> = net new ARR ÷ starting ARR × 100.</p>
-          <p><strong>Monthly CAGR</strong> = (ending / starting)^(1 ÷ months) − 1.</p>
-          <p><strong>Annualized CAGR</strong> = (1 + monthly CAGR)^12 − 1.</p>
+          <p><strong>Net new ARR</strong> = ending ARR âˆ’ starting ARR.</p>
+          <p><strong>Growth %</strong> = net new ARR Ã· starting ARR Ã— 100.</p>
+          <p><strong>Monthly CAGR</strong> = (ending / starting)^(1 Ã· months) âˆ’ 1.</p>
+          <p><strong>Annualized CAGR</strong> = (1 + monthly CAGR)^12 âˆ’ 1.</p>
         </CardContent>
       </Card>
 
@@ -369,13 +369,13 @@ export default function ArrGrowthCalculator() {
         <hr />
 
         <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">ARR Growth Formula</h2>
-        <p>ARR growth = (Ending ARR − Starting ARR) ÷ Starting ARR. CAGR smooths growth across months: (Ending ÷ Starting)^(1 ÷ months) − 1.</p>
+        <p>ARR growth = (Ending ARR âˆ’ Starting ARR) Ã· Starting ARR. CAGR smooths growth across months: (Ending Ã· Starting)^(1 Ã· months) âˆ’ 1.</p>
 
         <h2 id="drivers" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Key Drivers</h2>
         <p>Break ARR into new, expansion, contraction, and churn. Improving retention (lower churn) often has the fastest impact on growth quality.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks & Targets</h2>
-        <p>Early stage: triple-triple-double targets. Growth stage: 40%+ YoY with efficiency focus. Late stage: durable 20–30% with strong NDR.</p>
+        <p>Early stage: triple-triple-double targets. Growth stage: 40%+ YoY with efficiency focus. Late stage: durable 20â€“30% with strong NDR.</p>
 
         <h2 id="quality" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Quality of Growth</h2>
         <p>Pair ARR growth with CAC payback, burn multiple, and NDR to ensure growth is sustainable and capital efficient.</p>

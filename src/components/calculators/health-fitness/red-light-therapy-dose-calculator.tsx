@@ -36,9 +36,9 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Enter your device’s irradiance at the manufacturer’s reference distance (mW/cm²).',
+  'Enter your deviceâ€™s irradiance at the manufacturerâ€™s reference distance (mW/cmÂ²).',
   'Enter your planned distance from the device in centimeters.',
-  'Enter your desired dose per session in J/cm² (often 3–10 J/cm² for skin or 10–60 J/cm² for deeper tissues in research contexts).',
+  'Enter your desired dose per session in J/cmÂ² (often 3â€“10 J/cmÂ² for skin or 10â€“60 J/cmÂ² for deeper tissues in research contexts).',
   'Enter how many sessions per week you plan to do.',
   'Review recommended session minutes, total weekly dose, and usage guidance.',
 ];
@@ -47,12 +47,12 @@ const faqs = [
   {
     question: 'What is irradiance?',
     answer:
-      'Irradiance is the power of light delivered per unit area, usually expressed in milliwatts per square centimeter (mW/cm²).',
+      'Irradiance is the power of light delivered per unit area, usually expressed in milliwatts per square centimeter (mW/cmÂ²).',
   },
   {
-    question: 'What does J/cm² mean?',
+    question: 'What does J/cmÂ² mean?',
     answer:
-      'Joules per square centimeter (J/cm²) is a measure of energy delivered per unit area. Dose = irradiance × time, adjusted for distance.',
+      'Joules per square centimeter (J/cmÂ²) is a measure of energy delivered per unit area. Dose = irradiance Ã— time, adjusted for distance.',
   },
   {
     question: 'Is red light therapy safe for everyone?',
@@ -87,7 +87,7 @@ const faqs = [
   {
     question: 'Does wavelength matter?',
     answer:
-      'Yes. Most therapeutic devices use red (around 630–670 nm) and near-infrared (around 810–880 nm). This calculator does not distinguish wavelengths but assumes appropriate therapeutic ranges.',
+      'Yes. Most therapeutic devices use red (around 630â€“670 nm) and near-infrared (around 810â€“880 nm). This calculator does not distinguish wavelengths but assumes appropriate therapeutic ranges.',
   },
   {
     question: 'Can I use this for whole-body panels?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/red-light-therapy-dose-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/red-light-therapy-dose-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Red Light Therapy Wellness Dose Estimator', item: baseUrl },
       ],
     },
@@ -133,7 +133,7 @@ const schemaMarkup = {
       applicationCategory: 'Calculator',
       operatingSystem: 'Web Browser',
       description:
-        'Get general wellness insights to plan approximate red light therapy doses (J/cm²) per session based on irradiance, distance, and time. This is a personal lifestyle insight, not a medical evaluation.',
+        'Get general wellness insights to plan approximate red light therapy doses (J/cmÂ²) per session based on irradiance, distance, and time. This is a personal lifestyle insight, not a medical evaluation.',
       url: baseUrl,
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
     },
@@ -150,7 +150,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const distanceFactor = (referenceDistance / distanceCm) ** 2;
   const effectiveIrradiance = deviceIrradiance * clamp(distanceFactor, 0.2, 2); // avoid extremes
 
-  // Dose (J/cm²) = irradiance (mW/cm²) × time (seconds) / 1000
+  // Dose (J/cmÂ²) = irradiance (mW/cmÂ²) Ã— time (seconds) / 1000
   const secondsNeeded = (targetDose * 1000) / effectiveIrradiance;
   const minutesNeeded = secondsNeeded / 60;
 
@@ -167,11 +167,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (targetDose > 60 || weeklyDose > 300) {
     status = 'low';
     interpretation =
-      'This suggests a general lifestyle tendency where your planned dose may be relatively high compared with many reference protocols. You may consider softening intensity, duration, or frequency and, if you wish, discussing your approach with a professional familiar with light‑based therapies. This is a personal insight, not a medical evaluation.';
+      'This suggests a general lifestyle tendency where your planned dose may be relatively high compared with many reference protocols. You may consider softening intensity, duration, or frequency and, if you wish, discussing your approach with a professional familiar with lightâ€‘based therapies. This is a personal insight, not a medical evaluation.';
   } else if (targetDose >= 5 && targetDose <= 20 && weeklyDose <= 150) {
     status = 'optimal';
     interpretation =
-      'This suggests a general lifestyle tendency where your planned dose and weekly exposure may be broadly similar to many published light‑therapy ranges in educational examples.';
+      'This suggests a general lifestyle tendency where your planned dose and weekly exposure may be broadly similar to many published lightâ€‘therapy ranges in educational examples.';
   }
 
   const recommendations: string[] = [
@@ -232,7 +232,7 @@ export default function RedLightTherapyDoseCalculator() {
             Red Light Therapy Wellness Dose Estimator
           </CardTitle>
           <CardDescription>
-            Get general wellness insights to plan approximate session durations and weekly doses for red/near‑infrared
+            Get general wellness insights to plan approximate session durations and weekly doses for red/nearâ€‘infrared
             light therapy. This is a personal lifestyle insight, not a medical evaluation.
           </CardDescription>
         </CardHeader>
@@ -251,7 +251,7 @@ export default function RedLightTherapyDoseCalculator() {
                   name="deviceIrradiance"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Device irradiance (mW/cm² at 20 cm)</FormLabel>
+                      <FormLabel>Device irradiance (mW/cmÂ² at 20 cm)</FormLabel>
                       <FormControl>
                         <Input type="number" step="1" placeholder="e.g., 60" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -277,7 +277,7 @@ export default function RedLightTherapyDoseCalculator() {
                   name="targetDose"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Target dose per session (J/cm²)</FormLabel>
+                      <FormLabel>Target dose per session (J/cmÂ²)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -326,7 +326,7 @@ export default function RedLightTherapyDoseCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Weekly dose</p>
                 <p className="text-2xl font-semibold text-primary">{result.weeklyDose}</p>
-                <p className="text-xs text-muted-foreground">J/cm² per area</p>
+                <p className="text-xs text-muted-foreground">J/cmÂ² per area</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Distance factor</p>
@@ -391,7 +391,7 @@ export default function RedLightTherapyDoseCalculator() {
             <strong>Effective irradiance</strong> is adjusted from the reference value using an approximate inverse-square relationship with distance.
           </p>
           <p>
-            <strong>Session time</strong> is computed from Dose = Irradiance × Time, rearranged to Time = Dose × 1000 ÷ Irradiance.
+            <strong>Session time</strong> is computed from Dose = Irradiance Ã— Time, rearranged to Time = Dose Ã— 1000 Ã· Irradiance.
           </p>
           <p>
             <strong>Weekly dose</strong> multiplies per-session dose by planned sessions per week to provide a rough cumulative exposure estimate.
@@ -428,7 +428,7 @@ export default function RedLightTherapyDoseCalculator() {
                     clamp((20 / result.distanceCm) ** 2, 0.2, 2)
                   ).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">mW/cm² at chosen distance</p>
+                <p className="text-xs text-muted-foreground">mW/cmÂ² at chosen distance</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Dose per minute</p>
@@ -440,7 +440,7 @@ export default function RedLightTherapyDoseCalculator() {
                     1000
                   ).toFixed(2)}
                 </p>
-                <p className="text-xs text-muted-foreground">J/cm² per minute</p>
+                <p className="text-xs text-muted-foreground">J/cmÂ² per minute</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Dose risk flag</p>
@@ -496,7 +496,7 @@ export default function RedLightTherapyDoseCalculator() {
         <meta itemProp="url" content="/definitive-red-light-therapy-dose-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">
-          Red Light Therapy Dosing: Demystifying J/cm² for Everyday Use
+          Red Light Therapy Dosing: Demystifying J/cmÂ² for Everyday Use
         </h1>
         <p className="text-lg italic text-gray-700">
           Device marketing often throws around numbers without context. This guide explains how dose is calculated and how to think about it pragmatically.
@@ -504,7 +504,7 @@ export default function RedLightTherapyDoseCalculator() {
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">1. Understanding Power vs. Energy</h2>
         <p>
-          Irradiance (mW/cm²) measures how intense the light is right now; energy (J/cm²) measures how much light has been delivered over time. Both matter when planning sessions.
+          Irradiance (mW/cmÂ²) measures how intense the light is right now; energy (J/cmÂ²) measures how much light has been delivered over time. Both matter when planning sessions.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">2. The Inverse-Square Principle</h2>
@@ -514,7 +514,7 @@ export default function RedLightTherapyDoseCalculator() {
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">3. Research Ranges and Safety Windows</h2>
         <p>
-          Many studies use doses in the single or low double digits of J/cm² per session for skin, and somewhat higher for deeper tissues. Exposures far above typical ranges should be discussed with professionals.
+          Many studies use doses in the single or low double digits of J/cmÂ² per session for skin, and somewhat higher for deeper tissues. Exposures far above typical ranges should be discussed with professionals.
         </p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">4. Integrating with Broader Protocols</h2>
@@ -563,7 +563,7 @@ export default function RedLightTherapyDoseCalculator() {
             doses from device specs and user settings. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>It outputs recommended minutes, weekly dose, qualitative status, recommendations, an action plan, and extra technical metrics.</p>
-          <p>An extended guide and FAQs clarify how to interpret dose estimates in real‑world use.</p>
+          <p>An extended guide and FAQs clarify how to interpret dose estimates in realâ€‘world use.</p>
         </CardContent>
       </Card>
 

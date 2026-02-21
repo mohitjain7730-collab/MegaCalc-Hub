@@ -60,17 +60,17 @@ const faqs = [
   {
     question: 'What is the loss aversion coefficient (lambda)?',
     answer:
-      'The loss aversion coefficient (λ, lambda) measures how much more sensitive people are to losses compared to gains. Empirical studies typically estimate λ around 2.25, meaning losses feel about 2.25 times worse than equivalent gains. Higher values indicate stronger loss aversion.',
+      'The loss aversion coefficient (Î», lambda) measures how much more sensitive people are to losses compared to gains. Empirical studies typically estimate Î» around 2.25, meaning losses feel about 2.25 times worse than equivalent gains. Higher values indicate stronger loss aversion.',
   },
   {
     question: 'How is perceived value calculated?',
     answer:
-      'Perceived value uses prospect theory\'s value function: For gains: v(x) = x^α. For losses: v(x) = -λ(-x)^β. Where α and β are sensitivity parameters (typically 0.88), and λ is the loss aversion coefficient. This models how people actually perceive gains and losses.',
+      'Perceived value uses prospect theory\'s value function: For gains: v(x) = x^Î±. For losses: v(x) = -Î»(-x)^Î². Where Î± and Î² are sensitivity parameters (typically 0.88), and Î» is the loss aversion coefficient. This models how people actually perceive gains and losses.',
   },
   {
     question: 'What are alpha and beta parameters?',
     answer:
-      'Alpha (α) and beta (β) are sensitivity parameters representing diminishing sensitivity to gains and losses. Values typically range from 0.8-0.9, with lower values indicating greater diminishing sensitivity. These parameters capture the decreasing marginal impact of larger gains or losses.',
+      'Alpha (Î±) and beta (Î²) are sensitivity parameters representing diminishing sensitivity to gains and losses. Values typically range from 0.8-0.9, with lower values indicating greater diminishing sensitivity. These parameters capture the decreasing marginal impact of larger gains or losses.',
   },
   {
     question: 'How does loss aversion affect financial decisions?',
@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/loss-aversion-impact-simulator';
+const baseUrl = 'https://mycalculating.com/finance/loss-aversion-impact-simulator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Loss Aversion Impact Simulator', item: baseUrl },
       ],
     },
@@ -155,8 +155,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const beta = values.betaParameter ?? 0.88; // Typical sensitivity parameter for losses
   
   // Prospect Theory Value Function
-  // For gains: v(x) = x^α
-  // For losses: v(x) = -λ(-x)^β
+  // For gains: v(x) = x^Î±
+  // For losses: v(x) = -Î»(-x)^Î²
   const perceivedGainValue = Math.pow(gainAmount, alpha);
   const perceivedLossValue = -lambda * Math.pow(lossAmount, beta);
   
@@ -184,10 +184,10 @@ const calculateResult = (values: FormValues): ResultPayload => {
     decisionImpact += ' Low loss aversion (ratio < 1.5) suggests relatively balanced perception, though this is less common.';
   }
   
-  let interpretation = `Loss aversion coefficient (λ) of ${lambda.toFixed(2)} indicates losses are perceived as ${lambda.toFixed(2)}x more impactful than equivalent gains. Loss aversion ratio: ${normalizedLossAversionRatio.toFixed(2)}. ${normalizedLossAversionRatio > 2 ? 'This strong loss aversion explains why equivalent losses feel much worse than gains, leading to risk-averse behavior.' : 'This indicates more balanced perception of gains and losses.'}`;
+  let interpretation = `Loss aversion coefficient (Î») of ${lambda.toFixed(2)} indicates losses are perceived as ${lambda.toFixed(2)}x more impactful than equivalent gains. Loss aversion ratio: ${normalizedLossAversionRatio.toFixed(2)}. ${normalizedLossAversionRatio > 2 ? 'This strong loss aversion explains why equivalent losses feel much worse than gains, leading to risk-averse behavior.' : 'This indicates more balanced perception of gains and losses.'}`;
 
   const recommendations = [
-    `Understand loss aversion impact: With λ=${lambda.toFixed(2)}, a ${lossAmount.toLocaleString()} loss feels like losing ${Math.abs(perceivedLossValue).toFixed(2)} perceived value, while a ${gainAmount.toLocaleString()} gain feels like gaining ${perceivedGainValue.toFixed(2)}. This asymmetry explains risk-averse behavior.`,
+    `Understand loss aversion impact: With Î»=${lambda.toFixed(2)}, a ${lossAmount.toLocaleString()} loss feels like losing ${Math.abs(perceivedLossValue).toFixed(2)} perceived value, while a ${gainAmount.toLocaleString()} gain feels like gaining ${perceivedGainValue.toFixed(2)}. This asymmetry explains risk-averse behavior.`,
     `Recognize decision bias: Loss aversion may cause you to: hold losing investments too long, sell winners too early, avoid good opportunities due to fear of loss, or make overly conservative choices. Be aware of these biases when making financial decisions.`,
     `Apply rational analysis: While loss aversion is natural, complement it with objective analysis. Focus on expected value, long-term outcomes, and overall portfolio performance rather than individual gains or losses. Set predefined rules for buying and selling.`,
     `Balance risk appropriately: Loss aversion is helpful for avoiding catastrophic losses, but excessive avoidance can prevent necessary risk-taking for growth. Consider whether your decisions are driven by rational risk assessment or excessive loss aversion.`,
@@ -276,7 +276,7 @@ export default function LossAversionImpactSimulator() {
                   name="lossAversionCoefficient"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Loss Aversion Coefficient (λ) - Optional</FormLabel>
+                      <FormLabel>Loss Aversion Coefficient (Î») - Optional</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.01" placeholder="e.g., 2.25" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -290,7 +290,7 @@ export default function LossAversionImpactSimulator() {
                   name="alphaParameter"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Alpha Parameter (α) - Optional</FormLabel>
+                      <FormLabel>Alpha Parameter (Î±) - Optional</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.01" min="0" max="1" placeholder="e.g., 0.88" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -304,7 +304,7 @@ export default function LossAversionImpactSimulator() {
                   name="betaParameter"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Beta Parameter (β) - Optional</FormLabel>
+                      <FormLabel>Beta Parameter (Î²) - Optional</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.01" min="0" max="1" placeholder="e.g., 0.88" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -403,17 +403,17 @@ export default function LossAversionImpactSimulator() {
           <p>
             <strong>Prospect Theory Value Function:</strong>
           </p>
-          <p>For Gains: v(x) = x^α</p>
-          <p>For Losses: v(x) = -λ(-x)^β</p>
+          <p>For Gains: v(x) = x^Î±</p>
+          <p>For Losses: v(x) = -Î»(-x)^Î²</p>
           <p>Where:</p>
           <p>x = outcome amount</p>
-          <p>λ (lambda) = loss aversion coefficient (typically 2.25)</p>
-          <p>α (alpha) = gain sensitivity parameter (typically 0.88)</p>
-          <p>β (beta) = loss sensitivity parameter (typically 0.88)</p>
+          <p>Î» (lambda) = loss aversion coefficient (typically 2.25)</p>
+          <p>Î± (alpha) = gain sensitivity parameter (typically 0.88)</p>
+          <p>Î² (beta) = loss sensitivity parameter (typically 0.88)</p>
           <p>
             <strong>Loss Aversion Ratio</strong> = |Perceived Loss Value| / Perceived Gain Value (normalized for equivalent amounts)
           </p>
-          <p>Prospect theory models how people actually perceive gains and losses, showing that losses are felt more intensely than equivalent gains. The loss aversion coefficient (λ) measures this asymmetry, with typical values around 2.25 indicating losses feel about 2.25 times worse than equivalent gains.</p>
+          <p>Prospect theory models how people actually perceive gains and losses, showing that losses are felt more intensely than equivalent gains. The loss aversion coefficient (Î») measures this asymmetry, with typical values around 2.25 indicating losses feel about 2.25 times worse than equivalent gains.</p>
         </CardContent>
       </Card>
 
@@ -440,7 +440,7 @@ export default function LossAversionImpactSimulator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Loss Aversion Coeff.</p>
                 <p className="text-xl font-semibold text-primary">{result.lossAversionCoefficient.toFixed(2)}</p>
-                <p className="text-xs text-muted-foreground">Lambda (λ)</p>
+                <p className="text-xs text-muted-foreground">Lambda (Î»)</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Alpha Parameter</p>
@@ -558,15 +558,15 @@ export default function LossAversionImpactSimulator() {
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Value Function Formula</h3>
     <div className="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg my-4">
-        <p className="font-mono text-lg">For Gains: v(x) = x^α</p>
-        <p className="font-mono text-lg">For Losses: v(x) = -λ(-x)^β</p>
+        <p className="font-mono text-lg">For Gains: v(x) = x^Î±</p>
+        <p className="font-mono text-lg">For Losses: v(x) = -Î»(-x)^Î²</p>
     </div>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Parameters</h3>
     <ul className="list-disc ml-6 space-y-1">
-        <li><b>λ (Lambda):</b> Loss aversion coefficient, typically 2.25. Measures how much more losses hurt than equivalent gains feel good.</li>
-        <li><b>α (Alpha):</b> Gain sensitivity parameter, typically 0.88. Lower values indicate greater diminishing sensitivity to larger gains.</li>
-        <li><b>β (Beta):</b> Loss sensitivity parameter, typically 0.88. Lower values indicate greater diminishing sensitivity to larger losses.</li>
+        <li><b>Î» (Lambda):</b> Loss aversion coefficient, typically 2.25. Measures how much more losses hurt than equivalent gains feel good.</li>
+        <li><b>Î± (Alpha):</b> Gain sensitivity parameter, typically 0.88. Lower values indicate greater diminishing sensitivity to larger gains.</li>
+        <li><b>Î² (Beta):</b> Loss sensitivity parameter, typically 0.88. Lower values indicate greater diminishing sensitivity to larger losses.</li>
     </ul>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Loss Aversion Ratio</h3>

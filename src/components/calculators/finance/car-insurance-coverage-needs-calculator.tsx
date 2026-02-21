@@ -123,7 +123,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/car-insurance-coverage-needs-calculator';
+const baseUrl = 'https://mycalculating.com/finance/car-insurance-coverage-needs-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -132,7 +132,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Car Insurance Coverage Needs Calculator', item: baseUrl },
       ],
     },
@@ -439,7 +439,7 @@ export default function CarInsuranceCoverageNeedsCalculator() {
             <strong>Recommended Bodily Injury per Person</strong> = Max(State Minimum, Net Worth-based recommendation). For net worth &lt; $50K: $50K; $50K-$100K: $100K; $100K-$250K: $100K; &gt; $250K: $250K.
           </p>
           <p>
-            <strong>Recommended Bodily Injury per Accident</strong> = Bodily Injury per Person × 2.5. Typically 2-3x per person coverage.
+            <strong>Recommended Bodily Injury per Accident</strong> = Bodily Injury per Person Ã— 2.5. Typically 2-3x per person coverage.
           </p>
           <p>
             <strong>Recommended Property Damage</strong> = Max(State Minimum, Net Worth, $100,000). Protects against property damage claims.

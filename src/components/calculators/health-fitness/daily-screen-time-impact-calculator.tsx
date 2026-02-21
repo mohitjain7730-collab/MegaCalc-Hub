@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/daily-screen-time-impact-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/daily-screen-time-impact-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Daily Screen Time Impact Wellness Calculator', item: baseUrl },
       ],
     },
@@ -152,7 +152,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const leisureScreenHours = values.leisureScreenHours;
   const age = values.age;
   
-  // Calculate base impact: Total Hours × Age Factor × Leisure Penalty
+  // Calculate base impact: Total Hours Ã— Age Factor Ã— Leisure Penalty
   // Age factor: children/adolescents more vulnerable (higher impact)
   let ageFactor = 1.0;
   if (age < 18) {
@@ -395,13 +395,13 @@ export default function DailyScreenTimeImpactCalculator() {
             <strong>Age factor</strong> = 1.0 for adults 30-64, 1.5 for children/adolescents (&lt;18), 1.2 for young adults (18-29), 1.3 for older adults (65+). Younger and older individuals are more vulnerable to screen time effects.
           </p>
           <p>
-            <strong>Leisure penalty</strong> = 1 + (Leisure Hours / Total Hours) × 0.3. Leisure screen time has higher impact than necessary work use.
+            <strong>Leisure penalty</strong> = 1 + (Leisure Hours / Total Hours) Ã— 0.3. Leisure screen time has higher impact than necessary work use.
           </p>
           <p>
-            <strong>Base impact</strong> = Total Screen Hours × Age Factor × Leisure Penalty. Higher total hours, younger/older age, and more leisure use increase impact.
+            <strong>Base impact</strong> = Total Screen Hours Ã— Age Factor Ã— Leisure Penalty. Higher total hours, younger/older age, and more leisure use increase impact.
           </p>
           <p>
-            <strong>Impact score</strong> = (Base Impact / Reference Impact) × 100, normalized to 0-100 scale where reference is 8 hours total, adult age, 50% leisure.
+            <strong>Impact score</strong> = (Base Impact / Reference Impact) Ã— 100, normalized to 0-100 scale where reference is 8 hours total, adult age, 50% leisure.
           </p>
           <p>Screen time impact increases with longer total use, higher proportion of leisure time, and age-related vulnerability. Regular breaks, limits, and offline activities reduce negative effects.</p>
         </CardContent>
@@ -600,7 +600,7 @@ export default function DailyScreenTimeImpactCalculator() {
 
     {/* REDUCTION STRATEGIES */}
     <h2 id="reduction" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Strategies to Reduce Screen Time Impact</h2>
-    <p>Reducing screen time impact doesn't mean eliminating devices—it means using them more intentionally and protectively.</p>
+    <p>Reducing screen time impact doesn't mean eliminating devicesâ€”it means using them more intentionally and protectively.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">1. Set Screen Time Limits</h3>
     <ul>

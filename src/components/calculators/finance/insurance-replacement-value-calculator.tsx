@@ -57,7 +57,7 @@ const faqs = [
   {
     question: 'How is depreciation calculated?',
     answer:
-      'Depreciation is calculated as: Depreciation % = (Age / Useful Life) × 100. Depreciation Amount = Replacement Cost × Depreciation %. Straight-line depreciation assumes equal wear over useful life.',
+      'Depreciation is calculated as: Depreciation % = (Age / Useful Life) Ã— 100. Depreciation Amount = Replacement Cost Ã— Depreciation %. Straight-line depreciation assumes equal wear over useful life.',
   },
   {
     question: 'What is useful life?',
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'How do I determine replacement cost?',
     answer:
-      'Replacement cost can be determined by: contractor estimates, construction cost databases, appraisals, or insurance company estimates. For homes, use square footage × local construction costs per square foot.',
+      'Replacement cost can be determined by: contractor estimates, construction cost databases, appraisals, or insurance company estimates. For homes, use square footage Ã— local construction costs per square foot.',
   },
   {
     question: 'What about inflation?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/insurance-replacement-value-calculator';
+const baseUrl = 'https://mycalculating.com/finance/insurance-replacement-value-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Insurance Replacement Value Calculator', item: baseUrl },
       ],
     },
@@ -150,7 +150,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const usefulLife = values.usefulLife;
 
   // Calculate depreciation percentage (straight-line depreciation)
-  // Depreciation % = (Age / Useful Life) × 100, capped at 100%
+  // Depreciation % = (Age / Useful Life) Ã— 100, capped at 100%
   const depreciationPercent = usefulLife > 0 ? Math.min(100, (age / usefulLife) * 100) : 0;
 
   // Calculate depreciation amount
@@ -388,10 +388,10 @@ export default function InsuranceReplacementValueCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Depreciation Percentage</strong> = (Age / Useful Life) × 100, capped at 100%. Represents the percentage of useful life consumed.
+            <strong>Depreciation Percentage</strong> = (Age / Useful Life) Ã— 100, capped at 100%. Represents the percentage of useful life consumed.
           </p>
           <p>
-            <strong>Depreciation Amount</strong> = Replacement Cost × (Depreciation % / 100). The dollar amount of depreciation based on age and useful life.
+            <strong>Depreciation Amount</strong> = Replacement Cost Ã— (Depreciation % / 100). The dollar amount of depreciation based on age and useful life.
           </p>
           <p>
             <strong>Actual Cash Value (ACV)</strong> = Replacement Cost - Depreciation Amount. The depreciated value of the item, accounting for age, wear and tear, and obsolescence.
@@ -509,13 +509,13 @@ export default function InsuranceReplacementValueCalculator() {
     <h2 id="depreciation" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Depreciation Calculation</h2>
     
     <h3 className="text-xl font-semibold text-foreground mt-6">Straight-Line Depreciation</h3>
-    <p>Depreciation is calculated as: <b>Depreciation % = (Age / Useful Life) × 100</b></p>
+    <p>Depreciation is calculated as: <b>Depreciation % = (Age / Useful Life) Ã— 100</b></p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Example Calculation</h3>
     <p>If a 10-year-old roof has a 20-year useful life and replacement cost of $20,000:</p>
     <ul>
-        <li>Depreciation %: (10 / 20) × 100 = 50%</li>
-        <li>Depreciation Amount: $20,000 × 50% = $10,000</li>
+        <li>Depreciation %: (10 / 20) Ã— 100 = 50%</li>
+        <li>Depreciation Amount: $20,000 Ã— 50% = $10,000</li>
         <li>ACV: $20,000 - $10,000 = $10,000</li>
     </ul>
     <p>Replacement cost coverage would pay $20,000, while ACV coverage would pay $10,000.</p>

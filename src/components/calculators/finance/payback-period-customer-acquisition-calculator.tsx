@@ -37,8 +37,8 @@ const steps = [
 
 const faqs = [
   { question: 'What is payback period?', answer: 'Months needed to recover CAC from monthly gross profit per customer.' },
-  { question: 'What is a good payback?', answer: 'Sub-12 months is often efficient for SaaS; 12–18 is common in growth; beyond 18 can be risky unless churn is very low.' },
-  { question: 'Should I use gross or net profit?', answer: 'Use gross profit per customer (revenue × gross margin) to reflect unit economics.' },
+  { question: 'What is a good payback?', answer: 'Sub-12 months is often efficient for SaaS; 12â€“18 is common in growth; beyond 18 can be risky unless churn is very low.' },
+  { question: 'Should I use gross or net profit?', answer: 'Use gross profit per customer (revenue Ã— gross margin) to reflect unit economics.' },
   { question: 'How does churn affect payback?', answer: 'Higher churn shortens lifetime, so slow payback plus higher churn can make CAC unrecoverable.' },
   { question: 'Why pair with LTV:CAC?', answer: 'Payback shows time to recover CAC; LTV:CAC shows overall return. Use both for efficiency.' },
 ];
@@ -48,7 +48,7 @@ const relatedCalculators = [
   { name: 'LTV Calculator', slug: 'ltv-calculator', description: 'Pair payback with LTV for return.' },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/payback-period-customer-acquisition-calculator';
+const baseUrl = 'https://mycalculating.com/finance/payback-period-customer-acquisition-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -57,7 +57,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Payback Period (Customer Acquisition) Calculator', item: baseUrl },
       ],
     },
@@ -90,7 +90,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   const recommendations = [
     `Payback: ${paybackMonths === Infinity ? 'N/A' : `${paybackMonths.toFixed(1)} months`}.`,
     'Increase ARPA or margin to shorten payback; reduce CAC via channel mix and onboarding efficiency.',
-    'Monitor churn—slow payback plus higher churn risks unrecovered CAC.',
+    'Monitor churnâ€”slow payback plus higher churn risks unrecovered CAC.',
   ];
 
   const plan = [
@@ -186,7 +186,7 @@ export default function PaybackPeriodCustomerAcquisitionCalculator() {
                 <p className="text-2xl font-semibold text-primary">
                   {result.paybackMonths === Infinity ? 'N/A' : result.paybackMonths.toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">CAC ÷ gross profit</p>
+                <p className="text-xs text-muted-foreground">CAC Ã· gross profit</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -201,7 +201,7 @@ export default function PaybackPeriodCustomerAcquisitionCalculator() {
                 <p className="text-xs text-muted-foreground">Sensitivity</p>
               </div>
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">If CAC −10%</p>
+                <p className="text-sm text-muted-foreground">If CAC âˆ’10%</p>
                 <p className="text-xl font-semibold text-primary">
                   {result.paybackMonths === Infinity ? 'N/A' : (result.paybackMonths * 0.9).toFixed(1)} mo
                 </p>
@@ -254,7 +254,7 @@ export default function PaybackPeriodCustomerAcquisitionCalculator() {
           </CardTitle>
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
-          <p><strong>Payback (months)</strong> = CAC ÷ monthly gross profit per customer.</p>
+          <p><strong>Payback (months)</strong> = CAC Ã· monthly gross profit per customer.</p>
           <p>Use gross profit (not revenue) for accurate unit economics.</p>
         </CardContent>
       </Card>
@@ -284,7 +284,7 @@ export default function PaybackPeriodCustomerAcquisitionCalculator() {
                 <p className="text-xl font-semibold text-primary">
                   {result.paybackMonths === Infinity ? 'N/A' : (result.paybackMonths / 12).toFixed(2)} years
                 </p>
-                <p className="text-xs text-muted-foreground">Months ÷ 12</p>
+                <p className="text-xs text-muted-foreground">Months Ã· 12</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -350,10 +350,10 @@ export default function PaybackPeriodCustomerAcquisitionCalculator() {
         <hr />
 
         <h2 id="formula" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Formula & Inputs</h2>
-        <p>Payback (months) = CAC ÷ monthly gross profit per customer. Use margin-adjusted profit, not revenue.</p>
+        <p>Payback (months) = CAC Ã· monthly gross profit per customer. Use margin-adjusted profit, not revenue.</p>
 
         <h2 id="benchmarks" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Benchmarks</h2>
-        <p>Sub-12 months: efficient. 12–18: typical growth. &gt;18: risky unless churn is very low and LTV:CAC is strong.</p>
+        <p>Sub-12 months: efficient. 12â€“18: typical growth. &gt;18: risky unless churn is very low and LTV:CAC is strong.</p>
 
         <h2 id="improve" className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Improving Payback</h2>
         <ul className="list-disc ml-6 space-y-2">

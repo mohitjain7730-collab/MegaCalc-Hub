@@ -37,9 +37,9 @@ type ResultPayload = {
 
 const steps = [
   'Estimate your average difference in sleep midpoint between workdays and free days (social jetlag) in hours.',
-  'Enter your approximate morning outdoor light exposure minutes (within 2–3 hours of waking).',
+  'Enter your approximate morning outdoor light exposure minutes (within 2â€“3 hours of waking).',
   'Enter your approximate evening screen exposure minutes in the last 2 hours before bed.',
-  'Rate how stable your daily schedule is on a 0–10 scale.',
+  'Rate how stable your daily schedule is on a 0â€“10 scale.',
   'Review your circadian rhythm alignment score, daytime function score, and tailored guidance.',
 ];
 
@@ -77,7 +77,7 @@ const faqs = [
   {
     question: 'How quickly can circadian alignment improve after changing habits?',
     answer:
-      'Your clock can shift by roughly 15–60 minutes per day depending on light, behavior, and genetics. Gentle, consistent changes tend to be more sustainable than abrupt shifts.',
+      'Your clock can shift by roughly 15â€“60 minutes per day depending on light, behavior, and genetics. Gentle, consistent changes tend to be more sustainable than abrupt shifts.',
   },
   {
     question: 'Does chronotype (morning/evening preference) affect my score?',
@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/circadian-rhythm-alignment-score';
+const baseUrl = 'https://mycalculating.com/health-fitness/circadian-rhythm-alignment-score';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Circadian Rhythm Alignment Score', item: baseUrl },
       ],
     },
@@ -181,8 +181,8 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations: string[] = [
     'Aim to keep your sleep and wake times within about 1 hour of each other across the week to reduce social jetlag.',
-    'Seek outdoor light or bright window light within 2 hours of waking for at least 10–30 minutes when feasible.',
-    'Reduce intense screen use, bright overhead lights, and highly stimulating content in the last 1–2 hours before bed.',
+    'Seek outdoor light or bright window light within 2 hours of waking for at least 10â€“30 minutes when feasible.',
+    'Reduce intense screen use, bright overhead lights, and highly stimulating content in the last 1â€“2 hours before bed.',
   ];
 
   if (socialJetlagHours >= 1.5) {
@@ -201,7 +201,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
     {
       label: 'This Week',
       detail:
-        'Experiment with 10–20 minutes of outdoor light most mornings and reducing bright screens for at least 30 minutes before bed.',
+        'Experiment with 10â€“20 minutes of outdoor light most mornings and reducing bright screens for at least 30 minutes before bed.',
     },
     {
       label: 'This Month',
@@ -333,7 +333,7 @@ export default function CircadianRhythmAlignmentScore() {
                   name="scheduleStabilityScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Schedule stability (0–10)</FormLabel>
+                      <FormLabel>Schedule stability (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -370,7 +370,7 @@ export default function CircadianRhythmAlignmentScore() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Alignment score</p>
                 <p className="text-2xl font-semibold text-primary">{result.alignmentScore}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Daytime function score</p>
@@ -436,7 +436,7 @@ export default function CircadianRhythmAlignmentScore() {
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
             <strong>Circadian alignment score</strong> rewards lower social jetlag, more morning light, more stable
-            schedules, and penalizes heavy evening screen time, scaled to 0–100.
+            schedules, and penalizes heavy evening screen time, scaled to 0â€“100.
           </p>
           <p>
             <strong>Daytime function score</strong> emphasizes the aspects most closely tied to how you feel during the
@@ -578,7 +578,7 @@ export default function CircadianRhythmAlignmentScore() {
         </h2>
         <p>
           Your circadian system coordinates daily rhythms in hormones, core body temperature, digestion, mood, and
-          cognition. When your behaviors—sleep timing, light exposure, meals, and activity—line up with your internal
+          cognition. When your behaviorsâ€”sleep timing, light exposure, meals, and activityâ€”line up with your internal
           clock, those systems can run more smoothly. Misalignment, on the other hand, has been associated in research
           with increased risks for metabolic issues, cardiovascular disease, mood disorders, and performance decrements.
         </p>
@@ -598,7 +598,7 @@ export default function CircadianRhythmAlignmentScore() {
           observational studies, even when total sleep duration is similar.
         </p>
         <p>
-          Reducing social jetlag does not require perfection. Often, moving free-day bed and wake times 30–60 minutes
+          Reducing social jetlag does not require perfection. Often, moving free-day bed and wake times 30â€“60 minutes
           closer to workday timing can significantly reduce strain, while still allowing for social flexibility. The
           alignment score highlights when this gap has grown large enough to warrant attention.
         </p>
@@ -613,9 +613,9 @@ export default function CircadianRhythmAlignmentScore() {
           evening can have outsized impact on how easily you fall asleep and wake up.
         </p>
         <p>
-          Screens are not inherently “bad,” but using very bright screens close to your face late into the evening
+          Screens are not inherently â€œbad,â€ but using very bright screens close to your face late into the evening
           makes it harder for your brain to recognize that night has arrived. The alignment calculator encourages
-          pragmatic steps—slightly less screen time, lower brightness, or warmer color temperature—rather than all-or-
+          pragmatic stepsâ€”slightly less screen time, lower brightness, or warmer color temperatureâ€”rather than all-or-
           nothing thinking.
         </p>
 
@@ -629,7 +629,7 @@ export default function CircadianRhythmAlignmentScore() {
           down.
         </p>
         <p>
-          If your schedule feels chaotic, start by stabilizing one anchor—such as wake time or first meal—before trying
+          If your schedule feels chaotic, start by stabilizing one anchorâ€”such as wake time or first mealâ€”before trying
           to overhaul everything at once. Over time, these anchors can make it easier to maintain alignment even when
           individual days are unpredictable.
         </p>
@@ -639,7 +639,7 @@ export default function CircadianRhythmAlignmentScore() {
         </h2>
         <p>
           Your circadian rhythm alignment score is not a judgment; it is a map. Rather than trying to fix everything
-          overnight, choose one or two next steps that feel achievable this month—such as adding 10 minutes of morning
+          overnight, choose one or two next steps that feel achievable this monthâ€”such as adding 10 minutes of morning
           light, turning down screens earlier, or aligning weekend wake times a bit closer to weekdays.
         </p>
         <p>

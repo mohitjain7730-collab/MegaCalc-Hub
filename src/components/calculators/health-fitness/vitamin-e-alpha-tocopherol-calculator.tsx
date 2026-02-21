@@ -54,7 +54,7 @@ const faqs = [
   {
     question: 'How is alpha-tocopherol equivalent calculated?',
     answer:
-      'Alpha-tocopherol equivalent = alpha-tocopherol (mg) + gamma-tocopherol (mg) × 0.1 + other tocopherols (mg) × 0.05. Only alpha-tocopherol is fully counted; other forms have lower activity.',
+      'Alpha-tocopherol equivalent = alpha-tocopherol (mg) + gamma-tocopherol (mg) Ã— 0.1 + other tocopherols (mg) Ã— 0.05. Only alpha-tocopherol is fully counted; other forms have lower activity.',
   },
   {
     question: 'What are vitamin E requirements?',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/vitamin-e-alpha-tocopherol-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/vitamin-e-alpha-tocopherol-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Vitamin E Alpha-Tocopherol Calculator', item: baseUrl },
       ],
     },
@@ -360,7 +360,7 @@ export default function VitaminEAlphaTocopherolCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Alpha-tocopherol equivalent</strong> = alpha-tocopherol (mg) + gamma-tocopherol (mg) × 0.1 + other tocopherols (mg) × 0.05.
+            <strong>Alpha-tocopherol equivalent</strong> = alpha-tocopherol (mg) + gamma-tocopherol (mg) Ã— 0.1 + other tocopherols (mg) Ã— 0.05.
           </p>
           <p>
             <strong>Conversion factors</strong>: Alpha-tocopherol is fully counted (100% activity). Gamma-tocopherol has ~10% activity. Other tocopherols have ~5% activity. Only alpha-tocopherol meets vitamin E requirements.
@@ -473,7 +473,7 @@ export default function VitaminEAlphaTocopherolCalculator() {
     <p>Vitamin E is a group of eight fat-soluble compounds that are vital for human health. Its single most important biological role is acting as the body's **primary fat-soluble antioxidant**, protecting crucial cellular components from damage.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Protecting Cell Membranes</h3>
-    <p>Vitamin E is integrated directly into the lipid layer of cell membranes (including the membranes of the lungs, eyes, and blood vessels). Within the membrane, it donates a hydrogen atom to free radicals, thereby terminating the chain reaction of lipid peroxidation—the destructive process where free radicals steal electrons from lipids, leading to cellular damage. By protecting the fatty acids in the cell membrane, Vitamin E helps maintain the integrity and function of the entire cell.</p>
+    <p>Vitamin E is integrated directly into the lipid layer of cell membranes (including the membranes of the lungs, eyes, and blood vessels). Within the membrane, it donates a hydrogen atom to free radicals, thereby terminating the chain reaction of lipid peroxidationâ€”the destructive process where free radicals steal electrons from lipids, leading to cellular damage. By protecting the fatty acids in the cell membrane, Vitamin E helps maintain the integrity and function of the entire cell.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Cardiovascular and Immune Roles</h3>
     <ul>
@@ -489,7 +489,7 @@ export default function VitaminEAlphaTocopherolCalculator() {
     <p>The Vitamin E group is comprised of four **tocopherols** ($\alpha$, $\beta$, $\gamma$, $\delta$) and four **tocotrienols** ($\alpha$, $\beta$, $\gamma$, $\delta$). While all possess antioxidant activity, only one form is recognized to meet human nutritional requirements.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Alpha-Tocopherol is the Standard</h3>
-    <p>The **Recommended Dietary Allowance (RDA) is based exclusively on alpha-tocopherol**. This is because the human liver contains a specific protein—**alpha-tocopherol transfer protein ($\alpha$-TTP)**—which preferentially binds only alpha-tocopherol and transfers it into the circulatory system. All other forms of Vitamin E are metabolized quickly and largely excreted, meaning they are much less bioavailable to the body's tissues.</p>
+    <p>The **Recommended Dietary Allowance (RDA) is based exclusively on alpha-tocopherol**. This is because the human liver contains a specific proteinâ€”**alpha-tocopherol transfer protein ($\alpha$-TTP)**â€”which preferentially binds only alpha-tocopherol and transfers it into the circulatory system. All other forms of Vitamin E are metabolized quickly and largely excreted, meaning they are much less bioavailable to the body's tissues.</p>
 
     <h3 className="text-xl font-semibold text-foreground mt-6">Natural vs. Synthetic Forms</h3>
     <p>It is important to distinguish between natural and synthetic alpha-tocopherol, which are labeled differently:</p>
@@ -533,7 +533,7 @@ export default function VitaminEAlphaTocopherolCalculator() {
                     <td className="border-b p-2">1,000 mg</td>
                 </tr>
                 <tr>
-                    <td className="border-b p-2">Children (9–13 years)</td>
+                    <td className="border-b p-2">Children (9â€“13 years)</td>
                     <td className="border-b p-2">11 mg</td>
                     <td className="border-b p-2">600 mg</td>
                 </tr>

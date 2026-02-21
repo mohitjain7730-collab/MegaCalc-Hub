@@ -102,7 +102,7 @@ const relatedCalculators = [
   {
     name: 'Anti-Aging Nutrition Score Calculator',
     slug: 'anti-aging-nutrition-score-calculator',
-    description: 'Zoom in on your diet’s alignment with healthy-aging principles.',
+    description: 'Zoom in on your dietâ€™s alignment with healthy-aging principles.',
   },
   {
     name: 'Cardiometabolic Age Calculator',
@@ -116,7 +116,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/longevity-predictor-lifestyle-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/longevity-predictor-lifestyle-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -125,7 +125,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Longevity Predictor (Lifestyle-based) Calculator', item: baseUrl },
       ],
     },
@@ -171,7 +171,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (healthyLifeExpectancy > baselineLifeExpectancy + 3) {
     band = 'above-average';
     interpretation =
-      'Here, your current habits lean in a direction that this model associates with a more supported long‑term pattern. Staying flexible and kind with your routines often matters more than hitting any exact number.';
+      'Here, your current habits lean in a direction that this model associates with a more supported longâ€‘term pattern. Staying flexible and kind with your routines often matters more than hitting any exact number.';
   }
 
   const recommendations = [
@@ -197,7 +197,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
       detail: 'Play with one sustainable habit experiment (more steps, an extra vegetable serving, or a small shift in smoking patterns) and then see how it feels to you.',
     },
     {
-      label: '3–6 months',
+      label: '3â€“6 months',
       detail: 'Over time, you can review your overall pattern with a clinician to weave lifestyle ideas into your broader health picture.',
     },
   ];
@@ -369,7 +369,7 @@ export default function LongevityPredictorLifestyleCalculator() {
                   {result.addedYearsVsBaseline >= 0 ? '+' : ''}
                   {result.addedYearsVsBaseline.toFixed(1)} years
                 </p>
-                <p className="text-xs text-muted-foreground">Shows how this estimate compares with a generic 82‑year reference in the model.</p>
+                <p className="text-xs text-muted-foreground">Shows how this estimate compares with a generic 82â€‘year reference in the model.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Band</p>
@@ -428,7 +428,7 @@ export default function LongevityPredictorLifestyleCalculator() {
             rate, movement, fruit/veg intake, and smoking status.
           </p>
           <p>
-            Each factor contributes a small positive or negative shift, then the result is clamped into a 55–95 year window for practical
+            Each factor contributes a small positive or negative shift, then the result is clamped into a 55â€“95 year window for practical
             interpretation.
           </p>
           <p>The equations are simplified and are not calibrated to any specific risk calculator or medical guideline.</p>
@@ -507,7 +507,7 @@ export default function LongevityPredictorLifestyleCalculator() {
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
           <p>
-            Longevity is shaped by many factors—genes, environment, healthcare, and daily choices all weave together over time.
+            Longevity is shaped by many factorsâ€”genes, environment, healthcare, and daily choices all weave together over time.
           </p>
           <p>
             This calculator focuses on the lifestyle threads you can influence, helping you have better conversations with professionals and
@@ -543,7 +543,7 @@ export default function LongevityPredictorLifestyleCalculator() {
             habits can relate to long-term patterns in this model.
           </p>
           <p>It surfaces where movement, food choices, and smoking status may be nudging your long-term trajectory within this framework.</p>
-          <p>Use it for gentle reflection and planning only—not as a prediction or substitute for medical judgment.</p>
+          <p>Use it for gentle reflection and planning onlyâ€”not as a prediction or substitute for medical judgment.</p>
         </CardContent>
       </Card>
 

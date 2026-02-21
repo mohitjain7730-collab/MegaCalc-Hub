@@ -122,7 +122,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/posture-score-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/posture-score-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -131,7 +131,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Posture Wellness Score Calculator', item: baseUrl },
       ],
     },
@@ -407,10 +407,10 @@ export default function PostureScoreCalculator() {
             <strong>Sitting penalty</strong> = 0 for &lt;6 hours, 0.5 for 6-8 hours, 1.0 for 8-10 hours, 1.5 for 10+ hours. Longer sitting increases postural stress.
           </p>
           <p>
-            <strong>Desk setup multiplier</strong> = (Desk Setup - 3) × 0.1. Ranges from -0.2 (poor) to +0.2 (excellent), adjusting score based on ergonomic quality.
+            <strong>Desk setup multiplier</strong> = (Desk Setup - 3) Ã— 0.1. Ranges from -0.2 (poor) to +0.2 (excellent), adjusting score based on ergonomic quality.
           </p>
           <p>
-            <strong>Posture score</strong> = ((Postural Average - Sitting Penalty + Desk Multiplier) / 5) × 100, normalized to 0-100 scale. Higher scores indicate better posture, proper ergonomics, and reasonable sitting duration.
+            <strong>Posture score</strong> = ((Postural Average - Sitting Penalty + Desk Multiplier) / 5) Ã— 100, normalized to 0-100 scale. Higher scores indicate better posture, proper ergonomics, and reasonable sitting duration.
           </p>
           <p>Good posture maintains natural spinal curves, reduces musculoskeletal stress, and prevents pain. Regular breaks, ergonomic setup, and postural exercises support long-term postural health.</p>
         </CardContent>

@@ -126,7 +126,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/finance/synergy-value-calculator-ma-synergy-estimator';
+const baseUrl = 'https://mycalculating.com/finance/synergy-value-calculator-ma-synergy-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -135,7 +135,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/category/finance' },
+        { '@type': 'ListItem', position: 2, name: 'Finance', item: 'https://mycalculating.com/finance' },
         { '@type': 'ListItem', position: 3, name: 'Synergy Value Calculator (M&A Synergy Estimator)', item: baseUrl },
       ],
     },

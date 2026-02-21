@@ -114,7 +114,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/cognitive-load-estimator';
+const baseUrl = 'https://mycalculating.com/health-fitness/cognitive-load-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -123,7 +123,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Cognitive Load Estimator', item: baseUrl },
       ],
     },
@@ -172,7 +172,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
 
   const recommendations: string[] = [
     'Batch meetings and messaging windows to cut context switches by 30-50%.',
-    'Adopt “single-task sprints” (25-50 minutes) with protected focus signals.',
+    'Adopt â€œsingle-task sprintsâ€ (25-50 minutes) with protected focus signals.',
     'Document repeatable processes to offload working memory onto systems.',
   ];
 
@@ -185,7 +185,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   if (concurrentProjects >= 10) {
-    recommendations.push('Sequence projects using WIP (work-in-progress) limits — cap active initiatives and maintain a clear backlog.');
+    recommendations.push('Sequence projects using WIP (work-in-progress) limits â€” cap active initiatives and maintain a clear backlog.');
   }
 
   const plan = [
@@ -383,15 +383,15 @@ export default function CognitiveLoadEstimator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Load score</strong> = Project load (≤40) + Complexity load (≤30) + Context switching load (≤25) + Distraction load (≤20). Each component is scaled to reflect cognitive science research on working memory interference.
+            <strong>Load score</strong> = Project load (â‰¤40) + Complexity load (â‰¤30) + Context switching load (â‰¤25) + Distraction load (â‰¤20). Each component is scaled to reflect cognitive science research on working memory interference.
           </p>
           <p>
-            <strong>Focus capacity</strong> = 100 − Load score. This represents remaining attention for high-value work or strategic thinking.
+            <strong>Focus capacity</strong> = 100 âˆ’ Load score. This represents remaining attention for high-value work or strategic thinking.
           </p>
           <p>
             <strong>Context switching tax</strong> approximates 23 minutes lost per switch; use this to illustrate real costs when communicating with teams or leadership.
           </p>
-          <p>Use these formulas to test scenarios—reduce projects or distractions to see how quickly capacity improves.</p>
+          <p>Use these formulas to test scenariosâ€”reduce projects or distractions to see how quickly capacity improves.</p>
         </CardContent>
       </Card>
 
@@ -464,7 +464,7 @@ export default function CognitiveLoadEstimator() {
         <meta itemProp="url" content="/definitive-cognitive-load-guide" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Measuring and Reducing Cognitive Load</h1>
-        <p className="text-lg italic text-gray-700">Understand how projects, complexity, context switching, and digital distractions drain focus—and how to rebuild attention capacity with evidence-backed rituals.</p>
+        <p className="text-lg italic text-gray-700">Understand how projects, complexity, context switching, and digital distractions drain focusâ€”and how to rebuild attention capacity with evidence-backed rituals.</p>
 
         <h2 className="text-2xl font-bold text-foreground mt-8 mb-4">Table of Contents: Jump to a Section</h2>
         <ul className="list-disc ml-6 space-y-2 text-blue-600">
@@ -493,7 +493,7 @@ export default function CognitiveLoadEstimator() {
 
         <hr />
         <h2 className="text-2xl font-bold text-foreground pt-8" itemProp="articleSection">Conclusion</h2>
-        <p>Cognitive load isn’t just personal discipline—it’s a systems problem. Use this estimator to advocate for better workflows, protect your nervous system, and keep strategic thinking sharp.</p>
+        <p>Cognitive load isnâ€™t just personal disciplineâ€”itâ€™s a systems problem. Use this estimator to advocate for better workflows, protect your nervous system, and keep strategic thinking sharp.</p>
       </section>
 
       <Card>

@@ -36,10 +36,10 @@ type ResultPayload = {
 };
 
 const steps = [
-  'Rate how easily you understand what others might be thinking (cognitive empathy, 0–10).',
-  'Rate how strongly you feel others’ emotions in your own body (emotional empathy, 0–10).',
-  'Rate how often you can see a situation from multiple sides (perspective taking, 0–10).',
-  'Rate how clear and healthy your personal boundaries feel (0–10).',
+  'Rate how easily you understand what others might be thinking (cognitive empathy, 0â€“10).',
+  'Rate how strongly you feel othersâ€™ emotions in your own body (emotional empathy, 0â€“10).',
+  'Rate how often you can see a situation from multiple sides (perspective taking, 0â€“10).',
+  'Rate how clear and healthy your personal boundaries feel (0â€“10).',
   'Review your empathy quotient, balance index, and suggested adjustments.',
 ];
 
@@ -47,7 +47,7 @@ const faqs = [
   {
     question: 'What is the Empathy Quotient Calculator?',
     answer:
-      'It is a self-reflection tool that estimates your empathy tendencies across understanding thoughts, feeling emotions, and taking perspectives—while checking boundary balance.',
+      'It is a self-reflection tool that estimates your empathy tendencies across understanding thoughts, feeling emotions, and taking perspectivesâ€”while checking boundary balance.',
   },
   {
     question: 'Is high empathy always good?',
@@ -82,7 +82,7 @@ const faqs = [
   {
     question: 'How often should I use this?',
     answer:
-      'Occasionally—before or after big relational seasons, or when you are working on communication and connection skills.',
+      'Occasionallyâ€”before or after big relational seasons, or when you are working on communication and connection skills.',
   },
   {
     question: 'Does low empathy mean I am a bad person?',
@@ -119,7 +119,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/empathy-quotient-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/empathy-quotient-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -128,7 +128,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Empathy Wellness Quotient Calculator', item: baseUrl },
       ],
     },
@@ -163,7 +163,7 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (empathyQuotient < 30) {
     status = 'low';
     interpretation =
-      'This suggests a general lifestyle tendency where your self‑reported empathy may feel more structured or logic‑based than emotionally attuned. You may consider gentle perspective‑taking or listening practices if you wish to explore this area. This is a personal insight, not a medical evaluation.';
+      'This suggests a general lifestyle tendency where your selfâ€‘reported empathy may feel more structured or logicâ€‘based than emotionally attuned. You may consider gentle perspectiveâ€‘taking or listening practices if you wish to explore this area. This is a personal insight, not a medical evaluation.';
   } else if (empathyQuotient >= 70 && balanceIndex < 50) {
     status = 'moderate';
     interpretation =
@@ -171,17 +171,17 @@ const calculateResult = (values: FormValues): ResultPayload => {
   } else if (empathyQuotient >= 70 && balanceIndex >= 70) {
     status = 'optimal';
     interpretation =
-      'This suggests a general lifestyle tendency where you may experience high empathy with relatively clear boundaries—a mix that can support caring in a way that also protects your energy.';
+      'This suggests a general lifestyle tendency where you may experience high empathy with relatively clear boundariesâ€”a mix that can support caring in a way that also protects your energy.';
   }
 
   const recommendations: string[] = [
     'Notice how your body feels after emotionally intense conversations and schedule decompression time if needed.',
-    'Practice summarizing what you heard (“So what I\'m hearing is…”) to strengthen cognitive empathy and clarity.',
+    'Practice summarizing what you heard (â€œSo what I\'m hearing isâ€¦â€) to strengthen cognitive empathy and clarity.',
     'Check in with yourself before agreeing to support others: do you have enough capacity right now?',
   ];
 
   if (emotionalEmpathy >= 7 && boundariesClarity <= 5) {
-    recommendations.push('Explore boundary-setting skills, such as saying “I wish I could help more, here is what I can realistically offer.”');
+    recommendations.push('Explore boundary-setting skills, such as saying â€œI wish I could help more, here is what I can realistically offer.â€');
   }
 
   if (cognitiveEmpathy < 5) {
@@ -251,7 +251,7 @@ export default function EmpathyQuotientCalculator() {
                   name="cognitiveEmpathy"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cognitive empathy (0–10)</FormLabel>
+                      <FormLabel>Cognitive empathy (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 7" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -264,7 +264,7 @@ export default function EmpathyQuotientCalculator() {
                   name="emotionalEmpathy"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Emotional empathy (0–10)</FormLabel>
+                      <FormLabel>Emotional empathy (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 8" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -277,7 +277,7 @@ export default function EmpathyQuotientCalculator() {
                   name="perspectiveTaking"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Perspective taking (0–10)</FormLabel>
+                      <FormLabel>Perspective taking (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6.5" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -290,7 +290,7 @@ export default function EmpathyQuotientCalculator() {
                   name="boundariesClarity"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Boundaries clarity (0–10)</FormLabel>
+                      <FormLabel>Boundaries clarity (0â€“10)</FormLabel>
                       <FormControl>
                         <Input type="number" step="0.5" placeholder="e.g., 6" value={field.value ?? ''} onChange={(e) => field.onChange(e.target.value === '' ? undefined : Number(e.target.value))} />
                       </FormControl>
@@ -321,7 +321,7 @@ export default function EmpathyQuotientCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Empathy quotient</p>
                 <p className="text-2xl font-semibold text-primary">{result.empathyQuotient}</p>
-                <p className="text-xs text-muted-foreground">0–100 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“100 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Balance index</p>
@@ -333,7 +333,7 @@ export default function EmpathyQuotientCalculator() {
                 <p className="text-2xl font-semibold text-primary">
                   {((result.cognitiveEmpathy + result.emotionalEmpathy + result.perspectiveTaking) / 3).toFixed(1)}
                 </p>
-                <p className="text-xs text-muted-foreground">0–10 scale</p>
+                <p className="text-xs text-muted-foreground">0â€“10 scale</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
@@ -388,7 +388,7 @@ export default function EmpathyQuotientCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Empathy quotient</strong> is the average of cognitive empathy, emotional empathy, and perspective taking, scaled to a 0–100 index.
+            <strong>Empathy quotient</strong> is the average of cognitive empathy, emotional empathy, and perspective taking, scaled to a 0â€“100 index.
           </p>
           <p>
             <strong>Balance index</strong> subtracts the gap between emotional empathy and boundary clarity from 100; large gaps reduce balance and indicate overload risk.
@@ -418,7 +418,7 @@ export default function EmpathyQuotientCalculator() {
           {result ? (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="p-4 border rounded">
-                <p className="text-sm text-muted-foreground">Emotion–boundary gap</p>
+                <p className="text-sm text-muted-foreground">Emotionâ€“boundary gap</p>
                 <p className="text-xl font-semibold text-primary">
                   {Math.abs(result.emotionalEmpathy - result.boundariesClarity).toFixed(1)}
                 </p>
@@ -520,7 +520,7 @@ export default function EmpathyQuotientCalculator() {
           Reflection Prompts
         </h2>
         <p>
-          Try questions like: “When do I feel most connected?” “When do I feel drained?” “What boundary, if I set it, would make my empathy feel safer?”
+          Try questions like: â€œWhen do I feel most connected?â€ â€œWhen do I feel drained?â€ â€œWhat boundary, if I set it, would make my empathy feel safer?â€
         </p>
 
         <hr />
@@ -556,7 +556,7 @@ export default function EmpathyQuotientCalculator() {
         <CardContent className="space-y-2 text-sm text-muted-foreground">
           <p>
             This tool provides general wellness insights about empathy style and boundary balance using four simple
-            self‑ratings. This is a personal lifestyle insight, not a medical evaluation.
+            selfâ€‘ratings. This is a personal lifestyle insight, not a medical evaluation.
           </p>
           <p>Outputs include an empathy quotient, balance index, qualitative status, recommendations, an action plan, and supporting metrics.</p>
           <p>Guide content and FAQs explain the concepts so humans and AI assistants can interpret the scores safely.</p>

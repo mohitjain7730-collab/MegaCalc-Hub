@@ -36,7 +36,7 @@ const steps = [
   'Enter how often you take movement breaks, in minutes between breaks.',
   'Log the heaviest load you regularly lift or carry during work (kg).',
   'Rate how well your workstation fits you (chair, desk, monitor) from 1 (poor) to 10 (excellent).',
-  'Rate how often you feel neck, shoulder, or back discomfort during or after work (0–10).',
+  'Rate how often you feel neck, shoulder, or back discomfort during or after work (0â€“10).',
 ];
 
 const faqs = [
@@ -83,7 +83,7 @@ const faqs = [
   {
     question: 'Is pain always posture-related?',
     answer:
-      'Not always—medical, stress, and activity factors can contribute. Consult a clinician if pain is persistent, severe, or worsening.',
+      'Not alwaysâ€”medical, stress, and activity factors can contribute. Consult a clinician if pain is persistent, severe, or worsening.',
   },
   {
     question: 'Should I stop sitting altogether?',
@@ -115,7 +115,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/health-fitness/workplace-posture-risk-calculator';
+const baseUrl = 'https://mycalculating.com/health-fitness/workplace-posture-risk-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
@@ -124,7 +124,7 @@ const schemaMarkup = {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/category/health-fitness' },
+        { '@type': 'ListItem', position: 2, name: 'Health & Fitness', item: 'https://mycalculating.com/health-fitness' },
         { '@type': 'ListItem', position: 3, name: 'Workplace Posture Risk Calculator', item: baseUrl },
       ],
     },
@@ -164,13 +164,13 @@ const calculateResult = (values: FormValues): ResultPayload => {
   if (postureRiskScore >= 70) {
     status = 'high';
     interpretation =
-      'These numbers suggest your body may be handling quite a lot in terms of sitting, lifting, or discomfort. If you’re able, you might explore more supportive setups, varied positions, and professional input.';
+      'These numbers suggest your body may be handling quite a lot in terms of sitting, lifting, or discomfort. If youâ€™re able, you might explore more supportive setups, varied positions, and professional input.';
   }
 
   const recommendations = [
     'When it feels doable, add short pauses to stand, stretch gently, or walk for a minute between longer sitting blocks.',
     'You might experiment with chair and desk height so your hips feel supported and your feet rest comfortably.',
-    'Adjusting your screen so it feels natural to look at—without craning your neck—can help many people feel more at ease.',
+    'Adjusting your screen so it feels natural to look atâ€”without craning your neckâ€”can help many people feel more at ease.',
   ];
 
   if (status !== 'low') {
@@ -181,11 +181,11 @@ const calculateResult = (values: FormValues): ResultPayload => {
   }
 
   const plan = [
-    { label: 'Today', detail: 'If you’d like, choose one small workstation change—such as chair height or monitor position—and see how it feels.' },
+    { label: 'Today', detail: 'If youâ€™d like, choose one small workstation changeâ€”such as chair height or monitor positionâ€”and see how it feels.' },
     { label: 'This Week', detail: 'Simply notice roughly how long you sit between short breaks and how your body feels by the end of the day.' },
     {
       label: 'This Month',
-      detail: 'After you’ve tried a few small changes, you can revisit this snapshot and decide whether you want more support or adjustments.',
+      detail: 'After youâ€™ve tried a few small changes, you can revisit this snapshot and decide whether you want more support or adjustments.',
     },
   ];
 
@@ -290,7 +290,7 @@ export default function WorkplacePostureRiskCalculator() {
                   name="workstationFitScore"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Workstation fit (1–10)</FormLabel>
+                      <FormLabel>Workstation fit (1â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -309,7 +309,7 @@ export default function WorkplacePostureRiskCalculator() {
                   name="painFrequency"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Neck/back pain frequency (0–10)</FormLabel>
+                      <FormLabel>Neck/back pain frequency (0â€“10)</FormLabel>
                       <FormControl>
                         <Input
                           type="number"
@@ -346,12 +346,12 @@ export default function WorkplacePostureRiskCalculator() {
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Posture risk score</p>
                 <p className="text-2xl font-semibold text-primary">{result.postureRiskScore}</p>
-                <p className="text-xs text-muted-foreground">A 0–100 view of how your current sitting, lifting, and comfort patterns add up.</p>
+                <p className="text-xs text-muted-foreground">A 0â€“100 view of how your current sitting, lifting, and comfort patterns add up.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Status</p>
                 <p className="text-2xl font-semibold text-primary capitalize">{result.status}</p>
-                <p className="text-xs text-muted-foreground">A simple label for how full your body’s load may feel in this season of work.</p>
+                <p className="text-xs text-muted-foreground">A simple label for how full your bodyâ€™s load may feel in this season of work.</p>
               </div>
               <div className="p-4 border rounded">
                 <p className="text-sm text-muted-foreground">Summary</p>
@@ -405,8 +405,8 @@ export default function WorkplacePostureRiskCalculator() {
         </CardHeader>
         <CardContent className="text-sm text-muted-foreground space-y-2">
           <p>
-            <strong>Posture risk score</strong> ≈ clamp\(sittingHours × 4 + breakFactor + lifting × 0.8 + pain × 3 − (fit − 5) × 3\) on a
-            0–100 scale, where breakFactor scales long uninterrupted sitting as higher risk.
+            <strong>Posture risk score</strong> â‰ˆ clamp\(sittingHours Ã— 4 + breakFactor + lifting Ã— 0.8 + pain Ã— 3 âˆ’ (fit âˆ’ 5) Ã— 3\) on a
+            0â€“100 scale, where breakFactor scales long uninterrupted sitting as higher risk.
           </p>
           <p>Scores are a simplification and should guide ergonomic tweaks and professional review, not replace them.</p>
         </CardContent>
@@ -485,7 +485,7 @@ export default function WorkplacePostureRiskCalculator() {
           <CardTitle>Complete guide snapshot</CardTitle>
         </CardHeader>
         <CardContent className="prose prose-sm dark:prose-invert max-w-none">
-          <p>Good posture is less about “perfect” alignment and more about varied, supported positions throughout the day.</p>
+          <p>Good posture is less about â€œperfectâ€ alignment and more about varied, supported positions throughout the day.</p>
           <p>
             Use this tool to surface posture patterns, then combine it with movement variety, strength work, and professional guidance for
             long-term comfort.
