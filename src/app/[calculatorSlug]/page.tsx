@@ -90,8 +90,8 @@ export default async function StandaloneCalculatorPage({ params }: { params: Pro
                 '@type': 'BreadcrumbList',
                 itemListElement: [
                     { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
-                    { '@type': 'ListItem', position: 2, name: category.name, item: `https://mycalculating.com/category/${category.slug}` },
-                    ...(calculator.subcategory ? [{ '@type': 'ListItem', position: 3, name: calculator.subcategory, item: `https://mycalculating.com/category/${category.slug}/${calculator.subcategory}` }] : []),
+                    { '@type': 'ListItem', position: 2, name: category.name, item: `https://mycalculating.com/${category.slug}` },
+                    ...(calculator.subcategory ? [{ '@type': 'ListItem', position: 3, name: calculator.subcategory, item: `https://mycalculating.com/${category.slug}/${calculator.subcategory}` }] : []),
                     { '@type': 'ListItem', position: calculator.subcategory ? 4 : 3, name: calculator.name, item: baseUrl },
                 ],
             },
@@ -122,7 +122,7 @@ export default async function StandaloneCalculatorPage({ params }: { params: Pro
                 <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate style={{ minHeight: '600px', width: '100%' }}>
                     <div className="mb-8">
                         <Button asChild variant="ghost" className="mb-4">
-                            <Link href={`/category/${category.slug}`}>
+                            <Link href={`/${category.slug}`}>
                                 <ArrowLeft className="mr-2 h-4 w-4" />
                                 Back to {category.name}
                             </Link>

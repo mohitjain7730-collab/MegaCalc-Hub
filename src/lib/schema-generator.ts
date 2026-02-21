@@ -49,9 +49,7 @@ export function generateWebsiteSchema() {
           "@type": "WebApplication",
           "name": calc.name,
           "description": calc.description,
-          "url": calc.category === 'education' && calc.subcategory === 'maths'
-            ? `https://mycalculating.com/category/${calc.category}/maths/${calc.slug}`
-            : `https://mycalculating.com/category/${calc.category}/${calc.slug}`,
+          "url": `https://mycalculating.com/${calc.slug}`,
           "applicationCategory": "Calculator",
           "operatingSystem": "Web Browser",
           "offers": {
@@ -112,9 +110,7 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     "@type": "WebApplication",
     "name": calculator.name,
     "description": calculator.description,
-    "url": calculator.category === 'education' && calculator.subcategory === 'maths'
-      ? `${baseUrl}/category/${category.slug}/maths/${calculator.slug}`
-      : `${baseUrl}/category/${category.slug}/${calculator.slug}`,
+    "url": `${baseUrl}/${calculator.slug}`,
     "applicationCategory": "Calculator",
     "operatingSystem": "Web Browser",
     "browserRequirements": "Requires JavaScript. Requires HTML5.",
@@ -153,9 +149,7 @@ export function generateCalculatorSchema(calculator: Calculator, category: Categ
     },
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": calculator.category === 'education' && calculator.subcategory === 'maths'
-        ? `${baseUrl}/category/${category.slug}/maths/${calculator.slug}`
-        : `${baseUrl}/category/${category.slug}/${calculator.slug}`
+      "@id": `${baseUrl}/${calculator.slug}`
     },
     "datePublished": "2024-01-01",
     "dateModified": getTodayDateString()
@@ -184,9 +178,7 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
           "@type": "WebApplication",
           "name": calc.name,
           "description": calc.description,
-          "url": calc.category === 'education' && calc.subcategory === 'maths'
-            ? `${baseUrl}/category/${category.slug}/maths/${calc.slug}`
-            : `${baseUrl}/category/${category.slug}/${calc.slug}`,
+          "url": `${baseUrl}/${calc.slug}`,
           "applicationCategory": "Calculator"
         }
       }))
@@ -204,7 +196,7 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
           "@type": "ListItem",
           "position": 2,
           "name": category.name,
-          "item": `${baseUrl}/category/${category.slug}`
+          "item": `${baseUrl}/${category.slug}`
         }
       ]
     }
@@ -235,7 +227,7 @@ export function generateSubCategorySchema(category: Category, subcategory: { nam
           // Requirement: "point to 4 random calculators within the new education/maths path".
           // The paths are /category/education/maths/[slug].
           // So URL should include subcategory.
-          "url": `${baseUrl}/category/${category.slug}/${subcategory.slug}/${calc.slug}`,
+          "url": `${baseUrl}/${calc.slug}`,
           "applicationCategory": "Calculator"
         }
       }))
@@ -253,7 +245,7 @@ export function generateSubCategorySchema(category: Category, subcategory: { nam
           "@type": "ListItem",
           "position": 2,
           "name": category.name,
-          "item": `${baseUrl}/category/${category.slug}`
+          "item": `${baseUrl}/${category.slug}`
         },
         {
           "@type": "ListItem",
@@ -288,9 +280,7 @@ export function generateCalculatorsListingSchema() {
           "@type": "WebApplication",
           "name": calc.name,
           "description": calc.description,
-          "url": calc.category === 'education' && calc.subcategory === 'maths'
-            ? `${baseUrl}/category/${calc.category}/maths/${calc.slug}`
-            : `${baseUrl}/category/${calc.category}/${calc.slug}`,
+          "url": `${baseUrl}/${calc.slug}`,
           "applicationCategory": "Calculator"
         }
       }))

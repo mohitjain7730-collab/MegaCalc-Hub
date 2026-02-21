@@ -34,29 +34,29 @@ export interface RelatedCalculatorsProps {
    * Array of calculator links to display
    */
   links: CalculatorLink[];
-  
+
   /**
    * Slug of the current calculator (to exclude from related list)
    */
   currentSlug?: string;
-  
+
   /**
    * Category of the current calculator (for fallback suggestions)
    */
   currentCategory?: string;
-  
+
   /**
    * Title for the related calculators section
    * @default "Related Calculators"
    */
   title?: string;
-  
+
   /**
    * Maximum number of calculators to display
    * @default 4
    */
   maxDisplay?: number;
-  
+
   /**
    * Whether to show validation warnings in development
    * @default true
@@ -95,7 +95,7 @@ export function RelatedCalculators({
     // Use fixed links where available, otherwise use valid links
     const fixedLinks = report.fixedLinks.map((r) => r.link);
     const validLinks = report.validLinks.map((r) => r.link);
-    
+
     // Combine fixed and valid links
     let finalLinks = [...fixedLinks, ...validLinks];
 
@@ -147,9 +147,7 @@ export function RelatedCalculators({
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {validatedLinks.map((link) => {
-            const href = link.category
-              ? `/category/${link.category}/${link.slug}`
-              : `#`; // Fallback if category missing
+            const href = `/${link.slug}`;
 
             return (
               <Link
@@ -183,7 +181,7 @@ export function createCalculatorLinks(
 ): CalculatorLink[] {
   // Use getAllCalculatorSlugs which is client-safe and doesn't require fs
   const slugMap = getAllCalculatorSlugs();
-  
+
   return slugs
     .map((slug) => {
       const calcInfo = slugMap.get(slug);

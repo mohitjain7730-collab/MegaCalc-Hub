@@ -292,6 +292,6 @@ export function getCalculatorSeoContent(slug: string): CalculatorSeoContent | un
   return calculatorSeoContent[slug];
 }
 
-export function getRelatedCalculatorUrl(slug: string, category: string): string {
-  return `${BASE_URL}/category/${category}/${slug}`;
+export function getRelatedCalculatorUrl(slug: string, _category: string): string {
+  return `${BASE_URL}/${slug}`;
 }

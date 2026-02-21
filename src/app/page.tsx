@@ -104,7 +104,7 @@ export default function Home() {
                 {featuredGamingCalculators.map((calc) => (
                   <Link
                     key={calc.id}
-                    href={`/category/${calc.category}/${calc.slug}`}
+                    href={`/${calc.slug}`}
                     className="group rounded-lg border bg-card hover:border-primary/60 hover:shadow-sm transition-all p-3 sm:p-4 flex flex-col justify-between"
                   >
                     <div>
