@@ -51,7 +51,7 @@ const steps = [
     'Calculate to see the fair trade value of the Neon version.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-neon-pet-value-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-neon-pet-value-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

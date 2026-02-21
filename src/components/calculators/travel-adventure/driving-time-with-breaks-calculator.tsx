@@ -52,10 +52,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Travel Time Calculator', href: '/category/travel-adventure/travel-time-calculator' },
-    { name: 'Distance Between Cities Calculator', href: '/category/travel-adventure/distance-between-cities-calculator' },
-    { name: 'Travel Buffer Time Calculator', href: '/category/travel-adventure/travel-buffer-time-calculator' },
-    { name: 'Itinerary Time Planner', href: '/category/travel-adventure/itinerary-time-planner' },
+    { name: 'Travel Time Calculator', href: '/travel-time-calculator' },
+    { name: 'Distance Between Cities Calculator', href: '/distance-between-cities-calculator' },
+    { name: 'Travel Buffer Time Calculator', href: '/travel-buffer-time-calculator' },
+    { name: 'Itinerary Time Planner', href: '/itinerary-time-planner' },
 ];
 
 export default function DrivingTimeWithBreaksCalculator() {

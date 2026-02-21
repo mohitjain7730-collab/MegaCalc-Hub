@@ -81,7 +81,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-smelter-fuel-efficiency';
+const baseUrl = 'https://mycalculating.com/minecraft-smelter-fuel-efficiency';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

@@ -50,7 +50,7 @@ const steps = [
     'Calculate to see total Mega Value.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-mega-neon-value-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-mega-neon-value-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

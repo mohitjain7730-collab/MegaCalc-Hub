@@ -49,7 +49,7 @@ const steps = [
     'Follow the Verdict: Hold/Trade for profit, or Hatch for fun.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-egg-hatch-value-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-egg-hatch-value-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

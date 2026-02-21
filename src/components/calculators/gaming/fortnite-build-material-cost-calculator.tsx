@@ -85,7 +85,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-build-material-cost-calculator';
+const baseUrl = 'https://mycalculating.com/fortnite-build-material-cost-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

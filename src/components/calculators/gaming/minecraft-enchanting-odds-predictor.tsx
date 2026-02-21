@@ -83,7 +83,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-enchanting-odds-predictor';
+const baseUrl = 'https://mycalculating.com/minecraft-enchanting-odds-predictor';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

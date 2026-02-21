@@ -56,16 +56,16 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Backpack Weight Calculator', href: '/category/travel-adventure/backpack-weight-calculator' },
-    { name: 'Bus vs. Train Cost Comparison', href: '/category/travel-adventure/bus-vs-train-cost-calculator' },
-    { name: 'Car vs. Flight Cost Comparison', href: '/category/travel-adventure/car-vs-flight-calculator' },
-    { name: 'Cruise Cost Calculator', href: '/category/travel-adventure/cruise-cost-calculator' },
-    { name: 'Fuel Cost Calculator', href: '/category/travel-adventure/fuel-cost-calculator' },
-    { name: 'Hiking Calorie Calculator', href: '/category/travel-adventure/hiking-calorie-calculator' },
-    { name: 'Hiking Time Calculator', href: '/category/travel-adventure/hiking-time-calculator' },
-    { name: 'Hotel Cost Calculator', href: '/category/travel-adventure/hotel-cost-calculator' },
-    { name: 'Rental Car Cost Calculator', href: '/category/travel-adventure/rental-car-cost-calculator' },
-    { name: 'Trip Budget Calculator', href: '/category/travel-adventure/trip-budget-calculator' },
+    { name: 'Backpack Weight Calculator', href: '/backpack-weight-calculator' },
+    { name: 'Bus vs. Train Cost Comparison', href: '/bus-vs-train-cost-calculator' },
+    { name: 'Car vs. Flight Cost Comparison', href: '/car-vs-flight-calculator' },
+    { name: 'Cruise Cost Calculator', href: '/cruise-cost-calculator' },
+    { name: 'Fuel Cost Calculator', href: '/fuel-cost-calculator' },
+    { name: 'Hiking Calorie Calculator', href: '/hiking-calorie-calculator' },
+    { name: 'Hiking Time Calculator', href: '/hiking-time-calculator' },
+    { name: 'Hotel Cost Calculator', href: '/hotel-cost-calculator' },
+    { name: 'Rental Car Cost Calculator', href: '/rental-car-cost-calculator' },
+    { name: 'Trip Budget Calculator', href: '/trip-budget-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function GroupExpenseSplitter() {

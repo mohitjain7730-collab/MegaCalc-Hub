@@ -4,6 +4,30 @@ import React, { lazy, useState, useEffect } from 'react';
 
 // Static map of calculators to avoid dynamic import context creation
 const components: Record<string, React.LazyExoticComponent<React.ComponentType<any>>> = {
+  'baseball-batting-average-calculator-interactive': lazy(() => import('./baseball-batting-average-calculator-interactive')),
+  'baseball-batting-average-calculator': lazy(() => import('./baseball-batting-average-calculator')),
+  'baseball-era-calculator-interactive': lazy(() => import('./baseball-era-calculator-interactive')),
+  'baseball-era-calculator': lazy(() => import('./baseball-era-calculator')),
+  'baseball-fielding-percentage-calculator-interactive': lazy(() => import('./baseball-fielding-percentage-calculator-interactive')),
+  'baseball-fielding-percentage-calculator': lazy(() => import('./baseball-fielding-percentage-calculator')),
+  'baseball-on-base-percentage-calculator-interactive': lazy(() => import('./baseball-on-base-percentage-calculator-interactive')),
+  'baseball-on-base-percentage-calculator': lazy(() => import('./baseball-on-base-percentage-calculator')),
+  'baseball-ops-calculator-interactive': lazy(() => import('./baseball-ops-calculator-interactive')),
+  'baseball-ops-calculator': lazy(() => import('./baseball-ops-calculator')),
+  'baseball-pitch-efficiency-calculator-interactive': lazy(() => import('./baseball-pitch-efficiency-calculator-interactive')),
+  'baseball-pitch-efficiency-calculator': lazy(() => import('./baseball-pitch-efficiency-calculator')),
+  'baseball-run-differential-calculator-interactive': lazy(() => import('./baseball-run-differential-calculator-interactive')),
+  'baseball-run-differential-calculator': lazy(() => import('./baseball-run-differential-calculator')),
+  'baseball-slugging-percentage-calculator-interactive': lazy(() => import('./baseball-slugging-percentage-calculator-interactive')),
+  'baseball-slugging-percentage-calculator': lazy(() => import('./baseball-slugging-percentage-calculator')),
+  'baseball-strikeout-to-walk-ratio-calculator-interactive': lazy(() => import('./baseball-strikeout-to-walk-ratio-calculator-interactive')),
+  'baseball-strikeout-to-walk-ratio-calculator': lazy(() => import('./baseball-strikeout-to-walk-ratio-calculator')),
+  'baseball-team-batting-average-calculator-interactive': lazy(() => import('./baseball-team-batting-average-calculator-interactive')),
+  'baseball-team-batting-average-calculator': lazy(() => import('./baseball-team-batting-average-calculator')),
+  'baseball-whip-calculator-interactive': lazy(() => import('./baseball-whip-calculator-interactive')),
+  'baseball-whip-calculator': lazy(() => import('./baseball-whip-calculator')),
+  'baseball-win-loss-percentage-calculator-interactive': lazy(() => import('./baseball-win-loss-percentage-calculator-interactive')),
+  'baseball-win-loss-percentage-calculator': lazy(() => import('./baseball-win-loss-percentage-calculator')),
   'basketball-assist-to-turnover-ratio-calculator-interactive': lazy(() => import('./basketball-assist-to-turnover-ratio-calculator-interactive')),
   'basketball-assist-to-turnover-ratio-calculator': lazy(() => import('./basketball-assist-to-turnover-ratio-calculator')),
   'basketball-defensive-efficiency-calculator-interactive': lazy(() => import('./basketball-defensive-efficiency-calculator-interactive')),
@@ -55,21 +79,19 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'football-expected-assists-calculator-interactive': lazy(() => import('./football-expected-assists-calculator-interactive')),
   'football-expected-assists-calculator': lazy(() => import('./football-expected-assists-calculator')),
   'football-expected-goals-calculator-interactive': lazy(() => import('./football-expected-goals-calculator-interactive')),
-
   'football-expected-goals-calculator': lazy(() => import('./football-expected-goals-calculator')),
   'football-fantasy-points-calculator-interactive': lazy(() => import('./football-fantasy-points-calculator-interactive')),
   'football-fantasy-points-calculator': lazy(() => import('./football-fantasy-points-calculator')),
   'football-goal-conversion-rate-calculator-interactive': lazy(() => import('./football-goal-conversion-rate-calculator-interactive')),
   'football-goal-conversion-rate-calculator': lazy(() => import('./football-goal-conversion-rate-calculator')),
   'football-goals-per-90-minutes-calculator-interactive': lazy(() => import('./football-goals-per-90-minutes-calculator-interactive')),
-
   'football-goals-per-90-minutes-calculator': lazy(() => import('./football-goals-per-90-minutes-calculator')),
   'football-league-standing-probability-calculator-interactive': lazy(() => import('./football-league-standing-probability-calculator-interactive')),
   'football-league-standing-probability-calculator': lazy(() => import('./football-league-standing-probability-calculator')),
-  'football-pass-accuracy-calculator-interactive': lazy(() => import('./football-pass-accuracy-calculator-interactive')),
-  'football-pass-accuracy-calculator': lazy(() => import('./football-pass-accuracy-calculator')),
   'football-offside-frequency-calculator-interactive': lazy(() => import('./football-offside-frequency-calculator-interactive')),
   'football-offside-frequency-calculator': lazy(() => import('./football-offside-frequency-calculator')),
+  'football-pass-accuracy-calculator-interactive': lazy(() => import('./football-pass-accuracy-calculator-interactive')),
+  'football-pass-accuracy-calculator': lazy(() => import('./football-pass-accuracy-calculator')),
   'football-possession-percentage-calculator-interactive': lazy(() => import('./football-possession-percentage-calculator-interactive')),
   'football-possession-percentage-calculator': lazy(() => import('./football-possession-percentage-calculator')),
   'football-save-percentage-calculator-interactive': lazy(() => import('./football-save-percentage-calculator-interactive')),
@@ -96,63 +118,38 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'team-batting-average-calculator': lazy(() => import('./team-batting-average-calculator')),
   'team-run-rate-calculator-interactive': lazy(() => import('./team-run-rate-calculator-interactive')),
   'team-run-rate-calculator': lazy(() => import('./team-run-rate-calculator')),
-  'tennis-first-serve-percentage-calculator-interactive': lazy(() => import('./tennis-first-serve-percentage-calculator-interactive')),
-  'tennis-first-serve-percentage-calculator': lazy(() => import('./tennis-first-serve-percentage-calculator')),
-  'tennis-break-point-conversion-rate-calculator-interactive': lazy(() => import('./tennis-break-point-conversion-rate-calculator-interactive')),
-  'tennis-break-point-conversion-rate-calculator': lazy(() => import('./tennis-break-point-conversion-rate-calculator')),
-  'tennis-win-ratio-calculator-interactive': lazy(() => import('./tennis-win-ratio-calculator-interactive')),
-  'tennis-win-ratio-calculator': lazy(() => import('./tennis-win-ratio-calculator')),
   'tennis-aces-per-match-calculator-interactive': lazy(() => import('./tennis-aces-per-match-calculator-interactive')),
   'tennis-aces-per-match-calculator': lazy(() => import('./tennis-aces-per-match-calculator')),
+  'tennis-break-point-conversion-rate-calculator-interactive': lazy(() => import('./tennis-break-point-conversion-rate-calculator-interactive')),
+  'tennis-break-point-conversion-rate-calculator': lazy(() => import('./tennis-break-point-conversion-rate-calculator')),
   'tennis-double-fault-percentage-calculator-interactive': lazy(() => import('./tennis-double-fault-percentage-calculator-interactive')),
   'tennis-double-fault-percentage-calculator': lazy(() => import('./tennis-double-fault-percentage-calculator')),
-  'tennis-serve-accuracy-calculator-interactive': lazy(() => import('./tennis-serve-accuracy-calculator-interactive')),
-  'tennis-serve-accuracy-calculator': lazy(() => import('./tennis-serve-accuracy-calculator')),
-  'tennis-return-points-won-calculator-interactive': lazy(() => import('./tennis-return-points-won-calculator-interactive')),
-  'tennis-return-points-won-calculator': lazy(() => import('./tennis-return-points-won-calculator')),
-  'tennis-hold-percentage-calculator-interactive': lazy(() => import('./tennis-hold-percentage-calculator-interactive')),
-  'tennis-hold-percentage-calculator': lazy(() => import('./tennis-hold-percentage-calculator')),
   'tennis-elo-rating-calculator-interactive': lazy(() => import('./tennis-elo-rating-calculator-interactive')),
   'tennis-elo-rating-calculator': lazy(() => import('./tennis-elo-rating-calculator')),
+  'tennis-first-serve-percentage-calculator-interactive': lazy(() => import('./tennis-first-serve-percentage-calculator-interactive')),
+  'tennis-first-serve-percentage-calculator': lazy(() => import('./tennis-first-serve-percentage-calculator')),
+  'tennis-hold-percentage-calculator-interactive': lazy(() => import('./tennis-hold-percentage-calculator-interactive')),
+  'tennis-hold-percentage-calculator': lazy(() => import('./tennis-hold-percentage-calculator')),
+  'tennis-return-points-won-calculator-interactive': lazy(() => import('./tennis-return-points-won-calculator-interactive')),
+  'tennis-return-points-won-calculator': lazy(() => import('./tennis-return-points-won-calculator')),
+  'tennis-serve-accuracy-calculator-interactive': lazy(() => import('./tennis-serve-accuracy-calculator-interactive')),
+  'tennis-serve-accuracy-calculator': lazy(() => import('./tennis-serve-accuracy-calculator')),
   'tennis-set-win-percentage-calculator-interactive': lazy(() => import('./tennis-set-win-percentage-calculator-interactive')),
   'tennis-set-win-percentage-calculator': lazy(() => import('./tennis-set-win-percentage-calculator')),
-  'baseball-batting-average-calculator-interactive': lazy(() => import('./baseball-batting-average-calculator-interactive')),
-  'baseball-batting-average-calculator': lazy(() => import('./baseball-batting-average-calculator')),
-  'baseball-on-base-percentage-calculator-interactive': lazy(() => import('./baseball-on-base-percentage-calculator-interactive')),
-  'baseball-on-base-percentage-calculator': lazy(() => import('./baseball-on-base-percentage-calculator')),
-  'baseball-slugging-percentage-calculator-interactive': lazy(() => import('./baseball-slugging-percentage-calculator-interactive')),
-  'baseball-slugging-percentage-calculator': lazy(() => import('./baseball-slugging-percentage-calculator')),
-  'baseball-ops-calculator-interactive': lazy(() => import('./baseball-ops-calculator-interactive')),
-  'baseball-ops-calculator': lazy(() => import('./baseball-ops-calculator')),
-  'baseball-era-calculator-interactive': lazy(() => import('./baseball-era-calculator-interactive')),
-  'baseball-era-calculator': lazy(() => import('./baseball-era-calculator')),
-  'baseball-whip-calculator-interactive': lazy(() => import('./baseball-whip-calculator-interactive')),
-  'baseball-whip-calculator': lazy(() => import('./baseball-whip-calculator')),
-  'baseball-fielding-percentage-calculator-interactive': lazy(() => import('./baseball-fielding-percentage-calculator-interactive')),
-  'baseball-fielding-percentage-calculator': lazy(() => import('./baseball-fielding-percentage-calculator')),
-  'baseball-run-differential-calculator-interactive': lazy(() => import('./baseball-run-differential-calculator-interactive')),
-  'baseball-run-differential-calculator': lazy(() => import('./baseball-run-differential-calculator')),
-  'baseball-win-loss-percentage-calculator-interactive': lazy(() => import('./baseball-win-loss-percentage-calculator-interactive')),
-  'baseball-win-loss-percentage-calculator': lazy(() => import('./baseball-win-loss-percentage-calculator')),
-  'baseball-strikeout-to-walk-ratio-calculator-interactive': lazy(() => import('./baseball-strikeout-to-walk-ratio-calculator-interactive')),
-  'baseball-strikeout-to-walk-ratio-calculator': lazy(() => import('./baseball-strikeout-to-walk-ratio-calculator')),
+  'tennis-win-ratio-calculator-interactive': lazy(() => import('./tennis-win-ratio-calculator-interactive')),
+  'tennis-win-ratio-calculator': lazy(() => import('./tennis-win-ratio-calculator')),
+  'volleyball-attack-success-rate-calculator-interactive': lazy(() => import('./volleyball-attack-success-rate-calculator-interactive')),
+  'volleyball-attack-success-rate-calculator': lazy(() => import('./volleyball-attack-success-rate-calculator')),
+  'volleyball-serve-efficiency-calculator-interactive': lazy(() => import('./volleyball-serve-efficiency-calculator-interactive')),
+  'volleyball-serve-efficiency-calculator': lazy(() => import('./volleyball-serve-efficiency-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {
   const Component = components[calculatorSlug];
 
-  useEffect(() => {
-    // Debug log to verify what slug is being received
-    console.log(`[CalculatorRegistry] Looking for: "${calculatorSlug}"`);
-    if (!components[calculatorSlug]) {
-      console.warn(`[CalculatorRegistry] Component not found for key: "${calculatorSlug}"`);
-      console.log(`[CalculatorRegistry] Available keys:`, Object.keys(components));
-    }
-  }, [calculatorSlug]);
-
   if (!Component) {
     console.warn(`Calculator not found in registry: ${calculatorSlug}`);
-    return <div className="p-8 text-center text-muted-foreground">Calculator not found: {calculatorSlug}</div>;
+    return <div className="p-8 text-center text-muted-foreground">Calculator not found.</div>;
   }
 
   return <Component />;

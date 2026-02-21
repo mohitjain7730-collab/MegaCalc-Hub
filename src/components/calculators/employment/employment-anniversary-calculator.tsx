@@ -213,8 +213,8 @@ export default function EmploymentAnniversaryCalculator() {
             <ul className="list-disc pl-5 text-sm text-primary">
               <li><Link href="/category/time-date/age-calculator" className="hover:underline">Age Calculator</Link></li>
               <li><Link href="/category/time-date/date-difference-calculator" className="hover:underline">Date Difference Calculator</Link></li>
-              <li><Link href="/category/time-date/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
-              <li><Link href="/category/time-date/probation-period-calculator" className="hover:underline">Probation Period End Date Calculator</Link></li>
+              <li><Link href="/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
+              <li><Link href="/probation-period-calculator" className="hover:underline">Probation Period End Date Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

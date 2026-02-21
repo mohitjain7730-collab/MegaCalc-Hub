@@ -77,7 +77,7 @@ const faqs = [
     }
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/valorant-rank-progression';
+const baseUrl = 'https://mycalculating.com/valorant-rank-progression';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

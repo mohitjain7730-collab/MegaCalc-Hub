@@ -48,10 +48,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Backpack Weight Calculator', href: '/category/travel-adventure/backpack-weight-calculator' },
-    { name: 'Hiking Time Calculator', href: '/category/travel-adventure/hiking-time-calculator' },
-    { name: 'Trip Budget Calculator', href: '/category/travel-adventure/trip-budget-calculator' },
-    { name: 'Cost Per Mile Calculator', href: '/category/travel-adventure/cost-per-mile-calculator' },
+    { name: 'Backpack Weight Calculator', href: '/backpack-weight-calculator' },
+    { name: 'Hiking Time Calculator', href: '/hiking-time-calculator' },
+    { name: 'Trip Budget Calculator', href: '/trip-budget-calculator' },
+    { name: 'Cost Per Mile Calculator', href: '/cost-per-mile-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function HikingCalorieCalculator() {

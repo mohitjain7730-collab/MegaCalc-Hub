@@ -229,8 +229,8 @@ export default function ContractDurationCalculator() {
             <ul className="list-disc pl-5 text-sm text-primary">
               <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
               <li><Link href="/category/time-date/date-difference-calculator" className="hover:underline">Date Difference Calculator</Link></li>
-              <li><Link href="/category/time-date/notice-period-calculator" className="hover:underline">Notice Period End Date Calculator</Link></li>
-              <li><Link href="/category/time-date/probation-period-calculator" className="hover:underline">Probation Period End Date Calculator</Link></li>
+              <li><Link href="/notice-period-calculator" className="hover:underline">Notice Period End Date Calculator</Link></li>
+              <li><Link href="/probation-period-calculator" className="hover:underline">Probation Period End Date Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

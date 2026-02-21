@@ -78,7 +78,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-storm-surge-timer';
+const baseUrl = 'https://mycalculating.com/fortnite-storm-surge-timer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

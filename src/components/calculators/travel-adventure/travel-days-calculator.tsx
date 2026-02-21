@@ -43,11 +43,11 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Itinerary Time Planner', href: '/category/travel-adventure/itinerary-time-planner' },
-    { name: 'Time Zone Difference', href: '/category/travel-adventure/time-zone-difference-calculator' },
-    { name: 'Travel Buffer Time Calculator', href: '/category/travel-adventure/travel-buffer-time-calculator' },
-    { name: 'Driving Time with Breaks Calculator', href: '/category/travel-adventure/driving-time-with-breaks-calculator' },
-    { name: 'Layover Time Calculator', href: '/category/travel-adventure/layover-time-calculator' },
+    { name: 'Itinerary Time Planner', href: '/itinerary-time-planner' },
+    { name: 'Time Zone Difference', href: '/time-zone-difference-calculator' },
+    { name: 'Travel Buffer Time Calculator', href: '/travel-buffer-time-calculator' },
+    { name: 'Driving Time with Breaks Calculator', href: '/driving-time-with-breaks-calculator' },
+    { name: 'Layover Time Calculator', href: '/layover-time-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function TravelDaysCalculator() {

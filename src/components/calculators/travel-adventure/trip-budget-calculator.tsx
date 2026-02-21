@@ -47,18 +47,18 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Backpack Weight Calculator', href: '/category/travel-adventure/backpack-weight-calculator' },
-    { name: 'Bus vs. Train Cost Comparison', href: '/category/travel-adventure/bus-vs-train-cost-calculator' },
-    { name: 'Cost Per Mile Calculator', href: '/category/travel-adventure/cost-per-mile-calculator' },
-    { name: 'Cruise Cost Calculator', href: '/category/travel-adventure/cruise-cost-calculator' },
-    { name: 'EV Charging Cost Calculator', href: '/category/travel-adventure/ev-charging-cost-calculator' },
-    { name: 'Fuel Cost Calculator', href: '/category/travel-adventure/fuel-cost-calculator' },
-    { name: 'Group Expense Splitter', href: '/category/travel-adventure/group-expense-splitter' },
-    { name: 'Hiking Calorie Calculator', href: '/category/travel-adventure/hiking-calorie-calculator' },
-    { name: 'Hiking Time Calculator', href: '/category/travel-adventure/hiking-time-calculator' },
-    { name: 'Hotel Cost Calculator', href: '/category/travel-adventure/hotel-cost-calculator' },
-    { name: 'Rental Car Cost Calculator', href: '/category/travel-adventure/rental-car-cost-calculator' },
-    { name: 'Travel Days Calculator', href: '/category/travel-adventure/travel-days-calculator' },
+    { name: 'Backpack Weight Calculator', href: '/backpack-weight-calculator' },
+    { name: 'Bus vs. Train Cost Comparison', href: '/bus-vs-train-cost-calculator' },
+    { name: 'Cost Per Mile Calculator', href: '/cost-per-mile-calculator' },
+    { name: 'Cruise Cost Calculator', href: '/cruise-cost-calculator' },
+    { name: 'EV Charging Cost Calculator', href: '/ev-charging-cost-calculator' },
+    { name: 'Fuel Cost Calculator', href: '/fuel-cost-calculator' },
+    { name: 'Group Expense Splitter', href: '/group-expense-splitter' },
+    { name: 'Hiking Calorie Calculator', href: '/hiking-calorie-calculator' },
+    { name: 'Hiking Time Calculator', href: '/hiking-time-calculator' },
+    { name: 'Hotel Cost Calculator', href: '/hotel-cost-calculator' },
+    { name: 'Rental Car Cost Calculator', href: '/rental-car-cost-calculator' },
+    { name: 'Travel Days Calculator', href: '/travel-days-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8', '#82ca9d'];

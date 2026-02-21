@@ -49,7 +49,7 @@ const steps = [
     'Review the "99% Confidence" number to see how many eggs you really need to be safe.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-legendary-pet-probability-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-legendary-pet-probability-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

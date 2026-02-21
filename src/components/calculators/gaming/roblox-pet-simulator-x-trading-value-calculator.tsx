@@ -42,7 +42,7 @@ const faqs = [
     },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-simulator-x-trading-value-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-pet-simulator-x-trading-value-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

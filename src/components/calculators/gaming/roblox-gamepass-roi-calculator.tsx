@@ -67,7 +67,7 @@ const steps = [
   'Check the "Cost Value" score to see if it is a smart buy.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-gamepass-roi-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-gamepass-roi-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

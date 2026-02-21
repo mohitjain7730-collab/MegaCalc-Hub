@@ -54,7 +54,7 @@ const faqs = [
   }
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-egg-hatch-odds-simulator';
+const baseUrl = 'https://mycalculating.com/roblox-egg-hatch-odds-simulator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

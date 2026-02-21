@@ -57,7 +57,7 @@ const schemaMarkup = {
             itemListElement: [
                 { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://mycalculating.com' },
                 { '@type': 'ListItem', position: 2, name: 'Gaming', item: 'https://mycalculating.com/category/gaming' },
-                { '@type': 'ListItem', position: 3, name: 'Adopt Me Bucks to Robux Converter', item: 'https://mycalculating.com/category/gaming/roblox-adopt-me-bucks-to-robux-converter' },
+                { '@type': 'ListItem', position: 3, name: 'Adopt Me Bucks to Robux Converter', item: 'https://mycalculating.com/roblox-adopt-me-bucks-to-robux-converter' },
             ],
         },
         {
@@ -66,7 +66,7 @@ const schemaMarkup = {
             applicationCategory: 'Calculator',
             operatingSystem: 'Web Browser',
             description: 'Convert Adopt Me Bucks to Robux using real trading values and official shop rates.',
-            url: 'https://mycalculating.com/category/gaming/roblox-adopt-me-bucks-to-robux-converter',
+            url: 'https://mycalculating.com/roblox-adopt-me-bucks-to-robux-converter',
             offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         },
         {

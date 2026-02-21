@@ -41,9 +41,9 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Fuel Cost Calculator', href: '/category/travel-adventure/fuel-cost-calculator' },
-    { name: 'Car vs Flight Calculator', href: '/category/travel-adventure/car-vs-flight-calculator' },
-    { name: 'Trip Budget Calculator', href: '/category/travel-adventure/trip-budget-calculator' },
+    { name: 'Fuel Cost Calculator', href: '/fuel-cost-calculator' },
+    { name: 'Car vs Flight Calculator', href: '/car-vs-flight-calculator' },
+    { name: 'Trip Budget Calculator', href: '/trip-budget-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function CostPerMileCalculator() {

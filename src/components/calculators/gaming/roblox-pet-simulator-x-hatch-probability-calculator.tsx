@@ -42,7 +42,7 @@ const faqs = [
     },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-simulator-x-hatch-probability-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-pet-simulator-x-hatch-probability-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

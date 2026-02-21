@@ -49,7 +49,7 @@ const steps = [
     'Calculate to see your effective tasks per hour and total time saved.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-pet-aging-speed-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-pet-aging-speed-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

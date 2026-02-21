@@ -50,10 +50,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Distance Between Cities Calculator', href: '/category/travel-adventure/distance-between-cities-calculator' },
-    { name: 'Driving Time with Breaks Calculator', href: '/category/travel-adventure/driving-time-with-breaks-calculator' },
-    { name: 'Flight Duration Calculator', href: '/category/travel-adventure/flight-duration-calculator' },
-    { name: 'Time Zone Difference Calculator', href: '/category/travel-adventure/time-zone-difference-calculator' },
+    { name: 'Distance Between Cities Calculator', href: '/distance-between-cities-calculator' },
+    { name: 'Driving Time with Breaks Calculator', href: '/driving-time-with-breaks-calculator' },
+    { name: 'Flight Duration Calculator', href: '/flight-duration-calculator' },
+    { name: 'Time Zone Difference Calculator', href: '/time-zone-difference-calculator' },
 ];
 
 

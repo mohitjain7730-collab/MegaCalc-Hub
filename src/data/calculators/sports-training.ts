@@ -520,5 +520,37 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "baseball-run-differential-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Baseball/Softball Run Differential instantly. Measure offensive and defensive balance, predict winning percentage, and analyze team performance with expert analysis."
+    },
+    {
+        "id": 10066,
+        "name": "Baseball/Softball Team Batting Average Calculator",
+        "description": "Calculate your team's collective batting average to measure lineup contact ability, offensive identity, and competitive standing.",
+        "slug": "baseball-team-batting-average-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Team Batting Average instantly. Measure lineup contact rate, compare to MLB benchmarks, and get expert insights on improving team offensive output."
+    },
+    {
+        "id": 10067,
+        "name": "Baseball/Softball Pitch Efficiency Calculator",
+        "description": "Calculate pitch efficiency using Pitches Per Inning, Strike Rate, Pitches Per Batter, and First-Pitch Strike Rate to evaluate pitching command and endurance.",
+        "slug": "baseball-pitch-efficiency-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Baseball/Softball Pitch Efficiency instantly. Measure pitching command with composite scoring across PPI, strike rate, and first-pitch strike rate with expert benchmarks."
+    },
+    {
+        "id": 10068,
+        "name": "Volleyball Attack Success Rate Calculator",
+        "description": "Calculate volleyball attack success rate and hitting efficiency to measure offensive contribution — kills, errors, and net attacking value.",
+        "slug": "volleyball-attack-success-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Volleyball Attack Success Rate and Hitting Efficiency instantly. Measure kill percentage, error rate, and net offensive contribution with NCAA and professional benchmarks."
+    },
+    {
+        "id": 10069,
+        "name": "Volleyball Serve Efficiency Calculator",
+        "description": "Calculate volleyball serve efficiency, ace rate, and in-bound serve percentage to measure serving contribution and identify whether your serve is a weapon or a liability.",
+        "slug": "volleyball-serve-efficiency-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Volleyball Serve Efficiency instantly. Measure ace rate, service error rate, and net serving contribution with competitive benchmarks and expert strategic insights."
     }
 ];

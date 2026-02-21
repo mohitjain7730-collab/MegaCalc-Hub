@@ -50,16 +50,16 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Backpack Weight Calculator', href: '/category/travel-adventure/backpack-weight-calculator' },
-    { name: 'Car vs. Flight Cost Comparison', href: '/category/travel-adventure/car-vs-flight-calculator' },
-    { name: 'Cost Per Mile Calculator', href: '/category/travel-adventure/cost-per-mile-calculator' },
-    { name: 'Driving Time with Breaks Calculator', href: '/category/travel-adventure/driving-time-with-breaks-calculator' },
-    { name: 'EV Charging Cost Calculator', href: '/category/travel-adventure/ev-charging-cost-calculator' },
-    { name: 'Hiking Calorie Calculator', href: '/category/travel-adventure/hiking-calorie-calculator' },
-    { name: 'Hiking Time Calculator', href: '/category/travel-adventure/hiking-time-calculator' },
-    { name: 'Multi-Stop Route Planner', href: '/category/travel-adventure/multi-stop-route-planner' },
-    { name: 'Rental Car Cost Calculator', href: '/category/travel-adventure/rental-car-cost-calculator' },
-    { name: 'Trip Budget Calculator', href: '/category/travel-adventure/trip-budget-calculator' },
+    { name: 'Backpack Weight Calculator', href: '/backpack-weight-calculator' },
+    { name: 'Car vs. Flight Cost Comparison', href: '/car-vs-flight-calculator' },
+    { name: 'Cost Per Mile Calculator', href: '/cost-per-mile-calculator' },
+    { name: 'Driving Time with Breaks Calculator', href: '/driving-time-with-breaks-calculator' },
+    { name: 'EV Charging Cost Calculator', href: '/ev-charging-cost-calculator' },
+    { name: 'Hiking Calorie Calculator', href: '/hiking-calorie-calculator' },
+    { name: 'Hiking Time Calculator', href: '/hiking-time-calculator' },
+    { name: 'Multi-Stop Route Planner', href: '/multi-stop-route-planner' },
+    { name: 'Rental Car Cost Calculator', href: '/rental-car-cost-calculator' },
+    { name: 'Trip Budget Calculator', href: '/trip-budget-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function FuelCostCalculator() {

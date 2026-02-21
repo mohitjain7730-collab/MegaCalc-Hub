@@ -48,10 +48,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Travel Days Calculator', href: '/category/travel-adventure/travel-days-calculator' },
-    { name: 'Time Zone Difference Calculator', href: '/category/travel-adventure/time-zone-difference-calculator' },
-    { name: 'Travel Buffer Time Calculator', href: '/category/travel-adventure/travel-buffer-time-calculator' },
-    { name: 'Layover Time Calculator', href: '/category/travel-adventure/layover-time-calculator' },
+    { name: 'Travel Days Calculator', href: '/travel-days-calculator' },
+    { name: 'Time Zone Difference Calculator', href: '/time-zone-difference-calculator' },
+    { name: 'Travel Buffer Time Calculator', href: '/travel-buffer-time-calculator' },
+    { name: 'Layover Time Calculator', href: '/layover-time-calculator' },
 ];
 
 export default function JetLagCalculator() {

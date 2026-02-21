@@ -40,21 +40,21 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators: { name: string; href: string }[] = [
-    { name: 'Average Percentage', href: '/category/education/maths/average-percentage-calculator' },
-    { name: 'Comparative Difference', href: '/category/education/maths/comparative-difference-calculator' },
-    { name: 'Compounding Increase', href: '/category/education/maths/compounding-increase-calculator' },
-    { name: 'Doubling Time', href: '/category/education/maths/doubling-time-calculator' },
-    { name: 'Fraction to Percent', href: '/category/education/maths/fraction-to-percent-calculator' },
-    { name: 'Fuel Cost', href: '/category/education/maths/fuel-cost-calculator' },
-    { name: 'Investment Growth', href: '/category/education/maths/investment-growth-calculator' },
-    { name: 'Percentage of a Percentage', href: '/category/education/maths/percentage-of-a-percentage-calculator' },
-    { name: 'Percentage Point', href: '/category/education/maths/percentage-point-calculator' },
-    { name: 'Percent Error', href: '/category/education/maths/percent-error-calculator' },
-    { name: 'Percent to Goal', href: '/category/education/maths/percent-to-goal-calculator' },
-    { name: 'Relative Change', href: '/category/education/maths/relative-change-calculator' },
-    { name: 'Slope Percentage', href: '/category/education/maths/slope-percentage-calculator' },
-    { name: 'Time Percentage', href: '/category/education/maths/time-percentage-calculator' },
-    { name: 'Value Percentage', href: '/category/education/maths/value-percentage-calculator' },
+    { name: 'Average Percentage', href: '/average-percentage-calculator' },
+    { name: 'Comparative Difference', href: '/comparative-difference-calculator' },
+    { name: 'Compounding Increase', href: '/compounding-increase-calculator' },
+    { name: 'Doubling Time', href: '/doubling-time-calculator' },
+    { name: 'Fraction to Percent', href: '/fraction-to-percent-calculator' },
+    { name: 'Fuel Cost', href: '/fuel-cost-calculator' },
+    { name: 'Investment Growth', href: '/investment-growth-calculator' },
+    { name: 'Percentage of a Percentage', href: '/percentage-of-a-percentage-calculator' },
+    { name: 'Percentage Point', href: '/percentage-point-calculator' },
+    { name: 'Percent Error', href: '/percent-error-calculator' },
+    { name: 'Percent to Goal', href: '/percent-to-goal-calculator' },
+    { name: 'Relative Change', href: '/relative-change-calculator' },
+    { name: 'Slope Percentage', href: '/slope-percentage-calculator' },
+    { name: 'Time Percentage', href: '/time-percentage-calculator' },
+    { name: 'Value Percentage', href: '/value-percentage-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 export default function HistoricChangeCalculator() {

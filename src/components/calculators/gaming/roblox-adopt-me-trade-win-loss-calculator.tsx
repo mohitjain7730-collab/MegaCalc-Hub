@@ -50,7 +50,7 @@ const steps = [
     'Click Calculate to see if it is a Win, Fair, or Loss.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-trade-win-loss-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-trade-win-loss-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

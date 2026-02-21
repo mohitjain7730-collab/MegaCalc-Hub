@@ -77,7 +77,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-dupe-value-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-pet-dupe-value-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

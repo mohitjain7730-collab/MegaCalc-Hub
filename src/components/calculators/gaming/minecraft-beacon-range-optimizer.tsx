@@ -82,7 +82,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-beacon-range-optimizer';
+const baseUrl = 'https://mycalculating.com/minecraft-beacon-range-optimizer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

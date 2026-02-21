@@ -77,7 +77,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-reload-time-reducer-calculator';
+const baseUrl = 'https://mycalculating.com/fortnite-reload-time-reducer-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

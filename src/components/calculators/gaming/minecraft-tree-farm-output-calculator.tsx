@@ -78,7 +78,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-tree-farm-output-calculator';
+const baseUrl = 'https://mycalculating.com/minecraft-tree-farm-output-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

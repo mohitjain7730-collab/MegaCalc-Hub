@@ -74,7 +74,7 @@ const faqs = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-value-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-pet-value-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

@@ -79,7 +79,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-loot-drop-odds-estimator';
+const baseUrl = 'https://mycalculating.com/fortnite-loot-drop-odds-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

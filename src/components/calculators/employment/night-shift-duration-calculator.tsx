@@ -157,10 +157,10 @@ export default function NightShiftDurationCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/category/time-date/shift-rotation-calculator" className="hover:underline">Shift Rotation Calculator</Link></li>
-              <li><Link href="/category/time-date/split-shift-hours-calculator" className="hover:underline">Split Shift Hours Calculator</Link></li>
+              <li><Link href="/shift-rotation-calculator" className="hover:underline">Shift Rotation Calculator</Link></li>
+              <li><Link href="/split-shift-hours-calculator" className="hover:underline">Split Shift Hours Calculator</Link></li>
               <li><Link href="/category/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
-              <li><Link href="/category/time-date/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
+              <li><Link href="/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

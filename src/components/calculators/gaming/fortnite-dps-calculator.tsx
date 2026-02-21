@@ -77,7 +77,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-dps-calculator';
+const baseUrl = 'https://mycalculating.com/fortnite-dps-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

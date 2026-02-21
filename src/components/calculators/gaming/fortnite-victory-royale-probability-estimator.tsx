@@ -79,7 +79,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-victory-royale-probability-estimator';
+const baseUrl = 'https://mycalculating.com/fortnite-victory-royale-probability-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

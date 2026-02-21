@@ -76,7 +76,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-redstone-signal-delay-calculator';
+const baseUrl = 'https://mycalculating.com/minecraft-redstone-signal-delay-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

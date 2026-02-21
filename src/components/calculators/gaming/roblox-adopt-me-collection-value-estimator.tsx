@@ -42,7 +42,7 @@ const faqs = [
     },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-collection-value-estimator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-collection-value-estimator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

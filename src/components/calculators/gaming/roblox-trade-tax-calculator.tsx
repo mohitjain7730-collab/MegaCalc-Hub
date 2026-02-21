@@ -77,7 +77,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-trade-tax-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-trade-tax-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

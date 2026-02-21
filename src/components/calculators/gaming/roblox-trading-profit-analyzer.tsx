@@ -79,7 +79,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-trading-profit-analyzer';
+const baseUrl = 'https://mycalculating.com/roblox-trading-profit-analyzer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

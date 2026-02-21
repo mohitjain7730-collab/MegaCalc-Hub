@@ -42,10 +42,10 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Travel Time Calculator', href: '/category/travel-adventure/travel-time-calculator' },
-    { name: 'Flight Duration Calculator', href: '/category/travel-adventure/flight-duration-calculator' },
-    { name: 'Time Zone Difference Calculator', href: '/category/travel-adventure/time-zone-difference-calculator' },
-    { name: 'Travel Days Calculator', href: '/category/travel-adventure/travel-days-calculator' },
+    { name: 'Travel Time Calculator', href: '/travel-time-calculator' },
+    { name: 'Flight Duration Calculator', href: '/flight-duration-calculator' },
+    { name: 'Time Zone Difference Calculator', href: '/time-zone-difference-calculator' },
+    { name: 'Travel Days Calculator', href: '/travel-days-calculator' },
 ];
 
 export default function DistanceBetweenCitiesCalculator() {

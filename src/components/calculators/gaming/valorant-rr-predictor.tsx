@@ -61,7 +61,7 @@ const faqs = [
     },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/valorant-rr-predictor';
+const baseUrl = 'https://mycalculating.com/valorant-rr-predictor';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

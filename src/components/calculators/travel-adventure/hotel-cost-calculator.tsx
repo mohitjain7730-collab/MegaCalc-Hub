@@ -42,15 +42,15 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const relatedCalculators = [
-    { name: 'Backpack Weight Calculator', href: '/category/travel-adventure/backpack-weight-calculator' },
-    { name: 'Bus vs. Train Cost Comparison', href: '/category/travel-adventure/bus-vs-train-cost-calculator' },
-    { name: 'Cruise Cost Calculator', href: '/category/travel-adventure/cruise-cost-calculator' },
-    { name: 'Group Expense Splitter', href: '/category/travel-adventure/group-expense-splitter' },
-    { name: 'Hiking Calorie Calculator', href: '/category/travel-adventure/hiking-calorie-calculator' },
-    { name: 'Hiking Time Calculator', href: '/category/travel-adventure/hiking-time-calculator' },
-    { name: 'Rental Car Cost Calculator', href: '/category/travel-adventure/rental-car-cost-calculator' },
-    { name: 'Travel Days Calculator', href: '/category/travel-adventure/travel-days-calculator' },
-    { name: 'Trip Budget Calculator', href: '/category/travel-adventure/trip-budget-calculator' },
+    { name: 'Backpack Weight Calculator', href: '/backpack-weight-calculator' },
+    { name: 'Bus vs. Train Cost Comparison', href: '/bus-vs-train-cost-calculator' },
+    { name: 'Cruise Cost Calculator', href: '/cruise-cost-calculator' },
+    { name: 'Group Expense Splitter', href: '/group-expense-splitter' },
+    { name: 'Hiking Calorie Calculator', href: '/hiking-calorie-calculator' },
+    { name: 'Hiking Time Calculator', href: '/hiking-time-calculator' },
+    { name: 'Rental Car Cost Calculator', href: '/rental-car-cost-calculator' },
+    { name: 'Travel Days Calculator', href: '/travel-days-calculator' },
+    { name: 'Trip Budget Calculator', href: '/trip-budget-calculator' },
 ].sort((a, b) => a.name.localeCompare(b.name));
 
 

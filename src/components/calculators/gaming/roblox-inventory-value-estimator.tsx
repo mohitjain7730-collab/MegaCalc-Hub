@@ -79,7 +79,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-inventory-value-estimator';
+const baseUrl = 'https://mycalculating.com/roblox-inventory-value-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

@@ -50,7 +50,7 @@ const steps = [
     'The calculator will estimate total hours required based on average task cycles.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-age-up-time-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-age-up-time-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

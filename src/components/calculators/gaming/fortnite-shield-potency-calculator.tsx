@@ -77,7 +77,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-shield-potency-calculator';
+const baseUrl = 'https://mycalculating.com/fortnite-shield-potency-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

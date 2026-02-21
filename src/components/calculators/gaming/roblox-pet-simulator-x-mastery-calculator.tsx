@@ -42,7 +42,7 @@ const faqs = [
     },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-pet-simulator-x-mastery-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-pet-simulator-x-mastery-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

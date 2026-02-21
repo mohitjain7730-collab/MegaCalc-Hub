@@ -49,7 +49,7 @@ const steps = [
     'Get a Safety Verdict. If it says RED, block the user.',
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-adopt-me-trust-trade-safety-calculator';
+const baseUrl = 'https://mycalculating.com/roblox-adopt-me-trust-trade-safety-calculator';
 
 const schemaMarkup = {
     '@context': 'https://schema.org',

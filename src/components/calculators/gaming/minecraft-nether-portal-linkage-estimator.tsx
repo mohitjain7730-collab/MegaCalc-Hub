@@ -81,7 +81,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-nether-portal-linkage-estimator';
+const baseUrl = 'https://mycalculating.com/minecraft-nether-portal-linkage-estimator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

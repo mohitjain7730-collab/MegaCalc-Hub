@@ -79,7 +79,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/roblox-limited-item-resale-predictor';
+const baseUrl = 'https://mycalculating.com/roblox-limited-item-resale-predictor';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

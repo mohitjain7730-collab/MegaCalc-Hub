@@ -79,7 +79,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/fortnite-xp-per-match-optimizer';
+const baseUrl = 'https://mycalculating.com/fortnite-xp-per-match-optimizer';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

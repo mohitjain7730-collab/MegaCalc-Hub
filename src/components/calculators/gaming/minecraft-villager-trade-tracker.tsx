@@ -88,7 +88,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-villager-trade-tracker';
+const baseUrl = 'https://mycalculating.com/minecraft-villager-trade-tracker';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',

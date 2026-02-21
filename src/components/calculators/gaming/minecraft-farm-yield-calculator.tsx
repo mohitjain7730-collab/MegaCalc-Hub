@@ -84,7 +84,7 @@ const relatedCalculators = [
   },
 ];
 
-const baseUrl = 'https://mycalculating.com/category/gaming/minecraft-farm-yield-calculator';
+const baseUrl = 'https://mycalculating.com/minecraft-farm-yield-calculator';
 
 const schemaMarkup = {
   '@context': 'https://schema.org',
