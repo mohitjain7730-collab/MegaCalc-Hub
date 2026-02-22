@@ -499,7 +499,7 @@ export default function DealValueVsEnterpriseValueBridgeCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -519,7 +519,7 @@ export default function DealValueVsEnterpriseValueBridgeCalculator() {
         <meta itemProp="keywords" content="deal value bridge, enterprise value bridge, M&A deal value, working capital adjustment, transaction value" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/deal-value-vs-enterprise-value-bridge-calculator" />
+        <meta itemProp="url" content="/deal-value-vs-enterprise-value-bridge-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Deal Value vs Enterprise Value Bridge: M&A Transaction Value Reconciliation</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at calculating deal value from enterprise value using the deal value bridge, adjusting for cash, debt, working capital, and debt-like items.</p>

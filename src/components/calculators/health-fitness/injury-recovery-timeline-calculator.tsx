@@ -65,10 +65,10 @@ const faqs: [string, string][] = [
 ];
 
 const relatedCalculators = [
-  { title: 'Range of Motion Progress Calculator', href: '/health-fitness/range-of-motion-progress-calculator', description: 'Track joint mobility gains as you heal.' },
-  { title: 'Physical Therapy Session Intensity Calculator', href: '/health-fitness/physical-therapy-session-intensity-calculator', description: 'Match rehab intensity with your recovery stage.' },
-  { title: 'Strength to Weight Ratio Calculator', href: '/health-fitness/strength-to-weight-ratio-calculator', description: 'Assess readiness to progress back to sport.' },
-  { title: 'Training Volume Calculator', href: '/health-fitness/training-volume-calculator', description: 'Plan gradual workload increases to avoid setbacks.' },
+  { title: 'Range of Motion Progress Calculator', href: '/range-of-motion-progress-calculator', description: 'Track joint mobility gains as you heal.' },
+  { title: 'Physical Therapy Session Intensity Calculator', href: '/physical-therapy-session-intensity-calculator', description: 'Match rehab intensity with your recovery stage.' },
+  { title: 'Strength to Weight Ratio Calculator', href: '/strength-to-weight-ratio-calculator', description: 'Assess readiness to progress back to sport.' },
+  { title: 'Training Volume Calculator', href: '/training-volume-calculator', description: 'Plan gradual workload increases to avoid setbacks.' },
 ];
 
 const completeGuideSections = [

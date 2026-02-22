@@ -315,7 +315,7 @@ export default function StartupValuationPostMoneyPreMoneyCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -331,7 +331,7 @@ export default function StartupValuationPostMoneyPreMoneyCalculator() {
         <meta itemProp="keywords" content="startup valuation, pre-money, post-money, ownership, dilution" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/startup-valuation-post-money-pre-money-calculator" />
+        <meta itemProp="url" content="/startup-valuation-post-money-pre-money-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Startup Valuation: Pre-Money, Post-Money, and Ownership</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">How to turn round size and valuation into clear ownership outcomes, dilution expectations, and negotiation guardrails.</p>

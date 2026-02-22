@@ -125,7 +125,7 @@ export default function PintsToLitersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/liters-to-pints-converter" className="text-primary underline">Liters to Pints Converter</Link></p>
+            <p><Link href="/liters-to-pints-converter" className="text-primary underline">Liters to Pints Converter</Link></p>
           </div>
         </div>
       </div>

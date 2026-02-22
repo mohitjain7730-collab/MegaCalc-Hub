@@ -321,7 +321,7 @@ export default function DoctorVisitROICalculator() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/chronic-condition-lifetime-cost-calculator" className="text-primary hover:underline">
+                                <a href="/chronic-condition-lifetime-cost-calculator" className="text-primary hover:underline">
                                     Chronic Costs
                                 </a>
                             </h4>
@@ -331,7 +331,7 @@ export default function DoctorVisitROICalculator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/medical-equipment-depreciation-estimator" className="text-primary hover:underline">
+                                <a href="/medical-equipment-depreciation-estimator" className="text-primary hover:underline">
                                     Equipment Value
                                 </a>
                             </h4>
@@ -341,7 +341,7 @@ export default function DoctorVisitROICalculator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/employer-health-plan-tax-savings-calculator" className="text-primary hover:underline">
+                                <a href="/employer-health-plan-tax-savings-calculator" className="text-primary hover:underline">
                                     Health Taxes
                                 </a>
                             </h4>
@@ -351,7 +351,7 @@ export default function DoctorVisitROICalculator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/prescription-generic-savings-calculator" className="text-primary hover:underline">
+                                <a href="/prescription-generic-savings-calculator" className="text-primary hover:underline">
                                     Med Savings
                                 </a>
                             </h4>

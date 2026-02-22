@@ -350,19 +350,19 @@ export default function CarbCyclingMacroCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Set balanced macros for maintenance or cutting.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/keto-macro-calculator" className="text-primary hover:underline">Keto Macro Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/keto-macro-calculator" className="text-primary hover:underline">Keto Macro Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Find ketogenic macro targets for low-carb phases.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/intermittent-fasting-calculator" className="text-primary hover:underline">Intermittent Fasting Planner</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/intermittent-fasting-calculator" className="text-primary hover:underline">Intermittent Fasting Planner</Link></h4>
               <p className="text-sm text-muted-foreground">Coordinate fasting windows with training days.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4>
               <p className="text-sm text-muted-foreground">Estimate maintenance calories to anchor your cycle.</p>
             </div>
           </div>

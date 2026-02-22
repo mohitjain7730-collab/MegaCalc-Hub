@@ -336,7 +336,7 @@ export default function SortinoRatioCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/sharpe-ratio-calculator" className="group">
+            <Link href="/sharpe-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingDown className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -344,7 +344,7 @@ export default function SortinoRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/treynor-ratio-calculator" className="group">
+            <Link href="/treynor-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -352,7 +352,7 @@ export default function SortinoRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/free-cash-flow-calculator" className="group">
+            <Link href="/free-cash-flow-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -360,7 +360,7 @@ export default function SortinoRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/enterprise-value-calculator" className="group">
+            <Link href="/enterprise-value-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />

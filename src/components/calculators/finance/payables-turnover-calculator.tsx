@@ -420,7 +420,7 @@ export default function PayablesTurnoverCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/current-ratio-calculator" className="block">
+            <Link href="/current-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -433,7 +433,7 @@ export default function PayablesTurnoverCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/receivables-turnover-calculator" className="block">
+            <Link href="/receivables-turnover-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -446,7 +446,7 @@ export default function PayablesTurnoverCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inventory-turnover-ratio-calculator" className="block">
+            <Link href="/inventory-turnover-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -459,7 +459,7 @@ export default function PayablesTurnoverCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cash-conversion-cycle-calculator" className="block">
+            <Link href="/cash-conversion-cycle-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -472,7 +472,7 @@ export default function PayablesTurnoverCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/quick-ratio-calculator" className="block">
+            <Link href="/quick-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -485,7 +485,7 @@ export default function PayablesTurnoverCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/working-capital-calculator" className="block">
+            <Link href="/working-capital-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

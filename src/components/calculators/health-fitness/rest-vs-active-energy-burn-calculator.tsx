@@ -334,10 +334,10 @@ export default function RestVsActiveEnergyBurnCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/bmr-calculator" className="text-primary hover:underline">Resting Metabolic Rate</Link></h4><p className="text-sm text-muted-foreground">Measure or estimate baseline energy use.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">METs to Calories</Link></h4><p className="text-sm text-muted-foreground">Explore calorie burn across different activities.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">Standing vs Sitting</Link></h4><p className="text-sm text-muted-foreground">Boost daily NEAT with small posture changes.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/neat-calculator" className="text-primary hover:underline">NEAT Calculator</Link></h4><p className="text-sm text-muted-foreground">Track non-exercise activity contributions.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/bmr-calculator" className="text-primary hover:underline">Resting Metabolic Rate</Link></h4><p className="text-sm text-muted-foreground">Measure or estimate baseline energy use.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/mets-calories-burned-calculator" className="text-primary hover:underline">METs to Calories</Link></h4><p className="text-sm text-muted-foreground">Explore calorie burn across different activities.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/standing-vs-sitting-calorie-burn-calculator" className="text-primary hover:underline">Standing vs Sitting</Link></h4><p className="text-sm text-muted-foreground">Boost daily NEAT with small posture changes.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/neat-calculator" className="text-primary hover:underline">NEAT Calculator</Link></h4><p className="text-sm text-muted-foreground">Track non-exercise activity contributions.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -179,11 +179,11 @@ export default function SpeedConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/joules-to-kilojoules-converter" className="hover:underline">Joules To Kilojoules Converter</Link></li>
-                <li><Link href="/conversions/watts-to-foot-pounds-per-second-converter" className="hover:underline">Watts To Foot Pounds Per Second Converter</Link></li>
-                <li><Link href="/conversions/seconds-to-minutes-converter" className="hover:underline">Seconds To Minutes Converter</Link></li>
-                <li><Link href="/conversions/acres-to-hectares-converter" className="hover:underline">Acres To Hectares Converter</Link></li>
-                <li><Link href="/conversions/calories-to-joules-converter" className="hover:underline">Calories To Joules Converter</Link></li>
+                <li><Link href="/joules-to-kilojoules-converter" className="hover:underline">Joules To Kilojoules Converter</Link></li>
+                <li><Link href="/watts-to-foot-pounds-per-second-converter" className="hover:underline">Watts To Foot Pounds Per Second Converter</Link></li>
+                <li><Link href="/seconds-to-minutes-converter" className="hover:underline">Seconds To Minutes Converter</Link></li>
+                <li><Link href="/acres-to-hectares-converter" className="hover:underline">Acres To Hectares Converter</Link></li>
+                <li><Link href="/calories-to-joules-converter" className="hover:underline">Calories To Joules Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

@@ -115,7 +115,7 @@ export async function generateCategoryMetadata(slug: string): Promise<Metadata> 
     title: `${category.name} Calculators - Mycalculating.com`,
     description: category.description,
     alternates: {
-      canonical: `/${category.slug}`,
+      canonical: `/category/${category.slug}`,
     },
     robots: {
       index: isIndexable,

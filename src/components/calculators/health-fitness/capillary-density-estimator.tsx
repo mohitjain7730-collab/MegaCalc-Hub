@@ -100,10 +100,10 @@ export default function CapillaryDensityEstimator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess cardiorespiratory fitness.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4><p className="text-sm text-muted-foreground">Set endurance training paces.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC Effect on VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">O₂ transport and performance.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/altitude-acclimatization-oxygen-need-calculator" className="text-primary hover:underline">Altitude O₂ Need</Link></h4><p className="text-sm text-muted-foreground">Plan training at elevation.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess cardiorespiratory fitness.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4><p className="text-sm text-muted-foreground">Set endurance training paces.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/red-blood-cell-count-effect-on-vo2-max-calculator" className="text-primary hover:underline">RBC Effect on VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">O₂ transport and performance.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/altitude-acclimatization-oxygen-need-calculator" className="text-primary hover:underline">Altitude O₂ Need</Link></h4><p className="text-sm text-muted-foreground">Plan training at elevation.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -680,7 +680,7 @@ export default function HabitStreakTrackerCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/daily-activity-points-calculator" className="text-primary hover:underline">
+                <Link href="/daily-activity-points-calculator" className="text-primary hover:underline">
                   Daily Activity Points Calculator
                 </Link>
               </h4>
@@ -688,7 +688,7 @@ export default function HabitStreakTrackerCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">
+                <Link href="/habit-streak-tracker-calculator" className="text-primary hover:underline">
                   Sleep Quality Calculator
                 </Link>
               </h4>
@@ -696,7 +696,7 @@ export default function HabitStreakTrackerCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">
+                <Link href="/hydration-needs-calculator" className="text-primary hover:underline">
                   Hydration Calculator
                 </Link>
               </h4>
@@ -704,7 +704,7 @@ export default function HabitStreakTrackerCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/mindful-minutes-tracking-calculator" className="text-primary hover:underline">
+                <Link href="/mindful-minutes-tracking-calculator" className="text-primary hover:underline">
                   Mindful Minutes Tracking Calculator
                 </Link>
               </h4>

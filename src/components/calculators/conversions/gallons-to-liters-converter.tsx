@@ -151,8 +151,8 @@ export default function GallonsToLitersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/liters-to-gallons-converter" className="text-primary underline">Liters to Gallons Converter</Link></p>
-            <p><Link href="/conversions/cubic-feet-to-gallons-converter" className="text-primary underline">Cubic Feet to Gallons Converter</Link></p>
+            <p><Link href="/liters-to-gallons-converter" className="text-primary underline">Liters to Gallons Converter</Link></p>
+            <p><Link href="/cubic-feet-to-gallons-converter" className="text-primary underline">Cubic Feet to Gallons Converter</Link></p>
           </div>
         </div>
       </div>

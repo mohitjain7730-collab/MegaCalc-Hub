@@ -105,7 +105,7 @@ export default function KilojoulesToJoulesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/joules-to-kilojoules-converter" className="text-primary underline">Joules to Kilojoules Converter</Link></p>
+            <p><Link href="/joules-to-kilojoules-converter" className="text-primary underline">Joules to Kilojoules Converter</Link></p>
           </div>
         </div>
       </div>

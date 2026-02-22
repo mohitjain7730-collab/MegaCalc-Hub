@@ -105,10 +105,10 @@ export default function PortfolioDrawdownCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/value-at-risk-calculator" className="text-primary hover:underline">Value at Risk (VaR)</a></h4><p className="text-sm text-muted-foreground">Loss threshold at a confidence level.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/conditional-value-at-risk-calculator" className="text-primary hover:underline">Conditional VaR (CVaR)</a></h4><p className="text-sm text-muted-foreground">Average loss beyond VaR.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/volatility-standard-deviation-calculator" className="text-primary hover:underline">Volatility (Std Dev)</a></h4><p className="text-sm text-muted-foreground">Dispersion of returns.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/information-ratio-calculator" className="text-primary hover:underline">Information Ratio</a></h4><p className="text-sm text-muted-foreground">Excess return per unit tracking error.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/value-at-risk-calculator" className="text-primary hover:underline">Value at Risk (VaR)</a></h4><p className="text-sm text-muted-foreground">Loss threshold at a confidence level.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/conditional-value-at-risk-calculator" className="text-primary hover:underline">Conditional VaR (CVaR)</a></h4><p className="text-sm text-muted-foreground">Average loss beyond VaR.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/volatility-standard-deviation-calculator" className="text-primary hover:underline">Volatility (Std Dev)</a></h4><p className="text-sm text-muted-foreground">Dispersion of returns.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/information-ratio-calculator" className="text-primary hover:underline">Information Ratio</a></h4><p className="text-sm text-muted-foreground">Excess return per unit tracking error.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -217,7 +217,7 @@ export default function MortgageEquityHelocCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
+                <a href="/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
                   Mortgage Refinance Savings
                 </a>
               </h4>
@@ -227,7 +227,7 @@ export default function MortgageEquityHelocCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/arm-payment-projection-calculator" className="text-primary hover:underline">
+                <a href="/arm-payment-projection-calculator" className="text-primary hover:underline">
                   ARM Payment Projection Calculator
                 </a>
               </h4>
@@ -237,7 +237,7 @@ export default function MortgageEquityHelocCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                <a href="/mortgage-payment-calculator" className="text-primary hover:underline">
                   Mortgage Payment Calculator
                 </a>
               </h4>
@@ -247,7 +247,7 @@ export default function MortgageEquityHelocCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
+                <a href="/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
                   Loan Amortization with Extra Payments
                 </a>
               </h4>

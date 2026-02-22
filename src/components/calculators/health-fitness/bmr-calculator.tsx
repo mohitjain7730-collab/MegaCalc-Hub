@@ -212,7 +212,7 @@ export default function BmrCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs (TDEE)
                   </a>
                 </h4>
@@ -222,7 +222,7 @@ export default function BmrCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  <a href="/protein-intake-calculator" className="text-primary hover:underline">
                     Protein Intake Calculator
                   </a>
                 </h4>
@@ -232,7 +232,7 @@ export default function BmrCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/fat-intake-calculator" className="text-primary hover:underline">
+                  <a href="/fat-intake-calculator" className="text-primary hover:underline">
                     Fat Intake Calculator
                   </a>
                 </h4>
@@ -242,7 +242,7 @@ export default function BmrCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                  <a href="/bmi-calculator" className="text-primary hover:underline">
                     BMI Calculator
                   </a>
                 </h4>

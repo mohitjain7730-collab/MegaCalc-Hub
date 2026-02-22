@@ -221,10 +221,10 @@ export default function AnaerobicCapacityCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/cycling-power-output-calculator" className="text-primary hover:underline">Cycling Power Output</Link></h4><p className="text-sm text-muted-foreground">Track power production across different durations.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/one-rep-max-strength-calculator" className="text-primary hover:underline">1-Rep Max</Link></h4><p className="text-sm text-muted-foreground">Assess maximal strength for power training.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4><p className="text-sm text-muted-foreground">Balance anaerobic work with aerobic capacity.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/lactate-accumulation-rate-calculator" className="text-primary hover:underline">Lactate Accumulation</Link></h4><p className="text-sm text-muted-foreground">Understand metabolic response to high-intensity efforts.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/cycling-power-output-calculator" className="text-primary hover:underline">Cycling Power Output</Link></h4><p className="text-sm text-muted-foreground">Track power production across different durations.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/one-rep-max-strength-calculator" className="text-primary hover:underline">1-Rep Max</Link></h4><p className="text-sm text-muted-foreground">Assess maximal strength for power training.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4><p className="text-sm text-muted-foreground">Balance anaerobic work with aerobic capacity.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/lactate-accumulation-rate-calculator" className="text-primary hover:underline">Lactate Accumulation</Link></h4><p className="text-sm text-muted-foreground">Understand metabolic response to high-intensity efforts.</p></div>
           </div>
         </CardContent>
       </Card>

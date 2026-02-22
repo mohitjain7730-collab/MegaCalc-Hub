@@ -139,8 +139,8 @@ export default function SugarIntakeCalculator() {
 				</CardHeader>
 				<CardContent>
 					<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-						<div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/glycemic-load-calculator" className="text-primary hover:underline">Glycemic Load Calculator</a></h4><p className="text-sm text-muted-foreground">Estimate glycemic load of foods.</p></div>
-						<div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</a></h4><p className="text-sm text-muted-foreground">Plan total energy intake.</p></div>
+						<div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/glycemic-load-calculator" className="text-primary hover:underline">Glycemic Load Calculator</a></h4><p className="text-sm text-muted-foreground">Estimate glycemic load of foods.</p></div>
+						<div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</a></h4><p className="text-sm text-muted-foreground">Plan total energy intake.</p></div>
 					</div>
 				</CardContent>
 			</Card>

@@ -128,8 +128,8 @@ export default function MinutesToHoursConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/hours-to-minutes-converter" className="text-primary underline">Hours to Minutes Converter</Link></p>
-            <p><Link href="/conversions/minutes-to-days-converter" className="text-primary underline">Minutes to Days Converter</Link></p>
+            <p><Link href="/hours-to-minutes-converter" className="text-primary underline">Hours to Minutes Converter</Link></p>
+            <p><Link href="/minutes-to-days-converter" className="text-primary underline">Minutes to Days Converter</Link></p>
           </div>
         </div>
       </div>

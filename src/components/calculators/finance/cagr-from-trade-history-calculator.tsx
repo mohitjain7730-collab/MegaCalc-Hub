@@ -205,10 +205,10 @@ export default function CAGRFromTradeHistoryCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/win-rate-expectancy-calculator" className="text-primary hover:underline">Win Rate & Expectancy</a></h4><p className="text-sm text-muted-foreground">Strategy performance.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/maximum-drawdown-calculator" className="text-primary hover:underline">Maximum Drawdown</a></h4><p className="text-sm text-muted-foreground">Downside risk.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/rolling-return-calculator" className="text-primary hover:underline">Rolling Return</a></h4><p className="text-sm text-muted-foreground">Time-weighted returns.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/tracking-difference-calculator" className="text-primary hover:underline">Tracking Difference</a></h4><p className="text-sm text-muted-foreground">Benchmark comparison.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/win-rate-expectancy-calculator" className="text-primary hover:underline">Win Rate & Expectancy</a></h4><p className="text-sm text-muted-foreground">Strategy performance.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/maximum-drawdown-calculator" className="text-primary hover:underline">Maximum Drawdown</a></h4><p className="text-sm text-muted-foreground">Downside risk.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/rolling-return-calculator" className="text-primary hover:underline">Rolling Return</a></h4><p className="text-sm text-muted-foreground">Time-weighted returns.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/tracking-difference-calculator" className="text-primary hover:underline">Tracking Difference</a></h4><p className="text-sm text-muted-foreground">Benchmark comparison.</p></div>
           </div>
         </CardContent>
       </Card>

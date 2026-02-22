@@ -143,10 +143,10 @@ export default function FuturesFairValueCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/basis-risk-calculator" className="text-primary hover:underline">Basis Risk</a></h4><p className="text-sm text-muted-foreground">Price convergence.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/futures-hedge-ratio-calculator" className="text-primary hover:underline">Futures Hedge Ratio</a></h4><p className="text-sm text-muted-foreground">Optimal hedging.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/arbitrage-profit-calculator" className="text-primary hover:underline">Arbitrage Profit</a></h4><p className="text-sm text-muted-foreground">Price differences.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/put-call-parity-checker" className="text-primary hover:underline">Put-Call Parity</a></h4><p className="text-sm text-muted-foreground">Option pricing.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/basis-risk-calculator" className="text-primary hover:underline">Basis Risk</a></h4><p className="text-sm text-muted-foreground">Price convergence.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/futures-hedge-ratio-calculator" className="text-primary hover:underline">Futures Hedge Ratio</a></h4><p className="text-sm text-muted-foreground">Optimal hedging.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/arbitrage-profit-calculator" className="text-primary hover:underline">Arbitrage Profit</a></h4><p className="text-sm text-muted-foreground">Price differences.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/put-call-parity-checker" className="text-primary hover:underline">Put-Call Parity</a></h4><p className="text-sm text-muted-foreground">Option pricing.</p></div>
           </div>
         </CardContent>
       </Card>

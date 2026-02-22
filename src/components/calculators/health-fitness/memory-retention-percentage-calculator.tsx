@@ -372,7 +372,7 @@ export default function MemoryRetentionPercentageTracker() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/health-fitness/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -401,7 +401,7 @@ export default function MemoryRetentionPercentageTracker() {
         />
         <meta itemProp="author" content="Mycalculating.com" />
         <meta itemProp="datePublished" content="2024-01-01" />
-        <meta itemProp="url" content="/health-fitness/daily-activity-points-calculator" />
+        <meta itemProp="url" content="/daily-activity-points-calculator" />
 
         <h1
           className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"

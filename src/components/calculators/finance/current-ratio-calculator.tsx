@@ -121,7 +121,7 @@ export default function CurrentRatioCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/quick-ratio-calculator" className="block">
+            <Link href="/quick-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function CurrentRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/working-capital-calculator" className="block">
+            <Link href="/working-capital-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -147,7 +147,7 @@ export default function CurrentRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cash-conversion-cycle-calculator" className="block">
+            <Link href="/cash-conversion-cycle-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export default function CurrentRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/interest-coverage-ratio-calculator" className="block">
+            <Link href="/interest-coverage-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -173,7 +173,7 @@ export default function CurrentRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/debt-to-equity-ratio-calculator" className="block">
+            <Link href="/debt-to-equity-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -186,7 +186,7 @@ export default function CurrentRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/free-cash-flow-calculator" className="block">
+            <Link href="/free-cash-flow-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

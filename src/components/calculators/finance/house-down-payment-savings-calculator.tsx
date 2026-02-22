@@ -602,7 +602,7 @@ export default function HouseDownPaymentSavingsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/mortgage-payment-calculator" className="block">
+            <Link href="/mortgage-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -615,7 +615,7 @@ export default function HouseDownPaymentSavingsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/rent-vs-buy-home-calculator" className="block">
+            <Link href="/rent-vs-buy-home-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -628,7 +628,7 @@ export default function HouseDownPaymentSavingsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/credit-utilization-ratio-calculator" className="block">
+            <Link href="/credit-utilization-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

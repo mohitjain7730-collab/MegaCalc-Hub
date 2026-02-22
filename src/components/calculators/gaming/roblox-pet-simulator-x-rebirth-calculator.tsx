@@ -144,7 +144,7 @@ export default function RobloxPSXRebirthCalc() {
                     {relatedCalculators.map((calc) => (
                         <div key={calc.slug} className="p-4 border rounded">
                             <h4 className="font-semibold mb-1">
-                                <Link href={`/gaming/${calc.slug}`} className="text-primary hover:underline flex items-center gap-1">
+                                <Link href={`/${calc.slug}`} className="text-primary hover:underline flex items-center gap-1">
                                     <ArrowRight className="h-3 w-3" />
                                     {calc.name}
                                 </Link>

@@ -389,7 +389,7 @@ export default function MergerExchangeRatioCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -409,7 +409,7 @@ export default function MergerExchangeRatioCalculator() {
         <meta itemProp="keywords" content="merger exchange ratio, stock for stock merger, M&A exchange ratio, acquisition exchange ratio, ownership distribution" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/merger-exchange-ratio-calculator" />
+        <meta itemProp="url" content="/merger-exchange-ratio-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Merger Exchange Ratio: Stock-for-Stock M&A Transactions</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A deep dive into how exchange ratios are set, how they drive ownership, and how to validate fairness for both buyer and seller.</p>

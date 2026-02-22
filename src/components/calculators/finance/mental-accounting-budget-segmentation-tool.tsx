@@ -557,7 +557,7 @@ export default function MentalAccountingBudgetSegmentationTool() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -577,7 +577,7 @@ export default function MentalAccountingBudgetSegmentationTool() {
     <meta itemProp="keywords" content="mental accounting, budget segmentation, behavioral finance, budget allocation, spending control, financial psychology" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/mental-accounting-budget-segmentation-tool" />
+    <meta itemProp="url" content="/mental-accounting-budget-segmentation-tool" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Mental Accounting and Budget Segmentation: Behavioral Finance for Spending Control</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at mental accounting, budget segmentation, and how behavioral finance principles can improve spending control and financial management.</p>

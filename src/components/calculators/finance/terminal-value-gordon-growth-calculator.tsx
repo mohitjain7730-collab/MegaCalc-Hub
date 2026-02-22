@@ -434,7 +434,7 @@ export default function TerminalValueGordonGrowthCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -454,7 +454,7 @@ export default function TerminalValueGordonGrowthCalculator() {
         <meta itemProp="keywords" content="terminal value, Gordon Growth Model, perpetuity growth, DCF terminal value, terminal value calculation" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/terminal-value-gordon-growth-calculator" />
+        <meta itemProp="url" content="/terminal-value-gordon-growth-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Terminal Value: Gordon Growth Model (Perpetuity Growth)</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at calculating terminal value using the Gordon Growth Model (perpetuity growth model) for DCF valuation.</p>

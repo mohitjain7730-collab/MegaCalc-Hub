@@ -148,8 +148,8 @@ export default function PostpartumCalorieNeedsCalculator() {
           <AccordionTrigger>Related Calculators</AccordionTrigger>
           <AccordionContent className="text-muted-foreground">
             <ul className="space-y-1">
-              <li><a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Breastfeeding Calorie Needs</a></li>
-              <li><a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs</a></li>
+              <li><a href="/daily-calorie-needs-calculator" className="text-primary underline">Breastfeeding Calorie Needs</a></li>
+              <li><a href="/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs</a></li>
             </ul>
           </AccordionContent>
         </AccordionItem>

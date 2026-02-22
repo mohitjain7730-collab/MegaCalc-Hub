@@ -436,7 +436,7 @@ export default function RebalancingFrequencyImpactCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/asset-allocation-drift-calculator" className="block">
+            <Link href="/asset-allocation-drift-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -449,7 +449,7 @@ export default function RebalancingFrequencyImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/efficient-frontier-portfolio-calculator" className="block">
+            <Link href="/efficient-frontier-portfolio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -462,7 +462,7 @@ export default function RebalancingFrequencyImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -475,7 +475,7 @@ export default function RebalancingFrequencyImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cagr-calculator" className="block">
+            <Link href="/cagr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -488,7 +488,7 @@ export default function RebalancingFrequencyImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/portfolio-turnover-ratio-calculator" className="block">
+            <Link href="/portfolio-turnover-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -501,7 +501,7 @@ export default function RebalancingFrequencyImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -524,7 +524,7 @@ export default function RebalancingFrequencyImpactCalculator() {
         <meta itemProp="keywords" content="rebalancing frequency, rebalancing bonus, portfolio rebalancing, asset allocation rebalance" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/rebalancing-frequency-impact-calculator" />
+        <meta itemProp="url" content="/rebalancing-frequency-impact-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Rebalancing Frequency Impact: How Often to Rebalance and Its Effect on Terminal Value</h1>
         <p className="text-lg italic text-muted-foreground">Rebalancing keeps your portfolio near your target allocation. This calculator compares terminal value when you rebalance at different frequencies (annual, semi-annual, quarterly, monthly) versus when you never rebalance. See whether rebalancing adds value (rebalancing bonus) or reduces it (rebalancing cost) for your assumed returns.</p>

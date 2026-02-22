@@ -406,7 +406,7 @@ export default function MortgagePointsImpactCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/mortgage-payment-calculator" className="block">
+            <Link href="/mortgage-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -419,7 +419,7 @@ export default function MortgagePointsImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/interest-only-loan-payment-calculator" className="block">
+            <Link href="/interest-only-loan-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -432,7 +432,7 @@ export default function MortgagePointsImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/house-down-payment-savings-calculator" className="block">
+            <Link href="/house-down-payment-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -445,7 +445,7 @@ export default function MortgagePointsImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/rent-vs-buy-calculator" className="block">
+            <Link href="/rent-vs-buy-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -458,7 +458,7 @@ export default function MortgagePointsImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/loan-amortization-calculator" className="block">
+            <Link href="/loan-amortization-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -471,7 +471,7 @@ export default function MortgagePointsImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/debt-to-income-ratio-calculator" className="block">
+            <Link href="/debt-to-income-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

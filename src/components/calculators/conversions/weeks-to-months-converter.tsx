@@ -128,8 +128,8 @@ export default function WeeksToMonthsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/months-to-weeks-converter" className="text-primary underline">Months to Weeks Converter</Link></p>
-            <p><Link href="/conversions/weeks-to-days-converter" className="text-primary underline">Weeks to Days Converter</Link></p>
+            <p><Link href="/months-to-weeks-converter" className="text-primary underline">Months to Weeks Converter</Link></p>
+            <p><Link href="/weeks-to-days-converter" className="text-primary underline">Weeks to Days Converter</Link></p>
           </div>
         </div>
       </div>

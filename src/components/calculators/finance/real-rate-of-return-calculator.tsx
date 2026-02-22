@@ -320,7 +320,7 @@ export default function RealRateOfReturnCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/simple-inflation-adjusted-return-calculator" className="group">
+            <Link href="/simple-inflation-adjusted-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -328,7 +328,7 @@ export default function RealRateOfReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/margin-of-safety-calculator" className="group">
+            <Link href="/margin-of-safety-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -336,7 +336,7 @@ export default function RealRateOfReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sharpe-ratio-calculator" className="group">
+            <Link href="/sharpe-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -344,7 +344,7 @@ export default function RealRateOfReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/portfolio-expected-return-calculator" className="group">
+            <Link href="/portfolio-expected-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -556,7 +556,7 @@ export default function RealRateOfReturnCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/simple-inflation-adjusted-return-calculator" className="text-primary hover:underline">
+                <Link href="/simple-inflation-adjusted-return-calculator" className="text-primary hover:underline">
                   Inflation-Adjusted Return Calculator
                 </Link>
               </h4>
@@ -566,7 +566,7 @@ export default function RealRateOfReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">
+                <Link href="/compound-interest-calculator" className="text-primary hover:underline">
                   Compound Interest Calculator
                 </Link>
               </h4>
@@ -576,7 +576,7 @@ export default function RealRateOfReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/return-on-investment-calculator" className="text-primary hover:underline">
+                <Link href="/return-on-investment-calculator" className="text-primary hover:underline">
                   Return on Investment Calculator
                 </Link>
               </h4>
@@ -586,7 +586,7 @@ export default function RealRateOfReturnCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/inflation-calculator" className="text-primary hover:underline">
+                <Link href="/inflation-calculator" className="text-primary hover:underline">
                   Inflation Calculator
                 </Link>
               </h4>

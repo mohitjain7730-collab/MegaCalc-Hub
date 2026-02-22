@@ -296,8 +296,8 @@ export default function CopayVsDeductibleBreakevenCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
-              <li><Link href="/finance/health-plan-coverage-gap-estimator" className="hover:underline">Health Plan Coverage Gap Estimator</Link></li>
+              <li><Link href="/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/health-plan-coverage-gap-estimator" className="hover:underline">Health Plan Coverage Gap Estimator</Link></li>
             </ul>
           </CardContent>
         </Card>

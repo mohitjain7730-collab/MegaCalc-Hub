@@ -128,10 +128,10 @@ export default function RedBloodCellCountEffectOnVO2MaxCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Aerobic capacity baseline.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Peripheral oxygen delivery.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/myoglobin-oxygen-storage-calculator" className="text-primary hover:underline">Myoglobin O₂ Storage</Link></h4><p className="text-sm text-muted-foreground">Intramuscular reserve.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/altitude-acclimatization-oxygen-need-calculator" className="text-primary hover:underline">Altitude O₂ Need</Link></h4><p className="text-sm text-muted-foreground">Training at elevation.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Aerobic capacity baseline.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/capillary-density-estimator" className="text-primary hover:underline">Capillary Density</Link></h4><p className="text-sm text-muted-foreground">Peripheral oxygen delivery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/myoglobin-oxygen-storage-calculator" className="text-primary hover:underline">Myoglobin O₂ Storage</Link></h4><p className="text-sm text-muted-foreground">Intramuscular reserve.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/altitude-acclimatization-oxygen-need-calculator" className="text-primary hover:underline">Altitude O₂ Need</Link></h4><p className="text-sm text-muted-foreground">Training at elevation.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -341,7 +341,7 @@ export default function ReturnOnInvestmentCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/npv-calculator" className="text-primary hover:underline">
+                  <a href="/npv-calculator" className="text-primary hover:underline">
                     Net Present Value Calculator
                   </a>
                 </h4>
@@ -351,7 +351,7 @@ export default function ReturnOnInvestmentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/payback-period-calculator" className="text-primary hover:underline">
+                  <a href="/payback-period-calculator" className="text-primary hover:underline">
                     Payback Period Calculator
                   </a>
                 </h4>
@@ -361,7 +361,7 @@ export default function ReturnOnInvestmentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/return-on-equity-calculator" className="text-primary hover:underline">
+                  <a href="/return-on-equity-calculator" className="text-primary hover:underline">
                     Return on Equity Calculator
                   </a>
                 </h4>
@@ -371,7 +371,7 @@ export default function ReturnOnInvestmentCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/return-on-assets-calculator" className="text-primary hover:underline">
+                  <a href="/return-on-assets-calculator" className="text-primary hover:underline">
                     Return on Assets Calculator
                   </a>
                 </h4>

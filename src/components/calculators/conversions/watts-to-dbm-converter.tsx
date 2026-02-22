@@ -61,7 +61,7 @@ export default function WattsToDbmConverter() {
          <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/dbm-to-watts-converter" className="text-primary underline">dBm to Watts Converter</Link></p>
+            <p><Link href="/dbm-to-watts-converter" className="text-primary underline">dBm to Watts Converter</Link></p>
           </div>
         </div>
       </div>

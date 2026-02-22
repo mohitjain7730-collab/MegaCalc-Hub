@@ -523,7 +523,7 @@ export default function CoveredCallProtectivePutStrategyCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/iron-condor-butterfly-strategy-payoff-calculator" className="block">
+            <Link href="/iron-condor-butterfly-strategy-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -536,7 +536,7 @@ export default function CoveredCallProtectivePutStrategyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/straddle-strangle-strategy-calculator" className="block">
+            <Link href="/straddle-strangle-strategy-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -549,7 +549,7 @@ export default function CoveredCallProtectivePutStrategyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-payoff-calculator" className="block">
+            <Link href="/option-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -562,7 +562,7 @@ export default function CoveredCallProtectivePutStrategyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-greeks-calculator" className="block">
+            <Link href="/option-greeks-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -575,7 +575,7 @@ export default function CoveredCallProtectivePutStrategyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/probability-expiring-itm-options-calculator" className="block">
+            <Link href="/probability-expiring-itm-options-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -588,7 +588,7 @@ export default function CoveredCallProtectivePutStrategyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/black-scholes-calculator" className="block">
+            <Link href="/black-scholes-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

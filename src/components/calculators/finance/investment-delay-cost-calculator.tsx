@@ -373,7 +373,7 @@ export default function InvestmentDelayCostCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
+            <Link href="/cost-of-delaying-savings-by-1-year-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -386,7 +386,7 @@ export default function InvestmentDelayCostCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sip-vs-lump-sum-return-difference-calculator" className="block">
+            <Link href="/sip-vs-lump-sum-return-difference-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -399,7 +399,7 @@ export default function InvestmentDelayCostCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -412,7 +412,7 @@ export default function InvestmentDelayCostCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cost-of-delay-investing-late-calculator" className="block">
+            <Link href="/cost-of-delay-investing-late-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -425,7 +425,7 @@ export default function InvestmentDelayCostCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -438,7 +438,7 @@ export default function InvestmentDelayCostCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/expense-reduction-vs-income-increase-calculator" className="block">
+            <Link href="/expense-reduction-vs-income-increase-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -461,7 +461,7 @@ export default function InvestmentDelayCostCalculator() {
         <meta itemProp="keywords" content="investment delay cost, cost of waiting to invest, lump sum delay, time in market, future value comparison" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/investment-delay-cost-calculator" />
+        <meta itemProp="url" content="/investment-delay-cost-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Investment Delay Cost: How Much You Lose by Waiting to Invest a Lump Sum</h1>
         <p className="text-lg italic text-muted-foreground">You have a lump sum to invest. If you invest it now, it compounds for the full horizon. If you delay investing by a number of years, the same amount compounds for fewer years and you end up with less at the same end date. This calculator shows the exact dollar and percentage cost of that delay.</p>

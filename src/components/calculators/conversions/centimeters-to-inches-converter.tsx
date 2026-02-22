@@ -125,9 +125,9 @@ export default function CentimetersToInchesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></p>
-            <p><Link href="/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
-            <p><Link href="/conversions/millimeters-to-inches-converter" className="text-primary underline">Millimeters to Inches Converter</Link></p>
+            <p><Link href="/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></p>
+            <p><Link href="/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
+            <p><Link href="/millimeters-to-inches-converter" className="text-primary underline">Millimeters to Inches Converter</Link></p>
           </div>
         </div>
         <section

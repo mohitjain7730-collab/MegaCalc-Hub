@@ -95,10 +95,10 @@ export default function CapRateSensitivityCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return estimate.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/gross-rent-multiplier-grm-calculator" className="text-primary hover:underline">Gross Rent Multiplier (GRM)</a></h4><p className="text-sm text-muted-foreground">Price vs rent.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/dscr-calculator" className="text-primary hover:underline">DSCR</a></h4><p className="text-sm text-muted-foreground">Debt service coverage.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/property-appreciation-projection-calculator" className="text-primary hover:underline">Property Appreciation</a></h4><p className="text-sm text-muted-foreground">Future value projection.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return estimate.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/gross-rent-multiplier-grm-calculator" className="text-primary hover:underline">Gross Rent Multiplier (GRM)</a></h4><p className="text-sm text-muted-foreground">Price vs rent.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/dscr-calculator" className="text-primary hover:underline">DSCR</a></h4><p className="text-sm text-muted-foreground">Debt service coverage.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/property-appreciation-projection-calculator" className="text-primary hover:underline">Property Appreciation</a></h4><p className="text-sm text-muted-foreground">Future value projection.</p></div>
           </div>
         </CardContent>
       </Card>

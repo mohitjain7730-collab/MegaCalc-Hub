@@ -179,11 +179,11 @@ export default function DensityConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/miles-per-hour-to-feet-per-second-converter" className="hover:underline">Miles Per Hour To Feet Per Second Converter</Link></li>
-                <li><Link href="/conversions/body-measurement-to-cloth-size-converter" className="hover:underline">Body Measurement To Cloth Size Converter</Link></li>
-                <li><Link href="/conversions/nanometers-to-meters-converter" className="hover:underline">Nanometers To Meters Converter</Link></li>
-                <li><Link href="/conversions/temperature-converter" className="hover:underline">Temperature Converter</Link></li>
-                <li><Link href="/conversions/square-yards-to-square-feet-converter" className="hover:underline">Square Yards To Square Feet Converter</Link></li>
+                <li><Link href="/miles-per-hour-to-feet-per-second-converter" className="hover:underline">Miles Per Hour To Feet Per Second Converter</Link></li>
+                <li><Link href="/body-measurement-to-cloth-size-converter" className="hover:underline">Body Measurement To Cloth Size Converter</Link></li>
+                <li><Link href="/nanometers-to-meters-converter" className="hover:underline">Nanometers To Meters Converter</Link></li>
+                <li><Link href="/temperature-converter" className="hover:underline">Temperature Converter</Link></li>
+                <li><Link href="/square-yards-to-square-feet-converter" className="hover:underline">Square Yards To Square Feet Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

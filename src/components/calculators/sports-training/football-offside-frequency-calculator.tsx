@@ -105,7 +105,7 @@ export default function FootballOffsideFrequencyCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/football-goals-per-90-minutes-calculator" className="block">
+                        <Link href="/football-goals-per-90-minutes-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function FootballOffsideFrequencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/football-shot-accuracy-calculator" className="block">
+                        <Link href="/football-shot-accuracy-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function FootballOffsideFrequencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/football-win-rate-calculator" className="block">
+                        <Link href="/football-win-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function FootballOffsideFrequencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/football-expected-goals-calculator" className="block">
+                        <Link href="/football-expected-goals-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function FootballOffsideFrequencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/football-assists-per-90-calculator" className="block">
+                        <Link href="/football-assists-per-90-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -170,7 +170,7 @@ export default function FootballOffsideFrequencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/football-fantasy-points-calculator" className="block">
+                        <Link href="/football-fantasy-points-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

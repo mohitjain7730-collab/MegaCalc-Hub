@@ -173,11 +173,11 @@ export default function CookingConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
-                <li><Link href="/conversions/horsepower-to-watts-converter" className="hover:underline">Horsepower To Watts Converter</Link></li>
-                <li><Link href="/conversions/atmospheres-to-torr-converter" className="hover:underline">Atmospheres To Torr Converter</Link></li>
-                <li><Link href="/conversions/horsepower-to-kilowatts-converter" className="hover:underline">Horsepower To Kilowatts Converter</Link></li>
-                <li><Link href="/conversions/meters-per-second-to-kilometers-per-hour-converter" className="hover:underline">Meters Per Second To Kilometers Per Hour Converter</Link></li>
+                <li><Link href="/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
+                <li><Link href="/horsepower-to-watts-converter" className="hover:underline">Horsepower To Watts Converter</Link></li>
+                <li><Link href="/atmospheres-to-torr-converter" className="hover:underline">Atmospheres To Torr Converter</Link></li>
+                <li><Link href="/horsepower-to-kilowatts-converter" className="hover:underline">Horsepower To Kilowatts Converter</Link></li>
+                <li><Link href="/meters-per-second-to-kilometers-per-hour-converter" className="hover:underline">Meters Per Second To Kilometers Per Hour Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

@@ -313,7 +313,7 @@ export default function ActivityBasedCostingCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/overhead-rate-allocation-calculator" className="text-primary hover:underline">
+                  <a href="/overhead-rate-allocation-calculator" className="text-primary hover:underline">
                     Overhead Rate Allocation Calculator
                   </a>
                 </h4>
@@ -323,7 +323,7 @@ export default function ActivityBasedCostingCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/business-startup/break-even-point-calculator" className="text-primary hover:underline">
+                  <a href="/break-even-point-calculator" className="text-primary hover:underline">
                     Break-Even Point Calculator
                   </a>
                 </h4>
@@ -333,7 +333,7 @@ export default function ActivityBasedCostingCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/business-startup/contribution-margin-calculator" className="text-primary hover:underline">
+                  <a href="/contribution-margin-calculator" className="text-primary hover:underline">
                     Contribution Margin Calculator
                   </a>
                 </h4>
@@ -343,7 +343,7 @@ export default function ActivityBasedCostingCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/depreciation-straight-line-calculator" className="text-primary hover:underline">
+                  <a href="/depreciation-straight-line-calculator" className="text-primary hover:underline">
                     Depreciation (Straight-Line) Calculator
                   </a>
                 </h4>

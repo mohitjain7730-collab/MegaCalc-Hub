@@ -351,7 +351,7 @@ export default function BetaAssetCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/alpha-investment-calculator" className="group">
+            <Link href="/alpha-investment-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -359,7 +359,7 @@ export default function BetaAssetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/treynor-ratio-calculator" className="group">
+            <Link href="/treynor-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -367,7 +367,7 @@ export default function BetaAssetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/correlation-coefficient-calculator" className="group">
+            <Link href="/correlation-coefficient-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -375,7 +375,7 @@ export default function BetaAssetCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/portfolio-variance-calculator" className="group">
+            <Link href="/portfolio-variance-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />

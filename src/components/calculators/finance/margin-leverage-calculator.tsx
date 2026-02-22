@@ -554,7 +554,7 @@ export default function MarginLeverageCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/maintenance-margin-calculator" className="text-primary hover:underline">
+                <a href="/maintenance-margin-calculator" className="text-primary hover:underline">
                   Maintenance Margin Calculator
                 </a>
               </h4>
@@ -564,7 +564,7 @@ export default function MarginLeverageCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/leverage-debt-ratio-calculator" className="text-primary hover:underline">
+                <a href="/leverage-debt-ratio-calculator" className="text-primary hover:underline">
                   Leverage Ratio Calculator
                 </a>
               </h4>
@@ -574,7 +574,7 @@ export default function MarginLeverageCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/risk-parity-portfolio-calculator" className="text-primary hover:underline">
+                <a href="/risk-parity-portfolio-calculator" className="text-primary hover:underline">
                   Risk-Return Calculator
                 </a>
               </h4>
@@ -584,7 +584,7 @@ export default function MarginLeverageCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
+                <a href="/compound-interest-calculator" className="text-primary hover:underline">
                   Position Size Calculator
                 </a>
               </h4>

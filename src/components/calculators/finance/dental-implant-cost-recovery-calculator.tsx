@@ -418,7 +418,7 @@ export default function DentalImplantCostRecoveryCalculator() {
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/finance/medical-tourism-savings-estimator" className="text-primary hover:underline">
+                                    <a href="/medical-tourism-savings-estimator" className="text-primary hover:underline">
                                         Medical Tourism Savings
                                     </a>
                                 </h4>
@@ -428,7 +428,7 @@ export default function DentalImplantCostRecoveryCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/finance/monthly-budget-planner-calculator" className="text-primary hover:underline">
+                                    <a href="/monthly-budget-planner-calculator" className="text-primary hover:underline">
                                         Monthly Budget Planner
                                     </a>
                                 </h4>
@@ -438,7 +438,7 @@ export default function DentalImplantCostRecoveryCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/finance/loan-emi-calculator" className="text-primary hover:underline">
+                                    <a href="/loan-emi-calculator" className="text-primary hover:underline">
                                         Loan EMI Calculator
                                     </a>
                                 </h4>
@@ -448,7 +448,7 @@ export default function DentalImplantCostRecoveryCalculator() {
                             </div>
                             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                 <h4 className="font-semibold mb-2">
-                                    <a href="/finance/emergency-fund-requirement-calculator" className="text-primary hover:underline">
+                                    <a href="/emergency-fund-requirement-calculator" className="text-primary hover:underline">
                                         Emergency Fund Info
                                     </a>
                                 </h4>

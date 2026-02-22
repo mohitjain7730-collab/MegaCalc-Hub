@@ -128,8 +128,8 @@ export default function DaysToHoursConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/hours-to-days-converter" className="text-primary underline">Hours to Days Converter</Link></p>
-            <p><Link href="/conversions/days-to-weeks-converter" className="text-primary underline">Days to Weeks Converter</Link></p>
+            <p><Link href="/hours-to-days-converter" className="text-primary underline">Hours to Days Converter</Link></p>
+            <p><Link href="/days-to-weeks-converter" className="text-primary underline">Days to Weeks Converter</Link></p>
           </div>
         </div>
       </div>

@@ -383,7 +383,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/tax-drag-on-investment-returns-calculator" className="block">
+            <Link href="/tax-drag-on-investment-returns-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -396,7 +396,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/capital-gain-loss-calculator" className="block">
+            <Link href="/capital-gain-loss-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -409,7 +409,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/tax-equivalent-yield-calculator" className="block">
+            <Link href="/tax-equivalent-yield-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -422,7 +422,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -435,7 +435,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -448,7 +448,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/break-even-stock-sale-price-calculator" className="block">
+            <Link href="/break-even-stock-sale-price-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -471,7 +471,7 @@ export default function LongTermVsShortTermCapitalGainComparisonCalculator() {
         <meta itemProp="keywords" content="long-term capital gain, short-term capital gain, capital gain tax comparison, after-tax proceeds" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/long-term-vs-short-term-capital-gain-comparison-calculator" />
+        <meta itemProp="url" content="/long-term-vs-short-term-capital-gain-comparison-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Long-Term vs Short-Term Capital Gain: Compare After-Tax Proceeds</h1>
         <p className="text-lg italic text-muted-foreground">When you sell an investment, the tax you pay depends on how long you held it. Short-term gains are typically taxed as ordinary income; long-term gains at lower preferential rates. This calculator compares after-tax proceeds so you can see how much you save by qualifying for long-term treatment.</p>

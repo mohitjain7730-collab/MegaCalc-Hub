@@ -184,11 +184,11 @@ export default function TemperatureConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/light-years-to-kilometers-converter" className="hover:underline">Light Years To Kilometers Converter</Link></li>
-                <li><Link href="/conversions/minutes-to-hours-converter" className="hover:underline">Minutes To Hours Converter</Link></li>
-                <li><Link href="/conversions/joules-to-kilojoules-converter" className="hover:underline">Joules To Kilojoules Converter</Link></li>
-                <li><Link href="/conversions/calories-to-joules-converter" className="hover:underline">Calories To Joules Converter</Link></li>
-                <li><Link href="/conversions/psi-to-atmospheres-converter" className="hover:underline">Psi To Atmospheres Converter</Link></li>
+                <li><Link href="/light-years-to-kilometers-converter" className="hover:underline">Light Years To Kilometers Converter</Link></li>
+                <li><Link href="/minutes-to-hours-converter" className="hover:underline">Minutes To Hours Converter</Link></li>
+                <li><Link href="/joules-to-kilojoules-converter" className="hover:underline">Joules To Kilojoules Converter</Link></li>
+                <li><Link href="/calories-to-joules-converter" className="hover:underline">Calories To Joules Converter</Link></li>
+                <li><Link href="/psi-to-atmospheres-converter" className="hover:underline">Psi To Atmospheres Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

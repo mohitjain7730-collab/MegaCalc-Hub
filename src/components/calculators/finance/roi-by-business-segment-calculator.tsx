@@ -501,7 +501,7 @@ export default function ROIByBusinessSegmentCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/return-on-investment-calculator" className="block">
+            <Link href="/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -514,7 +514,7 @@ export default function ROIByBusinessSegmentCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/gross-profit-vs-net-profit-analyzer" className="block">
+            <Link href="/gross-profit-vs-net-profit-analyzer" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -527,7 +527,7 @@ export default function ROIByBusinessSegmentCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/operating-margin-calculator" className="block">
+            <Link href="/operating-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -540,7 +540,7 @@ export default function ROIByBusinessSegmentCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/marketing-roi-calculator" className="block">
+            <Link href="/marketing-roi-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -553,7 +553,7 @@ export default function ROIByBusinessSegmentCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/break-even-point-calculator" className="block">
+            <Link href="/break-even-point-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -566,7 +566,7 @@ export default function ROIByBusinessSegmentCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/capital-expenditure-calculator" className="block">
+            <Link href="/capital-expenditure-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

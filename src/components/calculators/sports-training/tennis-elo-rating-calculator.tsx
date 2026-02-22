@@ -108,7 +108,7 @@ export default function TennisEloRatingCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/tennis-win-ratio-calculator" className="block">
+                        <Link href="/tennis-win-ratio-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function TennisEloRatingCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-aces-per-match-calculator" className="block">
+                        <Link href="/tennis-aces-per-match-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -134,7 +134,7 @@ export default function TennisEloRatingCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-first-serve-percentage-calculator" className="block">
+                        <Link href="/tennis-first-serve-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -147,7 +147,7 @@ export default function TennisEloRatingCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-break-point-conversion-rate-calculator" className="block">
+                        <Link href="/tennis-break-point-conversion-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -160,7 +160,7 @@ export default function TennisEloRatingCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-hold-percentage-calculator" className="block">
+                        <Link href="/tennis-hold-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -173,7 +173,7 @@ export default function TennisEloRatingCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-return-points-won-calculator" className="block">
+                        <Link href="/tennis-return-points-won-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

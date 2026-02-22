@@ -290,19 +290,19 @@ export default function AcuteTrainingLoadCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/chronic-training-load-calculator" className="text-primary hover:underline">Chronic Training Load (CTL)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/chronic-training-load-calculator" className="text-primary hover:underline">Chronic Training Load (CTL)</Link></h4>
               <p className="text-sm text-muted-foreground">Pair ATL with CTL to compute Training Stress Balance.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/running-pace-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/running-pace-calculator" className="text-primary hover:underline">Training Stress Score (TSS)</Link></h4>
               <p className="text-sm text-muted-foreground">Daily TSS updates drive ATL changes—plan workouts accordingly.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/training-impulse-trimp-calculator" className="text-primary hover:underline">Training Impulse (TRIMP)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/training-impulse-trimp-calculator" className="text-primary hover:underline">Training Impulse (TRIMP)</Link></h4>
               <p className="text-sm text-muted-foreground">Use heart-rate-based loading when power data are unavailable.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4>
               <p className="text-sm text-muted-foreground">See how fatigue alters efficiency as ATL fluctuates.</p>
             </div>
           </div>

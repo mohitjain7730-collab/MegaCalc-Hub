@@ -253,10 +253,10 @@ export default function PaleoComplianceScoreCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Balance proteins, fats, and carbs for Paleo meals.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Align portion sizes with energy requirements.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Confirm adequate fiber from vegetables and fruits.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Micronutrient Tracker</Link></h4><p className="text-sm text-muted-foreground">Ensure Paleo choices cover vitamin and mineral targets.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Balance proteins, fats, and carbs for Paleo meals.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Align portion sizes with energy requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Confirm adequate fiber from vegetables and fruits.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">Micronutrient Tracker</Link></h4><p className="text-sm text-muted-foreground">Ensure Paleo choices cover vitamin and mineral targets.</p></div>
           </div>
         </CardContent>
       </Card>

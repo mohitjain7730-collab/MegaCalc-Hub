@@ -469,7 +469,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/sip-calculator" className="block">
+            <Link href="/sip-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -482,7 +482,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -495,7 +495,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -508,7 +508,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inflation-calculator" className="block">
+            <Link href="/inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -521,7 +521,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/investment-goal-tracker-calculator" className="block">
+            <Link href="/investment-goal-tracker-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -534,7 +534,7 @@ export default function LumpSumVsSIPComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

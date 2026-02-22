@@ -293,19 +293,19 @@ export default function CriticalPowerCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-Heart Rate Efficiency</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-Heart Rate Efficiency</Link></h4>
               <p className="text-sm text-muted-foreground">Analyse power and heart rate coupling for training readiness.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity</Link></h4>
               <p className="text-sm text-muted-foreground">Estimate high-intensity energy reserves for repeated efforts.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4>
               <p className="text-sm text-muted-foreground">Translate aerobic capacity into running training zones.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
               <p className="text-sm text-muted-foreground">Understand post-exercise oxygen needs after intense sessions.</p>
             </div>
           </div>

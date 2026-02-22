@@ -174,10 +174,10 @@ export default function PortfolioRebalancingPlanner() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/sector-exposure-calculator" className="text-primary hover:underline">Sector Exposure</a></h4><p className="text-sm text-muted-foreground">Sector allocation analysis.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/style-drift-analyzer" className="text-primary hover:underline">Style Drift Analyzer</a></h4><p className="text-sm text-muted-foreground">Factor exposure tracking.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean-Variance Optimization</a></h4><p className="text-sm text-muted-foreground">Efficient allocations.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/tangency-portfolio-calculator" className="text-primary hover:underline">Tangency Portfolio</a></h4><p className="text-sm text-muted-foreground">Max Sharpe mix.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/sector-exposure-calculator" className="text-primary hover:underline">Sector Exposure</a></h4><p className="text-sm text-muted-foreground">Sector allocation analysis.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/style-drift-analyzer" className="text-primary hover:underline">Style Drift Analyzer</a></h4><p className="text-sm text-muted-foreground">Factor exposure tracking.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean-Variance Optimization</a></h4><p className="text-sm text-muted-foreground">Efficient allocations.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/tangency-portfolio-calculator" className="text-primary hover:underline">Tangency Portfolio</a></h4><p className="text-sm text-muted-foreground">Max Sharpe mix.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -180,11 +180,11 @@ export default function VolumeConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/atmospheres-to-torr-converter" className="hover:underline">Atmospheres To Torr Converter</Link></li>
-                <li><Link href="/conversions/meters-per-second-to-knots-converter" className="hover:underline">Meters Per Second To Knots Converter</Link></li>
-                <li><Link href="/conversions/gallons-to-cubic-feet-converter" className="hover:underline">Gallons To Cubic Feet Converter</Link></li>
-                <li><Link href="/conversions/weight-and-mass-converter" className="hover:underline">Weight And Mass Converter</Link></li>
-                <li><Link href="/conversions/bars-to-psi-converter" className="hover:underline">Bars To Psi Converter</Link></li>
+                <li><Link href="/atmospheres-to-torr-converter" className="hover:underline">Atmospheres To Torr Converter</Link></li>
+                <li><Link href="/meters-per-second-to-knots-converter" className="hover:underline">Meters Per Second To Knots Converter</Link></li>
+                <li><Link href="/gallons-to-cubic-feet-converter" className="hover:underline">Gallons To Cubic Feet Converter</Link></li>
+                <li><Link href="/weight-and-mass-converter" className="hover:underline">Weight And Mass Converter</Link></li>
+                <li><Link href="/bars-to-psi-converter" className="hover:underline">Bars To Psi Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

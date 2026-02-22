@@ -227,8 +227,8 @@ export default function ContractDurationCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
-              <li><Link href="/time-date/date-difference-calculator" className="hover:underline">Date Difference Calculator</Link></li>
+              <li><Link href="/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/date-difference-calculator" className="hover:underline">Date Difference Calculator</Link></li>
               <li><Link href="/notice-period-calculator" className="hover:underline">Notice Period End Date Calculator</Link></li>
               <li><Link href="/probation-period-calculator" className="hover:underline">Probation Period End Date Calculator</Link></li>
             </ul>

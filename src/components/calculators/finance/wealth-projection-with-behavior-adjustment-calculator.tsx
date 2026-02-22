@@ -516,7 +516,7 @@ export default function WealthProjectionWithBehaviorAdjustmentCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -536,7 +536,7 @@ export default function WealthProjectionWithBehaviorAdjustmentCalculator() {
     <meta itemProp="keywords" content="wealth projection, behavior adjustment, savings rate, compound interest, wealth accumulation, behavioral finance" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/wealth-projection-with-behavior-adjustment-calculator" />
+    <meta itemProp="url" content="/wealth-projection-with-behavior-adjustment-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Wealth Projection with Behavior Adjustment: Impact of Behavioral Changes on Wealth Accumulation</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at wealth projection with behavioral adjustments, demonstrating how changes in savings rates and investment behavior impact long-term wealth accumulation.</p>

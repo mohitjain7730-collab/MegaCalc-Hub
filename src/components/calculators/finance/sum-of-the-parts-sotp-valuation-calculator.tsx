@@ -560,7 +560,7 @@ export default function SumOfThePartsSotpValuationCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -580,7 +580,7 @@ export default function SumOfThePartsSotpValuationCalculator() {
         <meta itemProp="keywords" content="SOTP valuation, sum of the parts, segment valuation, conglomerate valuation, business segment valuation" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/sum-of-the-parts-sotp-valuation-calculator" />
+        <meta itemProp="url" content="/sum-of-the-parts-sotp-valuation-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Sum-of-the-Parts (SOTP) Valuation: Segment-Based Company Valuation</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at Sum-of-the-Parts (SOTP) valuation, valuing each business segment separately and summing those values to estimate total company value.</p>

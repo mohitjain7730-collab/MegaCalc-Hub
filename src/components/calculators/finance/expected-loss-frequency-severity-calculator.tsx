@@ -384,7 +384,7 @@ export default function ExpectedLossFrequencySeverityCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -404,7 +404,7 @@ export default function ExpectedLossFrequencySeverityCalculator() {
     <meta itemProp="keywords" content="expected loss frequency severity, insurance risk management, actuarial pricing, loss ratio, claim frequency, claim severity, premium calculation" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/expected-loss-frequency-severity-calculator" />
+    <meta itemProp="url" content="/expected-loss-frequency-severity-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Expected Loss: Frequency, Severity, and Risk Management</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at expected loss calculation, its components (frequency and severity), and its critical role in insurance pricing, reserving, and risk management.</p>

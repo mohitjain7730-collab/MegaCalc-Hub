@@ -212,10 +212,10 @@ export function NaKGuide() {
     Related Calculators
   </h3>
   <div className="space-y-2">
-    <p><Link href="/health-fitness/hydration-needs-calculator" className="text-primary underline">Water Intake Calculator</Link></p>
-    <p><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
-    <p><Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary underline">Fiber Intake Calculator</Link></p>
-    <p><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary underline">Zinc Requirement Calculator</Link></p>
+    <p><Link href="/hydration-needs-calculator" className="text-primary underline">Water Intake Calculator</Link></p>
+    <p><Link href="/electrolyte-replacement-calculator" className="text-primary underline">Magnesium Intake Calculator</Link></p>
+    <p><Link href="/carbohydrate-intake-calculator" className="text-primary underline">Fiber Intake Calculator</Link></p>
+    <p><Link href="/electrolyte-replacement-calculator" className="text-primary underline">Zinc Requirement Calculator</Link></p>
   </div>
 
   <h3 className="font-semibold text-foreground mt-6">Quick Takeaways</h3>

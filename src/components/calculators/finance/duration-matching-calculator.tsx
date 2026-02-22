@@ -152,10 +152,10 @@ export default function DurationMatchingCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/asset-liability-matching-calculator" className="text-primary hover:underline">Asset-Liability Matching</a></h4><p className="text-sm text-muted-foreground">Cash flow alignment.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/tax-equivalent-yield-calculator" className="text-primary hover:underline">Tax-Equivalent Yield</a></h4><p className="text-sm text-muted-foreground">Municipal bond comparison.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/present-value-calculator" className="text-primary hover:underline">Present Value</a></h4><p className="text-sm text-muted-foreground">Bond valuation.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/bond-price-calculator" className="text-primary hover:underline">Yield to Maturity</a></h4><p className="text-sm text-muted-foreground">Bond yield calculation.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/asset-liability-matching-calculator" className="text-primary hover:underline">Asset-Liability Matching</a></h4><p className="text-sm text-muted-foreground">Cash flow alignment.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/tax-equivalent-yield-calculator" className="text-primary hover:underline">Tax-Equivalent Yield</a></h4><p className="text-sm text-muted-foreground">Municipal bond comparison.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/present-value-calculator" className="text-primary hover:underline">Present Value</a></h4><p className="text-sm text-muted-foreground">Bond valuation.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/bond-price-calculator" className="text-primary hover:underline">Yield to Maturity</a></h4><p className="text-sm text-muted-foreground">Bond yield calculation.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -399,7 +399,7 @@ export default function CashFlowForecastingCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/free-cash-flow-calculator" className="block">
+            <Link href="/free-cash-flow-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -412,7 +412,7 @@ export default function CashFlowForecastingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/working-capital-requirement-estimator" className="block">
+            <Link href="/working-capital-requirement-estimator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -425,7 +425,7 @@ export default function CashFlowForecastingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/financial-forecast-growth-rate-calculator" className="block">
+            <Link href="/financial-forecast-growth-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -438,7 +438,7 @@ export default function CashFlowForecastingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/future-value-calculator" className="block">
+            <Link href="/future-value-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -451,7 +451,7 @@ export default function CashFlowForecastingCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/dcf-calculator" className="block">
+            <Link href="/dcf-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

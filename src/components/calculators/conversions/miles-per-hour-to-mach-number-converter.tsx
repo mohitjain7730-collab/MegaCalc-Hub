@@ -115,7 +115,7 @@ export default function MphToMachConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/mach-number-to-miles-per-hour-converter" className="text-primary underline">Mach to mph Converter</Link></p>
+            <p><Link href="/mach-number-to-miles-per-hour-converter" className="text-primary underline">Mach to mph Converter</Link></p>
           </div>
         </div>
       </div>

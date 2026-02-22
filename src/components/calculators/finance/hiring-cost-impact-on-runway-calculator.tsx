@@ -470,7 +470,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/burn-rate-calculator" className="block">
+            <Link href="/burn-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -483,7 +483,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/pre-revenue-startup-runway-calculator" className="block">
+            <Link href="/pre-revenue-startup-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -496,7 +496,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/post-funding-runway-extension-calculator" className="block">
+            <Link href="/post-funding-runway-extension-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -509,7 +509,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/esop-dilution-impact-calculator" className="block">
+            <Link href="/esop-dilution-impact-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -522,7 +522,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/break-even-analysis-calculator" className="block">
+            <Link href="/break-even-analysis-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -535,7 +535,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cash-flow-forecasting-calculator" className="block">
+            <Link href="/cash-flow-forecasting-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -560,7 +560,7 @@ export default function HiringCostImpactOnRunwayCalculator() {
         <meta itemProp="keywords" content="hiring cost runway calculator, startup runway impact, fully loaded cost per hire, headcount runway, startup burn rate hiring" />
         <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/hiring-cost-impact-on-runway-calculator" />
+        <meta itemProp="url" content="/hiring-cost-impact-on-runway-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Hiring Cost Impact on Runway</h1>
         <p className="text-lg italic text-muted-foreground">See how adding headcount changes monthly burn and shortens runway, and how to plan hiring against cash and fundraising.</p>

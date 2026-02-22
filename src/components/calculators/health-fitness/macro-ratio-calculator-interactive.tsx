@@ -89,7 +89,7 @@ export default function MacroRatioCalculatorInteractive() {
                                     <FormItem>
                                         <div className="flex justify-between items-center">
                                             <FormLabel>Total Daily Calories (TDEE)</FormLabel>
-                                            <Link href="/health-fitness/daily-calorie-needs-calculator" className="text-xs text-primary underline">
+                                            <Link href="/daily-calorie-needs-calculator" className="text-xs text-primary underline">
                                                 (Calculate TDEE First)
                                             </Link>
                                         </div>

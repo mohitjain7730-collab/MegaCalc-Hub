@@ -448,7 +448,7 @@ export default function MagnesiumIntakeCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Calcium Intake Calculator
                 </Link>
               </h4>
@@ -456,7 +456,7 @@ export default function MagnesiumIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Zinc Requirement Calculator
                 </Link>
               </h4>
@@ -464,7 +464,7 @@ export default function MagnesiumIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Potassium Intake Calculator
                 </Link>
               </h4>
@@ -472,7 +472,7 @@ export default function MagnesiumIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                <Link href="/carbohydrate-intake-calculator" className="text-primary hover:underline">
                   Fiber Intake Calculator
                 </Link>
               </h4>

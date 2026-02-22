@@ -572,10 +572,10 @@ export default function AssetCorrelationMatrixCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Portfolio Variance", desc: "Total risk aggregation", href: "/finance/portfolio-variance-calculator" },
-              { title: "Efficient Frontier", desc: "Optimal allocation sweep", href: "/finance/efficient-frontier-visualizer" },
-              { title: "Sharpe Ratio", desc: "Efficiency benchmarking", href: "/finance/sharpe-ratio-calculator" },
-              { title: "Beta Adjuster", desc: "Market sensitivity audit", href: "/finance/beta-adjusted-portfolio-return-calculator" }
+              { title: "Portfolio Variance", desc: "Total risk aggregation", href: "/portfolio-variance-calculator" },
+              { title: "Efficient Frontier", desc: "Optimal allocation sweep", href: "/efficient-frontier-visualizer" },
+              { title: "Sharpe Ratio", desc: "Efficiency benchmarking", href: "/sharpe-ratio-calculator" },
+              { title: "Beta Adjuster", desc: "Market sensitivity audit", href: "/beta-adjusted-portfolio-return-calculator" }
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-lg bg-muted/20 hover:bg-muted/40 overflow-hidden relative">

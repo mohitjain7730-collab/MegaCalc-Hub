@@ -354,7 +354,7 @@ export default function MarginOfSafetyCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/simple-inflation-adjusted-return-calculator" className="group">
+            <Link href="/simple-inflation-adjusted-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -362,7 +362,7 @@ export default function MarginOfSafetyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/real-rate-of-return-calculator" className="group">
+            <Link href="/real-rate-of-return-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Percent className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -370,7 +370,7 @@ export default function MarginOfSafetyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sharpe-ratio-calculator" className="group">
+            <Link href="/sharpe-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -378,7 +378,7 @@ export default function MarginOfSafetyCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/value-at-risk-calculator" className="group">
+            <Link href="/value-at-risk-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -589,7 +589,7 @@ export default function MarginOfSafetyCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/dcf-calculator" className="text-primary hover:underline">
+                <Link href="/dcf-calculator" className="text-primary hover:underline">
                   DCF Calculator
                 </Link>
               </h4>
@@ -599,7 +599,7 @@ export default function MarginOfSafetyCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/price-to-earnings-ratio-calculator" className="text-primary hover:underline">
+                <Link href="/price-to-earnings-ratio-calculator" className="text-primary hover:underline">
                   P/E Ratio Calculator
                 </Link>
               </h4>
@@ -609,7 +609,7 @@ export default function MarginOfSafetyCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/enterprise-value-calculator" className="text-primary hover:underline">
+                <Link href="/enterprise-value-calculator" className="text-primary hover:underline">
                   Enterprise Value Calculator
                 </Link>
               </h4>
@@ -619,7 +619,7 @@ export default function MarginOfSafetyCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <Link href="/finance/return-on-investment-calculator" className="text-primary hover:underline">
+                <Link href="/return-on-investment-calculator" className="text-primary hover:underline">
                   ROI Calculator
                 </Link>
               </h4>

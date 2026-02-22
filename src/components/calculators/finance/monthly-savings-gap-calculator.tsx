@@ -302,7 +302,7 @@ export default function MonthlySavingsGapCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/savings-goal-timeline-calculator" className="block">
+            <Link href="/savings-goal-timeline-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -315,7 +315,7 @@ export default function MonthlySavingsGapCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/lifestyle-inflation-calculator" className="block">
+            <Link href="/lifestyle-inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -328,7 +328,7 @@ export default function MonthlySavingsGapCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -351,7 +351,7 @@ export default function MonthlySavingsGapCalculator() {
         <meta itemProp="keywords" content="monthly savings gap, savings gap calculator, how much to save per month, required monthly savings" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/monthly-savings-gap-calculator" />
+        <meta itemProp="url" content="/monthly-savings-gap-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Monthly Savings Gap: How Much More to Save to Reach Your Goal</h1>
         <p className="text-lg italic text-muted-foreground">The savings gap is the difference between what you need to save each month to reach a goal on time and what you are actually saving. This calculator shows the gap and how long it would take at your current rate.</p>

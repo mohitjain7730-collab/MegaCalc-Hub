@@ -248,10 +248,10 @@ export default function VO2PerKgLeanMassCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Baseline aerobic capacity.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">Lean Body Mass Calculator</Link></h4><p className="text-sm text-muted-foreground">Estimate FFM.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4><p className="text-sm text-muted-foreground">Plan weekly load.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Heart Rate Zones</Link></h4><p className="text-sm text-muted-foreground">Target intensities.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</Link></h4><p className="text-sm text-muted-foreground">Baseline aerobic capacity.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/lean-body-mass-calculator" className="text-primary hover:underline">Lean Body Mass Calculator</Link></h4><p className="text-sm text-muted-foreground">Estimate FFM.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/training-volume-calculator" className="text-primary hover:underline">Training Volume</Link></h4><p className="text-sm text-muted-foreground">Plan weekly load.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/target-heart-rate-calculator" className="text-primary hover:underline">Heart Rate Zones</Link></h4><p className="text-sm text-muted-foreground">Target intensities.</p></div>
           </div>
         </CardContent>
       </Card>

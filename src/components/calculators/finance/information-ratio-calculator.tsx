@@ -522,10 +522,10 @@ export default function InformationRatioCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { title: "Treynor Ratio", desc: "Beta-adjusted performance", href: "/finance/treynor-ratio-calculator" },
-              { title: "Sortino Ratio", desc: "Downside risk focus", href: "/finance/sortino-ratio-calculator" },
-              { title: "Tracking Error", desc: "Active deviation audit", href: "/finance/tracking-error-calculator" },
-              { title: "Jensen&apos;s Alpha", desc: "Pure outperformance score", href: "/finance/jensens-alpha-calculator" }
+              { title: "Treynor Ratio", desc: "Beta-adjusted performance", href: "/treynor-ratio-calculator" },
+              { title: "Sortino Ratio", desc: "Downside risk focus", href: "/sortino-ratio-calculator" },
+              { title: "Tracking Error", desc: "Active deviation audit", href: "/tracking-error-calculator" },
+              { title: "Jensen&apos;s Alpha", desc: "Pure outperformance score", href: "/jensens-alpha-calculator" }
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-lg bg-muted/20 hover:bg-muted/40 relative overflow-hidden group">

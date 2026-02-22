@@ -123,9 +123,9 @@ export default function AstronomicalUnitsToKilometersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/light-years-to-kilometers-converter" className="text-primary underline">Light Years to Kilometers Converter</Link></p>
-            <p><Link href="/conversions/parsecs-to-light-years-converter" className="text-primary underline">Parsecs to Light Years Converter</Link></p>
-            <p><Link href="/conversions/kilometers-to-miles-converter" className="text-primary underline">Kilometers to Miles Converter</Link></p>
+            <p><Link href="/light-years-to-kilometers-converter" className="text-primary underline">Light Years to Kilometers Converter</Link></p>
+            <p><Link href="/parsecs-to-light-years-converter" className="text-primary underline">Parsecs to Light Years Converter</Link></p>
+            <p><Link href="/kilometers-to-miles-converter" className="text-primary underline">Kilometers to Miles Converter</Link></p>
           </div>
         </div>
         <section

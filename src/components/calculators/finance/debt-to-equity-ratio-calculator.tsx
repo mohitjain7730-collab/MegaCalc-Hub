@@ -336,7 +336,7 @@ export default function DebtToEquityRatioCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/return-on-equity-calculator" className="text-primary hover:underline">
+                  <a href="/return-on-equity-calculator" className="text-primary hover:underline">
                     Return on Equity Calculator
                   </a>
                 </h4>
@@ -346,7 +346,7 @@ export default function DebtToEquityRatioCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/interest-coverage-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/interest-coverage-ratio-calculator" className="text-primary hover:underline">
                     Interest Coverage Ratio Calculator
                   </a>
                 </h4>
@@ -356,7 +356,7 @@ export default function DebtToEquityRatioCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/current-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/current-ratio-calculator" className="text-primary hover:underline">
                     Current Ratio Calculator
                   </a>
                 </h4>
@@ -366,7 +366,7 @@ export default function DebtToEquityRatioCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/quick-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/quick-ratio-calculator" className="text-primary hover:underline">
                     Quick Ratio Calculator
                   </a>
                 </h4>

@@ -208,10 +208,10 @@ export default function CagrCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Compare return metrics</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/holding-period-return-hpr-calculator" className="text-primary hover:underline">Holding Period Return</a></h4><p className="text-sm text-muted-foreground">Total period return.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</a></h4><p className="text-sm text-muted-foreground">Inflation‑adjusted.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</a></h4><p className="text-sm text-muted-foreground">Growth projection.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/weighted-average-return-calculator" className="text-primary hover:underline">Weighted Return</a></h4><p className="text-sm text-muted-foreground">Portfolio combine.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/holding-period-return-hpr-calculator" className="text-primary hover:underline">Holding Period Return</a></h4><p className="text-sm text-muted-foreground">Total period return.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</a></h4><p className="text-sm text-muted-foreground">Inflation‑adjusted.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</a></h4><p className="text-sm text-muted-foreground">Growth projection.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/weighted-average-return-calculator" className="text-primary hover:underline">Weighted Return</a></h4><p className="text-sm text-muted-foreground">Portfolio combine.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -214,11 +214,11 @@ export default function ConstructionConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/square-miles-to-acres-converter" className="hover:underline">Square Miles To Acres Converter</Link></li>
-                <li><Link href="/conversions/kilowatts-to-watts-converter" className="hover:underline">Kilowatts To Watts Converter</Link></li>
-                <li><Link href="/conversions/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
-                <li><Link href="/conversions/foot-pounds-to-joules-converter" className="hover:underline">Foot Pounds To Joules Converter</Link></li>
-                <li><Link href="/conversions/gallons-to-liters-converter" className="hover:underline">Gallons To Liters Converter</Link></li>
+                <li><Link href="/square-miles-to-acres-converter" className="hover:underline">Square Miles To Acres Converter</Link></li>
+                <li><Link href="/kilowatts-to-watts-converter" className="hover:underline">Kilowatts To Watts Converter</Link></li>
+                <li><Link href="/electrical-converter" className="hover:underline">Electrical Converter</Link></li>
+                <li><Link href="/foot-pounds-to-joules-converter" className="hover:underline">Foot Pounds To Joules Converter</Link></li>
+                <li><Link href="/gallons-to-liters-converter" className="hover:underline">Gallons To Liters Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

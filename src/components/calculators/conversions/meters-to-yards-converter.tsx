@@ -119,8 +119,8 @@ export default function MetersToYardsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/yards-to-meters-converter" className="text-primary underline">Yards to Meters Converter</Link></p>
-            <p><Link href="/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
+            <p><Link href="/yards-to-meters-converter" className="text-primary underline">Yards to Meters Converter</Link></p>
+            <p><Link href="/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
           </div>
         </div>
         <section

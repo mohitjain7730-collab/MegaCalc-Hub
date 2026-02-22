@@ -341,10 +341,10 @@ export default function HealthInsuranceSubsidyEligibilityCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/copay-vs-deductible-breakeven-calculator" className="hover:underline">Copay vs. Deductible Break-even Calculator</Link></li>
-              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
-              <li><Link href="/finance/health-plan-coverage-gap-estimator" className="hover:underline">Health Plan Coverage Gap Estimator</Link></li>
-              <li><Link href="/finance/hospital-stay-cost-by-specialty-calculator" className="hover:underline">Hospital Stay Cost Estimator</Link></li>
+              <li><Link href="/copay-vs-deductible-breakeven-calculator" className="hover:underline">Copay vs. Deductible Break-even Calculator</Link></li>
+              <li><Link href="/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/health-plan-coverage-gap-estimator" className="hover:underline">Health Plan Coverage Gap Estimator</Link></li>
+              <li><Link href="/hospital-stay-cost-by-specialty-calculator" className="hover:underline">Hospital Stay Cost Estimator</Link></li>
             </ul>
           </CardContent>
         </Card>

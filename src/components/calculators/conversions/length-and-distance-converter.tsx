@@ -181,11 +181,11 @@ export default function LengthAndDistanceConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/cups-to-milliliters-converter" className="hover:underline">Cups To Milliliters Converter</Link></li>
-                <li><Link href="/conversions/days-to-minutes-converter" className="hover:underline">Days To Minutes Converter</Link></li>
-                <li><Link href="/conversions/milliliters-to-teaspoons-converter" className="hover:underline">Milliliters To Teaspoons Converter</Link></li>
-                <li><Link href="/conversions/flow-rate-converter" className="hover:underline">Flow Rate Converter</Link></li>
-                <li><Link href="/conversions/kilowatts-to-btu-per-hour-converter" className="hover:underline">Kilowatts To Btu Per Hour Converter</Link></li>
+                <li><Link href="/cups-to-milliliters-converter" className="hover:underline">Cups To Milliliters Converter</Link></li>
+                <li><Link href="/days-to-minutes-converter" className="hover:underline">Days To Minutes Converter</Link></li>
+                <li><Link href="/milliliters-to-teaspoons-converter" className="hover:underline">Milliliters To Teaspoons Converter</Link></li>
+                <li><Link href="/flow-rate-converter" className="hover:underline">Flow Rate Converter</Link></li>
+                <li><Link href="/kilowatts-to-btu-per-hour-converter" className="hover:underline">Kilowatts To Btu Per Hour Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

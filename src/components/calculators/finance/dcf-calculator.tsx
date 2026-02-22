@@ -459,7 +459,7 @@ export default function DcfCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/npv-calculator" className="text-primary hover:underline">
+                  <a href="/npv-calculator" className="text-primary hover:underline">
                     Net Present Value Calculator
                   </a>
                 </h4>
@@ -469,7 +469,7 @@ export default function DcfCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/discount-rate-calculator" className="text-primary hover:underline">
+                  <a href="/discount-rate-calculator" className="text-primary hover:underline">
                     Discount Rate Calculator
                   </a>
                 </h4>
@@ -479,7 +479,7 @@ export default function DcfCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/enterprise-value-calculator" className="text-primary hover:underline">
+                  <a href="/enterprise-value-calculator" className="text-primary hover:underline">
                     Enterprise Value Calculator
                   </a>
                 </h4>
@@ -489,7 +489,7 @@ export default function DcfCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/free-cash-flow-calculator" className="text-primary hover:underline">
+                  <a href="/free-cash-flow-calculator" className="text-primary hover:underline">
                     Free Cash Flow Calculator
                   </a>
                 </h4>

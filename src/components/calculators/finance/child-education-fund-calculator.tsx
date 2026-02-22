@@ -495,7 +495,7 @@ export default function ChildEducationFundCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/inflation-adjusted-savings-goal-calculator" className="block">
+            <Link href="/inflation-adjusted-savings-goal-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -508,7 +508,7 @@ export default function ChildEducationFundCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sip-calculator" className="block">
+            <Link href="/sip-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -521,7 +521,7 @@ export default function ChildEducationFundCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/investment-goal-tracker-calculator" className="block">
+            <Link href="/investment-goal-tracker-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -534,7 +534,7 @@ export default function ChildEducationFundCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -547,7 +547,7 @@ export default function ChildEducationFundCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sip-calculator" className="block">
+            <Link href="/sip-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -560,7 +560,7 @@ export default function ChildEducationFundCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cost-of-delay-investing-late-calculator" className="block">
+            <Link href="/cost-of-delay-investing-late-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

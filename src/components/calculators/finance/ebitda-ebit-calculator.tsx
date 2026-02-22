@@ -320,7 +320,7 @@ export default function EBITDAEBITCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/operating-margin-calculator" className="group">
+            <Link href="/operating-margin-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -328,7 +328,7 @@ export default function EBITDAEBITCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/gross-margin-calculator" className="group">
+            <Link href="/gross-margin-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -336,7 +336,7 @@ export default function EBITDAEBITCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/free-cash-flow-calculator" className="group">
+            <Link href="/free-cash-flow-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -344,7 +344,7 @@ export default function EBITDAEBITCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/interest-coverage-ratio-calculator" className="group">
+            <Link href="/interest-coverage-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />

@@ -105,10 +105,10 @@ export default function DSCRCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return estimate.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/cash-flow-after-tax-cfat-calculator" className="text-primary hover:underline">Cash Flow After Tax (CFAT)</a></h4><p className="text-sm text-muted-foreground">After‑tax cash flow.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">Loan‑to‑Value (LTV)</a></h4><p className="text-sm text-muted-foreground">Leverage vs value.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/real-estate-cap-rate-sensitivity-calculator" className="text-primary hover:underline">Cap Rate Sensitivity</a></h4><p className="text-sm text-muted-foreground">Value vs cap rate moves.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return estimate.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/cash-flow-after-tax-cfat-calculator" className="text-primary hover:underline">Cash Flow After Tax (CFAT)</a></h4><p className="text-sm text-muted-foreground">After‑tax cash flow.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">Loan‑to‑Value (LTV)</a></h4><p className="text-sm text-muted-foreground">Leverage vs value.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/real-estate-cap-rate-sensitivity-calculator" className="text-primary hover:underline">Cap Rate Sensitivity</a></h4><p className="text-sm text-muted-foreground">Value vs cap rate moves.</p></div>
           </div>
         </CardContent>
       </Card>

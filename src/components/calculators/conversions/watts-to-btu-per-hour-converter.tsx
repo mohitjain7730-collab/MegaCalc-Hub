@@ -62,7 +62,7 @@ export default function WattsToBtuPerHourConverter() {
          <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/btu-per-hour-to-watts-converter" className="text-primary underline">BTU/hr to Watts Converter</Link></p>
+            <p><Link href="/btu-per-hour-to-watts-converter" className="text-primary underline">BTU/hr to Watts Converter</Link></p>
           </div>
         </div>
       </div>

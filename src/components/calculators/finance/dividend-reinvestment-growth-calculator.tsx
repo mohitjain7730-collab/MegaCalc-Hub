@@ -431,7 +431,7 @@ export default function DividendReinvestmentGrowthCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/dividend-reinvestment-drip-calculator" className="block">
+            <Link href="/dividend-reinvestment-drip-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -444,7 +444,7 @@ export default function DividendReinvestmentGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/dividend-yield-calculator" className="block">
+            <Link href="/dividend-yield-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -457,7 +457,7 @@ export default function DividendReinvestmentGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -470,7 +470,7 @@ export default function DividendReinvestmentGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/tax-drag-on-investment-returns-calculator" className="block">
+            <Link href="/tax-drag-on-investment-returns-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -483,7 +483,7 @@ export default function DividendReinvestmentGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cagr-calculator" className="block">
+            <Link href="/cagr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -496,7 +496,7 @@ export default function DividendReinvestmentGrowthCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/retirement-savings-calculator" className="block">
+            <Link href="/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

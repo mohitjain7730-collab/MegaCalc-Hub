@@ -360,7 +360,7 @@ export default function DurationGapCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/bond-duration-calculator" className="block">
+            <Link href="/bond-duration-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -373,7 +373,7 @@ export default function DurationGapCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/bond-convexity-calculator" className="block">
+            <Link href="/bond-convexity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -386,7 +386,7 @@ export default function DurationGapCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/value-at-risk-calculator" className="block">
+            <Link href="/value-at-risk-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

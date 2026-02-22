@@ -450,7 +450,7 @@ export default function CashFlowBreakEvenCalculator() {
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                                 <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                     <h4 className="font-semibold mb-2">
-                                        <a href="/finance/burn-rate-calculator" className="text-primary hover:underline">
+                                        <a href="/burn-rate-calculator" className="text-primary hover:underline">
                                             Burn Rate Calculator
                                         </a>
                                     </h4>
@@ -460,7 +460,7 @@ export default function CashFlowBreakEvenCalculator() {
                                 </div>
                                 <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                     <h4 className="font-semibold mb-2">
-                                        <a href="/finance/contribution-margin-calculator" className="text-primary hover:underline">
+                                        <a href="/contribution-margin-calculator" className="text-primary hover:underline">
                                             Contribution Margin
                                         </a>
                                     </h4>
@@ -470,7 +470,7 @@ export default function CashFlowBreakEvenCalculator() {
                                 </div>
                                 <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                     <h4 className="font-semibold mb-2">
-                                        <a href="/finance/operating-cycle-calculator" className="text-primary hover:underline">
+                                        <a href="/operating-cycle-calculator" className="text-primary hover:underline">
                                             Operating Cycle
                                         </a>
                                     </h4>
@@ -480,7 +480,7 @@ export default function CashFlowBreakEvenCalculator() {
                                 </div>
                                 <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                                     <h4 className="font-semibold mb-2">
-                                        <a href="/finance/working-capital-calculator" className="text-primary hover:underline">
+                                        <a href="/working-capital-calculator" className="text-primary hover:underline">
                                             Working Capital
                                         </a>
                                     </h4>

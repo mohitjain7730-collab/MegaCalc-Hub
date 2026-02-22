@@ -503,7 +503,7 @@ export default function InvestmentBiasAnalyzerAnchoringOverconfidenceEstimator()
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -523,7 +523,7 @@ export default function InvestmentBiasAnalyzerAnchoringOverconfidenceEstimator()
     <meta itemProp="keywords" content="investment bias, anchoring bias, overconfidence bias, behavioral finance, cognitive bias, investment decision making" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/investment-bias-analyzer-anchoring-overconfidence-estimator" />
+    <meta itemProp="url" content="/investment-bias-analyzer-anchoring-overconfidence-estimator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Investment Bias Analysis: Anchoring and Overconfidence</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at investment biases, particularly anchoring and overconfidence, and how to identify and mitigate their influence on investment decisions.</p>

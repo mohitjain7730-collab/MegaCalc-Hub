@@ -240,10 +240,10 @@ export default function ShiftRotationCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
               <li><Link href="/night-shift-duration-calculator" className="hover:underline">Night Shift Duration Calculator</Link></li>
               <li><Link href="/remote-work-time-zone-overlap-calculator" className="hover:underline">Remote Work Time Zone Overlap Calculator</Link></li>
-              <li><Link href="/time-date/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
+              <li><Link href="/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

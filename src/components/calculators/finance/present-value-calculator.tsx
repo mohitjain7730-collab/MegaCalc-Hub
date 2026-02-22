@@ -638,7 +638,7 @@ export default function PresentValueCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/future-value-calculator" className="text-primary hover:underline">
+                  <a href="/future-value-calculator" className="text-primary hover:underline">
                     Future Value Calculator
                   </a>
                 </h4>
@@ -648,7 +648,7 @@ export default function PresentValueCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/annuity-payment-calculator" className="text-primary hover:underline">
+                  <a href="/annuity-payment-calculator" className="text-primary hover:underline">
                     Annuity Payment Calculator
                   </a>
                 </h4>
@@ -658,7 +658,7 @@ export default function PresentValueCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
+                  <a href="/compound-interest-calculator" className="text-primary hover:underline">
                     Compound Interest Calculator
                   </a>
                 </h4>
@@ -668,7 +668,7 @@ export default function PresentValueCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/npv-calculator" className="text-primary hover:underline">
+                  <a href="/npv-calculator" className="text-primary hover:underline">
                     NPV Calculator
                   </a>
                 </h4>

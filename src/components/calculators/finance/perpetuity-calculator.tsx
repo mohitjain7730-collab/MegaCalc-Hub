@@ -596,7 +596,7 @@ export default function PerpetuityCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/annuity-payment-calculator" className="text-primary hover:underline">
+                  <a href="/annuity-payment-calculator" className="text-primary hover:underline">
                     Annuity Payment Calculator
                   </a>
                 </h4>
@@ -606,7 +606,7 @@ export default function PerpetuityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/present-value-calculator" className="text-primary hover:underline">
+                  <a href="/present-value-calculator" className="text-primary hover:underline">
                     Present Value Calculator
                   </a>
                 </h4>
@@ -616,7 +616,7 @@ export default function PerpetuityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/dividend-reinvestment-drip-calculator" className="text-primary hover:underline">
+                  <a href="/dividend-reinvestment-drip-calculator" className="text-primary hover:underline">
                     Growing Annuity/Perpetuity Calculator
                   </a>
                 </h4>
@@ -626,7 +626,7 @@ export default function PerpetuityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/retirement-savings-calculator" className="text-primary hover:underline">
+                  <a href="/retirement-savings-calculator" className="text-primary hover:underline">
                     Retirement Savings Calculator
                   </a>
                 </h4>

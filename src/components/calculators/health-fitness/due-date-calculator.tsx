@@ -220,9 +220,9 @@ export default function DueDateCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/health-fitness/ideal-body-weight-calculator">Pregnancy Weight Gain Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/health-fitness/conception-probability-per-cycle-calculator">Fertility Ovulation Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/health-fitness/daily-calorie-needs-calculator">Breastfeeding Calorie Needs Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/ideal-body-weight-calculator">Pregnancy Weight Gain Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/conception-probability-per-cycle-calculator">Fertility Ovulation Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/daily-calorie-needs-calculator">Breastfeeding Calorie Needs Calculator</Link></p>
       </div>
     </div>
   );

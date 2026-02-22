@@ -175,11 +175,11 @@ export default function FuelEconomyConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/hectares-to-square-kilometers-converter" className="hover:underline">Hectares To Square Kilometers Converter</Link></li>
-                <li><Link href="/conversions/acres-to-hectares-converter" className="hover:underline">Acres To Hectares Converter</Link></li>
-                <li><Link href="/conversions/joules-to-calories-converter" className="hover:underline">Joules To Calories Converter</Link></li>
-                <li><Link href="/conversions/height-converter" className="hover:underline">Height Converter</Link></li>
-                <li><Link href="/conversions/psi-to-kpa-converter" className="hover:underline">Psi To Kpa Converter</Link></li>
+                <li><Link href="/hectares-to-square-kilometers-converter" className="hover:underline">Hectares To Square Kilometers Converter</Link></li>
+                <li><Link href="/acres-to-hectares-converter" className="hover:underline">Acres To Hectares Converter</Link></li>
+                <li><Link href="/joules-to-calories-converter" className="hover:underline">Joules To Calories Converter</Link></li>
+                <li><Link href="/height-converter" className="hover:underline">Height Converter</Link></li>
+                <li><Link href="/psi-to-kpa-converter" className="hover:underline">Psi To Kpa Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

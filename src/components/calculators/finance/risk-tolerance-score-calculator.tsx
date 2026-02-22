@@ -465,7 +465,7 @@ export default function RiskToleranceScoreCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -485,7 +485,7 @@ export default function RiskToleranceScoreCalculator() {
     <meta itemProp="keywords" content="risk tolerance score, risk tolerance questionnaire, investment risk assessment, risk profile, portfolio allocation" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/risk-tolerance-score-calculator" />
+    <meta itemProp="url" content="/risk-tolerance-score-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Risk Tolerance Score: Assessment and Portfolio Alignment</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at risk tolerance scoring, risk profiles, and aligning investment portfolios with risk tolerance.</p>

@@ -586,7 +586,7 @@ export default function StartupRunwayCalculatorWithRevenueGrowth() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/startup-runway-calculator" className="block">
+            <Link href="/startup-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -599,7 +599,7 @@ export default function StartupRunwayCalculatorWithRevenueGrowth() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/burn-rate-calculator" className="block">
+            <Link href="/burn-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -612,7 +612,7 @@ export default function StartupRunwayCalculatorWithRevenueGrowth() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/saas-burn-rate-calculator-gross-vs-net" className="block">
+            <Link href="/saas-burn-rate-calculator-gross-vs-net" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -392,7 +392,7 @@ export default function FiberIntakeCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Magnesium Intake Calculator
                 </Link>
               </h4>
@@ -400,7 +400,7 @@ export default function FiberIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                <Link href="/carbohydrate-intake-calculator" className="text-primary hover:underline">
                   Antioxidant (ORAC) Goal Calculator
                 </Link>
               </h4>
@@ -408,7 +408,7 @@ export default function FiberIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Sodium-to-Potassium Ratio Calculator
                 </Link>
               </h4>
@@ -416,7 +416,7 @@ export default function FiberIntakeCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/glycemic-load-calculator" className="text-primary hover:underline">
+                <Link href="/glycemic-load-calculator" className="text-primary hover:underline">
                   Glycemic Load Calculator
                 </Link>
               </h4>

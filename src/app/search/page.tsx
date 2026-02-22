@@ -51,7 +51,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
               <Link
                 href={
                   calc.category === 'education' && calc.subcategory === 'maths'
-                    ? `/education/maths/${calc.slug}`
+                    ? `/${calc.slug}`
                     : `/${calc.category}/${calc.slug}`
                 }
                 key={calc.id}

@@ -105,7 +105,7 @@ export default function BasketballPointsPerPossessionCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/basketball-offensive-efficiency-calculator" className="block">
+                        <Link href="/basketball-offensive-efficiency-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function BasketballPointsPerPossessionCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-true-shooting-percentage-calculator" className="block">
+                        <Link href="/basketball-true-shooting-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function BasketballPointsPerPossessionCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-usage-rate-calculator" className="block">
+                        <Link href="/basketball-usage-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function BasketballPointsPerPossessionCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-effective-field-goal-percentage-calculator" className="block">
+                        <Link href="/basketball-effective-field-goal-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function BasketballPointsPerPossessionCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-assist-to-turnover-ratio-calculator" className="block">
+                        <Link href="/basketball-assist-to-turnover-ratio-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

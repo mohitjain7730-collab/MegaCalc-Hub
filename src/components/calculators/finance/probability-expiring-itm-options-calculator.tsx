@@ -483,7 +483,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/black-scholes-calculator" className="block">
+            <Link href="/black-scholes-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -496,7 +496,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-greeks-calculator" className="block">
+            <Link href="/option-greeks-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -509,7 +509,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/implied-volatility-calculator" className="block">
+            <Link href="/implied-volatility-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -522,7 +522,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-payoff-calculator" className="block">
+            <Link href="/option-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -535,7 +535,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/covered-call-protective-put-strategy-calculator" className="block">
+            <Link href="/covered-call-protective-put-strategy-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -548,7 +548,7 @@ export default function ProbabilityExpiringITMOptionsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/binomial-option-pricing-calculator" className="block">
+            <Link href="/binomial-option-pricing-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -94,7 +94,7 @@ export default function TorrToPascalsConverter() {
        <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/pascals-to-torr-converter" className="text-primary underline">Pascals to Torr Converter</Link></p>
+            <p><Link href="/pascals-to-torr-converter" className="text-primary underline">Pascals to Torr Converter</Link></p>
           </div>
         </div>
     </div>

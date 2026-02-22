@@ -400,7 +400,7 @@ export default function HvacSizingCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/lighting-layout-calculator" className="text-primary hover:underline">
+                  <a href="/lighting-layout-calculator" className="text-primary hover:underline">
                     Lighting Layout Calculator
                   </a>
                 </h4>
@@ -410,7 +410,7 @@ export default function HvacSizingCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/cost-estimator-renovation-calculator" className="text-primary hover:underline">
+                  <a href="/cost-estimator-renovation-calculator" className="text-primary hover:underline">
                     Renovation Cost Estimator
                   </a>
                 </h4>
@@ -420,7 +420,7 @@ export default function HvacSizingCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/insulation-r-value-calculator" className="text-primary hover:underline">
+                  <a href="/insulation-r-value-calculator" className="text-primary hover:underline">
                     Insulation R-Value Calculator
                   </a>
                 </h4>
@@ -430,7 +430,7 @@ export default function HvacSizingCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/water-usage-plumbing-flow-calculator" className="text-primary hover:underline">
+                  <a href="/water-usage-plumbing-flow-calculator" className="text-primary hover:underline">
                     Water Usage Calculator
                   </a>
                 </h4>

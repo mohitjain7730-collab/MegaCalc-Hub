@@ -311,7 +311,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -324,7 +324,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/emergency-fund-calculator-business-owners" className="block">
+            <Link href="/emergency-fund-calculator-business-owners" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -337,7 +337,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/monthly-budget-planner-calculator" className="block">
+            <Link href="/monthly-budget-planner-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -360,7 +360,7 @@ export default function PaycheckToPaycheckRiskCalculator() {
         <meta itemProp="keywords" content="paycheck to paycheck risk, expense to income ratio, living paycheck to paycheck, financial buffer, months of expenses" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/paycheck-to-paycheck-risk-calculator" />
+        <meta itemProp="url" content="/paycheck-to-paycheck-risk-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Paycheck-to-Paycheck Risk: What It Is and How to Reduce It</h1>
         <p className="text-lg italic text-muted-foreground">Living paycheck to paycheck means essential expenses consume most or all of income, with little or no buffer. This calculator measures your expense-to-income ratio and months of buffer to assess risk.</p>

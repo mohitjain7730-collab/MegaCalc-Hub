@@ -139,9 +139,9 @@ export default function FreeCashFlowToEquityCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/equity-enterprise-value-bridge-calculator" className="text-primary hover:underline">Equity vs Enterprise Value</a></h4><p className="text-sm text-muted-foreground">Valuation bridge.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/dcf-calculator" className="text-primary hover:underline">DCF Valuation</a></h4><p className="text-sm text-muted-foreground">Discounted cash flow.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/free-cash-flow-calculator" className="text-primary hover:underline">Free Cash Flow</a></h4><p className="text-sm text-muted-foreground">Operating cash flow.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/equity-enterprise-value-bridge-calculator" className="text-primary hover:underline">Equity vs Enterprise Value</a></h4><p className="text-sm text-muted-foreground">Valuation bridge.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/dcf-calculator" className="text-primary hover:underline">DCF Valuation</a></h4><p className="text-sm text-muted-foreground">Discounted cash flow.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/free-cash-flow-calculator" className="text-primary hover:underline">Free Cash Flow</a></h4><p className="text-sm text-muted-foreground">Operating cash flow.</p></div>
           </div>
         </CardContent>
       </Card>

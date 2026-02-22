@@ -179,11 +179,11 @@ export default function DataStorageConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/kilojoules-to-joules-converter" className="hover:underline">Kilojoules To Joules Converter</Link></li>
-                <li><Link href="/conversions/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
-                <li><Link href="/conversions/kwh-to-joules-converter" className="hover:underline">Kwh To Joules Converter</Link></li>
-                <li><Link href="/conversions/chemical-concentration-converter" className="hover:underline">Chemical Concentration Converter</Link></li>
-                <li><Link href="/conversions/kilometers-to-nautical-miles-converter" className="hover:underline">Kilometers To Nautical Miles Converter</Link></li>
+                <li><Link href="/kilojoules-to-joules-converter" className="hover:underline">Kilojoules To Joules Converter</Link></li>
+                <li><Link href="/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
+                <li><Link href="/kwh-to-joules-converter" className="hover:underline">Kwh To Joules Converter</Link></li>
+                <li><Link href="/chemical-concentration-converter" className="hover:underline">Chemical Concentration Converter</Link></li>
+                <li><Link href="/kilometers-to-nautical-miles-converter" className="hover:underline">Kilometers To Nautical Miles Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

@@ -588,12 +588,12 @@ export default function DebtSnowballAvalancheRepaymentCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { name: "Credit Card Payoff", url: "/finance/credit-card-payoff-calculator", icon: <DollarSign className="h-5 w-5 text-red-500" />, desc: "Specific plan for plastic debt" },
-              { name: "Budget Planner", url: "/finance/monthly-budget-planner-calculator", icon: <PieChart className="h-5 w-5 text-green-500" />, desc: "Find money for extra payments" },
-              { name: "Emergency Fund", url: "/finance/emergency-fund-calculator", icon: <Shield className="h-5 w-5 text-blue-500" />, desc: "Protect your progress" },
-              { name: "Savings Goal", url: "/finance/savings-goal-timeline-calculator", icon: <Target className="h-5 w-5 text-indigo-500" />, desc: "Plan for life after debt" },
-              { name: "Loan Amortization", url: "/finance/amortization-schedule-generator", icon: <Calendar className="h-5 w-5 text-purple-500" />, desc: "Deep dive into loan schedules" },
-              { name: "Debt-to-Income", url: "/finance/dscr-calculator", icon: <Scale className="h-5 w-5 text-orange-500" />, desc: "Check your borrowing power" },
+              { name: "Credit Card Payoff", url: "/credit-card-payoff-calculator", icon: <DollarSign className="h-5 w-5 text-red-500" />, desc: "Specific plan for plastic debt" },
+              { name: "Budget Planner", url: "/monthly-budget-planner-calculator", icon: <PieChart className="h-5 w-5 text-green-500" />, desc: "Find money for extra payments" },
+              { name: "Emergency Fund", url: "/emergency-fund-calculator", icon: <Shield className="h-5 w-5 text-blue-500" />, desc: "Protect your progress" },
+              { name: "Savings Goal", url: "/savings-goal-timeline-calculator", icon: <Target className="h-5 w-5 text-indigo-500" />, desc: "Plan for life after debt" },
+              { name: "Loan Amortization", url: "/amortization-schedule-generator", icon: <Calendar className="h-5 w-5 text-purple-500" />, desc: "Deep dive into loan schedules" },
+              { name: "Debt-to-Income", url: "/dscr-calculator", icon: <Scale className="h-5 w-5 text-orange-500" />, desc: "Check your borrowing power" },
             ].map((item, i) => (
               <Link key={i} href={item.url} className="block group">
                 <Card className="h-full hover:shadow-md transition-all border-muted group-hover:border-primary/50">

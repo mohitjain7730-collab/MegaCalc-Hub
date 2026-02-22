@@ -319,7 +319,7 @@ export default function SodiumToPotassiumRatioCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Low-Sodium Diet Planner
                 </Link>
               </h4>
@@ -327,7 +327,7 @@ export default function SodiumToPotassiumRatioCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Potassium Intake Calculator
                 </Link>
               </h4>
@@ -335,7 +335,7 @@ export default function SodiumToPotassiumRatioCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">
+                <Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">
                   Electrolyte Replacement Calculator
                 </Link>
               </h4>

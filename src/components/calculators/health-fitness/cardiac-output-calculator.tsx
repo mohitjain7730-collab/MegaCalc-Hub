@@ -173,10 +173,10 @@ export default function CardiacOutputCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/stroke-volume-calculator" className="text-primary hover:underline">Stroke Volume</Link></h4><p className="text-sm text-muted-foreground">Derive SV from cardiac output and heart rate.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4><p className="text-sm text-muted-foreground">Relate mechanical output to cardiovascular effort.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Capacity benchmark for endurance training.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Support plasma volume and performance.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/stroke-volume-calculator" className="text-primary hover:underline">Stroke Volume</Link></h4><p className="text-sm text-muted-foreground">Derive SV from cardiac output and heart rate.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-HR Efficiency</Link></h4><p className="text-sm text-muted-foreground">Relate mechanical output to cardiovascular effort.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Capacity benchmark for endurance training.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Support plasma volume and performance.</p></div>
           </div>
         </CardContent>
       </Card>

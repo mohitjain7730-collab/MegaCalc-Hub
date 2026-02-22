@@ -290,9 +290,9 @@ export default function SpendingPatternAnalyzer() {
           <CardHeader><CardTitle className="flex items-center gap-2"><Landmark className="h-5 w-5" />Related Calculators</CardTitle></CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/savings-rate-vs-goal-timeline-visualizer" className="hover:underline">Savings Rate Goal Visualizer</Link></li>
-              <li><Link href="/finance/delayed-gratification-roi-calculator" className="hover:underline">Delayed Gratification ROI Calculator</Link></li>
-              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/savings-rate-vs-goal-timeline-visualizer" className="hover:underline">Savings Rate Goal Visualizer</Link></li>
+              <li><Link href="/delayed-gratification-roi-calculator" className="hover:underline">Delayed Gratification ROI Calculator</Link></li>
+              <li><Link href="/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

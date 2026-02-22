@@ -88,7 +88,7 @@ export default function BasketballThreePointPercentageCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/basketball-true-shooting-percentage-calculator" className="block">
+                        <Link href="/basketball-true-shooting-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -101,7 +101,7 @@ export default function BasketballThreePointPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-effective-field-goal-percentage-calculator" className="block">
+                        <Link href="/basketball-effective-field-goal-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -114,7 +114,7 @@ export default function BasketballThreePointPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-field-goal-percentage-calculator" className="block">
+                        <Link href="/basketball-field-goal-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -127,7 +127,7 @@ export default function BasketballThreePointPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-points-per-possession-calculator" className="block">
+                        <Link href="/basketball-points-per-possession-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -140,7 +140,7 @@ export default function BasketballThreePointPercentageCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-free-throw-percentage-calculator" className="block">
+                        <Link href="/basketball-free-throw-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

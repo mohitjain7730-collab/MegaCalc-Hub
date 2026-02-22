@@ -478,7 +478,7 @@ export default function BurnRateCalculatorPreRevenue() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/startup-runway-calculator" className="text-primary hover:underline">
+                                <a href="/startup-runway-calculator" className="text-primary hover:underline">
                                     Startup Runway (Hiring)
                                 </a>
                             </h4>
@@ -488,7 +488,7 @@ export default function BurnRateCalculatorPreRevenue() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/saas-cac-calculator" className="text-primary hover:underline">
+                                <a href="/saas-cac-calculator" className="text-primary hover:underline">
                                     SaaS CAC Calculator
                                 </a>
                             </h4>
@@ -498,7 +498,7 @@ export default function BurnRateCalculatorPreRevenue() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/operating-margin-calculator" className="text-primary hover:underline">
+                                <a href="/operating-margin-calculator" className="text-primary hover:underline">
                                     Operating Margin
                                 </a>
                             </h4>
@@ -508,7 +508,7 @@ export default function BurnRateCalculatorPreRevenue() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/working-capital-calculator" className="text-primary hover:underline">
+                                <a href="/working-capital-calculator" className="text-primary hover:underline">
                                     Working Capital
                                 </a>
                             </h4>

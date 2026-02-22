@@ -278,7 +278,7 @@ export default function ClothSizeConverter() {
         <h4 className='font-bold'>🔗 Related Calculators and Converters</h4>
         <p className="text-xs">To make your fashion shopping seamless, check out:</p>
         <ul className="list-disc list-inside text-xs">
-            <li><Link href="/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+            <li><Link href="/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
             <li>🎽 Body Measurement to Clothing Size Calculator</li>
             <li>💍 Ring Size Converter</li>
             <li>🧢 Hat Size Converter</li>

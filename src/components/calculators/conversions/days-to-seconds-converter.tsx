@@ -127,8 +127,8 @@ export default function DaysToSecondsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/seconds-to-days-converter" className="text-primary underline">Seconds to Days Converter</Link></p>
-            <p><Link href="/conversions/days-to-minutes-converter" className="text-primary underline">Days to Minutes Converter</Link></p>
+            <p><Link href="/seconds-to-days-converter" className="text-primary underline">Seconds to Days Converter</Link></p>
+            <p><Link href="/days-to-minutes-converter" className="text-primary underline">Days to Minutes Converter</Link></p>
           </div>
         </div>
       </div>

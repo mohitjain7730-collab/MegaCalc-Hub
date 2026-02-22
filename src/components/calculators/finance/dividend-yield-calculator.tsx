@@ -104,10 +104,10 @@ export default function DividendYieldCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Income & valuation</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/dividend-reinvestment-drip-calculator" className="text-primary hover:underline">DRIP</Link></h4><p className="text-sm text-muted-foreground">Reinvest dividends.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discount streams.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</Link></h4><p className="text-sm text-muted-foreground">Inflation‑adjusted.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth over time.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/dividend-reinvestment-drip-calculator" className="text-primary hover:underline">DRIP</Link></h4><p className="text-sm text-muted-foreground">Reinvest dividends.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discount streams.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/real-rate-of-return-calculator" className="text-primary hover:underline">Real Return</Link></h4><p className="text-sm text-muted-foreground">Inflation‑adjusted.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth over time.</p></div>
           </div>
         </CardContent>
       </Card>

@@ -374,7 +374,7 @@ export default function CurrencyForwardPointsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/interest-rate-parity-calculator" className="block">
+            <Link href="/interest-rate-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -387,7 +387,7 @@ export default function CurrencyForwardPointsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/currency-exchange-calculator" className="block">
+            <Link href="/currency-exchange-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -400,7 +400,7 @@ export default function CurrencyForwardPointsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/covered-interest-arbitrage-calculator" className="block">
+            <Link href="/covered-interest-arbitrage-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -414,7 +414,7 @@ export default function SequenceOfReturnsRiskCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/compounding-loss-from-early-withdrawal-calculator" className="block">
+            <Link href="/compounding-loss-from-early-withdrawal-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -427,7 +427,7 @@ export default function SequenceOfReturnsRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -440,7 +440,7 @@ export default function SequenceOfReturnsRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -453,7 +453,7 @@ export default function SequenceOfReturnsRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -466,7 +466,7 @@ export default function SequenceOfReturnsRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/retirement-savings-calculator" className="block">
+            <Link href="/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -479,7 +479,7 @@ export default function SequenceOfReturnsRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/asset-allocation-drift-calculator" className="block">
+            <Link href="/asset-allocation-drift-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -502,7 +502,7 @@ export default function SequenceOfReturnsRiskCalculator() {
         <meta itemProp="keywords" content="sequence of returns risk, retirement withdrawal, order of returns, portfolio depletion risk" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/sequence-of-returns-risk-calculator" />
+        <meta itemProp="url" content="/sequence-of-returns-risk-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Sequence of Returns Risk: Why the Order of Returns Matters When You Withdraw</h1>
         <p className="text-lg italic text-muted-foreground">When you withdraw from a portfolio each year (e.g. in retirement), the order in which returns occur matters. Bad returns early can deplete the portfolio even if the same average return occurs in a different order. This calculator compares &quot;bad years first&quot; vs &quot;good years first&quot; so you can see the impact.</p>

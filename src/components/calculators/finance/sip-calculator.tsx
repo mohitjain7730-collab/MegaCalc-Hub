@@ -562,7 +562,7 @@ export default function SipDcaCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/loan-emi-calculator" className="text-primary hover:underline">
+                  <a href="/loan-emi-calculator" className="text-primary hover:underline">
                     Loan/EMI Calculator
                   </a>
                 </h4>
@@ -572,7 +572,7 @@ export default function SipDcaCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/retirement-savings-calculator" className="text-primary hover:underline">
+                  <a href="/retirement-savings-calculator" className="text-primary hover:underline">
                     Retirement Savings Calculator
                   </a>
                 </h4>
@@ -582,7 +582,7 @@ export default function SipDcaCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
+                  <a href="/compound-interest-calculator" className="text-primary hover:underline">
                     Compound Interest Calculator
                   </a>
                 </h4>
@@ -592,7 +592,7 @@ export default function SipDcaCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/401k-contribution-calculator" className="text-primary hover:underline">
+                  <a href="/401k-contribution-calculator" className="text-primary hover:underline">
                     401(k) Contribution Calculator
                   </a>
                 </h4>

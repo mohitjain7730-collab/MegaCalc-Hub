@@ -155,7 +155,7 @@ export default function CreditDefaultSwapCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/bond-price-calculator" className="text-primary hover:underline">
+                <a href="/bond-price-calculator" className="text-primary hover:underline">
                   Credit Spread Calculator
                 </a>
               </h4>
@@ -165,7 +165,7 @@ export default function CreditDefaultSwapCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/bond-price-calculator" className="text-primary hover:underline">
+                <a href="/bond-price-calculator" className="text-primary hover:underline">
                   Bond Yield Calculator
                 </a>
               </h4>
@@ -175,7 +175,7 @@ export default function CreditDefaultSwapCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/forward-rate-agreement-calculator" className="text-primary hover:underline">
+                <a href="/forward-rate-agreement-calculator" className="text-primary hover:underline">
                   Forward Rate Agreement Calculator
                 </a>
               </h4>
@@ -185,7 +185,7 @@ export default function CreditDefaultSwapCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/swap-spread-calculator" className="text-primary hover:underline">
+                <a href="/swap-spread-calculator" className="text-primary hover:underline">
                   Swap Spread Calculator
                 </a>
               </h4>

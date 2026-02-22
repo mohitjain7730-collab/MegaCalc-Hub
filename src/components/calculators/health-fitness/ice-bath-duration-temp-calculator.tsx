@@ -110,8 +110,8 @@ export default function IceBathDurationTempCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</a></h4><p className="text-sm text-muted-foreground">Track autonomic recovery after training.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</a></h4><p className="text-sm text-muted-foreground">Aerobic fitness to inform recovery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</a></h4><p className="text-sm text-muted-foreground">Track autonomic recovery after training.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max Calculator</a></h4><p className="text-sm text-muted-foreground">Aerobic fitness to inform recovery.</p></div>
           </div>
         </CardContent>
       </Card>

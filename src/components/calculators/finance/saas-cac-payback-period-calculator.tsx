@@ -388,7 +388,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/saas-customer-acquisition-cost-calculator" className="block">
+            <Link href="/saas-customer-acquisition-cost-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -401,7 +401,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/ltv-calculator" className="block">
+            <Link href="/ltv-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -414,7 +414,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/monthly-burn-multiple-calculator" className="block">
+            <Link href="/monthly-burn-multiple-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -427,7 +427,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/saas-net-revenue-retention-nrr-calculator" className="block">
+            <Link href="/saas-net-revenue-retention-nrr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -440,7 +440,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/saas-burn-rate-calculator-gross-vs-net" className="block">
+            <Link href="/saas-burn-rate-calculator-gross-vs-net" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -453,7 +453,7 @@ export default function SaaSCacPaybackPeriodCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/startup-runway-calculator-with-revenue-growth" className="block">
+            <Link href="/startup-runway-calculator-with-revenue-growth" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

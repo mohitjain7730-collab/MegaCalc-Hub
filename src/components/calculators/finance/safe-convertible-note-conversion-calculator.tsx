@@ -362,7 +362,7 @@ export default function SafeConvertibleNoteConversionCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -378,7 +378,7 @@ export default function SafeConvertibleNoteConversionCalculator() {
         <meta itemProp="keywords" content="SAFE conversion, convertible note, valuation cap, discount, conversion price" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/safe-convertible-note-conversion-calculator" />
+        <meta itemProp="url" content="/safe-convertible-note-conversion-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">SAFE / Convertible Note Conversion: Caps, Discounts, and Ownership</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A concise guide to converting SAFEs/notes in priced rounds using cap/discount terms.</p>

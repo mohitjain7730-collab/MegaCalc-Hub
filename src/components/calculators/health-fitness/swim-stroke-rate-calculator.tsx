@@ -315,19 +315,19 @@ export default function SwimStrokeRateCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/critical-swim-speed-calculator" className="text-primary hover:underline">Critical Swim Speed Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/critical-swim-speed-calculator" className="text-primary hover:underline">Critical Swim Speed Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Determine aerobic threshold pace for distance swimming.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
               <p className="text-sm text-muted-foreground">Plan recovery after high-intensity swim sets.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-Heart Rate Efficiency</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-Heart Rate Efficiency</Link></h4>
               <p className="text-sm text-muted-foreground">Track aerobic efficiency trends across multisport training.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Support sprint sets with anaerobic profiling.</p>
             </div>
           </div>

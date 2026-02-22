@@ -64,7 +64,7 @@ export default function LeanBodyMassCalculator() {
                         <FormLabel>Body Fat Percentage (%)</FormLabel>
                         <FormControl><Input type="number" {...field} value={field.value ?? ''} onChange={e => field.onChange(parseFloat(e.target.value) || undefined)} /></FormControl>
                         <FormDescription>
-                            Need to find this? Use the <Link href="/health-fitness/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</Link>.
+                            Need to find this? Use the <Link href="/body-fat-percentage-calculator" className="text-primary underline">Body Fat Percentage Calculator</Link>.
                         </FormDescription>
                         <FormMessage />
                     </FormItem>
@@ -142,7 +142,7 @@ export default function LeanBodyMassCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  <a href="/body-fat-percentage-calculator" className="text-primary hover:underline">
                     Body Fat Percentage Calculator
                   </a>
                 </h4>
@@ -152,7 +152,7 @@ export default function LeanBodyMassCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                  <a href="/bmi-calculator" className="text-primary hover:underline">
                     BMI Calculator
                   </a>
                 </h4>
@@ -162,7 +162,7 @@ export default function LeanBodyMassCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                  <a href="/bmr-calculator" className="text-primary hover:underline">
                     BMR Calculator
                   </a>
                 </h4>
@@ -172,7 +172,7 @@ export default function LeanBodyMassCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs Calculator
                   </a>
                 </h4>
@@ -182,7 +182,7 @@ export default function LeanBodyMassCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  <a href="/protein-intake-calculator" className="text-primary hover:underline">
                     Protein Intake Calculator
                   </a>
                 </h4>
@@ -192,7 +192,7 @@ export default function LeanBodyMassCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">
+                  <a href="/ideal-body-weight-calculator" className="text-primary hover:underline">
                     Ideal Body Weight Calculator
                   </a>
                 </h4>

@@ -528,12 +528,12 @@ export default function PortfolioDiversificationBenefitCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: "Portfolio Variance", desc: "Calculate total risk for N assets", href: "/finance/portfolio-variance-calculator" },
-              { title: "WACC Calculator", desc: "Corporate cost of capital mix", href: "/finance/wacc-calculator" },
-              { title: "Efficient Frontier", desc: "Visualize optimal allocation curve", href: "/finance/efficient-frontier-visualizer" },
-              { title: "Sharpe Ratio", desc: "Assess risk-adjusted efficiency", href: "/finance/sharpe-ratio-calculator" },
-              { title: "Correlation Matrix", desc: "Full asset interaction audit", href: "/finance/asset-correlation-matrix-calculator" },
-              { title: "Beta Adjuster", desc: "Analyze systemic risk exposure", href: "/finance/beta-adjusted-portfolio-return-calculator" },
+              { title: "Portfolio Variance", desc: "Calculate total risk for N assets", href: "/portfolio-variance-calculator" },
+              { title: "WACC Calculator", desc: "Corporate cost of capital mix", href: "/wacc-calculator" },
+              { title: "Efficient Frontier", desc: "Visualize optimal allocation curve", href: "/efficient-frontier-visualizer" },
+              { title: "Sharpe Ratio", desc: "Assess risk-adjusted efficiency", href: "/sharpe-ratio-calculator" },
+              { title: "Correlation Matrix", desc: "Full asset interaction audit", href: "/asset-correlation-matrix-calculator" },
+              { title: "Beta Adjuster", desc: "Analyze systemic risk exposure", href: "/beta-adjusted-portfolio-return-calculator" },
             ].map((tool, i) => (
               <Link key={i} href={tool.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:shadow-lg hover:bg-muted/30">

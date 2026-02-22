@@ -430,7 +430,7 @@ export default function LeverageDebtRatioImpactCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/wacc-calculator" className="group">
+            <Link href="/wacc-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Calculator className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -438,7 +438,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/interest-coverage-ratio-calculator" className="group">
+            <Link href="/interest-coverage-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -446,7 +446,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/current-ratio-calculator" className="group">
+            <Link href="/current-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -454,7 +454,7 @@ export default function LeverageDebtRatioImpactCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/debt-to-equity-ratio-calculator" className="group">
+            <Link href="/debt-to-equity-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />

@@ -393,7 +393,7 @@ export default function ScenarioAnalysisCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/sensitivity-analysis-what-if-calculator" className="text-primary hover:underline">
+                <a href="/sensitivity-analysis-what-if-calculator" className="text-primary hover:underline">
                   Sensitivity Analysis Calculator
                 </a>
               </h4>
@@ -403,7 +403,7 @@ export default function ScenarioAnalysisCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/npv-calculator" className="text-primary hover:underline">
+                <a href="/npv-calculator" className="text-primary hover:underline">
                   Net Present Value (NPV) Calculator
                 </a>
               </h4>
@@ -413,7 +413,7 @@ export default function ScenarioAnalysisCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/financial-break-even-npv-zero-calculator" className="text-primary hover:underline">
+                <a href="/financial-break-even-npv-zero-calculator" className="text-primary hover:underline">
                   Internal Rate of Return (IRR) Calculator
                 </a>
               </h4>
@@ -423,7 +423,7 @@ export default function ScenarioAnalysisCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/economic-break-even-quantity-calculator" className="text-primary hover:underline">
+                <a href="/economic-break-even-quantity-calculator" className="text-primary hover:underline">
                   Break-Even Point Calculator
                 </a>
               </h4>

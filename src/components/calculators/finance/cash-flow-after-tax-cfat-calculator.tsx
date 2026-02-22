@@ -121,10 +121,10 @@ export default function CashFlowAfterTaxCFATCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return estimate.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/dscr-calculator" className="text-primary hover:underline">DSCR</a></h4><p className="text-sm text-muted-foreground">Debt service coverage.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/mortgage-points-impact-calculator" className="text-primary hover:underline">Mortgage Points Impact</a></h4><p className="text-sm text-muted-foreground">Rate buy‑down effects.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">Loan‑to‑Value (LTV)</a></h4><p className="text-sm text-muted-foreground">Leverage and equity.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/rental-yield-calculator" className="text-primary hover:underline">Rental Yield</a></h4><p className="text-sm text-muted-foreground">Income return estimate.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/dscr-calculator" className="text-primary hover:underline">DSCR</a></h4><p className="text-sm text-muted-foreground">Debt service coverage.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/mortgage-points-impact-calculator" className="text-primary hover:underline">Mortgage Points Impact</a></h4><p className="text-sm text-muted-foreground">Rate buy‑down effects.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">Loan‑to‑Value (LTV)</a></h4><p className="text-sm text-muted-foreground">Leverage and equity.</p></div>
           </div>
         </CardContent>
       </Card>

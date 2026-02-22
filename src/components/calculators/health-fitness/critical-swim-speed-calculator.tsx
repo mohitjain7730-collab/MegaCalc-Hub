@@ -219,10 +219,10 @@ export default function CriticalSwimSpeedCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/running-economy-calculator" className="text-primary hover:underline">Running Economy</Link></h4><p className="text-sm text-muted-foreground">Endurance economy concepts transfer across sports.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/critical-power-calculator" className="text-primary hover:underline">Critical Power</Link></h4><p className="text-sm text-muted-foreground">Use power-duration methods in other disciplines.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Anchor aerobic capacity alongside CSS.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Pool sessions demand consistent hydration strategies.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/running-economy-calculator" className="text-primary hover:underline">Running Economy</Link></h4><p className="text-sm text-muted-foreground">Endurance economy concepts transfer across sports.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/critical-power-calculator" className="text-primary hover:underline">Critical Power</Link></h4><p className="text-sm text-muted-foreground">Use power-duration methods in other disciplines.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Anchor aerobic capacity alongside CSS.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Pool sessions demand consistent hydration strategies.</p></div>
           </div>
         </CardContent>
       </Card>

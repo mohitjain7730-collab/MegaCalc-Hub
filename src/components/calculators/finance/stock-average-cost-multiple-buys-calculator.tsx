@@ -228,10 +228,10 @@ export default function StockAverageCostMultipleBuysCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>More investing tools</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/stock-split-impact-calculator" className="text-primary hover:underline">Stock Split Impact</Link></h4><p className="text-sm text-muted-foreground">Share count changes.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/dividend-yield-calculator" className="text-primary hover:underline">Dividend Yield</Link></h4><p className="text-sm text-muted-foreground">Income rate.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discount cash flows.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth over time.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/stock-split-impact-calculator" className="text-primary hover:underline">Stock Split Impact</Link></h4><p className="text-sm text-muted-foreground">Share count changes.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/dividend-yield-calculator" className="text-primary hover:underline">Dividend Yield</Link></h4><p className="text-sm text-muted-foreground">Income rate.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discount cash flows.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Growth over time.</p></div>
           </div>
         </CardContent>
       </Card>

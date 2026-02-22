@@ -278,10 +278,10 @@ export default function PostExerciseOxygenConsumptionCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">METs to Calories</Link></h4><p className="text-sm text-muted-foreground">Estimate workout energy expenditure before EPOC.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/running-pace-calculator" className="text-primary hover:underline">Training Stress Score</Link></h4><p className="text-sm text-muted-foreground">Quantify workload to balance intensity and recovery.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor recovery health alongside EPOC trends.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/cheat-meal-impact-on-weekly-calories-calculator" className="text-primary hover:underline">Cheat Meal Impact</Link></h4><p className="text-sm text-muted-foreground">Balance nutrition on high-intensity training weeks.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/mets-calories-burned-calculator" className="text-primary hover:underline">METs to Calories</Link></h4><p className="text-sm text-muted-foreground">Estimate workout energy expenditure before EPOC.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/running-pace-calculator" className="text-primary hover:underline">Training Stress Score</Link></h4><p className="text-sm text-muted-foreground">Quantify workload to balance intensity and recovery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor recovery health alongside EPOC trends.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/cheat-meal-impact-on-weekly-calories-calculator" className="text-primary hover:underline">Cheat Meal Impact</Link></h4><p className="text-sm text-muted-foreground">Balance nutrition on high-intensity training weeks.</p></div>
           </div>
         </CardContent>
       </Card>

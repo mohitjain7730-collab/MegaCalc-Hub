@@ -81,10 +81,10 @@ export default function RiskParityPortfolioCalculator(){
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean‑Variance Optimization</a></h4><p className="text-sm text-muted-foreground">Optimize risk and return.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/portfolio-variance-calculator" className="text-primary hover:underline">Portfolio Variance</a></h4><p className="text-sm text-muted-foreground">Assess overall risk.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/volatility-standard-deviation-calculator" className="text-primary hover:underline">Volatility (Std Dev)</a></h4><p className="text-sm text-muted-foreground">Single‑asset risk inputs.</p></div>
-            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/finance/efficient-frontier-portfolio-calculator" className="text-primary hover:underline">Efficient Frontier</a></h4><p className="text-sm text-muted-foreground">Best portfolios for each risk.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/mean-variance-optimization-calculator" className="text-primary hover:underline">Mean‑Variance Optimization</a></h4><p className="text-sm text-muted-foreground">Optimize risk and return.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/portfolio-variance-calculator" className="text-primary hover:underline">Portfolio Variance</a></h4><p className="text-sm text-muted-foreground">Assess overall risk.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/volatility-standard-deviation-calculator" className="text-primary hover:underline">Volatility (Std Dev)</a></h4><p className="text-sm text-muted-foreground">Single‑asset risk inputs.</p></div>
+            <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors"><h4 className="font-semibold mb-2"><a href="/efficient-frontier-portfolio-calculator" className="text-primary hover:underline">Efficient Frontier</a></h4><p className="text-sm text-muted-foreground">Best portfolios for each risk.</p></div>
           </div>
         </CardContent>
       </Card>

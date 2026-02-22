@@ -123,10 +123,10 @@ export default function SweatSodiumConcentrationCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Hydration & fueling</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Sweat Rate</Link></h4><p className="text-sm text-muted-foreground">Fluid needs by conditions.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Electrolyte Replacement</Link></h4><p className="text-sm text-muted-foreground">Sodium intake planning.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/electrolyte-replacement-calculator" className="text-primary hover:underline">Heat Stress Risk</Link></h4><p className="text-sm text-muted-foreground">Environment safety.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor recovery.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/hydration-needs-calculator" className="text-primary hover:underline">Sweat Rate</Link></h4><p className="text-sm text-muted-foreground">Fluid needs by conditions.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">Electrolyte Replacement</Link></h4><p className="text-sm text-muted-foreground">Sodium intake planning.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/electrolyte-replacement-calculator" className="text-primary hover:underline">Heat Stress Risk</Link></h4><p className="text-sm text-muted-foreground">Environment safety.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/target-heart-rate-calculator" className="text-primary hover:underline">Recovery Heart Rate</Link></h4><p className="text-sm text-muted-foreground">Monitor recovery.</p></div>
           </div>
         </CardContent>
       </Card>

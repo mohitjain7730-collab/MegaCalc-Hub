@@ -409,9 +409,9 @@ export default function LongTermCareCostEstimator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/finance/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
-              <li><Link href="/finance/hospital-stay-cost-by-specialty-calculator" className="hover:underline">Hospital Stay Cost Calculator</Link></li>
-              <li><Link href="/finance/dental-cost-comparison-calculator" className="hover:underline">Dental Cost Comparison Calculator</Link></li>
+              <li><Link href="/hsa-tax-benefit-calculator" className="hover:underline">HSA Tax Benefit Calculator</Link></li>
+              <li><Link href="/hospital-stay-cost-by-specialty-calculator" className="hover:underline">Hospital Stay Cost Calculator</Link></li>
+              <li><Link href="/dental-cost-comparison-calculator" className="hover:underline">Dental Cost Comparison Calculator</Link></li>
             </ul>
           </CardContent>
         </Card>

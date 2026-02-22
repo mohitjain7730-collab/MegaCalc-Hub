@@ -191,9 +191,9 @@ export default function LowSodiumDietPlannerCalculator() {
 
       <div className="space-y-2">
         <h2 className="text-xl font-bold text-foreground">Related Calculators</h2>
-        <p><Link className="text-primary underline" href="/health-fitness/electrolyte-replacement-calculator">DASH Diet Sodium Intake Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/health-fitness/macro-ratio-calculator">Mediterranean Diet Compliance Calculator</Link></p>
-        <p><Link className="text-primary underline" href="/health-fitness/macro-ratio-calculator">Gluten Intake Tracker Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/electrolyte-replacement-calculator">DASH Diet Sodium Intake Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/macro-ratio-calculator">Mediterranean Diet Compliance Calculator</Link></p>
+        <p><Link className="text-primary underline" href="/macro-ratio-calculator">Gluten Intake Tracker Calculator</Link></p>
       </div>
     </div>
   );

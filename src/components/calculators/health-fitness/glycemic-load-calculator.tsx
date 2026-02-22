@@ -147,7 +147,7 @@ export default function GlycemicLoadCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                  <a href="/carbohydrate-intake-calculator" className="text-primary hover:underline">
                     Carbohydrate Intake Calculator
                   </a>
                 </h4>
@@ -157,7 +157,7 @@ export default function GlycemicLoadCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/intermittent-fasting-calculator" className="text-primary hover:underline">
+                  <a href="/intermittent-fasting-calculator" className="text-primary hover:underline">
                     Intermittent Fasting Calculator
                   </a>
                 </h4>
@@ -167,7 +167,7 @@ export default function GlycemicLoadCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/meal-glycemic-load-calculator" className="text-primary hover:underline">
+                  <a href="/meal-glycemic-load-calculator" className="text-primary hover:underline">
                     Meal Glycemic Load Calculator
                   </a>
                 </h4>
@@ -177,7 +177,7 @@ export default function GlycemicLoadCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/macro-ratio-calculator" className="text-primary hover:underline">
                     Macro Ratio Calculator
                   </a>
                 </h4>

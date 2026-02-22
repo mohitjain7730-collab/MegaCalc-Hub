@@ -391,7 +391,7 @@ export default function OperatingLeverageCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/contribution-margin-calculator" className="block">
+            <Link href="/contribution-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -404,7 +404,7 @@ export default function OperatingLeverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/break-even-analysis-calculator" className="block">
+            <Link href="/break-even-analysis-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -417,7 +417,7 @@ export default function OperatingLeverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/ebitda-ebit-calculator" className="block">
+            <Link href="/ebitda-ebit-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -430,7 +430,7 @@ export default function OperatingLeverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/financial-leverage-effect-calculator" className="block">
+            <Link href="/financial-leverage-effect-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -443,7 +443,7 @@ export default function OperatingLeverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/return-on-investment-calculator" className="block">
+            <Link href="/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -456,7 +456,7 @@ export default function OperatingLeverageCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/net-profit-margin-calculator" className="block">
+            <Link href="/net-profit-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

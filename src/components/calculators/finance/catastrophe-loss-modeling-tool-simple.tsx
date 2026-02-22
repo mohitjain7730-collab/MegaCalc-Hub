@@ -395,7 +395,7 @@ export default function CatastropheLossModelingToolSimple() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -415,7 +415,7 @@ export default function CatastropheLossModelingToolSimple() {
     <meta itemProp="keywords" content="catastrophe loss modeling, catastrophe ratio, natural disaster risk, average annual loss, insurance catastrophe, reinsurance" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/catastrophe-loss-modeling-tool-simple" />
+    <meta itemProp="url" content="/catastrophe-loss-modeling-tool-simple" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Catastrophe Loss Modeling: Risk Assessment and Management</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at catastrophe loss modeling, catastrophe ratios, and strategies for managing catastrophic event risk in insurance.</p>

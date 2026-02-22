@@ -541,7 +541,7 @@ export default function ImpliedVolatilityCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/black-scholes-calculator" className="block">
+            <Link href="/black-scholes-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -554,7 +554,7 @@ export default function ImpliedVolatilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-greeks-calculator" className="block">
+            <Link href="/option-greeks-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -567,7 +567,7 @@ export default function ImpliedVolatilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/volatility-standard-deviation-calculator" className="block">
+            <Link href="/volatility-standard-deviation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -580,7 +580,7 @@ export default function ImpliedVolatilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/put-call-parity-calculator" className="block">
+            <Link href="/put-call-parity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -593,7 +593,7 @@ export default function ImpliedVolatilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/straddle-strangle-strategy-calculator" className="block">
+            <Link href="/straddle-strangle-strategy-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -606,7 +606,7 @@ export default function ImpliedVolatilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-payoff-calculator" className="block">
+            <Link href="/option-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

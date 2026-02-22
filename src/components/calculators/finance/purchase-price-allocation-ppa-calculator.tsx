@@ -482,7 +482,7 @@ export default function PurchasePriceAllocationPpaCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -502,7 +502,7 @@ export default function PurchasePriceAllocationPpaCalculator() {
         <meta itemProp="keywords" content="purchase price allocation, PPA, goodwill, business combination, fair value, asset allocation, M&A accounting" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/purchase-price-allocation-ppa-calculator" />
+        <meta itemProp="url" content="/purchase-price-allocation-ppa-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Purchase Price Allocation (PPA): Goodwill and Asset Allocation in M&A</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at purchase price allocation (PPA), allocating purchase price among assets and liabilities to determine goodwill in business combinations.</p>

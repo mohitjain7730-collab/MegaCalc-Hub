@@ -175,10 +175,10 @@ export default function BreastMilkProductionEstimateCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/postpartum-calorie-needs-calculator" className="text-primary hover:underline">Postpartum Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate calorie needs for breastfeeding.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/breast-milk-production-estimate-calculator" className="text-primary hover:underline">Baby Feeding Amount</Link></h4><p className="text-sm text-muted-foreground">Estimate daily feeding needs.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/ideal-body-weight-calculator" className="text-primary hover:underline">Pregnancy Weight Gain</Link></h4><p className="text-sm text-muted-foreground">Track recommended weight gain.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">Protein Intake</Link></h4><p className="text-sm text-muted-foreground">Postpartum protein requirements.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/postpartum-calorie-needs-calculator" className="text-primary hover:underline">Postpartum Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Calculate calorie needs for breastfeeding.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/breast-milk-production-estimate-calculator" className="text-primary hover:underline">Baby Feeding Amount</Link></h4><p className="text-sm text-muted-foreground">Estimate daily feeding needs.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/ideal-body-weight-calculator" className="text-primary hover:underline">Pregnancy Weight Gain</Link></h4><p className="text-sm text-muted-foreground">Track recommended weight gain.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/protein-intake-calculator" className="text-primary hover:underline">Protein Intake</Link></h4><p className="text-sm text-muted-foreground">Postpartum protein requirements.</p></div>
           </div>
         </CardContent>
       </Card>

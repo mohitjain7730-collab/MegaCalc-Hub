@@ -212,10 +212,10 @@ export default function DividendReinvestmentDRIPCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Explore more investing tools</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Understand growth over time.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/real-rate-of-return-calculator" className="text-primary hover:underline">Real Rate of Return</Link></h4><p className="text-sm text-muted-foreground">Account for inflation.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discount future cash flows.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/finance/dividend-yield-calculator" className="text-primary hover:underline">Dividend Yield</Link></h4><p className="text-sm text-muted-foreground">Income rate per price.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/compound-interest-calculator" className="text-primary hover:underline">Compound Interest</Link></h4><p className="text-sm text-muted-foreground">Understand growth over time.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/real-rate-of-return-calculator" className="text-primary hover:underline">Real Rate of Return</Link></h4><p className="text-sm text-muted-foreground">Account for inflation.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/present-value-calculator" className="text-primary hover:underline">Present Value</Link></h4><p className="text-sm text-muted-foreground">Discount future cash flows.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/dividend-yield-calculator" className="text-primary hover:underline">Dividend Yield</Link></h4><p className="text-sm text-muted-foreground">Income rate per price.</p></div>
           </div>
         </CardContent>
       </Card>

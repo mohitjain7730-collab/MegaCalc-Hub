@@ -148,8 +148,8 @@ export default function SwimmingLapTimeCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/rowing-split-calculator" className="text-primary hover:underline">Rowing Split Calculator</a></h4><p className="text-sm text-muted-foreground">Compute /500m pace and distance.</p></div>
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/health-fitness/mets-calories-burned-calculator" className="text-primary hover:underline">METs Calories Burned</a></h4><p className="text-sm text-muted-foreground">Estimate calories for swim sessions.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/rowing-split-calculator" className="text-primary hover:underline">Rowing Split Calculator</a></h4><p className="text-sm text-muted-foreground">Compute /500m pace and distance.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/mets-calories-burned-calculator" className="text-primary hover:underline">METs Calories Burned</a></h4><p className="text-sm text-muted-foreground">Estimate calories for swim sessions.</p></div>
     </div>
         </CardContent>
       </Card>

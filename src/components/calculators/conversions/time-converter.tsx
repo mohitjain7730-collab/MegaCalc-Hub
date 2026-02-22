@@ -179,11 +179,11 @@ export default function TimeConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/square-inches-to-square-centimeters-converter" className="hover:underline">Square Inches To Square Centimeters Converter</Link></li>
-                <li><Link href="/conversions/miles-per-hour-to-meters-per-second-converter" className="hover:underline">Miles Per Hour To Meters Per Second Converter</Link></li>
-                <li><Link href="/conversions/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
-                <li><Link href="/conversions/seconds-to-hours-converter" className="hover:underline">Seconds To Hours Converter</Link></li>
-                <li><Link href="/conversions/joules-to-foot-pounds-converter" className="hover:underline">Joules To Foot Pounds Converter</Link></li>
+                <li><Link href="/square-inches-to-square-centimeters-converter" className="hover:underline">Square Inches To Square Centimeters Converter</Link></li>
+                <li><Link href="/miles-per-hour-to-meters-per-second-converter" className="hover:underline">Miles Per Hour To Meters Per Second Converter</Link></li>
+                <li><Link href="/days-to-seconds-converter" className="hover:underline">Days To Seconds Converter</Link></li>
+                <li><Link href="/seconds-to-hours-converter" className="hover:underline">Seconds To Hours Converter</Link></li>
+                <li><Link href="/joules-to-foot-pounds-converter" className="hover:underline">Joules To Foot Pounds Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

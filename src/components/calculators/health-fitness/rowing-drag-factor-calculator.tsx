@@ -477,7 +477,7 @@ export default function RowingDragFactorCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/health-fitness/vo2-max-calculator" className="block">
+            <Link href="/vo2-max-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -490,7 +490,7 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/health-fitness/bmr-calculator" className="block">
+            <Link href="/bmr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -503,7 +503,7 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/health-fitness/one-rep-max-strength-calculator" className="block">
+            <Link href="/one-rep-max-strength-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -516,7 +516,7 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/health-fitness/running-pace-calculator" className="block">
+            <Link href="/running-pace-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -529,7 +529,7 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/health-fitness/body-fat-percentage-calculator" className="block">
+            <Link href="/body-fat-percentage-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -542,7 +542,7 @@ export default function RowingDragFactorCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/health-fitness/ideal-body-weight-calculator" className="block">
+            <Link href="/ideal-body-weight-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

@@ -341,7 +341,7 @@ export default function ReturnOnEquityCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/return-on-assets-calculator" className="text-primary hover:underline">
+                  <a href="/return-on-assets-calculator" className="text-primary hover:underline">
                     Return on Assets Calculator
                   </a>
                 </h4>
@@ -351,7 +351,7 @@ export default function ReturnOnEquityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/earnings-per-share-calculator" className="text-primary hover:underline">
+                  <a href="/earnings-per-share-calculator" className="text-primary hover:underline">
                     Earnings per Share Calculator
                   </a>
                 </h4>
@@ -361,7 +361,7 @@ export default function ReturnOnEquityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/debt-to-equity-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/debt-to-equity-ratio-calculator" className="text-primary hover:underline">
                     Debt-to-Equity Ratio Calculator
                   </a>
                 </h4>
@@ -371,7 +371,7 @@ export default function ReturnOnEquityCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/return-on-investment-calculator" className="text-primary hover:underline">
+                  <a href="/return-on-investment-calculator" className="text-primary hover:underline">
                     ROI Calculator
                   </a>
                 </h4>

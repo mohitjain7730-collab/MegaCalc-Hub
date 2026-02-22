@@ -351,10 +351,10 @@ export default function FodmapLoadCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/glycemic-load-calculator" className="text-primary hover:underline">Glycemic Load Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess blood sugar impact of meals alongside FODMAP load.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Ensure fiber sufficiency even while limiting certain carbohydrates.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/plant-based-protein-gap-calculator" className="text-primary hover:underline">Plant-Based Protein Gap</Link></h4><p className="text-sm text-muted-foreground">Balance protein while selecting gut-friendly ingredients.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Optimize hydration to support digestion and symptom management.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/glycemic-load-calculator" className="text-primary hover:underline">Glycemic Load Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess blood sugar impact of meals alongside FODMAP load.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/carbohydrate-intake-calculator" className="text-primary hover:underline">Fiber Intake Calculator</Link></h4><p className="text-sm text-muted-foreground">Ensure fiber sufficiency even while limiting certain carbohydrates.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/plant-based-protein-gap-calculator" className="text-primary hover:underline">Plant-Based Protein Gap</Link></h4><p className="text-sm text-muted-foreground">Balance protein while selecting gut-friendly ingredients.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Optimize hydration to support digestion and symptom management.</p></div>
           </div>
         </CardContent>
       </Card>

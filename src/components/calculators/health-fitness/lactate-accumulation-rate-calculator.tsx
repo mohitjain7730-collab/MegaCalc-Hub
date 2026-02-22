@@ -233,10 +233,10 @@ export default function LactateAccumulationRateCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">Anaerobic Threshold</Link></h4><p className="text-sm text-muted-foreground">Identify sustainable high-intensity training zones.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4><p className="text-sm text-muted-foreground">Set training zones based on oxygen consumption reserve.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/running-pace-calculator" className="text-primary hover:underline">Training Stress Score</Link></h4><p className="text-sm text-muted-foreground">Quantify training load and recovery needs.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity</Link></h4><p className="text-sm text-muted-foreground">Assess power output for short, high-intensity efforts.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">Anaerobic Threshold</Link></h4><p className="text-sm text-muted-foreground">Identify sustainable high-intensity training zones.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4><p className="text-sm text-muted-foreground">Set training zones based on oxygen consumption reserve.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/running-pace-calculator" className="text-primary hover:underline">Training Stress Score</Link></h4><p className="text-sm text-muted-foreground">Quantify training load and recovery needs.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity</Link></h4><p className="text-sm text-muted-foreground">Assess power output for short, high-intensity efforts.</p></div>
           </div>
         </CardContent>
       </Card>

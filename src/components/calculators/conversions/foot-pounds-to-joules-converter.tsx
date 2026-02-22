@@ -106,7 +106,7 @@ export default function FootPoundsToJoulesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/joules-to-foot-pounds-converter" className="text-primary underline">Joules to Foot-Pounds Converter</Link></p>
+            <p><Link href="/joules-to-foot-pounds-converter" className="text-primary underline">Joules to Foot-Pounds Converter</Link></p>
           </div>
         </div>
       </div>

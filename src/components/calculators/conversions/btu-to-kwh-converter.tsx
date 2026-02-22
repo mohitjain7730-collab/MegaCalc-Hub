@@ -107,8 +107,8 @@ export default function BtuToKwhConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/kwh-to-btu-converter" className="text-primary underline">kWh to BTU Converter</Link></p>
-            <p><Link href="/conversions/joules-to-btu-converter" className="text-primary underline">Joules to BTU Converter</Link></p>
+            <p><Link href="/kwh-to-btu-converter" className="text-primary underline">kWh to BTU Converter</Link></p>
+            <p><Link href="/joules-to-btu-converter" className="text-primary underline">Joules to BTU Converter</Link></p>
           </div>
         </div>
       </div>

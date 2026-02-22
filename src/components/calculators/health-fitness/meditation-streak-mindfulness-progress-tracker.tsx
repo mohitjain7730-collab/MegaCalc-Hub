@@ -408,7 +408,7 @@ export default function MeditationStreakMindfulnessProgressTracker() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/health-fitness/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -437,7 +437,7 @@ export default function MeditationStreakMindfulnessProgressTracker() {
         />
         <meta itemProp="author" content="Mycalculating.com" />
         <meta itemProp="datePublished" content="2024-01-01" />
-        <meta itemProp="url" content="/health-fitness/meditation-streak-mindfulness-progress-tracker" />
+        <meta itemProp="url" content="/meditation-streak-mindfulness-progress-tracker" />
 
         <h1
           className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"

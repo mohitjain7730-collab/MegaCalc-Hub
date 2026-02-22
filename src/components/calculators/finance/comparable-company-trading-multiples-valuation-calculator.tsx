@@ -522,7 +522,7 @@ export default function ComparableCompanyTradingMultiplesValuationCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -542,7 +542,7 @@ export default function ComparableCompanyTradingMultiplesValuationCalculator() {
         <meta itemProp="keywords" content="comparable company valuation, trading multiples, EV multiples, EV/EBITDA, EV/Revenue, company valuation, CCA" />
         <meta itemProp="author" content="[Your Site's Finance Team]" />
         <meta itemProp="datePublished" content="2025-12-02" />
-        <meta itemProp="url" content="/finance/comparable-company-trading-multiples-valuation-calculator" />
+        <meta itemProp="url" content="/comparable-company-trading-multiples-valuation-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Comparable Company Valuation: Trading Multiples Analysis</h1>
         <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at comparable company valuation using trading multiples to estimate company value based on how the market values similar companies.</p>

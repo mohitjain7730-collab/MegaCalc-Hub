@@ -110,8 +110,8 @@ export default function MilligramsToGramsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/grams-to-milligrams-converter" className="text-primary underline">Grams to Milligrams Converter</Link></p>
-            <p><Link href="/conversions/micrograms-to-milligrams-converter" className="text-primary underline">Micrograms to Milligrams Converter</Link></p>
+            <p><Link href="/grams-to-milligrams-converter" className="text-primary underline">Grams to Milligrams Converter</Link></p>
+            <p><Link href="/micrograms-to-milligrams-converter" className="text-primary underline">Micrograms to Milligrams Converter</Link></p>
           </div>
         </div>
       </div>

@@ -120,7 +120,7 @@ export default function NanometersToMetersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/micrometers-to-millimeters-converter" className="text-primary underline">Micrometers to Millimeters Converter</Link></p>
+            <p><Link href="/micrometers-to-millimeters-converter" className="text-primary underline">Micrometers to Millimeters Converter</Link></p>
           </div>
         </div>
         <section

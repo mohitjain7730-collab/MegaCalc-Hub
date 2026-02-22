@@ -311,9 +311,9 @@ export default function ThermicEffectOfFoodCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Design balanced meals aligned with goals.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Set daily targets before layering in TEF.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/cheat-meal-impact-on-weekly-calories-calculator" className="text-primary hover:underline">Cheat Meal Impact</Link></h4><p className="text-sm text-muted-foreground">Balance higher-calorie meals within weekly totals.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/macro-ratio-calculator" className="text-primary hover:underline">Macro Ratio Calculator</Link></h4><p className="text-sm text-muted-foreground">Design balanced meals aligned with goals.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Set daily targets before layering in TEF.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/cheat-meal-impact-on-weekly-calories-calculator" className="text-primary hover:underline">Cheat Meal Impact</Link></h4><p className="text-sm text-muted-foreground">Balance higher-calorie meals within weekly totals.</p></div>
           </div>
         </CardContent>
       </Card>

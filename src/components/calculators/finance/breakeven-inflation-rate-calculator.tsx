@@ -222,7 +222,7 @@ export default function BreakevenInflationRateCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/bond-price-calculator" className="text-primary hover:underline">
+                <a href="/bond-price-calculator" className="text-primary hover:underline">
                   Bond Yield Calculator
                 </a>
               </h4>
@@ -232,7 +232,7 @@ export default function BreakevenInflationRateCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/inflation-calculator" className="text-primary hover:underline">
+                <a href="/inflation-calculator" className="text-primary hover:underline">
                   Inflation Calculator
                 </a>
               </h4>
@@ -242,7 +242,7 @@ export default function BreakevenInflationRateCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/present-value-calculator" className="text-primary hover:underline">
+                <a href="/present-value-calculator" className="text-primary hover:underline">
                   Present Value Calculator
                 </a>
               </h4>
@@ -252,7 +252,7 @@ export default function BreakevenInflationRateCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/compound-interest-calculator" className="text-primary hover:underline">
+                <a href="/compound-interest-calculator" className="text-primary hover:underline">
                   Interest Rate Converter
                 </a>
               </h4>

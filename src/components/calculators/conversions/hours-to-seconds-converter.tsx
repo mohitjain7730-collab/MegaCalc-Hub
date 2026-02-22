@@ -128,8 +128,8 @@ export default function HoursToSecondsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/seconds-to-hours-converter" className="text-primary underline">Seconds to Hours Converter</Link></p>
-            <p><Link href="/conversions/hours-to-minutes-converter" className="text-primary underline">Hours to Minutes Converter</Link></p>
+            <p><Link href="/seconds-to-hours-converter" className="text-primary underline">Seconds to Hours Converter</Link></p>
+            <p><Link href="/hours-to-minutes-converter" className="text-primary underline">Hours to Minutes Converter</Link></p>
           </div>
         </div>
       </div>

@@ -105,7 +105,7 @@ export default function TennisServeAccuracyCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/tennis-first-serve-percentage-calculator" className="block">
+                        <Link href="/tennis-first-serve-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -118,7 +118,7 @@ export default function TennisServeAccuracyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-double-fault-percentage-calculator" className="block">
+                        <Link href="/tennis-double-fault-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -131,7 +131,7 @@ export default function TennisServeAccuracyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-aces-per-match-calculator" className="block">
+                        <Link href="/tennis-aces-per-match-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -144,7 +144,7 @@ export default function TennisServeAccuracyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/tennis-win-ratio-calculator" className="block">
+                        <Link href="/tennis-win-ratio-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -157,7 +157,7 @@ export default function TennisServeAccuracyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/football-shot-accuracy-calculator" className="block">
+                        <Link href="/football-shot-accuracy-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -170,7 +170,7 @@ export default function TennisServeAccuracyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/basketball-three-point-percentage-calculator" className="block">
+                        <Link href="/basketball-three-point-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

@@ -291,10 +291,10 @@ export default function CaloricCostOfColdExposureCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/ice-bath-duration-temp-calculator" className="text-primary hover:underline">Ice Bath Duration</Link></h4><p className="text-sm text-muted-foreground">Plan immersion sessions safely.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/seasonal-energy-expenditure-calculator" className="text-primary hover:underline">Seasonal Energy Expenditure</Link></h4><p className="text-sm text-muted-foreground">Estimate daily thermogenic shifts across seasons.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Integrate cold exposure into your calorie plan.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Support circulatory responses with proper hydration.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/ice-bath-duration-temp-calculator" className="text-primary hover:underline">Ice Bath Duration</Link></h4><p className="text-sm text-muted-foreground">Plan immersion sessions safely.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/seasonal-energy-expenditure-calculator" className="text-primary hover:underline">Seasonal Energy Expenditure</Link></h4><p className="text-sm text-muted-foreground">Estimate daily thermogenic shifts across seasons.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Integrate cold exposure into your calorie plan.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs</Link></h4><p className="text-sm text-muted-foreground">Support circulatory responses with proper hydration.</p></div>
           </div>
         </CardContent>
       </Card>

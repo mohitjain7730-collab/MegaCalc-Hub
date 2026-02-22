@@ -576,7 +576,7 @@ export default function MuscleSorenessRecoveryEstimator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/habit-streak-tracker-calculator" className="text-primary hover:underline">
+                <Link href="/habit-streak-tracker-calculator" className="text-primary hover:underline">
                   Sleep Quality Calculator
                 </Link>
               </h4>
@@ -584,7 +584,7 @@ export default function MuscleSorenessRecoveryEstimator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">
+                <Link href="/hydration-needs-calculator" className="text-primary hover:underline">
                   Hydration Calculator
                 </Link>
               </h4>
@@ -592,7 +592,7 @@ export default function MuscleSorenessRecoveryEstimator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/running-pace-calculator" className="text-primary hover:underline">
+                <Link href="/running-pace-calculator" className="text-primary hover:underline">
                   Training Stress Score Calculator
                 </Link>
               </h4>
@@ -600,7 +600,7 @@ export default function MuscleSorenessRecoveryEstimator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/one-rep-max-strength-calculator" className="text-primary hover:underline">
+                <Link href="/one-rep-max-strength-calculator" className="text-primary hover:underline">
                   One Rep Max Calculator
                 </Link>
               </h4>

@@ -119,8 +119,8 @@ export default function PoundsToStonesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/stones-to-pounds-converter" className="text-primary underline">Stones to Pounds Converter</Link></p>
-            <p><Link href="/conversions/pounds-to-kilograms-converter" className="text-primary underline">Pounds to Kilograms Converter</Link></p>
+            <p><Link href="/stones-to-pounds-converter" className="text-primary underline">Stones to Pounds Converter</Link></p>
+            <p><Link href="/pounds-to-kilograms-converter" className="text-primary underline">Pounds to Kilograms Converter</Link></p>
           </div>
         </div>
       </div>

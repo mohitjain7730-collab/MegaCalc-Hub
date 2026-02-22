@@ -119,8 +119,8 @@ export default function MicrometersToMillimetersConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/millimeters-to-inches-converter" className="text-primary underline">Millimeters to Inches Converter</Link></p>
-            <p><Link href="/conversions/nanometers-to-meters-converter" className="text-primary underline">Nanometers to Meters Converter</Link></p>
+            <p><Link href="/millimeters-to-inches-converter" className="text-primary underline">Millimeters to Inches Converter</Link></p>
+            <p><Link href="/nanometers-to-meters-converter" className="text-primary underline">Nanometers to Meters Converter</Link></p>
           </div>
         </div>
         <section

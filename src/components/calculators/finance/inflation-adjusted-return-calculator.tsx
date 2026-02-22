@@ -383,7 +383,7 @@ export default function InflationAdjustedReturnCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/investment-delay-cost-calculator" className="block">
+            <Link href="/investment-delay-cost-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -396,7 +396,7 @@ export default function InflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -409,7 +409,7 @@ export default function InflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/breakeven-inflation-rate-calculator" className="block">
+            <Link href="/breakeven-inflation-rate-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -422,7 +422,7 @@ export default function InflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
+            <Link href="/cost-of-delaying-savings-by-1-year-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -435,7 +435,7 @@ export default function InflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sip-vs-lump-sum-return-difference-calculator" className="block">
+            <Link href="/sip-vs-lump-sum-return-difference-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -448,7 +448,7 @@ export default function InflationAdjustedReturnCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cagr-calculator" className="block">
+            <Link href="/cagr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -471,7 +471,7 @@ export default function InflationAdjustedReturnCalculator() {
         <meta itemProp="keywords" content="inflation-adjusted return, real return calculator, nominal vs real return, purchasing power, inflation adjustment" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/inflation-adjusted-return-calculator" />
+        <meta itemProp="url" content="/inflation-adjusted-return-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Inflation-Adjusted Return Calculator (Real Return): Nominal to Real Return</h1>
         <p className="text-lg italic text-muted-foreground">Nominal return is the stated return (e.g. 7%); real return is the return after inflation and shows how much your purchasing power actually grows. This calculator converts nominal to real return and, optionally, shows future value in today&apos;s dollars.</p>

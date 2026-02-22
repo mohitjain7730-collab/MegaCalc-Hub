@@ -477,7 +477,7 @@ export default function CreditUtilizationRatioCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/credit-card-payoff-calculator" className="block">
+            <Link href="/credit-card-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -490,7 +490,7 @@ export default function CreditUtilizationRatioCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/dscr-calculator" className="block">
+            <Link href="/dscr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

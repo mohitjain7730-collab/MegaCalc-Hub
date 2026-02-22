@@ -41,7 +41,7 @@ export async function generateMetadata({
                 title: `${subcategory.name} Calculators - ${category.name} - Mycalculating.com`,
                 description: subcategory.description,
                 alternates: {
-                    canonical: `/${category.slug}/${subcategory.slug}`,
+                    canonical: `/category/${category.slug}/${subcategory.slug}`,
                 },
             };
         }
@@ -80,7 +80,7 @@ export default async function CatchAllCategoryPage({ params }: { params: Promise
                         <div className="w-full max-w-4xl">
                             <div className="mb-6 sm:mb-8">
                                 <Button asChild variant="ghost" className='mb-3 sm:mb-4 text-sm sm:text-base'>
-                                    <Link href={`/${category.slug}`}>
+                                    <Link href={`/category/${category.slug}`}>
                                         <ArrowLeft className="mr-2 h-4 w-4" />
                                         Back to {category.name}
                                     </Link>

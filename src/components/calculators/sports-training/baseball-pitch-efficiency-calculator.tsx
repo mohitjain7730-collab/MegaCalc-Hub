@@ -188,7 +188,7 @@ export default function BaseballPitchEfficiencyCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/baseball-era-calculator" className="block">
+                        <Link href="/baseball-era-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -201,7 +201,7 @@ export default function BaseballPitchEfficiencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/baseball-whip-calculator" className="block">
+                        <Link href="/baseball-whip-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -214,7 +214,7 @@ export default function BaseballPitchEfficiencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/baseball-strikeout-to-walk-ratio-calculator" className="block">
+                        <Link href="/baseball-strikeout-to-walk-ratio-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -227,7 +227,7 @@ export default function BaseballPitchEfficiencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/baseball-batting-average-calculator" className="block">
+                        <Link href="/baseball-batting-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -240,7 +240,7 @@ export default function BaseballPitchEfficiencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/baseball-win-loss-percentage-calculator" className="block">
+                        <Link href="/baseball-win-loss-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -253,7 +253,7 @@ export default function BaseballPitchEfficiencyCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/baseball-fielding-percentage-calculator" className="block">
+                        <Link href="/baseball-fielding-percentage-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

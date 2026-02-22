@@ -215,10 +215,10 @@ export default function CapitalGainLossCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Plan proceeds and returns</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/break-even-stock-sale-price-calculator" className="text-primary hover:underline">Break‑even Sale Price</a></h4><p className="text-sm text-muted-foreground">Required price.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/holding-period-return-hpr-calculator" className="text-primary hover:underline">Holding Period Return</a></h4><p className="text-sm text-muted-foreground">Total return.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/cagr-calculator" className="text-primary hover:underline">CAGR</a></h4><p className="text-sm text-muted-foreground">Annualized growth.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/finance/stock-average-cost-multiple-buys-calculator" className="text-primary hover:underline">Average Cost</a></h4><p className="text-sm text-muted-foreground">Basis helper.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/break-even-stock-sale-price-calculator" className="text-primary hover:underline">Break‑even Sale Price</a></h4><p className="text-sm text-muted-foreground">Required price.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/holding-period-return-hpr-calculator" className="text-primary hover:underline">Holding Period Return</a></h4><p className="text-sm text-muted-foreground">Total return.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/cagr-calculator" className="text-primary hover:underline">CAGR</a></h4><p className="text-sm text-muted-foreground">Annualized growth.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><a href="/stock-average-cost-multiple-buys-calculator" className="text-primary hover:underline">Average Cost</a></h4><p className="text-sm text-muted-foreground">Basis helper.</p></div>
           </div>
         </CardContent>
       </Card>

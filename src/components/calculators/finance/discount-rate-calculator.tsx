@@ -368,7 +368,7 @@ export default function DiscountRateCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/npv-calculator" className="text-primary hover:underline">
+                  <a href="/npv-calculator" className="text-primary hover:underline">
                     Net Present Value Calculator
                   </a>
                 </h4>
@@ -378,7 +378,7 @@ export default function DiscountRateCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/dcf-calculator" className="text-primary hover:underline">
+                  <a href="/dcf-calculator" className="text-primary hover:underline">
                     Discounted Cash Flow Calculator
                   </a>
                 </h4>
@@ -388,7 +388,7 @@ export default function DiscountRateCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/wacc-calculator" className="text-primary hover:underline">
+                  <a href="/wacc-calculator" className="text-primary hover:underline">
                     WACC Calculator
                   </a>
                 </h4>
@@ -398,7 +398,7 @@ export default function DiscountRateCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/finance/capm-calculator" className="text-primary hover:underline">
+                  <a href="/capm-calculator" className="text-primary hover:underline">
                     CAPM Calculator
                   </a>
                 </h4>

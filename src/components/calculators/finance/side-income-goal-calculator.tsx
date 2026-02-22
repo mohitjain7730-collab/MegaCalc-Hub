@@ -387,7 +387,7 @@ export default function SideIncomeGoalCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/monthly-budget-planner-calculator" className="block">
+            <Link href="/monthly-budget-planner-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -400,7 +400,7 @@ export default function SideIncomeGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/emergency-fund-requirement-calculator" className="block">
+            <Link href="/emergency-fund-requirement-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -413,7 +413,7 @@ export default function SideIncomeGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/savings-goal-timeline-calculator" className="block">
+            <Link href="/savings-goal-timeline-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -426,7 +426,7 @@ export default function SideIncomeGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -439,7 +439,7 @@ export default function SideIncomeGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/retirement-savings-calculator" className="block">
+            <Link href="/retirement-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -452,7 +452,7 @@ export default function SideIncomeGoalCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/credit-card-payoff-calculator" className="block">
+            <Link href="/credit-card-payoff-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

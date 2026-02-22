@@ -484,7 +484,7 @@ export default function UnitEconomicsCalculatorStartup() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/saas-customer-acquisition-cost-calculator" className="block">
+            <Link href="/saas-customer-acquisition-cost-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -497,7 +497,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/saas-cac-payback-period-calculator" className="block">
+            <Link href="/saas-cac-payback-period-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -510,7 +510,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/marketing-spend-impact-on-runway-calculator" className="block">
+            <Link href="/marketing-spend-impact-on-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -523,7 +523,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/contribution-margin-calculator" className="block">
+            <Link href="/contribution-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -536,7 +536,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/ltv-calculator" className="block">
+            <Link href="/ltv-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -549,7 +549,7 @@ export default function UnitEconomicsCalculatorStartup() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/pre-revenue-startup-runway-calculator" className="block">
+            <Link href="/pre-revenue-startup-runway-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -573,7 +573,7 @@ export default function UnitEconomicsCalculatorStartup() {
         <meta itemProp="keywords" content="unit economics calculator startup, LTV CAC ratio, CAC payback period, startup LTV formula, contribution margin per customer, customer lifetime value" />
         <meta itemProp="author" content="[Your Site's Financial Analyst Team]" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/unit-economics-calculator-startup" />
+        <meta itemProp="url" content="/unit-economics-calculator-startup" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to Startup Unit Economics: LTV, CAC, and Payback</h1>
         <p className="text-lg italic text-muted-foreground">Master the metrics that determine whether your startup can acquire customers profitably and scale: LTV, CAC, LTV:CAC ratio, and CAC payback period.</p>

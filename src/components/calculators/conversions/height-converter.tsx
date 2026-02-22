@@ -199,10 +199,10 @@ export default function HeightConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/centimeters-to-inches-converter" className="text-primary underline">Centimeters to Inches Converter</Link></p>
-            <p><Link href="/conversions/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></p>
-            <p><Link href="/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
-            <p><Link href="/conversions/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
+            <p><Link href="/centimeters-to-inches-converter" className="text-primary underline">Centimeters to Inches Converter</Link></p>
+            <p><Link href="/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></p>
+            <p><Link href="/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
+            <p><Link href="/feet-to-meters-converter" className="text-primary underline">Feet to Meters Converter</Link></p>
           </div>
           <section
             className="space-y-4 text-muted-foreground leading-relaxed"
@@ -292,9 +292,9 @@ export default function HeightConverter() {
               Explore more useful tools:
             </p>
             <ul className="list-disc ml-6 space-y-1">
-              <li><Link href="/health-fitness/bmi-calculator" className="text-primary underline">BMI Calculator</Link></li>
-              <li><Link href="/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></li>
-              <li><Link href="/conversions/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></li>
+              <li><Link href="/bmi-calculator" className="text-primary underline">BMI Calculator</Link></li>
+              <li><Link href="/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></li>
+              <li><Link href="/inches-to-centimeters-converter" className="text-primary underline">Inches to Centimeters Converter</Link></li>
             </ul>
 
             <p className="italic mt-4">

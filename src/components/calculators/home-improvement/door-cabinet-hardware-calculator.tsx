@@ -176,8 +176,8 @@ export default function DoorCabinetHardwareCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/home-improvement/paint-coverage-calculator" className="text-primary hover:underline">Paint Coverage Calculator</a></h4><p className="text-sm text-muted-foreground">Estimate paint needed for rooms.</p></div>
-            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/home-improvement/wallpaper-roll-calculator" className="text-primary hover:underline">Wallpaper Roll Calculator</a></h4><p className="text-sm text-muted-foreground">Determine rolls based on area.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/paint-coverage-calculator" className="text-primary hover:underline">Paint Coverage Calculator</a></h4><p className="text-sm text-muted-foreground">Estimate paint needed for rooms.</p></div>
+            <div className="p-4 border rounded-lg"><h4 className="font-semibold mb-1"><a href="/wallpaper-roll-calculator" className="text-primary hover:underline">Wallpaper Roll Calculator</a></h4><p className="text-sm text-muted-foreground">Determine rolls based on area.</p></div>
           </div>
         </CardContent>
       </Card>

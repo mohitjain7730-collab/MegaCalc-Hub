@@ -509,7 +509,7 @@ export default function SpendingHabitAnalyzerNeedsVsWantsSplit() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -529,7 +529,7 @@ export default function SpendingHabitAnalyzerNeedsVsWantsSplit() {
     <meta itemProp="keywords" content="spending habit analyzer, needs vs wants, 50/30/20 rule, budget analysis, financial planning, spending split" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/spending-habit-analyzer-needs-vs-wants-split" />
+    <meta itemProp="url" content="/spending-habit-analyzer-needs-vs-wants-split" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Spending Habit Analysis: Needs vs Wants Split and 50/30/20 Rule</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at analyzing spending habits, distinguishing needs from wants, and applying the 50/30/20 budgeting rule for optimal financial health.</p>

@@ -491,10 +491,10 @@ export default function TotalEnergyExpenditureCalculator() {
 
         <h3 className="font-semibold text-foreground mt-6">Related Tools</h3>
         <div className="space-y-2">
-          <p><Link href="/health-fitness/bmr-calculator" className="text-primary underline">BMR Calculator</Link></p>
-          <p><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs Calculator</Link></p>
-          <p><Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
-          <p><Link href="/health-fitness/macro-ratio-calculator" className="text-primary underline">Macro Ratio Calculator</Link></p>
+          <p><Link href="/bmr-calculator" className="text-primary underline">BMR Calculator</Link></p>
+          <p><Link href="/daily-calorie-needs-calculator" className="text-primary underline">Daily Calorie Needs Calculator</Link></p>
+          <p><Link href="/mets-calories-burned-calculator" className="text-primary underline">Exercise Calorie Burn Calculator</Link></p>
+          <p><Link href="/macro-ratio-calculator" className="text-primary underline">Macro Ratio Calculator</Link></p>
         </div>
       </section>
     </div>

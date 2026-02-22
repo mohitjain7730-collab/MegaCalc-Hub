@@ -147,10 +147,10 @@ export default function BloodLactateClearanceRateCalculator() {
         <CardHeader><CardTitle>Related Calculators</CardTitle><CardDescription>Thresholds and endurance</CardDescription></CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">Anaerobic Threshold</Link></h4><p className="text-sm text-muted-foreground">Set training zones.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">MLSS Calculator</Link></h4><p className="text-sm text-muted-foreground">Sustainable hard pace.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">Heart Rate Zones</Link></h4><p className="text-sm text-muted-foreground">Guide intensities.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Aerobic ceiling.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">Anaerobic Threshold</Link></h4><p className="text-sm text-muted-foreground">Set training zones.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">MLSS Calculator</Link></h4><p className="text-sm text-muted-foreground">Sustainable hard pace.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/target-heart-rate-calculator" className="text-primary hover:underline">Heart Rate Zones</Link></h4><p className="text-sm text-muted-foreground">Guide intensities.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/vo2-max-calculator" className="text-primary hover:underline">VO₂ Max</Link></h4><p className="text-sm text-muted-foreground">Aerobic ceiling.</p></div>
           </div>
         </CardContent>
       </Card>

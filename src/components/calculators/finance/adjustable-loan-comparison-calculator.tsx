@@ -478,7 +478,7 @@ export default function AdjustableLoanComparisonCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/mortgage-payment-calculator" className="block">
+            <Link href="/mortgage-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -491,7 +491,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/mortgage-refinance-savings-calculator" className="block">
+            <Link href="/mortgage-refinance-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -504,7 +504,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/loan-amortization-extra-payments-calculator" className="block">
+            <Link href="/loan-amortization-extra-payments-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -517,7 +517,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/amortization-schedule-generator" className="block">
+            <Link href="/amortization-schedule-generator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -530,7 +530,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/loan-to-value-ltv-ratio-calculator" className="block">
+            <Link href="/loan-to-value-ltv-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -543,7 +543,7 @@ export default function AdjustableLoanComparisonCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/dscr-calculator" className="block">
+            <Link href="/dscr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

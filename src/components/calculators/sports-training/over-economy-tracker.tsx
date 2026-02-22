@@ -109,7 +109,7 @@ export default function OverEconomyTracker() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/bowling-average-calculator" className="block">
+                        <Link href="/bowling-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -122,7 +122,7 @@ export default function OverEconomyTracker() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/strike-rate-calculator" className="block">
+                        <Link href="/strike-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -135,7 +135,7 @@ export default function OverEconomyTracker() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/required-run-rate-calculator" className="block">
+                        <Link href="/required-run-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -148,7 +148,7 @@ export default function OverEconomyTracker() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/cricket-win-probability-calculator" className="block">
+                        <Link href="/cricket-win-probability-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -161,7 +161,7 @@ export default function OverEconomyTracker() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/batting-average-calculator" className="block">
+                        <Link href="/batting-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -174,7 +174,7 @@ export default function OverEconomyTracker() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/cricket-fantasy-points-calculator" className="block">
+                        <Link href="/cricket-fantasy-points-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

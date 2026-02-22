@@ -44,7 +44,7 @@ function SidebarContent({ currentCategorySlug, pathname, onMobileClose }: Sideba
             return (
               <Link
                 key={category.slug}
-                href={`/${category.slug}`}
+                href={`/category/${category.slug}`}
                 onClick={onMobileClose}
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",

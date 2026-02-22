@@ -172,7 +172,7 @@ export default function IdealBodyWeightCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                  <a href="/bmi-calculator" className="text-primary hover:underline">
                     BMI Calculator
                   </a>
                 </h4>
@@ -182,7 +182,7 @@ export default function IdealBodyWeightCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
+                  <a href="/lean-body-mass-calculator" className="text-primary hover:underline">
                     Lean Body Mass Calculator
                   </a>
                 </h4>
@@ -192,7 +192,7 @@ export default function IdealBodyWeightCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                  <a href="/body-fat-percentage-calculator" className="text-primary hover:underline">
                     Body Fat Percentage Calculator
                   </a>
                 </h4>
@@ -202,7 +202,7 @@ export default function IdealBodyWeightCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs Calculator
                   </a>
                 </h4>
@@ -212,7 +212,7 @@ export default function IdealBodyWeightCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/calorie-deficit-calculator" className="text-primary hover:underline">
+                  <a href="/calorie-deficit-calculator" className="text-primary hover:underline">
                     Calorie Deficit Calculator
                   </a>
                 </h4>
@@ -222,7 +222,7 @@ export default function IdealBodyWeightCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/calorie-surplus-calculator" className="text-primary hover:underline">
+                  <a href="/calorie-surplus-calculator" className="text-primary hover:underline">
                     Calorie Surplus Calculator
                   </a>
                 </h4>

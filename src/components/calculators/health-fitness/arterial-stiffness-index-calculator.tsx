@@ -272,7 +272,7 @@ export default function ArterialStiffnessIndexCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">
+                <Link href="/hydration-needs-calculator" className="text-primary hover:underline">
                   Hydration Needs
                 </Link>
               </h4>

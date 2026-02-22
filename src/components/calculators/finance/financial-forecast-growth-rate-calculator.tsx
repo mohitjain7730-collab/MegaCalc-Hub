@@ -476,7 +476,7 @@ export default function FinancialForecastGrowthRateCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/cagr-calculator" className="block">
+            <Link href="/cagr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -489,7 +489,7 @@ export default function FinancialForecastGrowthRateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/future-value-calculator" className="block">
+            <Link href="/future-value-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -502,7 +502,7 @@ export default function FinancialForecastGrowthRateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/dcf-calculator" className="block">
+            <Link href="/dcf-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -515,7 +515,7 @@ export default function FinancialForecastGrowthRateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cash-flow-forecasting-calculator" className="block">
+            <Link href="/cash-flow-forecasting-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -528,7 +528,7 @@ export default function FinancialForecastGrowthRateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -541,7 +541,7 @@ export default function FinancialForecastGrowthRateCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/return-on-investment-calculator" className="block">
+            <Link href="/return-on-investment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

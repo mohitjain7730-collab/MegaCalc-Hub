@@ -489,7 +489,7 @@ export default function FinancialStressIndexSelfAssessment() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -509,7 +509,7 @@ export default function FinancialStressIndexSelfAssessment() {
     <meta itemProp="keywords" content="financial stress index, financial stress, financial well-being, stress assessment, financial anxiety" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/financial-stress-index-self-assessment" />
+    <meta itemProp="url" content="/financial-stress-index-self-assessment" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Financial Stress Index: Self-Assessment and Financial Well-Being</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at financial stress index, self-assessment methods, and strategies to reduce financial stress and improve financial well-being.</p>

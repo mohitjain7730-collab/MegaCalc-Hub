@@ -330,7 +330,7 @@ export default function LifestyleInflationCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/monthly-savings-gap-calculator" className="block">
+            <Link href="/monthly-savings-gap-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -343,7 +343,7 @@ export default function LifestyleInflationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/savings-goal-timeline-calculator" className="block">
+            <Link href="/savings-goal-timeline-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -356,7 +356,7 @@ export default function LifestyleInflationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cost-of-delay-investing-late-calculator" className="block">
+            <Link href="/cost-of-delay-investing-late-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -379,7 +379,7 @@ export default function LifestyleInflationCalculator() {
         <meta itemProp="keywords" content="lifestyle inflation calculator, lifestyle creep, savings rate after raise, spending more as income rises" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/lifestyle-inflation-calculator" />
+        <meta itemProp="url" content="/lifestyle-inflation-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Lifestyle Inflation: What It Is and How to Avoid It</h1>
         <p className="text-lg italic text-muted-foreground">Lifestyle inflation is when spending rises with income instead of saving the raise. This calculator shows how much more you spend after a raise and how much you could have saved by keeping your old savings rate.</p>

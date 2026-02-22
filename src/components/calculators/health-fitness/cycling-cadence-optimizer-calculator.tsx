@@ -310,19 +310,19 @@ export default function CyclingCadenceOptimizerCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/critical-power-calculator" className="text-primary hover:underline">Critical Power Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/critical-power-calculator" className="text-primary hover:underline">Critical Power Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Determine sustainable power to pair with cadence targets.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-Heart Rate Efficiency</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/power-to-heart-rate-efficiency-calculator" className="text-primary hover:underline">Power-to-Heart Rate Efficiency</Link></h4>
               <p className="text-sm text-muted-foreground">Monitor aerobic efficiency and decoupling on long rides.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
               <p className="text-sm text-muted-foreground">Assess recovery needs after high-intensity cadence work.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity Calculator</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/anaerobic-capacity-calculator" className="text-primary hover:underline">Anaerobic Capacity Calculator</Link></h4>
               <p className="text-sm text-muted-foreground">Evaluate sprint reserves to complement cadence strategy.</p>
             </div>
           </div>

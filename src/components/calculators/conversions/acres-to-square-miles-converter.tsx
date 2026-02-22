@@ -119,9 +119,9 @@ export default function AcresToSquareMilesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/square-miles-to-acres-converter" className="text-primary underline">Square Miles to Acres Converter</Link></p>
-            <p><Link href="/conversions/acres-to-square-meters-converter" className="text-primary underline">Acres to Square Meters Converter</Link></p>
-            <p><Link href="/conversions/hectares-to-acres-converter" className="text-primary underline">Hectares to Acres Converter</Link></p>
+            <p><Link href="/square-miles-to-acres-converter" className="text-primary underline">Square Miles to Acres Converter</Link></p>
+            <p><Link href="/acres-to-square-meters-converter" className="text-primary underline">Acres to Square Meters Converter</Link></p>
+            <p><Link href="/hectares-to-acres-converter" className="text-primary underline">Hectares to Acres Converter</Link></p>
           </div>
         </div>
       </div>

@@ -431,7 +431,7 @@ export default function MeditationBreathingRateCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/health-fitness/mindful-minutes-tracking-calculator"
+                  href="/mindful-minutes-tracking-calculator"
                   className="text-primary hover:underline"
                 >
                   Mindful Minutes Tracking
@@ -442,7 +442,7 @@ export default function MeditationBreathingRateCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/health-fitness/heart-rate-variability-hrv-score-calculator"
+                  href="/heart-rate-variability-hrv-score-calculator"
                   className="text-primary hover:underline"
                 >
                   Heart Rhythm Wellness Score
@@ -455,7 +455,7 @@ export default function MeditationBreathingRateCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/health-fitness/daily-activity-points-calculator"
+                  href="/daily-activity-points-calculator"
                   className="text-primary hover:underline"
                 >
                   Daily Stress Tendency Check-In
@@ -468,7 +468,7 @@ export default function MeditationBreathingRateCalculator() {
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
                 <Link
-                  href="/health-fitness/cortisol-stress-response-estimator"
+                  href="/cortisol-stress-response-estimator"
                   className="text-primary hover:underline"
                 >
                   Daily Stress & Recovery Balance Score

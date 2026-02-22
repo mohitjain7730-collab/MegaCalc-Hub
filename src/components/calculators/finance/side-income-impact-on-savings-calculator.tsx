@@ -312,7 +312,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/cost-of-delaying-savings-by-1-year-calculator" className="block">
+            <Link href="/cost-of-delaying-savings-by-1-year-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -325,7 +325,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/monthly-savings-gap-calculator" className="block">
+            <Link href="/monthly-savings-gap-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -338,7 +338,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/lifestyle-inflation-calculator" className="block">
+            <Link href="/lifestyle-inflation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -361,7 +361,7 @@ export default function SideIncomeImpactOnSavingsCalculator() {
         <meta itemProp="keywords" content="side income impact on savings, side hustle savings, additional savings, months to goal" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/side-income-impact-on-savings-calculator" />
+        <meta itemProp="url" content="/side-income-impact-on-savings-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Side Income Impact on Savings: How Much Faster You Reach Your Goal</h1>
         <p className="text-lg italic text-muted-foreground">Saving a portion of side income (e.g. 100%) adds to your monthly savings and can shorten the time to a savings goal. This calculator shows the additional monthly and annual savings and, if you enter a goal and balance, how many months sooner you could get there.</p>

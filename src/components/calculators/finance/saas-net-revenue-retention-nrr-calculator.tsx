@@ -497,7 +497,7 @@ export default function SaaSNetRevenueRetentionNrrCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/saas-customer-acquisition-cost-calculator" className="block">
+            <Link href="/saas-customer-acquisition-cost-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -510,7 +510,7 @@ export default function SaaSNetRevenueRetentionNrrCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/ltv-calculator" className="block">
+            <Link href="/ltv-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -523,7 +523,7 @@ export default function SaaSNetRevenueRetentionNrrCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/saas-burn-rate-calculator-gross-vs-net" className="block">
+            <Link href="/saas-burn-rate-calculator-gross-vs-net" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -536,7 +536,7 @@ export default function SaaSNetRevenueRetentionNrrCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/payback-period-customer-acquisition-calculator" className="block">
+            <Link href="/payback-period-customer-acquisition-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -549,7 +549,7 @@ export default function SaaSNetRevenueRetentionNrrCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/mrr-calculator" className="block">
+            <Link href="/mrr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -562,7 +562,7 @@ export default function SaaSNetRevenueRetentionNrrCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/arr-growth-calculator" className="block">
+            <Link href="/arr-growth-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

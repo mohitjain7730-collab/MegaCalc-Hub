@@ -526,10 +526,10 @@ export default function BalanceTransferCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { name: "Debt Repayment", url: "/finance/debt-snowball-avalanche-repayment-calculator", icon: <TrendingDown className="h-5 w-5 text-indigo-500" />, desc: "Avalanche vs Snowball" },
-              { name: "Credit Card Payoff", url: "/finance/credit-card-payoff-calculator", icon: <CreditCard className="h-5 w-5 text-red-500" />, desc: "See your payoff date" },
-              { name: "Credit Score Impact", url: "/finance/credit-score-impact-estimator-debt-ratio-calculator", icon: <DollarSign className="h-5 w-5 text-green-500" />, desc: "Check utilization impact" },
-              { name: "Budget Planner", url: "/finance/monthly-budget-planner-calculator", icon: <DollarSign className="h-5 w-5 text-blue-500" />, desc: "Find extra payment money" },
+              { name: "Debt Repayment", url: "/debt-snowball-avalanche-repayment-calculator", icon: <TrendingDown className="h-5 w-5 text-indigo-500" />, desc: "Avalanche vs Snowball" },
+              { name: "Credit Card Payoff", url: "/credit-card-payoff-calculator", icon: <CreditCard className="h-5 w-5 text-red-500" />, desc: "See your payoff date" },
+              { name: "Credit Score Impact", url: "/credit-score-impact-estimator-debt-ratio-calculator", icon: <DollarSign className="h-5 w-5 text-green-500" />, desc: "Check utilization impact" },
+              { name: "Budget Planner", url: "/monthly-budget-planner-calculator", icon: <DollarSign className="h-5 w-5 text-blue-500" />, desc: "Find extra payment money" },
             ].map((item, i) => (
               <Link key={i} href={item.url} className="block group">
                 <Card className="hover:shadow-md transition-all h-full">

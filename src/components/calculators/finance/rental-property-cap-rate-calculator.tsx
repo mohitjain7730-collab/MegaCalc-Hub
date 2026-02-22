@@ -208,7 +208,7 @@ export default function RentalPropertyCapRateCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/real-estate-cash-on-cash-return-calculator" className="text-primary hover:underline">
+                <a href="/real-estate-cash-on-cash-return-calculator" className="text-primary hover:underline">
                   Real Estate Cash-on-Cash Return
                 </a>
               </h4>
@@ -218,7 +218,7 @@ export default function RentalPropertyCapRateCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                <a href="/mortgage-payment-calculator" className="text-primary hover:underline">
                   Mortgage Payment Calculator
                 </a>
               </h4>
@@ -228,7 +228,7 @@ export default function RentalPropertyCapRateCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
+                <a href="/mortgage-refinance-savings-calculator" className="text-primary hover:underline">
                   Mortgage Refinance Savings
                 </a>
               </h4>
@@ -238,7 +238,7 @@ export default function RentalPropertyCapRateCalculator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/dscr-calculator" className="text-primary hover:underline">
+                <a href="/dscr-calculator" className="text-primary hover:underline">
                   DSCR Calculator
                 </a>
               </h4>

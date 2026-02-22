@@ -179,11 +179,11 @@ export default function TorqueConverter() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-                <li><Link href="/conversions/kilowatts-to-horsepower-converter" className="hover:underline">Kilowatts To Horsepower Converter</Link></li>
-                <li><Link href="/conversions/body-measurement-to-cloth-size-converter" className="hover:underline">Body Measurement To Cloth Size Converter</Link></li>
-                <li><Link href="/conversions/inches-to-centimeters-converter" className="hover:underline">Inches To Centimeters Converter</Link></li>
-                <li><Link href="/conversions/days-to-hours-converter" className="hover:underline">Days To Hours Converter</Link></li>
-                <li><Link href="/conversions/atmospheres-to-psi-converter" className="hover:underline">Atmospheres To Psi Converter</Link></li>
+                <li><Link href="/kilowatts-to-horsepower-converter" className="hover:underline">Kilowatts To Horsepower Converter</Link></li>
+                <li><Link href="/body-measurement-to-cloth-size-converter" className="hover:underline">Body Measurement To Cloth Size Converter</Link></li>
+                <li><Link href="/inches-to-centimeters-converter" className="hover:underline">Inches To Centimeters Converter</Link></li>
+                <li><Link href="/days-to-hours-converter" className="hover:underline">Days To Hours Converter</Link></li>
+                <li><Link href="/atmospheres-to-psi-converter" className="hover:underline">Atmospheres To Psi Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

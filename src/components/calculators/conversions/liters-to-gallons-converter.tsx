@@ -135,8 +135,8 @@ export default function LitersToGallonsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/gallons-to-liters-converter" className="text-primary underline">Gallons to Liters Converter</Link></p>
-            <p><Link href="/conversions/cups-to-milliliters-converter" className="text-primary underline">Cups to Milliliters Converter</Link></p>
+            <p><Link href="/gallons-to-liters-converter" className="text-primary underline">Gallons to Liters Converter</Link></p>
+            <p><Link href="/cups-to-milliliters-converter" className="text-primary underline">Cups to Milliliters Converter</Link></p>
           </div>
         </div>
       </div>

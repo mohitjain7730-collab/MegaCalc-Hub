@@ -404,7 +404,7 @@ export default function ConditionalValueAtRiskCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/value-at-risk-calculator" className="group">
+            <Link href="/value-at-risk-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -412,7 +412,7 @@ export default function ConditionalValueAtRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/monte-carlo-portfolio-calculator" className="group">
+            <Link href="/monte-carlo-portfolio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -420,7 +420,7 @@ export default function ConditionalValueAtRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/portfolio-variance-calculator" className="group">
+            <Link href="/portfolio-variance-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -428,7 +428,7 @@ export default function ConditionalValueAtRiskCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/sortino-ratio-calculator" className="group">
+            <Link href="/sortino-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />

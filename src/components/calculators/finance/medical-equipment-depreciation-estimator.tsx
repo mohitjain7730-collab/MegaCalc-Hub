@@ -337,7 +337,7 @@ export default function MedicalEquipmentDepreciationEstimator() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/dental-implant-cost-recovery-calculator" className="text-primary hover:underline">
+                                <a href="/dental-implant-cost-recovery-calculator" className="text-primary hover:underline">
                                     Dental ROI
                                 </a>
                             </h4>
@@ -347,7 +347,7 @@ export default function MedicalEquipmentDepreciationEstimator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/doctor-visit-roi-calculator" className="text-primary hover:underline">
+                                <a href="/doctor-visit-roi-calculator" className="text-primary hover:underline">
                                     Preventive ROI
                                 </a>
                             </h4>
@@ -357,7 +357,7 @@ export default function MedicalEquipmentDepreciationEstimator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">
+                                <a href="/loan-to-value-ltv-ratio-calculator" className="text-primary hover:underline">
                                     Practice Loan
                                 </a>
                             </h4>
@@ -367,7 +367,7 @@ export default function MedicalEquipmentDepreciationEstimator() {
                         </div>
                         <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                             <h4 className="font-semibold mb-2">
-                                <a href="/finance/employer-health-plan-tax-savings-calculator" className="text-primary hover:underline">
+                                <a href="/employer-health-plan-tax-savings-calculator" className="text-primary hover:underline">
                                     Tax Savings
                                 </a>
                             </h4>

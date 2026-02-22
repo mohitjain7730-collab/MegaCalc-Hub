@@ -544,7 +544,7 @@ export default function FatMassIndexCalculator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/body-fat-percentage-calculator" className="text-primary hover:underline">
+                <Link href="/body-fat-percentage-calculator" className="text-primary hover:underline">
                   Body Fat Percentage Calculator
                 </Link>
               </h4>
@@ -552,7 +552,7 @@ export default function FatMassIndexCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/lean-body-mass-calculator" className="text-primary hover:underline">
+                <Link href="/lean-body-mass-calculator" className="text-primary hover:underline">
                   Lean Body Mass Calculator
                 </Link>
               </h4>
@@ -560,7 +560,7 @@ export default function FatMassIndexCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/bmi-calculator" className="text-primary hover:underline">
+                <Link href="/bmi-calculator" className="text-primary hover:underline">
                   BMI Calculator
                 </Link>
               </h4>
@@ -568,7 +568,7 @@ export default function FatMassIndexCalculator() {
             </div>
             <div className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href="/health-fitness/muscle-mass-percentage-calculator" className="text-primary hover:underline">
+                <Link href="/muscle-mass-percentage-calculator" className="text-primary hover:underline">
                   Muscle Mass Percentage Calculator
                 </Link>
               </h4>

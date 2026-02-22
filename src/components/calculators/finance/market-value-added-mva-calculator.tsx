@@ -389,7 +389,7 @@ export default function MarketValueAddedMVACalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/economic-value-added-eva-calculator" className="block">
+            <Link href="/economic-value-added-eva-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -402,7 +402,7 @@ export default function MarketValueAddedMVACalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/return-on-equity-calculator" className="block">
+            <Link href="/return-on-equity-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -415,7 +415,7 @@ export default function MarketValueAddedMVACalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/enterprise-value-calculator" className="block">
+            <Link href="/enterprise-value-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

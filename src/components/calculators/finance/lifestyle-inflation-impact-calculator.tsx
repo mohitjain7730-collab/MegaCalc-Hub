@@ -447,7 +447,7 @@ export default function LifestyleInflationImpactCalculator() {
           {relatedCalculators.map((calc) => (
             <div key={calc.slug} className="p-4 border rounded">
               <h4 className="font-semibold mb-1">
-                <Link href={`/finance/${calc.slug}`} className="text-primary hover:underline">
+                <Link href={`/${calc.slug}`} className="text-primary hover:underline">
                   {calc.name}
                 </Link>
               </h4>
@@ -467,7 +467,7 @@ export default function LifestyleInflationImpactCalculator() {
     <meta itemProp="keywords" content="lifestyle inflation, lifestyle creep, opportunity cost, financial planning, wealth accumulation, spending habits" />
     <meta itemProp="author" content="[Your Site's Finance Team]" />
     <meta itemProp="datePublished" content="2025-12-02" />
-    <meta itemProp="url" content="/finance/lifestyle-inflation-impact-calculator" />
+    <meta itemProp="url" content="/lifestyle-inflation-impact-calculator" />
 
     <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Complete Guide to Lifestyle Inflation Impact: Opportunity Cost and Wealth Accumulation</h1>
     <p className="text-lg italic text-gray-700 dark:text-gray-300">A comprehensive look at lifestyle inflation, its long-term impact on wealth accumulation, and strategies to balance current enjoyment with future financial security.</p>

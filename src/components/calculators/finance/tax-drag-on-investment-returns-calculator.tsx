@@ -411,7 +411,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/long-term-vs-short-term-capital-gain-comparison-calculator" className="block">
+            <Link href="/long-term-vs-short-term-capital-gain-comparison-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -424,7 +424,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/tax-equivalent-yield-calculator" className="block">
+            <Link href="/tax-equivalent-yield-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -437,7 +437,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inflation-adjusted-return-calculator" className="block">
+            <Link href="/inflation-adjusted-return-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -450,7 +450,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/compound-interest-calculator" className="block">
+            <Link href="/compound-interest-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -463,7 +463,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/capital-gain-loss-calculator" className="block">
+            <Link href="/capital-gain-loss-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -476,7 +476,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cagr-calculator" className="block">
+            <Link href="/cagr-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -499,7 +499,7 @@ export default function TaxDragOnInvestmentReturnsCalculator() {
         <meta itemProp="keywords" content="tax drag, after-tax return, investment tax, dividend tax, capital gain tax" />
         <meta itemProp="author" content="MegaCalc Financial Team" />
         <meta itemProp="datePublished" content="2025-10-25" />
-        <meta itemProp="url" content="/finance/tax-drag-on-investment-returns-calculator" />
+        <meta itemProp="url" content="/tax-drag-on-investment-returns-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">Tax Drag on Investment Returns: How Taxes Reduce Your Effective Return</h1>
         <p className="text-lg italic text-muted-foreground">In a taxable account, you don&apos;t keep the full nominal returnâ€”you pay tax on dividends and, when realized, on capital gains. Tax drag is the reduction in your return due to those taxes. This calculator shows your annual tax drag and after-tax return, and optionally the future value impact over time.</p>

@@ -368,7 +368,7 @@ export default function InsulationRValueCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/hvac-sizing-calculator" className="text-primary hover:underline">
+                  <a href="/hvac-sizing-calculator" className="text-primary hover:underline">
                     HVAC Sizing Calculator
                   </a>
                 </h4>
@@ -378,7 +378,7 @@ export default function InsulationRValueCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/cost-estimator-renovation-calculator" className="text-primary hover:underline">
+                  <a href="/cost-estimator-renovation-calculator" className="text-primary hover:underline">
                     Renovation Cost Estimator
                   </a>
                 </h4>
@@ -388,7 +388,7 @@ export default function InsulationRValueCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/paint-coverage-calculator" className="text-primary hover:underline">
+                  <a href="/paint-coverage-calculator" className="text-primary hover:underline">
                     Paint Coverage Calculator
                   </a>
                 </h4>
@@ -398,7 +398,7 @@ export default function InsulationRValueCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/home-improvement/drywall-plasterboard-calculator" className="text-primary hover:underline">
+                  <a href="/drywall-plasterboard-calculator" className="text-primary hover:underline">
                     Drywall Calculator
                   </a>
                 </h4>

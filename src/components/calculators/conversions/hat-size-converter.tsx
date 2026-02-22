@@ -225,10 +225,10 @@ export default function HatSizeConverter() {
         
         <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-            <li><Link href="/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
-            <li><Link href="/conversions/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
-            <li><Link href="/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
-            <li><Link href="/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
+            <li><Link href="/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+            <li><Link href="/cloth-size-converter" className="text-primary underline">👕 Universal Clothing Size Converter</Link></li>
+            <li><Link href="/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
+            <li><Link href="/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
         </ul>
       </div>
     </div>

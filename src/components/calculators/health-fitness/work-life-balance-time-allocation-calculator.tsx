@@ -145,16 +145,16 @@ function RelatedCalculators() {
       </CardHeader>
       <CardContent>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <Link href="/health-fitness/habit-streak-tracker-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/habit-streak-tracker-calculator" className="text-primary underline hover:text-primary/80">
             Meditation Time Progress Tracker Calculator
           </Link>
-          <Link href="/health-fitness/habit-streak-tracker-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/habit-streak-tracker-calculator" className="text-primary underline hover:text-primary/80">
             Sleep Debt Calculator
           </Link>
-          <Link href="/health-fitness/daily-activity-points-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/daily-activity-points-calculator" className="text-primary underline hover:text-primary/80">
             Stress Level Self-Assessment Calculator
           </Link>
-          <Link href="/health-fitness/mets-calories-burned-calculator" className="text-primary underline hover:text-primary/80">
+          <Link href="/mets-calories-burned-calculator" className="text-primary underline hover:text-primary/80">
             Exercise Calorie Burn Calculator
           </Link>
         </div>

@@ -107,7 +107,7 @@ export default function JoulesToKilojoulesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/kilojoules-to-joules-converter" className="text-primary underline">Kilojoules to Joules Converter</Link></p>
+            <p><Link href="/kilojoules-to-joules-converter" className="text-primary underline">Kilojoules to Joules Converter</Link></p>
           </div>
         </div>
       </div>

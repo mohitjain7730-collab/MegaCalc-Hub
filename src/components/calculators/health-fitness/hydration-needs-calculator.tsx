@@ -148,7 +148,7 @@ export default function HydrationNeedsCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs Calculator
                   </a>
                 </h4>
@@ -158,7 +158,7 @@ export default function HydrationNeedsCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/water-footprint-of-food-calculator" className="text-primary hover:underline">
+                  <a href="/water-footprint-of-food-calculator" className="text-primary hover:underline">
                     Water Footprint of Food Calculator
                   </a>
                 </h4>
@@ -168,7 +168,7 @@ export default function HydrationNeedsCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/bmr-calculator" className="text-primary hover:underline">
+                  <a href="/bmr-calculator" className="text-primary hover:underline">
                     BMR Calculator
                   </a>
                 </h4>
@@ -178,7 +178,7 @@ export default function HydrationNeedsCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/target-heart-rate-calculator" className="text-primary hover:underline">
+                  <a href="/target-heart-rate-calculator" className="text-primary hover:underline">
                     Target Heart Rate Calculator
                   </a>
                 </h4>

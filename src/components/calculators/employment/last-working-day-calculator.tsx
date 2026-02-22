@@ -230,10 +230,10 @@ export default function LastWorkingDayCalculator() {
           </CardHeader>
           <CardContent>
             <ul className="list-disc pl-5 text-sm text-primary">
-              <li><Link href="/time-date/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
+              <li><Link href="/working-days-business-days-calculator" className="hover:underline">Working Days Calculator</Link></li>
               <li><Link href="/notice-period-calculator" className="hover:underline">Notice Period End Date Calculator</Link></li>
               <li><Link href="/contract-duration-calculator" className="hover:underline">Contract Duration Calculator</Link></li>
-              <li><Link href="/time-date/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
+              <li><Link href="/world-time-zone-converter" className="hover:underline">World Time Zone Converter</Link></li>
             </ul>
           </CardContent>
         </Card>

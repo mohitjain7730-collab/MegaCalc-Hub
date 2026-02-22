@@ -124,8 +124,8 @@ export default function KilometersToMilesConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/miles-to-kilometers-converter" className="text-primary underline">Miles to Kilometers Converter</Link></p>
-            <p><Link href="/conversions/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
+            <p><Link href="/miles-to-kilometers-converter" className="text-primary underline">Miles to Kilometers Converter</Link></p>
+            <p><Link href="/meters-to-feet-converter" className="text-primary underline">Meters to Feet Converter</Link></p>
           </div>
         </div>
         <section

@@ -494,7 +494,7 @@ export default function HomeAffordabilityCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/mortgage-payment-calculator" className="block">
+            <Link href="/mortgage-payment-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -504,7 +504,7 @@ export default function HomeAffordabilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/rent-vs-buy-home-calculator" className="block">
+            <Link href="/rent-vs-buy-home-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -514,7 +514,7 @@ export default function HomeAffordabilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/house-down-payment-savings-calculator" className="block">
+            <Link href="/house-down-payment-savings-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -524,7 +524,7 @@ export default function HomeAffordabilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/property-tax-calculator" className="block">
+            <Link href="/property-tax-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -534,7 +534,7 @@ export default function HomeAffordabilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/debt-to-income-ratio-calculator" className="block">
+            <Link href="/debt-to-income-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -544,7 +544,7 @@ export default function HomeAffordabilityCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/loan-to-value-ltv-ratio-calculator" className="block">
+            <Link href="/loan-to-value-ltv-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

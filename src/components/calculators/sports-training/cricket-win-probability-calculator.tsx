@@ -80,7 +80,7 @@ export default function CricketWinProbabilityCalculator() {
                 </CardHeader>
                 <CardContent>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <Link href="/sports-training/required-run-rate-calculator" className="block">
+                        <Link href="/required-run-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -93,7 +93,7 @@ export default function CricketWinProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/team-run-rate-calculator" className="block">
+                        <Link href="/team-run-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -106,7 +106,7 @@ export default function CricketWinProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/cricket-player-performance-index-calculator" className="block">
+                        <Link href="/cricket-player-performance-index-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -119,7 +119,7 @@ export default function CricketWinProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/cricket-fantasy-points-calculator" className="block">
+                        <Link href="/cricket-fantasy-points-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -132,7 +132,7 @@ export default function CricketWinProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/batting-average-calculator" className="block">
+                        <Link href="/batting-average-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">
@@ -145,7 +145,7 @@ export default function CricketWinProbabilityCalculator() {
                                 </CardContent>
                             </Card>
                         </Link>
-                        <Link href="/sports-training/strike-rate-calculator" className="block">
+                        <Link href="/strike-rate-calculator" className="block">
                             <Card className="hover:shadow-md transition-shadow cursor-pointer">
                                 <CardContent className="p-4">
                                     <div className="flex items-center gap-3">

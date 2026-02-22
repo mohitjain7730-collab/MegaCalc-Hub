@@ -392,7 +392,7 @@ export default function COGSEstimator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/gross-margin-calculator" className="block">
+            <Link href="/gross-margin-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -405,7 +405,7 @@ export default function COGSEstimator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/inventory-turnover-ratio-calculator" className="block">
+            <Link href="/inventory-turnover-ratio-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -418,7 +418,7 @@ export default function COGSEstimator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/break-even-analysis-calculator" className="block">
+            <Link href="/break-even-analysis-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer h-full">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

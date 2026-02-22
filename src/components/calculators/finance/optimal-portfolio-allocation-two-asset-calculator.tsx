@@ -605,12 +605,12 @@ export default function OptimalPortfolioAllocationCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { title: "Efficient Frontier", desc: "Visualize the optimal curve", icon: <TrendingUp className="h-5 w-5 text-green-600" />, href: "/finance/efficient-frontier-visualizer" },
-              { title: "Portfolio Variance", desc: "Calculate total risk across N assets", icon: <Layers className="h-5 w-5 text-blue-600" />, href: "/finance/portfolio-variance-calculator" },
-              { title: "Correllation Heatmap", desc: "Asset interaction analysis", icon: <Activity className="h-5 w-5 text-orange-600" />, href: "/finance/asset-correlation-matrix-calculator" },
-              { title: "Sharpe Ratio", desc: "Risk-adjusted performance audit", icon: <Zap className="h-5 w-5 text-yellow-600" />, href: "/finance/sharpe-ratio-calculator" },
-              { title: "Lump Sum vs SIP", desc: "Compare entry strategies", icon: <DollarSign className="h-5 w-5 text-purple-600" />, href: "/finance/lump-sum-vs-sip-comparison-calculator" },
-              { title: "WACC Optimizer", desc: "Capital structure analysis", icon: <Target className="h-5 w-5 text-indigo-600" />, href: "/finance/wacc-calculator" },
+              { title: "Efficient Frontier", desc: "Visualize the optimal curve", icon: <TrendingUp className="h-5 w-5 text-green-600" />, href: "/efficient-frontier-visualizer" },
+              { title: "Portfolio Variance", desc: "Calculate total risk across N assets", icon: <Layers className="h-5 w-5 text-blue-600" />, href: "/portfolio-variance-calculator" },
+              { title: "Correllation Heatmap", desc: "Asset interaction analysis", icon: <Activity className="h-5 w-5 text-orange-600" />, href: "/asset-correlation-matrix-calculator" },
+              { title: "Sharpe Ratio", desc: "Risk-adjusted performance audit", icon: <Zap className="h-5 w-5 text-yellow-600" />, href: "/sharpe-ratio-calculator" },
+              { title: "Lump Sum vs SIP", desc: "Compare entry strategies", icon: <DollarSign className="h-5 w-5 text-purple-600" />, href: "/lump-sum-vs-sip-comparison-calculator" },
+              { title: "WACC Optimizer", desc: "Capital structure analysis", icon: <Target className="h-5 w-5 text-indigo-600" />, href: "/wacc-calculator" },
             ].map((calc, i) => (
               <Link key={i} href={calc.href} className="group">
                 <Card className="h-full hover:border-primary/50 transition-all hover:bg-muted/30">

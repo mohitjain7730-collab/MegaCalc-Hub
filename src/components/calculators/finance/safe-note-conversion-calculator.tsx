@@ -451,7 +451,7 @@ export default function SafeNoteConversionCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/convertible-note-conversion-calculator" className="block">
+            <Link href="/convertible-note-conversion-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -464,7 +464,7 @@ export default function SafeNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/startup-valuation-pre-money-vs-post-money-calculator" className="block">
+            <Link href="/startup-valuation-pre-money-vs-post-money-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -477,7 +477,7 @@ export default function SafeNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/founder-dilution-after-funding-calculator" className="block">
+            <Link href="/founder-dilution-after-funding-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -490,7 +490,7 @@ export default function SafeNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/equity-cap-table-generator" className="block">
+            <Link href="/equity-cap-table-generator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -503,7 +503,7 @@ export default function SafeNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/safe-convertible-note-conversion-calculator" className="block">
+            <Link href="/safe-convertible-note-conversion-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -516,7 +516,7 @@ export default function SafeNoteConversionCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/option-pool-allocation-calculator" className="block">
+            <Link href="/option-pool-allocation-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -540,7 +540,7 @@ export default function SafeNoteConversionCalculator() {
         <meta itemProp="keywords" content="SAFE note conversion, valuation cap, discount, pre-money SAFE, post-money SAFE, startup financing, equity conversion" />
         <meta itemProp="author" content="Mycalculating.com" />
         <meta itemProp="datePublished" content="2025-01-01" />
-        <meta itemProp="url" content="/finance/safe-note-conversion-calculator" />
+        <meta itemProp="url" content="/safe-note-conversion-calculator" />
 
         <h1 className="text-3xl md:text-4xl font-extrabold text-foreground mb-4" itemProp="headline">The Definitive Guide to SAFE Note Conversion: Valuation Cap, Discount, and Equity</h1>
         <p className="text-lg italic text-muted-foreground">How SAFEs (Simple Agreements for Future Equity) convert into equity when a company raises a priced round.</p>

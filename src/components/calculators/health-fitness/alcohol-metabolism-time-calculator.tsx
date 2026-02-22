@@ -230,10 +230,10 @@ export default function AlcoholMetabolismTimeCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/alcohol-calorie-impact-calculator" className="text-primary hover:underline">Alcohol Calorie Impact</Link></h4><p className="text-sm text-muted-foreground">Track liquid calories alongside metabolism estimates.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs Calculator</Link></h4><p className="text-sm text-muted-foreground">Set water targets to aid recovery and reduce hangovers.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Factor alcohol energy into your total daily intake.</p></div>
-            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/health-fitness/recovery-sleep-requirement-after-sleep-debt-calculator" className="text-primary hover:underline">Sleep Debt Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess sleep recovery after late-night drinking.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/alcohol-calorie-impact-calculator" className="text-primary hover:underline">Alcohol Calorie Impact</Link></h4><p className="text-sm text-muted-foreground">Track liquid calories alongside metabolism estimates.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/hydration-needs-calculator" className="text-primary hover:underline">Hydration Needs Calculator</Link></h4><p className="text-sm text-muted-foreground">Set water targets to aid recovery and reduce hangovers.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/daily-calorie-needs-calculator" className="text-primary hover:underline">Daily Calorie Needs</Link></h4><p className="text-sm text-muted-foreground">Factor alcohol energy into your total daily intake.</p></div>
+            <div className="p-4 border rounded"><h4 className="font-semibold mb-1"><Link href="/recovery-sleep-requirement-after-sleep-debt-calculator" className="text-primary hover:underline">Sleep Debt Calculator</Link></h4><p className="text-sm text-muted-foreground">Assess sleep recovery after late-night drinking.</p></div>
           </div>
         </CardContent>
       </Card>

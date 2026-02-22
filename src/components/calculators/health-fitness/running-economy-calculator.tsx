@@ -289,19 +289,19 @@ export default function RunningEconomyCalculator() {
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/maximal-aerobic-speed-mas-calculator" className="text-primary hover:underline">Maximal Aerobic Speed</Link></h4>
               <p className="text-sm text-muted-foreground">Translate VO₂ metrics into actionable running intensities.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/lactate-accumulation-rate-calculator" className="text-primary hover:underline">Lactate Accumulation Rate</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/lactate-accumulation-rate-calculator" className="text-primary hover:underline">Lactate Accumulation Rate</Link></h4>
               <p className="text-sm text-muted-foreground">Gauge anaerobic contributions during high-intensity efforts.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/oxygen-debt-epoc-calculator" className="text-primary hover:underline">Oxygen Debt (EPOC)</Link></h4>
               <p className="text-sm text-muted-foreground">Assess recovery costs after demanding workouts.</p>
             </div>
             <div className="p-4 border rounded">
-              <h4 className="font-semibold mb-1"><Link href="/health-fitness/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4>
+              <h4 className="font-semibold mb-1"><Link href="/vo2-reserve-calculator" className="text-primary hover:underline">VO₂ Reserve</Link></h4>
               <p className="text-sm text-muted-foreground">Plan training across moderate to maximal intensity zones.</p>
             </div>
           </div>

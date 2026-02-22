@@ -380,7 +380,7 @@ export default function WACCCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/capm-calculator" className="group">
+            <Link href="/capm-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <BarChart3 className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -388,7 +388,7 @@ export default function WACCCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/leverage-debt-ratio-calculator" className="group">
+            <Link href="/leverage-debt-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -396,7 +396,7 @@ export default function WACCCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/enterprise-value-calculator" className="group">
+            <Link href="/enterprise-value-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -404,7 +404,7 @@ export default function WACCCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/interest-coverage-ratio-calculator" className="group">
+            <Link href="/interest-coverage-ratio-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Shield className="h-8 w-8 mx-auto mb-2 text-primary" />

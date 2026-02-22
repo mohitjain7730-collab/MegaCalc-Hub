@@ -265,11 +265,11 @@ export default function BodyMeasurementToClothSizeConverter() {
 
         <h4 className='font-bold'>🔗 Related Calculators</h4>
         <ul className="list-disc list-inside text-sm space-y-1 pl-4">
-          <li><Link href="/conversions/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
-          <li><Link href="/conversions/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
-          <li><Link href="/conversions/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
-          <li><Link href="/conversions/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
-          <li><Link href="/conversions/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
+          <li><Link href="/shoe-size-converter" className="text-primary underline">👟 Universal Shoe Size Converter</Link></li>
+          <li><Link href="/ring-size-converter" className="text-primary underline">💍 Ring Size Converter</Link></li>
+          <li><Link href="/hat-size-converter" className="text-primary underline">🧢 Hat Size Converter</Link></li>
+          <li><Link href="/belt-size-converter" className="text-primary underline">👖 Belt Size Converter</Link></li>
+          <li><Link href="/glove-size-converter" className="text-primary underline">🧤 Glove Size Converter</Link></li>
         </ul>
       </div>
     </div>

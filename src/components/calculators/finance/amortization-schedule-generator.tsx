@@ -313,7 +313,7 @@ export default function AmortizationScheduleGenerator() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/mortgage-payment-calculator" className="text-primary hover:underline">
+                <a href="/mortgage-payment-calculator" className="text-primary hover:underline">
                   Mortgage Payment Calculator
                 </a>
               </h4>
@@ -323,7 +323,7 @@ export default function AmortizationScheduleGenerator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/loan-emi-calculator" className="text-primary hover:underline">
+                <a href="/loan-emi-calculator" className="text-primary hover:underline">
                   Loan EMI Calculator
                 </a>
               </h4>
@@ -333,7 +333,7 @@ export default function AmortizationScheduleGenerator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
+                <a href="/loan-amortization-extra-payments-calculator" className="text-primary hover:underline">
                   Loan with Extra Payments Calculator
                 </a>
               </h4>
@@ -343,7 +343,7 @@ export default function AmortizationScheduleGenerator() {
             </div>
             <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
               <h4 className="font-semibold mb-2">
-                <a href="/finance/dscr-calculator" className="text-primary hover:underline">
+                <a href="/dscr-calculator" className="text-primary hover:underline">
                   Debt-to-Income Ratio Calculator
                 </a>
               </h4>

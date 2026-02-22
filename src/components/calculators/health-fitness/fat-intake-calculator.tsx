@@ -86,7 +86,7 @@ export default function FatIntakeCalculator() {
                 <FormItem>
                   <div className="flex justify-between items-center">
                     <FormLabel>Total Daily Calories (TDEE)</FormLabel>
-                    <Link href="/health-fitness/daily-calorie-needs-calculator" className="text-xs text-primary underline">
+                    <Link href="/daily-calorie-needs-calculator" className="text-xs text-primary underline">
                       (Calculate)
                     </Link>
                   </div>
@@ -207,7 +207,7 @@ export default function FatIntakeCalculator() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/daily-calorie-needs-calculator" className="text-primary hover:underline">
+                  <a href="/daily-calorie-needs-calculator" className="text-primary hover:underline">
                     Daily Calorie Needs Calculator
                   </a>
                 </h4>
@@ -217,7 +217,7 @@ export default function FatIntakeCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/protein-intake-calculator" className="text-primary hover:underline">
+                  <a href="/protein-intake-calculator" className="text-primary hover:underline">
                     Protein Intake Calculator
                   </a>
                 </h4>
@@ -227,7 +227,7 @@ export default function FatIntakeCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/carbohydrate-intake-calculator" className="text-primary hover:underline">
+                  <a href="/carbohydrate-intake-calculator" className="text-primary hover:underline">
                     Carbohydrate Intake Calculator
                   </a>
                 </h4>
@@ -237,7 +237,7 @@ export default function FatIntakeCalculator() {
               </div>
               <div className="p-4 border rounded-lg hover:bg-muted/50 transition-colors">
                 <h4 className="font-semibold mb-2">
-                  <a href="/health-fitness/macro-ratio-calculator" className="text-primary hover:underline">
+                  <a href="/macro-ratio-calculator" className="text-primary hover:underline">
                     Macro Ratio Calculator
                   </a>
                 </h4>

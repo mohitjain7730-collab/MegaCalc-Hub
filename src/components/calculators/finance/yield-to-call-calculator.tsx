@@ -499,7 +499,7 @@ export default function YieldToCallCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Link href="/finance/bond-yield-to-maturity-calculator" className="group">
+            <Link href="/bond-yield-to-maturity-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Percent className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -507,7 +507,7 @@ export default function YieldToCallCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/bond-price-calculator" className="group">
+            <Link href="/bond-price-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <DollarSign className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -515,7 +515,7 @@ export default function YieldToCallCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/bond-duration-calculator" className="group">
+            <Link href="/bond-duration-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <Activity className="h-8 w-8 mx-auto mb-2 text-primary" />
@@ -523,7 +523,7 @@ export default function YieldToCallCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/bond-yield-spread-calculator" className="group">
+            <Link href="/bond-yield-spread-calculator" className="group">
               <Card className="group-hover:shadow-md transition-shadow">
                 <CardContent className="p-4 text-center">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2 text-primary" />

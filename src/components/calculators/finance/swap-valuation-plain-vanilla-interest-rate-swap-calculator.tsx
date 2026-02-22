@@ -526,7 +526,7 @@ export default function SwapValuationCalculator() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <Link href="/finance/forward-contract-value-calculator" className="block">
+            <Link href="/forward-contract-value-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -539,7 +539,7 @@ export default function SwapValuationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/cost-of-carry-futures-calculator" className="block">
+            <Link href="/cost-of-carry-futures-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">
@@ -552,7 +552,7 @@ export default function SwapValuationCalculator() {
                 </CardContent>
               </Card>
             </Link>
-            <Link href="/finance/present-value-calculator" className="block">
+            <Link href="/present-value-calculator" className="block">
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">
                   <div className="flex items-center gap-3">

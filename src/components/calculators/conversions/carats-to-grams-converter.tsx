@@ -119,8 +119,8 @@ export default function CaratsToGramsConverter() {
         <div>
           <h3 className="text-lg font-semibold mb-2">Related Converters</h3>
           <div className="space-y-2">
-            <p><Link href="/conversions/grams-to-carats-converter" className="text-primary underline">Grams to Carats Converter</Link></p>
-            <p><Link href="/conversions/grams-to-ounces-converter" className="text-primary underline">Grams to Ounces Converter</Link></p>
+            <p><Link href="/grams-to-carats-converter" className="text-primary underline">Grams to Carats Converter</Link></p>
+            <p><Link href="/grams-to-ounces-converter" className="text-primary underline">Grams to Ounces Converter</Link></p>
           </div>
         </div>
       </div>
