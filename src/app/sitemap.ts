@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const categoryPages: MetadataRoute.Sitemap = categories
     .filter((category) => indexableCategorySet.has(category.slug))
     .map((category) => ({
-      url: `${baseUrl}/category/${category.slug}`,
+      url: `${baseUrl}/${category.slug}`,
       lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.8,

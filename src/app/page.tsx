@@ -94,7 +94,7 @@ export default function Home() {
                   </div>
                 </div>
                 <Button asChild variant="outline" size="sm" className="hidden sm:inline-flex">
-                  <Link href="/category/gaming">
+                  <Link href="/gaming">
                     View all gaming calculators
                   </Link>
                 </Button>
@@ -124,7 +124,7 @@ export default function Home() {
 
               <div className="mt-4 sm:mt-6 text-center sm:hidden">
                 <Button asChild variant="outline" size="sm">
-                  <Link href="/category/gaming">
+                  <Link href="/gaming">
                     View all gaming calculators
                   </Link>
                 </Button>

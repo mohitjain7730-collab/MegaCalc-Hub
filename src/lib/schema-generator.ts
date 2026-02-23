@@ -165,7 +165,7 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
     "@type": "CollectionPage",
     "name": `${category.name} Calculators`,
     "description": `Free online ${category.name.toLowerCase()} calculators. ${category.description}`,
-    "url": `${baseUrl}/category/${category.slug}`,
+    "url": `${baseUrl}/${category.slug}`,
     "mainEntity": {
       "@type": "ItemList",
       "name": `${category.name} Calculators`,
@@ -196,7 +196,7 @@ export function generateCategorySchema(category: Category, categoryCalculators: 
           "@type": "ListItem",
           "position": 2,
           "name": category.name,
-          "item": `${baseUrl}/category/${category.slug}`
+          "item": `${baseUrl}/${category.slug}`
         }
       ]
     }
@@ -245,7 +245,7 @@ export function generateSubCategorySchema(category: Category, subcategory: { nam
           "@type": "ListItem",
           "position": 2,
           "name": category.name,
-          "item": `${baseUrl}/category/${category.slug}`
+          "item": `${baseUrl}/${category.slug}`
         },
         {
           "@type": "ListItem",
