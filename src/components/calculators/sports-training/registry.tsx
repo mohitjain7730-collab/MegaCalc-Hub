@@ -140,8 +140,20 @@ const components: Record<string, React.LazyExoticComponent<React.ComponentType<a
   'tennis-win-ratio-calculator': lazy(() => import('./tennis-win-ratio-calculator')),
   'volleyball-attack-success-rate-calculator-interactive': lazy(() => import('./volleyball-attack-success-rate-calculator-interactive')),
   'volleyball-attack-success-rate-calculator': lazy(() => import('./volleyball-attack-success-rate-calculator')),
+  'volleyball-block-efficiency-calculator-interactive': lazy(() => import('./volleyball-block-efficiency-calculator-interactive')),
+  'volleyball-block-efficiency-calculator': lazy(() => import('./volleyball-block-efficiency-calculator')),
+  'volleyball-dig-success-rate-calculator-interactive': lazy(() => import('./volleyball-dig-success-rate-calculator-interactive')),
+  'volleyball-dig-success-rate-calculator': lazy(() => import('./volleyball-dig-success-rate-calculator')),
+  'volleyball-error-rate-calculator-interactive': lazy(() => import('./volleyball-error-rate-calculator-interactive')),
+  'volleyball-error-rate-calculator': lazy(() => import('./volleyball-error-rate-calculator')),
+  'volleyball-reception-accuracy-calculator-interactive': lazy(() => import('./volleyball-reception-accuracy-calculator-interactive')),
+  'volleyball-reception-accuracy-calculator': lazy(() => import('./volleyball-reception-accuracy-calculator')),
   'volleyball-serve-efficiency-calculator-interactive': lazy(() => import('./volleyball-serve-efficiency-calculator-interactive')),
   'volleyball-serve-efficiency-calculator': lazy(() => import('./volleyball-serve-efficiency-calculator')),
+  'volleyball-points-per-set-calculator-interactive': lazy(() => import('./volleyball-points-per-set-calculator-interactive')),
+  'volleyball-points-per-set-calculator': lazy(() => import('./volleyball-points-per-set-calculator')),
+  'volleyball-win-ratio-calculator-interactive': lazy(() => import('./volleyball-win-ratio-calculator-interactive')),
+  'volleyball-win-ratio-calculator': lazy(() => import('./volleyball-win-ratio-calculator')),
 };
 
 export default function CalculatorRegistry({ calculatorSlug }: { calculatorSlug: string }) {

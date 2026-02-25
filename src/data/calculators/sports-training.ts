@@ -552,5 +552,21 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "volleyball-serve-efficiency-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Volleyball Serve Efficiency instantly. Measure ace rate, service error rate, and net serving contribution with competitive benchmarks and expert strategic insights."
+    },
+    {
+        "id": 10070,
+        "name": "Volleyball Points per Set Calculator",
+        "description": "Calculate average points scored per set to measure offensive efficiency and scoring consistency in volleyball.",
+        "slug": "volleyball-points-per-set-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Volleyball Points per Set instantly. Analyze scoring output, measure offensive consistency, and evaluate team strength or individual performance."
+    },
+    {
+        "id": 10071,
+        "name": "Volleyball Win Ratio Calculator",
+        "description": "Calculate overall volleyball win percentage to evaluate season success and programmatic dominance.",
+        "slug": "volleyball-win-ratio-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate Volleyball Win Ratio instantly. Evaluate team success rate, compare set win ratios vs match ratios, and measure seasonal performance."
     }
 ];
