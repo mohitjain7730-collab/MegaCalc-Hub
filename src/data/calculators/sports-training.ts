@@ -568,5 +568,37 @@ export const sports_training_calculators: Calculator[] = [
         "slug": "volleyball-win-ratio-calculator",
         "category": "sports-training",
         "metaDescription": "Calculate Volleyball Win Ratio instantly. Evaluate team success rate, compare set win ratios vs match ratios, and measure seasonal performance."
+    },
+    {
+        "id": 10072,
+        "name": "Volleyball Error Rate Calculator",
+        "description": "Calculate your volleyball error rate to analyze unforced versus forced errors and assess overall team consistency on the court.",
+        "slug": "volleyball-error-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate your volleyball error rate. Analyze unforced versus forced errors to assess overall team consistency and identify areas for improvement."
+    },
+    {
+        "id": 10073,
+        "name": "Volleyball Dig Success Rate Calculator",
+        "description": "Calculate volleyball dig success rate to measure defensive positioning efficiency and transition offense capability.",
+        "slug": "volleyball-dig-success-rate-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate volleyball dig success rate to measure defensive positioning efficiency and transition offense capability, essential for analyzing libero benchmarks."
+    },
+    {
+        "id": 10074,
+        "name": "Volleyball Block Efficiency Calculator",
+        "description": "Calculate volleyball block efficiency to evaluate front-row defense, measure stuff blocks, and analyze net control performance.",
+        "slug": "volleyball-block-efficiency-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate volleyball block efficiency to evaluate front-row defense. Measure stuff blocks and analyze net control performance."
+    },
+    {
+        "id": 10075,
+        "name": "Volleyball Reception Accuracy Calculator",
+        "description": "Calculate volleyball reception accuracy and passing average. Track and measure serve-receive performance using the standard 3-point system.",
+        "slug": "volleyball-reception-accuracy-calculator",
+        "category": "sports-training",
+        "metaDescription": "Calculate volleyball reception accuracy and passing average. Track and measure serve-receive performance using the 3-point system for side-out strategy."
     }
 ];
