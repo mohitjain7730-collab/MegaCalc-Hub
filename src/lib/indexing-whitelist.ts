@@ -3,6 +3,7 @@ export const indexableCategorySlugs = [
     'gaming',
     'travel-adventure',
     'sports-training',
+    'time-date',
 ];
 
 /** Static page path segments to include in sitemap and indexing. '' = homepage. */
@@ -275,4 +276,20 @@ export const indexableCalculatorSlugs = [
     'baseball-ops-calculator',
     'baseball-fielding-percentage-calculator',
     'baseball-run-differential-calculator',
+    // Time & Date
+    'date-difference-calculator',
+    'age-calculator',
+    'world-time-zone-converter',
+    'day-of-the-week-calculator',
+    'working-days-business-days-calculator',
+    'contract-duration-calculator',
+    'employment-anniversary-calculator',
+    'freelance-billable-hours-calculator',
+    'last-working-day-calculator',
+    'night-shift-duration-calculator',
+    'notice-period-calculator',
+    'probation-period-calculator',
+    'remote-work-time-zone-overlap-calculator',
+    'shift-rotation-calculator',
+    'split-shift-hours-calculator',
 ];
