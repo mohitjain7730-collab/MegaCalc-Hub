@@ -1,0 +1,45 @@
+﻿
+> nextn@0.1.0 build
+> cross-env NODE_OPTIONS=--max-old-space-size=6144 next build
+
+node.exe :  ΓÜá Specified 
+"redirects" will not 
+automatically work with 
+"output: export". See 
+more info here: https://ne
+xtjs.org/docs/messages/exp
+ort-no-custom-routes
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (   
+  ΓÜá Specified ...o-cu   
+ stom-routes:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+ ΓÜá Specified 
+"redirects" will not 
+automatically work with 
+"output: export". See 
+more info here: https://ne
+xtjs.org/docs/messages/exp
+ort-no-custom-routes
+   Γû▓ Next.js 15.3.6
+
+   Creating an optimized production build ...
+
+> Build error occurred
+[Error: Page 
+"/calculator/[slug]/page" 
+cannot use both "use 
+client" and export 
+function 
+"generateStaticParams()".]

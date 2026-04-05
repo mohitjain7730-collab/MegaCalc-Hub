@@ -9,10 +9,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { generateWebsiteSchema } from '@/lib/schema-generator';
 import { calculators } from '@/lib/calculators';
-import { search } from '@/app/actions';
 
-// Force server-side rendering so all content is in the initial HTML
-export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
   alternates: {
@@ -44,11 +41,11 @@ export default function Home() {
               Your one-stop destination for all calculators. We offer a wide range of free online calculators for finance, health, and more.
             </p>
             <div className='mt-6 sm:mt-8 max-w-2xl mx-auto'>
-              <form action={search} className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+              <form action="/search" method="GET" className="flex flex-col sm:flex-row gap-2 sm:gap-3">
                 <div className="relative flex-grow">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
                   <Input
-                    name="query"
+                    name="q"
                     type="text"
                     placeholder="e.g., 'Retirement', 'BMI', 'Mortgage'..."
                     required

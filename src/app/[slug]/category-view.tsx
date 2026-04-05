@@ -97,8 +97,6 @@ const categorySeoContent: Record<
 };
 
 // Force server-side rendering so all content is in the initial HTML
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
 
 export async function generateCategoryMetadata(slug: string): Promise<Metadata> {
   const category = categories.find((c) => c.slug === slug);

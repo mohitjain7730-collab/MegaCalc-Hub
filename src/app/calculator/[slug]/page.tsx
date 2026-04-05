@@ -1,18 +1,15 @@
-
-import { redirect, notFound } from 'next/navigation';
 import { calculators } from '@/lib/calculators';
+import ClientRedirect from './client-redirect';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
 }
 
-export default async function CalculatorRedirect({ params }: PageProps) {
+export async function generateStaticParams() {
+    return calculators.map((c) => ({ slug: c.slug }));
+}
+
+export default async function CalculatorRedirectPage({ params }: PageProps) {
     const { slug } = await params;
-    const calc = calculators.find((c) => c.slug === slug);
-
-    if (calc) {
-        redirect(`/${calc.category}/${calc.slug}`);
-    }
-
-    notFound();
+    return <ClientRedirect slug={slug} />;
 }

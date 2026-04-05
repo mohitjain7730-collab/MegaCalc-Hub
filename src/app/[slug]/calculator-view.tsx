@@ -17,8 +17,6 @@ import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CalculatorSeoArticle } from '@/components/calculator-seo-article';
 
 // Force server-side rendering so all content is in the initial HTML
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
 
 export async function generateCalculatorMetadata(slug: string): Promise<Metadata> {
     // Find calculator from data

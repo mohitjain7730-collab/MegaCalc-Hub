@@ -18,9 +18,16 @@ import { CalculatorWrapper } from '@/components/calculator-wrapper';
 import { CalculatorSeoArticle } from '@/components/calculator-seo-article';
 import { CategorySearch } from '@/components/category-search';
 
-// Force server-side rendering so all content is in the initial HTML
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    return categories.flatMap(category => 
+        (category.subcategories ?? []).map(sub => ({
+            slug: category.slug,
+            path: [sub.slug]
+        }))
+    );
+}
 
 export async function generateMetadata({
     params

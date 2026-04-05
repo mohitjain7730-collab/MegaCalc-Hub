@@ -4,8 +4,11 @@ import { categories } from '@/lib/categories';
 
 import CategoryView, { generateCategoryMetadata } from '../../[slug]/category-view';
 
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    return categories.map((c) => ({ slug: c.slug }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;

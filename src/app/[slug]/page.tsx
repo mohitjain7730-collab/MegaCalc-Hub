@@ -6,8 +6,13 @@ import { categories } from '@/lib/categories';
 import CalculatorView, { generateCalculatorMetadata } from './calculator-view';
 import CategoryView, { generateCategoryMetadata } from './category-view';
 
-export const dynamic = 'force-dynamic';
-export const dynamicParams = true;
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+    const calculatorSlugs = calculators.map((c) => ({ slug: c.slug }));
+    const categorySlugs = categories.map((c) => ({ slug: c.slug }));
+    return [...calculatorSlugs, ...categorySlugs];
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
