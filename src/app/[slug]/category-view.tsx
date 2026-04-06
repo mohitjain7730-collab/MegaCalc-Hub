@@ -137,8 +137,8 @@ export default async function CategoryView({ slug }: { slug: string }) {
 
     return (
       <>
-        <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-6 md:p-8">
-          <div className="w-full max-w-4xl">
+        <div className="flex flex-col min-h-screen bg-background p-4 sm:p-6 md:p-8 mx-auto">
+          <div className="w-full max-w-4xl mx-auto">
             <div className="mb-6 sm:mb-8">
               <Button asChild variant="ghost" className='mb-3 sm:mb-4 text-sm sm:text-base'>
                 <Link href="/">

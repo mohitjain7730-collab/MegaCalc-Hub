@@ -21,7 +21,7 @@ function SearchResults() {
     : [];
 
   return (
-    <div className="w-full max-w-4xl">
+    <div className="w-full max-w-4xl mx-auto">
       <div className="mb-8">
         <Button asChild variant="ghost" className="mb-4">
           <Link href="/">
@@ -76,7 +76,7 @@ function SearchResults() {
 
 export default function SearchPage() {
   return (
-    <div className="flex flex-col items-center min-h-screen bg-background p-4 sm:p-8">
+    <div className="flex flex-col min-h-screen bg-background p-4 sm:p-8">
       <Suspense fallback={
         <div className="flex items-center justify-center min-h-[50vh]">
           <Loader2 className="h-8 w-8 animate-spin text-primary" />

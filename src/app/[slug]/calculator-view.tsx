@@ -108,8 +108,8 @@ export default async function CalculatorView({ slug }: { slug: string }) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(comprehensiveSchema) }}
             />
-            <div className="flex flex-col items-center min-h-screen bg-secondary/50 p-4 sm:p-6">
-                <div className="w-full max-w-4xl bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate style={{ minHeight: '600px', width: '100%' }}>
+            <div className="flex flex-col min-h-screen bg-secondary/50 p-4 sm:p-6">
+                <div className="w-full max-w-4xl mx-auto bg-background rounded-lg shadow-sm p-4 sm:p-6 md:p-8 flex-1" id="calculator-container" data-lcp-candidate style={{ minHeight: '600px' }}>
                     <div className="mb-8">
                         <Button asChild variant="ghost" className="mb-4">
                             <Link href={`/${category.slug}`}>

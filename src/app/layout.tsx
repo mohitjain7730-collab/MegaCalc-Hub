@@ -118,6 +118,8 @@ export default function RootLayout({
                 width: 100%;
                 display: flex;
                 flex-direction: column;
+                align-items: stretch;
+                margin: 0 auto;
               }
               /* Prevent layout shift for calculator container */
               [data-lcp-candidate] {
